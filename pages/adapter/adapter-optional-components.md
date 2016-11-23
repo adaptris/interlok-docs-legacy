@@ -5,8 +5,10 @@ tags: [getting_started]
 sidebar: home_sidebar
 permalink: adapter-optional-components.html
 toc: false
-summary: As additional features are developed and released our public facing repository is updated; so you can always browse the [repository directly](http://development.adaptris.net/nexus/content/groups/public/com/adaptris/) to keep up to date.
+summary: This describes all the optional components that are currently available.
 ---
+
+As additional features are developed and released our public facing repository is updated; so you can always browse the [repository directly](https://development.adaptris.net/nexus/content/groups/public/com/adaptris/) to keep up to date.
 
 ## Component List ##
 
