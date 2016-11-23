@@ -3,6 +3,8 @@ TARGET_DIR=/home/websites/development.adaptris.net/docs/
 SITE_DIR=_site
 SITE_NAME=Interlok
 
+source ${HOME}/.rvm/scripts/rvm
+
 rm -rf ./${SITE_DIR}/${SITE_NAME}
 rvm use 2.3.0
 bundle exec jekyll build -d ${SITE_DIR}/${SITE_NAME}
