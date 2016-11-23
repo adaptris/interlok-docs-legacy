@@ -30,6 +30,7 @@ exclude:
   - README.md
   - Gemfile
   - Gemfile.lock
+  - create-docs-site.sh
 
 # these are the files and directories that jekyll will exclude from the build
 
