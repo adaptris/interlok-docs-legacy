@@ -1,0 +1,19 @@
+## Topnav single links
+## if you want to list an external url, use external_url instead of url. the theme will apply a different link base.
+topnav:
+- title: Topnav
+  items:
+    - title: News
+      url: /news.html
+
+topnav_dropdowns:
+- title: Topnav dropdowns
+  folders:
+    - title: Resources
+      folderitems:
+      - title: github
+        external_url: https://github.com/adaptris/interlok
+      - title: Installers
+        external_url: https://development.adaptris.net/installers
+      - title: Javadocs
+        external_url: https://development.adaptris.net/javadocs

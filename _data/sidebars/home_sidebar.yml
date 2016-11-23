@@ -1,0 +1,348 @@
+# This is your sidebar TOC. The sidebar code loops through sections here and provides the appropriate formatting.
+
+entries:
+- title: sidebar
+  product: Interlok
+  folders:
+
+  - title: Overview
+    output: web
+    folderitems:
+
+    - title: Home
+      url: /index.html
+      output: web
+      type: homepage
+
+    - title: What is an adapter
+      url: /adapter-what-is-it.html
+      output: web
+
+    - title: Installation
+      url: /adapter-installation.html
+      output: web
+
+    - title: Starting Interlok
+      url: /adapter-commandline.html
+      output: web
+
+  - title: User Guide
+    output: web
+    folderitems:
+
+    - title: Optional Components
+      url: /adapter-optional-components.html
+      output: web
+
+    - title: Startup in Detail
+      url: /adapter-bootstrap.html
+      output: web
+
+    - title: Applying a license
+      url: /adapter-license.html
+      output: web
+
+    - title: Error Handling
+      url: /adapter-error-handling.html
+      output: web
+
+    - title: Events in Interlok
+      url: /adapter-events.html
+      output: web
+
+    - title: Shared Components and JNDI
+      url: /adapter-jndi-guide.html
+      output: web
+
+    - title: Interlok Hosted Webservices
+      url: /adapter-hosting-ws.html
+      output: web
+
+    - title: Interlok Hosted Restful Services
+      url: /adapter-hosting-rest.html
+      output: web
+
+    - title: Interlok As a Webservices Client
+      url: /adapter-executing-ws.html
+      output: web
+
+    - title: Changes from 2.x
+      url: /adapter-changes-since-2.x.html
+      output: web
+
+    - title: Change log
+      url: /changelog.html
+      output: web
+
+  - title: UI
+    output: web
+    folderitems:
+
+    - title: Introduction to the UI
+      url: /ui-introduction.html
+      output: web
+
+    - title: Quick Overview
+      url: /ui-quick-overview.html
+      output: web
+
+    - title: Logging in
+      url: /ui-logging-in.html
+      output: web
+
+    - title: Navigation
+      url: /ui-navigation.html
+      output: web
+
+    - title: Dashboard
+      url: /ui-dashboard.html
+      output: web
+
+    - title: Widgets
+      url: /ui-widgets.html
+      output: web
+
+    - title: Log Monitor
+      url: /ui-log-monitor.html
+      output: web
+
+    - title: Alerts
+      url: /ui-alerts.html
+      output: web
+
+      subfolders:
+      - title: Configuration
+        output: web
+        subfolderitems:
+
+        - title: Configuration Screen
+          url: /ui-config.html
+          output: web
+
+        - title: Templates
+          url: /ui-templates.html
+          output: web
+
+        - title: Version Control
+          url: /ui-version-control.html
+          output: web
+
+        - title: Export / Import
+          url: /ui-export-import.html
+          output: web
+
+        - title: Generate from Swagger YAML
+          url: /ui-swagger.html
+          output: web
+
+    - title: Security
+      url: /ui-security.html
+      output: web
+
+    - title: System Preferences
+      url: /ui-system-preferences.html
+      output: web
+
+    - title: User Preferences
+      url: /ui-user-preferences.html
+      output: web
+
+  - title: Integration Guides
+    output: web
+
+    folderitems:
+    - title: Data Capture using JDBC
+      url: /cookbook-jdbc-data-capture.html
+      output: web
+
+    - title: Data Extract using JDBC
+      url: /cookbook-jdbc-data-query.html
+      output: web
+
+    - title: Email (POP3/IMAP/SMTP)
+      url: /cookbook-email.html
+      output: web
+
+    - title: JMS
+      url: /cookbook-jms.html
+      output: web
+
+    - title: Message Aggregation
+      url: /cookbook-aggregating-messages.html
+      output: web
+
+    - title: MSMQ
+      url: /cookbook-msmq.html
+      output: web
+
+    - title: Native WebsphereMQ
+      url: /cookbook-native-wmq.html
+      output: web
+
+    - title: Oracle AQ
+      url: /cookbook-oracleaq.html
+      output: web
+
+      subfolders:
+      - title: SAP
+        output: web
+        subfolderitems:
+        - title: SAP (BAPI/RFC)
+          url: /cookbook-sap-rfc.html
+          output: web
+
+        - title: SAP (IDoc)
+          url: /cookbook-sap-idoc.html
+          output: web
+
+    - title: Split and Aggregate
+      url: /cookbook-split-join.html
+      output: web
+
+    - title: Splitting Messages
+      url: /cookbook-splitting-messages.html
+      output: web
+
+    - title: Validating XML
+      url: /cookbook-xml-validation.html
+      output: web
+
+  - title: Advanced
+    output: web
+
+    folderitems:
+    - title: Clustered Workflows / Services
+      url: /advanced-vertx.html
+      output: web
+
+    - title: Configuration Pre-Processors
+      url: /advanced-configuration-pre-processors.html
+      output: web
+
+    - title: Deploy using ANT
+      url: /advanced-ant-ivy-deploy.html
+      output: web
+      subfolders:
+      - title: Failover
+        output: web
+        subfolderitems:
+        - title: Failover with AspectJ
+          url: /advanced-profiler-failover.html
+          output: web
+
+        - title: Failover Clustering
+          url: /advanced-failover.html
+          output: web
+
+    - title: JMX Runtime Controls
+      url: /advanced-jmx.html
+      output: web
+
+    - title: JMX via JMS
+      url: /advanced-jmx-jms.html
+      output: web
+
+    - title: Management using Remote Shell
+      url: /advanced-shell.html
+      output: web
+
+    - title: Measuring Performance
+      url: /advanced-performance.html
+      output: web
+
+    - title: Memory Requirements
+      url: /advanced-memory-requirements.html
+      output: web
+
+    - title: Password Handling
+      url: /advanced-password-handling.html
+      output: web
+
+      subfolders:
+      - title: Profiling
+        output: web
+        subfolderitems:
+
+        - title: Profiling with New Relic
+          url: /advanced-new-relic-profiling.html
+          output: web
+
+        - title: Profiling with Stackify
+          url: /advanced-stackify-profiling.html
+          output: web
+
+    - title: Running in Docker
+      url: /advanced-docker.html
+      output: web
+
+    - title: Running in a Sonic Container
+      url: /advanced-sonic-container.html
+      output: web
+
+      subfolders:
+      - title: Version Control
+        output: web
+        subfolderitems:
+        - title: Version Control Configuration
+          url: /advanced-version-control.html
+          output: web
+
+        - title: Version Control with GIT
+          url: /advanced-vcs-git.html
+          output: web
+
+        - title: Version Control with Subversion
+          url: /advanced-vcs-svn.html
+          output: web
+
+    - title: Workflow Interceptors
+      url: /advanced-interceptors.html
+      output: web
+
+    - title: XA Integration
+      url: /advanced-xa-integration.html
+      output: web
+
+  - title: Developer
+    output: web
+
+    folderitems:
+    - title: Annotating your Components
+      url: /developer-annotations.html
+      output: web
+
+    - title: Compiling against Interlok
+      url: /developer-compiling.html
+      output: web
+
+    - title: Custom Connections
+      url: /developer-connections.html
+      output: web
+
+    - title: Custom Consumers
+      url: /developer-consumers.html
+      output: web
+
+    - title: Custom Producers
+      url: /developer-producers.html
+      output: web
+
+    - title: Custom Services
+      url: /developer-services.html
+      output: web
+
+    - title: UI API
+      url: /developer-ui-api.html
+      output: web
+
+      subfolders:
+      - title: Still Reading?
+        output: web
+        subfolderitems:
+        - title: Marshalling Configuration
+          url: /developer-configuration-marshalling.html
+          output: web
+
+        - title: Schema Generator
+          url: /developer-schema-generator.html
+          output: web
