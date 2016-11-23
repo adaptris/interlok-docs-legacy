@@ -19,8 +19,8 @@ The list of keys and a brief description of each key is described below :
 | beautifyXStreamOutput | Defaults to false, and if true, means that an attempt is made to remove all `class=` attributes, and to only use the raw alias as the element name. this means that where the same interface is used (e.g. for `produce-connection` + `consume-connection`, order becomes important.|
 | httpEnableProxyAuth | Defaults to false, and if true, means that a custom [Authenticator][] is inserted to authenticate against any HTTP Proxy servers|
 | useJavaLangManagementFactory | Defaults to true, and you should never have to change this |
-| preProcessors | A `:` separated list of [pre-processors](advanced-configuration-pre-processors.html) that need to be applied before configuration is unmarshalled |
-| enableLocalJndiServer| defaults to false, and should be set to true, if you intend on having [shared components](adapter-jndi-guide.html) accessible via the `adapter:` scheme|
+| preProcessors | A `:` separated list of [pre-processors][advanced-configuration-pre-processors] that need to be applied before configuration is unmarshalled |
+| enableLocalJndiServer| defaults to false, and should be set to true, if you intend on having [shared components][adapter-jndi-guide] accessible via the `adapter:` scheme|
 | sysprop. | Properties prefixed by this key will be converted into system properties at startup (minus the `sysprop.`) |
 | adapterTemplatesUrl | __Deprecated__ : Configure this directly in the UI; A file URL for a directory that contains all the templates that will be searched by the UI; defaults to `file://localhost/./ui-resources/config-templates`|
 | adapterScmUrl | __Deprecated__ : Configure this directly in the UI; a file URL that for a directory where the UI will backup any configuration that is saved/applied; defaults to `file://localhost/./ui-resources/config-store`|
@@ -47,7 +47,7 @@ If many keys are prefixed by `adapterConfigUrl`, then the following rules will a
 
 Which means that you can configure something like :
 
-```nohighlight
+```
 adapterConfigUrl=http://localhost/adapter.xml
 adapterConfigUrl.1=http://localhost/adapter2.xml
 adapterConfigUrl.2=file:///./config/adapter3.xml
@@ -73,7 +73,7 @@ If the JMX management component is specified via `managementComponents=jmx` then
 
 So, if we wanted to enable JMX over JMS using SonicMQ then we could have :
 
-```nohighlight
+```
 managementComponents=jmx
 jmxserviceurl=service:jmx:sonicmq:///tcp://localhost:2506
 jmxserviceurl.env.jmx.brokerUser=Administrator
@@ -95,11 +95,11 @@ webServerConfigUrl=./config/jetty.xml
 
 Properties prefixed by `sysprop.` (note the `.`) will be converted into system properties at boot time (minus the prefix). For instance specifying `sysprop.myEnvironment=ABCDE` will be equivalent to using `-DmyEnvironment=ABCDE` on the command-line. These will overwrite any system properties that you may have already specified on the command-line. Use one method or the other, don’t mix the two.
 
-Sensitive system property values may be stored encoded in the file; they will be decoded at boot time and the decoded value used for System.setProperty(). Of course, this means these values still plain text within the JVM, but are encoded for the purposes of storage on the file system in configuration/startup scripts. The syntax for an encoded property is to use {password} at the start of the property value; for instance: `sysprop.myEncodedString={password}PW:AA...N` (skipped some actual characters) is functionally equivalent to specifying –DmyEncodedString=admin on the command-line. These sensitive values will have been encrypted using the [password handling mechanism](advanced-password-handling.html).
+Sensitive system property values may be stored encoded in the file; they will be decoded at boot time and the decoded value used for System.setProperty(). Of course, this means these values still plain text within the JVM, but are encoded for the purposes of storage on the file system in configuration/startup scripts. The syntax for an encoded property is to use {password} at the start of the property value; for instance: `sysprop.myEncodedString={password}PW:AA...N` (skipped some actual characters) is functionally equivalent to specifying –DmyEncodedString=admin on the command-line. These sensitive values will have been encrypted using the [password handling mechanism][advanced-password-handling].
 
 If you were using JRuby, and you wanted to ensure that variable scope was threadsafe; and you needed to specify a javax.net.ssl keystore and password; the keystore password is of course sensitive so you have encrypted it.
 
-```nohighlight
+```
 sysprop.org.jruby.embed.localcontext.scope=threadsafe
 # Not all the text shown here for brevity.
 sysprop.javax.net.ssl.keyStorePassword={password}PW:AA...N
@@ -108,8 +108,9 @@ sysprop.javax.net.ssl.keyStore=/path/to/my/keystore
 
 ## Pre Processors ##
 
-Pre-Processors are components that allow you to inject some additional processing of Interlok configuration files before attempting to unmarshal them. It is discussed in more detail in the [pre-processors](advanced-configuration-pre-processors.html) document.
+Pre-Processors are components that allow you to inject some additional processing of Interlok configuration files before attempting to unmarshal them. It is discussed in more detail in the [pre-processors][advanced-configuration-pre-processors] document.
 
+{% include links.html %}
 
 [XStreamConfigManager]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/management/config/XStreamConfigManager.html
 [ManagementComponent]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/management/ManagementComponent.html
