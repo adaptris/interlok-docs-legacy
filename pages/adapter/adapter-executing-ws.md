@@ -108,7 +108,7 @@ There are many properties in this file, most of which should be left as the defa
 #### Executing the generator ####
 
 Once your configuration is complete, you can simply open a command line prompt and navigate to the root of your Interlok installation and then execute the following ant command;
-```nohighlight
+```
 ant clean generate
 ```
 You should then see something like the following;

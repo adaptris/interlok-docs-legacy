@@ -32,7 +32,7 @@ Because on Windows you can install the adapter as a service; then the installer 
 
 On Some Windows platforms (particularly x64); you may not be able to execute the installer without explicitly providing path to the java executable. This can be done by passing in the LAX_VM switch on the commandline.
 
-```nohighlight
+```
 .\install-without-jre.exe LAX_VM "C:\Program Files\jdk1.8.0_102\bin\javaw.exe"
 ```
 
@@ -42,7 +42,7 @@ On some Windows platforms (consistently Windows 10 x64); the installer may never
 
 {% include image.html file="user-guide/installation-failed.png" alt="UnexpectedlyQuit" %}
 
-```nohighlight
+```
 Flexeraawm$aaa: Windows DLL failed to load
 	at Flexeraawm.af(Unknown Source)
 	at Flexeraawm.aa(Unknown Source)
@@ -63,7 +63,7 @@ If you are in this situation, you should install with the bundled JRE (using [in
 
 It is possible to install the framework unattended; this makes it suitable for embedding part of a scripted deployment. In order to perform unattended installation you will need to create a response file to cover the various questions that are asked during installation. This can then be passed into the installer using the -f parameter (/f on windows) e.g. `./install.bin -f silent.ini`.
 
-```nohighlight
+```
 COMPANY_NAME=<My Company Name>
 USER_INSTALL_DIR=<My Installation Directory>
 INSTALLER_UI=silent

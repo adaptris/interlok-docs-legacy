@@ -63,6 +63,7 @@ Then our [jdbc-data-capture-service][] to insert all the sample pangrams into a 
 [jdbc-raw-data-capture-service][] makes no assumptions about the payload itself; if you configure a [jdbc-statement-parameter][] that is xpath based and the document is not XML; then results are undefined. It is designed for the use-cases where the [message][AdaptrisMessage] contains binary data, and you need to store the entire payload into a database table; optionally capturing some non-payload information as well. Again it will have a number of [jdbc-statement-parameter][] parameters configured and an SQL Statement.
 
 Taking the example document above, we want to insert the entire document as a new row in the database table `PANGRAMS` capturing the message-id as well.
+
 ```xml
 <jdbc-raw-data-capture-service>
  <connection class="jdbc-connection">

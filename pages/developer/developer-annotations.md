@@ -216,9 +216,7 @@ This annotation is available from __3.4.1__ onwards and is a _hint_ to the UI th
 private String metadataKeyToSet;
 ```
 
-## Javadocs ##
-
-### Taglets ###
+## Javadoc Taglets ##
 
 There are currently 2 custom taglets supported at the class level javadoc; the taglets will need to be explicitly included as part of your javadoc tag to generate the HTML snippets required.
 
@@ -235,7 +233,7 @@ There are currently 2 custom taglets supported at the class level javadoc; the t
 
 {% include note.html content="You need to include `com.adaptris:adp-core-apt` as a dependency if you are using dependency management." %}
 
-#### @license ####
+### @license ###
 
 This annotation is suggested for all configurable components.  There are currently 3 values;
 
@@ -253,11 +251,11 @@ For example if you add the annotation to your components class level javadoc lik
 
 Then when the javadoc is generated you will see the following;
 
-```nohighlight
+```
 License Required: STANDARD
 ```
 
-#### @config ####
+### @config ###
 
 This annotation is simply used to notify the reader of the simple name used in configuration for your component. As talked about earlier in this document each component is mapped to a simple name purely for ease of configuration. The value of this annotation should match the value of the @XStreamAlias annotation.
 
@@ -271,7 +269,7 @@ An example, if you have the following in your class level javadoc;
 ```
 Then when the javadoc is generated, you will see the following;
 
-```nohighlight
+```
 In the adapter configuration file this class is aliased as **scripting-service** which is the preferred alternative to the fully qualified classname when building your configuration.
 ```
 
@@ -280,9 +278,7 @@ In the adapter configuration file this class is aliased as **scripting-service**
 There are a number of standard validation annotations that are used when validating configuration in the UI and also when generating a RelaxNG schema.
 Validation is only applicable to those members that are serialized, you will not need to add these annotations to transient members. The annotations are purely optional but will give you a better experience when interacting with the UI for your component.
 
-### Member Level Annotations ###
-
-#### @NotNull ####
+### @NotNull ###
 
 This particular non-transient member should always have a value; may not be null. This is checked both in the UI and during schema validation. For example, let us imagine you are creating a new Interlok service that requires the user to configure a string that may not be null, you simply annotate like this;
 
@@ -291,9 +287,9 @@ This particular non-transient member should always have a value; may not be null
 private String myString = null;
 ```
 
-#### @AutoPopulated ####
+### @AutoPopulated ###
 
-This is a custom annotation only affects the generated schema.  This simple annotation is used to identify fields that are auto-populated on instantiation. If we consider the previous example; then if your string member has a default value, so it can be missing from the configuration file then you can use this annotation to inform the schema to ignore the `@NotNull` annotation.
+This is a custom annotation which only affects the generated schema.  This simple annotation is used to identify fields that are auto-populated on instantiation. If we consider the previous example; then if your string member has a default value, so it can be missing from the configuration file then you can use this annotation to inform the schema to ignore the `@NotNull` annotation.
 
 ```java
 public MyClass {
@@ -314,7 +310,7 @@ Then we can simply annotate this member variable like this;
 private String myString = null;
 ```
 
-#### @Valid ####
+### @Valid ###
 
 This annotation is used for complex objects and allows us to validate the full object graph of the member variable.
 
@@ -327,7 +323,7 @@ private RestartStrategy restartStrategy;
 
 It is then assumed that the object RestartStrategy will include annotations for its own member variables, therefore causing validation in a cascading fashion.
 
-#### @NotBlank ####
+### @NotBlank ###
 
 Validate that the annotated string is not NULL or empty.
 
@@ -339,7 +335,7 @@ A simple example;
 private String myString = null;
 ```
 
-#### @NotEmpty ####
+### @NotEmpty ###
 
 Asserts that the annotated string, collection, map or array is not null or empty.
 
@@ -349,7 +345,7 @@ A simple example;
 private List<Object> myObjects = null;
 ```
 
-#### @Pattern ####
+### @Pattern ###
 
 This annotation allows you to specify a regular expression that the value of the field can be validated against.  Typically this annotation would be used where the value of the field may only be a one of a list of values.
 

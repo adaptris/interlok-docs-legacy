@@ -28,7 +28,7 @@ If you have requested it, at installation time, the adapter will install itself 
 
 First of all make a copy of the .exe and .lax file and give it a new name (`myAdapter.exe` and `myAdapter.lax` for example). Then we can use the _sc_ command to add to our list of services. The `-zglaxservice` parameter is important as this allows the executable to be controlled via the standard Windows service instructions.
 
-```nohighlight
+```
 sc create "myServiceName" binPath="\path\to\myAdapter.exe -zglaxservice myServiceName" DisplayName= "My Friendly Adapter Service Name"
 ```
 

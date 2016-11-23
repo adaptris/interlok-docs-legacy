@@ -14,7 +14,7 @@ With a factory installation of Interlok, the embedded web server should already 
 
 All enabled management components are listed, separated by colon's as the value to the "managementComponents" property;
 
-```nohighlight
+```
 managementComponents=jetty:jmx
 ```
 As shown above "jetty", the embedded web server is enabled.
@@ -114,7 +114,7 @@ Assuming that you have configured Interlok as above and it is up and running wit
 
 Your raw HTTP request will look something like this;
 
-```nohighlight
+```
 
 POST http://<host>:<port>/adp-restful-services/rest/service/submitmessage?adapterId=FS-FS-Adapter&channelId=Channel1&workflowId=Workflow1&inputFormat=XML&outputFormat=JSON
 

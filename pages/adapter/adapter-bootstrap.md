@@ -86,7 +86,7 @@ jmxserviceurl.env.jmx.destination=SampleQ4
 
 If jetty is enabled via `managementComponents=jetty` then an additional key is required : `webServerConfigUrl`. This should contain the fully qualified filename for a jetty configuration file. As the UI requires the jetty component and communicates with Adapters using JMX, then if you intend on using the UI you should always have `managementComponents=jmx:jetty`.
 
-```nohighlight
+```
 managementComponents=jetty:jmx
 webServerConfigUrl=./config/jetty.xml
 ```

@@ -14,7 +14,7 @@ With a factory installation of Interlok, the embedded web server should already 
 
 All enabled management components are listed, separated by colon's as the value to the "managementComponents" property;
 
-```nohighlight
+```
 managementComponents=jetty:jmx
 ```
 As shown above "jetty", the embedded web server is enabled.

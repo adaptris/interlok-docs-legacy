@@ -13,7 +13,7 @@ permalink: cookbook-jdbc-data-query.html
 
 Our sample database contains a single table with two rows.
 
-```nohighlight
+```
 mysql> select * from testtable\G
 *************************** 1. row ***************************
      id: 1

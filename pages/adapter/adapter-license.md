@@ -11,7 +11,7 @@ The main Interlok runtime no longer needs a license; however some of the optiona
 
 If you have purchased an Interlok license, then you can get a license key from our support team. You will need to create a file `config/license.properties` with which contains single property. If you want to host the license key elsewhere, then you need to add a system property `adp.license.location=your location` to the startup parameters (or in bootstrap.properties) of Interlok
 
-```nohighlight
+```
 adp.license.key=<your license key here>
 ```
 

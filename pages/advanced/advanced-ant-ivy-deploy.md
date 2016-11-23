@@ -32,7 +32,7 @@ This example will download and install the nightly snapshot. You can of course c
 
 There are only two public targets defined in build.xml which are:
 
-```nohighlight
+```
 $ ant -projecthelp
 Buildfile: ./ant-ivy-deploy/build.xml
 
@@ -51,7 +51,7 @@ $
 
 `ant clean` will do exactly as described; it will delete the entire directory tree, leaving you with just the bare files from [ant-ivy-deploy.zip](files/ant-ivy-deploy.zip). The target that does the work is clearly `deploy`. If we run `ant deploy`; then it will go and do some stuff; provided there are no errors then you should end up with the directory structure similar to:
 
-```nohighlight
+```
 ant-ivy-deploy
  |-build (can be deleted).
  |-config
