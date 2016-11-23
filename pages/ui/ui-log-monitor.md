@@ -39,7 +39,7 @@ Once the new Log monitor has been saved the console should start showing logs (i
 
  ![Log Monitor page](./images/ui-user-guide/log-monitor-page.png)
 
-> __NOTE__ : If the logging widget isn't available, you will have to configure jmx logging within the container config.
+{% include note.html content="If the logging widget isn't available, you will have to configure jmx logging within the container config." %}
 
 For example in the containers config/log4j2.xml you would add a new appender:
 
@@ -103,5 +103,4 @@ Once the new filter has been saved it will be automatically selected.
 
  ![Log Monitor page with new Filter](./images/ui-user-guide/log-monitor-page-new-filter.png)
 
-> __HINT__ :
-> You can drag and drop sub filter tabs to reorganise them. (Since 3.5.0)
+{% include tip.html content="You can drag and drop sub filter tabs to reorganise them. (Since 3.5.0)." %}

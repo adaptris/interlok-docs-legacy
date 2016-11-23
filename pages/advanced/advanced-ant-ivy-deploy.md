@@ -85,8 +85,7 @@ If you wanted to enable certain optional components, then all you need to do is 
 
 Subsequently, whenever `ant deploy` is invoked; then the `simple-csv` and `json` components will be automatically downloaded, and put directly into the lib directory ready for use.
 
-> __Note__: Some components (such as SAP) may have dependencies that are not publicly available; you should exclude them explicitly in the ivy file, or build your own repository to host them.
-
+{% include note.html content="Some components (such as SAP) may have dependencies that are not publicly available; you should exclude them explicitly in the ivy file, or build your own repository to host them." %}
 
 [Apache Ant]: http://ant.apache.org
 [Apache Ivy]: http://ant.apache.org/ivy/

@@ -72,7 +72,7 @@ The configuration file `adapter.xml` an XML representation of a graph of Java ob
 </adapter>
 ```
 
-> The standard camel case java naming convention is converted to use a `-` in XML element names, so `uniqueId` becomes `<unique-id>`.
+{% include note.html content="The standard camel case java naming convention is converted to use a `-` in XML element names, so `uniqueId` becomes `<unique-id>`" %}
 
 The standard camel case java naming convention is converted to use a `-` in XML element names, so `uniqueId` becomes `<unique-id>`; all string and primitive types are expressed as elements in XML and conversion is handled automatically. In cases where the property being set is an interface or abstract type, it is necessary to supply the runtime type of the implementation to use; which is where the `class=` attribute comes in (you can see this in the example above).
 
@@ -106,7 +106,7 @@ How then can we find what connections/producers/consumers/services there are and
 
 The definitive source of information describing how to configure any component are available is the Javadoc documentation in `docs/api` available as part of your installation. You can also find them online : [http://development.adaptris.net/javadocs/](http://development.adaptris.net/javadocs/).
 
-> Look at the javadocs for the class in question; any public setter/getter combination means you can configure it in XML e.g. `getUniqueId()` + `setUniqueId()` means that you can configure a `<unique-id>myUniqueId</unique-id>`
+{% include tip.html content="Look at the javadocs for the class in question; any public setter/getter combination means you can configure it in XML e.g. `getUniqueId()` + `setUniqueId()` means that you can configure a `<unique-id>myUniqueId</unique-id>`." %}
 
 Secondly, examples of all standard components are included in directory `docs/example-xml`. If you look in this directory find the one called `com.adaptris.core.ServiceList.xml` which contains example configuration for a [service-list][ServiceList]. A [service-list][ServiceList] is just a container for one or more services. By convention a [NullService][] is shown as a placeholder where any service may be configured.
 

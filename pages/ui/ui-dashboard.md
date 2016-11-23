@@ -21,13 +21,13 @@ The Dashboard Page with annotations shows the various parts of the Dashboard Pag
 - B. The Adapter Status, which is represented by:
 
 
-> | Icon | Description | Meaning |
-> |----|----|----|
-> |![Dashboard Status Closed](./images/ui-user-guide/dashboard-status-closed.png) | orange banned signal  | the Adapter is closed |
-> |![Dashboard Status Stopped](./images/ui-user-guide/dashboard-status-stopped.png) | orange no entry signal | the Adapter has stopped |
-> |![Dashboard Status Error](./images/ui-user-guide/dashboard-status-error.png) | red cross | an error occurred |
-> |![Dashboard Status Initialised](./images/ui-user-guide/dashboard-status-inialised.png) | black circle | the Adapter has the initialised status |
-> |![Dashboard Status Disconnected](./images/ui-user-guide/dashboard-status-disconnected.png) | unlinked blue icon | disconnected (unreachable) |
+| Icon | Description | Meaning |
+|----|----|----|
+|![Dashboard Status Closed](./images/ui-user-guide/dashboard-status-closed.png) | orange banned signal  | the Adapter is closed |
+|![Dashboard Status Stopped](./images/ui-user-guide/dashboard-status-stopped.png) | orange no entry signal | the Adapter has stopped |
+|![Dashboard Status Error](./images/ui-user-guide/dashboard-status-error.png) | red cross | an error occurred |
+|![Dashboard Status Initialised](./images/ui-user-guide/dashboard-status-inialised.png) | black circle | the Adapter has the initialised status |
+|![Dashboard Status Disconnected](./images/ui-user-guide/dashboard-status-disconnected.png) | unlinked blue icon | disconnected (unreachable) |
 
 - C. The current Heap Memory for this Adapter indicated by a gauge; (Since 3.3)
 - D. The number of started channels is indicated by a gauge;
@@ -39,26 +39,25 @@ The Dashboard Page with annotations shows the various parts of the Dashboard Pag
 - J. The Show Channels checkbox feature will display a list of Channel components with further channel related information;
 - K. This is the Adapter Control Bar, which contains various functions that can be performed on the Adapter:
 
-> Button | Meaning
-> ------------ | -------------
-> ![Dashboard Adapter Control Info](./images/ui-user-guide/dashboard-adapter-control-info.png) | Show the Adapter Information (Version, Java and OS)
-> ![Dashboard Adapter Control Show Config](./images/ui-user-guide/dashboard-adapter-control-config.png) | Show the Adapter configuration (xml and diagram)
-> ![Dashboard Adapter Control Edit Config](./images/ui-user-guide/dashboard-adapter-control-edit-config.png) | Edit the Adapter configuration (in the config page)
-> ![Dashboard Adapter Control Garbage Collect](./images/ui-user-guide/gc-button-icon.png) | Request a Java Garbage Collection on the Adapter
-> ![Dashboard Adapter Control Thread Dump](./images/ui-user-guide/dashboard-adapter-control-thread-dump.png) | Generate a thread dump on the Adapter
-> ![Dashboard Adapter Control Start](./images/ui-user-guide/dashboard-adapter-control-start.png) | Start the Adapter
-> ![Dashboard Adapter Control Pause](./images/ui-user-guide/dashboard-adapter-control-pause.png) | Pause this Adapter from processing messages and allow it to retain any connections it has already initialised
-> ![Dashboard Adapter Control Stop](./images/ui-user-guide/dashboard-adapter-control-stop.png) | Stop this Adapter and free up any resources that it has used
-> ![Dashboard Adapter Control Force Stop](./images/ui-user-guide/dashboard-adapter-control-force-stop.png) | Under the Stop dropdown. Force Stop this Adapter (doesn't wait for services to finish) and free up any resources that it has used.
-> ![Dashboard Adapter Control Reload From Vcs](./images/ui-user-guide/dashboard-adapter-control-reload-from-vcs.png) | Under the Stop dropdown. Reload this Adapter configuration from Vcs and restart it. Only available for User and Admin users and if [version control](advanced-version-control.html#version-control-configuration) is configured for this Adapter. (Since 3.3)
-> ![Dashboard Adapter Control Support Pack](./images/ui-user-guide/dashboard-adapter-control-support-pack.png) | Under the Stop dropdown. Download a support pack containing log files and information about this Adapter. (Since 3.3)
-> ![Dashboard Adapter Control Refresh](./images/ui-user-guide/dashboard-adapter-control-refresh.png) | Refresh the Adapter status and details
-> ![Dashboard Adapter Control Remove](./images/ui-user-guide/dashboard-adapter-control-remove.png) | Remove the Adapter from the dashboard page
+| Button | Meaning
+| ------------ | -------------
+| ![Dashboard Adapter Control Info](./images/ui-user-guide/dashboard-adapter-control-info.png) | Show the Adapter Information (Version, Java and OS)
+| ![Dashboard Adapter Control Show Config](./images/ui-user-guide/dashboard-adapter-control-config.png) | Show the Adapter configuration (xml and diagram)
+| ![Dashboard Adapter Control Edit Config](./images/ui-user-guide/dashboard-adapter-control-edit-config.png) | Edit the Adapter configuration (in the config page)
+| ![Dashboard Adapter Control Garbage Collect](./images/ui-user-guide/gc-button-icon.png) | Request a Java Garbage Collection on the Adapter
+| ![Dashboard Adapter Control Thread Dump](./images/ui-user-guide/dashboard-adapter-control-thread-dump.png) | Generate a thread dump on the Adapter
+| ![Dashboard Adapter Control Start](./images/ui-user-guide/dashboard-adapter-control-start.png) | Start the Adapter
+| ![Dashboard Adapter Control Pause](./images/ui-user-guide/dashboard-adapter-control-pause.png) | Pause this Adapter from processing messages and allow it to retain any connections it has already initialised
+| ![Dashboard Adapter Control Stop](./images/ui-user-guide/dashboard-adapter-control-stop.png) | Stop this Adapter and free up any resources that it has used
+| ![Dashboard Adapter Control Force Stop](./images/ui-user-guide/dashboard-adapter-control-force-stop.png) | Under the Stop dropdown. Force Stop this Adapter (doesn't wait for services to finish) and free up any resources that it has used.
+| ![Dashboard Adapter Control Reload From Vcs](./images/ui-user-guide/dashboard-adapter-control-reload-from-vcs.png) | Under the Stop dropdown. Reload this Adapter configuration from Vcs and restart it. Only available for User and Admin users and if [version control](advanced-version-control.html#version-control-configuration) is configured for this Adapter. (Since 3.3)
+| ![Dashboard Adapter Control Support Pack](./images/ui-user-guide/dashboard-adapter-control-support-pack.png) | Under the Stop dropdown. Download a support pack containing log files and information about this Adapter. (Since 3.3)
+| ![Dashboard Adapter Control Refresh](./images/ui-user-guide/dashboard-adapter-control-refresh.png) | Refresh the Adapter status and details
+| ![Dashboard Adapter Control Remove](./images/ui-user-guide/dashboard-adapter-control-remove.png) | Remove the Adapter from the dashboard page
 
 - L. This area is for 'top level' functions, i.e. Add another Adapter to the UI or Refresh all the details on the Dashboard Page for all the Registered Adapters.
 
-> __NOTE__ :
-> All the data shown on the Dashboard Page is automatically refreshed, so there is no need to manually refresh the page, or use the refresh buttons
+{% include note.html content="All the data shown on the Dashboard Page is automatically refreshed, so there is no need to manually refresh the page, or use the refresh buttons" %}
 
 ## The Channel Area ##
 
@@ -81,22 +80,22 @@ The Dashboard Pages Adapter area with expanded channels showing with annotations
 - F. The Show Workflow Control: Allows a user to view the selected channels workflows
 - G. The control bar: Allows a user to perform several actions on the Channel, such as start, stop and refresh status
 
-> Button | Meaning
-> ------------ | -------------
-> ![Dashboard Channel Control Start](./images/ui-user-guide/dashboard-adapter-control-start.png) | Start the Channel
-> ![Dashboard Channel Control Pause](./images/ui-user-guide/dashboard-adapter-control-pause.png) | Pause this Channel from processing messages and allow it to retain any connections it has already initialised
-> ![Dashboard Channel Control Stop](./images/ui-user-guide/dashboard-adapter-control-stop.png) | Stop this Channel and free up any resources that it has used
-> ![Dashboard Channel Control Refresh](./images/ui-user-guide/dashboard-adapter-control-refresh.png) | Refresh the Channel status and details
+| Button | Meaning
+| ------------ | -------------
+| ![Dashboard Channel Control Start](./images/ui-user-guide/dashboard-adapter-control-start.png) | Start the Channel
+| ![Dashboard Channel Control Pause](./images/ui-user-guide/dashboard-adapter-control-pause.png) | Pause this Channel from processing messages and allow it to retain any connections it has already initialised
+| ![Dashboard Channel Control Stop](./images/ui-user-guide/dashboard-adapter-control-stop.png) | Stop this Channel and free up any resources that it has used
+| ![Dashboard Channel Control Refresh](./images/ui-user-guide/dashboard-adapter-control-refresh.png) | Refresh the Channel status and details
 
 - H. Status: The status is represented by:
 
-> Icon | Desc. | Meaning
-> ------------ | ------------- | ------------
-> ![Dashboard Status Channel Started](./images/ui-user-guide/dashboard-status-started.png) | green tick   | the Channel is started
-> ![Dashboard Status Channel Closed](./images/ui-user-guide/dashboard-status-closed.png) | orange banned signal  | the Channel is closed
-> ![Dashboard Status Channel Stopped](./images/ui-user-guide/dashboard-status-stopped.png) | orange no entry signal | the Channel has stopped
-> ![Dashboard Status Channel Error](./images/ui-user-guide/dashboard-status-error.png) | red cross | an error occurred
-> ![Dashboard Status Channel Initialised](./images/ui-user-guide/dashboard-status-inialised.png) | black circle | the Channel has the initialised status
+| Icon | Desc. | Meaning
+| ------------ | ------------- | ------------
+| ![Dashboard Status Channel Started](./images/ui-user-guide/dashboard-status-started.png) | green tick   | the Channel is started
+| ![Dashboard Status Channel Closed](./images/ui-user-guide/dashboard-status-closed.png) | orange banned signal  | the Channel is closed
+| ![Dashboard Status Channel Stopped](./images/ui-user-guide/dashboard-status-stopped.png) | orange no entry signal | the Channel has stopped
+| ![Dashboard Status Channel Error](./images/ui-user-guide/dashboard-status-error.png) | red cross | an error occurred
+| ![Dashboard Status Channel Initialised](./images/ui-user-guide/dashboard-status-inialised.png) | black circle | the Channel has the initialised status
 
 
 ## The Workflow Area ##
@@ -118,23 +117,23 @@ The Workflow component is split in five parts:
 - In flight messages: The number of in flight messages (message being processed) for this Workflow. (Since 3.3)
 - The control bar: Allows a user to perform several actions on the Workflow.
 
-> Button | Meaning
-> ------------ | -------------
-> ![Dashboard Workflow Control Start](./images/ui-user-guide/dashboard-workflow-control-start.png) | Start the Workflow
-> ![Dashboard Workflow Control Pause](./images/ui-user-guide/dashboard-workflow-control-pause.png) | Pause this Workflow from processing messages and allow it to retain any connections it has already initialised
-> ![Dashboard Workflow Control Stop](./images/ui-user-guide/dashboard-workflow-control-stop.png) | Stop this Workflow and free up any resources that it has used
-> ![Dashboard Workflow Control Refresh](./images/ui-user-guide/dashboard-workflow-control-refresh.png) | Refresh the Workflow status and details
-> ![Dashboard Workflow Control Show Services](./images/ui-user-guide/dashboard-workflow-control-toggle.png) | Toggle the list of the Workflow Services
+| Button | Meaning
+| ------------ | -------------
+| ![Dashboard Workflow Control Start](./images/ui-user-guide/dashboard-workflow-control-start.png) | Start the Workflow
+| ![Dashboard Workflow Control Pause](./images/ui-user-guide/dashboard-workflow-control-pause.png) | Pause this Workflow from processing messages and allow it to retain any connections it has already initialised
+| ![Dashboard Workflow Control Stop](./images/ui-user-guide/dashboard-workflow-control-stop.png) | Stop this Workflow and free up any resources that it has used
+| ![Dashboard Workflow Control Refresh](./images/ui-user-guide/dashboard-workflow-control-refresh.png) | Refresh the Workflow status and details
+| ![Dashboard Workflow Control Show Services](./images/ui-user-guide/dashboard-workflow-control-toggle.png) | Toggle the list of the Workflow Services
 
 - Status: The status is represented by:
 
-> Icon | Desc. | Meaning
-> ------------ | ------------- | ------------
-> ![Dashboard Status Workflow Started](./images/ui-user-guide/dashboard-status-started.png) | green tick   | the Workflow is started
-> ![Dashboard Status Workflow Closed](./images/ui-user-guide/dashboard-status-closed.png) | orange banned signal  | the Workflow is closed
-> ![Dashboard Status Workflow Stopped](./images/ui-user-guide/dashboard-status-stopped.png) | orange no entry signal | the Workflow has stopped
-> ![Dashboard Status Workflow Error](./images/ui-user-guide/dashboard-status-error.png) | red cross | an error occurred
-> ![Dashboard Status Workflow Initialised](./images/ui-user-guide/dashboard-status-inialised.png) | black circle | the Workflow has the initialised status
+| Icon | Desc. | Meaning
+| ------------ | ------------- | ------------
+| ![Dashboard Status Workflow Started](./images/ui-user-guide/dashboard-status-started.png) | green tick   | the Workflow is started
+| ![Dashboard Status Workflow Closed](./images/ui-user-guide/dashboard-status-closed.png) | orange banned signal  | the Workflow is closed
+| ![Dashboard Status Workflow Stopped](./images/ui-user-guide/dashboard-status-stopped.png) | orange no entry signal | the Workflow has stopped
+| ![Dashboard Status Workflow Error](./images/ui-user-guide/dashboard-status-error.png) | red cross | an error occurred
+| ![Dashboard Status Workflow Initialised](./images/ui-user-guide/dashboard-status-inialised.png) | black circle | the Workflow has the initialised status
 
 ## The Dashboard on Smaller Screens ##
 
@@ -150,8 +149,7 @@ Dashboard Page shown on a smaller screen:
 
 ![Dashboard Page shown on a smaller screen](./images/ui-user-guide/dashboard-page-smaller.png)
 
-> __NOTE__ :
-> Although pages will look different on smaller screens, most (if not all) of the pages features are still present, but they may be grouped into button drop down selects, or they may be missing their text labels. One feature that's noticeably absent from smaller screens is the Configuration Page, as it's features would be too difficult to use on a phone sized screen.
+{% include note.html content="Although pages will look different on smaller screens, most (if not all) of the pages features are still present, but they may be grouped into button drop down selects, or they may be missing their text labels. One feature that's noticeably absent from smaller screens is the Configuration Page, as it's features would be too difficult to use on a phone sized screen." %}
 
 ## The Dashboard Show Config Feature ##
 
@@ -180,11 +178,7 @@ On the visual representation of the Adapter configuration, the following options
 - The mouse wheel can also be used to zoom in and out of the diagram
 - The mouse left button can be clicked and held to allow users to navigate around the zoomed in diagram.
 
-> __NOTE__ :
-> This generated diagram represents a simplified Adapter config in a waterfall type manner. The top left corner box represents the Adapter, its children boxes represent the channels and their children represent the workflows. The workflows have been extended using a dashed area to show the consumers, services and producers.
-
-> __ ALSO__ :
-> Not every component is shown in this simplified diagram, notable absentees include Workflow Interceptors and Service Collections within a Workflows Service List.
+{% include note.html content="This generated diagram represents a simplified Adapter config in a waterfall type manner. The top left corner box represents the Adapter, its children boxes represent the channels and their children represent the workflows. The workflows have been extended using a dashed area to show the consumers, services and producers. <br/>Not every component is shown in this simplified diagram, notable absentees include Workflow Interceptors and Service Collections within a Workflows Service List." %}
 
 ## The Dashboard Failed Message List ##
 
@@ -193,10 +187,7 @@ On the Dashboard Page, if any of the registered Adapters have failed messages, t
 Dashboard Page showing failed messages:
 ![Dashboard Page showing failed messages](./images/ui-user-guide/dashboard-page-with-failed-messages.png)
 
-> __NOTE__ :
-> The badge icon on the Failed Messages section of the Adapter area will give a real time count of the amount of failed messages.
->
-> In order to get the number of failed message working a 'Standard Message Error Digester' will need to be added to the adapter configuration.
+{% include note.html content="The badge icon on the Failed Messages section of the Adapter area will give a real time count of the amount of failed messages.<br/><br/>In order to get the number of failed message working a 'Standard Message Error Digester' will need to be added to the adapter configuration." %}
 
 Clicking on the Failed Messages details block will open the Failed Messages modal window containing the last hundred failed messages.
 

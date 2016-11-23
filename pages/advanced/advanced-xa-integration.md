@@ -346,8 +346,7 @@ Consider scaling up by duplicating workflows and/or channels.
 
 The downside to this is that you cannot guarantee message order.  If you require message order you can use a global lock on your consumers.
 
-> __WARNING:__ Be careful when using this performance enhancement when you require guaranteed ordering, consuming from a JMS vendor that cannot guarantee message delivery order from multiple consumer threads.  This is exactly the case with a standard build of Solace, who assign a number of messages to a consumer thread regardless of whether you consume them all or not.
-Please consult your JMS vendor support to make sure multiple consumer threads will guarantee message delivery order.
+{% include warning.html content="Be careful when using this performance enhancement when you require guaranteed ordering, consuming from a JMS vendor that cannot guarantee message delivery order from multiple consumer threads.  This is exactly the case with a standard build of Solace, who assign a number of messages to a consumer thread regardless of whether you consume them all or not. Please consult your JMS vendor support to make sure multiple consumer threads will guarantee message delivery order." %}
 
 Some background;  When we consume messages, we first need to create a new transaction.  Then once a message is consumed and processed/produced, we will commit the transaction, before starting over.
 

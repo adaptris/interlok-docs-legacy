@@ -14,7 +14,7 @@ The [ProcessingExceptionHandler][] component can be configured at [part of a Wor
 
 A [ProcessingExceptionHandler] which writes all messages causing an exception to the local file system can be be configured by adding a `message-error-handler` element to the `adapter` Of course, the [ProcessingExceptionHandler][] is not limited to the local file-system; you can use any [Service] implementation to compose specific behaviour.  The local file-system is the recommended option, as you can be certain that this exists, and doesn’t require additional network connectivity.  If the services that you applying as part of the [ProcessingExceptionHandler] chain fail, then there is no fall back, the message will be lost. You need to make sure that the first thing you do is to __archive__ the file so that can be reprocessed.
 
-> If the services that you applying as part of the [ProcessingExceptionHandler] chain fail, then there is no fall back, the message will be lost. You need to make sure that the first thing you do is to __archive__ the file so that can be reprocessed.
+{% include important.html content="If the services that you applying as part of the [ProcessingExceptionHandler] chain fail, then there is no fall back, the message will be lost. You need to make sure that the first thing you do is to __archive__ the file so that can be reprocessed." %}
 
 As part of a standard installation, you get access to [standard-processing-exception-handler][] and [retry-message-error-handler][]. [retry-message-error-handler][] will attempt to periodically retry a failed message a configurable number of times before finally considering the message failed, and triggering the configured `processing-exception-service`.
 

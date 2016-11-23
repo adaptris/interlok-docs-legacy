@@ -23,7 +23,8 @@ MSMQ is part of the standard Microsoft Windows software stack. It is not, howeve
 
 ![msmq-windows-features.png](./images/msmq/msmq-windows-features.png)
 
-> __NOTE__ : Interlok must be installed on a Windows XP (or higher) platform.
+
+{% include note.html content="Interlok must be installed on a Windows XP (or higher) platform." %}
 
 Interlok must be installed on a Windows XP (or higher) platform as it makes use of the underlying ActiveX controls that are available once MSMQ is enabled. There are no other requirements, provided MSMQ has been enabled prior to your Interlok installation. Note that versions of MSMQ prior to 3.0 are not supported. This means that platforms prior to Windows XP Professional and Windows 2003 Server are not suitable for running this type of Interlok instance. You should still be able to send and receive messages from platforms using MSMQ 1.0 and MSMQ 2.0; however, the platform that Interlok runs on must be capable of MSMQ 3.0.
 

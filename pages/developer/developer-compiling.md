@@ -36,10 +36,7 @@ This contains all the repositories that are available through our Sonatype Nexus
 
 It is possible that certain dependencies can fail; this is because they are not made publicly available by the maintainers and we are hosting them in our internal non-public facing repository. You can either source these files directory from your Interlok installation or have an explicit exclusion for them in your ivy.xml file. The exclusion should be sufficient unless you are referring to them expliclitly in your custom clases.
 
->__Note__: Certain dependencies may fail, such as `javax.management.jmxremote:jmxremote`. This is because they are not made available publicly by the maintainers and we have to host them in our internal non-public facing repository.
-
-> - You can source these files from your Interlok installation.
-> - Alternatively you can `exclude` them in your ivy file unless you are referring to them explicitly in your custom classes.
+{% include note.html content="Certain dependencies may fail, such as `javax.management.jmxremote:jmxremote`. This is because they are not made available publicly by the maintainers and we have to host them in our internal non-public facing repository.<br/>- You can source these files from your Interlok installation.<br/>- Alternatively you can `exclude` them in your ivy file unless you are referring to them explicitly in your custom classes." %}
 
 ### ivy.xml ###
 

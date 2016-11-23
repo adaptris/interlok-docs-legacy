@@ -33,7 +33,7 @@ The key difference [basic-message-splitter-service][] and  [advanced-message-spl
 - Uses a [line-count-splitter][] to create a new message every 10 lines.
 - Each split message is published to the JMS topic `split.message`
 
-> You could have another Interlok workflow listening on `split.message` to handle the integration required for each split message.
+{% include tip.html content="You could have another Interlok workflow listening on `split.message` to handle the integration required for each split message." %}
 
 ## Advanced Message Splitting ##
 
@@ -66,7 +66,7 @@ To replicate the same behaviour as [basic-message-splitter-service][] using [adv
 - Uses a [line-count-splitter][] to create a new message every 10 lines.
 - Each split message is published to the JMS topic `split.message`
 
-> Because the nested `service` is a [service-list][] we can insert additional behaviour into the service list before publishing the message on `split.message`
+{% include tip.html content="Because the nested `service` is a [service-list][] we can insert additional behaviour into the service list before publishing the message on `split.message`." %}
 
 
 ## Splitter Implementations ##
@@ -82,7 +82,6 @@ The standard implementations of [MessageSplitter][] are:
 |[mime-part-splitter](#mime-part-splitter)|Splits a message containing multiple MIME parts into their constituent parts.|
 |[simple-regexp-message-splitter](#regexp-message-splitter)| Splits a message based on a regular expression match. It can optionally group records based on some common element.|
 
-<br/>
 
 ## Splitter Examples ##
 
@@ -229,7 +228,8 @@ Our configuration is:
 ```
 - [simple-regexp-message-splitter][] creates 3 messages, grouped by the 3rd field of the CSV message `GroupX`.
 
-> If you wanted to split on each line, then you could remove everything other than `split-pattern`.
+
+{% include tip.html content="If you wanted to split on each line, then you could remove everything other than `split-pattern`." %}
 
 [basic-message-splitter-service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/BasicMessageSplitterService.html
 [advanced-message-splitter-service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/AdvancedMessageSplitterService.html

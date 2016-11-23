@@ -126,8 +126,7 @@ Example of a typical add component modal window after opening the template compo
 Example of a typical add component modal window with results filtered using the search bar:
 ![Typical add component modal window showing filtering contents](./images/ui-user-guide/config-add-component-filtering.png)
 
-> __HINT__ :
-> Searching from the root folder with show you results from both the raw components folder and the templates folder.
+{% include tip.html content="Searching from the root folder with show you results from both the raw components folder and the templates folder." %}
 
 To actually add the component, all you have to do is click on the required compoent and it will add it to the list you selected and show you the settings editor for that new component.
 

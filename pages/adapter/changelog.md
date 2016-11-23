@@ -66,7 +66,7 @@ Release Date : 2018-11-18
 
 Release Date : 2016-10-05
 
-> Because of issues with XStream and AliasedJavaBeanConverter not honouring some annotations; if you are using [JmsTransactedWorkflow][] you will need to remove any interceptors manually and reconfigure them after upgrading.
+{% include important.html content="Because of issues with XStream and AliasedJavaBeanConverter not honouring some annotations; if you are using [JmsTransactedWorkflow][] you will need to remove any interceptors manually and reconfigure them after upgrading." %}
 
 ### Bugs
 

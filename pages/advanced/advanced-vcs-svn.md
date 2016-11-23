@@ -27,7 +27,7 @@ Since 3.0.3, on Windows, Interlok will attempt to find the jar containing `libsv
 - Pass in an additional system property `-Djava.library.path=C:/Adaptris/Interlok/svn-dll` when starting Interlok.
     - Alternatively put all the DLL files on the path.
 
-> Using the automatic feature on your production instances is discouraged, it is generally better to manually specify the `java.library.path` explicitly; disable it with `-Dadp.vcs.svn.disable.autoload=true` on the commandline.
+{% include tip.html content="Using the automatic feature on your production instances is discouraged, it is generally better to manually specify the `java.library.path` explicitly; disable it with `-Dadp.vcs.svn.disable.autoload=true` on the commandline." %}
 
 ```bash
 java -Djava.library.path=.\svn-dll -jar lib\adp-core.jar

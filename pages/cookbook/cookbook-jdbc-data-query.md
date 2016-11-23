@@ -47,7 +47,7 @@ Our source input document is simply:
 
 There are two main ways to handle the results of your query. Either by using an [XML ResultSetTranslator][] or a [Metadata ResultSetTranslator][]; we have found that these translator types will cover the majority of use cases. Each of the translator types defines common behaviour shared between the concrete sub classes. Naturally, if your use case isn't covered then you can write your own implementation of [ResultSetTranslator][].
 
-> If converting to XML, then you should consider setting `strip-illegal-xml-chars=true`; illegal characters are not a problem when writing XML; it will be a problem when you read it in (later on when you need to use XSLT).
+{% include tip.html content="If converting to XML, then you should consider setting `strip-illegal-xml-chars=true`; illegal characters are not a problem when writing XML; it will be a problem when you read it in (later on when you need to use XSLT)." %}
 
 ## XmlPayloadTranslator ##
 
@@ -191,7 +191,7 @@ Would give us:
 
 The name of each column (if using an [XML ResultSetTranslator][]) will be checked for validity as an XML element name. Invalid characters will be removed and replaced with a `_`. If there will be an invalid character as the first character (e.g. a number); then a `_` is used as the first character.
 
-> A blank column name (yes it could happen) will result in an element named `column-N`, where N is the column index starting from 1.
+{% include tip.html content="A blank column name (yes it could happen) will result in an element named `column-N`, where N is the column index starting from 1." %}
 
 ### Column Style ###
 
@@ -205,7 +205,7 @@ For the standard JDBC datatypes, you can specify a [list of ColumnTranslator][] 
 - If the list is empty then each column in the result set will be treated as either a `byte[]` or `String` column which may lead to undefined behaviour in the event of columns being CLOB / NCLOB / BLOB types.
 - If the size of the list is less than the number of columns then each element of the list will be used to translate the corresponding columns; remaining columns will be treated either as `byte[]` or `String`
 
-> You might want to use a [ColumnTranslator][] to apply formatting to `java.sql.Timestamp` or numeric data columns.
+{% include tip.html content="You might want to use a [ColumnTranslator][] to apply formatting to `java.sql.Timestamp` or numeric data columns." %}
 
 If your select statement was
 

@@ -17,7 +17,7 @@ The basic connection is [jms-connection][] which supports both Queues and Topics
 
 The basic error handling mechanism in JMS is the `ExceptionListener` interface; if you specify the _ExceptionListener_ for a connection, this will be notified when the connection goes away at any point. So, generally, you'd want to have a [jms-connection-error-handler][] (which implements the _ExceptionListener_ interface) configured on the appropriate connection which will end up restarting the channel if and when the connection is terminated. Alternatively use an [active-jms-connection-error-handler][] which actively tries to send a message every 'n' milliseconds (5000 by default) onto a temporary destination. The message is marked as NON_PERSISTENT and has a TTL of 5 seconds so _shouldn't_ affect performance. If the send fails, then the broker is deemed to have died, and the component is restarted.
 
-> In some cases you might have to use an [active-jms-connection-error-handler][], some JMS providers don't always seem to honour the _ExceptionListener_ contract.
+{% include tip.html content="In some cases you might have to use an [active-jms-connection-error-handler][], some JMS providers don't always seem to honour the _ExceptionListener_ contract." %}
 
 There is one situation where you can't have a [jms-connection-error-handler][] configured on each and every connection; that is when you are physically connecting to the same broker for both ends of a channel. Some very interesting things used to happen if you did; in the end we couldn't reliably guarantee restarts of the affected channel so we put a check so that it caused an error upon initialisation. If this is the case then the exception _"com.adaptris.core.CoreException: This channel has been configured with 2 ErrorHandlers that are incompatible with each other"_ is reported.
 
@@ -93,7 +93,7 @@ Workflow processing time depends on configured services and control is not passe
 
 Note that this workflow requires both consumer and producer to be in the same JMS messaging domain and will not initialise if this is not the case. It also requires the JMSReplyTo Destination to be in the same domain as the configured producer.
 
-> Rather than using a JmsReplyToWorkflow it is generally preferable to use a [jms-reply-to-destination][] as the destination for a JMS producer. This allows the producer to be included at any point of a workflow (or even as part of error-handling). This allows more flexibility in workflow design.
+{% include tip.html content="Rather than using a JmsReplyToWorkflow it is generally preferable to use a [jms-reply-to-destination][] as the destination for a JMS producer. This allows the producer to be included at any point of a workflow (or even as part of error-handling). This allows more flexibility in workflow design." %}
 
 ### JMS Transacted Workflow ###
 
@@ -151,7 +151,7 @@ If the adapter is initiating a request and then waiting for a reply, then the _J
 - We specify the _JMSReplyTo_ as `MyReplyToDestination`
 - Because it is a `standalone-requestor` instance; we wait for replies coming back on `MyReplyToDestination`
 
-> `JMSAsyncStaticReplyTo` is processed whenever a message is produced to JMS, so it can be applied even if the workflow not trying to do a synchronous request reply (you might be making a request in one workflow, and having a different workflow handling the reply).
+{% include tip.html content="`JMSAsyncStaticReplyTo` is processed whenever a message is produced to JMS, so it can be applied even if the workflow not trying to do a synchronous request reply (you might be making a request in one workflow, and having a different workflow handling the reply)." %}
 
 
 ### JMS Priority, Delivery Mode, Expiration ###

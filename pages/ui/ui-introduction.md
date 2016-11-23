@@ -26,8 +26,7 @@ The Interlok UI is installed by default when a new installation of the Adaptris 
 
 In order for the UI web application to be able to detect its local Adapter, the UI will have to know the JMX URL to use to connect to the Adapter. This is configured in the bootstrap.properties file (See Adapter documentation) with the property jmxserviceurl. The default value for a new install is service:jmx:jmxmp://localhost:5555
 
-> __HINT__ :
-> The bootstrap.properties can normally be found in the 'config' directory of your Interlok install directory
+{% include tip.html content="The bootstrap.properties can normally be found in the 'config' directory of your Interlok install directory" %}
 
 If you reconfigure the Interlok Adapter to use a different a different URL for its JMX services, then you will need to update the above setting in order to retain the auto-detect feature. Otherwise, you'll need to manually add your Adapter to the UI, which will be explained further on in this guide.
 

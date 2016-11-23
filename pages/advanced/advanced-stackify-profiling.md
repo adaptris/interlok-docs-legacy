@@ -7,7 +7,7 @@ permalink: advanced-stackify-profiling.html
 summary: This page describes how to profile Interlok and inject statistics into Stackify
 ---
 
-> If you don't know what [Stackify][] is then you can blithely ignore  this document.
+{% include note.html content="If you don't know what [Stackify][] is then you can blithely ignore this document." %}
 
 ## Installation ##
 
@@ -18,7 +18,7 @@ The `com.adaptris:adp-profiler` and `com.adaptris:adp-stackify` artefacts are no
 
 `com.adaptris:adp-profiler` uses AOP to fire events when the appropriate methods of [Workflow][], [AdaptrisMessageProducer][] or [Service][] are triggered. It requires `aspjectjweaver` as a java agent when starting the JVM. The recommendation is to not use the bundled Interlok wrapper executables, and to roll your own scripts which can provide the correct startup parameters to the JVM. The aspects themselves are stored in `META-INF/profiler-aop.xml` which means that you need to set the appropriate aspectj system property to enable the aspects. To get meaningful information you need a concrete implementation of `com.adaptris.profiler.client.PluginFactory` which is where `com.adaptris:adp-stackify` comes in.
 
-> __Note__: Currently, it is only possible to profile classes that live in a `com.adaptris..*` package, to avoid additional overhead in the Aspects.
+{% include important.html content="Currently, it is only possible to profile classes that live in a `com.adaptris..*` package, to avoid additional overhead in the Aspects." %}
 
 You will need to have an `adp-profiler.properties` in your classpath which contains a single property `com.adaptris.profiler.plugin.factory=`. The profiler
 plugins available for [Stackify] are:

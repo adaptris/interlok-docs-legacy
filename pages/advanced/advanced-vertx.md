@@ -74,7 +74,7 @@ Therefore the next message consumed may well happen before the previous message 
 
 For this reason you can configure how many messages at most will be consumed without being fully processed.  This is achieved with the __queue-capacity__ option.
 
-> Note:  This is only available for target-send-mode="single"
+{% include important.html content="This is only available for target-send-mode='single'" %}
 
 An example;
 
@@ -146,7 +146,7 @@ __single__ simply means the message will be sent to one and only one instance in
 
 __all__ means the message will be sent to all running clustered-workflow instances in the cluster.
 
-> Note: When this service executes in a service-list of a workflow, the message is sent to the cluster and then immediately the next service in the list can be run.  This may happen before the remote instance finishes processing the message!
+{% include note.html content="When this service executes in a service-list of a workflow, the message is sent to the cluster and then immediately the next service in the list can be run.  This may happen before the remote instance finishes processing the message!" %}
 
 It is important to remember that no reply is ever waited for.  If a reply comes in, it will be processed as explained later, but further services in the current service-list or even the producer for the workflow will be executed regardless of whether the remote clustered-service completes it's processing or not.
 

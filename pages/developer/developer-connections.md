@@ -93,18 +93,16 @@ So, the summary of what we did is as follows :
 
 - We extended [com.adaptris.core.AdaptrisConnectionImp][AdaptrisConnectionImp] and implemented the required lifecycle methods, rather than implementing [AdaptrisConnection][] directly.
 
-> We could extend [AllowRetriesConnection][] if the `ClientFactory` allowed reconnection attempts.
+{% include note.html content="We could extend [AllowRetriesConnection][] if the `ClientFactory` allowed reconnection attempts." %}
 
 - The `init()` method instantiates the factory that provides our connection. This assumes that the class in question is fairly heavyweight and should not be re-created each time we want a connection.
 - When catching and re-throwing Exceptions we use [ExceptionHelper][] to wrap the exception if it needs it; throwing the exception will cause error handling to be triggered
-
-> in this case, the component will fail to initialise; this may have knock-on effects.
 
 - The `close()` method calls `destroy()` on ClientFactory to free resources.
 - The start and stop methods are required but empty implementations.
 - Public getter and setter methods are provided for the fields that are to be marshalled
 
-> The public getters/setters are not required by the marshaller, but will be required by the UI.
+{% include tip.html content="The public getters/setters are not required by the marshaller, but will be required by the UI." %}
 
 - The `ClientFactory` member variable is marked as __transient__ so that XStream does not attempt to marshal it.
 - We use [com.adaptris.security.password.Password][Password] to decode the password; discussed in [Password Handling](advanced-password-handling.html)

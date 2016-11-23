@@ -19,9 +19,8 @@ The standard types of [MessageValidator][] are:
 |[xml-schema-validator][]| Validates that the input document is matches a given schema |
 |[xml-rule-validator][]| Validates that the input document matches various criteria |
 
-<br/>
 
-> [xml-basic-validator][] tries to create a DOM object from the document. If you have a very large XML document, then this is going to impact performance.
+{% include important.html content="[xml-basic-validator][] tries to create a DOM object from the document. If you have a very large XML document, then this is going to impact performance." %}
 
 ## Validating against a schema ##
 
@@ -148,7 +147,7 @@ Our configuration would be :
 </xml-validation-service>
 ```
 
-> Iterating over a documentation where `iteration-xpath` returns no nodes will not cause a failure unless `fail-on-iterate-failure=true`
+{% include note.html content="Iterating over a documentation where `iteration-xpath` returns no nodes will not cause a failure unless `fail-on-iterate-failure=true`." %}
 
 If our document was modified to be
 

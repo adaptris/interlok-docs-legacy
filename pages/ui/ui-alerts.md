@@ -1,7 +1,7 @@
 ---
 title: Alerts
 keywords: interlok
-tags: [getting_started, ui]
+tags: [ui]
 sidebar: home_sidebar
 permalink: ui-alerts.html
 summary: The Alerts module allows admin users to create alerts which are then shown to all logged in users. (Since 3.4.1)

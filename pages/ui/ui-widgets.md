@@ -136,7 +136,7 @@ You can toggle which workflow you want to see on the graph by clicking on the wo
 
 In order to use the stats and metrics widgets you need the correct config. You need a [message-metrics-interceptor](advanced-interceptors.html#message-metrics-interceptor) configured, which will gather the data that's being shown on this widget.
 
-> You need a `message-metrics-interceptors` configured at a workflow level which will gather the data that can be shown on this widget.
+{% include tip.html content="You need a `message-metrics-interceptors` configured at a workflow level which will gather the data that can be shown on this widget." %}
 
 ### Control Panel ###
 
@@ -352,7 +352,7 @@ This widget is exactly like the widget described in [Container Details Widget](u
 
 This widget is exactly like the widget described in [Container Message Counts Chart Widget](ui-widgets.html#message-counts-chart), but the data is concerned with the selected channel. Note that this widget derives its information from any configured workflow [message-metrics-interceptors](advanced-interceptors.html#message-metrics-interceptor). If you have none configured then this widget will display no data.
 
-> This widget derives its information from any configured workflow `message-metrics-interceptors`. If you have none configured then this widget will display no data.
+{% include note.html content="This widget derives its information from any configured workflow `message-metrics-interceptors`. If you have none configured then this widget will display no data." %}
 
 ### Channel Control Panel ###
 

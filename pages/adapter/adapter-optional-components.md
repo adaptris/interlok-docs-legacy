@@ -87,14 +87,14 @@ As additional features are developed and released our public facing repository i
 
 For optional components that come with the installer; all you need to do is to copy the contents of `optional/[required-component]` into `${adapter.home}/lib` and restart your adapter. This will automatically enable those components for runtime and use within the UI. There are some components that will require additional jars (e.g. [SAP][adp-sap], [WebsphereMQ][adp-webspheremq], [Tibco][adp-tibco], [Oracle][adp-jms-oracleaq]) which you will need to source from your installation / 3rd party provider.
 
->Additional jars may need to be sourced from your target application / 3rd party provider.
+{% include note.html content="Additional jars may need to be sourced from your target application / 3rd party provider." %}
 
 
 ## Manual install ##
 
 For components that are not normally delivered with the installer; the recommended installation is via a [dependency management](advanced-ant-ivy-deploy.html) system. This will automagically download everything that is required for the optional component in question.
 
->Additional jars may need to be sourced from your target application / 3rd party provider.
+{% include note.html content="Additional jars may need to be sourced from your target application / 3rd party provider." %}
 
 You should always match the version number with your primary Interlok installation version; so if you wanted [adp-simple-csv][] and your Interlok version is 3.0.2 then you would  configure your ivy dependency :
 

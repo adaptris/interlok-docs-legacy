@@ -59,7 +59,7 @@ public class Channel ... {
 
 When this class is un-marshalled, regardless of the non-transient class members only those with public getters and setters will be un-marshalled. This class is deprecated with no replacement as of __3.4.1__. The reason for this is tracked as [INTERLOK-1085](https://adaptris.atlassian.net/browse/INTERLOK-1085). You are encouraged to change your class so that getters and setters have no behaviour.
 
-> This class is deprecated with no replacement as of __3.4.1__.
+{% include important.html content="This class is deprecated with no replacement as of __3.4.1__." %}
 
 ### @AdapterComponent ###
 
@@ -233,7 +233,7 @@ There are currently 2 custom taglets supported at the class level javadoc; the t
 </javadoc>
 ```
 
-> __Note__ : You need to include `com.adaptris:adp-core-apt` as a dependency if you are using dependency management.
+{% include note.html content="You need to include `com.adaptris:adp-core-apt` as a dependency if you are using dependency management." %}
 
 #### @license ####
 

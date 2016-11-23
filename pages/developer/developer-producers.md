@@ -69,7 +69,7 @@ So, the summary of what we did is as follows :
 
 - We extended [com.adaptris.core.ProduceOnlyProducerImp][ProduceOnlyProducerImp] and implemented the required methods.
 
-> The target system only supports asynchronous messaging so we have not extended [RequestReplyProducerImp][]
+{% include tip.html content="The target system only supports asynchronous messaging so we have not extended [RequestReplyProducerImp][]" %}
 
 - The lifecycle methods do nothing; this pre-supposes that `ClientConnection` is pretty lightweight and can be disposed of via garbage collection.
 - We can figure out where we are sending messages to from the [ProduceDestination][] implementation.

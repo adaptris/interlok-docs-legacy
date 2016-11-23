@@ -16,7 +16,7 @@ Pre-processors allow us to perform actions on the Interlok configuration before 
     - Each subsequent pre-processor will be handed over the configuration from the previous pre-processor.
 - Standard ENTITY references are handled in a pre-processor dependent way; we recommend that you don't use ENTITY if you are using pre-processors.
 
-> __Note:__ The original configuration file will not be modified.
+{% include note.html content="The original configuration file will not be modified." %}
 
 ## Configuration of Pre-Processors ##
 
@@ -28,7 +28,7 @@ Each pre-processor can be configured colon separated as the value to this proper
 preProcessors=variableSubstitution:schema
 ```
 
-> All configuration pre-processors are optional, and may require additional libraries to be copied into your installation.
+{% include note.html content="All configuration pre-processors are optional, and may require additional libraries to be copied into your installation." %}
 
 ## Available Pre-Processors ##
 
@@ -75,7 +75,7 @@ broker.backup.url=tcp://my.host:2507
 ```
 Then all instances of "${broker.url}" and "${broker.backup.url}" will be replaced within your Interlok configuration before Interlok starts up. In addition to a pre-processor there is also a [xstream-varsub-marshaller][] that can be used where you might normally configure a [xstream-marshaller][].
 
-> In addition to a pre-processor there is also a [xstream-varsub-marshaller][] that can be used where you might normally configure a [xstream-marshaller][].
+{% include tip.html content="In addition to a pre-processor there is also a [xstream-varsub-marshaller][] that can be used where you might normally configure a [xstream-marshaller][]." %}
 
 Since __3.0.1__ variable definitions may refer to other variable definitions, system properties, and environment variables. They will be resolved in that order so a variable definition will always take precedence over a system property and so on. This means that on a Windows machine, the following properties file would be perfectly acceptable
 

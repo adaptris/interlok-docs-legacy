@@ -7,7 +7,7 @@ permalink: cookbook-aggregating-messages.html
 summary: From time to time you may need to aggregate messages based on a trigger message that indicates some processing as been completed.
 ---
 
-> You might want to use [split-join-service](cookbook-split-join.html) to perform an inline split + aggregate.
+{% include tip.html content="You might want to use [split-join-service](cookbook-split-join.html) to perform an inline split + aggregate." %}
 
 There are currently 2 [AggregatingConsumeService][] implementations : [aggregating-fs-consume-service][] and [aggregating-jms-consume-service][] which work with the filesystem and a JMS Queue respectively. Both will perform aggregation based on a [custom destination implementation][ConsumeDestinationGenerator] which allows you to dynamically control where the messages are aggregated from.
 
@@ -21,8 +21,6 @@ There are currently 2 [AggregatingConsumeService][] implementations : [aggregati
 |[replace-with-first-message-aggregator][]| Replaces the message payload with the _first processed message_.|
 |[xml-document-aggregator][]| Merges each processed message into the original document.|
 |[ignore-original-xml-document-aggregator][]| Merges each processed message into the configured template, ignoring the original document.|
-
-<br/>
 
 ## Example ##
 
@@ -81,7 +79,9 @@ We can use a combination of [aggregating-jms-consume-service][] and [replace-met
 
 - We set `move-jms-headers=true` to capture _JMSMessageID_.
 - We create a valid filter expression and store it against the metadata key `filterSelectorKey`.
-> You don't need to use a [copy-metadata-service][], you could work directly with _JMSMessageID_ with the corresponding changes to config.
+
+{% include tip.html content="You don't need to use a [copy-metadata-service][], you could work directly with _JMSMessageID_ with the corresponding changes to config." %}
+
 - Because `SampleQ2` is fixed; we just use a `default-destination=SampleQ2`.
 - We have not explicitly configured a timeout on [aggregating-queue-consumer][]; the default is 30 seconds.
     - If no message was received then an exception will be thrown in 30 seconds.

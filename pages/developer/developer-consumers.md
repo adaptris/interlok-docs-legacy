@@ -84,11 +84,11 @@ So, the summary of what we did is as follows :
 
 - We extended [com.adaptris.core.AdaptrisPollingConsumer][AdaptrisPollingConsumer] and implemented the required methods.
 
-> We have not overridden any lifecycle methods; remember to call the super-class lifecycle methods if lifecycle is required.
+{% include note.html content="We have not overridden any lifecycle methods; remember to call the super-class lifecycle methods if lifecycle is required." %}
 
 - We can figure out where we are receiving messages from via the [ConsumeDestination][] implementation.
 
-> There is also a filter expression available (which may return null).
+{% include tip.html content="There is also a filter expression available (which may return null)." %}
 
 - We call `retrieveConnection` to find the configured connection object.
 - We don't throw an exception; but we log it.
@@ -96,7 +96,7 @@ So, the summary of what we did is as follows :
 - We provide a sensible default for the timeout if it is not configured.
 - We use `continueProcessingMessages()` to check if we should process the next message or not
 
-> This is directly related to [reacquireLockBetweenMessages][] from the parent consumer implementation
+{% include note.html content="This is directly related to [reacquireLockBetweenMessages][] from the parent consumer implementation." %}
 
 - We use [AdaptrisMessageFactory][] directly as we do not support [AdaptrisMessageEncoder][].
 - We trigger the workflow via `retrieveAdaptrisMessageListener().onAdaptrisMessage()`

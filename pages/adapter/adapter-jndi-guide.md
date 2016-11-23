@@ -64,20 +64,19 @@ For each connection object we configure in the shared-components we need to bind
 
 As shown in the example above, we have specified a value of `myDatasource` as the unique-id.  Internally, we will bind your connection object to the following fully qualified JNDI name; _comp/env/myDatasource_. If you are only planning on using the shared-components within configuration, i.e. you are not planning on accessing these objects from custom web applications, you will not be concerned about the fully qualified name. If you specify a unique id which includes sub-contexts (e.g. _comp/env/_ or a custom variety) these will be stripped from the actual name used to bind your object. As a rule, if the shared components are only referenced in the adapter, then the unique-id is all that is required; specifying the lookup name can sometimes lead to unexpected behaviour within the UI.
 
-> As a rule, if the shared components are only referenced inside Interlok configuration, then the unique-id is all that is required; specifying the lookup name can sometimes lead to unexpected behaviour within the UI.
-
+{% include note.html content="As a rule, if the shared components are only referenced inside Interlok configuration, then the unique-id is all that is required; specifying the lookup name can sometimes lead to unexpected behaviour within the UI." %}
 
 ### lookup-name ###
 
 The lookup-name is optional, but if specified takes precedence over the unique-id. The main difference between using the lookup-name and the unique-id, is that the value you specify in the lookup-name will be used _as-is_ to bind your object.  In other words we will not prepend the sub-contexts _comp/env/_ to your name, which also means you can, should you wish, specify your own custom sub-contexts (for example _my/sub/contexts/..._). You do not need to worry about sub-contexts already existing in the JNDI store.  When we bind a name to an object we will automatically create any sub-contexts you have specified in the binding name for you. You should only specify the lookup name if you have non-Interlok components hosted inside the Interlok JVM accessing the component.
 
-> You should only specify the lookup name if you have non-Interlok components hosted inside the Interlok JVM accessing the component.
+{% include tip.html content="You should only specify the lookup name if you have non-Interlok components hosted inside the Interlok JVM accessing the component." %}
 
 ### JDBC Objects, a special case ###
 
 Should any of your shared-components be a DatabaseConnection, we will as detailed above bind that DatabaseConnection to the configured name, but an additional step is also taken; We will also bind the associated DataSource object of your DatabaseConnection to the following fully qualified name: `comp/env/jdbc/<configured name>`. This allows you to specify a database connection as a shared-component which can then later be recalled from a custom web application in the more universal form of a DataSource object.  See the examples later in this document for more information. Specifying a `unique-id` of `mydatasource` will expose both the DatabaseConnection under the name `mydatasource` and the underlying DataSource under `comp/env/jdbc/mydatasource`.
 
-> Specifying a `unique-id` of `mydatasource` will expose both the DatabaseConnection under the name `mydatasource` and the underlying DataSource under `comp/env/jdbc/mydatasource`.
+{% include note.html content="Specifying a `unique-id` of `mydatasource` will expose both the DatabaseConnection under the name `mydatasource` and the underlying DataSource under `comp/env/jdbc/mydatasource`." %}
 
 
 ## Referencing Shared Components ##
@@ -101,8 +100,7 @@ To recall an AdaptrisConnection object to be used, for example, in a service, ra
 
 You also have the ability to access shared-components outside of Interlok configuration. As long as your process/application is running _in-process_ (i.e. inside the same JVM) as Interlok, you can use Interloks JNDI context to request these pre-configured connection objects. A typical process or application might be a custom Interlok management process or even a web application served by Interloks embedded web server. The following sections will demonstrate two typical use cases where a developer can access the shared-components through their application code or use JPA/Hibernate configuration.
 
-> __Note__: You must set `enableLocalJndiServer=true` in your _bootstrap.properties_ before this becomes available.
-
+{% include important.html content="You must set `enableLocalJndiServer=true` in your _bootstrap.properties_ before this becomes available." %}
 
 ### Application code ###
 

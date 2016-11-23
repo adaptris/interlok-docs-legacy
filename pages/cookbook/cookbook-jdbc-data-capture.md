@@ -56,7 +56,7 @@ Then our [jdbc-data-capture-service][] to insert all the sample pangrams into a 
 - We get the nodelist returned by `/document/sample` and for each node in the list we resolve the the xpath `./data` to find the parameter to pass into the insert statement.
    - This results in 4 INSERT statements being executed.
 
-> For a full discussion about [jdbc-statement-parameters][jdbc-statement-parameter] then you can look at the [Statement Parameters section of Data Extract using JDBC](cookbook-jdbc-data-query.html#statement-parameters).
+{% include note.html content="For a full discussion about [jdbc-statement-parameters][jdbc-statement-parameter] then you can look at the [Statement Parameters section of Data Extract using JDBC](cookbook-jdbc-data-query.html#statement-parameters)" %}
 
 ## JDBC Raw Data Capture Service ##
 
@@ -81,7 +81,7 @@ Taking the example document above, we want to insert the entire document as a ne
 
 - This results in a single new row in the database table `PANGRAMS` containing the message id and the entire document as two columns.
 
-> For a full discussion about [jdbc-statement-parameters][jdbc-statement-parameter] then you can look at the [Statement Parameters section of Data Extract using JDBC](cookbook-jdbc-data-query.html#statement-parameters).
+{% include note.html content="For a full discussion about [jdbc-statement-parameters][jdbc-statement-parameter] then you can look at the [Statement Parameters section of Data Extract using JDBC](cookbook-jdbc-data-query.html#statement-parameters)" %}
 
 [jdbc-data-capture-service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/JdbcDataCaptureService.html
 [jdbc-raw-data-capture-service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/raw/JdbcRawDataCaptureService.html

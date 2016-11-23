@@ -16,7 +16,7 @@ The [Service][] interface allows arbitrary functionality to be applied to [Adapt
 
 If you simply extend [com.adaptris.core.ServiceImp][ServiceImp] then there are 4 methods that you must implement. They are [init()][], [close()][] and [doService(AdaptrisMessage)][doService()]. The only one that is of real interest is [doService(AdaptrisMessage)][doService()]. The others are inherited from [AdaptrisComponent][] and are related to managing the internal state of your service.
 
-> __Note__: If you make use of other [AdaptrisComponent] instances, then you should override all lifecycle methods [init()][], [start()][], [stop()][], [close()][] and make sure those instances are transitioned correctly.
+{% include important.html content="If you make use of other [AdaptrisComponent] instances, then you should override all lifecycle methods [init()][], [start()][], [stop()][], [close()][] and make sure those instances are transitioned correctly." %}
 
 ## Full Example ##
 
@@ -94,7 +94,7 @@ So, the summary of what we did is as follows :
 - When catching and re-throwing Exceptions we use [ExceptionHelper][] to wrap the exception if it needs it; throwing the exception will cause error handling to be triggered.
 - Public getter and setter methods are provided for the fields that are to be marshalled.
 
-> The public getters/setters are not required by the marshaller, but will be required by the UI.
+{% include tip.html content="The public getters/setters are not required by the marshaller, but will be required by the UI." %}
 
 
 - The `DoSomething` member variable is marked as __transient__ so that XStream does not attempt to marshal it.
