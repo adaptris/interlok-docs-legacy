@@ -59,7 +59,7 @@ That's it in a nutshell and if we wanted a pretty picture :
 
 {% include image.html file="user-guide/adapter-overview.png" caption="Adapter with 2 channels"%}
 
-> You are not restricted to having only 2 connections in a channel; any [Service][] could contain a connection; but this is simpler to visualise when starting off. Complex workflows can be composed by having services that interact with other systems to enrich the content.
+{% include tip.html content="You are not restricted to having only 2 connections in a channel; any [Service][] could contain a connection; but this is simpler to visualise when starting off. Complex workflows can be composed by having services that interact with other systems to enrich the content" %}
 
 ## Understanding adapter.xml ##
 
