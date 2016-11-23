@@ -2,6 +2,7 @@
 title: Writing your own Producer
 keywords: interlok
 sidebar: home_sidebar
+tags: [developer]
 permalink: developer-producers.html
 ---
 

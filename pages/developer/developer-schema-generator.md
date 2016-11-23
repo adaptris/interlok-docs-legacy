@@ -2,6 +2,7 @@
 title: Schema Generator
 keywords: interlok
 sidebar: home_sidebar
+tags: [developer]
 permalink: developer-schema-generator.html
 ---
 

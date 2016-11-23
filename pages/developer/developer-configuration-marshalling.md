@@ -2,6 +2,7 @@
 title: Marshalling Configuration and Architecture
 keywords: interlok
 sidebar: home_sidebar
+tags: [developer]
 permalink: developer-configuration-marshalling.html
 ---
 

@@ -3,6 +3,7 @@ title: Compiling against Interlok
 keywords: interlok
 sidebar: home_sidebar
 permalink: developer-compiling.html
+tags: [developer]
 summary: This is here to help you get started writing your own services and what not.
 ---
 

@@ -14,6 +14,10 @@ entries:
       output: web
       type: homepage
 
+    - title: Browse
+      url: /adapter-topics.html
+      output: web
+
     - title: What is an adapter
       url: /adapter-what-is-it.html
       output: web
@@ -24,6 +28,14 @@ entries:
 
     - title: Starting Interlok
       url: /adapter-commandline.html
+      output: web
+
+    - title: Change log
+      url: /changelog.html
+      output: web
+
+    - title: Changes from 2.x
+      url: /adapter-changes-since-2.x.html
       output: web
 
   - title: User Guide
@@ -64,14 +76,6 @@ entries:
 
     - title: Interlok As a Webservices Client
       url: /adapter-executing-ws.html
-      output: web
-
-    - title: Changes from 2.x
-      url: /adapter-changes-since-2.x.html
-      output: web
-
-    - title: Change log
-      url: /changelog.html
       output: web
 
   - title: UI

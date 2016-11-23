@@ -1,6 +1,7 @@
 ---
 title: Writing your own Service
 keywords: interlok
+tags: [developer]
 sidebar: home_sidebar
 permalink: developer-services.html
 ---

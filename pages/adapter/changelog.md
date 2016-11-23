@@ -1,7 +1,7 @@
 ---
 title: Change log
 keywords: interlok
-tags: [getting_started]
+tags: []
 sidebar: home_sidebar
 permalink: changelog.html
 summary: This is the change log summarizing the key changes in Interlok for each release.

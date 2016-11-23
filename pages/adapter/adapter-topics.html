@@ -1,0 +1,152 @@
+---
+title: Documentation Topics
+tags: []
+summary: "Browse the documentation by topic"
+permalink: adapter-topics.html
+sidebar: home
+folder: adapter
+---
+<script src="js/jquery.shuffle.min.js"></script>
+<script src="js/jquery.ba-throttle-debounce.min.js"></script>
+
+<div class="filter-options">
+  <button class="btn btn-primary" data-group="all">All</button>
+  <button class="btn btn-primary" data-group="getting_started">Getting Started</button>
+  <button class="btn btn-primary" data-group="ui">User Interface</button>
+  <button class="btn btn-primary" data-group="cookbook">Cookbook</button>
+  <button class="btn btn-primary" data-group="messaging">Messaging</button>
+  <button class="btn btn-primary" data-group="advanced">Advanced</button>
+  <button class="btn btn-primary" data-group="developer">Developer</button>
+</div>
+
+<div id="grid" class="row">
+
+    <div class="col-xs-6 col-sm-4 col-md-4" data-groups='["getting_started"]'>
+
+      <div class="panel panel-default">
+         <div class="panel-heading">Getting started</div>
+         <div class="panel-body">
+                  If you're getting started with Interlok, here are the key concepts
+                  <ul>
+                {% for page in site.pages %}
+                {% for tag in page.tags %}
+                {% if tag == "getting_started" %}
+                  <li><a href="{{page.url | remove: '/'}}">{{page.title}}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+                  </ul>
+               </div>
+            </div>
+
+    </div>
+
+    <div class="col-xs-6 col-sm-4 col-md-4" data-groups='["ui"]'>
+
+      <div class="panel panel-default">
+               <div class="panel-heading">User Interface</div>
+               <div class="panel-body">Covers the Web UI
+               <ul>
+                {% for page in site.pages %}
+                {% for tag in page.tags %}
+                {% if tag == "ui" %}
+                  <li><a href="{{page.url | remove: '/'}}">{{page.title}}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+               </ul>
+            </div>
+         </div>
+
+    </div>
+
+    <div class="col-xs-6 col-sm-4 col-md-4" data-groups='["cookbook"]'>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">Cookbook</div>
+            <div class="panel-body">
+                Doing things with the adapter
+                <ul>
+                    {% for page in site.pages %}
+                    {% for tag in page.tags %}
+                    {% if tag == "cookbook" %}
+                    <li><a href="{{page.url | remove: '/'}}">{{page.title}}</a></li>
+                    {% endif %}
+                    {% endfor %}
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="col-xs-6 col-sm-4 col-md-4" data-groups='["messaging"]'>
+
+                <div class="panel panel-default">
+               <div class="panel-heading">Messaging</div>
+               <div class="panel-body">
+                  These topics cover some of the more esoteric messaging options within Interlok
+                  <ul>
+                {% for page in site.pages %}
+                {% for tag in page.tags %}
+                {% if tag == "messaging" %}
+                  <li><a href="{{page.url | remove: '/'}}">{{page.title}}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+                  </ul>
+               </div>
+            </div>
+
+    </div>
+
+       <div class="col-xs-6 col-sm-4 col-md-4" data-groups='["advanced"]'>
+
+           <div class="panel panel-default">
+               <div class="panel-heading">Advanced</div>
+               <div class="panel-body">Covers Advanced topics
+                   <ul>
+                {% for page in site.pages %}
+                {% for tag in page.tags %}
+                {% if tag == "advanced" %}
+                  <li><a href="{{page.url | remove: '/'}}">{{page.title}}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+                   </ul>
+               </div>
+            </div>
+
+    </div>
+
+        <div class="col-xs-6 col-sm-4 col-md-4" data-groups='["developer"]'>
+
+             <div class="panel panel-default">
+               <div class="panel-heading">Developer</div>
+               <div class="panel-body">
+                  If you're developing custom components then these topics are of interest
+                  <ul>
+                {% for page in site.pages %}
+                {% for tag in page.tags %}
+                {% if tag == "developer" %}
+                     <li><a href="{{page.url | remove: '/'}}">{{page.title}}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+                  </ul>
+               </div>
+            </div>
+
+    </div>
+          <!-- sizer -->
+      <div class="col-xs-6 col-sm-4 col-md-1 shuffle_sizer"></div>
+
+
+    </div><!-- /#grid -->
+
+{% unless site.output == "pdf" %}
+{% include initialize_shuffle.html %}
+{% endunless %}
+

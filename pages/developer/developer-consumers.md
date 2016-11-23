@@ -2,6 +2,7 @@
 title: Writing your own Consumer
 keywords: interlok
 sidebar: home_sidebar
+tags: [developer]
 permalink: developer-consumers.html
 ---
 
