@@ -230,6 +230,7 @@ entries:
     - title: Deploy using ANT
       url: /advanced-ant-ivy-deploy.html
       output: web
+
       subfolders:
       - title: Failover
         output: web
@@ -242,6 +243,18 @@ entries:
           url: /advanced-failover.html
           output: web
 
+    - title: JMX Runtime Controls
+      url: /advanced-jmx.html
+      output: web
+
+    - title: JMX via JMS
+      url: /advanced-jmx-jms.html
+      output: web
+
+    - title: Management using Remote Shell
+      url: /advanced-shell.html
+      output: web
+          
     - title: Measuring Performance
       url: /advanced-performance.html
       output: web
@@ -261,28 +274,13 @@ entries:
         - title: Failover using the profiler
           url: /advanced-profiler-failover.html
           output: web
+
         - title: Profiling with New Relic
           url: /advanced-new-relic-profiling.html
           output: web
 
         - title: Profiling with Stackify
           url: /advanced-stackify-profiling.html
-          output: web
-
-      subfolders:
-      - title: Remote Management
-        output: web
-        subfolderitems:
-        - title: JMX Runtime Controls
-          url: /advanced-jmx.html
-          output: web
-
-        - title: JMX via JMS
-          url: /advanced-jmx-jms.html
-          output: web
-
-        - title: Management using Remote Shell
-          url: /advanced-shell.html
           output: web
 
     - title: Running in Docker
