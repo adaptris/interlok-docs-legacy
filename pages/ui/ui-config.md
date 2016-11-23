@@ -15,7 +15,7 @@ The header navigation bar:
 ![Navigation bar with config selected](./images/ui-user-guide/config-top-navigation-bar.png)
 
 The config page action:
-![The navigation config button](../ui-user-guide/config-top-navigation-bar-config-action.png)
+![The navigation config button](./images/ui-user-guide/config-top-navigation-bar-config-action.png)
 
 ## Open/New Config ##
 
