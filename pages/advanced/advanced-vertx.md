@@ -19,13 +19,12 @@ For each Interlok instance you wish to join a cluster, you will need only the op
 
 A common use case is to consume a message from any configured endpoint and then to farm the service-list processing out to any one of a number of running workflow instances. In this case we introduce workflow clustering. We start with a workflow that has a consumer.  Once a message has been consumed our clustered-workflow can delegate the message to an another instance in the cluster.
 
-```
-...
+```xml
 <clustered-workflow>
   <unique-id>MyClusterName</unique-id>
 
   <consumer>
-		...
+    ...
   </consumer>
 
   <target-component-id class="constant-data-input-parameter">
@@ -33,13 +32,13 @@ A common use case is to consume a message from any configured endpoint and then 
   </target-component-id>
 
   <service-collection>
-		...
+    ...
   </service-collection>
 
   <producer>
-		...
+    ...
   </producer>
-
+</clustered-workflow>
 ```
 
 ### Creating a cluster ###
@@ -57,12 +56,12 @@ __single__ simply means the message will be sent to one and only one instance in
 
 __all__ means the message will be sent to all running clustered-workflow instances in the cluster.
 
-```
-...
+```xml
 <clustered-workflow>
   <unique-id>MyClusterName</unique-id>
 
   <target-send-mode>single</target-send-mode>
+</clustered-workflow>
 
 ```
 
@@ -80,17 +79,17 @@ An example;
 
 Assume a JMS queue has 100 messages waiting to be processed, we then configure our clustered-workflow (that includes the JMS consumer) to have a queue-capacity of 10.
 
-```
-...
+```xml
 <clustered-workflow>
   <unique-id>MyClusterName</unique-id>
 
   <consumer>
-		...
+    ...
   </consumer>
 
   <queue-capacity>10</queue-capacity>
-		...
+    ...
+</clustered-workflow>
 
 ```
 
@@ -151,12 +150,12 @@ __all__ means the message will be sent to all running clustered-workflow instanc
 It is important to remember that no reply is ever waited for.  If a reply comes in, it will be processed as explained later, but further services in the current service-list or even the producer for the workflow will be executed regardless of whether the remote clustered-service completes it's processing or not.
 
 
-```
-...
+```xml
 <clustered-service>
   <unique-id>MyClusterName</unique-id>
 
   <target-send-mode>single</target-send-mode>
+</clustered-workflow>
 
 ```
 
@@ -170,7 +169,7 @@ An example:
 
 The following configuration, will send a message to the cluster named "cluster 1".
 
-```
+```xml
 <adapter>
   <unique-id>clustered-Service-Example</unique-id>
   <channel-list>
@@ -214,7 +213,7 @@ The following configuration, will send a message to the cluster named "cluster 1
 
 The receiving clustered-service instance will simply perform the log-message-service;
 
-```
+```xml
 <adapter>
   <unique-id>clustered-Receiver-Adapter</unique-id>
   <channel-list>
@@ -255,21 +254,21 @@ Looking at the above example you will notice that the sending clustered-service 
 
 Should the reply services fail, you can also configure a reply-processing-exception-handler;
 
-```
-	<clustered-service>
-		<unique-id>clustered-service-1</unique-id>
-		<target-component-id class="constant-data-input-parameter">
-			<value>cluster 1</value>
-		</target-component-id>
+```xml
+<clustered-service>
+  <unique-id>clustered-service-1</unique-id>
+  <target-component-id class="constant-data-input-parameter">
+    <value>cluster 1</value>
+  </target-component-id>
 
-		<reply-service class="log-message-service">
-			<unique-id>log-service</unique-id>
-		</reply-service>
+  <reply-service class="log-message-service">
+    <unique-id>log-service</unique-id>
+  </reply-service>
 
-		<reply-processing-exception-handler class="">
-			...
-		</reply-processing-exception-handler>
-	</clustered-service>
+  <reply-processing-exception-handler class="">
+    ...
+  </reply-processing-exception-handler>
+</clustered-service>
 ```
 
 

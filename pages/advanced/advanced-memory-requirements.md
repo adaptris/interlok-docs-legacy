@@ -249,6 +249,7 @@ A basic JMS configuration, that includes 2 channels.  The first channel simply l
   </channel-list>
 </adapter>
 ```
+
 #### Components Used ####
 
 For this example there are no external components used.
