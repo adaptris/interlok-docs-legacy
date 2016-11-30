@@ -17,6 +17,7 @@ All enabled management components are listed, separated by colon's as the value 
 ```
 managementComponents=jetty:jmx
 ```
+
 As shown above "jetty", the embedded web server is enabled.
 
 # Installing the Restful Services Component #
@@ -26,6 +27,7 @@ Get the restful services application (_adp-restful-services.war_), from either t
 Drop _adp-restful-services.war_ and drop it into the interlok web-app directory.  The default location for the web-app directory will be a directory named `webapps` in the root of your Interlok installation.  This folder should already exist, if not, create it.
 
 You can check/change the location of the jetty web-app directory within the jetty.xml file.  A property named;
+
 ```xml
 <Set name="monitoredDirName"><Property name="jetty.home" default="." />/webapps</Set>
 ```
@@ -73,40 +75,40 @@ The basic Interlok configuration;
 
 ```xml
 <adapter>
-	<unique-id>FS-FS-Adapter</unique-id>
-	<channel-list>
-		<channel>
-			<unique-id>Channel1</unique-id>
-			<workflow-list>
-				<standard-workflow>
-					<unique-id>Workflow1</unique-id>
-					<consumer class="fs-consumer">
-						<unique-id>FS-Consumer</unique-id>
-						<destination class="configured-consume-destination">
-							<destination>messages_in</destination>
-						</destination>
-						<poller class="fixed-interval-poller">
-							<poll-interval>
-								<unit>SECONDS</unit>
-								<interval>10</interval>
-							</poll-interval>
-						</poller>
-						<create-dirs>true</create-dirs>
-					</consumer>
-					<producer class="fs-producer">
-						<unique-id>FS-Producer</unique-id>
-						<filename-creator class="formatted-filename-creator">
-							<filename-format>%2$tQ.xml</filename-format>
-						</filename-creator>
-						<destination class="configured-produce-destination">
-							<destination>messages_out</destination>
-						</destination>
-						<create-dirs>true</create-dirs>
-					</producer>
-				</standard-workflow>
-			</workflow-list>
-		</channel>
-	</channel-list>
+  <unique-id>FS-FS-Adapter</unique-id>
+  <channel-list>
+    <channel>
+      <unique-id>Channel1</unique-id>
+      <workflow-list>
+        <standard-workflow>
+          <unique-id>Workflow1</unique-id>
+          <consumer class="fs-consumer">
+            <unique-id>FS-Consumer</unique-id>
+            <destination class="configured-consume-destination">
+              <destination>messages_in</destination>
+            </destination>
+            <poller class="fixed-interval-poller">
+              <poll-interval>
+                <unit>SECONDS</unit>
+                <interval>10</interval>
+              </poll-interval>
+            </poller>
+            <create-dirs>true</create-dirs>
+          </consumer>
+          <producer class="fs-producer">
+            <unique-id>FS-Producer</unique-id>
+            <filename-creator class="formatted-filename-creator">
+              <filename-format>%2$tQ.xml</filename-format>
+            </filename-creator>
+            <destination class="configured-produce-destination">
+              <destination>messages_out</destination>
+            </destination>
+            <create-dirs>true</create-dirs>
+          </producer>
+        </standard-workflow>
+      </workflow-list>
+    </channel>
+  </channel-list>
 </adapter>
 ```
 
@@ -115,23 +117,22 @@ Assuming that you have configured Interlok as above and it is up and running wit
 Your raw HTTP request will look something like this;
 
 ```
-
 POST http://<host>:<port>/adp-restful-services/rest/service/submitmessage?adapterId=FS-FS-Adapter&channelId=Channel1&workflowId=Workflow1&inputFormat=XML&outputFormat=JSON
 
 POST data:
 <serializable-adaptris-message>
-	<unique-id>MyMessageID</unique-id>
-	<payload>My message payload</payload>
-	<metadata>
-		<key-value-pair>
-			<key>myMetadataKey1</key>
-			<value>myMetadataValue1</value>
+  <unique-id>MyMessageID</unique-id>
+  <payload>My message payload</payload>
+  <metadata>
+    <key-value-pair>
+      <key>myMetadataKey1</key>
+      <value>myMetadataValue1</value>
         </key-value-pair>
         <key-value-pair>
-          	<key>myMetadata2</key>
-          	<value>myMetadataValue2</value>
+            <key>myMetadata2</key>
+            <value>myMetadataValue2</value>
         </key-value-pair>
-	</metadata>
+  </metadata>
 </serializable-adaptris-message>
 
 [no cookies]
@@ -175,7 +176,7 @@ There are 4 parameters and the POST data payload required for this service.
 
 Using the same Interlok configuration above, our raw HTTP POST, assuming you wish to have an XML formatted message returned would be;
 
-```xml
+```
 POST http://<host>:<port>/adp-restful-services/rest/service/submitpayload?adapterId=FS-FS-Adapter&channelId=Channel1&workflowId=Workflow1&outputFormat=XML
 
 POST data:
@@ -234,8 +235,25 @@ User-Agent: Apache-HttpClient/4.2.6 (java 1.5)
 
 And the successful response body will look similar to this;
 
-```
-{"serializable-adaptris-message":{"unique-id":"f55a8313-3074-428a-b7e8-6454cbb5433f","payload":"My text payload back to JSON","metadata":[{"key-value-pair":[{"key":"fsProduceDir","value":"C:\\Adaptris\\Interlok3.0.6\\messages_out"},{"key":"producedname","value":"1442405528853.xml"},{"key":"adpnextmlemarkersequence","value":2}]}]}}
+```json
+{
+    "serializable-adaptris-message": {
+        "unique-id": "f55a8313-3074-428a-b7e8-6454cbb5433f",
+        "payload": "My text payload back to JSON",
+        "metadata": [{
+            "key-value-pair": [{
+                "key": "fsProduceDir",
+                "value": "C:\\Adaptris\\Interlok3.0.6\\messages_out"
+            }, {
+                "key": "producedname",
+                "value": "1442405528853.xml"
+            }, {
+                "key": "adpnextmlemarkersequence",
+                "value": 2
+            }]
+        }]
+    }
+}
 ```
 
 ## Asynchronous Services ##
@@ -263,23 +281,23 @@ There are 4 parameters and the POST data required for this service.
 
 Using the same adapter configuration above, assuming our supplied message is XStream marshalled into XML, our raw HTTP POST request would be;
 
-```xml
+```
 POST http://<host>:<port>/adp-restful-services/rest/service/executemessage?adapterId=FS-FS-Adapter&channelId=Channel1&workflowId=Workflow1&inputFormat=XML
 
 POST data:
 <serializable-adaptris-message>
-	<unique-id>MyMessageID</unique-id>
-	<payload>My awesome XML payload no return</payload>
-	<metadata>
-		<key-value-pair>
-			<key>myMetadataKey1</key>
-			<value>myMetadataValue1</value>
+  <unique-id>MyMessageID</unique-id>
+  <payload>My awesome XML payload no return</payload>
+  <metadata>
+    <key-value-pair>
+      <key>myMetadataKey1</key>
+      <value>myMetadataValue1</value>
         </key-value-pair>
         <key-value-pair>
-          	<key>myMetadata2</key>
-         	<value>myMetadataValue2</value>
+            <key>myMetadata2</key>
+          <value>myMetadataValue2</value>
         </key-value-pair>
-	</metadata>
+  </metadata>
 </serializable-adaptris-message>
 
 [no cookies]
@@ -314,18 +332,18 @@ There are 3 parameters and the POST data required for this service.
 
 Using the same adapter configuration above, our raw HTTP POST request, using some random XML as the payload, could be;
 
-```xml
+```
 POST http://<host>:<port>/adp-restful-services/rest/service/executepayload?adapterId=FS-FS-Adapter&channelId=Channel1&workflowId=Workflow1
 
 POST data:
 <resources>
-	<resource>
-		<directory>myDirectory</directory>
-		<filtering>true</filtering>
-		<random>
-			<exclude>context.file</exclude>
-		</random>
-	</resource>
+  <resource>
+    <directory>myDirectory</directory>
+    <filtering>true</filtering>
+    <random>
+      <exclude>context.file</exclude>
+    </random>
+  </resource>
 </resources>
 
 [no cookies]

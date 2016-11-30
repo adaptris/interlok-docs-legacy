@@ -26,6 +26,7 @@ Get the webservice application (_adp-web-services.war_), from either then [snaps
 Rename the file to be _adp-web-services.war_ and drop it into the interlok web-app directory.  The default location for the web-app directory will be a directory named `webapps` in the root of your Interlok installation.  This folder should already exist, if not, create it.
 
 You can check/change the location of the jetty web-app directory within the jetty.xml file.  A property named;
+
 ```xml
 <Set name="monitoredDirName"><Property name="jetty.home" default="." />/webapps</Set>
 ```
@@ -99,6 +100,7 @@ There are 3 parameters required for this service.
 Assuming that you have configured Interlok as above and it is up and running with the web-services component, you can use your favourite SOAP client tool to fire a SOAP request at our web-service server (we'll use SOAP UI).
 
 Your SOAP request will look something like this;
+
 ```xml
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:war="http://war.ws.adaptris.com/">
    <soapenv:Header/>
@@ -190,6 +192,7 @@ There are 5 parameters required for this service.
 Using the same injectTestAdapter as the submitMessage above and assuming that you have configured Interlok as above and it is up and running with the web-services component, you can use your favourite SOAP client tool to fire a SOAP request at our web-service server (we'll use SOAP UI).
 
 Your XML SOAP request will look something like this;
+
 ```xml
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:war="http://war.ws.adaptris.com/">
    <soapenv:Header/>
@@ -197,8 +200,8 @@ Your XML SOAP request will look something like this;
       <war:submitMessage>
          <adapterId>Inject-Test-Adapter</adapterId>
          <workflowId>Workflow1@Channel1</workflowId>
-		 <inputFormat>XML</inputFormat>
-		 <outputFormat>XML</outputFormat>
+     <inputFormat>XML</inputFormat>
+     <outputFormat>XML</outputFormat>
          <message><![CDATA[<?xml version="1.0"?>
         <serializable-adaptris-message>
           <unique-id>MyMessageID</unique-id>
@@ -229,8 +232,8 @@ Should you wish to inject a JSON formatted message, your request will look like 
       <war:submitMessage>
          <adapterId>Inject-Test-Adapter</adapterId>
          <workflowId>Workflow1@Channel1</workflowId>
-		 <inputFormat>JSON</inputFormat>
-		 <outputFormat>JSON</outputFormat>
+     <inputFormat>JSON</inputFormat>
+     <outputFormat>JSON</outputFormat>
          <message>{"serializable-adaptris-message":{"unique-id":"MyMessageID","payload":"My awesome json payload","metadata":[{"key-value-pair":[{"key":"fsProduceDir","value":"C:\\Adaptris\\Interlok3.0.3RC1\\messages_out"},{"key":"myMetadataKey1","value":"myMetadataValue1"},{"key":"producedname","value":"1441622806841.xml"},{"key":"myMetadata2","value":"myMetadataValue2"},{"key":"adpnextmlemarkersequence","value":2}]}]}}</message>
       </war:submitMessage>
    </soapenv:Body>
@@ -308,6 +311,7 @@ There are 3 parameters required for this service.
 ### Example ###
 
 Using the same adapter configuration above, our SOAP UI document would be
+
 ```xml
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:war="http://war.ws.adaptris.com/">
    <soapenv:Header/>
@@ -372,7 +376,8 @@ There are 4 parameters required for this service.
 
 ### Example ###
 
-Using the same adapter configuration above, our SOAP request assuming an XML response would be;
+Using the same adapter configuration above, our SOAP request assuming an XML response would be :
+
 ```xml
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:war="http://war.ws.adaptris.com/">
    <soapenv:Header/>
@@ -380,7 +385,7 @@ Using the same adapter configuration above, our SOAP request assuming an XML res
       <war:submitPayload>
          <adapterId>Inject-Test-Adapter</adapterId>
          <workflowId>Workflow1@Channel1</workflowId>
-		 <outputFormat>XML</outputFormat>
+     <outputFormat>XML</outputFormat>
          <payload>My wicked payload</payload>
       </war:submitPayload>
    </soapenv:Body>
@@ -396,7 +401,7 @@ Or for a JSON response, would be;
       <war:submitPayload>
          <adapterId>Inject-Test-Adapter</adapterId>
          <workflowId>Workflow1@Channel1</workflowId>
-		 <outputFormat>JSON</outputFormat>
+     <outputFormat>JSON</outputFormat>
          <payload>My wicked payload</payload>
       </war:submitPayload>
    </soapenv:Body>
@@ -463,6 +468,7 @@ There are 3 parameters required for this service.
 ### Example ###
 
 Using the same adapter configuration above, our SOAP UI document would be
+
 ```xml
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:war="http://war.ws.adaptris.com/">
    <soapenv:Header/>
@@ -513,6 +519,7 @@ There are 4 parameters required for this service.
 ### Example ###
 
 Using the same adapter configuration above, our SOAP request with an XML formatted message would be
+
 ```xml
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:war="http://war.ws.adaptris.com/">
    <soapenv:Header/>
@@ -521,7 +528,7 @@ Using the same adapter configuration above, our SOAP request with an XML formatt
          <adapterId>Inject-Test-Adapter</adapterId>
          <workflowId>Workflow1@Channel1</workflowId>
          <inputFormat>XML</inputFormat>
-		 <message><![CDATA[<?xml version="1.0"?>
+     <message><![CDATA[<?xml version="1.0"?>
         <serializable-adaptris-message>
           <unique-id>MyMessageID</unique-id>
           <payload>My awesome payload</payload>
@@ -532,7 +539,8 @@ Using the same adapter configuration above, our SOAP request with an XML formatt
 </soapenv:Envelope>
 ```
 
-And with a JSON formatted message would be;
+And with a JSON formatted message would be
+
 ```xml
 <soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:war="http://war.ws.adaptris.com/">
    <soapenv:Header/>
