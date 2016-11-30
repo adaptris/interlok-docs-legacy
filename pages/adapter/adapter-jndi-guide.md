@@ -48,9 +48,9 @@ If you enable debug in the shared component configuration:
 
 Then during initialization of the shared-components you will see further debug logging informing you of each JNDI name that has been bound. Enabling log4j trace level logging will log every request to lookup an object.
 
-{% include image.html file="user-guide/jndi-logging-1.png" alt="jndi-logging-1" %}
+{% include image.html file="jndi/jndi-logging-1.png" alt="jndi-logging-1" %}
 
-{% include image.html file="user-guide/jndi-logging-2.png" alt="jndi-logging-2" %}
+{% include image.html file="jndi/jndi-logging-2.png" alt="jndi-logging-2" %}
 
 
 ## JNDI Naming ##
