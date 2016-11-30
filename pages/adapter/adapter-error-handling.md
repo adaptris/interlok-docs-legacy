@@ -45,6 +45,66 @@ Because it is possible to configure an exception handler as [part of a Workflow]
 
 This is useful if you want to have the same _final home_ for failed messages, but be able to configure different behaviours at the workflow and channel level. So in the following configuration :
 
+```xml
+<adapter>
+  <message-error-handler class="standard-processing-exception-handler">
+   <processing-exception-service class="service-list">
+    <services>
+     <standalone-producer>
+      <producer class="fs-producer">
+       <destination class="configured-produce-destination">
+        <destination>/opt/adaptris/bad</destination>
+       </destination>
+       <encoder class="mime-encoder"/>
+      </producer>
+     </standalone-producer>
+    </services>
+   </processing-exception-service>
+  </message-error-handler>
+  <channel-list>
+    <channel>
+      <unique-id>channel</unique-id>
+      <message-error-handler class="standard-processing-exception-handler">
+        <processing-exception-service class="service-list">
+          <services>
+            <standalone-producer>
+              <producer class="jetty-standard-response-producer">
+                <status-provider class="http-configured-status">
+                  <status>NOT_FOUND_404</status>
+                </status-provider>
+              </producer>
+            </standalone-producer>
+          </services>
+        </processing-exception-service>
+      </message-error-handler>
+      <workflow-list>
+        <pooling-workflow>
+          <unique-id>workflow1</unique-id>      
+          <message-error-handler class="standard-processing-exception-handler">
+            <processing-exception-service class="service-list">
+              <services>
+                <standalone-producer>
+                  <producer class="jetty-standard-response-producer">
+                    <status-provider class="http-configured-status">
+                      <status>INTERNAL_ERROR_500</status>
+                    </status-provider>
+                  </producer>
+                </standalone-producer>
+              </services>
+            </processing-exception-service>
+          </message-error-handler>      
+          ... Actual workflow skipped
+        <pooling-workflow>
+        <pooling-workflow>
+          <unique-id>workflow2</unique-id>
+          ... Actual workflow skipped
+        <pooling-workflow>
+      </workflow-list>
+    </channel>
+  </channel-list>
+</adapter>
+```
+
 - workflow1-exception-handler : send a HTTP 500 response.
 - workflow2-exception-handler : none.
 - channel-exception-handler : send a HTTP 404 response; always-handle-exception=false
@@ -53,7 +113,7 @@ This is useful if you want to have the same _final home_ for failed messages, bu
 The exception handling behaviour for `workflow1` will be :
 
 1. Return a `500 Server Error` to the client; notify the parent handler.
-1. The channel level exception handler notifies the parent handler
+1. The channel level exception handler notifies the parent handler but does nothing else (`always-handle-exception=false`)
 1. The adapter level exception handler writes the original message to `/opt/adaptris/bad`.
 
 The exception handling behaviour for `workflow2` will be :
@@ -61,7 +121,7 @@ The exception handling behaviour for `workflow2` will be :
 1. Return a `404 Not Found` to the client (The closest exception handler at the channel level.)
 1. The adapter level exception handler writes the original message to `/opt/adaptris/bad`.
 
-If you configure multiple [retry-message-error-handler][] instances, all with `always-handle-exception=true` then you can get some behavioural oddities. The number of attempts that each configured [retry-message-errorhandler][] will attempt to retry the message may vary (if you inspect the log files closely), however, the total number of attempts will not exceed the highest configured max-retry-count on any individual [retry-message-error-handler][]
+If you configure multiple [retry-message-error-handler][] instances, all with `always-handle-exception=true` then you can get some behavioural oddities. The number of attempts that each configured [retry-message-error-handler][] will attempt to retry the message may vary (if you inspect the log files closely), however, the total number of attempts will not exceed the highest configured max-retry-count on any individual [retry-message-error-handler][]
 
 
 ## Retrying Messages ##
