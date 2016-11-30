@@ -6,7 +6,7 @@ SITE_NAME=Interlok
 source ${HOME}/.rvm/scripts/rvm
 
 rm -rf ./${SITE_DIR}/${SITE_NAME}
-rvm use 2.3.0
+rvm use 2.3.3
 bundle exec jekyll build -d ${SITE_DIR}/${SITE_NAME}
 rc=`echo $?`
 if [ $rc -ne 0 ]
