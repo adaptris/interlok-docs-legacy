@@ -4,7 +4,7 @@ keywords: homepage
 sidebar: home_sidebar
 permalink: index.html
 toc: false
-summary: This is the Interlok Documentation website.  Choose a document and start enjoying the documentation.
+summary: This is the Interlok Documentation website.  Choose a document and start reading.
 ---
 
 Of course there must be an obligatory [xkcd](http://xkcd.com) reference.
@@ -81,10 +81,9 @@ Of course there must be an obligatory [xkcd](http://xkcd.com) reference.
 
 ---
 
-You probably came here from [http://development.adaptris.net](http://development.adaptris.net) or [http://www.adaptris.com](http://www.adaptris.com). Comic reproduced because of the generous [xkcd license](http://xkcd.com/license.html)
+You probably came here from [http://interlok.adaptris.net](http://interlok.adaptris.net), [https://development.adaptris.net](https://development.adaptris.net) or perhaps even [http://www.adaptris.com](http://www.adaptris.com). 
 
-
-[MkDocs]: http://www.mkdocs.org
-[Jenkins]: http://www.jenkins-ci.org
+* Comic reproduced because of the generous [xkcd license](http://xkcd.com/license.html)
+* [Jekyll](http://jekyllrb.com) Theme by [Tom Johnson](http://idratherbewriting.com/)
 
 {% include links.html %}

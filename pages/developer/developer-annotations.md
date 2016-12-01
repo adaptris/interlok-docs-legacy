@@ -23,7 +23,7 @@ For example if you have the following class and annotation;
 ```java
 @XStreamAlias("add-metadata-service")
 public class AddMetadataService extends ServiceImp {
-	...
+  ...
 }
 ```
 
@@ -122,12 +122,12 @@ The above annotation will not marshall or expect when unmarshalling the list con
 ```xml
 <metadata-elements>
   <metadata-element>
-  	<key>key2</key>
-  	<value>val2</value>
+    <key>key2</key>
+    <value>val2</value>
   </metadata-element>
   <metadata-element>
-  	<key>key1</key>
-  	<value>val1</value>
+    <key>key1</key>
+    <value>val1</value>
   </metadata-element>
 </metadata-elements>
 ```
@@ -166,7 +166,9 @@ The embedded script could have characters that would normally not be allowed in 
 
 ### @InputFieldHint ###
 
-This annotation provides a _hint_ to the UI when presenting the information on screen and is available from __3.0.2__ onwards. It contains a `style` element that has information about the type of field this is; it is generally used on String fields that might need to be syntax highlighted or treated differently in some way
+This annotation provides a _hint_ to the UI when presenting the information on screen and is available from __3.0.2__ onwards. There are two elements to this annotation `style` and `friendly`.
+
+`style` should contain information about the type of field this is; it is generally used on String fields that might need to be syntax highlighted or treated differently in some way
 
 
 | Style | Description |
@@ -186,6 +188,17 @@ This annotation provides a _hint_ to the UI when presenting the information on s
 ```java
 @InputFieldHint(style = "PASSWORD")
 private String password;
+```
+
+`friendly` (since __3.4.0__) contains information about what to display in various drop downs or similar. We use it for enums where the enum name may not be as nice as we want it. For instance, with the following annotations, the UI would display _JSON to XML_ rather than the literal enum name.
+
+```java
+public enum TransformationDirection {
+  @InputFieldHint(friendly = "JSON to XML") 
+  JSON_TO_XML,
+  @InputFieldHint(friendly = "XML to JSON") 
+  XML_TO_JSON;
+}
 ```
 
 ### @InputFieldDefault ###
@@ -294,11 +307,11 @@ This is a custom annotation which only affects the generated schema.  This simpl
 ```java
 public MyClass {
 
-	private String myString = null;
+  private String myString = null;
 
-	public MyClass() {
-		myString = "someValue";
-	}
+  public MyClass() {
+    myString = "someValue";
+  }
 }
 ```
 

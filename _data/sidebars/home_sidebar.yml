@@ -315,9 +315,9 @@ entries:
       url: /advanced-xa-integration.html
       output: web
 
-    - title: Enabling a Custom Class Loader for Jetty
-      url: /advanced-custom-classloader.html
-      output: web
+#    - title: Enabling a Custom Class Loader for Jetty
+#      url: /advanced-custom-classloader.html
+#      output: web
 
   - title: Developer
     output: web
