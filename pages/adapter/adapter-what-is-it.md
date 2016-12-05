@@ -78,43 +78,27 @@ The standard camel case java naming convention is converted to use a `-` in XML 
 
 All standard classes are [annotated with an alias](developer-annotations.htmlmd#class-level-annotations) which gives you a friendly name to use rather than the fully qualified class name. You can still use the fully qualified classname if you wish; but package/class names do change from time to time so using the friendly name is preferred. In the example above `fs-consumer` is the friendly name for the class `com.adaptris.core.fs.FsConsumer`.
 
+## What is a Connection ##
 
-<ul id="profileTabs" class="nav nav-tabs">
-    <li class="active"><a href="#connections" data-toggle="tab">Connections</a></li>
-    <li><a href="#workflows" data-toggle="tab">Workflows</a></li>
-    <li><a href="#producers" data-toggle="tab">Producers</a></li>
-    <li><a href="#consumers" data-toggle="tab">Consumers</a></li>
-    <li><a href="#services" data-toggle="tab">Services</a></li>
-</ul>
-<div class="tab-content">
-  <div role="tabpanel" class="tab-pane active" id="connections">
-    <h2>Connections</h2>
-    <p>An [AdaptrisConnection][] object tends to wrap any behaviour that is required to setup a persistent connection an application; such as making a connection over a socket, or making a connection to a JMS Provider or Database. Some [AdaptrisConnection][] instances may not make a connection but instead encapusulate common configuration options that can be overriden.</p>
-  </div>
+An [AdaptrisConnection][] object tends to wrap any behaviour that is required to setup a persistent connection an application; such as making a connection over a socket, or making a connection to a JMS Provider or Database. Some [AdaptrisConnection][] instances may not make a connection but instead encapusulate common configuration options that can be overriden.
 
-  <div role="tabpanel" class="tab-pane" id="workflows">
-    <h2>Workflows</h2>
-    <p>A [workflow][Workflow] is a container for a [consumer][AdaptrisMessageConsumer], a [producer][AdaptrisMessageProducer] and a [collection of services][Service] which will interact with the [message][AdaptrisMessage]. Various types of workflow are available, and each will have slightly different behaviour. The ones that you're likely to use are [standard-workflow][], [pooling-workflow] and [jms-transacted-workflow].</p>
-  </div>
+## What is a Workflow ##
 
-  <div role="tabpanel" class="tab-pane" id="producers">
-    <h2>Producers</h2>
-    <p>An [AdaptrisMessageProducer][] is responsible for sending the message to the target system (that may already have been connected to by an [AdaptrisConnection][]). Typical types of producer are [FTP][FtpProducer], [Email][DefaultSmtpProducer], [HTTP][JdkHttpProducer], [JMS][JmsProducer], along with many more available in the `optional` directory.</p>
-  </div>
+A [workflow][Workflow] is a container for a [consumer][AdaptrisMessageConsumer], a [producer][AdaptrisMessageProducer] and a [collection of services][Service] which will interact with the [message][AdaptrisMessage]. Various types of workflow are available, and each will have slightly different behaviour. The ones that you're likely to use are [standard-workflow][], [pooling-workflow] and [jms-transacted-workflow].
 
-  <div role="tabpanel" class="tab-pane" id="consumers">
-    <h2>Consumers</h2>
-    <p>An [AdaptrisMessageConsumer][] is responsible for receiving messages from the target system. You need to decide on how the consumer will be triggered. Some consumers such as [FTP][FtpConsumer] or [Email][DefaultMailConsumer] are timer based (i.e. they poll on a schedule); some like [JMS][JmsConsumer] are passive and notified about incoming messages.</p>
-  </div>
+## What is a Producer ##
 
-  <div role="tabpanel" class="tab-pane" id="services">
-    <h2>Services</h2>
-    <p>[Services][Service] are a means of applying arbitrary functionality to messages and as such are the key low-level building block in Interlok. Examples of services included encrypting message payloads, applying XSLT transformations and extracting metadata using XPath or regular expressions. It is straightforward to create custom services if no existing off the shelf service meets a particular requirement (see [Custom Services](developer-services.html)).</p>
-    <p>Services are often grouped into collections. Simple collections allow a linear list of services to be applied one after the other. More complex collections allow services to be applied conditionally based on configurable criteria, allowing complex processes to be modelled.</p>
-  </div>
+An [AdaptrisMessageProducer][] is responsible for sending the message to the target system (that may already have been connected to by an [AdaptrisConnection][]). Typical types of producer are [FTP][FtpProducer], [Email][DefaultSmtpProducer], [HTTP][JdkHttpProducer], [JMS][JmsProducer], along with many more available in the `optional` directory.
 
-</div>
+## What is a Consumer ##
 
+An [AdaptrisMessageConsumer][] is responsible for receiving messages from the target system. You need to decide on how the consumer will be triggered. Some consumers such as [FTP][FtpConsumer] or [Email][DefaultMailConsumer] are timer based (i.e. they poll on a schedule); some like [JMS][JmsConsumer] are passive and notified about incoming messages.
+
+## What is a Service ##
+
+[Services][Service] are a means of applying arbitrary functionality to messages and as such are the key low-level building block in Interlok. Examples of services included encrypting message payloads, applying XSLT transformations and extracting metadata using XPath or regular expressions. It is straightforward to create custom services if no existing off the shelf service meets a particular requirement (see [Custom Services](developer-services.html)).
+
+Services are often grouped into collections. Simple collections allow a linear list of services to be applied one after the other. More complex collections allow services to be applied conditionally based on configurable criteria, allowing complex processes to be modelled.
 
 ## What components are standard ##
 
