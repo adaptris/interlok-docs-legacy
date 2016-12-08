@@ -101,16 +101,16 @@ And the output (the transform just swaps the `data` element to be `verified`)
 ```
 
 
-[advanced-message-splitter-service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/AdvancedMessageSplitterService.html
-[service-list]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ServiceList.html
-[MessageSplitter]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/MessageSplitter.html
-[AdaptrisMessage]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessage.html
-[Service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Service.html
-[MessageAggregator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/MessageAggregator.html
-[AggregatingConsumeService]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/AggregatingConsumeService.html
-[mime-aggregator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/MimeAggregator.html
-[ignore-original-mime-aggregator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/IgnoreOriginalMimeAggregator.html
-[replace-with-first-message-aggregator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/ReplaceWithFirstMessage.html
-[xml-document-aggregator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/XmlDocumentAggregator.html
-[ignore-original-xml-document-aggregator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/IgnoreOriginalXmlDocumentAggregator.html
-[split-join-service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/SplitJoinService.html
+[advanced-message-splitter-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/AdvancedMessageSplitterService.html
+[service-list]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ServiceList.html
+[MessageSplitter]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/MessageSplitter.html
+[AdaptrisMessage]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessage.html
+[Service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Service.html
+[MessageAggregator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/MessageAggregator.html
+[AggregatingConsumeService]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/AggregatingConsumeService.html
+[mime-aggregator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/MimeAggregator.html
+[ignore-original-mime-aggregator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/IgnoreOriginalMimeAggregator.html
+[replace-with-first-message-aggregator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/ReplaceWithFirstMessage.html
+[xml-document-aggregator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/XmlDocumentAggregator.html
+[ignore-original-xml-document-aggregator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/IgnoreOriginalXmlDocumentAggregator.html
+[split-join-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/SplitJoinService.html

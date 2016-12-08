@@ -231,15 +231,15 @@ Our configuration is:
 
 {% include tip.html content="If you wanted to split on each line, then you could remove everything other than `split-pattern`." %}
 
-[basic-message-splitter-service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/BasicMessageSplitterService.html
-[advanced-message-splitter-service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/AdvancedMessageSplitterService.html
-[line-count-splitter]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/LineCountSplitter.html
-[service-list]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ServiceList.html
-[MessageSplitter]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/MessageSplitter.html
-[mime-part-splitter]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/MimePartSplitter.html
-[split-by-metadata]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/SplitByMetadata.html
-[simple-regexp-message-splitter]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/SimpleRegexpMessageSplitter.html
-[xpath-document-copier]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/XpathDocumentCopier.html
-[xpath-message-splitter]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/XpathMessageSplitter.html
-[AdaptrisMessage]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessage.html
-[Service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Service.html
+[basic-message-splitter-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/BasicMessageSplitterService.html
+[advanced-message-splitter-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/AdvancedMessageSplitterService.html
+[line-count-splitter]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/LineCountSplitter.html
+[service-list]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ServiceList.html
+[MessageSplitter]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/MessageSplitter.html
+[mime-part-splitter]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/MimePartSplitter.html
+[split-by-metadata]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/SplitByMetadata.html
+[simple-regexp-message-splitter]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/SimpleRegexpMessageSplitter.html
+[xpath-document-copier]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/XpathDocumentCopier.html
+[xpath-message-splitter]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/XpathMessageSplitter.html
+[AdaptrisMessage]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessage.html
+[Service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Service.html

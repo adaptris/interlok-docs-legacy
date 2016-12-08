@@ -152,16 +152,16 @@ The [FailedMessageRetrier] component allows messages that have failed, to be ret
 - The directory which is polled by [default-failed-message-retrier][] could be the same directory where failed messages are written by the [ProcessingExceptionHandler] (you may as well just use a [retry-message-error-handler][]); but this is not advised.
 
 
-[AdaptrisMessage]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessage.html
-[FailedMessageRetrier]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/FailedMessageRetrier.html
-[ProcessingExceptionHandler]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ProcessingExceptionHandler.html
-[part of a Workflow]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/WorkflowImp.html#setMessageErrorHandler-com.adaptris.core.ProcessingExceptionHandler-
-[part of a Channel]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Channel.html#setMessageErrorHandler-com.adaptris.core.ProcessingExceptionHandler-
-[globally at the Adapter]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Adapter.html#setMessageErrorHandler-com.adaptris.core.ProcessingExceptionHandler-
-[service-list]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ServiceList.html
-[Service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Service.html
-[standard-processing-exception-handler]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/StandardProcessingExceptionHandler.html
-[retry-message-error-handler]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/RetryMessageErrorHandler.html
-[at the Adapter]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Adapter.html#setFailedMessageRetrier-com.adaptris.core.FailedMessageRetrier-
-[default-failed-message-retrier]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/DefaultFailedMessageRetrier.html
-[always-handle-exception]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/RootProcessingExceptionHandler.html#setAlwaysHandleException-java.lang.Boolean-
+[AdaptrisMessage]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessage.html
+[FailedMessageRetrier]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/FailedMessageRetrier.html
+[ProcessingExceptionHandler]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ProcessingExceptionHandler.html
+[part of a Workflow]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/WorkflowImp.html#setMessageErrorHandler-com.adaptris.core.ProcessingExceptionHandler-
+[part of a Channel]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Channel.html#setMessageErrorHandler-com.adaptris.core.ProcessingExceptionHandler-
+[globally at the Adapter]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Adapter.html#setMessageErrorHandler-com.adaptris.core.ProcessingExceptionHandler-
+[service-list]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ServiceList.html
+[Service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Service.html
+[standard-processing-exception-handler]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/StandardProcessingExceptionHandler.html
+[retry-message-error-handler]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/RetryMessageErrorHandler.html
+[at the Adapter]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Adapter.html#setFailedMessageRetrier-com.adaptris.core.FailedMessageRetrier-
+[default-failed-message-retrier]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/DefaultFailedMessageRetrier.html
+[always-handle-exception]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/RootProcessingExceptionHandler.html#setAlwaysHandleException-java.lang.Boolean-

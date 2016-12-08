@@ -161,17 +161,17 @@ If our document was modified to be
 Then validation would fail, but only because `/document/parent[@id='Hades']` does not exist in the document; the other [ValidationStages][ValidationStage] would still pass.
 
 
-[xml-validation-service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/transform/XmlValidationService.html
-[xml-basic-validator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/transform/XmlBasicValidator.html
-[xml-schema-validator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/transform/XmlSchemaValidator.html
-[xml-rule-validator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/transform/XmlRuleValidator.html
-[MessageValidator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/transform/MessageValidator.html
-[xml-content-not-null]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/transform/validate/NotNullContentValidation.html
-[xml-content-in-list]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/transform/validate/SimpleListContentValidation.html
-[xml-content-not-in-list]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/transform/validate/NotInListContentValidation.html
-[xml-content-is-null]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/transform/validate/IsNullContentValidation.html
-[xml-content-regexp]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/transform/validate/RegexpContentValidation.html
-[ContentValidation]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/transform/validate/ContentValidation.html
-[ValidationStage]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/transform/validate/ValidationStage.html
+[xml-validation-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/transform/XmlValidationService.html
+[xml-basic-validator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/transform/XmlBasicValidator.html
+[xml-schema-validator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/transform/XmlSchemaValidator.html
+[xml-rule-validator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/transform/XmlRuleValidator.html
+[MessageValidator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/transform/MessageValidator.html
+[xml-content-not-null]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/transform/validate/NotNullContentValidation.html
+[xml-content-in-list]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/transform/validate/SimpleListContentValidation.html
+[xml-content-not-in-list]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/transform/validate/NotInListContentValidation.html
+[xml-content-is-null]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/transform/validate/IsNullContentValidation.html
+[xml-content-regexp]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/transform/validate/RegexpContentValidation.html
+[ContentValidation]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/transform/validate/ContentValidation.html
+[ValidationStage]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/transform/validate/ValidationStage.html
 
 

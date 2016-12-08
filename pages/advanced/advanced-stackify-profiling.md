@@ -93,9 +93,9 @@ And should you drill down into the groups you can see the metrics over a period 
 
 
 [Stackify]: http://stackify.com/
-[public repository]: http://development.adaptris.net/nexus/content/groups/public/com/adaptris/
-[SimpleBootstrap]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/management/SimpleBootstrap.html
+[public repository]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/
+[SimpleBootstrap]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/management/SimpleBootstrap.html
 [Stackify Agent]: https://stackify.screenstepslive.com/s/3095/m/7787/l/119709-installation-for-linux
-[Workflow]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageListener.html#onAdaptrisMessage-com.adaptris.core.AdaptrisMessage-
-[AdaptrisMessageProducer]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageSender.html#produce-com.adaptris.core.AdaptrisMessage-com.adaptris.core.ProduceDestination-
-[Service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Service.html#doService-com.adaptris.core.AdaptrisMessage-
+[Workflow]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageListener.html#onAdaptrisMessage-com.adaptris.core.AdaptrisMessage-
+[AdaptrisMessageProducer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageSender.html#produce-com.adaptris.core.AdaptrisMessage-com.adaptris.core.ProduceDestination-
+[Service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Service.html#doService-com.adaptris.core.AdaptrisMessage-

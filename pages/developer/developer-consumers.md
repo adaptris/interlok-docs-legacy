@@ -105,12 +105,12 @@ So, the summary of what we did is as follows :
 
 
 
-[AdaptrisMessageConsumer]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageConsumer.html
-[AdaptrisMessageConsumerImp]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageConsumerImp.html
-[AdaptrisPollingConsumer]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisPollingConsumer.html
-[AdaptrisConnection]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisConnection.html
-[AdaptrisConnectionImp]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisConnectionImp.html
-[AdaptrisMessageEncoder]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageEncoder.html
-[ConsumeDestination]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ConsumeDestination.html
-[AdaptrisMessageFactory]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageFactory.html
-[reacquireLockBetweenMessages]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisPollingConsumer.html#setReacquireLockBetweenMessages-java.lang.Boolean-
+[AdaptrisMessageConsumer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageConsumer.html
+[AdaptrisMessageConsumerImp]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageConsumerImp.html
+[AdaptrisPollingConsumer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisPollingConsumer.html
+[AdaptrisConnection]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisConnection.html
+[AdaptrisConnectionImp]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisConnectionImp.html
+[AdaptrisMessageEncoder]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageEncoder.html
+[ConsumeDestination]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ConsumeDestination.html
+[AdaptrisMessageFactory]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageFactory.html
+[reacquireLockBetweenMessages]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisPollingConsumer.html#setReacquireLockBetweenMessages-java.lang.Boolean-

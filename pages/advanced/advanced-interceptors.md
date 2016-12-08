@@ -206,12 +206,12 @@ For a following sequence pattern of message throughput; we can expect the notifi
 
 <br/>
 
-[WorkflowInterceptor]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/WorkflowInterceptor.html
-[throttling-interceptor]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/interceptor/ThrottlingInterceptor.html
-[metadata-totals-interceptor]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/interceptor/MetadataTotalsInterceptor.html
-[metadata-count-interceptor]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/interceptor/MetadataCountInterceptor.html
-[message-metrics-interceptor]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/interceptor/MessageMetricsInterceptor.html
-[message-metrics-interceptor-by-metadata]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/interceptor/MessageMetricsInterceptorByMetadata.html
-[message-threshold-notification]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/interceptor/MessageThresholdNotification.html
-[slow-message-notification]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/interceptor/SlowMessageNotification.html
-[message-count-notification]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/interceptor/MessageCountNotification.html
+[WorkflowInterceptor]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/WorkflowInterceptor.html
+[throttling-interceptor]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/interceptor/ThrottlingInterceptor.html
+[metadata-totals-interceptor]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/interceptor/MetadataTotalsInterceptor.html
+[metadata-count-interceptor]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/interceptor/MetadataCountInterceptor.html
+[message-metrics-interceptor]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/interceptor/MessageMetricsInterceptor.html
+[message-metrics-interceptor-by-metadata]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/interceptor/MessageMetricsInterceptorByMetadata.html
+[message-threshold-notification]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/interceptor/MessageThresholdNotification.html
+[slow-message-notification]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/interceptor/SlowMessageNotification.html
+[message-count-notification]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/interceptor/MessageCountNotification.html

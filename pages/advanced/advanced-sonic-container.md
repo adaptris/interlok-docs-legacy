@@ -7,7 +7,7 @@ permalink: advanced-sonic-container.html
 summary: This document is aimed at developers and system administrators who wish to run an instance of Interlok inside a SonicMQ container. You will be instructed on how to build a deployable package (car file) which can be deployed into a SonicMQ container and finally you'll be shown the various configuration options. It is assumed you will have sufficient knowledge of SonicMQ and basic configuration. The following documentation has been created and tested for SonicMQ versions 7.6, 8.5, 2013 and 2015.
 ---
 
-Interlok requires a minimum JVM version of 1.7. SonicMQ version 8.5 and earlier may be running with Java 1.6.  In this case you will need a separate install of Java 1.7 on the SonicMQ host machine. You can download the required files from either then [snapshot repository](http://development.adaptris.net/nexus/content/groups/adaptris-snapshots/com/adaptris/adp-sonicmf/) or the [release repository](http://development.adaptris.net/nexus/content/groups/public/com/adaptris/adp-sonicmf/).
+Interlok requires a minimum JVM version of 1.7. SonicMQ version 8.5 and earlier may be running with Java 1.6.  In this case you will need a separate install of Java 1.7 on the SonicMQ host machine. You can download the required files from either then [snapshot repository](https://development.adaptris.net/nexus/content/groups/adaptris-snapshots/com/adaptris/adp-sonicmf/) or the [release repository](https://development.adaptris.net/nexus/content/groups/public/com/adaptris/adp-sonicmf/).
 
 ----
 

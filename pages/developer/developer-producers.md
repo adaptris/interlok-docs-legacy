@@ -82,11 +82,11 @@ So, the summary of what we did is as follows :
 
 
 
-[AdaptrisMessageProducer]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageProducer.html
-[AdaptrisMessageConsumer]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageConsumer.html
-[AdaptrisConnection]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisConnection.html
-[AdaptrisConnectionImp]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisConnectionImp.html
-[AdaptrisMessageEncoder]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageEncoder.html
-[ProduceOnlyProducerImp]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ProduceOnlyProducerImp.html
-[RequestReplyProducerImp]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/RequestReplyProducerImp.html
-[ProduceDestination]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ProduceDestination.html
+[AdaptrisMessageProducer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageProducer.html
+[AdaptrisMessageConsumer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageConsumer.html
+[AdaptrisConnection]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisConnection.html
+[AdaptrisConnectionImp]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisConnectionImp.html
+[AdaptrisMessageEncoder]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageEncoder.html
+[ProduceOnlyProducerImp]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ProduceOnlyProducerImp.html
+[RequestReplyProducerImp]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/RequestReplyProducerImp.html
+[ProduceDestination]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ProduceDestination.html

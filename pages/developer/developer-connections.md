@@ -111,11 +111,11 @@ So, the summary of what we did is as follows :
 
 
 
-[Service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Service.html
-[AdaptrisMessageProducer]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageProducer.html
-[AdaptrisMessageConsumer]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageConsumer.html
-[AdaptrisConnection]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisConnection.html
-[AdaptrisConnectionImp]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisConnectionImp.html
-[Password]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/security/password/Password.html
-[AllowRetriesConnection]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AllowsRetriesConnection.html
-[ExceptionHelper]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/util/ExceptionHelper.html
+[Service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Service.html
+[AdaptrisMessageProducer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageProducer.html
+[AdaptrisMessageConsumer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageConsumer.html
+[AdaptrisConnection]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisConnection.html
+[AdaptrisConnectionImp]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisConnectionImp.html
+[Password]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/security/password/Password.html
+[AllowRetriesConnection]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AllowsRetriesConnection.html
+[ExceptionHelper]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/util/ExceptionHelper.html

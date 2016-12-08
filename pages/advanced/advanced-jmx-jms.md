@@ -100,6 +100,6 @@ All keys are case sensitive, and if specified in the URL will be stripped before
 
 
 [Apache Qpid]: https://qpid.apache.org/
-[JmsJmxConnectorServer]: http://development.adaptris.net/javadocs/v3-snapshot/optional/jmx-jms/com/adaptris/jmx/remote/jms/JmsJmxConnectorServer.html
+[JmsJmxConnectorServer]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jmx-jms/com/adaptris/jmx/remote/jms/JmsJmxConnectorServer.html
 [ActiveMQ]: http://activemq.apache.org/
 

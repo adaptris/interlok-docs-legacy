@@ -157,10 +157,10 @@ This is the expected payload you will be required to have as input for your new 
 For testing purposes you can simply consume this sample message document and configure your new service as the first service.
 
 
-[standard-soap-service]: http://development.adaptris.net/javadocs/v3-snapshot/optional/webservice-external/com/adaptris/core/services/wss/SoapService.html
-[apache-cxf-soap-service]: http://development.adaptris.net/javadocs/v3-snapshot/optional/webservice-cxf/com/adaptris/core/services/cxf/ApacheSoapService.html
-[snapshot]: http://development.adaptris.net/nexus/content/groups/adaptris-snapshots/com/adaptris/adp-webservice-external/
-[release]: http://development.adaptris.net/nexus/content/groups/public/com/adaptris/adp-webservice-external/
-[payload-from-metadata-service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/metadata/PayloadFromMetadataService.html
-[log-message-service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/LogMessageService.html
+[standard-soap-service]: https://development.adaptris.net/javadocs/v3-snapshot/optional/webservice-external/com/adaptris/core/services/wss/SoapService.html
+[apache-cxf-soap-service]: https://development.adaptris.net/javadocs/v3-snapshot/optional/webservice-cxf/com/adaptris/core/services/cxf/ApacheSoapService.html
+[snapshot]: https://development.adaptris.net/nexus/content/groups/adaptris-snapshots/com/adaptris/adp-webservice-external/
+[release]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/adp-webservice-external/
+[payload-from-metadata-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/metadata/PayloadFromMetadataService.html
+[log-message-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/LogMessageService.html
 

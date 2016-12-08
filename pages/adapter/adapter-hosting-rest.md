@@ -22,7 +22,7 @@ As shown above "jetty", the embedded web server is enabled.
 
 # Installing the Restful Services Component #
 
-Get the restful services application (_adp-restful-services.war_), from either then [snapshot repository](http://development.adaptris.net/nexus/content/groups/adaptris-snapshots/com/adaptris/adp-restful-services/) or the [release repository](http://development.adaptris.net/nexus/content/groups/public/com/adaptris/adp-restful-services/).
+Get the restful services application (_adp-restful-services.war_), from either then [snapshot repository](https://development.adaptris.net/nexus/content/groups/adaptris-snapshots/com/adaptris/adp-restful-services/) or the [release repository](https://development.adaptris.net/nexus/content/groups/public/com/adaptris/adp-restful-services/).
 
 Drop _adp-restful-services.war_ and drop it into the interlok web-app directory.  The default location for the web-app directory will be a directory named `webapps` in the root of your Interlok installation.  This folder should already exist, if not, create it.
 
@@ -359,4 +359,4 @@ User-Agent: Apache-HttpClient/4.2.6 (java 1.5)
 If your message was successfully submitted to the workflow then you will get a simple true/false response returned.
 
 
-[SerializableMessage]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/SerializableAdaptrisMessage.html
+[SerializableMessage]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/SerializableAdaptrisMessage.html

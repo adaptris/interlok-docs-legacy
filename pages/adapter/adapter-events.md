@@ -57,24 +57,24 @@ Each [marker event] will have a creation time (ms since the epoch) associated wi
 
 If you do not care about these types of events, then you can turn them off on a per workflow basis by setting `send-events=false` on the workflows. Doing this may have a marginal performance improvement as the act of turning the internal object into a `String` has some cost associated with it.
 
-[marker event]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/MleMarker.html
-[Workflow]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Workflow.html
-[EventHandlerAware]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/EventHandlerAware.html
-[default-event-handler]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/DefaultEventHandler.html
+[marker event]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/MleMarker.html
+[Workflow]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Workflow.html
+[EventHandlerAware]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/EventHandlerAware.html
+[default-event-handler]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/DefaultEventHandler.html
 [AdapterLifecycleEvents]: #adapter-lifecycle-events
-[AdapterLifecycleEvent]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdapterLifecycleEvent.html
+[AdapterLifecycleEvent]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdapterLifecycleEvent.html
 [MessageLifecycleEvents]: #message-lifecycle-events
-[MessageLifecycleEvent]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/MessageLifecycleEvent.html
-[AdaptrisMessage]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessage.html
-[part of the Adapter]:http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Adapter.html#setEventHandler-com.adaptris.core.EventHandler-
-[Service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Service.html
-[xstream-json-marshaller]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/XStreamJsonMarshaller.html
-[adapter-close-event]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/event/AdapterCloseEvent.html
-[adapter-init-event]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/event/AdapterInitEvent.html
-[periodic schedule]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Adapter.html#setHeartbeatEventInterval-com.adaptris.util.TimeInterval-
-[adapter-shutdown-event]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/event/AdapterShutdownEvent.html
-[adapter-start-event]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/event/AdapterStartEvent.html
-[standard-adapter-start-up-event]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/event/StandardAdapterStartUpEvent.html
-[adapter-stop-event]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/event/AdapterStopEvent.html
-[heartbeat-event]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/HeartbeatEvent.html
-[license-expiry-warning-event]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/event/LicenseExpiryWarningEvent.html
+[MessageLifecycleEvent]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/MessageLifecycleEvent.html
+[AdaptrisMessage]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessage.html
+[part of the Adapter]:https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Adapter.html#setEventHandler-com.adaptris.core.EventHandler-
+[Service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Service.html
+[xstream-json-marshaller]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/XStreamJsonMarshaller.html
+[adapter-close-event]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/event/AdapterCloseEvent.html
+[adapter-init-event]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/event/AdapterInitEvent.html
+[periodic schedule]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Adapter.html#setHeartbeatEventInterval-com.adaptris.util.TimeInterval-
+[adapter-shutdown-event]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/event/AdapterShutdownEvent.html
+[adapter-start-event]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/event/AdapterStartEvent.html
+[standard-adapter-start-up-event]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/event/StandardAdapterStartUpEvent.html
+[adapter-stop-event]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/event/AdapterStopEvent.html
+[heartbeat-event]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/HeartbeatEvent.html
+[license-expiry-warning-event]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/event/LicenseExpiryWarningEvent.html

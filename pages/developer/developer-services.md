@@ -159,16 +159,16 @@ Post running the tests; we should have a file `./build/examples/my.package.name.
 There are similar classes that provide test scaffolding for other types of components.
 
 
-[AdaptrisComponent]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisComponent.html
-[Workflow]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Workflow.html
-[Service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Service.html
-[StateManagedComponent]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/StateManagedComponent.html
-[LifecycleHelper]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/util/LifecycleHelper.html
-[ServiceImp]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ServiceImp.html
-[AdaptrisMessage]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessage.html
-[ExceptionHelper]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/util/ExceptionHelper.html
-[doService()]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Service.html#doService-com.adaptris.core.AdaptrisMessage-
-[init()]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ComponentLifecycle.html#init--
-[start()]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ComponentLifecycle.html#start--
-[stop()]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ComponentLifecycle.html#stop--
-[close()]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ComponentLifecycle.html#close--
+[AdaptrisComponent]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisComponent.html
+[Workflow]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Workflow.html
+[Service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Service.html
+[StateManagedComponent]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/StateManagedComponent.html
+[LifecycleHelper]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/util/LifecycleHelper.html
+[ServiceImp]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ServiceImp.html
+[AdaptrisMessage]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessage.html
+[ExceptionHelper]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/util/ExceptionHelper.html
+[doService()]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Service.html#doService-com.adaptris.core.AdaptrisMessage-
+[init()]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ComponentLifecycle.html#init--
+[start()]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ComponentLifecycle.html#start--
+[stop()]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ComponentLifecycle.html#stop--
+[close()]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ComponentLifecycle.html#close--

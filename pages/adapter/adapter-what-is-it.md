@@ -104,7 +104,7 @@ Services are often grouped into collections. Simple collections allow a linear l
 
 How then can we find what connections/producers/consumers/services there are and understand the configuration they require?
 
-The definitive source of information describing how to configure any component are available is the Javadoc documentation in `docs/api` available as part of your installation. You can also find them online : [http://development.adaptris.net/javadocs/](http://development.adaptris.net/javadocs/).
+The definitive source of information describing how to configure any component are available is the Javadoc documentation in `docs/api` available as part of your installation. You can also find them online : [https://development.adaptris.net/javadocs/](https://development.adaptris.net/javadocs/).
 
 {% include tip.html content="Look at the javadocs for the class in question; any public setter/getter combination means you can configure it in XML e.g. `getUniqueId()` + `setUniqueId()` means that you can configure a `<unique-id>myUniqueId</unique-id>`." %}
 
@@ -127,25 +127,25 @@ Your example may not be exactly the same; it is likely to have `unique-id` eleme
 
 The Adaptris Interlok installer ships with a number of modular components that can be dropped into the lib directory to be enabled. The ones that are delivered with the installer are the most popular and frequently requested components; however, due to various licensing restrictions it may have been impossible to bundle all the dependent jars and native libraries required. For those components (such as [SAP](cookbook-sap-idoc.html), [WebsphereMQ](cookbook-native-wmq.html), [Oracle AQ](cookbook-oracleaq.html) you may need to source some additional binaries; which are discussed in their respective Integration Guides. They are discussed more fully in the [list of optional components](adapter-optional-components.html)
 
-[Adapter]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Adapter.html
-[Channel]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Channel.html
-[AdaptrisConnection]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisConnection.html
-[Workflow]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Workflow.html
-[AdaptrisMessageConsumer]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageConsumer.html
-[AdaptrisMessageProducer]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageProducer.html
-[Service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Service.html
-[AdaptrisMessage]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessage.html
-[ServiceList]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ServiceList.html
-[FtpProducer]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ftp/FtpProducer.html
-[DefaultSmtpProducer]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/mail/DefaultSmtpProducer.html
-[JdkHttpProducer]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/http/JdkHttpProducer.html
-[JmsProducer]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/JmsProducer.html
-[FtpConsumer]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ftp/FtpConsumer.html
-[DefaultMailConsumer]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/mail/DefaultMailConsumer.html
-[JmsConsumer]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/JmsConsumer.html
-[NullService]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/NullService.html
-[standard-workflow]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/StandardWorkflow.html
-[pooling-workflow]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/PoolingWorkflow.html
-[jms-transacted-workflow]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/JmsTransactedWorkflow.html
+[Adapter]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Adapter.html
+[Channel]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Channel.html
+[AdaptrisConnection]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisConnection.html
+[Workflow]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Workflow.html
+[AdaptrisMessageConsumer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageConsumer.html
+[AdaptrisMessageProducer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageProducer.html
+[Service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Service.html
+[AdaptrisMessage]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessage.html
+[ServiceList]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ServiceList.html
+[FtpProducer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ftp/FtpProducer.html
+[DefaultSmtpProducer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/mail/DefaultSmtpProducer.html
+[JdkHttpProducer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/http/JdkHttpProducer.html
+[JmsProducer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/JmsProducer.html
+[FtpConsumer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ftp/FtpConsumer.html
+[DefaultMailConsumer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/mail/DefaultMailConsumer.html
+[JmsConsumer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/JmsConsumer.html
+[NullService]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/NullService.html
+[standard-workflow]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/StandardWorkflow.html
+[pooling-workflow]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/PoolingWorkflow.html
+[jms-transacted-workflow]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/JmsTransactedWorkflow.html
 
 {% include links.html %}

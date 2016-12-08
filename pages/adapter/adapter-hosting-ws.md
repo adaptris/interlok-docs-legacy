@@ -21,7 +21,7 @@ As shown above "jetty", the embedded web server is enabled.
 
 # Installing the Web Services Component #
 
-Get the webservice application (_adp-web-services.war_), from either then [snapshot repository](http://development.adaptris.net/nexus/content/groups/adaptris-snapshots/com/adaptris/adp-web-services/) or the [release repository](http://development.adaptris.net/nexus/content/groups/public/com/adaptris/adp-web-services/). For versions 3.0.5 and earlier, the artefact was called adp-webservices-internal and can be found under that name.
+Get the webservice application (_adp-web-services.war_), from either then [snapshot repository](https://development.adaptris.net/nexus/content/groups/adaptris-snapshots/com/adaptris/adp-web-services/) or the [release repository](https://development.adaptris.net/nexus/content/groups/public/com/adaptris/adp-web-services/). For versions 3.0.5 and earlier, the artefact was called adp-webservices-internal and can be found under that name.
 
 Rename the file to be _adp-web-services.war_ and drop it into the interlok web-app directory.  The default location for the web-app directory will be a directory named `webapps` in the root of your Interlok installation.  This folder should already exist, if not, create it.
 
@@ -568,4 +568,4 @@ If message was successfully submitted to the workflow then you will get a simple
 ```
 
 
-[SerializableMessage]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/SerializableAdaptrisMessage.html
+[SerializableMessage]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/SerializableAdaptrisMessage.html

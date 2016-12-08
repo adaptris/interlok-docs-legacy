@@ -152,4 +152,4 @@ WARN  [StandardBootstrap] [Adapter.warnOnErrorHandlerBehaviour()] [Adapter(MyInt
 
 Be aware that if no initial log4j configuration is available on the classpath on startup then you will not have any logging until after checkout/update and logging reconfiguration is completed which will make it very hard to verify whether you have the configuration correct. In this example, you can see that the logging configuration has actually changed because the log4j2 configuration PatternLayout contains the method name in addition to the classname.
 
-[VersionControlSystem]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/management/vcs/VersionControlSystem.html
+[VersionControlSystem]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/management/vcs/VersionControlSystem.html

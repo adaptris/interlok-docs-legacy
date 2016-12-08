@@ -127,16 +127,16 @@ Journaling can use up disk space quickly. If you must use journaling, to increas
 
 MSMQ uses the standard Windows security model; you can configure queues to permit only senders and receivers with appropriate security privileges. Using Windows security in messaging means it takes about significantly longer to send the same messages. Configure MSMQ not to send the security descriptors associated with the sending application by setting the message property AttachSenderID to False (the default is True)
 
-[MsmqMessageFormat]: http://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/MsmqMessageFormat.html
-[msmq-string-message-format]: http://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/StringMessageFormat.html
-[msmq-byte-array-message-format]: http://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/ByteArrayMessageFormat.html
-[standard-msmq-producer]: http://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/StandardMsmqProducer.html
-[msmq-polling-consumer]: http://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/MsmqPollingConsumer.html
-[PropertyMapper]: http://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/PropertyMapper.html
+[MsmqMessageFormat]: https://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/MsmqMessageFormat.html
+[msmq-string-message-format]: https://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/StringMessageFormat.html
+[msmq-byte-array-message-format]: https://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/ByteArrayMessageFormat.html
+[standard-msmq-producer]: https://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/StandardMsmqProducer.html
+[msmq-polling-consumer]: https://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/MsmqPollingConsumer.html
+[PropertyMapper]: https://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/PropertyMapper.html
 [MSDN Transaction Mode Reference]: http://msdn.microsoft.com/en-us/library/ms703934(VS.85).aspx
 [MSDN Share Mode Reference]: http://msdn.microsoft.com/en-us/library/ms706937(VS.85).aspx
 [MSDN Property Reference]: http://msdn.microsoft.com/en-us/library/ms705286(VS.85).aspx
-[msmq-configured-property]: http://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/ConfiguredProperty.html
-[msmq-message-id-mapper]: http://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/MessageIdMapper.html
-[msmq-metadata-mapper]: http://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/MetadataMapper.html
-[msmq-xpath-property]: http://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/XpathProperty.html
+[msmq-configured-property]: https://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/ConfiguredProperty.html
+[msmq-message-id-mapper]: https://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/MessageIdMapper.html
+[msmq-metadata-mapper]: https://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/MetadataMapper.html
+[msmq-xpath-property]: https://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/XpathProperty.html

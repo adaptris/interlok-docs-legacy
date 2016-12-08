@@ -88,19 +88,19 @@ We can use a combination of [aggregating-jms-consume-service][] and [replace-met
     - In a worst case scenario we might wait for 60 seconds for this service to complete; we wait 29 seconds for the first message, and then another 30 seconds before the timeout is exceeded; and continuing.
 - Each message that has the corresponding _JMSCorrelationID_ is inserted as a new node under `/envelope/aggregated`.
 
-[AdaptrisMessage]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessage.html
-[Service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Service.html
-[MessageAggregator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/MessageAggregator.html
-[AggregatingConsumeService]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/AggregatingConsumeService.html
-[mime-aggregator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/MimeAggregator.html
-[ignore-original-mime-aggregator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/IgnoreOriginalMimeAggregator.html
-[replace-with-first-message-aggregator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/ReplaceWithFirstMessage.html
-[xml-document-aggregator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/XmlDocumentAggregator.html
-[ignore-original-xml-document-aggregator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/IgnoreOriginalXmlDocumentAggregator.html
-[split-join-service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/SplitJoinService.html
-[copy-metadata-service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/metadata/CopyMetadataService.html
-[aggregating-jms-consume-service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/AggregatingJmsConsumeService.html
-[replace-metadata-value]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/metadata/ReplaceMetadataValue.html
-[aggregating-fs-consume-service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/fs/AggregatingFsConsumeService.html
-[ConsumeDestinationGenerator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/ConsumeDestinationGenerator.html
-[aggregating-queue-consumer]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/AggregatingQueueConsumer.html
+[AdaptrisMessage]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessage.html
+[Service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Service.html
+[MessageAggregator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/MessageAggregator.html
+[AggregatingConsumeService]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/AggregatingConsumeService.html
+[mime-aggregator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/MimeAggregator.html
+[ignore-original-mime-aggregator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/IgnoreOriginalMimeAggregator.html
+[replace-with-first-message-aggregator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/ReplaceWithFirstMessage.html
+[xml-document-aggregator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/XmlDocumentAggregator.html
+[ignore-original-xml-document-aggregator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/IgnoreOriginalXmlDocumentAggregator.html
+[split-join-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/SplitJoinService.html
+[copy-metadata-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/metadata/CopyMetadataService.html
+[aggregating-jms-consume-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/AggregatingJmsConsumeService.html
+[replace-metadata-value]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/metadata/ReplaceMetadataValue.html
+[aggregating-fs-consume-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/fs/AggregatingFsConsumeService.html
+[ConsumeDestinationGenerator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/ConsumeDestinationGenerator.html
+[aggregating-queue-consumer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/AggregatingQueueConsumer.html

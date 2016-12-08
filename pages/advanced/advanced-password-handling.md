@@ -34,6 +34,6 @@ Usage :
 Subsequently, where supported, you can use the encoded form of the password, and it will be decoded into its corresponding plaintext form when required. For instance as part of a [JmsConnection#Password][] or [DatabaseConnection#Password][]
 
 
-[com.adaptris.security.password.Password]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/security/password/Password.html
-[JmsConnection#Password]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/JmsConnection.html#setPassword-java.lang.String-
-[DatabaseConnection#Password]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jdbc/DatabaseConnection.html#setPassword-java.lang.String-
+[com.adaptris.security.password.Password]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/security/password/Password.html
+[JmsConnection#Password]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/JmsConnection.html#setPassword-java.lang.String-
+[DatabaseConnection#Password]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jdbc/DatabaseConnection.html#setPassword-java.lang.String-

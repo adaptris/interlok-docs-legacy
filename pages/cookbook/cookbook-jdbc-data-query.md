@@ -407,28 +407,28 @@ which results in
 
 
 
-[jdbc-data-query-service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/JdbcDataQueryService.html
-[jdbc-xml-payload-translator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/XmlPayloadTranslator.html
-[jdbc-merge-into-xml-payload]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/MergeResultSetIntoXmlPayload.html
-[DocumentMerge]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/util/text/xml/DocumentMerge.html
-[xml-insert-node]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/util/text/xml/InsertNode.html
-[xml-replace-node]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/util/text/xml/ReplaceNode.html
-[xml-replace-original]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/util/text/xml/ReplaceOriginal.html
-[jdbc-first-row-metadata-translator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/FirstRowMetadataTranslator.html
-[jdbc-all-rows-metadata-translator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/AllRowsMetadataTranslator.html
-[metadata-filter-service]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/metadata/MetadataFilterService.html
-[XML ResultSetTranslator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/XmlPayloadTranslatorImpl.html
-[jdbc-statement-parameter]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/StatementParameter.html
-[Capitalize]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.ColumnStyle.html#Capitalize
-[UpperCase]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.ColumnStyle.html#UpperCase
-[LowerCase]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.ColumnStyle.html#LowerCase
-[NoStyle]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.ColumnStyle.html#NoStyle
-[list of ColumnTranslator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.html#setColumnTranslators-java.util.List-
-[ColumnTranslator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/types/ColumnTranslator.html
+[jdbc-data-query-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/JdbcDataQueryService.html
+[jdbc-xml-payload-translator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/XmlPayloadTranslator.html
+[jdbc-merge-into-xml-payload]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/MergeResultSetIntoXmlPayload.html
+[DocumentMerge]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/util/text/xml/DocumentMerge.html
+[xml-insert-node]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/util/text/xml/InsertNode.html
+[xml-replace-node]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/util/text/xml/ReplaceNode.html
+[xml-replace-original]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/util/text/xml/ReplaceOriginal.html
+[jdbc-first-row-metadata-translator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/FirstRowMetadataTranslator.html
+[jdbc-all-rows-metadata-translator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/AllRowsMetadataTranslator.html
+[metadata-filter-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/metadata/MetadataFilterService.html
+[XML ResultSetTranslator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/XmlPayloadTranslatorImpl.html
+[jdbc-statement-parameter]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/StatementParameter.html
+[Capitalize]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.ColumnStyle.html#Capitalize
+[UpperCase]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.ColumnStyle.html#UpperCase
+[LowerCase]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.ColumnStyle.html#LowerCase
+[NoStyle]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.ColumnStyle.html#NoStyle
+[list of ColumnTranslator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.html#setColumnTranslators-java.util.List-
+[ColumnTranslator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/types/ColumnTranslator.html
 [String.format]: http://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html
 [SimpleDateFormat]: http://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html
-[Metadata ResultSetTranslator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/MetadataResultSetTranslatorImpl.html
-[ResultSetTranslator]: http://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/ResultSetTranslator.html
+[Metadata ResultSetTranslator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/MetadataResultSetTranslatorImpl.html
+[ResultSetTranslator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/ResultSetTranslator.html
 
 
 {% include links.html %}
