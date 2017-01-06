@@ -38,7 +38,7 @@ On Some Windows platforms (particularly x64); you may not be able to execute the
 
 ### Windows DLL failed to load ###
 
-On some Windows platforms (consistently Windows 10 x64); the installer may never start and always fails with a `This Application unexpectedly quit` exception. This is a problem with the installer and later versions of Java 8. Java 1.8.0_51 is known to work, but later versions may not (the exact circumstances are unclear); it generally always works on Windows 7.
+On some Windows platforms (consistently Windows 10 x64); the installer may never start and always fails with a `This Application unexpectedly quit` exception. This is a problem with the installer and later versions of Java 8. Java 1.8.0_51 is known to work, but later versions may not (the exact circumstances are unclear); it generally always works on Windows 7. It only affects the installer and not the application runtime.
 
 {% include image.html file="user-guide/installation-failed.png" alt="UnexpectedlyQuit" %}
 
@@ -57,7 +57,7 @@ Flexeraawm$aaa: Windows DLL failed to load
 	at com.zerog.lax.LAX.main(Unknown Source)
 ```
 
-If you are in this situation, you should install with the bundled JRE (using [install-with-jre.exe][]); selecting the bundled JRE as the java runtime to use. After installation, edit the `adapter.lax` file and modify java location to your preferred version.
+If you are in this situation, you should install with the bundled JRE (using [install-with-jre.exe][]); selecting the bundled JRE as the java runtime to use. After installation, edit the `adapter.lax` file and modify java location to your preferred version. Doing it this way allows you to _uninstall_ the application from the control panel; otherwise you have to use the `Uninstall.exe LAX_VM="path/to/a/1.8.0_51/java"` from the commandline in order to uninstall.
 
 ## Unattended Installation ##
 
