@@ -76,8 +76,10 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-aws-s3][] | Integration with Amazon S3 (requires [interlok-aws-common][] | 3.3.0+
 |com.adaptris | [interlok-elastic-search][] | Integration with ElasticSearch (requires [adp-simple-csv][]) | 3.4.1+
 |com.adaptris | [interlok-failover][] | Simplified failover not dependent on AOP profiling | 3.4.0+
+|com.adaptris | [interlok-mqtt][] | Support for MQTT protocol | 3.5.1+
 |com.adaptris | [interlok-shell][] | Commandline runtime UI based on [CRaSH](http://www.crashub.org) | 3.4.1+
 |com.adaptris | [interlok-service-tester][] | Testing services as part of a CI pipeline | 3.5.0+
+|com.adaptris | [interlok-vcs-command-line][] | Interlok configuration hosted in a configurable VCS | 3.5.1+
 |com.adaptris | [interlok-vertx][] | [Clustered workflows and services](advanced-vertx.html); requires [adp-licensing][] | 3.5.0+
 |com.adaptris | [interlok-xa][] | XA support within the Adapter; requires [adp-licensing][] | 3.4.0+
 
@@ -191,3 +193,5 @@ If you've added an optional components following the steps explained above you c
 [interlok-xa]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-xa/
 [interlok-service-tester]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-service-tester/
 [interlok-vertx]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-vertx/
+[interlok-vcs-commandline]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-vcs-command-line/
+[interlok-mqtt]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-mqtt/
