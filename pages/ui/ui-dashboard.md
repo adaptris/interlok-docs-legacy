@@ -213,6 +213,7 @@ The above image shows the various parts of the Failed Messages modal window:
     - Ignore the failed message; this will remove the message from the UI failed messages list, without retrying it.
 	- Create a support pack; this will create and download a zip file with some information about the adapter and the failing message. (Since 3.3)
 	- Show more information; this will display the full stack trace of the failing message and the logs traced at the time the message failed. (Since 3.3)
+	- Select the failed message; this will be used when using the deleting/retrying all selected message buttons. (Since 3.5.1)
 - C. This is the Search Failed Message List feature that includes a free text input, whose value will be used to filter the failed message list. The buttons alongside this input are for clearing the filter, executing the search and selecting the date range respectively;
 - D. These commands operate in the same fashion as those in the failed message control functions (detailed in point B), but these operations relate to all the messages displayed in the failed message list (i.e. if you are using the search filter, the actions will only be applied to the displayed messages);
 - E. This button can be used to Failed Message modal window.
