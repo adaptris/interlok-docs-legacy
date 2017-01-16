@@ -193,5 +193,5 @@ If you've added an optional components following the steps explained above you c
 [interlok-xa]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-xa/
 [interlok-service-tester]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-service-tester/
 [interlok-vertx]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-vertx/
-[interlok-vcs-commandline]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-vcs-command-line/
+[interlok-vcs-command-line]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-vcs-command-line/
 [interlok-mqtt]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-mqtt/
