@@ -138,6 +138,10 @@ In order to use the stats and metrics widgets you need the correct config. You n
 
 {% include tip.html content="You need a `message-metrics-interceptors` configured at a workflow level which will gather the data that can be shown on this widget." %}
 
+### Daily Message Counts Chart ###
+
+This widget is similar to [Message Counts Chart](ui-widgets.html#message-counts-chart) but keeps data for 24 hours. (Since 3.5.1)
+
 ### Control Panel ###
 
 This widget allows quick control (Start, Close, Stop) of the adapter from the runtime page. (Since 3.4)
@@ -354,6 +358,10 @@ This widget is exactly like the widget described in [Container Message Counts Ch
 
 {% include note.html content="This widget derives its information from any configured workflow `message-metrics-interceptors`. If you have none configured then this widget will display no data." %}
 
+### Channel Daily Message Counts ###
+
+This widget is similar to [Channel Message Counts](ui-widgets.html#channel-message-counts) but keeps data for 24 hours. (Since 3.5.1)
+
 ### Channel Control Panel ###
 
 This widget is exactly like the widget described in [Container Control Panel Widget](ui-widgets.html#control-panel), but will control a channel instead of an adapter. (Since 3.4)
@@ -374,6 +382,10 @@ This chart shows:
 - The X axis shows the time
 - The Y axis shows the amount of messages or error messages processed
 - One line represents the workflow messages and the other represent workflow error messages
+
+### Workflow Daily Message Counts ###
+
+This widget is similar to [Channel Message Counts](ui-widgets.html#workflow-message-counts) but keeps data for 24 hours. (Since 3.5.1)
 
 ### Workflow Control Panel ###
 
