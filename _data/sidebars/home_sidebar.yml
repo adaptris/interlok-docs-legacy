@@ -139,6 +139,10 @@ entries:
           url: /ui-swagger.html
           output: web
 
+    - title: Optional Component Discovery
+      url: /ui-optional-component-discovery.html
+      output: web
+      
     - title: Security
       url: /ui-security.html
       output: web
