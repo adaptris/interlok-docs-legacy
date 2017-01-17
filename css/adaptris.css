@@ -1,6 +1,6 @@
 /* Navbar */
 .navbar .company-logo {
-    background-image: url(/images/logo-white.png);
+    background-image: url(../images/logo-white.png);
     background-repeat: no-repeat;
     background-position: 0 50%;
     padding-left: 16px;
