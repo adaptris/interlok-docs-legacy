@@ -1,0 +1,36 @@
+/* Navbar */
+.navbar .company-logo {
+    background-image: url(/images/logo-white.png);
+    background-repeat: no-repeat;
+    background-position: 0 50%;
+    padding-left: 16px;
+    background-size: 19px;
+    margin-left: 15px;
+}
+@media (min-width: 768px) {
+    .navbar .company-logo {
+        margin-left: 0 !important;
+    }
+}
+/* Footer*/
+.rbi-footer {
+}
+.rbi-footer a > img {
+    margin-left: auto;
+    margin-right: auto;
+}
+#rbi-logo {
+    width: 140px;
+}
+#relx-logo {
+    width: 140px;
+    padding: 38px 0;
+}
+/* Override the footer from modern-business.css
+ * as the margin are a bit too big
+ */
+footer {
+    margin: 25px 0;
+}
+
+
