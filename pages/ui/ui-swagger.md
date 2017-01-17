@@ -8,6 +8,8 @@ toc: false
 summary: Since 3.5.0 the gui config page allows you to open a simple Swagger configuration file (yaml or json). It will be converted to an Adapter xml configuration files supporting the defined http rest services.
 ---
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/xeZVjyjmVto" frameborder="0" allowfullscreen></iframe>
+
 ## Swagger Example ##
 
 Below is an example of a Swagger configuration that can be converted to an adapter Configuration (the JSON equivalent works the same way).

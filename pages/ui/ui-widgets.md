@@ -451,6 +451,8 @@ This widget will be enabled if a Metadata Count or Metadata Totals Interceptor h
 
 A widget group allows a user to group multiple widgets in the same view.
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/LUvfO8ZkGzI" frameborder="0" allowfullscreen></iframe>
+
 Any widget can be added to any widget group and the user can easily switch between them using the page dropdown
 
 ![Runtime Widget - Widget Group Dropdown](./images/ui-user-guide/widgets-widget-group-dropwdown.png){: .bordered-image }
