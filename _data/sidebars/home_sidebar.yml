@@ -219,6 +219,7 @@ entries:
     output: web
 
     folderitems:
+
     - title: Clustered Workflows / Services
       url: /advanced-vertx.html
       output: web
@@ -254,7 +255,7 @@ entries:
     - title: Management using Remote Shell
       url: /advanced-shell.html
       output: web
-          
+
     - title: Measuring Performance
       url: /advanced-performance.html
       output: web
@@ -305,6 +306,10 @@ entries:
 
         - title: Version Control with Subversion
           url: /advanced-vcs-svn.html
+          output: web
+
+        - title: Command line Version Control
+          url: /advanced-vcs-command-line.html
           output: web
 
     - title: Workflow Interceptors
