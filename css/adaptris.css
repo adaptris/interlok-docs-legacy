@@ -33,4 +33,20 @@ footer {
     margin: 25px 0;
 }
 
+.container {
+    max-width: none;
+}
+.row .col-md-3 {
+    width: 22.404%;
+}
+.row .col-md-9 {
+    width: 77.468%;
+}
+.row [class*="col-md"] {
+    box-sizing: border-box;
+    display: block;
+    float: left;
+    min-height: 28px;
+    min-width: 200px;
+}
 

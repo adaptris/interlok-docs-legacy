@@ -7,6 +7,8 @@ permalink: ui-dashboard.html
 summary: The Dashboard Page is the first page a user is directed to after a successful login action. You can also navigate to this page using the Dashboard menu item in the navigation bar.
 ---
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/HBrhSDzs0u0" frameborder="0" allowfullscreen></iframe>
+
 After an initial login, the Dashboard page will show you the auto-discovered local Adapter component.
 
 A typical dashboard page with a single Adapter registered to it. In this example, the Adapter was auto-detected:

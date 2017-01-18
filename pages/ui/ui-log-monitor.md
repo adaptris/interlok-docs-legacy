@@ -7,6 +7,8 @@ permalink: ui-log-monitor.html
 summary: The Log Monitor page allows you to view real-time adapter logs. (Since 3.4.0)
 ---
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/e9Se9weEgtQ" frameborder="0" allowfullscreen></iframe>
+
 ## Getting Started ##
 
 To access the Log Monitor page, you use the log monitor button on the header navigation bar.
