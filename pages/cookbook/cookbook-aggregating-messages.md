@@ -21,6 +21,7 @@ There are currently 2 [AggregatingConsumeService][] implementations : [aggregati
 |[replace-with-first-message-aggregator][]| Replaces the message payload with the _first processed message_.|
 |[xml-document-aggregator][]| Merges each processed message into the original document.|
 |[ignore-original-xml-document-aggregator][]| Merges each processed message into the configured template, ignoring the original document.|
+|[zip-aggregator][]| Adds each processed message into a zip file; the filename associated with each message determined by metadata|
 
 ## Example ##
 
@@ -104,3 +105,4 @@ We can use a combination of [aggregating-jms-consume-service][] and [replace-met
 [aggregating-fs-consume-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/fs/AggregatingFsConsumeService.html
 [ConsumeDestinationGenerator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/ConsumeDestinationGenerator.html
 [aggregating-queue-consumer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/AggregatingQueueConsumer.html
+[zip-aggregator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/aggregator/ZipAggregator.html
