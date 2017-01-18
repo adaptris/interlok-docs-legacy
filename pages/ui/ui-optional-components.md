@@ -14,6 +14,7 @@ summary: The Optional Component Discovery page allows you to browse components t
 To access the Optional Component Discovery page, you use the optional components button on the header navigation bar, which is located in the Config sub-menu.
 
 The header navigation bar:
+
  ![Navigation bar with optional shown](./images/ui-user-guide/optional-nav.png)
 
 ## Optional Component Discovery Page ##
@@ -21,19 +22,23 @@ The header navigation bar:
 Upon opening the discovery page, the ui will connect to our public facing [artifact server][] and compile list of the components from the releases repository. Each components build file is then read and a dataset of information regarding each component is compiled and shown on this page.
 
 The discovery page upon opening:
+
  ![Optional Component Discovery Page](./images/ui-user-guide/optional-main.png)
 
 The page contains search tools and a list of discovered components:
+
  ![Optional Component Discovery Page Annotated](./images/ui-user-guide/optional-main-annotated.png)
  
 ## Optional Component ##
 
 The optional component itself has the following options:
+
 ![Optional Component Discovery Page Annotated](./images/ui-user-guide/optional-component-annotated.png)
  
 ## Optional Component Details ##
 
 Clicking on the view more details button shows the optional component details window:
+
 ![Optional Component Discovery Details](./images/ui-user-guide/optional-component-details.png)
 
 This page shows all the links as described above, but also shows the dependencies that the component has and a link for the install instructions which takes you to [this documentation page][] 
