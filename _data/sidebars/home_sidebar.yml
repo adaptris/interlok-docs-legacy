@@ -186,7 +186,7 @@ entries:
     - title: MSMQ
       url: /cookbook-msmq.html
       output: web
-	  
+
     - title: Terracotta Universal Messaging
       url: /cookbook-terracotta-um.html
       output: web
