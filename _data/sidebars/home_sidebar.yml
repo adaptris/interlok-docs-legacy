@@ -187,6 +187,10 @@ entries:
       url: /cookbook-msmq.html
       output: web
 
+    - title: Terracotta Universal Messaging
+      url: /cookbook-terracotta-um.html
+      output: web
+
     - title: Native WebsphereMQ
       url: /cookbook-native-wmq.html
       output: web
