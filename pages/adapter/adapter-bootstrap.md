@@ -84,7 +84,7 @@ jmxserviceurl.env.jmx.destination=SampleQ4
 
 ### ActiveMQ Component ###
 
-Since 3.5.1
+Since 3.6.0
 
 If the ActiveMQ management component is specified via `managementComponents=activemq` and if you have copied the interlok-activemq.jar library, including the required dependencies into your Interlok lib directory, then upon Interlok start-up an ActiveMQ broker will also be started.
 
@@ -155,10 +155,10 @@ Should you choose not to supply your own configuration file a default minimal co
 
 ```
 
-JMS connections within your Interlok workflows will be able to access the broker with the URL connection string of either;
+JMS connections within your Interlok workflows will be able to access the broker with the URL connection strings of either;
 
 - vm://internalBroker?create=false
-- tcp://<host>:61616
+- tcp://localhost:61616
 
 __Note:__ Sometimes the ActiveMQ broker can take a few seconds to fully start-up and initialize, therefore connection errors upon immediately launching Interlok may occur.  Simply wait for the connections to be re-established.
 
