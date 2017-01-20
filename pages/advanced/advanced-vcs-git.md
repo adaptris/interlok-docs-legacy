@@ -38,6 +38,7 @@ Additional bootstrap properties will control the various authentication schemes 
 
 | Property | Description |
 |----|----|
+| vcs.implementation | since 3.5.1 Which VCS implementation to load |
 | vcs.revision | The revision/tag/branch to checkout; by default this will be the latest revision for the remote URL, and will be logged. |
 | vcs.always.reset | Whether or not to always discard any uncommitted changes when updating; defaults to false |
 | log4j12Url | __Deprecated__: use loggingConfigUrl instead.|
@@ -64,6 +65,7 @@ loggingConfigUrl=file://localhost/./config/interlok-config-example/log4j2.xml
 webServerConfigUrl=./config/interlok-config-example/jetty.xml
 
 # This controls how we connect to Git.
+vcs.implementation=Git
 vcs.workingcopy.url=file://localhost/./config/interlok-config-example
 vcs.remote.repo.url=https://github.com/adaptris/interlok-config-example.git
 # Enabled for public access we don't need username/passsword.
