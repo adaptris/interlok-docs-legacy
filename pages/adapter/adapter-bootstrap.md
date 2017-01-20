@@ -57,7 +57,7 @@ adapterConfigUrl.2=file:///./config/adapter3.xml
 
 ## Management Components ##
 
-Management components are Interlok components exist outside of the normal adapter lifecycle. Typical examples of this are the JMX component and the embedded Jetty component which hosts the UI. The `:` separated list here can be either a short name (e.g. `jetty`) or a fully qualified classname of something that implements [ManagementComponent][]
+Management components are Interlok components that exist outside of the normal adapter lifecycle. Typical examples of this are the JMX component, ActiveMQ components and the embedded Jetty component which hosts the UI. The `:` separated list here can be either a short name (e.g. `jetty`) or a fully qualified classname of something that implements [ManagementComponent][]
 
 ### JMX Component ###
 
@@ -81,6 +81,84 @@ jmxserviceurl.env.jmx.brokerPassword=Administrator
 jmxserviceurl.env.jmx.type=Topic
 jmxserviceurl.env.jmx.destination=SampleQ4
 ```
+
+### ActiveMQ Component ###
+
+If the ActiveMQ management component is specified via `managementComponents=activemq` and if you have copied the interlok-activemq.jar library, including the required dependencies into your Interlok lib directory, then upon Interlok startup an ActiveMQ broker will also be started.
+
+You can supply your own ActiveMQ configuration by setting the following property "activemq.config.filename" in your bootstrap.properties file.
+
+Simply set the value of this property to be the exact name of your ActiveMQ configuration file (which of course will need to be on the Interlok classpath, typically in your Interlok/config directory).
+
+Should you choose not to supply your own configuration file a default minimal configuration will be applied (found packaged in the interlok-activemq.jar);
+
+```xml
+<beans
+  xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd">
+
+    <broker xmlns="http://activemq.apache.org/schema/core" brokerName="internalBroker" dataDirectory="config/data">
+        <destinationPolicy>
+            <policyMap>
+              <policyEntries>
+                <policyEntry topic=">" >
+
+                  <pendingMessageLimitStrategy>
+                    <constantPendingMessageLimitStrategy limit="1000"/>
+                  </pendingMessageLimitStrategy>
+                </policyEntry>
+              </policyEntries>
+            </policyMap>
+        </destinationPolicy>
+
+        <managementContext>
+            <managementContext createConnector="false"/>
+        </managementContext>
+
+        <persistenceAdapter>
+            <kahaDB directory="config/kahadb"/>
+        </persistenceAdapter>
+
+          <systemUsage>
+            <systemUsage>
+                <memoryUsage>
+                    <memoryUsage percentOfJvmHeap="70" />
+                </memoryUsage>
+                <storeUsage>
+                    <storeUsage limit="10 gb"/>
+                </storeUsage>
+                <tempUsage>
+                    <tempUsage limit="5 gb"/>
+                </tempUsage>
+            </systemUsage>
+        </systemUsage>
+
+        <transportConnectors>
+            <!-- DOS protection, limit concurrent connections to 1000 and frame size to 100MB -->
+            <transportConnector name="openwire" uri="tcp://0.0.0.0:61616?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
+            <transportConnector name="amqp" uri="amqp://0.0.0.0:5672?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
+            <transportConnector name="stomp" uri="stomp://0.0.0.0:61613?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
+            <transportConnector name="mqtt" uri="mqtt://0.0.0.0:1883?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
+            <transportConnector name="ws" uri="ws://0.0.0.0:61614?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
+        </transportConnectors>
+
+        <shutdownHooks>
+            <bean xmlns="http://www.springframework.org/schema/beans" class="org.apache.activemq.hooks.SpringContextHook" />
+        </shutdownHooks>
+    </broker>
+
+</beans>
+
+```
+
+JMS connections within your Interlok workflows will be able to access the broker with the URL connection string of either;
+
+- vm://internalBroker?create=false
+- tcp://<host>:61616
+
+__Note:__ Sometimes the ActiveMQ broker can take a few seconds to fully startup, therefore connection errors upon immediately launching Interlok may occur.  Simply wait for the connections to be re-established.
 
 ### Jetty Component ###
 
