@@ -20,9 +20,9 @@ If a [VersionControlSystem][] is available then Interlok will attempt to use it 
 
 ![VCS Found](./images/vcs/VCSFound.png)
 
-If a version control system is place, then the following behaviour is injected before any unmarshalling / management component initialisation occurs.
-
 Since 3.5.1 The property `vcs.implementation` can be used within `bootstrap.properties` to specify which implementation to use, this allows mutliple [VersionControlSystem][] implementations to be on the classpath.
+
+If a version control system is place, then the following behaviour is injected before any unmarshalling / management component initialisation occurs.
 
 - If the local working directory does not exist, then create the directory and then perform a clean checkout from your remote repository.
 - If the local working directory exists, perform an update from the remote repository.
