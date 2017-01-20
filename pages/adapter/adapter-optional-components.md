@@ -75,6 +75,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-aws-sqs][] | Integration with Amazon SQS (requires [interlok-aws-common][]|3.3.0+
 |com.adaptris | [interlok-aws-s3][] | Integration with Amazon S3 (requires [interlok-aws-common][] | 3.3.0+
 |com.adaptris | [interlok-elastic-search][] | Integration with ElasticSearch (requires [adp-simple-csv][]) | 3.4.1+
+|com.adaptris | [interlok-es5][] | Integration with ElasticSearch using v5 API (requires [adp-simple-csv][]) | 3.5.1+
 |com.adaptris | [interlok-failover][] | Simplified failover not dependent on AOP profiling | 3.4.0+
 |com.adaptris | [interlok-mqtt][] | Support for MQTT protocol | 3.5.1+
 |com.adaptris | [interlok-shell][] | Commandline runtime UI based on [CRaSH](http://www.crashub.org) | 3.4.1+
@@ -188,6 +189,7 @@ If you've added an optional components following the steps explained above you c
 [interlok-aws-common]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-aws-common/
 [adp-hpcc]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/adp-hpcc/
 [interlok-elastic-search]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-elastic-search/
+[interlok-es5]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-es5/
 [interlok-failover]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-failover/
 [interlok-shell]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-shell/
 [interlok-xa]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-xa/
