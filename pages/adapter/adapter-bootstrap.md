@@ -100,13 +100,11 @@ Should you choose not to supply your own configuration file a default minimal co
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
   http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd">
-
-    <broker xmlns="http://activemq.apache.org/schema/core" brokerName="internalBroker" dataDirectory="config/data">
+    <broker xmlns="http://activemq.apache.org/schema/core" brokerName="defaultMgmtComponentBroker" dataDirectory="activemq-data/defaultMgmtComponentBroker">
         <destinationPolicy>
             <policyMap>
               <policyEntries>
                 <policyEntry topic=">" >
-
                   <pendingMessageLimitStrategy>
                     <constantPendingMessageLimitStrategy limit="1000"/>
                   </pendingMessageLimitStrategy>
@@ -114,50 +112,41 @@ Should you choose not to supply your own configuration file a default minimal co
               </policyEntries>
             </policyMap>
         </destinationPolicy>
-
         <managementContext>
             <managementContext createConnector="false"/>
         </managementContext>
-
         <persistenceAdapter>
-            <kahaDB directory="config/kahadb"/>
+            <kahaDB directory="activemq-data/defaultMgmtComponentBroker-kahadb"/>
         </persistenceAdapter>
-
+        <systemUsage>
           <systemUsage>
-            <systemUsage>
-                <memoryUsage>
-                    <memoryUsage percentOfJvmHeap="70" />
-                </memoryUsage>
-                <storeUsage>
-                    <storeUsage limit="10 gb"/>
-                </storeUsage>
-                <tempUsage>
-                    <tempUsage limit="5 gb"/>
-                </tempUsage>
-            </systemUsage>
+             <memoryUsage>
+               <memoryUsage percentOfJvmHeap="70" />
+             </memoryUsage>
+             <storeUsage>
+               <storeUsage limit="10 gb"/>
+             </storeUsage>
+             <tempUsage>
+               <tempUsage limit="5 gb"/>
+             </tempUsage>
+          </systemUsage>
         </systemUsage>
-
         <transportConnectors>
-            <!-- DOS protection, limit concurrent connections to 1000 and frame size to 100MB -->
             <transportConnector name="openwire" uri="tcp://0.0.0.0:61616?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
             <transportConnector name="amqp" uri="amqp://0.0.0.0:5672?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
             <transportConnector name="stomp" uri="stomp://0.0.0.0:61613?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
             <transportConnector name="mqtt" uri="mqtt://0.0.0.0:1883?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
-            <transportConnector name="ws" uri="ws://0.0.0.0:61614?maximumConnections=1000&amp;wireFormat.maxFrameSize=104857600"/>
         </transportConnectors>
-
         <shutdownHooks>
             <bean xmlns="http://www.springframework.org/schema/beans" class="org.apache.activemq.hooks.SpringContextHook" />
         </shutdownHooks>
     </broker>
-
 </beans>
-
 ```
 
 JMS connections within your Interlok workflows will be able to access the broker with the URL connection strings of either;
 
-- vm://internalBroker?create=false
+- vm://defaultMgmtComponentBroker?create=false
 - tcp://localhost:61616
 
 __Note:__ Sometimes the ActiveMQ broker can take a few seconds to fully start-up and initialize, therefore connection errors upon immediately launching Interlok may occur.  Simply wait for the connections to be re-established.
