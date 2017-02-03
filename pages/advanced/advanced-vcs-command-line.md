@@ -37,6 +37,7 @@ Each property key is also treated as a prefix, and allows you to configure multi
 
 | Property | Description |
 |----|----|
+| vcs.implementation | since 3.5.1 Which VCS implementation to load |
 | vcs.revision | The revision/tag/branch to checkout; by default this will be the latest revision for the remote URL, and will be logged. |
 | log4j12Url | __Deprecated__: use loggingConfigUrl instead.|
 | loggingConfigUrl | since 3.1.0 If specified then then an attempt is made to re-configure the logging (log4j1.2 or log4j2) subsystem with the referenced URL. This is done after any checkout/update is performed.|
@@ -53,6 +54,7 @@ adapterConfigUrl=file://localhost/./config/interlok-config-example/adapter.xml
 loggingConfigUrl=file://localhost/./config/interlok-config-example/log4j2.xml
 webServerConfigUrl=./config/interlok-config-example/jetty.xml
 
+vcs.implementation=CommandLine
 vcs.workingcopy.url=file://localhost/./config/interlok-config-example
 vcs.remote.repo.url=https://github.com/adaptris/interlok-config-example.git
 vcs.revision=master
