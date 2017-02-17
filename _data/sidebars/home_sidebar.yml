@@ -142,7 +142,7 @@ entries:
     - title: Optional Component Discovery
       url: /ui-optional-component-discovery.html
       output: web
-      
+
     - title: Security
       url: /ui-security.html
       output: web
@@ -218,6 +218,18 @@ entries:
     - title: Splitting Messages
       url: /cookbook-splitting-messages.html
       output: web
+
+      subfolders:
+      - title: Data Transformation
+        output: web
+        subfolderitems:
+        - title: Flat file Transforms
+          url: /cookbook-flatfile-transform.html
+          output: web
+
+        - title: XML Transforms
+          url: /cookbook-xml-transform.html
+          output: web
 
     - title: Validating XML
       url: /cookbook-xml-validation.html
