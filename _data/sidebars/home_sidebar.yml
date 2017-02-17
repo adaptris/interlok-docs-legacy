@@ -159,8 +159,8 @@ entries:
     output: web
     folderitems:
 
-    - title: Email (POP3/IMAP/SMTP)
-      url: /cookbook-email.html
+    - title: Aggregating Messages
+      url: /cookbook-aggregating-messages.html
       output: web
 
       subfolders:
@@ -175,28 +175,40 @@ entries:
           url: /cookbook-jdbc-data-query.html
           output: web
 
-    - title: JMS
-      url: /cookbook-jms.html
+    - title: Email (POP3/IMAP/SMTP)
+      url: /cookbook-email.html
       output: web
 
-    - title: Message Aggregation
-      url: /cookbook-aggregating-messages.html
+      subfolders:
+      - title: Messaging
+        output: web
+        subfolderitems:
+        - title: JMS
+          url: /cookbook-jms.html
+          output: web
+
+        - title: MSMQ
+          url: /cookbook-msmq.html
+          output: web
+
+        - title: Native WebsphereMQ
+          url: /cookbook-native-wmq.html
+          output: web
+
+        - title: Oracle AQ
+          url: /cookbook-oracleaq.html
+          output: web
+
+        - title: Terracotta Universal Messaging
+          url: /cookbook-terracotta-um.html
+          output: web
+
+    - title: Splitting Messages
+      url: /cookbook-splitting-messages.html
       output: web
 
-    - title: MSMQ
-      url: /cookbook-msmq.html
-      output: web
-
-    - title: Terracotta Universal Messaging
-      url: /cookbook-terracotta-um.html
-      output: web
-
-    - title: Native WebsphereMQ
-      url: /cookbook-native-wmq.html
-      output: web
-
-    - title: Oracle AQ
-      url: /cookbook-oracleaq.html
+    - title: Split and Aggregate
+      url: /cookbook-split-join.html
       output: web
 
       subfolders:
@@ -211,12 +223,8 @@ entries:
           url: /cookbook-sap-idoc.html
           output: web
 
-    - title: Split and Aggregate
-      url: /cookbook-split-join.html
-      output: web
-
-    - title: Splitting Messages
-      url: /cookbook-splitting-messages.html
+    - title: Validating XML
+      url: /cookbook-xml-validation.html
       output: web
 
       subfolders:
@@ -230,10 +238,6 @@ entries:
         - title: XML Transforms
           url: /cookbook-xml-transform.html
           output: web
-
-    - title: Validating XML
-      url: /cookbook-xml-validation.html
-      output: web
 
   - title: Advanced
     output: web

@@ -56,7 +56,7 @@ Then our [jdbc-data-capture-service][] to insert all the sample pangrams into a 
 - We get the nodelist returned by `/document/sample` and for each node in the list we resolve the the xpath `./data` to find the parameter to pass into the insert statement.
    - This results in 4 INSERT statements being executed.
 
-{% include note.html content="For a full discussion about [jdbc-statement-parameters][jdbc-statement-parameter] then you can look at the [Statement Parameters section of Data Extract using JDBC](cookbook-jdbc-data-query.html#statement-parameters)" %}
+{% include tip.html content="There is a variant of this service called [jdbc-batching-data-capture-service][] which allows you to set a batch window for performance purposes; a [jdbc-data-capture-service][] is simply a [jdbc-batching-data-capture-service][] with a batch window set to 1." %}
 
 ## JDBC Raw Data Capture Service ##
 
@@ -92,5 +92,6 @@ Taking the example document above, we want to insert the entire document as a ne
 [iterate over an XPath]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/JdbcDataCaptureService.html#setIterates-java.lang.Boolean-
 [jdbc-data-query-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/JdbcDataQueryService.html
 [jdbc-statement-parameter]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/StatementParameter.html
+[jdbc-batching-data-capture-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/JdbcBatchingDataCaptureService.html
 
 {% include links.html %}
