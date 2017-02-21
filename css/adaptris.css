@@ -36,3 +36,7 @@ footer {
 .container {
     max-width: none;
 }
+
+.v-align-top-image {
+    vertical-align: top;
+}
