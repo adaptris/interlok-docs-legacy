@@ -12,11 +12,13 @@ summary: The Dashboard Page is the first page a user is directed to after a succ
 After an initial login, the Dashboard page will show you the auto-discovered local Adapter component.
 
 A typical dashboard page with a single Adapter registered to it. In this example, the Adapter was auto-detected:
+
 ![The Dashboard Page](./images/ui-user-guide/dashboard-page-no-errors.png)
 
 ## The Adapter Area ##
 
 The Dashboard Page with annotations shows the various parts of the Dashboard Page:
+
 ![The Dashboard Page with annotations](./images/ui-user-guide/dashboard-page-no-errors-with-annotations.png)
 
 - A. This is the registered Adapter Component, there would be one of these areas displayed per registered Adapter;
@@ -66,12 +68,15 @@ The Dashboard Page with annotations shows the various parts of the Dashboard Pag
 Ticking the Show Channels checkbox in the Adapter control bar will expand the Adapter area and show a list of its Channel components.
 
 Dashboard Page with the Show Channels selector highlighted in pink:
+
 ![Dashboard Page with the Show Channels selector highlighted in pink](./images/ui-user-guide/dashboard-page-show-channels-highlighted.png)
 
 The Dashboard Pages Adapter area with expanded channels showing:
+
 ![The Dashboard Pages Adapter area with expanded channels showing](./images/ui-user-guide/dashboard-page-with-expanded-channel.png)
 
 The Dashboard Pages Adapter area with expanded channels showing with annotations:
+
 ![The Dashboard Pages Adapter area with expanded channels showing](./images/ui-user-guide/dashboard-page-with-expanded-channel-with-annotations.png)
 
 - A. Channel component
@@ -105,9 +110,11 @@ The Dashboard Pages Adapter area with expanded channels showing with annotations
 Ticking the Show Workflows checkbox in the Channel control bar will expand the area and show a list of its Workflow components.
 
 The Dashboard Page with Workflows expanded:
+
 ![Dashboard Page with Workflows expanded](./images/ui-user-guide/dashboard-page-with-expanded-workflows.png)
 
 A Channel areas expanded Workflow area:
+
 ![Dashboard Page with the Show Workflows selector selected](./images/ui-user-guide/dashboard-channel-component-show-workflows.png)
 
 The Workflow component is split in five parts:
@@ -158,11 +165,13 @@ Dashboard Page shown on a smaller screen:
 On the Dashboard page, clicking on the Adapters 'Show Config' button will open a modal window containing the Adapter configuration. This is presented in two different formats, XML and Diagram modes; The XML mode is a read-only display of the Adapter configuration in a formatted XML display. The Diagram mode is a visual representation of the Adapter configuration.
 
 Dashboard Page with the show Config button highlighted in pink:
+
 ![Dashboard Page with the show Config button highlighted in pink](./images/ui-user-guide/dashboard-page-show-config.png)
 
 After pressing the Show Config button, the Config modal window will appear.
 
 Dashboard Page with the Adapter Config modal showing on the XML view:
+
 ![Dashboard Page with the Adapter Config modal showing on the XML view](./images/ui-user-guide/dashboard-config-modal-xml.png)
 
 Shown above is the view that appears after pressing the Show Config button, the Config modal window will appear and the XML view will be shown as default. In this view users are able to collapse and expand XML elements. This is a read only view of the XML config, and any changes made here would not be applied to that Adapter.
@@ -170,6 +179,7 @@ Shown above is the view that appears after pressing the Show Config button, the 
 Using the diagram button on the top of the config modal will present the user with visual representation of the Adapter configuration.
 
 Dashboard Page with the Adapter Config modal showing on the Diagram view:
+
 ![Dashboard Page with the Adapter Config modal showing on the Diagram view](./images/ui-user-guide/dashboard-config-modal-diagram.png)
 
 On the visual representation of the Adapter configuration, the following options available:
@@ -187,6 +197,7 @@ On the visual representation of the Adapter configuration, the following options
 On the Dashboard Page, if any of the registered Adapters have failed messages, then a disposable alert is shown to warn the user.
 
 Dashboard Page showing failed messages:
+
 ![Dashboard Page showing failed messages](./images/ui-user-guide/dashboard-page-with-failed-messages.png)
 
 {% include note.html content="The badge icon on the Failed Messages section of the Adapter area will give a real time count of the amount of failed messages.<br/><br/>In order to get the number of failed message working a 'Standard Message Error Digester' will need to be added to the adapter configuration." %}
@@ -194,6 +205,7 @@ Dashboard Page showing failed messages:
 Clicking on the Failed Messages details block will open the Failed Messages modal window containing the last hundred failed messages.
 
 Dashboard Page with the clickable Failed Messages area highlighted in pink:
+
 ![Dashboard Page with the clickable Failed Messages area highlighted in pink](./images/ui-user-guide/dashboard-page-failed-messages-area-highlighted.png)
 
 The Dashboard Pages Failed Messages modal window:
@@ -225,6 +237,7 @@ The above image shows the various parts of the Failed Messages modal window:
 If the local Adapter is not shown (e.g. previously removed) or if a user wishes to monitor another Adapter, the Add Container button of the Dashboard page can be used.
 
 Dashboard Page with the Add Adapter button highlighted in pink:
+
 ![Dashboard Page with the Add Adapter button highlighted in pink](./images/ui-user-guide/dashboard-page-add-adapter-highlighted.png)
 
 Clicking on the Add Container button will open the Add Adapter modal window which contains a form that allows you to register an Adapter to the UI.
@@ -250,7 +263,9 @@ The Add Adapter form inputs explained:
 Adding more than one Adapter will result in having a list of Adapter components listed on the Dashboard Page.
 
 The Dashboard Page with multiple registered Adapter instances:
+
 ![The Dashboard Page with multiple registered Adapter instances](./images/ui-user-guide/dashboard-page-with-2-adapters.png)
 
 On two widgets per row mode:
+
 ![The Dashboard Page with multiple registered Adapter instances](./images/ui-user-guide/dashboard-page-with-2-adapters-small.png)
