@@ -110,6 +110,10 @@ entries:
       url: /ui-log-monitor.html
       output: web
 
+    - title: Log Config
+      url: /ui-log-config.html
+      output: web
+
     - title: Alerts
       url: /ui-alerts.html
       output: web

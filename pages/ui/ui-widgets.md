@@ -41,17 +41,21 @@ Button | Action | Meaning
 This section shows examples of what the widgets page looks like.
 
 Various widgets configured on the widgets page:
+
 ![The widgets page with many configured widgets](./images/ui-user-guide/widgets-page-configured-with-many.png)
 
 Configured widgets on the page, but shown in a small screen resolution:
+
 ![The widgets page with many configured widgets on a small screen](./images/ui-user-guide/widgets-page-configured-with-many-small-screen.png)
 
 Without widgets configured:
+
 ![The widgets page without any widgets](./images/ui-user-guide/widgets-without-any-widgets.png)
 
 #### A Runtime widget explained ####
 
 An example widget:
+
 ![An example runtime widget](./images/ui-user-guide/widgets-details-widget-example.png)
 
 Each widget is made up of a title bar and a body. The title bar
@@ -74,6 +78,7 @@ To add a runtime widget to the widgets page you would have to click on the add w
 ![The widget add button](./images/ui-user-guide/widgets-add-action-btn.png)
 
 Pressing the add widget button would bring up the add widget modal:
+
 ![The widget add modal](./images/ui-user-guide/widgets-add-modal.png){: .bordered-image }
 
 Using the add widget form, you select an Interlok container using the container selector:
@@ -112,6 +117,7 @@ Example of the add modal with a channel and workflow selected:
 ### Details Widget ###
 
 This widget shows basic details for the selected container.
+
 ![Runtime Widget - Details](./images/ui-user-guide/widgets-details-widget.png)
 
 This widget shows:
@@ -145,11 +151,13 @@ This widget is similar to [Message Counts Chart](ui-widgets.html#message-counts-
 ### Control Panel ###
 
 This widget allows quick control (Start, Close, Stop) of the adapter from the runtime page. (Since 3.4)
+
 ![Runtime Widget - Control Panel](./images/ui-user-guide/widgets-control-panel-widget.png)
 
 ### Failed Messages ###
 
 This widget show a table detailing the current failed messages for a given container.
+
 ![Runtime Widget - Failed Messages](./images/ui-user-guide/widgets-failed-message-details-widget.png)
 
 This table shows:
@@ -164,6 +172,7 @@ In order to use the failed message retry action on this widget you need the corr
 ### Logging ###
 
 This widget allows you to see the containers logging information in a tabular format.
+
 ![Runtime Widget - Logging](./images/ui-user-guide/widgets-logging-widget.png)
 
 The table shows the time slice id of when the log message occurred and the logging message (the format of which is configured in log4j).
@@ -203,6 +212,7 @@ As well as log4j config, you would have to put the interlok-logging.jar into the
 ### Platform Runtime Details ###
 
 This widget shows basic information about the platform running the Interlok container.
+
 ![Runtime Widget - Platform Runtime Details](./images/ui-user-guide/widgets-platform-runtime-details-widget.png)
 
 This widget shows the basic data from the [RuntimeMXBean](http://docs.oracle.com/javase/7/docs/api/java/lang/management/RuntimeMXBean.html)
@@ -216,6 +226,7 @@ This widget shows the basic data from the [RuntimeMXBean](http://docs.oracle.com
 ### Platform Runtime Classpath ###
 
 This widget shows the containers java Classpath.
+
 ![Runtime Widget - Platform Runtime Classpath](./images/ui-user-guide/widgets-platform-classpath-details-widget.png)
 
 This widget shows the classpath data from the [RuntimeMXBean](http://docs.oracle.com/javase/7/docs/api/java/lang/management/RuntimeMXBean.html)
@@ -227,6 +238,7 @@ This widget shows the classpath data from the [RuntimeMXBean](http://docs.oracle
 ### Platform System Properties ###
 
 This widget shows the containers runtime system properties
+
 ![Runtime Widget - Platform Runtime System Properties](./images/ui-user-guide/widgets-platform-runtime-sys-props-widget.png)
 
 This widget shows the names and values of all system properties from the [RuntimeMXBean](http://docs.oracle.com/javase/7/docs/api/java/lang/management/RuntimeMXBean.html)
@@ -234,6 +246,7 @@ This widget shows the names and values of all system properties from the [Runtim
 ### Platform Operating System ###
 
 This widget shows information regarding the system details.
+
 ![Runtime Widget - Platform Operating System](./images/ui-user-guide/widgets-platform-system-details-widget.png)
 
 This widget shows the data from the [OperatingSystemMXBean](http://docs.oracle.com/javase/7/docs/api/java/lang/management/OperatingSystemMXBean.html)
@@ -246,6 +259,7 @@ This widget shows the data from the [OperatingSystemMXBean](http://docs.oracle.c
 ### Platform Thread Details ###
 
 This widget shows information regarding the platforms threading data.
+
 ![Runtime Widget - Platform Thread Details](./images/ui-user-guide/widgets-platform-thread-details-widget.png)
 
 This widget shows the data from the [ThreadMXBean](http://docs.oracle.com/javase/7/docs/api/java/lang/management/ThreadMXBean.html)
@@ -259,6 +273,7 @@ This widget shows the data from the [ThreadMXBean](http://docs.oracle.com/javase
 ### Platform System CPU Load ###
 
 This widget contains data concerning the cpu usage for the platform running this container.
+
 ![Runtime Widget - Platform System CPU Load](./images/ui-user-guide/widgets-platform-cpu-load-system-widget.png)
 
 This widget shows the data from the [OperatingSystemMXBean](http://docs.oracle.com/javase/7/docs/api/java/lang/management/OperatingSystemMXBean.html)
@@ -272,6 +287,7 @@ The system will stop recording the system cpu usage and the data will be cleared
 ### Platform JVM Process Load ###
 
 This widget contains data concerning the cpu usage for the the Java Virtual Machine running this container.
+
 ![Runtime Widget - Platform System CPU Load](./images/ui-user-guide/widgets-platform-cpu-load-process-widget.png)
 
 This widget shows the data from the [OperatingSystemMXBean](http://docs.oracle.com/javase/7/docs/api/java/lang/management/OperatingSystemMXBean.html)
@@ -285,6 +301,7 @@ The system will stop recording the process cpu usage and the data will be cleare
 ### Platform Memory Heap Details ###
 
 This widget contains data concerning the platforms memory heap.
+
 ![Runtime Widget - Platform Memory Details](./images/ui-user-guide/widgets-platform-memory-heap-details-widget.png)
 
 This widget shows the data from the [MemoryMXBean](http://docs.oracle.com/javase/7/docs/api/java/lang/management/MemoryMXBean.html)
@@ -297,6 +314,7 @@ This widget shows the data from the [MemoryMXBean](http://docs.oracle.com/javase
 ### Platform Memory Non Heap Details ###
 
 This widget contains data concerning the platforms memory non heap.
+
 ![Runtime Widget - Platform Memory Details](./images/ui-user-guide/widgets-platform-memory-nonheap-details-widget.png)
 
 This widget shows the data from the [MemoryMXBean](http://docs.oracle.com/javase/7/docs/api/java/lang/management/MemoryMXBean.html)
@@ -309,6 +327,7 @@ This widget shows the data from the [MemoryMXBean](http://docs.oracle.com/javase
 ### Platform Memory Heap ###
 
 This widget contains data concerning the platforms heap memory.
+
 ![Runtime Widget - Platform Memory Heap](./images/ui-user-guide/widgets-platform-memory-heap-widget.png)
 
 This widget shows the data from the [MemoryMXBean](http://docs.oracle.com/javase/7/docs/api/java/lang/management/MemoryMXBean.html)
@@ -322,6 +341,7 @@ The system will stop recording the heap memory and the data will be cleared if n
 ### Platform Memory Non Heap ###
 
 This widget contains data concerning the platforms non heap memory.
+
 ![Runtime Widget - Platform Memory Non Heap](./images/ui-user-guide/widgets-platform-memory-nonheap-widget.png)
 
 This widget shows the data from the [MemoryMXBean](http://docs.oracle.com/javase/7/docs/api/java/lang/management/MemoryMXBean.html)
@@ -394,6 +414,7 @@ This widget is exactly like the widget described in [Container Control Panel Wid
 ### Workflow Message Sizes ###
 
 This widget shows a chart that details the collective sizes of messages that the workflow has processed.
+
 ![Runtime Widget - Message Sizes Chart](./images/ui-user-guide/widgets-message-sizes-widget.png)
 
 This chart shows:
@@ -405,6 +426,7 @@ This chart shows:
 ### Workflow Message Metrics ###
 
 This widget shows a table that details the collective sizes and counts of messages that the workflow has processed.
+
 ![Runtime Widget - Message Metrics Table](./images/ui-user-guide/widgets-message-metrics-widget.png)
 
 This table shows:
@@ -419,6 +441,7 @@ This table shows:
 
 This widget shows a table displaying realtime metadata counts from the messages that the workflow has processed.
 This widget will be enabled if a Metadata Count or Metadata Totals Interceptor has been configured for the workflow.
+
 ![Runtime Widget - Message Statistics Table](./images/ui-user-guide/widgets-message-statistics-widget.png)
 
 This table shows:
@@ -431,6 +454,7 @@ This table shows:
 
 This widget shows a chart displaying realtime metadata counts from the messages that the workflow has processed.
 This widget will be enabled if a Metadata Count or Metadata Totals Interceptor has been configured for the workflow.
+
 ![Runtime Widget - Message Statistics Chart](./images/ui-user-guide/widgets-message-statistics-chart-widget.png)
 
 This chart shows:
@@ -443,6 +467,7 @@ This chart shows:
 
 This widget shows a pie chart displaying realtime metadata counts from the messages that the workflow has processed.
 This widget will be enabled if a Metadata Count or Metadata Totals Interceptor has been configured for the workflow.
+
 ![Runtime Widget - Message Counts Pie](./images/ui-user-guide/widgets-workflow-message-metadata-counts-pie-widget.png)
 
 ## Widget Group ##
