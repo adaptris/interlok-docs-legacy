@@ -38,5 +38,6 @@ The alerts icon on the navigation bar polls the alerts every 60 seconds, and wil
 
 
 and this is what it looks like opened up:
+
 ![The alerts shown](./images/ui-user-guide/alert6-alerts-open.png)
 
