@@ -22,6 +22,7 @@ The list of keys and a brief description of each key is described below :
 | preProcessors | A `:` separated list of [pre-processors][advanced-configuration-pre-processors] that need to be applied before configuration is unmarshalled |
 | enableLocalJndiServer| defaults to false, and should be set to true, if you intend on having [shared components][adapter-jndi-guide] accessible via the `adapter:` scheme|
 | sysprop. | Properties prefixed by this key will be converted into system properties at startup (minus the `sysprop.`) |
+| jetty. | Properties prefixed by this key will be converted passed into to the embedded jetty instance (since 3.6.0) |
 | adapterTemplatesUrl | __Deprecated__ : Configure this directly in the UI; A file URL for a directory that contains all the templates that will be searched by the UI; defaults to `file://localhost/./ui-resources/config-templates`|
 | adapterScmUrl | __Deprecated__ : Configure this directly in the UI; a file URL that for a directory where the UI will backup any configuration that is saved/applied; defaults to `file://localhost/./ui-resources/config-store`|
 | log4j12Url | __Deprecated__ : use loggingUrl instead |
@@ -159,6 +160,8 @@ If jetty is enabled via `managementComponents=jetty` then an additional key is r
 managementComponents=jetty:jmx
 webServerConfigUrl=./config/jetty.xml
 ```
+
+{% include tip.html content="since 3.6.0 then system properties prefixed with `jetty.` will added as config properties to the embedded jetty. Properties defined in _bootstrap.properties_ will always take precedence." %}
 
 ## System Properties ##
 

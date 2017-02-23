@@ -48,3 +48,32 @@ It is possible to invoke the adapter with a number of different switches. These 
 |-configtest| Parses the property file, and the associated configuration to be unmarshalled. It also checks that the license is valid for the configuration. It does not check that the configuration is valid (e.g. Broker passwords) for what you're trying to do, it just asserts that the configuration is syntactically correct|
 
 <br/>
+
+```
+$ java -jar lib/adp-core.jar -version
+Bootstrap of Interlok 3.6-SNAPSHOT(2017-02-22) complete
+Version Information
+  Base Interlok: 3.6-SNAPSHOT(2017-02-22)
+  Interlok Annotation Support: 3.6-SNAPSHOT(2017-02-22)
+  Interlok Common Classes: 3.6-SNAPSHOT(2017-02-22)
+  Interlok Config Pre-Processor: variable substitution support: 3.6-SNAPSHOT(2017-02-22)
+  Interlok Config Pre-Processor: xinclude support: 3.6-SNAPSHOT(2017-02-22)
+  Interlok Logging components: 3.6-SNAPSHOT(2017-02-22)
+```
+
+```
+$ java -jar lib/adp-core.jar -configcheck bootstrap.properties
+Bootstrap of Interlok 3.6-SNAPSHOT(2017-02-22) complete
+TRACE [main] [BootstrapProperties] Properties resource is [bootstrap.properties]
+TRACE [main] [PropertyResolver] Parsing PropertyResolver URL [jar:file:/C:/Users/lchan/work/runtime/v3-nightly/lib/adp-core.jar!/META-INF/com/adaptris/core/management/properties/resolver]
+TRACE [main] [PropertyResolver] Registered Decoders : {password=com.adaptris.core.management.properties.PasswordDecoder}
+TRACE [main] [BootstrapProperties] Adding org.jruby.embed.localcontext.scope=threadsafe to system properties
+TRACE [main] [BootstrapProperties] Adding org.jboss.logging.provider=slf4j to system properties
+INFO  [main] [RuntimeVersionControlLoader] No version control systems found.
+INFO  [main] [RuntimeVersionControlLoader] No version control systems found.
+TRACE [main] [RuntimeInfoComponentFactory] No RuntimeInfoComponent for class com.adaptris.core.NoRetries
+TRACE [main] [RuntimeInfoComponentFactory] No RuntimeInfoComponent for class com.adaptris.core.NullProcessingExceptionHandler
+TRACE [main] [RuntimeInfoComponentFactory] No RuntimeInfoComponent for class com.adaptris.core.NullLogHandler
+INFO  [main] [UnifiedBootstrap] Adapter created
+Config check only; terminating
+```
