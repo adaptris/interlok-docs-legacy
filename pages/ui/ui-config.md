@@ -39,6 +39,7 @@ Just click on the Open Config button and that will open a modal displaying sever
 ## Navigating the config page ##
 
 Consider the following example of a typical config page:
+
 ![Typical config page example](./images/ui-user-guide/config-page-with-everything-open.png)
 
 In this example, the config page is made up of the following sections:
@@ -104,11 +105,11 @@ This component is a typical example and shows:
 
 ## Delete component features ##
 
-To delete a given component, you would click on the trash can icon ![Config page delete component action button](./images/ui-user-guide/config-workflow-bar-action-delete.png)  that's either in the header bar of that components area or if you hover over a given component it will present itself. Clicking on the trash can would therefore remove that component from the config.
+To delete a given component, you would click on the trash can icon ![Config page delete component action button](./images/ui-user-guide/config-workflow-bar-action-delete.png){: .inline }  that's either in the header bar of that components area or if you hover over a given component it will present itself. Clicking on the trash can would therefore remove that component from the config.
 
 ## Add component features ##
 
-To add a given component, you would click on the plus icon ![Config page add component action button](./images/ui-user-guide/dashboard-workflow-control-toggle.png), this will present itself when you hover over a list component, such as the  channel list, workflow list, service list, etc.
+To add a given component, you would click on the plus icon ![Config page add component action button](./images/ui-user-guide/dashboard-workflow-control-toggle.png){: .inline }, this will present itself when you hover over a list component, such as the  channel list, workflow list, service list, etc.
 
 When adding a component, after clicking the plus icon, you'll be presented with the add component modal window.
 
@@ -132,9 +133,10 @@ To actually add the component, all you have to do is click on the required compo
 
 ## Settings editor features ##
 
-The settings editor is available when you want to edit a component. This is always available by clicking on the edit icon ![Config page edit component action button](./images/ui-user-guide/config-action-edit.png). This editor allows you to edit the settings on a given component.
+The settings editor is available when you want to edit a component. This is always available by clicking on the edit icon ![Config page edit component action button](./images/ui-user-guide/config-action-edit.png){: .inline }. This editor allows you to edit the settings on a given component.
 
 Example of a typical settings editor:
+
 ![Typical edit component modal window](./images/ui-user-guide/config-edit-component.png)
 
 You will notice that there is a input control per field for that given component.
@@ -148,11 +150,13 @@ This will allow you to select a given implementation for that field, this is han
 As well as string, number and boolean inputs, there are special inputs for SQL, XML, Script, etc, that allow better editting of those values.
 
 Example of a typical settings editor with a script input:
-![Typical edit component modal window with a script input](./images/ui-user-guide/config-edit-componet-custom.png)
+
+![Typical edit component modal window with a script input](./images/ui-user-guide/config-edit-componet-custom.png){: .inline }
 
 As well as allowing you to easily edit the values of a component, if you do want to switch to the advanced XML config mode, then you would press the XML icon in the editors header ![Config page edit component xml action button](./images/ui-user-guide/config-xml-editor.png).
 
 Example of a typical settings editor in XML mode:
+
 ![typical settings editor in XML mode](./images/ui-user-guide/config-edit-component-xml.png)
 
 The following image shows an annotated settings editor:
