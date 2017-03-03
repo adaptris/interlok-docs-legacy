@@ -1,6 +1,6 @@
 ## Version 3.6.0 ##
 
-Release Date : 
+Release Date : 2017-03-03
 
 This release updates jetty from 8.1.x to 9.4.x; as a result you will need java 8 to run the adapter. The jetty configuration has also changed quite a bit; if you have customised your jetty.xml then you will need to cross reference it with the jetty.xml that is shipped with Interlok. Java 7 has been EOL'd and we are expecting Java 9 to be released in the next few months; we anticipate that most businesses will already be looking to upgrade/are already running Java 8. In the event that there are enough customer requests for it, then we will downgrade to jetty 9.2.x which still works with java 7.
 
@@ -18,7 +18,7 @@ The changes for [INTERLOK-1395](https://adaptris.atlassian.net/browse/INTERLOK-1
 - [INTERLOK-1382](https://adaptris.atlassian.net/browse/INTERLOK-1382) - UI Config - the dropdown buttons lose their text on small screens
 - [INTERLOK-1385](https://adaptris.atlassian.net/browse/INTERLOK-1385) - SimpleBootstrap no longer works with non-standard directories.
 - [INTERLOK-1386](https://adaptris.atlassian.net/browse/INTERLOK-1386) - UI - update all links to documentation site
-- [INTERLOK-1391](https://adaptris.atlassian.net/browse/INTERLOK-1391) - UI - DbUrlManagerTest.testLegacyLegacyAndNewDbExists failing on jenkins 
+- [INTERLOK-1391](https://adaptris.atlassian.net/browse/INTERLOK-1391) - UI - DbUrlManagerTest.testLegacyLegacyAndNewDbExists failing on jenkins
 - [INTERLOK-1394](https://adaptris.atlassian.net/browse/INTERLOK-1394) - Standardise use of fileNameCreator vs filenameCreator
 - [INTERLOK-1399](https://adaptris.atlassian.net/browse/INTERLOK-1399) - XmlEdiStreamService always uses edifact charset
 - [INTERLOK-1404](https://adaptris.atlassian.net/browse/INTERLOK-1404) - UI Optional - page loading modal stays on when not connected to internet
@@ -27,7 +27,10 @@ The changes for [INTERLOK-1395](https://adaptris.atlassian.net/browse/INTERLOK-1
 - [INTERLOK-1436](https://adaptris.atlassian.net/browse/INTERLOK-1436) - The maven purge local dependency doesn't work since we changed package to com.adaptris.ui.
 - [INTERLOK-1440](https://adaptris.atlassian.net/browse/INTERLOK-1440) - Issue in interlok-logging when the log4j2.xml is modified while the adapter is running
 - [INTERLOK-1447](https://adaptris.atlassian.net/browse/INTERLOK-1447) - Update the URL shortcut that the installer creates
-
+- [INTERLOK-1452](https://adaptris.atlassian.net/browse/INTERLOK-1452) - BytesMessageTranslator does not work where bytesMessage.read() returns -1
+- [INTERLOK-1461](https://adaptris.atlassian.net/browse/INTERLOK-1461) - ActiveMQ Connections attempt reconnect to ActiveMQ Component during shutdown.
+- [INTERLOK-1462](https://adaptris.atlassian.net/browse/INTERLOK-1462) - WebsphereMQ shouldn't have a dependency on stax-api.jar
+- [INTERLOK-1471](https://adaptris.atlassian.net/browse/INTERLOK-1471) - LicenseFactory doesn't work with absolute locations
 
 
 ### Improvements
@@ -70,6 +73,8 @@ The changes for [INTERLOK-1395](https://adaptris.atlassian.net/browse/INTERLOK-1
 - [INTERLOK-1435](https://adaptris.atlassian.net/browse/INTERLOK-1435) - Centralise the adaptris and help link urls
 - [INTERLOK-1439](https://adaptris.atlassian.net/browse/INTERLOK-1439) - Fix interlok-ui-swagger-codegen to use the new jetty 9 EmbeddedConnection
 - [INTERLOK-1444](https://adaptris.atlassian.net/browse/INTERLOK-1444) - license.properties shouldn't have to have adp.license.key=
+- [INTERLOK-1447](https://adaptris.atlassian.net/browse/INTERLOK-1447) - Update the URL shortcut that the installer creates
+- [INTERLOK-1448](https://adaptris.atlassian.net/browse/INTERLOK-1448) - Add documentation for the new log configuration page
 
 
 
