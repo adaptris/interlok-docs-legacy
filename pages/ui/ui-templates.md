@@ -121,7 +121,8 @@ The example above defines 3 wizard steps to be presented as 3 separate screens: 
 
 ### Wizard Steps ###
 
-From the example above :
+From the example above:
+
 ```xml
 <vendor-implementation class="basic-active-mq-implementation">
   <broker-url wizard-key="brokerUrl" wizard-label="Broker Url"
@@ -275,6 +276,7 @@ The full XML that is created will look similar to the below
   <message-error-digester class="null-message-error-digester"/>
 </adapter>
 ```
+
 - The connection details have been updated.
     - The password has been encrypted because we selected the checkbox.
 - The JMS Queue to read from, and the add metadata service have been updated with `SampleQ1`
@@ -287,7 +289,9 @@ To facilitate re-usability of templates you can use the community templates remo
 In order to use this you will have to enable Version Control in the adapter. Please check [version control with subversion](advanced-vcs-svn.html#installation) for more details on how to do it.
 
 Once enabled users will be able to create a new template [vcs profile](ui-version-control.html) with the community repository details. A new folder will be visible in the add component modal when adding a new component (adapter, channel, workflow...).
+
 ![Save as Template Wizard Select Fields Screen](./images/ui-user-guide/community-templates.png)
+
 Users can open the folder and select a community template for the chosen component.
 
 A user will also be able to push templates to a community repository when saving a template by checking the "Push To Community Repository" checkbox and providing his community password if needed.
