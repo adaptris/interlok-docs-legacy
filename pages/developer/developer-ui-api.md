@@ -12,12 +12,15 @@ summary: The UI has its own API. This can be used to do some simple operations, 
 There is a working example of the UI API in action within the cm-dashboard project (the Cirrus UI).
 
 The cirrus ui lists the Interlok containers within it's given community:
+
 ![Cirrus UI - Interlok Container Details Page](./images/ui-api/1-Cirrus-UI-Adapter-Details-Page.png)
 
 by selecting the manage operation for a given Interlok container:
+
 ![Cirrus UI - Interlok Container Details Page manage button](./images/ui-api/2-Cirrus-UI-Adapter-Details-Page-manage-btn.png)
 
 you can view the manage Interlok container page:
+
 ![Cirrus UI - Manage Interlok container Page](./images/ui-api/3-Cirrus-UI-Manage-Adapter-Page.png)
 
 This manage Interlok container page is using the interlok ui api to obtain data & perform functions on this selected Interlok container. All the Interlok containers in this community are registered with one ui Interlok container, which is having the ui api accessed by this webapp. In essence, this page is its own Interlok container ui.
@@ -35,9 +38,10 @@ learn more about swagger:
 
 So, if you point to (change this URL for you own hostname)
 
-[http://localhost:8080/adapter-web-gui/access/swagger.json](http://localhost:8080/adapter-web-gui/access/swagger.json)
+[http://localhost:8080/interlok/api/swagger.json](http://localhost:8080/interlok/api/swagger.json)
 
 you will see the json file containing all the webservices data.
+
 ![Swagger JSON](./images/ui-api/4-swagger-json.png)
 
 
@@ -50,9 +54,11 @@ so download swagger-ui and copy that folder into the adapter's webapp folder, th
 ![Swagger UI Page](./images/ui-api/5-local-swagger-ui-page.png)
 
 you then put in the json url into the input box and press explore
+
 ![Local Swagger UI With Data](./images/ui-api/6-local-swagger-with-data.png)
 
 you can then use this page to develop against and make your own Interlok UI:
+
 ![Local Swagger Doing Operation](./images/ui-api/7-local-swagger-doing-operation.png)
 
 ## Yeah, but... ##
