@@ -19,35 +19,47 @@ SonicMQ provides a java container for which you may run your own programs. Adapt
 
 ## Creating the CAR file ##
 
-We have provided a utility program called the "CAR builder" to create a CAR file from your Interlok version 3.0 installation. Please contact Adaptris support for a copy of this tool.
+We have provided a utility program called the "CAR builder" to create a CAR file from your Interlok version 3.x installation. Please contact Adaptris support for a copy of this tool.
 
 ### Pre-requisites for the CAR builder ###
 
-The Adaptris CAR builder requires apache-ant version 1.8.3+ and an installation of Interlok V3.
-
-The following jar files should also be added to your Interlok installations "lib" directory;
-
-- adp-sonicmf.jar (In the distribution)
-- mfcontext.jar (Found in your SonicMQ installation)
-- mfcommon.jar (Found in your SonicMQ installation, may not exist for later versions of SonicMQ, in which case ignore this file)
+The Adaptris CAR builder requires apache-ant version 1.8.3+ and optionally an installation of Interlok 3.x.
 
 ### Configuring the CAR builder ###
 
 Inside the directory containing the CAR builder tool, take a copy of the build.properties.template file and save it as build.properties.
 
-This contains the minimum property declarations that you'll need to execute the tools script. Generally you'll just need to modify the adapter.home property to match your Interlok installation directory; however other property declarations are possible.
+This contains the minimum property declarations that you'll need to execute the tools script. The available properties are:
 
-- adapter.home (The full path to the root of your Interlok installation)
-- adapterLibDir (Optional.  The full path to your Interlok installations 'lib' directory).
-- adapterCarFilename (Optional.  The file name of the resulting CAR file, defaults to MFadapter.car).
+| Name            | Default value       | Description                         |
+| --------------- | ------------------- | ----------------------------------- |
+| interlok.version | 3.6.0               | The version of Interlok to download |
+| interlok.lib     | target/interlok/lib | Where to find Interlok libraries. If downloading, libraries will be placed here |
+| extra.lib        | extra-lib           | Where to find extra jar files. Place adp-sonicmf.jar here and any other libraries you want to include in the CAR file that are not automatically downloaded (IBM MQ jars, for example) |
+| car.name         | MFadapter.car       | The name of the CAR file. Useful if you need to have multiple CARs with different libraries included in the same Sonic domain |
+| car.pack200      | true                | Whether to apply pack200 compression to reduce CAR file size. |
+
+If you already have an Interlok installation you want to package, set the `interlok.lib` property to the `lib` directory in that installation. If you don't have Interlok yet there is no need to change anything other than `interlok.version` to download the version you want.
 
 ### Running the CAR builder tool ###
 
-Open a new command line window and navigate to the root directory of the CAR builder tool.
+Open a new command line window and navigate to the root directory of the CAR builder tool. Run `ant -projecthelp` to get an overview of the available commands:
 
-Assuming apache-ant is configured on your system path, you can simply execute "ant".
+    build-car          Build the CAR file
+    clean-all          Clean the target directory
+    clean-car          Clean the car build directory
+    download-interlok  Download Interlok libraries and dependencies
+    Default target: download-and-build
 
-Once the CAR builder has completed you will find a new CAR file in the 'build' directory of the CAR builder installation.
+In order to download interlok and build the CAR file, run:
+
+    $ ant
+    
+or if you only want to build the car file (because you already have an Interlok installation to package):
+
+    $ ant build-car
+
+Once the CAR builder has completed you will find a new CAR file in the 'target' directory of the CAR builder installation.
 
 ![CAR Builder on the command line](./images/sonic-container/sonicmq-container-Figure1.png)
 
@@ -95,15 +107,19 @@ The following configuration should be used for the container configuration page;
 
 ![component properties 2](./images/sonic-container/sonicmq-container-Figure6.png)
 
-You will be able to add your newly created generic component to any standard Sonic container. The recommendation is that you create a new container for this component. There are a number of deployment parameters that can be used to control the runtime behaviour of Interlok running inside a container shown below;
+You will be able to add your newly created generic component to any standard Sonic container. The recommendation is that you create a new container for this component. There are a number of deployment parameters that can be used to control the runtime behaviour of Interlok running inside a container shown below:
 
-![deployment parameters](./images/sonic-container/sonicmq-container-Figure7.png)
+| Deployment parameter     | Description | Since |
+| ------------------------ | ----------- | ----- |
+| bootstrap.properties.url | The URL (in SonicFS) of your bootstrap.properties file | 3.0.1 |
+| jmxserviceurl            | The JMX Service URL | |
+| adapterxmlurl            | The URL for adapter.xml | |
+| licenseurl               | Where to find the license.properties file |
+| log4jurl                 | The URL for your log4j configuration file |
+| managementComponents     | The management components to load |
+| preProcessors            | Configuration preprocessors to apply |
 
-Since version 3.0.1 you have the option of specifying the full Interlok parameters into the deployment parameters of the container shown above, or you can simply have a single deployment parameter to specify your bootstrap.properties;
-
-```
-	bootstrap.properties.url == sonicfs:////System/Interlok/bootstrap.properties
-```
+You can specify either `bootstrap.properties.url` (since version 3.0.1) or you can specify the individual settings in their respective deployment properties. Please see the documentation about bootstrap.properties for the meanings of these settings.
 
 Should you choose to upload your bootstrap.properties into the sonicfs, you may also want to make sure the file resources within the bootstrap.properties also reference files in sonicfs.
 
@@ -116,10 +132,41 @@ Next, you need to make sure the SonicMQ container starts Interlok with the corre
 Finally, to configure the logging you will need to add the following switch (modify the path to your log4j configuration as needed) to the Java VM options in the container properties;
 
 ```
-	-Dlog4j.configurationFile=sonicfs:///System/Interlok/log4j2.xml
+  -Dlog4j.configurationFile=sonicfs:///System/Interlok/log4j2.xml
 ```
 
 ![JVM Options](./images/sonic-container/sonicmq-container-Figure9.png)
+
+## Container integrated logging ##
+
+By default, Interlok will log to its own log4j context which is separately configured from the Sonic container log. If you want to integrate Interlok logging into the Sonic container logs (if you use Sonic centralized logging, for example), use the following configuration in `log4j2.xml`:
+
+```
+<Configuration>
+  <Appenders>
+    ...
+    <ContainerLog name="ContainerLog">
+      <PatternLayout>
+        <Pattern>[%t] [%c{1}] %m</Pattern>
+      </PatternLayout>
+    </ContainerLog>
+    ...
+  </Appenders>
+  ...
+</Configuration>
+```
+
+## Deployment parameters variable substitution ##
+
+To use Sonic deployment parameters for variable replacements in your adapter.xml, add the following configuration to your `bootstrap.properties`:
+
+```
+preProcessors=xinclude:variableSubstitution:systemProperties:environmentVariables:deploymentParameters
+variable-substitution.properties.url=sonicfs:///Interlok/Adapters/environment.properties
+deployment-parameters.impl=STRICT_WITH_LOGGING
+```
+
+This will allow variables in your adapter.xml to be resolved from xinclude, a file called environment.properties, Java system properties, environment variables and Sonic deployment parameters.
 
 ## Native Library support ##
 
