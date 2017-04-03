@@ -18,7 +18,7 @@ By default we prefer to use [Apache Ant](http://ant.apache.org) because it allow
 You will need to have installed :
 
 - ANT 1.9+
-- JDK 7
+- JDK 8
 
 ## Quick and Dirty Ivy ##
 
