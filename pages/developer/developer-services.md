@@ -12,6 +12,8 @@ The [Service][] interface allows arbitrary functionality to be applied to [Adapt
 
 [StateManagedComponent][] defines additional methods for enforcing transitions within the state. Rather than calling the `init()` method within code, you should make use of the various [LifecycleHelper][] methods which will enforce transitions correctly.
 
+{% include tip.html content="An example project is available on github : https://github.com/adaptris/service-example" %}
+
 
 ## Minimum number of methods ##
 
