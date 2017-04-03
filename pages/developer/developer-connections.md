@@ -13,6 +13,8 @@ Generally speaking, any [AdaptrisConnection][] implementation will simply be a w
 - Unless you intend for the class to be a proxy for all the methods on the underlying connection, then make the underlying connection class available for use by associated [AdaptrisMessageProducer][], [AdaptrisMessageConsumer][] and [Service][] implementations.
 - If the connection is configured at the channel level or as a shared component; then multiple producers (or consumers) will use the same object instance. It is important to have a strategy to handle this if the underlying connection is not thread-safe.
 
+{% include tip.html content="An example quickstart project for services is available on github : [https://github.com/adaptris/service-example](https://github.com/adaptris/service-example)" %}
+
 
 ## Example ##
 

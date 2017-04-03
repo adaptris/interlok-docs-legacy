@@ -12,6 +12,7 @@ Within the Interlok framework, an [AdaptrisMessageProducer][] is responsible for
 - You can get access to the configured [AdaptrisConnection][] instance by using the `retrieveConnection` method.
 - Call `this.encode(AdaptrisMessage)` to encode the message with any configured [AdaptrisMessageEncoder][] implementation (optional).
 
+{% include tip.html content="An example quickstart project for services is available on github : [https://github.com/adaptris/service-example](https://github.com/adaptris/service-example)" %}
 
 
 ## Example ##
