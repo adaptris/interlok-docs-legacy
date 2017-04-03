@@ -38,7 +38,6 @@ import com.adaptris.whatever.*;
 import com.adaptris.core.*;
 import com.adaptris.core.util.*;
 import com.thoughtworks.xstream.annotations.XStreamAlias;
-import com.adaptris.util.license.License;
 import org.hibernate.validator.constraints.NotBlank;
 
 @XStreamAlias("do-something-service")
