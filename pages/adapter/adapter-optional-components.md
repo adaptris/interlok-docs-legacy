@@ -32,13 +32,13 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [adp-failover][] | Running an adapter in failover mode; requires [adp-profiler][]||
 |com.adaptris | [adp-fop][] | PDF Transformations|does not require [adp-licensing][] from 3.3.0
 |com.adaptris | [adp-hornetq][] | Connect to HornetQ JMS (will become obsolete as HornetQ is merged into ActiveMQ) |
+|com.adaptris | [adp-hpcc][] | Connect to [HPCC](http://www.hpccsystems.com)|3.3.0 - 3.6.0 only
 |com.adaptris | [adp-interfax][] | Integration with the Java FAX API; requires [adp-licensing][]|
 |com.adaptris | [adp-ironmq][] | Connect to IronMQ|does not require [adp-licensing][] from 3.3.0
 |com.adaptris | [adp-jms-oracleaq][] | Connect to [Oracle via advanced queues](cookbook-oracleaq.html); requires additional jars not automatically delivered; ; requires [adp-licensing][]||
 |com.adaptris | [adp-jms-sonicmq][] | Connect to SonicMQ JMS; ; requires [adp-licensing][]||
 |com.adaptris | [adp-jmx-jms][] | Support for [JMX via JMS or AMQP 1.0](advanced-jmx-jms.html) ||
 |com.adaptris | [adp-json][] | Transform JSON data to and from XML ||
-|com.adaptris | [adp-hpcc][] | Connect to [HPCC](http://www.hpccsystems.com)|3.3.0+
 |com.adaptris | [adp-kafka][] | Connect to [Apache Kafka](http://kafka.apache.org/)|3.2.1+
 |com.adaptris | [adp-licensing][] | Enforces a license on certain components ||
 |com.adaptris | [adp-msmq][] | Connect to MSMQ via ActiveX; requires [adp-licensing][]||
@@ -77,6 +77,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-elastic-search][] | Integration with ElasticSearch (requires [adp-simple-csv][]) | 3.4.1+
 |com.adaptris | [interlok-es5][] | Integration with ElasticSearch using v5 API (requires [adp-simple-csv][]) | 3.5.1+
 |com.adaptris | [interlok-failover][] | Simplified failover not dependent on AOP profiling | 3.4.0+
+|com.adaptris | [interlok-hpcc][] | Connect to [HPCC](http://www.hpccsystems.com)|3.6.1+ (now opensource/ licensed under ASLv2)
 |com.adaptris | [interlok-mqtt][] | Support for MQTT protocol | 3.5.1+
 |com.adaptris | [interlok-shell][] | Commandline runtime UI based on [CRaSH](http://www.crashub.org) | 3.4.1+
 |com.adaptris | [interlok-service-tester][] | Testing services as part of a CI pipeline | 3.5.0+
@@ -197,3 +198,4 @@ If you've added an optional components following the steps explained above you c
 [interlok-vertx]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-vertx/
 [interlok-vcs-command-line]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-vcs-command-line/
 [interlok-mqtt]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-mqtt/
+[interlok-hpcc]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-hpcc/
