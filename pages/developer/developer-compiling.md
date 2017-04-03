@@ -20,7 +20,7 @@ You will need to have installed :
 
 ## Quick and Dirty Ivy ##
 
-You really should consult the [Apache Ivy Documentation](http://ant.apache.org/ivy/history/latest-milestone/index.html) to get a better understanding of how ivy works; but an [example project](https://github.com/adaptris/service-example) is available on github to get you started; you will need to modify it to suit your environment, we will use it as the basis of this document
+You really should consult the [Apache Ivy Documentation](http://ant.apache.org/ivy/history/latest-milestone/index.html) to get a better understanding of how ivy works; but an [example project](https://github.com/adaptris/interlok-custom-component-example) is available on github to get you started; you will need to modify it to suit your environment, we will use it as the basis of this document to describe ant+ivy style projects. Alternative examples using other build tools are available for your delectation and amusement under separate branches.
 
 - ivy.properties : contains default properties that could be overwritten in your build.properties (such as the version of core you depend on etc).
 - ivy-settings.xml : contains resolvers and settings for your build
