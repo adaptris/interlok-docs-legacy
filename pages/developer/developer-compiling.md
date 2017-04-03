@@ -11,6 +11,8 @@ The simplest scenario is to have a local adapter installation and make sure all 
 
 However, that doesn't need to be the case; we've moved to [Apache Ivy](http://ant.apache.org/ivy/) for dependency management purposes and [Sonatype Nexus](http://www.sonatype.org/nexus/) as our artefact repository. This means that, once you explicitly name all your dependencies, some magic happens, and files appear in your `~/.ivy2` directory; very similar to what happens with [Apache Maven](http://maven.apache.org).
 
+{% include tip.html content="An example quickstart project on github : [https://github.com/adaptris/interlok-custom-component-example](https://github.com/adaptris/interlok-custom-component-example)" %}
+
 By default we prefer to use [Apache Ant](http://ant.apache.org) because it allows us more flexibility in how we tailor our builds. You can use [Apache Maven](http://maven.apache.org) if you prefer their conventions. Cool kids use [Gradle](https://gradle.org/).
 
 You will need to have installed :
