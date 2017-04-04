@@ -12,12 +12,12 @@ Installation is pretty easy. Download the installer, and execute it.
 
 ## Unix ##
 
-- Download [install.bin][] and execute from a prompt after download `sh ./install.bin`
+- Download the [unix-installer][] and execute it from a prompt after download `sh ./install.bin`
 - The default installation mode is console, in order to use the GUI installer, invoke the binary with the -i gui switch.
 
 ## Windows ##
 
-- Download either [install-with-jre.exe][] or [install-without-jre.exe][] and execute them.
+- Download the appropriate [windows-installer][] and execute it.
 - If you do not have a Java virtual machine installed, be sure to download the package above which includes one. The default bundled JRE is 64bit.
 - On Windows 2012 R2 you may have to run the installer in Windows 7 compatibility mode.
 
@@ -78,8 +78,7 @@ JAVA_EXECUTABLE=/opt/java/jdk1.7/bin/java
 
 ```
 
-[install.bin]: https://development.adaptris.net/installers/Interlok/latest-stable/install.bin
-[install-with-jre.exe]: https://development.adaptris.net/installers/Interlok/latest-stable/install-with-jre.exe
-[install-without-jre.exe]: https://development.adaptris.net/installers/Interlok/latest-stable/install-without-jre.exe
+[unix installer]: https://development.adaptris.net/installers/Interlok/latest-stable/install.bin
+[windows installer]: https://development.adaptris.net/installers/Interlok/latest-stable/
 
 {% include links.html %}
