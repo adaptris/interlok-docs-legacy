@@ -34,11 +34,11 @@ sc create "myServiceName" binPath="\path\to\myAdapter.exe -zglaxservice myServic
 
 It's simpler to make sure that `myServiceName` doesn't have any spaces (you can have spaces, but it is a pain to type on the commandline); other options can be used to make the adapter dependent on other services (e.g. SonicMQ); that is beyond the scope of this document.
 
-# Running directly from the commandline #
+## Running directly from the commandline ##
 
 When wrapping the Interlok runtime as part of another script, it is sometimes preferable to directly start the Java virtual machine directly rather than using the standard executable. Provided the current working directory is the base directory of the installation, the adapter can simply be started using the standard `-jar` directive, passing in any JVM properties and command-line arguments as appropriate. If the JVM classpath has been set manually prior to starting the adapter, then note that the `-jar` directive forces the JVM to ignore any classpath that might have been specified. If you’re happy with the manual classpath then use `com.adaptris.core.management.SimpleBootstrap` as the main class. This class will not cause any additional classpath initialisation to happen (i.e. `./config`, `./lib/*.jar` and `lib/*.zip` are not added to the classpath). If you still want the classpath initialisation to happen then you should use `com.adaptris.core.management.StandardBootstrap`.
 
-# Commandline Switches #
+## Commandline Switches ##
 
 It is possible to invoke the adapter with a number of different switches. These switches will cause the adapter to output some debugging information and then terminate.
 
