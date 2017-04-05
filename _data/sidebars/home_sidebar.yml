@@ -131,6 +131,10 @@ entries:
           url: /ui-templates.html
           output: web
 
+        - title: Saved Configs
+          url: /ui-saved-configs.html
+          output: web
+
         - title: Version Control
           url: /ui-version-control.html
           output: web

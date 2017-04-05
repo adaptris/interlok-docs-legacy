@@ -29,7 +29,7 @@ Just click on the Open Config button and that will open a modal displaying sever
 - **Active Adapter:** Retrieve a configuration from a running Adapter configured in the application.
 - **New:** Create a brand new Adapter configuration.
 - **File System:** Open an Adapter configuration file from your file system.
-- **Saved Config:** Open an Adapter configuration from the list of previously saved configurations.
+- **Saved Config:** Open an Adapter configuration from the list of previously [saved configurations](ui-saved-configs.html).
 - **Auto Saved:** Open an Adapter configuration from the last auto saved configuration.
 - **Use Template:** Create a new Adapter configuration from a template.
 - **Swagger:** Open an Adapter configuration using a Swagger file from your file system. Simple rest service swagger configuration (yaml or json) get converted to an adapter config with http jetty consumers. (Since 3.5.0)
@@ -46,6 +46,7 @@ In this example, the config page is made up of the following sections:
 
 - Header actions
 - Container bar
+- Shared Components area
 - Channel area
 - Workflow area
 
