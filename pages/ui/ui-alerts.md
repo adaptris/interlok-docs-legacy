@@ -9,7 +9,7 @@ summary: The Alerts module allows admin users to create alerts which are then sh
 
 ## Getting Started ##
 
-To access the Alert Management page, you use the header navigation button.
+You can access the Alert Admiin page by clicking on the down arrow next to your user name and on the Alert Admin item.
 
  ![Navigate to admin](./images/ui-user-guide/alert1-navigate.png)
 

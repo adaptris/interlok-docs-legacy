@@ -10,6 +10,8 @@ The GUI web application allows to configure some user properties to change the w
 
 ![User Preferences](./images/ui-user-guide/user-preferences.png)
 
+You can access the User Preferences modal by clicking on the down arrow next to your user name and on the User Preferences item.
+
 The preferences are:
 
 ## Global Preferences ##

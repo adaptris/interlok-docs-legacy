@@ -17,7 +17,7 @@ __Note:__ This is highly recommended to use SSL/TLS (https) when using VCS in th
 
 ## Creating a VCS profile ##
 
-In order to use version control in the adapter web gui you will have to create one or more VCS profiles. To do so you will have to go to the VCS Profile page from the top navigation menu.
+In order to use version control in the adapter web gui you will have to create one or more VCS profiles. To do so you will have to go to the VCS Profile page from the top navigation menu, clicking on the down arrow next to your user name and on the Vcs Profiles item.
 ![Navigation Bar with the user options open (and with the Vcs Profile Page as the active page)](./images/ui-user-guide/navigation-bar-options-open-vcs-profile.png)
 
 Add one or more profile using the add button and filling the details to connect to the remote repository.

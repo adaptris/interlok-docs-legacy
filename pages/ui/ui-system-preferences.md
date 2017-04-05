@@ -11,6 +11,8 @@ The GUI web application allows to configure some properties to change the ui res
 
 ![System Preferences](./images/ui-user-guide/system-preferences.png)
 
+You can access the System Preferences page by clicking on the down arrow next to your user name and on the System Preferences item.
+
 The system preferences are:
 
 - **Config Template Url:** Directory where are located the UI templates used in the configuration page.

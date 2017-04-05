@@ -17,7 +17,7 @@ View Only | access to dashboard, widgets (no operational access) | A view only u
 
 ## User page ##
 
-You can access the User page by clicking on the User menu item. The User page lists all the users able to access the GUI web application. After a fresh installation the GUI will only have the admin user.
+You can access the User page by clicking on the down arrow next to your user name and on the User Admin item. The User page lists all the users able to access the GUI web application. After a fresh installation the GUI will only have the admin user.
 
 ![User Page](./images/ui-user-guide/user.png)
 
