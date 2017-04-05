@@ -26,14 +26,14 @@ Just click on the Open Config button and that will open a modal displaying sever
 
 ![Config page action bar](./images/ui-user-guide/config-import-open.png)
 
-- **Open File:** Open an Adapter configuration file from your file system.
-- **Open Swagger File:** Open an Adapter configuration using a Swagger file from your file system. Simple rest service swagger configuration (yaml or json) get converted to an adapter config with http jetty consumers. (Since 3.5.0)
-- **Load From Vcs:** Retrieve a configuration from a Version Control System (Subversion or Git). For this option to be enabled [VCS](advanced-version-control.html) needs to be configured and you need at least one VCS Profile.
-- **Open Saved:** Open an Adapter configuration from the list of previously saved configurations.
-- **Open Auto Saved:** Open an Adapter configuration from the last auto saved configuration.
-- **Use Template:** Create a new Adapter configuration from a template.
-- **Load Active:** Retrieve a configuration from a running Adapter configured in the application.
+- **Active Adapter:** Retrieve a configuration from a running Adapter configured in the application.
 - **New:** Create a brand new Adapter configuration.
+- **File System:** Open an Adapter configuration file from your file system.
+- **Saved Config:** Open an Adapter configuration from the list of previously saved configurations.
+- **Auto Saved:** Open an Adapter configuration from the last auto saved configuration.
+- **Use Template:** Create a new Adapter configuration from a template.
+- **Swagger:** Open an Adapter configuration using a Swagger file from your file system. Simple rest service swagger configuration (yaml or json) get converted to an adapter config with http jetty consumers. (Since 3.5.0)
+- **Version Control:** Retrieve a configuration from a Version Control System (Subversion or Git). For this option to be enabled [VCS](advanced-version-control.html) needs to be configured and you need at least one VCS Profile.
 - **Import:** Import an Adapter configuration with variable properties.
 
 ## Navigating the config page ##
@@ -61,16 +61,22 @@ This action bar is concerned with the (whole) config actions, such as opening a 
 
 This bar allows you to interact with the Interlok container; Select a channel; Add a channel; edit the container advanced options; edit the root settings for the Adapter object.
 
-### Advanced component and shared connection area ###
+### Shared Components area ###
 
-![Config page advanced and shared area](./images/ui-user-guide/config-advanced-and-shared-components.png)
+![Config page container area](./images/ui-user-guide/config-shared-components-area.png)
 
-By clicking on the toggle button in the container title bar you will reveal the advanced extensions and shared components area.
-
-You can add a connection into the shared connection area and this connection will automatically becomes a shared one.
-You will be able to use shared connection where appropriate by selecting it from the "Existing Shared Connections" list.
+You can add a connection or a service into the shared connection or shared service area and this connection will automatically becomes a shared one.
+You will be able to use shared components where appropriate by selecting it from the "Existing Shared Components" list.
 
 ![Select shared connection](./images/ui-user-guide/config-select-shared-connection.png)
+
+![Select shared service](./images/ui-user-guide/config-select-shared-service.png)
+
+### Advanced components area ###
+
+![Config page advanced and shared area](./images/ui-user-guide/config-advanced-components.png)
+
+By clicking on the toggle button in the container title bar you will reveal the advanced extensions area.
 
 ### Channel area ###
 
@@ -91,16 +97,14 @@ The following image shows an active component (a component that has the mouse ho
 
 This component is a typical example and shows:
 
-- Component type; This example is a com.adaptris.core.NullConnection, so the component type is a 'Null Connection'.
-- Sub type; This will show the package that the component belongs to.
-- Component type icon; As this example is a connection, the connection icon is show.
-- id; This would display the contents of the 'Unique ID' setting for that component.
-- Information; This is a user interactive popover, when hovered over it shows a bit more detail about the component, like the alias  and java class name.
-- Edit; Clicking this would display the settings editor for this component.
-- Replace; Pressing this would perform a remove & add function, therefore allowing you to easily replace this component. In this example, pressing this would show the add connection modal window.
-- Remove; Activating this function would remove the component from the configuration, i.e. deleting this connection.
-- Copy; You can use this function to copy this component to the pages clipboard. You can hold 1 of each component type in the clipboard, which can then be used to Paste it to a given applicable area.
-- Cut; As copy, but on a Paste command, this would remove the source component.
+- **Component type:** This example is a com.adaptris.core.NullConnection, so the component type is a 'Null Connection'.
+- **Component type icon:** As this example is a connection, the connection icon is show.
+- **Id:** This would display the contents of the 'Unique ID' setting for that component.
+- **Edit:** Clicking this would display the settings editor for this component.
+- **Replace:** Pressing this would perform a remove & add function, therefore allowing you to easily replace this component. In this example, pressing this would show the add connection modal window.
+- **Remove:** Activating this function would remove the component from the configuration, i.e. deleting this connection.
+- **Copy:** You can use this function to copy this component to the pages clipboard. You can hold 1 of each component type in the clipboard, which can then be used to Paste it to a given applicable area.
+- **Cut:** As copy, but on a Paste command, this would remove the source component.
 
 
 ## Delete component features ##
@@ -161,24 +165,30 @@ Example of a typical settings editor in XML mode:
 
 The following image shows an annotated settings editor:
 
-![Typical settings editor annotated](./images/ui-user-guide/settings-editor-explained.png)
+![Typical settings editor annotated](./images/ui-user-guide/config-settings-editor-explained.png)
 
 This editor is a typical example and shows:
 
-- Full Java Class Name; This is the full java package & class name of the component that is being edited.
-- Base/Root Settings; Each component is made up of its settings and its inner components, so this 'tab' will show the root settings for this compoenent.
-- Inner Components; There would typically be a 'tab' per inner component. This example shows that outside the root settings, we have connections, and a vender implentation.
-- Setting Name & Setting Input; Each of the components settings (and inner components settings) will have a list of configurable fields, made up of the setting label and the setting value.
-- Javadoc popover trigger; Hovering over this icon with your mouse will show that fields javadoc part.
-- Encode; This is a password only feature, but ticking this would encode that feilds value in the XML.
-- Expand; Each text input will have the option to expand the input from a single line to a text area (for multiple line input).
-- Switch Type; This button allows you to switch the component type, for example if you had a FTP Connection, you could switch types to a JMS Connection (or any other connection). This feature will change the base type of the component and attempt to copy any matching field values.
-- Expand window; Clicking this will toggle the settings editor window size.
-- Toggle Advanced View; Switching on the advanced view shows all the fields for the given component including all those fields that can be safely left to their defaults.
-- Open Javadoc; This button opens a new browser window with the javadocs for this component.
-- XML View; Switch to the advanced XML config mode
-- Save and close; Save your changes and close the editor.
-- Create Template; Create a template from this configured component, which will then be shown as a choice during the add component feature.
+- **Full Java Class Name:** This is the full java package & class name of the component that is being edited.
+- **Base/Root Settings:** Each component is made up of its settings and its inner components, so this 'tab' will show the root settings for this compoenent.
+- **Inner Components:** There would typically be a 'tab' per inner component. This example shows that outside the root settings, we have connections, and a vender implentation.
+- **Setting Name & Setting Input:** Each of the components settings (and inner components settings) will have a list of configurable fields, made up of the setting label and the setting value.
+- **Javadoc popover trigger:** Hovering over this icon with your mouse will show that fields javadoc part.
+- **Encode password:** This is a password only feature, but ticking this would encode that feilds value in the XML.
+- **Expand input:** Each text input will have the option to expand the input from a single line to a text area (for multiple line input).
+- **Change connection type:** This button allows you to switch the component type, for example if you had a FTP Connection, you could switch types to a JMS Connection (or any other connection). This feature will change the base type of the component and attempt to copy any matching field values.
+- **Expand window:** Clicking this will toggle the settings editor window size.
+- **Toggle Advanced View:** Switching on the advanced view shows all the fields for the given component including all those fields that can be safely left to their defaults.
+- **Open side bar:** This button opens a side bar in the modal that will offer several options:
+    - Help
+	- Test Compontent
+	- Metadata Preview
+	- Most Occurences
+	- JSON
+	- WSDL
+- **XML view and editor:** Switch to the advanced XML config mode
+- **Save and close:** Save your changes and close the editor.
+- **Create Template:** Create a template from this configured component, which will then be shown as a choice during the add component feature.
 
 ## Settings editor sidebar ##
 
@@ -191,12 +201,16 @@ Since 3.5.0, the config settings editor has a useful sidebar. Shown in this vide
 
 In the follow example, a service contains its own service list which also contains its own service list:
 
-![service collection selectors annotated](./images/ui-user-guide/service-list-selector.png)
+![service collection selectors annotated](./images/ui-user-guide/config-service-list-selector.png)
 
-These service lists wouldn't be shown in the settings editor. Instead they are selectable by clicking on the service collection selector icon on the component (see above). This then brings up a service collection area which can be operated on in the same manner as the workflows service list area.
+These service lists wouldn't be shown in the settings editor. Instead they are selectable by clicking on the service collection selector icon on the component visible on hover (see above). This then brings up a service collection area which can be operated on in the same manner as the workflows service list area.
 
 ## Testing service collections ##
 
 You can test a service collection and step thru each service and verify it's output, as seen in this video:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7LNN38jnvcg" frameborder="0" allowfullscreen></iframe>
+
+The download button in the service testing or the service collection modals allows a user to download the current message to be able to re-use it later.
+
+The upload button allows to quickly use a message which have been saved before to test a service.
