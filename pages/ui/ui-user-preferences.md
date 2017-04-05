@@ -24,9 +24,8 @@ The preferences are:
  - Display names in the component title: Whether to display the component name in the component title or in the body. The default value is false.
  - Prettify names in the component title: The ui can display the component type and uid nicely (remove hyphen, underscore and split camel case uid). The default value is true.
  - Always attempt to load the active adapter (if only one exists): Decides when opening the config page if the application should automatically load the running adapter config or prompt the user for choices. The default value is true. (Since 3.2)
- - Collapse component container when a sub component is selected: The Adapter and Channel component container will collapse automatically if a child Channel or Workflow is selected. The default value is true. (Since 3.6)
+ - Collapse component container when a sub component is selected: The Adapter and Channel component container will collapse automatically if a child Channel or Workflow is selected. The default value is false. (Since 3.6)
  - Use Vim mode in Component XML Editor: Use Vim mode when editing component in the xml view. The default value is false. (Since 3.6)
- - Action Button Size: Change the display size of the icons in the config page. The default value is normal.
 
 ## Runtime Widget Page Preferences ##
  - Hide the last index plot on the charts: Whether or not charts should hide the last index. The default value is false.
