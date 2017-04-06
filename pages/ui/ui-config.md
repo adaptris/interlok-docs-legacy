@@ -205,13 +205,3 @@ In the follow example, a service contains its own service list which also contai
 ![service collection selectors annotated](./images/ui-user-guide/config-service-list-selector.png)
 
 These service lists wouldn't be shown in the settings editor. Instead they are selectable by clicking on the service collection selector icon on the component visible on hover (see above). This then brings up a service collection area which can be operated on in the same manner as the workflows service list area.
-
-## Testing service collections ##
-
-You can test a service collection and step thru each service and verify it's output, as seen in this video:
-
-<iframe width="560" height="315" src="https://www.youtube.com/embed/7LNN38jnvcg" frameborder="0" allowfullscreen></iframe>
-
-The download button in the service testing or the service collection modals allows a user to download the current message to be able to re-use it later.
-
-The upload button allows to quickly use a message which have been saved before to test a service.
