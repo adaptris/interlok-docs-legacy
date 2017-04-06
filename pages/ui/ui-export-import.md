@@ -54,7 +54,7 @@ You can define what filenames to save your to-be exported config to:
 
 ## Export Output ##
 
-Having pressed export in the final step of the export wizard, you will find a folder named 'exported' in your Interlok directory and it will contain the two files that this function creates.
+Having pressed export in the final step of the export wizard, you will find a folder named 'config-export' in your Interlok/ui-resources directory and it will contain the two files that this function creates.
 
 Example variables.properties output:
 

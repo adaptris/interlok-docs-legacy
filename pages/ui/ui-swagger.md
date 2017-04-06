@@ -123,7 +123,6 @@ This will give an Adapter configuration xml like:
     <channel>
       <consume-connection class="jetty-embedded-connection">
         <unique-id>Embedded Jetty Connection</unique-id>
-        <host>your.domain.com:80</host>
       </consume-connection>
       <produce-connection class="null-connection">
         <unique-id>NullConnection-1665559</unique-id>
@@ -149,7 +148,7 @@ This will give an Adapter configuration xml like:
                 <connection class="null-connection">
                   <unique-id>NullConnection-4170774</unique-id>
                 </connection>
-                <producer class="jetty-standard-reponse-producer">
+                <producer class="jetty-standard-response-producer">
                   <unique-id>ResponseProducer</unique-id>
                   <status-provider class="http-configured-status">
                     <status>OK_200</status>
@@ -191,7 +190,7 @@ This will give an Adapter configuration xml like:
                 <connection class="null-connection">
                   <unique-id>NullConnection-4097164</unique-id>
                 </connection>
-                <producer class="jetty-standard-reponse-producer">
+                <producer class="jetty-standard-response-producer">
                   <unique-id>ResponseProducer</unique-id>
                   <status-provider class="http-configured-status">
                     <status>OK_200</status>
