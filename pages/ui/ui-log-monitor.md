@@ -18,6 +18,13 @@ The header navigation bar:
 
 ## Log Monitor ##
 
+###  User Preferences ###
+
+In the 'User Preferences', there is a Log Monitor Page Preference that allows you to reverse the order that the log lines are shown.
+
+Note: You have to refresh the log monitor page for this change to occur
+
+
 ### Add Log Monitor ###
 
 To add a new log monitor click on the '+' tab on the top left corner of the page
