@@ -129,6 +129,8 @@ The new properties file `crash.properties` has lots of options which are documen
 
 | Property                    | Type                         | Description                                                                        |
 |-----------------------------|------------------------------|------------------------------------------------------------------------------------|
+| crash.sshdev.enabled        | Enable `noauth` SSH plugin   | Enable the sshdev plugin which doesn't require authentication                      |
+| crash.sshdev.port           | `noauth` SSH port            | Specify the port for the sshdev plugin (if not specified a random is chosen)       |
 | crash.ssh.port              | SSH Configuration            | SSH Port                                                                           |
 | crash.ssh.keypath           | SSH Configuration            | SSH key path                                                                       |
 | crash.ssh.keygen            | SSH Configuration            | Boolean - Automatically generate host key (works only if ssh.keypath is specified) |
