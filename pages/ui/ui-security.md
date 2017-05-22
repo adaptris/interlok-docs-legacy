@@ -14,6 +14,7 @@ Admin | access to all pages (with operational access) | An admin has all the rig
 User | access to dashboard, widgets, config (with operational access) | A user can do most of what the admin can do except undertaking any User management action. Most users should have this role allocated.
 Monitor | access to dashboard, widgets (with operational access) | A Monitor user can use the dashboard controls to start and stop various components and they can use the widgets page to monitor the containers, but they can not alter config nor do they have access to security settings.
 View Only | access to dashboard, widgets (no operational access) | A view only user cannot change the state of the application except in the Runtime page. It means that he will not be able to start/stop any Adapter, Channel and Workflow, neither be able to access the Adapter configuration page nor the User page. This role is design for monitoring only.
+Disabled | no access to the webapp | A disabled user cannot log in the application. This role is design for temporarily not alowing access to a user.
 
 ## User page ##
 
