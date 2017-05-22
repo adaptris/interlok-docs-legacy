@@ -167,6 +167,10 @@ entries:
       url: /ui-user-preferences.html
       output: web
 
+    - title: Switch Database Provider
+      url: /ui-switch-db.html
+      output: web
+
   - title: Integration Guides
     output: web
     folderitems:

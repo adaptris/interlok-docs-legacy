@@ -119,17 +119,21 @@ To add a given component, you would click on the plus icon ![Config page add com
 When adding a component, after clicking the plus icon, you'll be presented with the add component modal window.
 
 Example of a typical add component modal window:
+
 ![Typical add component modal window](./images/ui-user-guide/config-page-add-component.png)
 
 When the add component window opens, it always shows you the initial choice of 'folders', these are 'Raw components' or 'Templates'. As their name suggests, the 'Raw components' folder contains a list of available components for that list, and selecting a component from this folder will add a component to the list with default settings configuring within it. The 'Templates' folder contains components that you have previously saved, using the 'Save as template' feature on the settings editor. You'll notice that the window has a search input that can be used to filter components. This search can be used from the folder view (i.e. you don't have to click raw compoennts and then search).
 
 Example of a typical add component modal window after opening the raw components folder:
+
 ![Typical add component modal window raw component contents](./images/ui-user-guide/config-add-component-raw.png)
 
 Example of a typical add component modal window after opening the template components folder:
+
 ![Typical add component modal window template folder contents](./images/ui-user-guide/config-add-component-template.png)
 
 Example of a typical add component modal window with results filtered using the search bar:
+
 ![Typical add component modal window showing filtering contents](./images/ui-user-guide/config-add-component-filtering.png)
 
 {% include tip.html content="Searching from the root folder with show you results from both the raw components folder and the templates folder." %}
