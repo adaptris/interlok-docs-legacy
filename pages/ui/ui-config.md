@@ -136,6 +136,8 @@ Example of a typical add component modal window with results filtered using the 
 
 To actually add the component, all you have to do is click on the required compoent and it will add it to the list you selected and show you the settings editor for that new component.
 
+{% include tip.html content="When adding a service if you double click on the plus button the service will be added at the beginning of the service list." %}
+
 ## Settings editor features ##
 
 The settings editor is available when you want to edit a component. This is always available by clicking on the edit icon ![Config page edit component action button](./images/ui-user-guide/config-action-edit.png){: .inline }. This editor allows you to edit the settings on a given component.
