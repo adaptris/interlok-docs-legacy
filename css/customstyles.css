@@ -191,7 +191,7 @@ table.boldFirstColumn td:first-child {
 }
 
 table tr td {
-    hyphens: auto;
+    hyphens: none;
 }
 
 
@@ -499,7 +499,7 @@ table.dataTable thead {
     background-color: #444;
 }
 table td {
-    hyphens: auto;
+    hyphens: none;
 }
 
 section table tr.success {
@@ -1067,7 +1067,7 @@ table thead th code.highlighter-rouge {
     background-color: #f5f5f5;
     font-family: Arial;
     font-size: 12px;
-    hyphens: auto;
+    hyphens: none;
     float: left;
     font-size: 12px;
 }
