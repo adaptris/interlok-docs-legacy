@@ -7,6 +7,124 @@ permalink: developer-ui-api.html
 summary: The UI has its own API. This can be used to do some simple operations, if you want to create your own simple dashboard, instead of using our awesome spectacular UI.
 ---
 
+## Swagger Goodness ##
+
+The Interlok UI API is accessible via restful web services. The best way to learn how to use the Interlok UI API is to use Swagger UI. You can see all the available operations by using it.
+
+Learn more about [Swagger](http://swagger.io/) and [Swagger UI](http://swagger.io/swagger-ui/).
+
+Once you've downloaded Swagger UI you should copy it into the `adapter/webapp` folder.
+You should be able to access it via [http://localhost:8080/swagger-ui-2.1.4/dist/index.html](http://localhost:8080/swagger-ui-2.1.4/dist/index.html) (where /swagger-ui-2.1.4/dist/ is the name of the folder you copied into `adapter/webapp`).
+
+The default API url in Swagger UI is a pet store example.
+Replace it with it the Interlok UI API url [http://localhost:8080/interlok/api/swagger.json](http://localhost:8080/interlok/api/swagger.json).
+
+If you access this url directly you will see the json Swagger definition for the Interlok UI API with a list of all the operations which looks something like: 
+
+```json
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Interlok UI Api web service documentation.",
+    "version" : "3.6-SNAPSHOT",
+    "title" : "Interlok UI Api Documentation"
+  },
+  "basePath" : "/interlok/api",
+  "tags" : [ {
+    "name" : "/adapter/failed-messages"
+  }, {
+    "name" : "/channel"
+  }, {
+    "name" : "/adapter/metrics"
+  }, {
+    "name" : "/channel/failed-messages"
+  }, {
+    "name" : "/adapter/platform"
+  }, {
+    "name" : "/workflow/metrics"
+  }, {
+    "name" : "/workflow/failed-messages"
+  }, {
+    "name" : "/adapter/component-checker"
+  }, {
+    "name" : "/channel/metrics"
+  }, {
+    "name" : "/adapter"
+  }, {
+    "name" : "/workflow"
+  } ],
+  "paths" : {
+    "/external/adapter" : {
+      "get" : {
+        "tags" : [ "/adapter" ],
+        "summary" : "List all register adapters",
+        "description" : "",
+        "operationId" : "list",
+        "consumes" : [ "application/xml", "application/json" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "name" : "pageSize",
+          "in" : "query",
+          "required" : false,
+          "type" : "integer",
+          "default" : -1,
+          "format" : "int32"
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "required" : false,
+          "type" : "integer",
+          "default" : -1,
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "type" : "array",
+              "items" : {
+                "$ref" : "#/definitions/AdapterEntity"
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "/adapter" ],
+        "summary" : "Add an adapter",
+        "description" : "",
+        "operationId" : "save",
+        "consumes" : [ "application/json", "application/xml" ],
+        "produces" : [ "application/json", "application/xml" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "required" : false,
+          "schema" : {
+            "$ref" : "#/definitions/AdapterEntity"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/AdapterEntity"
+            }
+          }
+        }
+      }
+    },
+...
+```
+
+Back to the Swagger UI, you should get a list of all the Interlok UI API operations e.g.
+
+![Local Swagger UI With Data](./images/ui-api/swagger-with-interlok-data.png)
+
+You can then use this page to test the api against your own Interlok UI API:
+
+![Local Swagger Doing Operation](./images/ui-api/swagger-with-interlok-data-opened.png)
+
 ## Real World Example ##
 
 There is a working example of the UI API in action within the cm-dashboard project (the Cirrus UI).
@@ -24,42 +142,6 @@ you can view the manage Interlok container page:
 ![Cirrus UI - Manage Interlok container Page](./images/ui-api/3-Cirrus-UI-Manage-Adapter-Page.png)
 
 This manage Interlok container page is using the interlok ui api to obtain data & perform functions on this selected Interlok container. All the Interlok containers in this community are registered with one ui Interlok container, which is having the ui api accessed by this webapp. In essence, this page is its own Interlok container ui.
-
-## Swagger Goodness ##
-
-The Interlok UI API is accessible via restful web services. You can see all the available operations by using the swagger interface.
-
-learn more about swagger:
-
-[http://swagger.io/](http://swagger.io/)
-
-[http://swagger.io/swagger-ui/](http://swagger.io/swagger-ui/)
-
-
-So, if you point to (change this URL for you own hostname)
-
-[http://localhost:8080/interlok/api/swagger.json](http://localhost:8080/interlok/api/swagger.json)
-
-you will see the json file containing all the webservices data.
-
-![Swagger JSON](./images/ui-api/4-swagger-json.png)
-
-
-If you install the swagger ui into the same host that your Interlok ui is in...
-
-so download swagger-ui and copy that folder into the adapter's webapp folder, then point to (For Example)
-
-[http://localhost:8080/swagger-ui-2.1.4/dist/index.html](http://localhost:8080/swagger-ui-2.1.4/dist/index.html)
-
-![Swagger UI Page](./images/ui-api/5-local-swagger-ui-page.png)
-
-you then put in the json url into the input box and press explore
-
-![Local Swagger UI With Data](./images/ui-api/6-local-swagger-with-data.png)
-
-you can then use this page to develop against and make your own Interlok UI:
-
-![Local Swagger Doing Operation](./images/ui-api/7-local-swagger-doing-operation.png)
 
 ## Yeah, but... ##
 
