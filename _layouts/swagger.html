@@ -1,0 +1,1352 @@
+---
+layout: default
+---
+
+<!-- <link href='/files/swagger-ui/css/typography.css' media='screen' rel='stylesheet' type='text/css'/> -->
+<link href='css/swagger-ui/screen.css' media='screen' rel='stylesheet' type='text/css'/>
+<link href='css/swagger-ui/swagger-custom.css' media='screen' rel='stylesheet' type='text/css'/>
+<link href='css/swagger-ui/reset.css' media='print' rel='stylesheet' type='text/css'/>
+<link href='css/swagger-ui/print.css' media='print' rel='stylesheet' type='text/css'/>
+
+{% if page.data %}
+{% assign swagger = site.data[page.data] %}
+{% else %}
+{% assign swagger = page %}
+{% endif %}
+
+<div class="post-header">
+  <h1 class="post-title-main">
+    {% if page.title %}
+    {{ page.title }}
+    {% elsif swagger.info %}
+    {{swagger.info.title}}
+    {% endif %}
+  </h1>
+</div>
+
+<div class="post-content">
+  <div class="summary">
+    {% if page.summary %}
+    {{page.summary}}
+    {% elsif swagger.info %}
+    {{swagger.info.description}}
+    {% endif %}
+  </div>
+   
+{{ content }}
+
+  <div class="swagger-section">
+	<div id="swagger-ui-container" class="swagger-ui-wrap" style="max-width: 100%">
+        <!-- <h2>{{ swagger.info.title }}</h2> -->
+        <span style="color: #999">
+          [ <span style="font-variant: small-caps">base url</span>: {{ swagger.basePath }} , <span style="font-variant: small-caps">api version</span>: {{ swagger.info.version }} ]
+        </span>
+        <!-- <p>{{ swagger.info.description }}</p> -->
+
+		<div class="container" id="resources_container">
+
+          <ul id="resources">
+          {% assign tags = swagger.tags | sort: 'name' %}
+          {% for tag in tags %}
+            <li id="resource_{{ tag.name }}" class="resource active">
+              <div class="heading">
+                <h2>
+                  <a href="#!//{{ tag.name }}" class="toggleEndpointList" data-id="{{ tag.name }}">{{ tag.name }}</a> 
+                </h2>
+                <ul class="options" style="display: none;">
+                  <li>
+                    <a href="#!/{{ tag.name }}" id="endpointListTogger_{{ tag.name }}" class="toggleEndpointList" data-id="{{ tag.name }}">Show/Hide</a>
+                  </li>
+                  <li>
+                    <a href="#" class="collapseResource" data-id="{{ tag.name }}">
+                      List Operations
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#" class="expandResource" data-id="{{ tag.name }}">
+                      Expand Operations
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <ul class="endpoints" id="{{ tag.name }}_endpoint_list">
+              {% for route in swagger.paths %}
+              {% for method in route[1] %}
+                {% if method[1].tags != null and method[1].tags contains tag.name %}
+                <li class="endpoint">
+                  <ul class="operations">
+                    <li class="{{ method[0] }} operation" id="{{ tag.name }}_{{ method[1].operationId }}">
+                      <div class="heading">
+                        <h3>
+                          <span class="http_method">
+                          <a href="#!{{ tag.name }}/{{ method[1].operationId }}" class="toggleOperation">{{ method[0] | upcase }}</a>
+                          </span>
+                          <span class="path">
+                          <a href="#!{{ tag.name }}/{{ method[1].operationId }}" class="toggleOperation ">{{ route[0] }}</a>
+                          </span>
+                        </h3>
+                        <ul class="options">
+                          <li>
+                          <a href="#!{{ tag.name }}/{{ method[1].operationId }}" class="toggleOperation">{{ method[1].summary }}</a>
+                          </li>
+                        </ul>
+                      </div>
+                      <div class="content" id="{{ tag.name }}_{{ method[1].operationId }}_content" style="display:none">
+                        {% if method[1].responses %}
+                        {% for response in method[1].responses %}
+                          <h4><span>Response Class</span> (<span>Status</span> {{ response[0] }})</h4>
+                          <div class="markdown"><p>{{ response[1].description }}</p></div>
+                          <div>
+                            <div class="model-signature">
+                              <div>
+                                <div>
+                                  <ul class="signature-nav">
+                                    <li><a class="description-link" href="#">Model</a></li>
+                                    <li><a class="snippet-link selected" href="#">Model Schema</a></li>
+                                  </ul>
+                                  <div class="signature-container">
+                                    <div class="description" data-schema="{{ response[1].schema | jsonify | escape }}" style="display: none;">
+                                    </div>
+                                    <div class="snippet" data-schema="{{ response[1].schema | jsonify | escape }}" style="display: block;">
+                                      <pre>
+                                        <code class="json"></code>
+                                      </pre>
+                                      <small class="notice"></small>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <br>
+                          <div class="response-content-type">
+                            <div>
+                              <label for="">Response Content Type</label>
+                              <select name="responseContentType" id="">
+                                {% for content_type in method[1].produces %}
+                                <option value="{{ content_type }}">{{ content_type }}</option>
+                                {% endfor %}
+                              </select>
+                            </div>
+                          </div>
+                        {% endfor %}
+                        {% endif %}
+          
+                        <form accept-charset="UTF-8" class="sandbox">
+                          <div style="margin: 0; padding: 0; display: inline"></div>
+                          <h4>Parameters</h4>
+                          <table class="fullwidth">
+                            <thead>
+                              <tr>
+                                <th style="">Parameter</th>
+                                <th style="">Value</th>
+                                <th style="">Description</th>
+                                <th style="">Parameter Type</th>
+                                <th style="">Data Type</th>
+                              </tr>
+                            </thead>
+                            <tbody class="operation-params">
+                              {% for parameter in method[1].parameters %}
+                              <tr>
+                                {% if parameter.required %}
+                                <td class="code required">
+                                {% else %}
+                                <td class="code">
+                                {% endif %}
+                                  <label for="">{{ parameter.name }}</label>
+                                </td>
+                                <td>
+                                  {% if parameter.in != 'body' %}
+                                    {% if parameter.enum and parameter.enum.size > 0 %}
+                                      <select name="parameter " id="">
+                                        <option selected value></option>
+                                      {% for enumOption in parameter.enum %}
+                                        <option value="{{ enumOption }}">{{ enumOption }}</option>
+                                        {% endfor %}
+                                      </select>
+                                    {% else %}
+                                      {% if parameter.required %}
+                                        <input class="parameter required" minlength="1" name="url" placeholder="(required)" id="" type="text" value="{{ parameter.default }}">
+                                      {% else %}
+                                        <input class="parameter" minlength="1" name="url" placeholder="" id="" type="text" value="{{ parameter.default }}">
+                                      {% endif %}
+                                    {% endif %}
+                                  {% endif %}
+                                  {% if parameter.in == 'body' %}
+                                  
+                                    <!-- <textarea class="body-textarea"  data-schema="{{ parameter.schema | jsonify | escape }}">{{ parameter.default }}</textarea> -->
+                                    <div class="model-signature">
+                                      <div>
+                                        <div>
+                                          <ul class="signature-nav">
+                                            <li><a class="description-link" href="#">Model</a></li>
+                                            <li><a class="snippet-link selected" href="#">Model Schema</a></li>
+                                          </ul>
+                                          <div class="signature-container">
+                                            <div class="body-description description" data-schema="{{ parameter.schema | jsonify | escape }}" style="display: none;">
+                                            </div>
+                                            <div class="body-snippet snippet" data-schema="{{ parameter.schema | jsonify | escape }}" style="display: block;">
+                                              <pre>
+                                                <code class="json"></code>
+                                              </pre>
+                                              <small class="notice"></small>
+                                            </div>
+                                          </div>
+                                        </div>
+                                      </div>
+                                    </div>
+                                    
+                                    <div class="editor_holder"></div>
+                                    <br/>
+                                    <div class="parameter-content-type">
+                                      <div>
+                                        <label for="">Parameter Content Type</label>
+                                        <select name="parameterContentType" id="">
+                                          {% for content_type in method[1].consumes %}
+                                          <option value="{{ content_type }}">{{ content_type }}</option>
+                                          {% endfor %}
+                                        </select>
+                                      </div>
+                                    </div>
+                                  {% endif %}
+                                </td>
+                                <td>
+                                  <strong><span class="markdown">{{ parameter.description }}</span>
+                                </strong>
+                                </td>
+                                <td>{{ parameter.in }}</td>
+                                <td>
+                                  <span class="model-signature">
+                                    {% if parameter.type %}
+                                      {{ parameter.type | capitalize }}
+                                      {% if parameter.items %}
+                                      of {{ parameter.items.type | capitalize }}
+                                      {% endif %}
+                                    {% elsif parameter.schema %}
+                                      {% if parameter.schema.type %}
+                                        {{ parameter.schema.type | capitalize }}
+                                        {% if parameter.schema.items %}
+                                          {% if parameter.schema.items.type %}
+                                            of {{ parameter.schema.items.type | capitalize }}
+                                          {% endif %}
+                                          {% if parameter.schema.items['$ref'] %}
+                                            of {{ parameter.schema.items['$ref'] }}
+                                          {% endif %}
+                                        {% endif %}
+                                      {% elsif parameter.schema['$ref'] %}
+                                        {{ parameter.schema['$ref'] }}
+                                      {% endif %}
+                                    {% else %}
+                                    String
+                                    {% endif %}
+                                  </span>
+                                </td>
+                              </tr>
+                              {% endfor %}
+                            </tbody>
+                          </table>
+                          <h4 class="curl">Curl Example</h4>
+                          <div class="block curl">
+                            {% if method[1].produces and method[1].produces[0] %}
+                              {% assign acceptHeader = "--header 'Accept: " | append: method[1].produces[0] | append: "' " %}
+                            {% endif %}
+                            {% if method[0] == 'post' or method[0] == 'put' or method[0] == 'patch' %}
+                              {% if method[1].consumes and method[1].consumes[0] %}
+                                {% assign contentTypeHeader = "--header 'Content-Type: " | append: method[1].consumes[0] | append: "' " %}
+                              {% endif %}
+                              {% assign contentBody = "-d '" | append: "{body}" | append: "' " %}
+                            {% endif %}
+                            {% assign urlQuery = "" %}
+                            {% for parameter in method[1].parameters %}
+                              {% if parameter.in == 'query' %}
+                                {% if urlQuery == "" %}
+                                  {% assign urlQuery = "?" %}
+                                {% else %}
+                                  {% assign urlQuery = urlQuery | append: "&amp;" %}
+                                {% endif %}
+                                {% assign urlQuery = urlQuery | append: parameter.name | append: "=" %}
+                                {% if parameter.default %}
+                                  {% assign urlQuery = urlQuery | append: parameter.default %}
+                                {% else %}
+                                  {% assign urlQuery = urlQuery | append: "{" | append: parameter.name | append: "}"  %}
+                                {% endif %}
+                              {% endif %}
+                            {% endfor %}
+                            <pre>curl -X {{ method[0] | upcase }} {{ contentTypeHeader }}{{ acceptHeader }}{{ contentBody }}'http://host:8080{{ swagger.basePath }}{{ route[0] }}{{ urlQuery }}'</pre>
+                          </div>
+                          <div class="sandbox_header" style="display:none">
+                            <input class="submit" type="submit" value="Try it out!">
+                            <a href="#" class="response_hider" style="display: none">Hide Response</a> <span class="response_throbber" style="display: none"></span>
+                          </div>
+                        </form>
+          
+                        <div class="response" style="display:none">
+                          <h4 class="curl">Curl</h4>
+                          <div class="block curl"></div>
+                          <h4>Request URL</h4>
+                          <div class="block request_url"></div>
+                          <h4>Response Body</h4>
+                          <div class="block response_body"></div>
+                          <h4>Response Code</h4>
+                          <div class="block response_code"></div>
+                          <h4>Response Headers</h4>
+                          <div class="block response_headers"></div>
+                        </div>
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+                {% endif %}
+              {% endfor %}
+              {% endfor %}
+              </ul>
+            </li>
+          {% endfor %}
+          </ul>
+          
+		</div>
+	</div>
+  </div>
+
+</div>
+
+
+<!-- <script src='js/swagger-ui/jquery.slideto.min.js' type='text/javascript'></script> -->
+<!-- <script src='js/swagger-ui/jquery.wiggle.min.js' type='text/javascript'></script> -->
+<!-- <script src='js/swagger-ui/jquery.ba-bbq.min.js' type='text/javascript'></script> -->
+<!-- <script src='js/swagger-ui/handlebars-2.0.0.js' type='text/javascript'></script> -->
+<script src='js/swagger-ui/underscore-min.js' type='text/javascript'></script>
+<!-- <script src='js/swagger-ui/backbone-min.js' type='text/javascript'></script> -->
+<!-- <script src='js/swagger-ui/swagger-ui.js' type='text/javascript'></script> -->
+<script src='js/swagger-ui/highlight.7.3.pack.js' type='text/javascript'></script>
+<script src='js/swagger-ui/marked.js' type='text/javascript'></script>
+  
+<script type="text/javascript">
+// Initialization
+function init() {
+	/* Init toggle Operation Content */
+	jQuery('.toggleOperation').each(function (index) {
+        $( this ).bind('click', function (e) {
+			e.preventDefault();
+			var content = jQuery('.content', $( this ).parent().parent().parent().parent());
+			content.toggle();
+        });
+    });
+	/* End Init toggle Operation Content */
+    
+    /* Init Model and Model Schema tabs */
+    jQuery('.description-link').each(function (index) {
+        $( this ).bind('click', function (e) {
+        	e.preventDefault();
+        	var grandParent = $( this ).parent().parent();
+        	$( this ).addClass("selected");
+        	grandParent.find(".snippet-link").removeClass("selected");
+			var greatGrandParent = grandParent.parent();
+        	greatGrandParent.find(".signature-container .description").show();
+			greatGrandParent.find(".signature-container .snippet").hide();
+        });
+    });
+    jQuery('.snippet-link').each(function (index) {
+        $( this ).bind('click', function (e) {
+        	e.preventDefault();
+        	var grandParent = $( this ).parent().parent();
+        	$( this ).addClass("selected");
+        	grandParent.find(".description-link").removeClass("selected");
+        	var greatGrandParent = grandParent.parent();
+        	greatGrandParent.find(".signature-container .snippet").show();
+        	greatGrandParent.find(".signature-container .description").hide();
+        });
+    });
+    /* End Init Model and Model Schema tabs */
+    
+    /* Json vesion of the swagger yamk */
+    var definitionsYaml = {{ swagger.definitions | jsonify }};
+    
+    /* Json swagger definitions holder */
+    var swagger = {};
+    
+    /* Prepare swagger definitions models */
+    var swaggerSpecConverter = new SwaggerSpecConverter();
+    swaggerSpecConverter.models(definitionsYaml, swagger);
+    
+    var models = {};
+    for (key in definitionsYaml) {
+      var model = new Model(key, definitionsYaml[key], models, undefined);
+
+      if (model) {
+        models[key] = model;
+      }
+    }
+    /* End Prepare swagger definitions models */
+    
+    /* Init swagger model to json */
+    jQuery('.snippet').each(function (index) {
+      	var modelSchema = $( this ).data("schema");
+      	if (modelSchema) {
+          	var schemaToModel = new Model(undefined, modelSchema, models, undefined);
+          	
+          	var modelJson = schemaToModel.createJSONSample();
+          	$( this ).html("<pre><code class=\"json\">" + JSON.stringify(modelJson, null, 2) + "</code></pre><small class=\"notice\" data-sw-translate=\"\"></small>");
+          	$( this ).find("pre:first code:first").each(function(idx, elt) {
+            		hljs.highlightBlock(elt);
+          	});
+      	}
+    });
+    
+    /* Init swagger model to schema */
+    jQuery('.description').each(function (index) {
+      	var modelSchema = $( this ).data("schema");
+      	if (modelSchema) {
+          	var schemaToModel = new Model(undefined, modelSchema, models, undefined);
+          	
+          	var modelSignature = schemaToModel.getMockSignature();
+          	$( this ).html(modelSignature);
+      	}
+    });
+}
+
+/*********************************** Swagger JS ***********************************/
+
+
+// Workaround to get the underscore functions
+_.cloneDeep = _.cloneDeep || function(object) { return jQuery.extend(true, {}, object); };
+_.isPlainObject = _.isPlainObject || jQuery.isPlainObject;
+
+var SwaggerSpecConverter = function () {
+  this.errors = [];
+  this.warnings = [];
+  this.modelMap = {};
+};
+
+SwaggerSpecConverter.prototype.setDocumentationLocation = function (location) {
+  this.docLocation = location;
+};
+
+SwaggerSpecConverter.prototype.models = function(obj, swagger) {
+  if(typeof obj !== 'object') {
+    return;
+  }
+  var name;
+
+  swagger.definitions = swagger.definitions || {};
+  for(name in obj) {
+    var existingModel = obj[name];
+    var _enum = [];
+    var schema = { properties: {}};
+    var propertyName;
+    for(propertyName in existingModel.properties) {
+      var existingProperty = existingModel.properties[propertyName];
+      var property = {};
+      this.dataType(existingProperty, property);
+      if(existingProperty.description) {
+        property.description = existingProperty.description;
+      }
+      if(existingProperty['enum']) {
+        property['enum'] = existingProperty['enum'];
+      }
+      if(typeof existingProperty.required === 'boolean' && existingProperty.required === true) {
+        _enum.push(propertyName);
+      }
+      if(typeof existingProperty.required === 'string' && existingProperty.required === 'true') {
+        _enum.push(propertyName);
+      }
+      schema.properties[propertyName] = property;
+    }
+    if(_enum.length > 0) {
+      schema['enum'] = _enum;
+    }
+
+    schema.required = existingModel.required;
+    swagger.definitions[name] = schema;
+  }
+};
+
+// SwaggerSpecConverter.prototype.extractTag = function(resourcePath) {
+//   var pathString = resourcePath || 'default';
+//   if(pathString.indexOf('http:') === 0 || pathString.indexOf('https:') === 0) {
+//     pathString = pathString.split(['/']);
+//     pathString = pathString[pathString.length -1].substring();
+//   }
+//   if(pathString.endsWith('.json')) {
+//     pathString = pathString.substring(0, pathString.length - '.json'.length);
+//   }
+//   return pathString.replace('/','');
+// };
+
+// SwaggerSpecConverter.prototype.operations = function(path, resourcePath, obj, resourceLevelAuth, swagger) {
+//   if(!Array.isArray(obj)) {
+//     return;
+//   }
+//   var i;
+
+//   if(!swagger.paths) {
+//     swagger.paths = {};
+//   }
+
+//   var pathObj = swagger.paths[path] || {};
+//   var tag = this.extractTag(resourcePath);
+//   swagger.tags = swagger.tags || [];
+//   var matched = false;
+//   for(i = 0; i < swagger.tags.length; i++) {
+//     var tagObject = swagger.tags[i];
+//     if(tagObject.name === tag) {
+//       matched = true;
+//     }
+//   }
+//   if(!matched) {
+//     swagger.tags.push({name: tag});
+//   }
+
+//   for(i = 0; i < obj.length; i++) {
+//     var existingOperation = obj[i];
+//     var method = (existingOperation.method || existingOperation.httpMethod).toLowerCase();
+//     var operation = {tags: [tag]};
+//     var existingAuthorizations = existingOperation.authorizations;
+
+//     if(existingAuthorizations && Object.keys(existingAuthorizations).length === 0) {
+//       existingAuthorizations = resourceLevelAuth;
+//     }
+
+//     if(typeof existingAuthorizations !== 'undefined') {
+//       var scopesObject;
+//       for(var key in existingAuthorizations) {
+//         operation.security = operation.security || [];
+//         var scopes = existingAuthorizations[key];
+//         if(scopes) {
+//           var securityScopes = [];
+//           for(var j in scopes) {
+//             securityScopes.push(scopes[j].scope);
+//           }
+//           scopesObject = {};
+//           scopesObject[key] = securityScopes;
+//           operation.security.push(scopesObject);
+//         }
+//         else {
+//           scopesObject = {};
+//           scopesObject[key] = [];
+//           operation.security.push(scopesObject);
+//         }
+//       }
+//     }
+
+//     if(existingOperation.consumes) {
+//       operation.consumes = existingOperation.consumes;
+//     }
+//     else if(swagger.consumes) {
+//       operation.consumes = swagger.consumes;
+//     }
+//     if(existingOperation.produces) {
+//       operation.produces = existingOperation.produces;
+//     }
+//     else if(swagger.produces) {
+//       operation.produces = swagger.produces;
+//     }
+//     if(existingOperation.summary) {
+//       operation.summary = existingOperation.summary;
+//     }
+//     if(existingOperation.notes) {
+//       operation.description = existingOperation.notes;
+//     }
+//     if(existingOperation.nickname) {
+//       operation.operationId = existingOperation.nickname;
+//     }
+//     if(existingOperation.deprecated) {
+//       operation.deprecated = existingOperation.deprecated;
+//     }
+
+//     this.authorizations(existingAuthorizations, swagger);
+//     this.parameters(operation, existingOperation.parameters, swagger);
+//     this.responseMessages(operation, existingOperation, swagger);
+
+//     pathObj[method] = operation;
+//   }
+
+//   swagger.paths[path] = pathObj;
+// };
+
+SwaggerSpecConverter.prototype.responseMessages = function(operation, existingOperation) {
+  if(typeof existingOperation !== 'object') {
+    return;
+  }
+  // build default response from the operation (1.x)
+  var defaultResponse = {};
+  this.dataType(existingOperation, defaultResponse);
+  // TODO: look into the real problem of rendering responses in swagger-ui
+  // ....should reponseType have an implicit schema?
+  if(!defaultResponse.schema && defaultResponse.type) {
+    defaultResponse = {schema: defaultResponse};
+  }
+
+  operation.responses = operation.responses || {};
+
+  // grab from responseMessages (1.2)
+  var has200 = false;
+  if(Array.isArray(existingOperation.responseMessages)) {
+    var i;
+    var existingResponses = existingOperation.responseMessages;
+    for(i = 0; i < existingResponses.length; i++) {
+      var existingResponse = existingResponses[i];
+      var response = { description: existingResponse.message };
+      if(existingResponse.code === 200) {
+        has200 = true;
+      }
+      // Convert responseModel -> schema{$ref: responseModel}
+      if(existingResponse.responseModel) {
+        response.schema = {'$ref': existingResponse.responseModel};
+      }
+      operation.responses['' + existingResponse.code] = response;
+    }
+  }
+
+  if(has200) {
+    operation.responses['default'] = defaultResponse;
+  }
+  else {
+    operation.responses['200'] = defaultResponse;
+  }
+};
+
+SwaggerSpecConverter.prototype.parameters = function(operation, obj) {
+  if(!Array.isArray(obj)) {
+    return;
+  }
+  var i;
+  for(i = 0; i < obj.length; i++) {
+    var existingParameter = obj[i];
+    var parameter = {};
+    parameter.name = existingParameter.name;
+    parameter.description = existingParameter.description;
+    parameter.required = existingParameter.required;
+    parameter.in = existingParameter.paramType;
+
+    // per #168
+    if(parameter.in === 'body') {
+      parameter.name = 'body';
+    }
+    if(parameter.in === 'form') {
+      parameter.in = 'formData';
+    }
+
+    if(existingParameter.enum) {
+      parameter.enum = existingParameter.enum;
+    }
+
+    if(existingParameter.allowMultiple === true || existingParameter.allowMultiple === 'true') {
+      var innerType = {};
+      this.dataType(existingParameter, innerType);
+      parameter.type = 'array';
+      parameter.items = innerType;
+
+      if(existingParameter.allowableValues) {
+        var av = existingParameter.allowableValues;
+        if(av.valueType === 'LIST') {
+          parameter['enum'] = av.values;
+        }
+      }
+    }
+    else {
+      this.dataType(existingParameter, parameter);
+    }
+
+    operation.parameters = operation.parameters || [];
+    operation.parameters.push(parameter);
+  }
+};
+
+SwaggerSpecConverter.prototype.dataType = function(source, target) {
+  if(typeof source !== 'object') {
+    return;
+  }
+
+  if(source.minimum) {
+    target.minimum = source.minimum;
+  }
+  if(source.maximum) {
+    target.maximum = source.maximum;
+  }
+
+  // default can be 'false'
+  if(typeof source.defaultValue !== 'undefined') {
+    target.default = source.defaultValue;
+  }
+
+  var jsonSchemaType = this.toJsonSchema(source);
+  if(jsonSchemaType) {
+    target = target || {};
+    if(jsonSchemaType.type) {
+      target.type = jsonSchemaType.type;
+    }
+    if(jsonSchemaType.format) {
+      target.format = jsonSchemaType.format;
+    }
+    if(jsonSchemaType.$ref) {
+      target.schema = {$ref: jsonSchemaType.$ref};
+    }
+    if(jsonSchemaType.items) {
+      target.items = jsonSchemaType.items;
+    }
+  }
+};
+
+SwaggerSpecConverter.prototype.toJsonSchema = function(source) {
+  if(!source) {
+    return 'object';
+  }
+  var detectedType = (source.type || source.dataType || source.responseClass || '');
+  var lcType = detectedType.toLowerCase();
+  var format = (source.format || '').toLowerCase();
+
+  if(lcType.indexOf('list[') === 0) {
+    var innerType = detectedType.substring(5, detectedType.length - 1);
+    var jsonType = this.toJsonSchema({type: innerType});
+    return {type: 'array', items: jsonType};
+  }
+  else if(lcType === 'int' || (lcType === 'integer' && format === 'int32'))
+    {return {type: 'integer', format: 'int32'};}
+  else if(lcType === 'long' || (lcType === 'integer' && format === 'int64'))
+    {return {type: 'integer', format: 'int64'};}
+  else if(lcType === 'integer')
+    {return {type: 'integer', format: 'int64'};}
+  else if(lcType === 'float' || (lcType === 'number' && format === 'float'))
+    {return {type: 'number', format: 'float'};}
+  else if(lcType === 'double' || (lcType === 'number' && format === 'double'))
+    {return {type: 'number', format: 'double'};}
+  else if((lcType === 'string' && format === 'date-time') || (lcType === 'date'))
+    {return {type: 'string', format: 'date-time'};}
+  else if(lcType === 'string')
+    {return {type: 'string'};}
+  else if(lcType === 'file')
+    {return {type: 'file'};}
+  else if(lcType === 'boolean')
+    {return {type: 'boolean'};}
+  else if(lcType === 'array' || lcType === 'list') {
+    if(source.items) {
+      var it = this.toJsonSchema(source.items);
+      return {type: 'array', items: it};
+    }
+    else {
+      return {type: 'array', items: {type: 'object'}};
+    }
+  }
+  else if(source.$ref) {
+    return {$ref: '#/definitions/' + this.modelMap[source.$ref] || source.$ref};
+  }
+  else if(lcType === 'void' || lcType === '')
+    {return {};}
+  else {
+    return {$ref: '#/definitions/' + this.modelMap[source.type] || source.type};
+  }
+};
+
+// SwaggerSpecConverter.prototype.resourceListing = function(obj, swagger, callback) {
+//   var i;
+//   var processedCount = 0;   // jshint ignore:line
+//   var self = this;          // jshint ignore:line
+//   var expectedCount = obj.apis.length;
+//   var _swagger = swagger;   // jshint ignore:line
+
+//   if(expectedCount === 0) {
+//     this.finish(callback, swagger);
+//   }
+
+//   for(i = 0; i < expectedCount; i++) {
+//     var api = obj.apis[i];
+//     var path = api.path;
+//     var absolutePath = this.getAbsolutePath(obj.swaggerVersion, this.docLocation, path);
+
+//     if(api.description) {
+//       swagger.tags = swagger.tags || [];
+//       swagger.tags.push({
+//         name : this.extractTag(api.path),
+//         description : api.description || ''
+//       });
+//     }
+//     var http = {
+//       url: absolutePath,
+//       headers: {accept: 'application/json'},
+//       on: {},
+//       method: 'get'
+//     };
+//     /* jshint ignore:start */
+//     http.on.response = function(data) {
+//       processedCount += 1;
+//       var obj = data.obj;
+//       if(obj) {
+//         self.declaration(obj, _swagger);
+//       }
+//       if(processedCount === expectedCount) {
+//         self.finish(callback, _swagger);
+//       }
+//     };
+//     http.on.error = function(data) {
+//       console.error(data);
+//       processedCount += 1;
+//       if(processedCount === expectedCount) {
+//         self.finish(callback, _swagger);
+//       }
+//     };
+//     /* jshint ignore:end */
+
+//     if(this.clientAuthorizations && typeof this.clientAuthorizations.apply === 'function') {
+//       this.clientAuthorizations.apply(http);
+//     }
+
+//     new SwaggerHttp().execute(http);
+//   }
+// };
+
+// SwaggerSpecConverter.prototype.getAbsolutePath = function(version, docLocation, path)  {
+//   if(version === '1.0') {
+//     if(docLocation.endsWith('.json')) {
+//       // get root path
+//       var pos = docLocation.lastIndexOf('/');
+//       if(pos > 0) {
+//         docLocation = docLocation.substring(0, pos);
+//       }
+//     }
+//   }
+
+//   var location = docLocation;
+//   if(path.indexOf('http://') === 0 || path.indexOf('https://') === 0) {
+//     location = path;
+//   }
+//   else {
+//     if(docLocation.endsWith('/')) {
+//       location = docLocation.substring(0, docLocation.length - 1);
+//     }
+//     location += path;
+//   }
+//   location = location.replace('{format}', 'json');
+//   return location;
+// };
+
+
+SwaggerSpecConverter.prototype.apiInfo = function(obj, swagger) {
+  // info section
+  if(obj.info) {
+    var info = obj.info;
+    swagger.info = {};
+
+    if(info.contact) {
+      swagger.info.contact = {};
+      swagger.info.contact.email = info.contact;
+    }
+    if(info.description) {
+      swagger.info.description = info.description;
+    }
+    if(info.title) {
+      swagger.info.title = info.title;
+    }
+    if(info.termsOfServiceUrl) {
+      swagger.info.termsOfService = info.termsOfServiceUrl;
+    }
+    if(info.license || info.licenseUrl) {
+      swagger.license = {};
+      if(info.license) {
+        swagger.license.name = info.license;
+      }
+      if(info.licenseUrl) {
+        swagger.license.url = info.licenseUrl;
+      }
+    }
+  }
+  else {
+    this.warnings.push('missing info section');
+  }
+};
+
+// SwaggerSpecConverter.prototype.finish = function (callback, obj) {
+//   callback(obj);
+// };
+
+var Model = function (name, definition, models, modelPropertyMacro) {
+  this.definition = definition || {};
+  this.isArray = definition.type === 'array';
+  this.models = models || {};
+  this.name = definition.title || name || 'Inline Model';
+  this.modelPropertyMacro = modelPropertyMacro || function (property) {
+    return property.default;
+  };
+
+  return this;
+};
+
+var schemaToHTML = function (name, schema, models, modelPropertyMacro) {
+  var strongOpen = '<span class="strong">';
+  var strongClose = '</span>';
+  var references = {};
+  var seenModels = [];
+  var inlineModels = 0;
+  var addReference = function (schema, name, skipRef) {
+    var modelName = name;
+    var model;
+
+    if (schema.$ref) {
+      modelName = schema.title || helpers.simpleRef(schema.$ref);
+      model = models[modelName];
+    } else if (_.isUndefined(name)) {
+      modelName = schema.title || 'Inline Model ' + (++inlineModels);
+      model = new Model(modelName, schema, models, modelPropertyMacro);
+    }
+
+    if (skipRef !== true) {
+      references[modelName] = _.isUndefined(model) ? {} : model.definition;
+    }
+
+    return modelName;
+  };
+
+  var primitiveToHTML = function (schema) {
+    var html = '<span class="propType">';
+    var type = schema.type || 'object';
+
+    if (schema.$ref) {
+      html += addReference(schema, helpers.simpleRef(schema.$ref));
+    } else if (type === 'object') {
+      if (!_.isUndefined(schema.properties)) {
+        html += addReference(schema);
+      } else {
+        html += 'object';
+      }
+    } else if (type === 'array') {
+      html += 'Array[';
+
+      if (_.isArray(schema.items)) {
+        html += _.map(schema.items, addReference).join(',');
+      } else if (_.isPlainObject(schema.items)) {
+        if (_.isUndefined(schema.items.$ref)) {
+          if (!_.isUndefined(schema.items.type) && _.indexOf(['array', 'object'], schema.items.type) === -1) {
+            html += schema.items.type;
+          } else {
+            html += addReference(schema.items);
+          }
+        } else {
+          html += addReference(schema.items, helpers.simpleRef(schema.items.$ref));
+        }
+      } else {
+        helpers.log('Array type\'s \'items\' schema is not an array or an object, cannot process');
+        html += 'object';
+      }
+
+      html += ']';
+    } else {
+      html += schema.type;
+    }
+
+    html += '</span>';
+
+    return html;
+  };
+  var primitiveToOptionsHTML = function (schema, html) {
+    var options = '';
+    var type = schema.type || 'object';
+    var isArray = type === 'array';
+
+    if (isArray) {
+      if (_.isPlainObject(schema.items) && !_.isUndefined(schema.items.type)) {
+        type = schema.items.type;
+      } else {
+        type = 'object';
+      }
+    }
+
+    if (!_.isUndefined(schema.default)) {
+      options += helpers.optionHtml('Default', schema.default);
+    }
+
+    switch (type) {
+    case 'string':
+      if (schema.minLength) {
+        options += helpers.optionHtml('Min. Length', schema.minLength);
+      }
+
+      if (schema.maxLength) {
+        options += helpers.optionHtml('Max. Length', schema.maxLength);
+      }
+
+      if (schema.pattern) {
+        options += helpers.optionHtml('Reg. Exp.', schema.pattern);
+      }
+      break;
+    case 'integer':
+    case 'number':
+      if (schema.minimum) {
+        options += helpers.optionHtml('Min. Value', schema.minimum);
+      }
+
+      if (schema.exclusiveMinimum) {
+        options += helpers.optionHtml('Exclusive Min.', 'true');
+      }
+
+      if (schema.maximum) {
+        options += helpers.optionHtml('Max. Value', schema.maximum);
+      }
+
+      if (schema.exclusiveMaximum) {
+        options += helpers.optionHtml('Exclusive Max.', 'true');
+      }
+
+      if (schema.multipleOf) {
+        options += helpers.optionHtml('Multiple Of', schema.multipleOf);
+      }
+
+      break;
+    }
+
+    if (isArray) {
+      if (schema.minItems) {
+        options += helpers.optionHtml('Min. Items', schema.minItems);
+      }
+
+      if (schema.maxItems) {
+        options += helpers.optionHtml('Max. Items', schema.maxItems);
+      }
+
+      if (schema.uniqueItems) {
+        options += helpers.optionHtml('Unique Items', 'true');
+      }
+
+      if (schema.collectionFormat) {
+        options += helpers.optionHtml('Coll. Format', schema.collectionFormat);
+      }
+    }
+
+    if (_.isUndefined(schema.items)) {
+      if (_.isArray(schema.enum)) {
+        var enumString;
+
+        if (type === 'number' || type === 'integer') {
+          enumString = schema.enum.join(', ');
+        } else {
+          enumString = '"' + schema.enum.join('", "') + '"';
+        }
+
+        options += helpers.optionHtml('Enum', enumString);
+      }
+    }
+
+    if (options.length > 0) {
+      html = '<span class="propWrap">' + html + '<table class="optionsWrapper"><tr><th colspan="2">' + type + '</th></tr>' + options + '</table></span>';
+    }
+
+    return html;
+  };
+  var processModel = function (schema, name) {
+    var type = schema.type || 'object';
+    var isArray = schema.type === 'array';
+    var html = strongOpen + name + ' ' + (isArray ? '[' : '{') + strongClose;
+
+    if (name) {
+      seenModels.push(name);
+    }
+
+    if (isArray) {
+      if (_.isArray(schema.items)) {
+        html += '<div>' + _.map(schema.items, function (item) {
+          var type = item.type || 'object';
+
+          if (_.isUndefined(item.$ref)) {
+            if (_.indexOf(['array', 'object'], type) > -1) {
+              if (type === 'object' && _.isUndefined(item.properties)) {
+                return 'object';
+              } else {
+                return addReference(item);
+              }
+            } else {
+              return primitiveToOptionsHTML(item, type);
+            }
+          } else {
+            return addReference(item, helpers.simpleRef(item.$ref));
+          }
+        }).join(',</div><div>');
+      } else if (_.isPlainObject(schema.items)) {
+        if (_.isUndefined(schema.items.$ref)) {
+          if (_.indexOf(['array', 'object'], schema.items.type || 'object') > -1) {
+            if ((_.isUndefined(schema.items.type) || schema.items.type === 'object') && _.isUndefined(schema.items.properties)) {
+              html += '<div>object</div>';
+            } else {
+              html += '<div>' + addReference(schema.items) + '</div>';
+            }
+          } else {
+            html += '<div>' + primitiveToOptionsHTML(schema.items, schema.items.type) + '</div>';
+          }
+        } else {
+          html += '<div>' + addReference(schema.items, helpers.simpleRef(schema.items.$ref)) + '</div>';
+        }
+      } else {
+        helpers.log('Array type\'s \'items\' property is not an array or an object, cannot process');
+        html += '<div>object</div>';
+      }
+    } else {
+      if (schema.$ref) {
+        html += '<div>' + addReference(schema, name) + '</div>';
+      } else if (type === 'object') {
+        html += '<div>';
+
+        if (_.isPlainObject(schema.properties)) {
+          html += _.map(schema.properties, function (property, name) {
+            var propertyIsRequired = (_.indexOf(schema.required, name) >= 0);
+            var cProperty = _.cloneDeep(property);
+
+            var requiredClass = propertyIsRequired ? 'required' : '';
+            var html = '<span class="propName ' + requiredClass + '">' + name + '</span> (';
+            var model;
+
+            // Allow macro to set the default value
+            cProperty.default = modelPropertyMacro(cProperty);
+
+            // Resolve the schema (Handle nested schemas)
+            cProperty = helpers.resolveSchema(cProperty);
+
+            // We need to handle property references to primitives (Issue 339)
+            if (!_.isUndefined(cProperty.$ref)) {
+              model = models[helpers.simpleRef(cProperty.$ref)];
+
+              if (!_.isUndefined(model) && _.indexOf([undefined, 'array', 'object'], model.definition.type) === -1) {
+                // Use referenced schema
+                cProperty = helpers.resolveSchema(model.definition);
+              }
+            }
+
+            html += primitiveToHTML(cProperty);
+
+            if(!propertyIsRequired) {
+              html += ', <span class="propOptKey">optional</span>';
+            }
+
+            html += ')';
+
+            if (!_.isUndefined(cProperty.description)) {
+              html += ': ' + '<span class="propDesc">' + cProperty.description + '</span>';
+            }
+
+            if (cProperty.enum) {
+              html += ' = <span class="propVals">[\'' + cProperty.enum.join('\', \'') + '\']</span>';
+            }
+
+            return primitiveToOptionsHTML(cProperty, html);
+          }).join(',</div><div>');
+        }
+
+        html += '</div>';
+      } else {
+        html += '<div>' + primitiveToOptionsHTML(schema, type) + '</div>';
+      }
+    }
+
+    return html + strongOpen + (isArray ? ']' : '}') + strongClose;
+  };
+
+  // Resolve the schema (Handle nested schemas)
+  schema = helpers.resolveSchema(schema);
+
+  // Generate current HTML
+  var html = processModel(schema, name);
+
+  // Generate references HTML
+  while (_.keys(references).length > 0) {
+    /* jshint ignore:start */
+    _.forEach(references, function (schema, name) {
+      var seenModel = _.indexOf(seenModels, name) > -1;
+
+      delete references[name];
+
+      if (!seenModel) {
+        seenModels.push(name);
+
+        html += '<br />' + processModel(schema, name);
+      }
+    });
+    /* jshint ignore:end */
+  }
+
+  return html;
+};
+
+var schemaToJSON = function (schema, models, modelsToIgnore, modelPropertyMacro) {
+  // Resolve the schema (Handle nested schemas)
+  schema = helpers.resolveSchema(schema);
+
+  var type = schema.type || 'object';
+  var format = schema.format;
+  var model;
+  var output;
+
+  if (schema.example) {
+    output = schema.example;
+  } else if (_.isUndefined(schema.items) && _.isArray(schema.enum)) {
+    output = schema.enum[0];
+  }
+
+  if (_.isUndefined(output)) {
+    if (schema.$ref) {
+      model = models[helpers.simpleRef(schema.$ref)];
+
+      if (!_.isUndefined(model)) {
+        if (_.isUndefined(modelsToIgnore[model.name])) {
+          modelsToIgnore[model.name] = model;
+          output = schemaToJSON(model.definition, models, modelsToIgnore, modelPropertyMacro);
+          delete modelsToIgnore[model.name];
+        } else {
+          if (model.type === 'array') {
+            output = [];
+          } else {
+            output = {};
+          }
+        }
+      }
+    } else if (!_.isUndefined(schema.default)) {
+      output = schema.default;
+    } else if (type === 'string') {
+      if (format === 'date-time') {
+        output = new Date().toISOString();
+      } else if (format === 'date') {
+        output = new Date().toISOString().split('T')[0];
+      } else {
+        output = 'string';
+      }
+    } else if (type === 'integer') {
+      output = 0;
+    } else if (type === 'number') {
+      output = 0.0;
+    } else if (type === 'boolean') {
+      output = true;
+    } else if (type === 'object') {
+      output = {};
+
+      _.forEach(schema.properties, function (property, name) {
+        var cProperty = _.cloneDeep(property);
+
+        // Allow macro to set the default value
+        cProperty.default = modelPropertyMacro(property);
+
+        output[name] = schemaToJSON(cProperty, models, modelsToIgnore, modelPropertyMacro);
+      });
+    } else if (type === 'array') {
+      output = [];
+
+      if (_.isArray(schema.items)) {
+        _.forEach(schema.items, function (item) {
+          output.push(schemaToJSON(item, models, modelsToIgnore, modelPropertyMacro));
+        });
+      } else if (_.isPlainObject(schema.items)) {
+        output.push(schemaToJSON(schema.items, models, modelsToIgnore, modelPropertyMacro));
+      } else if (_.isUndefined(schema.items)) {
+        output.push({});
+      } else {
+        helpers.log('Array type\'s \'items\' property is not an array or an object, cannot process');
+      }
+    }
+  }
+
+  return output;
+};
+
+Model.prototype.createJSONSample = Model.prototype.getSampleValue = function (modelsToIgnore) {
+  modelsToIgnore = modelsToIgnore || {};
+
+  modelsToIgnore[this.name] = this;
+
+  // Response support
+  if (this.examples && _.isPlainObject(this.examples) && this.examples['application/json']) {
+    this.definition.example = this.examples['application/json'];
+
+    if (_.isString(this.definition.example)) {
+      this.definition.example = jsyaml.safeLoad(this.definition.example);
+    }
+  } else if (!this.definition.example) {
+    this.definition.example = this.examples;
+  }
+
+  return schemaToJSON(this.definition, this.models, modelsToIgnore, this.modelPropertyMacro);
+};
+
+Model.prototype.getMockSignature = function () {
+  return schemaToHTML(this.name, this.definition, this.models, this.modelPropertyMacro);
+};
+
+
+helpers = {};
+helpers.log = function() {
+  // Only log if available and we're not testing
+  if (console && process.env.NODE_ENV !== 'test') {
+    console.log(Array.prototype.slice.call(arguments)[0]);
+  }
+};
+helpers.optionHtml = function (label, value) {
+  return '<tr><td class="optionName">' + label + ':</td><td>' + value + '</td></tr>';
+};
+helpers.resolveSchema = function (schema) {
+  if (_.isPlainObject(schema.schema)) {
+    schema = resolveSchema(schema.schema);
+  }
+
+  return schema;
+};
+helpers.simpleRef = function (name) {
+if (typeof name === 'undefined') {
+    return null;
+  }
+
+  if (name.indexOf('#/definitions/') === 0) {
+    return name.substring('#/definitions/'.length);
+  } else {
+    return name;
+  }
+};
+helpers.getStringSignature = function (obj, baseComponent) {
+  var str = '';
+
+  if (typeof obj.$ref !== 'undefined') {
+    str += simpleRef(obj.$ref);
+  } else if (typeof obj.type === 'undefined') {
+    str += 'object';
+  } else if (obj.type === 'array') {
+    if (baseComponent) {
+      str += getStringSignature((obj.items || obj.$ref || {}));
+    } else {
+      str += 'Array[';
+      str += getStringSignature((obj.items || obj.$ref || {}));
+      str += ']';
+    }
+  } else if (obj.type === 'integer' && obj.format === 'int32') {
+    str += 'integer';
+  } else if (obj.type === 'integer' && obj.format === 'int64') {
+    str += 'long';
+  } else if (obj.type === 'integer' && typeof obj.format === 'undefined') {
+    str += 'long';
+  } else if (obj.type === 'string' && obj.format === 'date-time') {
+    str += 'date-time';
+  } else if (obj.type === 'string' && obj.format === 'date') {
+    str += 'date';
+  } else if (obj.type === 'string' && typeof obj.format === 'undefined') {
+    str += 'string';
+  } else if (obj.type === 'number' && obj.format === 'float') {
+    str += 'float';
+  } else if (obj.type === 'number' && obj.format === 'double') {
+    str += 'double';
+  } else if (obj.type === 'number' && typeof obj.format === 'undefined') {
+    str += 'double';
+  } else if (obj.type === 'boolean') {
+    str += 'boolean';
+  } else if (obj.$ref) {
+    str += simpleRef(obj.$ref);
+  } else {
+    str += obj.type;
+  }
+
+  return str;
+};
+
+/********************************* End Swagger JS *********************************/
+
+
+/* DOM already loaded? */
+if (document.readyState !== "loading") {
+    init();
+}
+else {
+    /* Wait for it */
+    document.addEventListener("DOMContentLoaded", init);
+}
+</script>

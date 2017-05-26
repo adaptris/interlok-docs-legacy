@@ -1,0 +1,2497 @@
+---
+swagger: "2.0"
+info:
+  description: "Interlok UI Api web service documentation."
+  version: "3.6.2-RELEASE"
+  title: "Interlok UI Api Documentation"
+basePath: "/interlok/api"
+tags:
+- name: "/channel/failed-messages"
+- name: "/workflow/metrics"
+- name: "/adapter"
+- name: "/adapter/component-checker"
+- name: "/channel"
+- name: "/adapter/metrics"
+- name: "/workflow/failed-messages"
+- name: "/workflow"
+- name: "/channel/metrics"
+- name: "/adapter/failed-messages"
+- name: "/adapter/platform"
+paths:
+  /external/adapter:
+    get:
+      tags:
+      - "/adapter"
+      summary: "List all register adapters"
+      description: ""
+      operationId: "list"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "pageSize"
+        in: "query"
+        required: false
+        type: "integer"
+        default: -1
+        format: "int32"
+      - name: "page"
+        in: "query"
+        required: false
+        type: "integer"
+        default: -1
+        format: "int32"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/AdapterEntity"
+    post:
+      tags:
+      - "/adapter"
+      summary: "Add an adapter"
+      description: ""
+      operationId: "save"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/AdapterEntity"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/AdapterEntity"
+  /external/adapter/batch:
+    post:
+      tags:
+      - "/adapter"
+      summary: "Add multiple adapters"
+      description: ""
+      operationId: "save"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          type: "array"
+          items:
+            $ref: "#/definitions/AdapterEntity"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/AdapterEntity"
+  /external/adapter/{url}/{jmxUid}:
+    get:
+      tags:
+      - "/adapter"
+      summary: "Get an adapter"
+      description: ""
+      operationId: "get"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/AdapterEntity"
+  /external/adapter/{url}/{jmxUid}/component-checker/check-service:
+    post:
+      tags:
+      - "/adapter/component-checker"
+      summary: "Send a message through a a service (collection) to check its validy"
+      description: ""
+      operationId: "checkService"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/ComponentCheckWrapper"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/MessageEntity"
+  /external/adapter/{url}/{jmxUid}/configuration:
+    get:
+      tags:
+      - "/adapter"
+      summary: "Get an adapter's configuration"
+      description: ""
+      operationId: "configuration"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{url}/{jmxUid}/details:
+    get:
+      tags:
+      - "/adapter"
+      summary: "Get details for an adapter"
+      description: ""
+      operationId: "details"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ComponentDetails"
+  /external/adapter/{url}/{jmxUid}/failed-messages:
+    get:
+      tags:
+      - "/adapter/failed-messages"
+      summary: "Get all the failed messages for an adapter"
+      description: ""
+      operationId: "failedMessages"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "pageSize"
+        in: "query"
+        required: false
+        type: "integer"
+        default: 100
+        format: "int32"
+      - name: "page"
+        in: "query"
+        required: false
+        type: "integer"
+        default: 1
+        format: "int32"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/FailedMessageEntity"
+  /external/adapter/{url}/{jmxUid}/failed-messages/count:
+    get:
+      tags:
+      - "/adapter/failed-messages"
+      summary: "Get the number of failed messages for an adapter"
+      description: ""
+      operationId: "failedMessagesCount"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Count"
+  /external/adapter/{url}/{jmxUid}/failed-messages/ignore:
+    post:
+      tags:
+      - "/adapter/failed-messages"
+      summary: "Ignore all the adapter failed message"
+      description: ""
+      operationId: "ignoreAllFailedMessage"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "deleteMsgFile"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+    put:
+      tags:
+      - "/adapter/failed-messages"
+      summary: "Ignore an adapter failed message"
+      description: ""
+      operationId: "ignoreFailedMessage"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          type: "array"
+          items:
+            type: "string"
+      - name: "deleteMsgFile"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+  /external/adapter/{url}/{jmxUid}/failed-messages/last-hundred:
+    get:
+      tags:
+      - "/adapter/failed-messages"
+      summary: "Get all the failed messages for an adapter"
+      description: ""
+      operationId: "lastHundredFailedMessages"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/FailedMessageEntity"
+  /external/adapter/{url}/{jmxUid}/failed-messages/retry:
+    post:
+      tags:
+      - "/adapter/failed-messages"
+      summary: "Retry all the adapter failed messages"
+      description: ""
+      operationId: "retryAllFailedMessage"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+    put:
+      tags:
+      - "/adapter/failed-messages"
+      summary: "Retry an adapter failed message"
+      description: ""
+      operationId: "retryFailedMessage"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          type: "array"
+          items:
+            type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+  /external/adapter/{url}/{jmxUid}/failed-messages/total-count:
+    get:
+      tags:
+      - "/adapter/failed-messages"
+      summary: "Get an adapter total failed messages count since started"
+      description: ""
+      operationId: "totalFailedMessagesCount"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Count"
+  /external/adapter/{url}/{jmxUid}/metrics/message-metrics:
+    get:
+      tags:
+      - "/adapter/metrics"
+      summary: "Get an adapter message metrics statistics"
+      description: ""
+      operationId: "getMessageMetricsStatistics"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/MessageMetricsStatisticsEntity"
+  /external/adapter/{url}/{jmxUid}/metrics/message-metrics/{id}:
+    get:
+      tags:
+      - "/adapter/metrics"
+      summary: "Get an adapter message metrics statistics for the given id"
+      description: ""
+      operationId: "getMessageMetricsStatistics"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/MessageMetricsStatisticsEntity"
+  /external/adapter/{url}/{jmxUid}/platform/gc:
+    get:
+      tags:
+      - "/adapter/platform"
+      summary: "Run an adapter jvm garbage collector"
+      description: ""
+      operationId: "runsGarbageCollector"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+  /external/adapter/{url}/{jmxUid}/platform/memory-heap-properties:
+    get:
+      tags:
+      - "/adapter/platform"
+      summary: "Get an adapter platform memory heap properties"
+      description: ""
+      operationId: "platformMemoryHeapProperties"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{url}/{jmxUid}/platform/memory-non-heap-properties:
+    get:
+      tags:
+      - "/adapter/platform"
+      summary: "Get an adapter platform memory non heap properties"
+      description: ""
+      operationId: "platformMemoryNonHeapProperties"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{url}/{jmxUid}/platform/memory-properties:
+    get:
+      tags:
+      - "/adapter/platform"
+      summary: "Get an adapter platform memory properties"
+      description: ""
+      operationId: "platformMemoryProperties"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{url}/{jmxUid}/platform/operating-system-load-properties:
+    get:
+      tags:
+      - "/adapter/platform"
+      summary: "Get an adapter platform operating system load properties"
+      description: ""
+      operationId: "platformOperatingSystemLoadProperties"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{url}/{jmxUid}/platform/operating-system-properties:
+    get:
+      tags:
+      - "/adapter/platform"
+      summary: "Get an adapter platform operating system properties"
+      description: ""
+      operationId: "platformOperatingSystemProperties"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{url}/{jmxUid}/platform/runtime-path-properties:
+    get:
+      tags:
+      - "/adapter/platform"
+      summary: "Get an adapter platform runtime path properties"
+      description: ""
+      operationId: "platformRuntimePathProperties"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{url}/{jmxUid}/platform/runtime-properties:
+    get:
+      tags:
+      - "/adapter/platform"
+      summary: "Get an adapter platform runtime properties"
+      description: ""
+      operationId: "platformRuntimeProperties"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{url}/{jmxUid}/platform/runtime-system-properties:
+    get:
+      tags:
+      - "/adapter/platform"
+      summary: "Get an adapter platform runtime system properties"
+      description: ""
+      operationId: "platformRuntimeSystemProperties"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{url}/{jmxUid}/platform/thread-dump:
+    get:
+      tags:
+      - "/adapter/platform"
+      summary: "Get an adapter thread dump"
+      description: ""
+      operationId: "generateThreadDump"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+  /external/adapter/{url}/{jmxUid}/platform/thread-properties:
+    get:
+      tags:
+      - "/adapter/platform"
+      summary: "Get an adapter platform thread properties"
+      description: ""
+      operationId: "platformThreadProperties"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{url}/{jmxUid}/state:
+    get:
+      tags:
+      - "/adapter"
+      summary: "Get an adapter's state"
+      description: ""
+      operationId: "getState"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/StateWrapper"
+    put:
+      tags:
+      - "/adapter"
+      summary: "Update an adapter's state"
+      description: ""
+      operationId: "updateState"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "adpMgmtTimeout"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "option"
+        in: "query"
+        required: false
+        type: "string"
+        enum:
+        - "FORCE_CLOSE"
+        - "FORCE_CLOSE_IF_FAIL"
+        - "RESTART"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/StateWrapper"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+  /external/channel/{url}/{jmxUid}:
+    get:
+      tags:
+      - "/channel"
+      summary: "Lists channels for an adapter"
+      description: ""
+      operationId: "list"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ChannelEntity"
+  /external/channel/{url}/{jmxUid}/count:
+    get:
+      tags:
+      - "/channel"
+      summary: "Counts channels for an adapter"
+      description: ""
+      operationId: "count"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Count"
+  /external/channel/{url}/{jmxUid}/{channel}:
+    get:
+      tags:
+      - "/channel"
+      summary: "Get a channel for an adapter"
+      description: ""
+      operationId: "get"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ChannelEntity"
+  /external/channel/{url}/{jmxUid}/{channel}/configuration:
+    get:
+      tags:
+      - "/channel"
+      summary: "Get a channel's configuration"
+      description: ""
+      operationId: "configuration"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/channel/{url}/{jmxUid}/{channel}/details:
+    get:
+      tags:
+      - "/channel"
+      summary: "Get details for a channel"
+      description: ""
+      operationId: "details"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ComponentDetails"
+  /external/channel/{url}/{jmxUid}/{channel}/failed-messages/count:
+    get:
+      tags:
+      - "/channel/failed-messages"
+      summary: "Get the number of failed messages for a channel"
+      description: ""
+      operationId: "failedMessagesCount"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Count"
+  /external/channel/{url}/{jmxUid}/{channel}/metrics/message-metrics:
+    get:
+      tags:
+      - "/channel/metrics"
+      summary: "Get a channel message metrics statistics"
+      description: ""
+      operationId: "getMessageMetricsStatistics"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/MessageMetricsStatisticsEntity"
+  /external/channel/{url}/{jmxUid}/{channel}/metrics/message-metrics/{id}:
+    get:
+      tags:
+      - "/channel/metrics"
+      summary: "Get a channel message metrics statistics for the given id"
+      description: ""
+      operationId: "getMessageMetricsStatistics"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/MessageMetricsStatisticsEntity"
+  /external/channel/{url}/{jmxUid}/{channel}/state:
+    get:
+      tags:
+      - "/channel"
+      summary: "Get a channel's state"
+      description: ""
+      operationId: "getState"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/StateWrapper"
+    put:
+      tags:
+      - "/channel"
+      summary: "Update a channel's state"
+      description: ""
+      operationId: "updateState"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "adpMgmtTimeout"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "option"
+        in: "query"
+        required: false
+        type: "string"
+        enum:
+        - "FORCE_CLOSE"
+        - "FORCE_CLOSE_IF_FAIL"
+        - "RESTART"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/StateWrapper"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+  /external/workflow/{url}/{jmxUid}/{channel}:
+    get:
+      tags:
+      - "/workflow"
+      summary: "Lists workflows for a channel"
+      description: ""
+      operationId: "list"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        required: true
+        type: "string"
+        default: "none"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/WorkflowEntity"
+  /external/workflow/{url}/{jmxUid}/{channel}/count:
+    get:
+      tags:
+      - "/workflow"
+      summary: "Counts workflows for a channel"
+      description: ""
+      operationId: "count"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        required: true
+        type: "string"
+        default: "none"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Count"
+  /external/workflow/{url}/{jmxUid}/{channel}/{workflow}:
+    get:
+      tags:
+      - "/workflow"
+      summary: "Gets a workflow for a channel"
+      description: ""
+      operationId: "get"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/WorkflowEntity"
+  /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/configuration:
+    get:
+      tags:
+      - "/workflow"
+      summary: "Get a workflow's configuration"
+      description: ""
+      operationId: "configuration"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/details:
+    get:
+      tags:
+      - "/workflow"
+      summary: "Get details for a workflow"
+      description: ""
+      operationId: "details"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ComponentDetails"
+  /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/failed-messages/failed-messages/count:
+    get:
+      tags:
+      - "/workflow/failed-messages"
+      summary: "Get the number of failed messages for a workflow"
+      description: ""
+      operationId: "failedMessagesCount"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Count"
+  /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/metrics/message-metrics:
+    get:
+      tags:
+      - "/workflow/metrics"
+      summary: "Get a workflow message metrics statistics. The first found will be\
+        \ returned"
+      description: ""
+      operationId: "getMessageMetricsStatistics"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/MessageMetricsStatisticsEntity"
+  /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/metrics/message-metrics-ids:
+    get:
+      tags:
+      - "/workflow/metrics"
+      summary: "Get all the message metrics statistics ids for a workflow"
+      description: ""
+      operationId: "messageMetricsStatisticsIds"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+  /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/metrics/message-metrics/{id}:
+    get:
+      tags:
+      - "/workflow/metrics"
+      summary: "Get a workflow message metrics statistics for the given id"
+      description: ""
+      operationId: "getMessageMetricsStatistics"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/MessageMetricsStatisticsEntity"
+    delete:
+      tags:
+      - "/workflow/metrics"
+      operationId: "clearMessageMetricsStatistics"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+          headers: {}
+  /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/metrics/metadata-statistics-ids:
+    get:
+      tags:
+      - "/workflow/metrics"
+      summary: "Get all the metadata statistics ids for a workflow"
+      description: ""
+      operationId: "messageMetadataStatisticsIds"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+  /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/metrics/metadata-statistics/{id}:
+    get:
+      tags:
+      - "/workflow/metrics"
+      summary: "Get a workflow matadata statistics for a given id"
+      description: ""
+      operationId: "getMetadataStatistics"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/MetadataStatisticsEntity"
+    delete:
+      tags:
+      - "/workflow/metrics"
+      operationId: "clearMetadataStatistics"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+          headers: {}
+  /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/state:
+    get:
+      tags:
+      - "/workflow"
+      summary: "Get a workflow's state"
+      description: ""
+      operationId: "getState"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/StateWrapper"
+    put:
+      tags:
+      - "/workflow"
+      summary: "Update a workflow's state"
+      description: ""
+      operationId: "updateState"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        required: true
+        type: "string"
+      - name: "adpMgmtTimeout"
+        in: "query"
+        required: false
+        type: "string"
+      - name: "option"
+        in: "query"
+        required: false
+        type: "string"
+        enum:
+        - "FORCE_CLOSE"
+        - "FORCE_CLOSE_IF_FAIL"
+        - "RESTART"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/StateWrapper"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+definitions:
+  ComponentCheckWrapper:
+    type: "object"
+    properties:
+      service:
+        type: "string"
+      message:
+        $ref: "#/definitions/MessageEntity"
+    xml:
+      name: "component-check-wrapper"
+  AdapterEntity:
+    type: "object"
+    required:
+    - "jmxUid"
+    - "name"
+    - "url"
+    properties:
+      id:
+        type: "integer"
+        format: "int32"
+      created:
+        type: "string"
+        format: "date-time"
+      updated:
+        type: "string"
+        format: "date-time"
+      name:
+        type: "string"
+        minLength: 1
+        maxLength: 127
+      jmxUid:
+        type: "string"
+        minLength: 1
+        maxLength: 127
+      url:
+        type: "string"
+        minLength: 1
+        maxLength: 255
+        pattern: "(service:jmx:)(.*)(://)(.*)"
+      jmxUsername:
+        type: "string"
+        minLength: 0
+        maxLength: 255
+      jmxPassword:
+        type: "string"
+        minLength: 0
+        maxLength: 255
+      jmxEnv:
+        type: "string"
+        minLength: 0
+        maxLength: 512
+      configLastUpdated:
+        type: "string"
+        format: "date-time"
+      ordering:
+        type: "integer"
+        format: "int32"
+      autoDiscovered:
+        type: "boolean"
+        default: false
+      state:
+        type: "string"
+        enum:
+        - "CLOSED"
+        - "INITIALISED"
+        - "STARTED"
+        - "STOPPED"
+        - "DISCONNECTED"
+      configFileUrl:
+        type: "string"
+      channels:
+        type: "array"
+        items:
+          $ref: "#/definitions/ChannelEntity"
+      type:
+        type: "string"
+    xml:
+      name: "adapter"
+  ChannelEntity:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      state:
+        type: "string"
+        enum:
+        - "CLOSED"
+        - "INITIALISED"
+        - "STARTED"
+        - "STOPPED"
+        - "DISCONNECTED"
+      workflows:
+        type: "array"
+        items:
+          $ref: "#/definitions/WorkflowEntity"
+      xml:
+        type: "string"
+      type:
+        type: "string"
+      id:
+        type: "string"
+    xml:
+      name: "channel"
+  Count:
+    type: "object"
+    properties:
+      value:
+        type: "integer"
+        format: "int32"
+  MessageMetricsStatisticsEntity:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      endMillisForTimeSliceIndex:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+      timeSliceDurationSeconds:
+        type: "integer"
+        format: "int32"
+      parentChannelName:
+        type: "string"
+      parentWorkflowName:
+        type: "string"
+      numberOfMessagesForTimeSliceIndex:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int32"
+      numberOfErrorMessagesForTimeSliceIndex:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int32"
+      totalSizeOfMessagesForTimeSliceIndex:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+      totalStringStats:
+        type: "string"
+      numberOfTimeSlices:
+        type: "integer"
+        format: "int32"
+  WorkflowEntity:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      state:
+        type: "string"
+        enum:
+        - "CLOSED"
+        - "INITIALISED"
+        - "STARTED"
+        - "STOPPED"
+        - "DISCONNECTED"
+      serviceCollection:
+        $ref: "#/definitions/ServiceCollectionEntity"
+      type:
+        type: "string"
+      id:
+        type: "string"
+    xml:
+      name: "workflow"
+  Result:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      value:
+        type: "boolean"
+        default: false
+      message:
+        type: "string"
+      state:
+        type: "string"
+      stackTrace:
+        type: "string"
+  ServiceCollectionEntity:
+    type: "object"
+    properties:
+      name:
+        type: "string"
+      className:
+        type: "string"
+      alias:
+        type: "string"
+      services:
+        type: "array"
+        items:
+          type: "object"
+      type:
+        type: "string"
+      id:
+        type: "string"
+    xml:
+      name: "service-collection"
+  MessageEntity:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      payload:
+        type: "string"
+      payloadEncoding:
+        type: "string"
+      nextServiceId:
+        type: "string"
+      metadata:
+        type: "object"
+        additionalProperties:
+          type: "string"
+    xml:
+      name: "message"
+  FailedMessageEntity:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      payload:
+        type: "string"
+      payloadEncoding:
+        type: "string"
+      nextServiceId:
+        type: "string"
+      metadata:
+        type: "object"
+        additionalProperties:
+          type: "string"
+      workflowId:
+        type: "string"
+      date:
+        type: "string"
+        format: "date-time"
+      fileSystemPath:
+        type: "string"
+      stackTrace:
+        type: "string"
+      error:
+        type: "string"
+      canRetry:
+        type: "boolean"
+        default: false
+    xml:
+      name: "failed-message"
+  StateWrapper:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      state:
+        type: "string"
+        enum:
+        - "CLOSED"
+        - "INITIALISED"
+        - "STARTED"
+        - "STOPPED"
+        - "DISCONNECTED"
+    xml:
+      name: "state-wrapper"
+  ComponentDetails:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      state:
+        type: "string"
+        enum:
+        - "CLOSED"
+        - "INITIALISED"
+        - "STARTED"
+        - "STOPPED"
+        - "DISCONNECTED"
+      lastStarted:
+        type: "string"
+        format: "date-time"
+      lastStopped:
+        type: "string"
+        format: "date-time"
+      inFlight:
+        type: "integer"
+        format: "int32"
+      uptime:
+        type: "string"
+      downtime:
+        type: "string"
+    xml:
+      name: "component-details"
+  MetadataStatisticsEntity:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      endMillisForTimeSliceIndex:
+        type: "array"
+        items:
+          type: "integer"
+          format: "int64"
+      timeSliceDurationSeconds:
+        type: "integer"
+        format: "int32"
+      parentChannelName:
+        type: "string"
+      parentWorkflowName:
+        type: "string"
+      metadataKeys:
+        type: "array"
+        uniqueItems: true
+        items:
+          type: "string"
+      totalCountForTimeSliceIndex:
+        type: "array"
+        items:
+          type: "object"
+          additionalProperties:
+            type: "integer"
+            format: "int32"
+      numberOfTimeSlices:
+        type: "integer"
+        format: "int32"

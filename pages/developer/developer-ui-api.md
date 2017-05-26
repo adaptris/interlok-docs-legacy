@@ -7,6 +7,10 @@ permalink: developer-ui-api.html
 summary: The UI has its own API. This can be used to do some simple operations, if you want to create your own simple dashboard, instead of using our awesome spectacular UI.
 ---
 
+## Interlok UI API Swagger Documentation ##
+
+For a complete descriptions of all the possible operation with the API please have a look at [UI API Swagger Documentation](developer-ui-api-swagger-doc.html).
+
 ## Swagger Goodness ##
 
 The Interlok UI API is accessible via restful web services. The best way to learn how to use the Interlok UI API is to use Swagger UI. You can see all the available operations by using it.
@@ -26,7 +30,7 @@ If you access this url directly you will see the json Swagger definition for the
   "swagger" : "2.0",
   "info" : {
     "description" : "Interlok UI Api web service documentation.",
-    "version" : "3.6-SNAPSHOT",
+    "version" : "3.6.2-RELEASE",
     "title" : "Interlok UI Api Documentation"
   },
   "basePath" : "/interlok/api",

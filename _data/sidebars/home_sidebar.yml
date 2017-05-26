@@ -392,8 +392,12 @@ entries:
       url: /developer-services.html
       output: web
 
-    - title: UI API
+    - title: UI API Getting Started
       url: /developer-ui-api.html
+      output: web
+
+    - title: UI API Swagger Doc
+      url: /developer-ui-api-swagger-doc.html
       output: web
 
       subfolders:
