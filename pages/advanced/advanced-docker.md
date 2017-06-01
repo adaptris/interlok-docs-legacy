@@ -33,10 +33,13 @@ MAINTAINER My Name <email@address.com>
 ADD lib /opt/interlok/lib
 ADD config /opt/interlok/config
 
-ENTRYPOINT ["/opt/interlok/bin/adapter"]
+# since 3.6.2 we have switched to /docker-entrypoint.sh as the entrypoint...
+# ENTRYPOINT ["/opt/interlok/bin/adapter"]
+ENTRYPOINT ["/docker-entrypoint.sh"]
+
 
 ```
-To build the container, build as you would any other docker image `docker build --tag myinterlok .` This will build the docker container in your local Docker storage. Run it like you would any other container `docker run -p 8080:8080 myinterlok` and you should be able to connect to the UI using `http://localhost:8080`
+To build the container, build as you would any other docker image `docker build --tag myinterlok .` This will build the docker container in your local Docker storage. Run it like you would any other container `docker run -p 8080:8080 myinterlok` and you should be able to connect to the UI using `http://localhost:8080`. Check the [docker-entrypoint.sh][] in the main [github project][] to see how to customise various startup options.
 
 ## Misc ##
 
@@ -55,3 +58,5 @@ docker images | grep "<none>" | awk '{print $3}' | xargs docker rmi
 
 These commands will clean up any non-tagged containers and all images used by them. This frees up the disk space that would otherwise be used by the many temporary containers created while testing the Dockerfile and installation script.
 
+[github project]: https://github.com/adaptris/docker-interlok/
+[docker-entrypoint.sh]: https://github.com/adaptris/docker-interlok/blob/master/docker-entrypoint.sh
