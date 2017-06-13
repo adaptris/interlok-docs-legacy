@@ -22,5 +22,6 @@ The system preferences are:
 - **Id Generator:** Random Id generator strategy for new component in the configuration page: (Since 3.5.0)
     - **Random Name:** The generated Id will be a mix of a random famous scientist surname and a random adjective, e.g. amazing-darwin. (Default Since 3.5.1)
     - **Class Name and Random Id:** The generated Id will be a mix of the component class name or alias and a random number, e.g. Channel-1209003.
+    - **Creates a GUID using com.adaptris.util.GuidGenerator:** The ID is generated using the com.adaptris.util.GuidGenerator class, e.g. 37cc799e-bd50-4560-a735-1320e0a78ebe
 
 **All the changes require a container restart to take effect.**
