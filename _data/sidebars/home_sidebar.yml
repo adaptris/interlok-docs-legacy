@@ -239,6 +239,10 @@ entries:
           url: /cookbook-sap-idoc.html
           output: web
 
+    - title: Triggered Channels
+      url: /cookbook-triggered-channel.html
+      output: web
+
     - title: Validating XML
       url: /cookbook-xml-validation.html
       output: web
