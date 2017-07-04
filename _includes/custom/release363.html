@@ -1,0 +1,67 @@
+## Version 3.6.3 ##
+
+Release Date : 2017-07
+
+### Bugs
+- [INTERLOK-1100](https://adaptris.atlassian.net/browse/INTERLOK-1100) - UI Config - Apply Error - Cannot look-up shared transaction manager with name: null
+- [INTERLOK-1610](https://adaptris.atlassian.net/browse/INTERLOK-1610) - adp-sonicmf requires double-definition of log4jurl to provide all adapter logs, which is not ideal for customer BA in v3.6.1
+- [INTERLOK-1625](https://adaptris.atlassian.net/browse/INTERLOK-1625) - AS2 "example-adapter" does not unmarshal
+- [INTERLOK-1638](https://adaptris.atlassian.net/browse/INTERLOK-1638) - UI Optional - download artifact link wrongly assumes that the artifact is a .jar
+- [INTERLOK-1641](https://adaptris.atlassian.net/browse/INTERLOK-1641) - UI Config - ensure drag and drop of services works on touch devices
+- [INTERLOK-1661](https://adaptris.atlassian.net/browse/INTERLOK-1661) - docker snapshot-alpine has the wrong dates in lib/*.jar
+- [INTERLOK-1667](https://adaptris.atlassian.net/browse/INTERLOK-1667) - docker-entrypoint.sh is not executable
+- [INTERLOK-1671](https://adaptris.atlassian.net/browse/INTERLOK-1671) - Javadocs typos on JMS consumers
+- [INTERLOK-1673](https://adaptris.atlassian.net/browse/INTERLOK-1673) - DynamicServiceLocator serviceNameProvider property is @NotNull and @AdvancedConfig
+- [INTERLOK-1674](https://adaptris.atlassian.net/browse/INTERLOK-1674) - SonicMF Car-builder fails without an extras directory
+- [INTERLOK-1675](https://adaptris.atlassian.net/browse/INTERLOK-1675) - UI Config - Component Unique ID field is showing as required but doesn't enforce a value
+- [INTERLOK-1676](https://adaptris.atlassian.net/browse/INTERLOK-1676) - jdbc-stored-procedure-producer breaks if the connection does not support multiple open result sets
+- [INTERLOK-1683](https://adaptris.atlassian.net/browse/INTERLOK-1683) - UI Config - Exception initialising Validation Rules (during Apply)
+- [INTERLOK-1685](https://adaptris.atlassian.net/browse/INTERLOK-1685) - JsonResultSetTranslator does not emit all result sets.
+- [INTERLOK-1686](https://adaptris.atlassian.net/browse/INTERLOK-1686) - Cannot change "ResultSetTranslator" in JdbcDataQueryService
+- [INTERLOK-1694](https://adaptris.atlassian.net/browse/INTERLOK-1694) - UI Config - Consumer and Producer recommendations are not changed when copy/pasting a connection.
+- [INTERLOK-1699](https://adaptris.atlassian.net/browse/INTERLOK-1699) - Docker container shutdown appears ungraceful
+- [INTERLOK-1704](https://adaptris.atlassian.net/browse/INTERLOK-1704) - UI Config - Exception caused when validating channel list, workflowList and SharedComponentList etc
+
+### Improvements
+- [INTERLOK-137](https://adaptris.atlassian.net/browse/INTERLOK-137) - 3.0.0B8 Installer does not work on Windows 2012R2
+- [INTERLOK-641](https://adaptris.atlassian.net/browse/INTERLOK-641) - Installer does not start on Windows if jdk1.8_60 is installed.
+- [INTERLOK-645](https://adaptris.atlassian.net/browse/INTERLOK-645) - Cannot Uninstall Interlok, Windows 10/ JRE1.8.0_60
+- [INTERLOK-1646](https://adaptris.atlassian.net/browse/INTERLOK-1646) - Create the author attribute in the component profile annotation
+- [INTERLOK-1647](https://adaptris.atlassian.net/browse/INTERLOK-1647) - UI Config - use the author attribute from the component profile when showing raw components to add
+- [INTERLOK-52](https://adaptris.atlassian.net/browse/INTERLOK-52) - UI Config Page - Improve validation features to include a 'show me' feature
+- [INTERLOK-722](https://adaptris.atlassian.net/browse/INTERLOK-722) - Change how the thread-name (for logging) is discovered
+- [INTERLOK-1230](https://adaptris.atlassian.net/browse/INTERLOK-1230) - UI Config - Add Channel "YAML" Snippet
+- [INTERLOK-1296](https://adaptris.atlassian.net/browse/INTERLOK-1296) - Doc Section/Page Request: "How do you start a Channel via an external trigger?"
+- [INTERLOK-1316](https://adaptris.atlassian.net/browse/INTERLOK-1316) - Make XpathMessageSplitter use CloseableIterable
+- [INTERLOK-1387](https://adaptris.atlassian.net/browse/INTERLOK-1387) - UI - Add keyboard shortcuts for all forms (save & cancel)
+- [INTERLOK-1397](https://adaptris.atlassian.net/browse/INTERLOK-1397) - UI Config - Add function to validate script input
+- [INTERLOK-1523](https://adaptris.atlassian.net/browse/INTERLOK-1523) - Add custom truststore/keystore support to apache-http
+- [INTERLOK-1553](https://adaptris.atlassian.net/browse/INTERLOK-1553) - UI Widgets - The widgets page loading routines need indicators to show that they are processing
+- [INTERLOK-1568](https://adaptris.atlassian.net/browse/INTERLOK-1568) - Dynamic Polling Template allows "all services"
+- [INTERLOK-1570](https://adaptris.atlassian.net/browse/INTERLOK-1570) - JdbcDataQueryService doesn't support binary payload replacement
+- [INTERLOK-1583](https://adaptris.atlassian.net/browse/INTERLOK-1583) - Add an alternative to HttpRequestService that enables Branching
+- [INTERLOK-1622](https://adaptris.atlassian.net/browse/INTERLOK-1622) - UI Config - Remove unnecessary nested uid fields from the settings form
+- [INTERLOK-1643](https://adaptris.atlassian.net/browse/INTERLOK-1643) - Make use of @InputFieldHint(friendly = "Friendly Test") for enums values.
+- [INTERLOK-1648](https://adaptris.atlassian.net/browse/INTERLOK-1648) - Lazy load the reflections object for the Template and Validate Service to improve start up time
+- [INTERLOK-1654](https://adaptris.atlassian.net/browse/INTERLOK-1654) - Add Upsert capability to BulkOperation
+- [INTERLOK-1656](https://adaptris.atlassian.net/browse/INTERLOK-1656) - Refresh the dashboard page so it looks better and is more useable in mobile and tablet screens
+- [INTERLOK-1658](https://adaptris.atlassian.net/browse/INTERLOK-1658) - Port JsonDocumentBuilder from odin-labs into ES5
+- [INTERLOK-1679](https://adaptris.atlassian.net/browse/INTERLOK-1679) - Upgrade InstallAnywhere
+- [INTERLOK-1680](https://adaptris.atlassian.net/browse/INTERLOK-1680) - Add a "RawCsvToXmlService"
+- [INTERLOK-1684](https://adaptris.atlassian.net/browse/INTERLOK-1684) - JsonSchemaService does not report all the violations in the ServiceException
+- [INTERLOK-1691](https://adaptris.atlassian.net/browse/INTERLOK-1691) - UI Widgets - Component count widget gauges should scale to the widget.
+- [INTERLOK-1692](https://adaptris.atlassian.net/browse/INTERLOK-1692) - Add configuration of EntityResolver to DocumentBuilder
+- [INTERLOK-1696](https://adaptris.atlassian.net/browse/INTERLOK-1696) - Framework for retrieving OAUTH Tokens
+- [INTERLOK-1698](https://adaptris.atlassian.net/browse/INTERLOK-1698) - UI Config - Rename Raw Component into ?
+- [INTERLOK-1577](https://adaptris.atlassian.net/browse/INTERLOK-1577) - Author tag in custom components
+- [INTERLOK-1633](https://adaptris.atlassian.net/browse/INTERLOK-1633) - Add PostgreSQL support for the UI.
+- [INTERLOK-1635](https://adaptris.atlassian.net/browse/INTERLOK-1635) - Fix example payload for swagger api (for post and put methods)
+- [INTERLOK-1639](https://adaptris.atlassian.net/browse/INTERLOK-1639) - UI Optional - project 'interlok-container' requires an icon
+- [INTERLOK-1644](https://adaptris.atlassian.net/browse/INTERLOK-1644) - UI Config - Improve validation message for fields that have failed regex validation
+- [INTERLOK-1649](https://adaptris.atlassian.net/browse/INTERLOK-1649) - Change log4j to remove ProprtySourcesPlaceholderConfiguerer
+- [INTERLOK-1651](https://adaptris.atlassian.net/browse/INTERLOK-1651) - Json-Path-Splitter does not behave like other splitters
+- [INTERLOK-1653](https://adaptris.atlassian.net/browse/INTERLOK-1653) - No adapter-unique-id causes a NPE
+- [INTERLOK-1660](https://adaptris.atlassian.net/browse/INTERLOK-1660) - HPCC message workers shouldn't wait forever for a workunit to complete
+- [INTERLOK-1669](https://adaptris.atlassian.net/browse/INTERLOK-1669) - RequestReplyWorkflow.replyServiceCollection should have the @Valid annotation?
+- [INTERLOK-1678](https://adaptris.atlassian.net/browse/INTERLOK-1678) - Actional Interceptor - Replace UUID with component name.
+- [INTERLOK-1701](https://adaptris.atlassian.net/browse/INTERLOK-1701) - Ensure removal of shared connections from JNDI on apply
