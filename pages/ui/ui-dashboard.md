@@ -71,10 +71,6 @@ Dashboard Page with the Show Channels selector highlighted in pink:
 
 ![Dashboard Page with the Show Channels selector highlighted in pink](./images/ui-user-guide/dashboard-page-show-channels-highlighted.png)
 
-The Dashboard Pages Adapter area with expanded channels showing:
-
-![The Dashboard Pages Adapter area with expanded channels showing](./images/ui-user-guide/dashboard-page-with-expanded-channel.png)
-
 The Dashboard Pages Adapter area with expanded channels showing with annotations:
 
 ![The Dashboard Pages Adapter area with expanded channels showing](./images/ui-user-guide/dashboard-page-with-expanded-channel-with-annotations.png)
