@@ -10,7 +10,7 @@ summary: Since 3.5.0 the gui config page allows you to open a simple Swagger con
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/xeZVjyjmVto" frameborder="0" allowfullscreen></iframe>
 
-## Swagger Example ##
+## Adapter Swagger Example ##
 
 Below is an example of a Swagger configuration that can be converted to an adapter Configuration (the JSON equivalent works the same way).
 
@@ -223,3 +223,12 @@ This will give an Adapter configuration xml like:
   </message-error-digester>
 </adapter>
 ```
+
+## Channel Swagger Example ##
+
+Since 3.6.3 the gui config page allows you to create a channel using a simple Swagger configuration file (yaml or json).
+It will be converted to an Channel xml configuration files supporting the defined http rest services.
+
+To create a channel using a Swagger config you simply need to click on the *Add Channel* button and once the modal is opened select *Swagger Snippet*.
+You can then copy a Swagger config or just drag and drop a _swagger.yaml_ or _swagger.json_ file into the text area.
+
