@@ -2,27 +2,27 @@
 swagger: "2.0"
 info:
   description: "Interlok UI Api web service documentation."
-  version: "3.6.2-RELEASE"
+  version: "3.6.3-RELEASE"
   title: "Interlok UI Api Documentation"
 basePath: "/interlok/api"
 tags:
+- name: "/adapter"
 - name: "/channel/failed-messages"
 - name: "/workflow/metrics"
-- name: "/adapter"
-- name: "/adapter/component-checker"
-- name: "/channel"
-- name: "/adapter/metrics"
-- name: "/workflow/failed-messages"
-- name: "/workflow"
 - name: "/channel/metrics"
-- name: "/adapter/failed-messages"
+- name: "/workflow"
+- name: "/workflow/failed-messages"
+- name: "/adapter/component-checker"
+- name: "/adapter/metrics"
 - name: "/adapter/platform"
+- name: "/adapter/failed-messages"
+- name: "/channel"
 paths:
   /external/adapter:
     get:
       tags:
       - "/adapter"
-      summary: "List all register adapters"
+      summary: "List all register adapters in the Interlok UI"
       description: ""
       operationId: "list"
       consumes:
@@ -50,11 +50,11 @@ paths:
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/AdapterEntity"
+              $ref: "#/definitions/AdapterJmxInterlokDetails"
     post:
       tags:
       - "/adapter"
-      summary: "Add an adapter"
+      summary: "Add an adapter in the Interlok UI"
       description: ""
       operationId: "save"
       consumes:
@@ -68,17 +68,17 @@ paths:
         name: "body"
         required: false
         schema:
-          $ref: "#/definitions/AdapterEntity"
+          $ref: "#/definitions/AdapterJmxInterlokDetails"
       responses:
         200:
           description: "successful operation"
           schema:
-            $ref: "#/definitions/AdapterEntity"
+            $ref: "#/definitions/AdapterJmxInterlokDetails"
   /external/adapter/batch:
     post:
       tags:
       - "/adapter"
-      summary: "Add multiple adapters"
+      summary: "Add multiple adapters in the Interlok UI"
       description: ""
       operationId: "save"
       consumes:
@@ -94,14 +94,14 @@ paths:
         schema:
           type: "array"
           items:
-            $ref: "#/definitions/AdapterEntity"
+            $ref: "#/definitions/AdapterJmxInterlokDetails"
       responses:
         200:
           description: "successful operation"
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/AdapterEntity"
+              $ref: "#/definitions/AdapterJmxInterlokDetails"
   /external/adapter/{url}/{jmxUid}:
     get:
       tags:
@@ -141,7 +141,7 @@ paths:
     post:
       tags:
       - "/adapter/component-checker"
-      summary: "Send a message through a a service (collection) to check its validy"
+      summary: "Send a message through a a service (collection) to check its validity"
       description: ""
       operationId: "checkService"
       consumes:
@@ -1894,12 +1894,12 @@ paths:
     delete:
       tags:
       - "/workflow/metrics"
+      summary: "Delete the workflow message metrics statistics for the given id"
+      description: ""
       operationId: "clearMessageMetricsStatistics"
       produces:
       - "application/json"
       - "application/xml"
-      - "text/plain"
-      - "text/csv"
       parameters:
       - name: "url"
         in: "path"
@@ -1935,7 +1935,6 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/Result"
-          headers: {}
   /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/metrics/metadata-statistics-ids:
     get:
       tags:
@@ -1983,7 +1982,7 @@ paths:
     get:
       tags:
       - "/workflow/metrics"
-      summary: "Get a workflow matadata statistics for a given id"
+      summary: "Get a workflow matadata statistics for the given id"
       description: ""
       operationId: "getMetadataStatistics"
       produces:
@@ -2029,12 +2028,12 @@ paths:
     delete:
       tags:
       - "/workflow/metrics"
+      summary: "Delete the workflow matadata statistics for the given id"
+      description: ""
       operationId: "clearMetadataStatistics"
       produces:
       - "application/json"
       - "application/xml"
-      - "text/plain"
-      - "text/csv"
       parameters:
       - name: "url"
         in: "path"
@@ -2070,7 +2069,6 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/Result"
-          headers: {}
   /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/state:
     get:
       tags:
@@ -2182,6 +2180,23 @@ definitions:
         $ref: "#/definitions/MessageEntity"
     xml:
       name: "component-check-wrapper"
+  AdapterJmxInterlokDetails:
+    type: "object"
+    properties:
+      jmxUid:
+        type: "string"
+      url:
+        type: "string"
+      jmxUsername:
+        type: "string"
+      jmxPassword:
+        type: "string"
+      jmxEnv:
+        type: "string"
+      name:
+        type: "string"
+    xml:
+      name: "adapter"
   AdapterEntity:
     type: "object"
     required:
@@ -2331,8 +2346,6 @@ definitions:
         - "STARTED"
         - "STOPPED"
         - "DISCONNECTED"
-      serviceCollection:
-        $ref: "#/definitions/ServiceCollectionEntity"
       type:
         type: "string"
       id:
@@ -2353,25 +2366,6 @@ definitions:
         type: "string"
       stackTrace:
         type: "string"
-  ServiceCollectionEntity:
-    type: "object"
-    properties:
-      name:
-        type: "string"
-      className:
-        type: "string"
-      alias:
-        type: "string"
-      services:
-        type: "array"
-        items:
-          type: "object"
-      type:
-        type: "string"
-      id:
-        type: "string"
-    xml:
-      name: "service-collection"
   MessageEntity:
     type: "object"
     properties:
