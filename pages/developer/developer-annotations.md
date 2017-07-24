@@ -43,7 +43,7 @@ Or even;
 </add-metadata-service>
 ```
 
-{% include warning.html content="Your XStreamAlias may render as an XML Element; so it needs to well formed (e.g. don't start with a number; or special characters etc." %}
+{% include warning.html content="Your XStreamAlias may render as an XML Element; it needs to be well formed (e.g. don't start with a number; or special characters etc.)." %}
 
 
 ### @GenerateBeanInfo ###
@@ -78,6 +78,15 @@ public class StandardWorkflow ... {
   ...
 }
 ```
+
+| Annotation Parameter | Description |
+|----|----|
+| `summary` | A brief summary of the component |
+| `tag` | A comma separated list of tags |
+| `recommended` | (since __3.2.0__) an array of classes that are contextually related to this component (e.g. for a producer, it would be the connections you should use with it)  |
+| `metadata` | (since __3.4.0__) an array of strings that contain metadata keys that may be created or have an effect on the behaviour of this component |
+| `branchSelector` | (since __3.6.2__) if set to true, indicates that this service can be used as the `firstService` as part of a BranchingServiceCollection |
+
 
 ### @DisplayOrder ###
 
@@ -171,8 +180,13 @@ The embedded script could have characters that would normally not be allowed in 
 
 This annotation provides a _hint_ to the UI when presenting the information on screen and is available from __3.0.2__ onwards. There are two elements to this annotation `style` and `friendly`.
 
-`style` should contain information about the type of field this is; it is generally used on String fields that might need to be syntax highlighted or treated differently in some way
+| Annotation Parameter | Description |
+|----|----|
+| `style` | contain information about the type of field this is; it is generally used on String fields that might need to be syntax highlighted or treated differently in some way |
+| `friendly` | (since __3.4.0__) contains information about what to display in various drop downs or similar. We use it for enums where the enum name may not be as nice as we want it. |
+| `expression` | (since __3.6.2__) if set to true, then the UI knows that this field supports the new `%message{key}` style expression.  |
 
+#### style ####
 
 | Style | Description |
 |----|----|
@@ -193,16 +207,6 @@ This annotation provides a _hint_ to the UI when presenting the information on s
 private String password;
 ```
 
-`friendly` (since __3.4.0__) contains information about what to display in various drop downs or similar. We use it for enums where the enum name may not be as nice as we want it. For instance, with the following annotations, the UI would display _JSON to XML_ rather than the literal enum name.
-
-```java
-public enum TransformationDirection {
-  @InputFieldHint(friendly = "JSON to XML")
-  JSON_TO_XML,
-  @InputFieldHint(friendly = "XML to JSON")
-  XML_TO_JSON;
-}
-```
 
 ### @InputFieldDefault ###
 
