@@ -43,6 +43,9 @@ Or even;
 </add-metadata-service>
 ```
 
+{% include warning.html content="Your XStreamAlias may render as an XML Element; so it needs to well formed (e.g. don't start with a number; or special characters etc." %}
+
+
 ### @GenerateBeanInfo ###
 
 Use this to force XStream to use the public getters and setters when un-marshalling rather than the member variables directly. This is generally useful if the getters and setters in your component have behaviour associated with them that are not simple ```this.x=x``` methods.
@@ -194,9 +197,9 @@ private String password;
 
 ```java
 public enum TransformationDirection {
-  @InputFieldHint(friendly = "JSON to XML") 
+  @InputFieldHint(friendly = "JSON to XML")
   JSON_TO_XML,
-  @InputFieldHint(friendly = "XML to JSON") 
+  @InputFieldHint(friendly = "XML to JSON")
   XML_TO_JSON;
 }
 ```
