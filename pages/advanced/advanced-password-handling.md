@@ -15,7 +15,7 @@ It has been a requirement for some organisations that passwords should never be 
 Because of these constraints, the encrypted passwords will pass casual inspection, but will not deter a determined attempt to recover the password. We have supplied a utility class which you can use to generate the encrypted password. Execute [com.adaptris.security.password.Password] with the appropriate parameters to generate the encrypted password.
 
 ```
-$ java -cp ./lib/adp-core.jar com.adaptris.security.password.Password
+$ java -cp ./lib/* com.adaptris.security.password.Password
 Usage :
   java com.adaptris.security.password.Password <style> <password>
     where style is one of (trailing colon is required):
