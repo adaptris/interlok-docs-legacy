@@ -21,9 +21,9 @@ Should the master stop communicating with the other instances it is then assumed
 
 If you start new slaves at any time, all slaves in the cluster may decide to re-order themselves to accomodate the new slave.
 
-Each instance in the cluster constantly communicates with every other instance in the cluster via multicast.
+Each instance in the cluster constantly communicates with every other instance in the cluster via multicast or direct TCP, dpending on your configuration, specified below.
 
-Please note, some environments do not enable multicast broadcasting by default, therefore you may require additional networking configuration before Interlok failover clusters can be configured.
+Please note, some environments do not enable multicast broadcasting by default, therefore you may require additional networking configuration before Interlok failover clusters can be configured using Multicast mode.
 
 ### Installation ###
 
