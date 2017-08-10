@@ -35,7 +35,9 @@ Simply copy the jar files from the optional component directory into the lib dir
 
 ## Failover Modes ##
 
-Currenrly you can choose between Multicast failover or Direct TCP failover.
+Currently you can choose between Multicast failover or Direct TCP failover.
+
+Direct TCP mode only since Interlok version 3.6.4
 
 The main benfit of multicast failover is that you can add new failover peers as and when you want.  Simply start a new instance and the new instance will be added to the failover cluster automatically.
 
@@ -81,8 +83,8 @@ If you are using Direct TCP failover mode as discussed above then you have the o
 
 If you choose system properties, then the following will need to be added to you start script/lax file;
 
--  -Dfailover.tcp.port=<chosen port>
--  -Dfailover.tcp.peers=<peer1-host>:<peer1-port>;<peer2-host>:<peer2-port>
+-  -Dfailover.tcp.port=
+-  -Dfailover.tcp.peers=
 
 See the discussion below for a more detailed explaination of both properties.
 
@@ -91,6 +93,7 @@ See the discussion below for a more detailed explaination of both properties.
 The failover component, when running in Multicast mode requires two additional settings and a further three optional settings;
 
 The required settings are the multicast group and port;
+
 - failover.multicast.group
 - failover.multicast.port
 
@@ -103,6 +106,7 @@ The optional settings are as follows;
 If you choose to run failover in Direct TCP mode, then you must specify three additional settings, two of which can be specified as java system properties and a further three optional settings;
 
 The required settings are the chosen local port and the host:port (semi colon separated list) of failover peers and finally the mode setting;
+
 - failover.socket.mode
 - failover.tcp.port
 - failover.tcp.peers
@@ -120,13 +124,16 @@ Both "failover.tcp.port" and "failover.tcp.peers" may either be set in the boots
 Assumes the local instance can listen for TCP failover events on port 4444 and that there are two further instances in the failover cluster who happen to be running on the same machine (localhost) and are listening on ports 4445 and 4446 respectively.
 
 failover.tcp.port=4444
+
 failover.tcp.peers=localhost:4445;localhost:4446
 
 #### Example Java system properties ####
 
 Assumes the local instance can listen for TCP failover events on port 4444 and that there are two further instances in the failover cluster who happen to be running on the same machine (localhost) and are listening on ports 4445 and 4446 respectively.
 
+```
 -Dfailover.tcp.port=4444 -Dfailover.tcp.peers=localhost:4445;localhost:4446
+```
 
 ## Manual Failover ##
 
