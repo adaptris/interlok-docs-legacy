@@ -259,6 +259,10 @@ entries:
           url: /cookbook-xml-transform.html
           output: web
 
+        - title: JSON Manipulation
+          url: /cookbook-json-transform.html
+          output: web
+
   - title: Advanced
     output: web
 
