@@ -57,7 +57,7 @@ Flexeraawm$aaa: Windows DLL failed to load
 	at com.zerog.lax.LAX.main(Unknown Source)
 ```
 
-If you are in this situation, you should install with the bundled JRE (using [install-with-jre.exe][]); selecting the bundled JRE as the java runtime to use. After installation, edit the `adapter.lax` file and modify java location to your preferred version. Doing it this way allows you to _uninstall_ the application from the control panel; otherwise you have to use the `Uninstall.exe LAX_VM="path/to/a/1.8.0_51/java"` from the commandline in order to uninstall.
+If you are in this situation, you should install with the bundled JRE (using `install-with-jre.exe`); selecting the bundled JRE as the java runtime to use. After installation, edit the `adapter.lax` file and modify java location to your preferred version. Doing it this way allows you to _uninstall_ the application from the control panel; otherwise you have to use the `Uninstall.exe LAX_VM="path/to/a/1.8.0_51/java"` from the commandline in order to uninstall.
 
 ## Unattended Installation ##
 
