@@ -8,4 +8,4 @@ services:
       - '4000:4000'
     volumes:
       - .:/usr/src/app
-    command: [ "server", "--config", "_config.yml,_config_dev.yml", "--force_polling" ]
+    command: [ "server", "--config", "_config.yml,_config_dev.yml", "--watch", "--force_polling" ]
