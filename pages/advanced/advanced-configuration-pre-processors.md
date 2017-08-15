@@ -39,6 +39,7 @@ preProcessors=variableSubstitution:schema
 | environmentVariables | Perform variable substition based on environment Variables (_since 3.0.1_ and requires `optional/varsub`)|
 | schema | Validate (optional generation) of adapter configuration against a specified schema file (requires `optional/schema`)|
 | xinclude | Include other XML documents into configuration using `<xi:include>` tags (requires `optional/xinclude`)|
+| xslt | Execute a transform on the configuration file before unmarshalling (requires `optional/xinclude`)|
 
 
 ## Variable Substitution ##
@@ -272,6 +273,33 @@ During initialization of Interlok, the XInclude pre-processor will pick up the d
   </channel-list>
 </adapter>
 ```
+
+## XSLT ##
+
+For whatever reason, you may want to execute a transform on the configuration XML before proceeding to the unmarshalling stage (a common use-case is to duplicate workflows *before* unmarshalling). You can do this with the xslt preprocessor.
+
+### Additional Configuration ###
+
+The following properties can be specified in the bootstrap.properties to control the behaviour of the xslt pre-processor.
+
+| Property | Default | Mandatory | Description |
+|----|----|----|----|
+| xslt.preprocessor.url | | Yes | The XSLT to execute, passing in the current adapter configuration. |
+| xslt.preprocessor.params.XXXX | | No | Values here will be passed in as a stylesheet parameter called `XXXX`; you will have `<xsl:param name="XXXX"/>` in your stylesheet etc.|
+| xslt.preprocessor.environment.params | false | No | Whether or not system properties and environment variables are passed as stylesheet parameters; be aware that any `xslt.preprocessor.params.*` values will take precedence. |
+| xslt.preprocessor.transformerImpl | | No | Specify the XML TransformFactory to use, if not specified defaults to `TransformerFactory.newInstance()` which uses the JVM default |
+
+### Example ###
+
+You already have a stylesheet written, stored in the config directory as *duplicate.xslt*...
+
+```
+preProcessors=xslt
+xslt.preprocessor.url=file://localhost/./config/duplicate.xslt
+xslt.preprocessor.params.duplicates=5
+```
+
+Will execute your XSLT; passing in `5` as the transform parameter *duplicates*.
 
 # Writing your own pre-processor #
 
