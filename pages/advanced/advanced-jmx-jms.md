@@ -76,7 +76,7 @@ All keys are case sensitive, and if specified in the URL will be stripped before
 
 ## Solace ##
 
-To switch to using SonicMQ as the JMX transport mechanism we simply start using `solace` instead of `jmxmp` as the protocol part of the _JMXServiceURL_ along with a URL that specifies the connection to the Solace broker instance along with some specific environment properties which should be self explanatory. `jmxservice.env.` is the prefix that indicates that this property should be passed through to the initial environment when invoking `JMXConnectorFactory.newJMXConnector()`. This prefix is stripped off before the property is added to the initial environment.
+_Since 3.6.4_, you can switch to using SonicMQ as the JMX transport mechanism using `solace` instead of `jmxmp` as the protocol part of the _JMXServiceURL_ along with a URL that specifies the connection to the Solace broker instance along with some specific environment properties which should be self explanatory. `jmxservice.env.` is the prefix that indicates that this property should be passed through to the initial environment when invoking `JMXConnectorFactory.newJMXConnector()`. This prefix is stripped off before the property is added to the initial environment.
 
 ```
 adapterConfigUrl=file://localhost/./config/adapter.xml
@@ -88,7 +88,7 @@ jmxserviceurl.env.jmx.destination=jmxTopic
 jmxserviceurl.env.jmx.messageVPN=default
 ```
 
-The various environment properties may also be specified as part of the _JMXServiceURL_, so you could specify `service:jmx:sonicmq:///tcp://localhost:2506?jmx.type=Topic&jmx.destination=jmxTopic` which achieves the same thing. For SonicMQ the default username and password defaults to _default/''_; so we have missed it out from the URL for clarity. The full list of supported properties are
+The various environment properties may also be specified as part of the _JMXServiceURL_, so you could specify `service:jmx:solace:///tcp://localhost:55555?jmx.type=Topic&jmx.destination=jmxTopic` which achieves the same thing. For Solace the default username and password defaults to _default_ along with an empty password. The full list of supported properties are
 
 | Name | Description |
 |----|----|
