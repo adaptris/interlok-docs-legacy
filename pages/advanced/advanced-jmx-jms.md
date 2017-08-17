@@ -74,6 +74,36 @@ All keys are case sensitive, and if specified in the URL will be stripped before
 
 ----
 
+## Solace ##
+
+To switch to using SonicMQ as the JMX transport mechanism we simply start using `solace` instead of `jmxmp` as the protocol part of the _JMXServiceURL_ along with a URL that specifies the connection to the Solace broker instance along with some specific environment properties which should be self explanatory. `jmxservice.env.` is the prefix that indicates that this property should be passed through to the initial environment when invoking `JMXConnectorFactory.newJMXConnector()`. This prefix is stripped off before the property is added to the initial environment.
+
+```
+adapterConfigUrl=file://localhost/./config/adapter.xml
+managementComponents=jmx:jetty
+jmxserviceurl=service:jmx:solace:///tcp://localhost:55555
+jmxserviceurl.env.jmx.brokerUser=default
+jmxserviceurl.env.jmx.type=Topic
+jmxserviceurl.env.jmx.destination=jmxTopic
+jmxserviceurl.env.jmx.messageVPN=default
+```
+
+The various environment properties may also be specified as part of the _JMXServiceURL_, so you could specify `service:jmx:sonicmq:///tcp://localhost:2506?jmx.type=Topic&jmx.destination=jmxTopic` which achieves the same thing. For SonicMQ the default username and password defaults to _default/''_; so we have missed it out from the URL for clarity. The full list of supported properties are
+
+| Name | Description |
+|----|----|
+|jmx.type|The destination type (i.e. _Topic_ or _Queue_; case-sensitive); defaults to Topic. |
+|jmx.destination|The name of a Topic or Queue; if not assigned, then a unique one will be created to avoid exceptions; this is, though, pointless from a usability perspective |
+|jmx.brokerUser|The username to connect to the broker (if required); defaults to 'default'.|
+|jmx.brokerPassword|The password to connect to the broker (if required); defaults to ''.|
+|jmx.timeout|The timeout in milliseconds for a client to wait for a reply after sending a request; defaults to 60000.|
+|jmx.clientid|The client ID to be associated with the underlying `SolConnectionFactory` if desired; defaults to null.|
+|jmx.messageVPN| The message VPN to use with the underlying `SolConnectionFactory`; defaults to 'default'|
+
+All properties are case sensitive; you can mix and match the environment with the URL, the URL will take precedence, apart from in the case where `JMXConnector.CREDENTIALS` exists in the initial set of attributes, that will always replace the brokerUser and brokerPassword.
+
+----
+
 ## AMQP 1.0 ##
 
 AMQP 1.0 support is provided by the [Apache Qpid][] library. To switch to using AMQP as the JMX transport mechanism we simply start using `amqp` instead of `jmxmp` as the protocol part of the _JMXServiceURL_ along with a URL that specifies the connection information for the AMQP 1.0 broker. Configuration for Qpid tends to specified completely via the URL, so anything that would be valid as part of an URL will be valid as part of the _JMXServiceURL_. So our bootstrap.properties might end up looking like this:
