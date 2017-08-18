@@ -81,14 +81,14 @@ _Since 3.6.4_, you can switch to using SonicMQ as the JMX transport mechanism us
 ```
 adapterConfigUrl=file://localhost/./config/adapter.xml
 managementComponents=jmx:jetty
-jmxserviceurl=service:jmx:solace:///tcp://localhost:55555
+jmxserviceurl=service:jmx:solace:///smf://localhost:55555
 jmxserviceurl.env.jmx.brokerUser=default
 jmxserviceurl.env.jmx.type=Topic
 jmxserviceurl.env.jmx.destination=jmxTopic
 jmxserviceurl.env.jmx.messageVPN=default
 ```
 
-The various environment properties may also be specified as part of the _JMXServiceURL_, so you could specify `service:jmx:solace:///tcp://localhost:55555?jmx.type=Topic&jmx.destination=jmxTopic` which achieves the same thing. For Solace the default username and password defaults to _default_ along with an empty password. The full list of supported properties are
+The various environment properties may also be specified as part of the _JMXServiceURL_, so you could specify `service:jmx:solace:///smf://localhost:55555?jmx.type=Topic&jmx.destination=jmxTopic` which achieves the same thing. For Solace the default username and password defaults to _default_ along with an empty password. The full list of supported properties are
 
 | Name | Description |
 |----|----|
@@ -99,6 +99,7 @@ The various environment properties may also be specified as part of the _JMXServ
 |jmx.timeout|The timeout in milliseconds for a client to wait for a reply after sending a request; defaults to 60000.|
 |jmx.clientid|The client ID to be associated with the underlying `SolConnectionFactory` if desired; defaults to null.|
 |jmx.messageVPN| The message VPN to use with the underlying `SolConnectionFactory`; defaults to 'default'|
+|jmx.backupBrokers|A comma separated list of additional brokers that should serve as a list of backup brokers. Note that doing this as part of the URL will make it hard to read, so that should be discouraged from maintainability point of view, it will be best to add the backup brokers as part of the initial environment|
 
 All properties are case sensitive; you can mix and match the environment with the URL, the URL will take precedence, apart from in the case where `JMXConnector.CREDENTIALS` exists in the initial set of attributes, that will always replace the brokerUser and brokerPassword.
 
