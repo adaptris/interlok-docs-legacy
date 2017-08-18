@@ -4,7 +4,7 @@ keywords: interlok
 tags: [advanced]
 sidebar: home_sidebar
 permalink: advanced-jmx.html
-summary: he adapter supports monitoring over JMX. This allows developers and administrators to connect to the adapter JVM with standard tools (JConsole, JVisualVM and any other tool that supports JMX). By default, the adapter exposes a JMXMP  connector on TCP port 5555; this is configurable via the jmxserviceurl setting in your bootstrap.properties
+summary: The adapter supports monitoring over JMX. This allows developers and administrators to connect to the adapter JVM with standard tools (JConsole, JVisualVM and any other tool that supports JMX). By default, the adapter exposes a JMXMP  connector on TCP port 5555; this is configurable via the jmxserviceurl setting in your bootstrap.properties
 ---
 
 ## Password Protecting JMXMP (3.1.1+) ##
