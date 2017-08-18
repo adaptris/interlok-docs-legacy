@@ -31,6 +31,7 @@ exclude:
   - Gemfile
   - Gemfile.lock
   - create-docs-site.sh
+  - docker-compose.yml
 
 # these are the files and directories that jekyll will exclude from the build
 
