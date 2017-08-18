@@ -80,7 +80,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-failover][] | Simplified failover not dependent on AOP profiling | 3.4.0+
 |com.adaptris | [interlok-gcloud-pubsub][] | Connect to Google cloud pubsub|3.6.3+
 |com.adaptris | [interlok-hpcc][] | Connect to [HPCC](http://www.hpccsystems.com)|3.6.1+ (now opensource/ licensed under ASLv2)
-|com.adaptris | [interlok-jruby][] | Tighter coupling with [jruby][http://jruby.org] as an alternative to [ScriptingService][]/[EmbeddedScriptingService][]|3.6.3+ (opensource / licensed under ASLv2)
+|com.adaptris | [interlok-jruby][] | Tighter coupling with [jruby](http://jruby.org) as an alternative to [ScriptingService][]/[EmbeddedScriptingService][]|3.6.3+ (opensource / licensed under ASLv2)
 |com.adaptris | [interlok-legacyhttp][] | servicing HTTP requests without Jetty (Java 7 compatible)| 3.6.4+
 |com.adaptris | [interlok-mqtt][] | Support for MQTT protocol | 3.5.1+
 |com.adaptris | [interlok-shell][] | Commandline runtime UI based on [CRaSH](http://www.crashub.org) | 3.4.1+
