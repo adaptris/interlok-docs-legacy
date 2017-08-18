@@ -76,7 +76,7 @@ All keys are case sensitive, and if specified in the URL will be stripped before
 
 ## Solace ##
 
-_Since 3.6.4_, you can switch to using SonicMQ as the JMX transport mechanism using `solace` instead of `jmxmp` as the protocol part of the _JMXServiceURL_ along with a URL that specifies the connection to the Solace broker instance along with some specific environment properties which should be self explanatory. `jmxservice.env.` is the prefix that indicates that this property should be passed through to the initial environment when invoking `JMXConnectorFactory.newJMXConnector()`. This prefix is stripped off before the property is added to the initial environment.
+_Since 3.6.4_, you can switch to using Solace as the JMX transport mechanism using `solace` instead of `jmxmp` as the protocol part of the _JMXServiceURL_ along with a URL that specifies the connection to the Solace broker instance along with some specific environment properties which should be self explanatory. `jmxservice.env.` is the prefix that indicates that this property should be passed through to the initial environment when invoking `JMXConnectorFactory.newJMXConnector()`. This prefix is stripped off before the property is added to the initial environment.
 
 ```
 adapterConfigUrl=file://localhost/./config/adapter.xml
