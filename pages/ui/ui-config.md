@@ -187,12 +187,10 @@ This editor is a typical example and shows:
 - **Expand window:** Clicking this will toggle the settings editor window size.
 - **Toggle Advanced View:** Switching on the advanced view shows all the fields for the given component including all those fields that can be safely left to their defaults.
 - **Open side bar:** This button opens a side bar in the modal that will offer several options:
-    - Help
-	- Test Compontent
-	- Metadata Preview
-	- Most Occurences
-	- JSON
-	- WSDL
+    - Help : Which supplies some basic information / links to help you edit the component
+	- Test Compontent : Allows you to test the output of a component
+	- Metadata Preview : This panel will list any metadata used by the selected Workflow 
+	- Most Occurences : This is a list of values that have been used the most in the current config 
 - **XML view and editor:** Switch to the advanced XML config mode
 - **Save and close:** Save your changes and close the editor.
 - **Create Template:** Create a template from this configured component, which will then be shown as a choice during the add component feature.
