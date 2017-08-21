@@ -2,21 +2,22 @@
 swagger: "2.0"
 info:
   description: "Interlok UI Api web service documentation."
-  version: "3.6.3-RELEASE"
+  version: "3.6.4-RELEASE"
   title: "Interlok UI Api Documentation"
 basePath: "/interlok/api"
 tags:
 - name: "/adapter"
+- name: "/adapter/component-checker"
+- name: "/adapter/failed-messages"
+- name: "/adapter/metrics"
+- name: "/adapter/platform"
+- name: "/channel"
 - name: "/channel/failed-messages"
-- name: "/workflow/metrics"
 - name: "/channel/metrics"
 - name: "/workflow"
 - name: "/workflow/failed-messages"
-- name: "/adapter/component-checker"
-- name: "/adapter/metrics"
-- name: "/adapter/platform"
-- name: "/adapter/failed-messages"
-- name: "/channel"
+- name: "/workflow/metrics"
+- name: "deprecated"
 paths:
   /external/adapter:
     get:
@@ -102,6 +103,1615 @@ paths:
             type: "array"
             items:
               $ref: "#/definitions/AdapterJmxInterlokDetails"
+  /external/adapter/{adapter}:
+    get:
+      tags:
+      - "/adapter"
+      summary: "Get an adapter"
+      description: ""
+      operationId: "get"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/AdapterEntity"
+  /external/adapter/{adapter}/channel:
+    get:
+      tags:
+      - "/channel"
+      summary: "Lists channels for an adapter"
+      description: ""
+      operationId: "list"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ChannelEntity"
+  /external/adapter/{adapter}/channel/count:
+    get:
+      tags:
+      - "/channel"
+      summary: "Counts channels for an adapter"
+      description: ""
+      operationId: "count"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Count"
+  /external/adapter/{adapter}/channel/{channel}:
+    get:
+      tags:
+      - "/channel"
+      summary: "Get a channel for an adapter"
+      description: ""
+      operationId: "get"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ChannelEntity"
+  /external/adapter/{adapter}/channel/{channel}/configuration:
+    get:
+      tags:
+      - "/channel"
+      summary: "Get a channel's configuration"
+      description: ""
+      operationId: "configuration"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{adapter}/channel/{channel}/details:
+    get:
+      tags:
+      - "/channel"
+      summary: "Get details for a channel"
+      description: ""
+      operationId: "details"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ComponentDetails"
+  /external/adapter/{adapter}/channel/{channel}/failed-messages/count:
+    get:
+      tags:
+      - "/channel/failed-messages"
+      summary: "Get the number of failed messages for a channel"
+      description: ""
+      operationId: "failedMessagesCount"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Count"
+  /external/adapter/{adapter}/channel/{channel}/metrics/message-metrics:
+    get:
+      tags:
+      - "/channel/metrics"
+      summary: "Get a channel message metrics statistics"
+      description: ""
+      operationId: "getMessageMetricsStatistics"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/MessageMetricsStatisticsEntity"
+  /external/adapter/{adapter}/channel/{channel}/metrics/message-metrics/{id}:
+    get:
+      tags:
+      - "/channel/metrics"
+      summary: "Get a channel message metrics statistics for the given id"
+      description: ""
+      operationId: "getMessageMetricsStatistics"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/MessageMetricsStatisticsEntity"
+  /external/adapter/{adapter}/channel/{channel}/state:
+    get:
+      tags:
+      - "/channel"
+      summary: "Get a channel's state"
+      description: ""
+      operationId: "getState"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/StateWrapper"
+    put:
+      tags:
+      - "/channel"
+      summary: "Update a channel's state"
+      description: ""
+      operationId: "updateState"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+      - name: "adpMgmtTimeout"
+        in: "query"
+        description: "adpMgmtTimeout"
+        required: false
+        type: "string"
+      - name: "option"
+        in: "query"
+        required: false
+        type: "string"
+        enum:
+        - "FORCE_CLOSE"
+        - "FORCE_CLOSE_IF_FAIL"
+        - "RESTART"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/StateWrapper"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+  /external/adapter/{adapter}/channel/{channel}/workflow:
+    get:
+      tags:
+      - "/workflow"
+      summary: "Lists workflows for a channel"
+      description: ""
+      operationId: "list"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/WorkflowEntity"
+  /external/adapter/{adapter}/channel/{channel}/workflow/count:
+    get:
+      tags:
+      - "/workflow"
+      summary: "Counts workflows for a channel"
+      description: ""
+      operationId: "count"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Count"
+  /external/adapter/{adapter}/channel/{channel}/workflow/{workflow}:
+    get:
+      tags:
+      - "/workflow"
+      summary: "Gets a workflow for a channel"
+      description: ""
+      operationId: "get"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/WorkflowEntity"
+  /external/adapter/{adapter}/channel/{channel}/workflow/{workflow}/configuration:
+    get:
+      tags:
+      - "/workflow"
+      summary: "Get a workflow's configuration"
+      description: ""
+      operationId: "configuration"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{adapter}/channel/{channel}/workflow/{workflow}/details:
+    get:
+      tags:
+      - "/workflow"
+      summary: "Get details for a workflow"
+      description: ""
+      operationId: "details"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ComponentDetails"
+  /external/adapter/{adapter}/channel/{channel}/workflow/{workflow}/metrics/message-metrics:
+    get:
+      tags:
+      - "/workflow/metrics"
+      summary: "Get a workflow message metrics statistics. The first found will be\
+        \ returned"
+      description: ""
+      operationId: "getMessageMetricsStatistics"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/MessageMetricsStatisticsEntity"
+  /external/adapter/{adapter}/channel/{channel}/workflow/{workflow}/metrics/message-metrics-ids:
+    get:
+      tags:
+      - "/workflow/metrics"
+      summary: "Get all the message metrics statistics ids for a workflow"
+      description: ""
+      operationId: "messageMetricsStatisticsIds"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+  /external/adapter/{adapter}/channel/{channel}/workflow/{workflow}/metrics/message-metrics/{id}:
+    get:
+      tags:
+      - "/workflow/metrics"
+      summary: "Get a workflow message metrics statistics for the given id"
+      description: ""
+      operationId: "getMessageMetricsStatistics"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/MessageMetricsStatisticsEntity"
+    delete:
+      tags:
+      - "/workflow/metrics"
+      summary: "Delete the workflow message metrics statistics for the given id"
+      description: ""
+      operationId: "clearMessageMetricsStatistics"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+  /external/adapter/{adapter}/channel/{channel}/workflow/{workflow}/metrics/metadata-statistics-ids:
+    get:
+      tags:
+      - "/workflow/metrics"
+      summary: "Get all the metadata statistics ids for a workflow"
+      description: ""
+      operationId: "messageMetadataStatisticsIds"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+  /external/adapter/{adapter}/channel/{channel}/workflow/{workflow}/metrics/metadata-statistics/{id}:
+    get:
+      tags:
+      - "/workflow/metrics"
+      summary: "Get a workflow matadata statistics for the given id"
+      description: ""
+      operationId: "getMetadataStatistics"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/MetadataStatisticsEntity"
+    delete:
+      tags:
+      - "/workflow/metrics"
+      summary: "Delete the workflow matadata statistics for the given id"
+      description: ""
+      operationId: "clearMetadataStatistics"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+  /external/adapter/{adapter}/channel/{channel}/workflow/{workflow}/state:
+    get:
+      tags:
+      - "/workflow"
+      summary: "Get a workflow's state"
+      description: ""
+      operationId: "getState"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/StateWrapper"
+    put:
+      tags:
+      - "/workflow"
+      summary: "Update a workflow's state"
+      description: ""
+      operationId: "updateState"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      - name: "adpMgmtTimeout"
+        in: "query"
+        description: "adpMgmtTimeout"
+        required: false
+        type: "string"
+      - name: "option"
+        in: "query"
+        required: false
+        type: "string"
+        enum:
+        - "FORCE_CLOSE"
+        - "FORCE_CLOSE_IF_FAIL"
+        - "RESTART"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/StateWrapper"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+  /external/adapter/{adapter}/component-checker/check-service:
+    post:
+      tags:
+      - "/adapter/component-checker"
+      summary: "Send a message through a a service (collection) to check its validity"
+      description: ""
+      operationId: "checkService"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/ComponentCheckWrapper"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/MessageEntity"
+  /external/adapter/{adapter}/configuration:
+    get:
+      tags:
+      - "/adapter"
+      summary: "Get an adapter's configuration"
+      description: ""
+      operationId: "configuration"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{adapter}/details:
+    get:
+      tags:
+      - "/adapter"
+      summary: "Get details for an adapter"
+      description: ""
+      operationId: "details"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ComponentDetails"
+  /external/adapter/{adapter}/failed-messages:
+    get:
+      tags:
+      - "/adapter/failed-messages"
+      summary: "Get all the failed messages for an adapter"
+      description: ""
+      operationId: "failedMessages"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "from"
+        in: "query"
+        required: false
+        type: "integer"
+        default: 0
+        format: "int32"
+      - name: "to"
+        in: "query"
+        required: false
+        type: "integer"
+        default: 100
+        format: "int32"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/FailedMessageEntity"
+  /external/adapter/{adapter}/failed-messages/count:
+    get:
+      tags:
+      - "/adapter/failed-messages"
+      summary: "Get the number of failed messages for an adapter"
+      description: ""
+      operationId: "failedMessagesCount"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Count"
+  /external/adapter/{adapter}/failed-messages/ignore:
+    post:
+      tags:
+      - "/adapter/failed-messages"
+      summary: "Ignore all the adapter failed message"
+      description: ""
+      operationId: "ignoreAllFailedMessage"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "deleteMsgFile"
+        in: "query"
+        description: "Delete message file on the adapter file system when ignoring\
+          \ a failed message. Once deleted, this can't be undone."
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+    put:
+      tags:
+      - "/adapter/failed-messages"
+      summary: "Ignore an adapter failed message"
+      description: ""
+      operationId: "ignoreFailedMessage"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          type: "array"
+          items:
+            type: "string"
+      - name: "deleteMsgFile"
+        in: "query"
+        description: "Delete message file on the adapter file system when ignoring\
+          \ a failed message. Once deleted, this can't be undone."
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+  /external/adapter/{adapter}/failed-messages/last-hundred:
+    get:
+      tags:
+      - "/adapter/failed-messages"
+      summary: "Get all the failed messages for an adapter"
+      description: ""
+      operationId: "lastHundredFailedMessages"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/FailedMessageEntity"
+  /external/adapter/{adapter}/failed-messages/retry:
+    post:
+      tags:
+      - "/adapter/failed-messages"
+      summary: "Retry all the adapter failed messages"
+      description: ""
+      operationId: "retryAllFailedMessage"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+    put:
+      tags:
+      - "/adapter/failed-messages"
+      summary: "Retry an adapter failed message"
+      description: ""
+      operationId: "retryFailedMessage"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          type: "array"
+          items:
+            type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+  /external/adapter/{adapter}/failed-messages/total-count:
+    get:
+      tags:
+      - "/adapter/failed-messages"
+      summary: "Get an adapter total failed messages count since started"
+      description: ""
+      operationId: "totalFailedMessagesCount"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Count"
+  /external/adapter/{adapter}/metrics/message-metrics:
+    get:
+      tags:
+      - "/adapter/metrics"
+      summary: "Get an adapter message metrics statistics"
+      description: ""
+      operationId: "getMessageMetricsStatistics"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/MessageMetricsStatisticsEntity"
+  /external/adapter/{adapter}/metrics/message-metrics/{id}:
+    get:
+      tags:
+      - "/adapter/metrics"
+      summary: "Get an adapter message metrics statistics for the given id"
+      description: ""
+      operationId: "getMessageMetricsStatistics"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/MessageMetricsStatisticsEntity"
+  /external/adapter/{adapter}/platform/gc:
+    get:
+      tags:
+      - "/adapter/platform"
+      summary: "Run an adapter jvm garbage collector"
+      description: ""
+      operationId: "runsGarbageCollector"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+  /external/adapter/{adapter}/platform/memory-heap-properties:
+    get:
+      tags:
+      - "/adapter/platform"
+      summary: "Get an adapter platform memory heap properties"
+      description: ""
+      operationId: "platformMemoryHeapProperties"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{adapter}/platform/memory-non-heap-properties:
+    get:
+      tags:
+      - "/adapter/platform"
+      summary: "Get an adapter platform memory non heap properties"
+      description: ""
+      operationId: "platformMemoryNonHeapProperties"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{adapter}/platform/memory-properties:
+    get:
+      tags:
+      - "/adapter/platform"
+      summary: "Get an adapter platform memory properties"
+      description: ""
+      operationId: "platformMemoryProperties"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{adapter}/platform/operating-system-load-properties:
+    get:
+      tags:
+      - "/adapter/platform"
+      summary: "Get an adapter platform operating system load properties"
+      description: ""
+      operationId: "platformOperatingSystemLoadProperties"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{adapter}/platform/operating-system-properties:
+    get:
+      tags:
+      - "/adapter/platform"
+      summary: "Get an adapter platform operating system properties"
+      description: ""
+      operationId: "platformOperatingSystemProperties"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{adapter}/platform/runtime-path-properties:
+    get:
+      tags:
+      - "/adapter/platform"
+      summary: "Get an adapter platform runtime path properties"
+      description: ""
+      operationId: "platformRuntimePathProperties"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{adapter}/platform/runtime-properties:
+    get:
+      tags:
+      - "/adapter/platform"
+      summary: "Get an adapter platform runtime properties"
+      description: ""
+      operationId: "platformRuntimeProperties"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{adapter}/platform/runtime-system-properties:
+    get:
+      tags:
+      - "/adapter/platform"
+      summary: "Get an adapter platform runtime system properties"
+      description: ""
+      operationId: "platformRuntimeSystemProperties"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{adapter}/platform/thread-dump:
+    get:
+      tags:
+      - "/adapter/platform"
+      summary: "Get an adapter thread dump"
+      description: ""
+      operationId: "generateThreadDump"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+  /external/adapter/{adapter}/platform/thread-properties:
+    get:
+      tags:
+      - "/adapter/platform"
+      summary: "Get an adapter platform thread properties"
+      description: ""
+      operationId: "platformThreadProperties"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{adapter}/state:
+    get:
+      tags:
+      - "/adapter"
+      summary: "Get an adapter's state"
+      description: ""
+      operationId: "getState"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/StateWrapper"
+    put:
+      tags:
+      - "/adapter"
+      summary: "Update an adapter's state"
+      description: ""
+      operationId: "updateState"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "adpMgmtTimeout"
+        in: "query"
+        description: "The max timeout to wait for in milliseconds"
+        required: false
+        type: "string"
+      - name: "option"
+        in: "query"
+        required: false
+        type: "string"
+        enum:
+        - "FORCE_CLOSE"
+        - "FORCE_CLOSE_IF_FAIL"
+        - "RESTART"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/StateWrapper"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
   /external/adapter/{url}/{jmxUid}:
     get:
       tags:
@@ -118,18 +1728,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       responses:
@@ -137,6 +1753,1248 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/AdapterEntity"
+  /external/adapter/{url}/{jmxUid}/channel:
+    get:
+      tags:
+      - "/channel"
+      summary: "Lists channels for an adapter"
+      description: ""
+      operationId: "list"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/ChannelEntity"
+  /external/adapter/{url}/{jmxUid}/channel/count:
+    get:
+      tags:
+      - "/channel"
+      summary: "Counts channels for an adapter"
+      description: ""
+      operationId: "count"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Count"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}:
+    get:
+      tags:
+      - "/channel"
+      summary: "Get a channel for an adapter"
+      description: ""
+      operationId: "get"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ChannelEntity"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/configuration:
+    get:
+      tags:
+      - "/channel"
+      summary: "Get a channel's configuration"
+      description: ""
+      operationId: "configuration"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/details:
+    get:
+      tags:
+      - "/channel"
+      summary: "Get details for a channel"
+      description: ""
+      operationId: "details"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ComponentDetails"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/failed-messages/count:
+    get:
+      tags:
+      - "/channel/failed-messages"
+      summary: "Get the number of failed messages for a channel"
+      description: ""
+      operationId: "failedMessagesCount"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Count"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/metrics/message-metrics:
+    get:
+      tags:
+      - "/channel/metrics"
+      summary: "Get a channel message metrics statistics"
+      description: ""
+      operationId: "getMessageMetricsStatistics"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/MessageMetricsStatisticsEntity"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/metrics/message-metrics/{id}:
+    get:
+      tags:
+      - "/channel/metrics"
+      summary: "Get a channel message metrics statistics for the given id"
+      description: ""
+      operationId: "getMessageMetricsStatistics"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/MessageMetricsStatisticsEntity"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/state:
+    get:
+      tags:
+      - "/channel"
+      summary: "Get a channel's state"
+      description: ""
+      operationId: "getState"
+      consumes:
+      - "application/xml"
+      - "application/json"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/StateWrapper"
+    put:
+      tags:
+      - "/channel"
+      summary: "Update a channel's state"
+      description: ""
+      operationId: "updateState"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+      - name: "adpMgmtTimeout"
+        in: "query"
+        description: "adpMgmtTimeout"
+        required: false
+        type: "string"
+      - name: "option"
+        in: "query"
+        required: false
+        type: "string"
+        enum:
+        - "FORCE_CLOSE"
+        - "FORCE_CLOSE_IF_FAIL"
+        - "RESTART"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/StateWrapper"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow:
+    get:
+      tags:
+      - "/workflow"
+      summary: "Lists workflows for a channel"
+      description: ""
+      operationId: "list"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/WorkflowEntity"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow/count:
+    get:
+      tags:
+      - "/workflow"
+      summary: "Counts workflows for a channel"
+      description: ""
+      operationId: "count"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Count"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow/{workflow}:
+    get:
+      tags:
+      - "/workflow"
+      summary: "Gets a workflow for a channel"
+      description: ""
+      operationId: "get"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/WorkflowEntity"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow/{workflow}/configuration:
+    get:
+      tags:
+      - "/workflow"
+      summary: "Get a workflow's configuration"
+      description: ""
+      operationId: "configuration"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "object"
+            additionalProperties:
+              type: "object"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow/{workflow}/details:
+    get:
+      tags:
+      - "/workflow"
+      summary: "Get details for a workflow"
+      description: ""
+      operationId: "details"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/ComponentDetails"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow/{workflow}/failed-messages/failed-messages/count:
+    get:
+      tags:
+      - "/workflow/failed-messages"
+      summary: "Get the number of failed messages for a workflow"
+      description: ""
+      operationId: "failedMessagesCount"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Count"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow/{workflow}/metrics/message-metrics:
+    get:
+      tags:
+      - "/workflow/metrics"
+      summary: "Get a workflow message metrics statistics. The first found will be\
+        \ returned"
+      description: ""
+      operationId: "getMessageMetricsStatistics"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/MessageMetricsStatisticsEntity"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow/{workflow}/metrics/message-metrics-ids:
+    get:
+      tags:
+      - "/workflow/metrics"
+      summary: "Get all the message metrics statistics ids for a workflow"
+      description: ""
+      operationId: "messageMetricsStatisticsIds"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow/{workflow}/metrics/message-metrics/{id}:
+    get:
+      tags:
+      - "/workflow/metrics"
+      summary: "Get a workflow message metrics statistics for the given id"
+      description: ""
+      operationId: "getMessageMetricsStatistics"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/MessageMetricsStatisticsEntity"
+    delete:
+      tags:
+      - "/workflow/metrics"
+      summary: "Delete the workflow message metrics statistics for the given id"
+      description: ""
+      operationId: "clearMessageMetricsStatistics"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow/{workflow}/metrics/metadata-statistics-ids:
+    get:
+      tags:
+      - "/workflow/metrics"
+      summary: "Get all the metadata statistics ids for a workflow"
+      description: ""
+      operationId: "messageMetadataStatisticsIds"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            type: "array"
+            items:
+              type: "string"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow/{workflow}/metrics/metadata-statistics/{id}:
+    get:
+      tags:
+      - "/workflow/metrics"
+      summary: "Get a workflow matadata statistics for the given id"
+      description: ""
+      operationId: "getMetadataStatistics"
+      produces:
+      - "application/json"
+      - "application/xml"
+      - "text/plain"
+      - "text/csv"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/MetadataStatisticsEntity"
+    delete:
+      tags:
+      - "/workflow/metrics"
+      summary: "Delete the workflow matadata statistics for the given id"
+      description: ""
+      operationId: "clearMetadataStatistics"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      - name: "id"
+        in: "path"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow/{workflow}/state:
+    get:
+      tags:
+      - "/workflow"
+      summary: "Get a workflow's state"
+      description: ""
+      operationId: "getState"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/StateWrapper"
+    put:
+      tags:
+      - "/workflow"
+      summary: "Update a workflow's state"
+      description: ""
+      operationId: "updateState"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "url"
+        in: "path"
+        description: "The JMX URL used to connect to an Adapter."
+        required: true
+        type: "string"
+      - name: "jmxUid"
+        in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
+        required: true
+        type: "string"
+      - name: "Jmx-Credentials"
+        in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        required: false
+        type: "string"
+      - name: "jmxEnv"
+        in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
+        required: false
+        type: "string"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      - name: "adpMgmtTimeout"
+        in: "query"
+        description: "adpMgmtTimeout"
+        required: false
+        type: "string"
+      - name: "option"
+        in: "query"
+        required: false
+        type: "string"
+        enum:
+        - "FORCE_CLOSE"
+        - "FORCE_CLOSE_IF_FAIL"
+        - "RESTART"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          $ref: "#/definitions/StateWrapper"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
   /external/adapter/{url}/{jmxUid}/component-checker/check-service:
     post:
       tags:
@@ -153,18 +3011,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - in: "body"
@@ -192,18 +3056,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       responses:
@@ -229,18 +3099,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       responses:
@@ -264,31 +3140,37 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
-      - name: "pageSize"
+      - name: "from"
+        in: "query"
+        required: false
+        type: "integer"
+        default: 0
+        format: "int32"
+      - name: "to"
         in: "query"
         required: false
         type: "integer"
         default: 100
-        format: "int32"
-      - name: "page"
-        in: "query"
-        required: false
-        type: "integer"
-        default: 1
         format: "int32"
       responses:
         200:
@@ -313,18 +3195,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       responses:
@@ -348,22 +3236,30 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "deleteMsgFile"
         in: "query"
+        description: "Delete message file on the adapter file system when ignoring\
+          \ a failed message. Once deleted, this can't be undone."
         required: false
         type: "string"
       responses:
@@ -386,18 +3282,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - in: "body"
@@ -409,6 +3311,8 @@ paths:
             type: "string"
       - name: "deleteMsgFile"
         in: "query"
+        description: "Delete message file on the adapter file system when ignoring\
+          \ a failed message. Once deleted, this can't be undone."
         required: false
         type: "string"
       responses:
@@ -432,18 +3336,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       responses:
@@ -469,18 +3379,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       responses:
@@ -503,18 +3419,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - in: "body"
@@ -545,18 +3467,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       responses:
@@ -580,18 +3508,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       responses:
@@ -617,18 +3551,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "id"
@@ -655,18 +3595,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       responses:
@@ -689,18 +3635,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       responses:
@@ -725,18 +3677,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       responses:
@@ -761,18 +3719,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       responses:
@@ -797,18 +3761,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       responses:
@@ -833,18 +3803,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       responses:
@@ -869,18 +3845,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       responses:
@@ -905,18 +3887,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       responses:
@@ -941,18 +3929,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       responses:
@@ -975,18 +3969,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       responses:
@@ -1009,18 +4009,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       responses:
@@ -1046,18 +4052,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       responses:
@@ -1080,22 +4092,29 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "adpMgmtTimeout"
         in: "query"
+        description: "The max timeout to wait for in milliseconds"
         required: false
         type: "string"
       - name: "option"
@@ -1119,7 +4138,7 @@ paths:
   /external/channel/{url}/{jmxUid}:
     get:
       tags:
-      - "/channel"
+      - "deprecated"
       summary: "Lists channels for an adapter"
       description: ""
       operationId: "list"
@@ -1132,18 +4151,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       responses:
@@ -1156,7 +4181,7 @@ paths:
   /external/channel/{url}/{jmxUid}/count:
     get:
       tags:
-      - "/channel"
+      - "deprecated"
       summary: "Counts channels for an adapter"
       description: ""
       operationId: "count"
@@ -1169,18 +4194,24 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       responses:
@@ -1191,7 +4222,7 @@ paths:
   /external/channel/{url}/{jmxUid}/{channel}:
     get:
       tags:
-      - "/channel"
+      - "deprecated"
       summary: "Get a channel for an adapter"
       description: ""
       operationId: "get"
@@ -1204,22 +4235,29 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "channel"
         in: "path"
+        description: "The channel unique id."
         required: true
         type: "string"
       responses:
@@ -1230,7 +4268,7 @@ paths:
   /external/channel/{url}/{jmxUid}/{channel}/configuration:
     get:
       tags:
-      - "/channel"
+      - "deprecated"
       summary: "Get a channel's configuration"
       description: ""
       operationId: "configuration"
@@ -1242,22 +4280,29 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "channel"
         in: "path"
+        description: "The channel unique id."
         required: true
         type: "string"
       responses:
@@ -1270,7 +4315,7 @@ paths:
   /external/channel/{url}/{jmxUid}/{channel}/details:
     get:
       tags:
-      - "/channel"
+      - "deprecated"
       summary: "Get details for a channel"
       description: ""
       operationId: "details"
@@ -1283,22 +4328,29 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "channel"
         in: "path"
+        description: "The channel unique id."
         required: true
         type: "string"
       responses:
@@ -1309,7 +4361,7 @@ paths:
   /external/channel/{url}/{jmxUid}/{channel}/failed-messages/count:
     get:
       tags:
-      - "/channel/failed-messages"
+      - "deprecated"
       summary: "Get the number of failed messages for a channel"
       description: ""
       operationId: "failedMessagesCount"
@@ -1319,22 +4371,29 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "channel"
         in: "path"
+        description: "The channel unique id."
         required: true
         type: "string"
       responses:
@@ -1345,7 +4404,7 @@ paths:
   /external/channel/{url}/{jmxUid}/{channel}/metrics/message-metrics:
     get:
       tags:
-      - "/channel/metrics"
+      - "deprecated"
       summary: "Get a channel message metrics statistics"
       description: ""
       operationId: "getMessageMetricsStatistics"
@@ -1355,22 +4414,29 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "channel"
         in: "path"
+        description: "The channel unique id."
         required: true
         type: "string"
       responses:
@@ -1383,7 +4449,7 @@ paths:
   /external/channel/{url}/{jmxUid}/{channel}/metrics/message-metrics/{id}:
     get:
       tags:
-      - "/channel/metrics"
+      - "deprecated"
       summary: "Get a channel message metrics statistics for the given id"
       description: ""
       operationId: "getMessageMetricsStatistics"
@@ -1393,22 +4459,29 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "channel"
         in: "path"
+        description: "The channel unique id."
         required: true
         type: "string"
       - name: "id"
@@ -1425,7 +4498,7 @@ paths:
   /external/channel/{url}/{jmxUid}/{channel}/state:
     get:
       tags:
-      - "/channel"
+      - "deprecated"
       summary: "Get a channel's state"
       description: ""
       operationId: "getState"
@@ -1438,22 +4511,29 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "channel"
         in: "path"
+        description: "The channel unique id."
         required: true
         type: "string"
       responses:
@@ -1463,7 +4543,7 @@ paths:
             $ref: "#/definitions/StateWrapper"
     put:
       tags:
-      - "/channel"
+      - "deprecated"
       summary: "Update a channel's state"
       description: ""
       operationId: "updateState"
@@ -1476,26 +4556,34 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "channel"
         in: "path"
+        description: "The channel unique id."
         required: true
         type: "string"
       - name: "adpMgmtTimeout"
         in: "query"
+        description: "adpMgmtTimeout"
         required: false
         type: "string"
       - name: "option"
@@ -1516,10 +4604,44 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/Result"
+  /external/workflow/{adapter}/{channel}/{workflow}/failed-messages/failed-messages/count:
+    get:
+      tags:
+      - "/workflow/failed-messages"
+      summary: "Get the number of failed messages for a workflow"
+      description: ""
+      operationId: "failedMessagesCount"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id of an Adapter in the UI or 'local' to get the\
+          \ UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|(\\d+)"
+      - name: "channel"
+        in: "path"
+        description: "The channel unique id."
+        required: true
+        type: "string"
+        default: "none"
+      - name: "workflow"
+        in: "path"
+        description: "The workflow unique id."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Count"
   /external/workflow/{url}/{jmxUid}/{channel}:
     get:
       tags:
-      - "/workflow"
+      - "deprecated"
       summary: "Lists workflows for a channel"
       description: ""
       operationId: "list"
@@ -1529,22 +4651,29 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "channel"
         in: "path"
+        description: "The channel unique id."
         required: true
         type: "string"
         default: "none"
@@ -1558,7 +4687,7 @@ paths:
   /external/workflow/{url}/{jmxUid}/{channel}/count:
     get:
       tags:
-      - "/workflow"
+      - "deprecated"
       summary: "Counts workflows for a channel"
       description: ""
       operationId: "count"
@@ -1568,22 +4697,29 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "channel"
         in: "path"
+        description: "The channel unique id."
         required: true
         type: "string"
         default: "none"
@@ -1595,7 +4731,7 @@ paths:
   /external/workflow/{url}/{jmxUid}/{channel}/{workflow}:
     get:
       tags:
-      - "/workflow"
+      - "deprecated"
       summary: "Gets a workflow for a channel"
       description: ""
       operationId: "get"
@@ -1605,27 +4741,35 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "channel"
         in: "path"
+        description: "The channel unique id."
         required: true
         type: "string"
         default: "none"
       - name: "workflow"
         in: "path"
+        description: "The workflow unique id."
         required: true
         type: "string"
       responses:
@@ -1636,7 +4780,7 @@ paths:
   /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/configuration:
     get:
       tags:
-      - "/workflow"
+      - "deprecated"
       summary: "Get a workflow's configuration"
       description: ""
       operationId: "configuration"
@@ -1645,27 +4789,35 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "channel"
         in: "path"
+        description: "The channel unique id."
         required: true
         type: "string"
         default: "none"
       - name: "workflow"
         in: "path"
+        description: "The workflow unique id."
         required: true
         type: "string"
       responses:
@@ -1678,7 +4830,7 @@ paths:
   /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/details:
     get:
       tags:
-      - "/workflow"
+      - "deprecated"
       summary: "Get details for a workflow"
       description: ""
       operationId: "details"
@@ -1688,27 +4840,35 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "channel"
         in: "path"
+        description: "The channel unique id."
         required: true
         type: "string"
         default: "none"
       - name: "workflow"
         in: "path"
+        description: "The workflow unique id."
         required: true
         type: "string"
       responses:
@@ -1719,7 +4879,7 @@ paths:
   /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/failed-messages/failed-messages/count:
     get:
       tags:
-      - "/workflow/failed-messages"
+      - "deprecated"
       summary: "Get the number of failed messages for a workflow"
       description: ""
       operationId: "failedMessagesCount"
@@ -1729,27 +4889,35 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "channel"
         in: "path"
+        description: "The channel unique id."
         required: true
         type: "string"
         default: "none"
       - name: "workflow"
         in: "path"
+        description: "The workflow unique id."
         required: true
         type: "string"
       responses:
@@ -1760,7 +4928,7 @@ paths:
   /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/metrics/message-metrics:
     get:
       tags:
-      - "/workflow/metrics"
+      - "deprecated"
       summary: "Get a workflow message metrics statistics. The first found will be\
         \ returned"
       description: ""
@@ -1773,27 +4941,35 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "channel"
         in: "path"
+        description: "The channel unique id."
         required: true
         type: "string"
         default: "none"
       - name: "workflow"
         in: "path"
+        description: "The workflow unique id."
         required: true
         type: "string"
       responses:
@@ -1804,7 +4980,7 @@ paths:
   /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/metrics/message-metrics-ids:
     get:
       tags:
-      - "/workflow/metrics"
+      - "deprecated"
       summary: "Get all the message metrics statistics ids for a workflow"
       description: ""
       operationId: "messageMetricsStatisticsIds"
@@ -1814,27 +4990,35 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "channel"
         in: "path"
+        description: "The channel unique id."
         required: true
         type: "string"
         default: "none"
       - name: "workflow"
         in: "path"
+        description: "The workflow unique id."
         required: true
         type: "string"
       responses:
@@ -1847,7 +5031,7 @@ paths:
   /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/metrics/message-metrics/{id}:
     get:
       tags:
-      - "/workflow/metrics"
+      - "deprecated"
       summary: "Get a workflow message metrics statistics for the given id"
       description: ""
       operationId: "getMessageMetricsStatistics"
@@ -1859,27 +5043,35 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "channel"
         in: "path"
+        description: "The channel unique id."
         required: true
         type: "string"
         default: "none"
       - name: "workflow"
         in: "path"
+        description: "The workflow unique id."
         required: true
         type: "string"
       - name: "id"
@@ -1893,7 +5085,7 @@ paths:
             $ref: "#/definitions/MessageMetricsStatisticsEntity"
     delete:
       tags:
-      - "/workflow/metrics"
+      - "deprecated"
       summary: "Delete the workflow message metrics statistics for the given id"
       description: ""
       operationId: "clearMessageMetricsStatistics"
@@ -1903,27 +5095,35 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "channel"
         in: "path"
+        description: "The channel unique id."
         required: true
         type: "string"
         default: "none"
       - name: "workflow"
         in: "path"
+        description: "The workflow unique id."
         required: true
         type: "string"
       - name: "id"
@@ -1938,7 +5138,7 @@ paths:
   /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/metrics/metadata-statistics-ids:
     get:
       tags:
-      - "/workflow/metrics"
+      - "deprecated"
       summary: "Get all the metadata statistics ids for a workflow"
       description: ""
       operationId: "messageMetadataStatisticsIds"
@@ -1948,27 +5148,35 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "channel"
         in: "path"
+        description: "The channel unique id."
         required: true
         type: "string"
         default: "none"
       - name: "workflow"
         in: "path"
+        description: "The workflow unique id."
         required: true
         type: "string"
       responses:
@@ -1981,7 +5189,7 @@ paths:
   /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/metrics/metadata-statistics/{id}:
     get:
       tags:
-      - "/workflow/metrics"
+      - "deprecated"
       summary: "Get a workflow matadata statistics for the given id"
       description: ""
       operationId: "getMetadataStatistics"
@@ -1993,27 +5201,35 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "channel"
         in: "path"
+        description: "The channel unique id."
         required: true
         type: "string"
         default: "none"
       - name: "workflow"
         in: "path"
+        description: "The workflow unique id."
         required: true
         type: "string"
       - name: "id"
@@ -2027,7 +5243,7 @@ paths:
             $ref: "#/definitions/MetadataStatisticsEntity"
     delete:
       tags:
-      - "/workflow/metrics"
+      - "deprecated"
       summary: "Delete the workflow matadata statistics for the given id"
       description: ""
       operationId: "clearMetadataStatistics"
@@ -2037,27 +5253,35 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "channel"
         in: "path"
+        description: "The channel unique id."
         required: true
         type: "string"
         default: "none"
       - name: "workflow"
         in: "path"
+        description: "The workflow unique id."
         required: true
         type: "string"
       - name: "id"
@@ -2072,7 +5296,7 @@ paths:
   /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/state:
     get:
       tags:
-      - "/workflow"
+      - "deprecated"
       summary: "Get a workflow's state"
       description: ""
       operationId: "getState"
@@ -2082,27 +5306,35 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "channel"
         in: "path"
+        description: "The channel unique id."
         required: true
         type: "string"
         default: "none"
       - name: "workflow"
         in: "path"
+        description: "The workflow unique id."
         required: true
         type: "string"
       responses:
@@ -2112,7 +5344,7 @@ paths:
             $ref: "#/definitions/StateWrapper"
     put:
       tags:
-      - "/workflow"
+      - "deprecated"
       summary: "Update a workflow's state"
       description: ""
       operationId: "updateState"
@@ -2125,31 +5357,40 @@ paths:
       parameters:
       - name: "url"
         in: "path"
+        description: "The JMX URL used to connect to an Adapter."
         required: true
         type: "string"
       - name: "jmxUid"
         in: "path"
+        description: "The unique identifier used in the Adapter configuration XML."
         required: true
         type: "string"
       - name: "Jmx-Credentials"
         in: "header"
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
         required: false
         type: "string"
       - name: "jmxEnv"
         in: "query"
+        description: "The JMX environment parameters used to connect to an Adapter."
         required: false
         type: "string"
       - name: "channel"
         in: "path"
+        description: "The channel unique id."
         required: true
         type: "string"
         default: "none"
       - name: "workflow"
         in: "path"
+        description: "The workflow unique id."
         required: true
         type: "string"
       - name: "adpMgmtTimeout"
         in: "query"
+        description: "adpMgmtTimeout"
         required: false
         type: "string"
       - name: "option"
@@ -2193,6 +5434,10 @@ definitions:
         type: "string"
       jmxEnv:
         type: "string"
+      id:
+        type: "integer"
+        format: "int32"
+        readOnly: true
       name:
         type: "string"
     xml:
@@ -2290,12 +5535,6 @@ definitions:
         type: "string"
     xml:
       name: "channel"
-  Count:
-    type: "object"
-    properties:
-      value:
-        type: "integer"
-        format: "int32"
   MessageMetricsStatisticsEntity:
     type: "object"
     properties:
@@ -2333,11 +5572,20 @@ definitions:
       numberOfTimeSlices:
         type: "integer"
         format: "int32"
+  Count:
+    type: "object"
+    properties:
+      value:
+        type: "integer"
+        format: "int32"
   WorkflowEntity:
     type: "object"
     properties:
       name:
         type: "string"
+      lifeCycleActionsDisabled:
+        type: "boolean"
+        default: false
       state:
         type: "string"
         enum:
@@ -2366,23 +5614,6 @@ definitions:
         type: "string"
       stackTrace:
         type: "string"
-  MessageEntity:
-    type: "object"
-    properties:
-      id:
-        type: "string"
-      payload:
-        type: "string"
-      payloadEncoding:
-        type: "string"
-      nextServiceId:
-        type: "string"
-      metadata:
-        type: "object"
-        additionalProperties:
-          type: "string"
-    xml:
-      name: "message"
   FailedMessageEntity:
     type: "object"
     properties:
@@ -2414,6 +5645,23 @@ definitions:
         default: false
     xml:
       name: "failed-message"
+  MessageEntity:
+    type: "object"
+    properties:
+      id:
+        type: "string"
+      payload:
+        type: "string"
+      payloadEncoding:
+        type: "string"
+      nextServiceId:
+        type: "string"
+      metadata:
+        type: "object"
+        additionalProperties:
+          type: "string"
+    xml:
+      name: "message"
   StateWrapper:
     type: "object"
     properties:

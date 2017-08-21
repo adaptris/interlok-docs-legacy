@@ -129,6 +129,25 @@ You can then use this page to test the api against your own Interlok UI API:
 
 ![Local Swagger Doing Operation](./images/ui-api/swagger-with-interlok-data-opened.png)
 
+## Deprecated ##
+
+All the Channel and Workflow api urls up to version 3.6.3 are deprecated. Adapter api urls are still valid.
+
+- Channel urls starting like `/external/channel/{url}/{jmxUid}/{channel}` have changed to `/external/adapter/{url}/{jmxUid}/channel/{channel}`
+- Workflows urls starting like `/external/workflow/{url}/{jmxUid}/{channel}/{workflow}` have changed to `/external/adapter/{url}/{jmxUid}/channel/{channel}/workflow/{workflow}`
+
+## Api Parameters ##
+
+This section aims to help understanding the most used api parameters.
+
+- **adapter:** Path parameter corresponding to the Adapter database id. You can also use 'local' to work with the UI local adapter.
+- **url:** Path Path parameter corresponding to the JMX URL used to connect to an Adapter. i.e. service:jmx:jmxmp://localhost:5555. Use with the **jmxUid** parameter
+- **jmxUid:** Path Path parameter corresponding to the unique identifier used in the Adapter configuration XML. Used with the **url** parameter.
+- **Jmx-Credentials:** Header parameter corresponding to the Adapter JMX credentials. Only use this if the jmx connection has been configured to use credentials.
+- **jmxEnv:** Query parameters corresponding to the Adapter JMX environment parameters.
+- **channel:** Path Path parameter corresponding to the Channel unique id.
+- **workflow:** Path Path parameter corresponding to the Workflow unique id.
+
 ## Real World Example ##
 
 There is a working example of the UI API in action within the cm-dashboard project (the Cirrus UI).

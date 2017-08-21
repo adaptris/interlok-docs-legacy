@@ -209,3 +209,12 @@ In the follow example, a service contains its own service list which also contai
 ![service collection selectors annotated](./images/ui-user-guide/config-service-list-selector.png)
 
 These service lists wouldn't be shown in the settings editor. Instead they are selectable by clicking on the service collection selector icon on the component visible on hover (see above). This then brings up a service collection area which can be operated on in the same manner as the workflows service list area.
+
+## Drag and Drop services ##
+
+Services and service collections are the only components in the config page which can be drag and drop.
+
+- Drag and drop in the same **service collections** will re-order the **service**.
+- Drag and drop in a different **service collection** will move the **service** to a different **service collection**.
+- Drag and drop from a **service collection** to the **shared service collection** will create a new **shared service** in the **shared components** and use this new **shared service** in the original **service collection**.
+- Drag and drop from the **shared service collection** to any other **service collection** will a the **shared service** to the ***service collection**.
