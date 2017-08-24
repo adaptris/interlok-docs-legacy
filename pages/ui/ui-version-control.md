@@ -28,12 +28,12 @@ Add one or more profile using the add button and filling the details to connect 
 - **Auth Impl:** The type of authentication to use:
     - **Username & Password**
         - **Username:** The username/login to connect to the remote repository.
-        - **Password:** The password to connect to the remote repository. The password is not mandatory, you will be prompt when necessary.
+        - **Password:** The password to connect to the remote repository. The password is not mandatory, you will be prompted when necessary.
     - **SSH** (Since 3.5.0)
-        - **Ssh Keyfile:** The ssh private key to connect to the remote repository. The key should be password protected and only use for this single purpose.
-        - **Ssh Passphrase:** The ssh key passphrase to connect to the remote repository. The passphrase is not mandatory, you will be prompt when necessary.
-- **Working Copy Url:** The location on the file system where the repository will be checked out. This is relative to the adapter-home/vcs-repos/directory. A default location is generated using your username, the vcs type and a timestamp.
-- **Remote Repo Url:** The url for the remote repository.
+        - **SSH Private Key:** The SSH private key to connect to the remote repository. The key should be password protected and only use for this single purpose. OpenSSH and PuTTY private keys are accepted.
+        - **SSH Passphrase:** The SSH key passphrase to connect to the remote repository. The passphrase is not mandatory, you will be prompted when necessary.
+- **Working Copy URL:** The location on the file system where the repository will be checked out. This is relative to the adapter-home/vcs-repos/directory. A default location is generated using your username, the vcs type and a timestamp.
+- **Remote Repo URL:** The URL for the remote repository.
 - **Config File Name:** The name of the adapter xml configuration file. If not filled the default adapter.xml will be used. (Only used with config vcs profile)
 - **Properties File Name:** The name of the adapter variable substitutions properties file. If not filled no variable substitutions will be done when loading a config. (Only used with config vcs profile). Check [pre processors variable substitution](advanced-configuration-pre-processors.html#variable-substitution) for more details about variable substitutions.
 
