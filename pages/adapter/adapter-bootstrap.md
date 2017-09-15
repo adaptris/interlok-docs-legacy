@@ -102,7 +102,7 @@ jmxserviceurl.env.jmx.destination=SampleQ4
 
 Since 3.6.0
 
-If the ActiveMQ management component is specified via `managementComponents=activemq` and if you have copied the interlok-activemq.jar library, including the required dependencies into your Interlok lib directory, then upon Interlok start-up an ActiveMQ broker will also be started.
+If the ActiveMQ management component is specified via `managementComponents=activemq` and if you have downloaded the [interlok-activemq][] component, including the required dependencies into your Interlok lib directory, then upon Interlok start-up an ActiveMQ broker will also be started.
 
 You can supply your own ActiveMQ configuration by setting the following property `activemq.config.filename` in your bootstrap.properties file. Simply set the value of this property to be the exact name of your ActiveMQ configuration file (which of course will need to be on the Interlok classpath, typically in your Interlok/config directory). Should you choose not to supply your own configuration file a default minimal configuration will be applied (found packaged in the interlok-activemq.jar);
 
@@ -200,3 +200,4 @@ Pre-Processors are components that allow you to inject some additional processin
 [XStreamConfigManager]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/management/config/XStreamConfigManager.html
 [ManagementComponent]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/management/ManagementComponent.html
 [Authenticator]: http://docs.oracle.com/javase/7/docs/api/java/net/Authenticator.html
+[interlok-activemq]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-activemq/

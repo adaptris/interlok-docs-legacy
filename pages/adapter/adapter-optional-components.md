@@ -71,6 +71,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [adp-webspheremq][] | Connection to a [WebsphereMQ instance](cookbook-native-wmq.html); requires [adp-licensing][] ||
 |com.adaptris | [adp-xinclude][] | [XInclude pre-processor](advanced-configuration-pre-processors.html#xinclude)||
 |com.adaptris | [adp-xml-security][] | XML security (JSR 106); requires [adp-licensing][] ||
+|com.adaptris | [interlok-activemq][] | Embedding ActiveMQ as a management component| 3.6.0+
 |com.adaptris | [interlok-aws-common][] | Common components required for accessing AWS| 3.3.0+
 |com.adaptris | [interlok-aws-sqs][] | Integration with Amazon SQS (requires [interlok-aws-common][]|3.3.0+
 |com.adaptris | [interlok-aws-s3][] | Integration with Amazon S3 (requires [interlok-aws-common][] | 3.3.0+
@@ -209,3 +210,4 @@ If you've added an optional components following the steps explained above you c
 [EmbeddedScriptingService]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/EmbeddedScriptingService.html
 [interlok-expressions]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-expressions/
 [interlok-legacyhttp]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-legacyhttp/
+[interlok-activemq]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-activemq/
