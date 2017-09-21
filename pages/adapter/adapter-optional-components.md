@@ -84,6 +84,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-jruby][] | Tighter coupling with [jruby](http://jruby.org) as an alternative to [ScriptingService][]/[EmbeddedScriptingService][]|3.6.3+ (opensource / licensed under ASLv2)
 |com.adaptris | [interlok-legacyhttp][] | servicing HTTP requests without Jetty (Java 7 compatible)| 3.6.4+
 |com.adaptris | [interlok-mqtt][] | Support for MQTT protocol | 3.5.1+
+|com.adaptris | [interlok-oauth-salesforce][] | Retrieve OAUTH access tokens from Salesforce | 3.6.5+
 |com.adaptris | [interlok-shell][] | Commandline runtime UI based on [CRaSH](http://www.crashub.org) | 3.4.1+
 |com.adaptris | [interlok-service-tester][] | Testing services as part of a CI pipeline | 3.5.0+
 |com.adaptris | [interlok-vcs-command-line][] | Interlok configuration hosted in a configurable VCS | 3.5.1+
@@ -211,3 +212,4 @@ If you've added an optional components following the steps explained above you c
 [interlok-expressions]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-expressions/
 [interlok-legacyhttp]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-legacyhttp/
 [interlok-activemq]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-activemq/
+[interlok-oauth-salesforce]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-oauth-salesforce/
