@@ -16,6 +16,7 @@ To be able to generate salesforce xml templates you need to have the required sa
 To access the Salesforce config page, you should use the Salesforce button on the header navigation bar. The page is only accessible by admin and user roles.
 
 The header navigation bar:
+
  ![Navigation bar with salesforce selected](./images/ui-user-guide/salesforce-header-navigation.png)
 
 ## Salesforce Config ##

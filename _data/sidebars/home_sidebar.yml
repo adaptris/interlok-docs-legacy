@@ -155,6 +155,10 @@ entries:
       url: /ui-optional-component-discovery.html
       output: web
 
+    - title: Salesforce Config
+      url: /ui-salesforce.html
+      output: web
+
     - title: Security
       url: /ui-security.html
       output: web
