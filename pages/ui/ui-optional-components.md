@@ -15,7 +15,7 @@ To access the Optional Component Discovery page, you use the optional components
 
 The header navigation bar:
 
- ![Navigation bar with optional shown](./images/ui-user-guide/optional-nav.png)
+ ![Navigation bar with optional shown](./images/ui-user-guide/optional-components-header-navigation.png)
 
 ## Optional Component Discovery Page ##
 
