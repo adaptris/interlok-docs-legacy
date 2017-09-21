@@ -9,7 +9,7 @@ summary: The Salesforce Config page help you to generate some config xml to inte
 
 ## Prerequisite ##
 
-To be able to generate salesforce xml templates you need to have the required salesforce [optional component installed](adapter-optional-components.html).
+To be able to generate salesforce xml templates you need to have the required adp-apache-http [optional component installed](adapter-optional-components.html).
 
 ## Getting Started ##
 
