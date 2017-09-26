@@ -200,12 +200,26 @@ entries:
       output: web
 
       subfolders:
+      - title: HTTP
+        output: web
+        subfolderitems:
+
+        - title: Making HTTP Requests
+          url: /cookbook-http-client.html
+          output: web
+
+        - title: Servicing HTTP Requests
+          url: /cookbook-http-server.html
+          output: web
+
+    - title: JMS
+      url: /cookbook-jms.html
+      output: web
+
+      subfolders:
       - title: Messaging
         output: web
         subfolderitems:
-        - title: JMS
-          url: /cookbook-jms.html
-          output: web
 
         - title: MSMQ
           url: /cookbook-msmq.html
