@@ -1,7 +1,7 @@
 ---
 title: Making HTTP Requests
-keywords: interlok
-tags: [cookbook]
+keywords: interlok http
+tags: [cookbook, http, messaging]
 sidebar: home_sidebar
 permalink: cookbook-http-client.html
 summary: Interlok comes bundled with an HTTP client (based on the standard JRE HttpURLConnection) which can be used to interact with API interfaces or external systems.
@@ -28,7 +28,7 @@ You can always use [branching-service-enabler][] wrapping a [http-request-servic
 
 ## OAUTH
 
-[get-oauth-token][] is a service that allows for pluggable behaviour to support requesting a bearer token from an OAUTH server for you to use as your authentation token when making an API request. Currently supported implementations are [Google Cloud][], [Microsoft Azure][], and [Salesforce][]. Each of those are optional components that may require additional depdendencies and can be plugged into your configuration as a `access-token-builder` within [get-oauth-token][]. If successful, the token builder stores the token against the specified header (default is _Authorization_) so that you can use it as part of your authentication process (normally via an instance of `HttpURLConnectionAuthenticator`).
+[get-oauth-token][] is a service that allows for pluggable behaviour to support requesting a bearer token from an OAUTH server for you to use as your authentation token when making an API request. Currently supported implementations are [Google Cloud][], [Microsoft Azure][], and [Salesforce][]. Each of those are optional components that may require additional dependencies and can be plugged into your configuration as the `access-token-builder` within [get-oauth-token][]. If successful, the token builder stores the token against the specified header (default is _Authorization_) so that you can use it as part of your authentication process (normally via an instance of `HttpURLConnectionAuthenticator`).
 
 Generally speaking; you can handle the OAUTH bearer token using standard services; a combination of a `http-request-service` with JSON parsing/path will generally get you to the correct `Authorization` value (in fact this is all that the [Salesforce][] token builder does); using [get-oauth-token][] just abstracts away some of the manual configuration that you would need to do.
 
