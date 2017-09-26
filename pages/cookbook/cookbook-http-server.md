@@ -13,17 +13,20 @@ One of the more common integration scenarios that we encounter is to use Interlo
 
 There is currently only a single message consumer type: [jetty-message-consumer][]. The destination for the consumer should match the URI endpoint that you wish to listen on (e.g. /path/to/my/api); wildcards are supported and will be dependent on the servlet implementation of the underlying jetty instance. Parameters from the URI can be stored as metadata (or object metadata) with an optional prefix, as can any HTTP transport headers.
 
+{% include tip.html content="[http-request-parameter-converter-service][] can be used to convert _html form post_ payloads into metadata, if required." %}
+
+
 There are a number of supporting components that make will help you configure a workflow that provides the behaviour you need.
 
 ## Access Control
 
 ### JettyLoginServiceFactory
 
-This component allows you to plugin an `LoginService` implementation that ca restrict access specific URLs. The only implementation is [jetty-hash-login-service][] which creates the standard Jetty `HashLoginService` that is an implementation of a UserRealm that stores users and roles in-memory via a HashMap. This only protects a given URL on a username/password basis (as opposed to checking other HTTP transport headers or similar).
+This component allows you to plugin an `LoginService` implementation that ca restrict access specific URLs. The only implementation is [jetty-hash-login-service][] which creates the standard Jetty `HashLoginService` that is an implementation of a UserRealm that stores users and roles in-memory via a HashMap (for instance using _realm.properties_ from the jetty distribution). This only protects a given URL on a username/password basis (as opposed to checking other HTTP transport headers or similar).
 
 ### VerifyIdentityService
 
-[verify-identity-service] is a service based implementation that is not dissimilar in scope to [jetty-hash-login-service][]. It allows you to allow/deny access based on the payload content and associated metadata (which may have been derived from URI parameters or HTTP transport headers). It is generally more flexible that [jetty-hash-login-service][] as you are within a workflow, so the full power of Interlok is at your disposal. In a rather contrived example we can unpick the standard HTTP transport header `Authorization: Basic base64(username:password)` and cross reference that against a user in an arbitrary database. Ultimately, [verify-identity-service][] simply checks that the associated metadata keys match each other (i.e. the value associated with `requestUser` must match `db_user`, ditto `requestPassword` + `db_password`).
+[verify-identity-service][] is a service based implementation that is not dissimilar in scope to [jetty-hash-login-service][]. It allows you to allow/deny access based on the payload content and associated metadata (which may have been derived from URI parameters or HTTP transport headers). It is generally more flexible that [jetty-hash-login-service][] as you are within a workflow, so the full power of Interlok is at your disposal. In a rather contrived example we can unpick the standard HTTP transport header `Authorization: Basic base64(username:password)` and cross reference that against a user in an arbitrary database. Ultimately, [verify-identity-service][] simply checks that the associated metadata keys match each other (i.e. the value associated with `requestUser` must match that stored against `db_user`, ditto `requestPassword` + `db_password`).
 
 ```xml
 <copy-metadata-service>
@@ -65,7 +68,7 @@ This component allows you to plugin an `LoginService` implementation that ca res
   <replacement-value>$1</replacement-value>
 </replace-metadata-value>
 <!-- Now we have the requestUser and requestPassword let's look up the user in the database
-     Assume that db_user + db_password is populated by JdbcDataQueryService.
+     Assume that db_user + db_password is populated by JdbcDataQueryService as metadata.
 -->
 <verify-identity-service>
   <unique-id>VerifyUsernamePassword</unique-id>
@@ -90,7 +93,7 @@ This component allows you to plugin an `LoginService` implementation that ca res
 
 ## JettyRoutingService
 
-[jetty-routing-service][] allows you to listen on a wildcard URI, and based on the HTTP method / URI pattern, route messages within a [branching-service-collection][]. So, if we have a consumer that is configured to listen on `/contacts/*`. Based on the HTTP method, and the pattern, you need to have different behaviour, simulating a simplified CRUD api. The simplest way to visualize this is to have an example.
+[jetty-routing-service][] (3.6.4+) allows you to listen on a wildcard URI, and based on the HTTP method / URI pattern, route messages within a [branching-service-collection][]. So, if we have a consumer that is configured to listen on `/contacts/*` and based on the HTTP method, and the pattern, we want to have different behaviour, simulating a simplified CRUD api. This type of configuration is simplified using [jetty-routing-service][] which would previously have been possible using [embedded-scripting-service][] or similar.
 
 ```xml
 <branching-service-collection>
@@ -145,7 +148,7 @@ This component allows you to plugin an `LoginService` implementation that ca res
 
 ## JettyResponseService / StandardResponseProducer
 
-Both [jetty-standard-response-producer][] and [jetty-response-service][] perform the same function. The first is a producer (which can be wrapped by `StandaloneProducer` for insertion into a service list), and the second is just a service that abstracts that wrapping away from you (to avoid XML bloat, and to have cleaner UI representation). [jetty-response-service][] simply wraps [jetty-standard-response-producer][] under the covers, and supports the `%message{metadata-key}` syntax for content-type and http-status. [jetty-standard-response-producer][] has more configuration options.
+Both [jetty-standard-response-producer][] and [jetty-response-service][] (3.6.5+) perform the same function. The first is a producer (which can be wrapped by `StandaloneProducer` for insertion into a service list), and the second is just a service that abstracts that wrapping away from you (to avoid XML bloat, and to have cleaner UI representation). [jetty-response-service][] simply wraps [jetty-standard-response-producer][] under the covers, and supports the `%message{metadata-key}` syntax for content-type and http-status. [jetty-standard-response-producer][] has more configuration options.
 
 
 [interlok-legacyhttp]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-legacyhttp/
@@ -159,3 +162,5 @@ Both [jetty-standard-response-producer][] and [jetty-response-service][] perform
 [jetty-routing-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/http/jetty/JettyRoutingService.html
 [jetty-response-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/http/jetty/JettyResponseService.html
 [jetty-standard-response-producer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/http/jetty/StandardResponseProducer.html
+[http-request-parameter-converter-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/http/RequestParameterConverterService.html
+[[embedded-scripting-service]]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/EmbeddedScriptingService.html
