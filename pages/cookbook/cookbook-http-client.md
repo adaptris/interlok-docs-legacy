@@ -49,3 +49,4 @@ Because the standard `HttpURLConnection` doesn't support the `PATCH` method (and
 [http-status-range-match]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/http/client/RangeMatch.html
 [java networking properties]: https://docs.oracle.com/javase/8/docs/api/java/net/doc-files/net-properties.html
 [branching-service-enabler]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/BranchingServiceEnabler.html
+[http-branching-request-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/http/client/net/BranchingHttpRequestService.html
