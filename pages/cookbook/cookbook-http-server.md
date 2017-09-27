@@ -7,14 +7,13 @@ permalink: cookbook-http-server.html
 summary: Interlok comes bundled with an HTTP server (based on jetty) which can be used to as an entrypoint into a workflow.
 ---
 
-One of the more common integration scenarios that we encounter is to use Interlok as an API gateway; whether it is to overlay caching or authentication on an existing API, or to handle API calls itself. Interlok comes bundled with Jetty which is used to serve the UI and can used as entrypoint into a workflow. The connection for any HTTP based workflow should be one of [jetty-embedded-connection][], [jetty-http-connection][], or [jetty-https-connection][]. [jetty-embedded-connection][] makes use of the [jetty management component](adapter-bootstrap.html#management-components) if you have enabled it. If you aren't using the this management component then you should use one of the other connection types which will allow you to configure specific embedded jetty instances on a per-connection basis. Using [jetty-embedded-connection][] will allow you the greatest flexibility in terms of configuration as you have full access to the `jetty.xml` configuration file.
+One of the more common integration scenarios that we encounter is to use Interlok as an API gateway; whether it is to overlay caching or authentication on an existing API, or to handle API calls itself. Interlok comes bundled with Jetty which is used to serve the UI and can used as entrypoint into a workflow. The connection for any HTTP based workflow should be one of [jetty-embedded-connection][], [jetty-http-connection][], or [jetty-https-connection][]. As the name would suggest [jetty-embedded-connection][] makes use of the [jetty management component](adapter-bootstrap.html#management-components) if you have enabled it. If you aren't using the this management component then you should use one of the other connection types which will allow you to configure specific embedded jetty instances on a per-connection basis. Enabling the _jetty management component_ and using [jetty-embedded-connection][] will allow you the greatest flexibility in terms of configuration as you have full access to the `jetty.xml` configuration file.
 
-{% include note.html content="Sometimes, for whatever reason, you don't want to use Jetty (if you _really can't_, then you're running Interlok using Java 7 and need to ask yourself _WHY?_). In this case you have access to  [interlok-legacyhttp][] which fulfils this niche. It depends on the built in JRE/Sun HTTP Server implementation and isn't as configurable as the jetty instance." %}
+{% include note.html content="Sometimes, for whatever reason, you don't want to use Jetty (if you _really can't_, then you're running Interlok using Java 7 and need to ask yourself _WHY?_). In this case you have access to  [interlok-legacyhttp][]. It depends on the built in JRE/Sun HTTP Server implementation but won't be as configurable as the jetty instance (and might be removed in later Java versions)." %}
 
 There is currently only a single message consumer type: [jetty-message-consumer][]. The destination for the consumer should match the URI endpoint that you wish to listen on (e.g. /path/to/my/api); wildcards are supported and will be dependent on the servlet implementation of the underlying jetty instance. Parameters from the URI can be stored as metadata (or object metadata) with an optional prefix, as can any HTTP transport headers.
 
-{% include tip.html content="[http-request-parameter-converter-service][] can be used to convert _html form post_ payloads into metadata, if required." %}
-
+{% include tip.html content="You can use [http-request-parameter-converter-service][] to convert _html form post_ payloads into metadata, if required." %}
 
 There are a number of supporting components that make will help you configure a workflow that provides the behaviour you need.
 
@@ -26,7 +25,7 @@ This component allows you to plugin an `LoginService` implementation that ca res
 
 ### VerifyIdentityService
 
-[verify-identity-service][] is a service based implementation that is not dissimilar in scope to [jetty-hash-login-service][]. It allows you to allow/deny access based on the payload content and associated metadata (which may have been derived from URI parameters or HTTP transport headers). It is generally more flexible that [jetty-hash-login-service][] as you are within a workflow, so the full power of Interlok is at your disposal. In a rather contrived example we can unpick the standard HTTP transport header `Authorization: Basic base64(username:password)` and cross reference that against a user in an arbitrary database. Ultimately, [verify-identity-service][] simply checks that the associated metadata keys match each other (i.e. the value associated with `requestUser` must match that stored against `db_user`, ditto `requestPassword` + `db_password`).
+The [verify-identity-service][] service is not dissimilar in scope to [jetty-hash-login-service][]; it provides access control to your workflow but happens within your workflow, not outside it. It allows you to allow/deny access based on the payload content and associated metadata (which may have been derived from URI parameters or HTTP transport headers). We consider it generally more flexible that [jetty-hash-login-service][] as you are within a workflow, so the full power of Interlok is at your disposal. In a rather contrived example we can unpick the standard HTTP transport header `Authorization: Basic base64(username:password)` and cross reference that against a user in an arbitrary database. Ultimately, [verify-identity-service][] simply checks that the associated metadata keys match each other (i.e. the value associated with `requestUser` must match that stored against `db_user`, ditto `requestPassword` + `db_password`).
 
 ```xml
 <copy-metadata-service>
@@ -93,7 +92,7 @@ This component allows you to plugin an `LoginService` implementation that ca res
 
 ## JettyRoutingService
 
-[jetty-routing-service][] (3.6.4+) allows you to listen on a wildcard URI, and based on the HTTP method / URI pattern, route messages within a [branching-service-collection][]. So, if we have a consumer that is configured to listen on `/contacts/*` and based on the HTTP method, and the pattern, we want to have different behaviour, simulating a simplified CRUD api. This type of configuration is simplified using [jetty-routing-service][] which would previously have been possible using [embedded-scripting-service][] or similar.
+The [jetty-routing-service][] (3.6.4+) service allows you to listen on a wildcard URI, and based on the HTTP method / URI pattern, route messages within a [branching-service-collection][]. So, if we have a consumer that is configured to listen on `/contacts/*`; based on the HTTP method, and the pattern, we want to have different behaviour, simulating a simplified CRUD api. This type of configuration is simplified using [jetty-routing-service][] which would previously have been possible using [embedded-scripting-service][] or similar.
 
 ```xml
 <branching-service-collection>
@@ -142,13 +141,13 @@ This component allows you to plugin an `LoginService` implementation that ca res
 ```
 
 * If the URI is `/contacts` and the method is `GET` then we branch to the _list_ service; which can then list all the contacts in the database.
-* If the URI is `/contacts/12345` and the method is `GET` then we branch to the _retrieve_ service; which can retrieve the contact details. `ContactId` will contain `12345`
+* If the URI is `/contacts/12345` and the method is `GET` then we branch to the _retrieve_ service; which can retrieve the contact details. The metadata key `ContactId` will contain `12345`
 * If the URI is `/contacts/12345` and the method is `DELETE` then we branch to the _delete_ service; which can delete the contact where `ContactId=12345`
 * If the URI doesn't match, then we branch to the _NotHandled_ service; which can just return a 404 or similar code.
 
 ## JettyResponseService / StandardResponseProducer
 
-Both [jetty-standard-response-producer][] and [jetty-response-service][] (3.6.5+) perform the same function. The first is a producer (which can be wrapped by `StandaloneProducer` for insertion into a service list), and the second is just a service that abstracts that wrapping away from you (to avoid XML bloat, and to have cleaner UI representation). [jetty-response-service][] simply wraps [jetty-standard-response-producer][] under the covers, and supports the `%message{metadata-key}` syntax for content-type and http-status. [jetty-standard-response-producer][] has more configuration options.
+Both [jetty-standard-response-producer][] and [jetty-response-service][] (3.6.5+) perform the same function. The first is a producer (which can be wrapped by `StandaloneProducer` for insertion into a service list), and the second is just a service that abstracts that wrapping away from you (to avoid XML bloat, and to have cleaner UI representation). Under the covers [jetty-response-service][] simply wraps [jetty-standard-response-producer][], and supports the `%message{metadata-key}` syntax for content-type and http-status. If you need full control over configuration then use [jetty-standard-response-producer][].
 
 
 [interlok-legacyhttp]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-legacyhttp/
