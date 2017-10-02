@@ -134,6 +134,10 @@ entries:
         - title: Saved Configs
           url: /ui-saved-configs.html
           output: web
+          
+        - title: Config Sidebar
+          url: /ui-config-sidebar.html
+          output: web
 
         - title: Version Control
           url: /ui-version-control.html
