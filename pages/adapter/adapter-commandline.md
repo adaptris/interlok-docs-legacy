@@ -36,7 +36,10 @@ It's simpler to make sure that `myServiceName` doesn't have any spaces (you can 
 
 ## Running directly from the commandline ##
 
-When wrapping the Interlok runtime as part of another script, it is sometimes preferable to directly start the Java virtual machine directly rather than using the standard executable. Provided the current working directory is the base directory of the installation, the adapter can simply be started using the standard `-jar` directive, passing in any JVM properties and command-line arguments as appropriate. If the JVM classpath has been set manually prior to starting the adapter, then note that the `-jar` directive forces the JVM to ignore any classpath that might have been specified. If you’re happy with the manual classpath then use `com.adaptris.core.management.SimpleBootstrap` as the main class. This class will not cause any additional classpath initialisation to happen (i.e. `./config`, `./lib/*.jar` and `lib/*.zip` are not added to the classpath). If you still want the classpath initialisation to happen then you should use `com.adaptris.core.management.StandardBootstrap`.
+When wrapping the Interlok runtime as part of another script, it is sometimes preferable to directly start the Java virtual machine directly rather than using the standard executable. Provided the current working directory is the base directory of the installation, the adapter can simply be started using the standard `-jar` directive (since _3.6.5_ use `java -jar lib/interlok-boot.jar`, for previous versions using `java -jar lib/adp-core.jar`), passing in any JVM properties and command-line arguments as appropriate. If the JVM classpath has been set manually prior to starting the adapter, then note that the `-jar` directive forces the JVM to ignore any classpath that might have been specified. If you’re happy with the manual classpath then use `com.adaptris.core.management.SimpleBootstrap` as the main class. This class will not cause any additional classpath initialisation to happen (i.e. `./config`, `./lib/*.jar` and `lib/*.zip` are not added to the classpath).
+
+{% include note.html content="since 3.6.5; in readiness for java 9; there is a new interlok-boot.jar which should be used in preference to adp-core.jar when running directly from the commandline." %}
+
 
 ## Commandline Switches ##
 
@@ -50,7 +53,7 @@ It is possible to invoke the adapter with a number of different switches. These 
 <br/>
 
 ```
-$ java -jar lib/adp-core.jar -version
+$ java -jar lib/interlok-boot.jar -version
 Bootstrap of Interlok 3.6-SNAPSHOT(2017-02-22) complete
 Version Information
   Base Interlok: 3.6-SNAPSHOT(2017-02-22)
@@ -62,7 +65,7 @@ Version Information
 ```
 
 ```
-$ java -jar lib/adp-core.jar -configcheck bootstrap.properties
+$ java -jar lib/interlok-boot.jar -configcheck bootstrap.properties
 Bootstrap of Interlok 3.6-SNAPSHOT(2017-02-22) complete
 TRACE [main] [BootstrapProperties] Properties resource is [bootstrap.properties]
 TRACE [main] [PropertyResolver] Parsing PropertyResolver URL [jar:file:/C:/Users/lchan/work/runtime/v3-nightly/lib/adp-core.jar!/META-INF/com/adaptris/core/management/properties/resolver]

@@ -61,3 +61,18 @@ dataSource.password=interlokuidb
  - Start the adapter
 
 {% include note.html content="The given sql queries are just example an may need to be adjusted to your needs." %}
+
+## System Properties ##
+
+Since version 3.6.5 the database settings can be configured with command line system properties.
+When used they will override any properties set in properties files.
+
+```
+-DdataSource.provider=mysql -DdataSource.driverClass=com.mysql.jdbc.Driver -DdataSource.jdbcURL="jdbc:mysql://localhost:3306/interlokuidb?&autoReconnect=true" -DdataSource.user=interlokuidb -DdataSource.password=interlokuidb
+```
+
+If the user and password are provided in the jdbc url they will override any other set user and password.
+
+```
+-DdataSource.provider=mysql -DdataSource.driverClass=com.mysql.jdbc.Driver -DdataSource.jdbcURL="jdbc:mysql://localhost:3306/interlokuidb?user=interlokuidb&password=interlokuidb&autoReconnect=true"
+```
