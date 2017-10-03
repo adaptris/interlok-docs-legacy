@@ -21,7 +21,7 @@ There are a number of supporting components that make will help you configure a 
 
 ### JettyLoginServiceFactory
 
-This component allows you to plugin an `LoginService` implementation that ca restrict access specific URLs. The only implementation is [jetty-hash-login-service][] which creates the standard Jetty `HashLoginService` that is an implementation of a UserRealm that stores users and roles in-memory via a HashMap (for instance using _realm.properties_ from the jetty distribution). This only protects a given URL on a username/password basis (as opposed to checking other HTTP transport headers or similar).
+This component allows you to plugin an `LoginService` implementation that can restrict access specific URLs. The only implementation is [jetty-hash-login-service][] which creates the standard Jetty `HashLoginService` that is an implementation of a UserRealm that stores users and roles in-memory via a HashMap (for instance using _realm.properties_ from the jetty distribution). This only protects a given URL on a username/password basis (as opposed to checking other HTTP transport headers or similar).
 
 ### VerifyIdentityService
 
