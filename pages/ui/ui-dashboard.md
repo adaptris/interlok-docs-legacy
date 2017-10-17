@@ -252,6 +252,7 @@ The Add Adapter form inputs explained:
 - **Adapter Unique Id:** This is the Adapter unique identifier used in the Adapter configuration XML file: `<adapter><unique-id>adapterUid</unique-id</adapter>`. This is required for the UI to establish the JMX connection to the Adapter.
 - **URL:** The JMX URL used to connect to the Adapter, for example: localhost:5555. You can also provide the JMX protocol: service:jmx:jmxmp://localhost:5555
 - **Advanced Options** - Clicking the Advanced Options link will unveil three more properties, all of which are optional :
+    - **Disable Url Validation:** This options disable the JMX URL front-end validation. It should be use with care and only if you know that the JMX URL you are using is valid but fails validation (Since 3.6.5)
     - **Username:** The username needed to establish the JMX connection if you are using password protection for the adapter JMX connection as describe in [Password Protecting JMXMP](advanced-jmx.html#password-protecting-jmxmp-311) (Since 3.1.1)
     - **Password:** The password needed to establish the JMX connection if you are using password protection for the adapter JMX connection as describe in [Password Protecting JMXMP](advanced-jmx.html#password-protecting-jmxmp-311) (Since 3.1.1)
     - **Environment:** Some environment properties needed for the JMX connection. These should be provided as a key value pair list (multiple pairs should be on separated lines), for example: javax.net.ssl.trustStore=/tmp/myStrustsore
