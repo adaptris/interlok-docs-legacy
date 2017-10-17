@@ -5,7 +5,7 @@ tags: [ui]
 sidebar: home_sidebar
 permalink: ui-switch-db.html
 toc: false
-summary: Since 3.6.3 the gui can be used with MySQL.
+summary: Since 3.6.3 the gui can be used with other database providers.
 ---
 
 ## MySQL Configuration ##
@@ -23,7 +23,7 @@ CREATE USER 'interlokuidb'@'localhost' IDENTIFIED BY 'interlokuidb';
 GRANT ALL PRIVILEGES ON interlokuidb.* TO 'interlokuidb'@'localhost';
 ```
 
-or 
+or
 
 ```sql
 CREATE DATABASE interlokuidb;
@@ -58,7 +58,7 @@ CREATE USER interlokuidb WITH PASSWORD 'interlokuidb';
 GRANT ALL PRIVILEGES ON DATABASE interlokuidb TO interlokuidb
 ```
  - Add a properties file named `interlokuidb.properties` in the `adapter/ui-resources` or in the `adapter/lib` directory with the following properties:
- 
+
 ```properties
 dataSource.provider=postgresql
 dataSource.driverClass=org.postgresql.Driver
