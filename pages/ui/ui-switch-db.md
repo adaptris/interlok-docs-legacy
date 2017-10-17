@@ -19,9 +19,17 @@ In order to use MySQL you will need to follow these steps:
 
 ```sql
 CREATE DATABASE interlokuidb;
-CREATE USER 'adaptergui'@'localhost' IDENTIFIED BY 'adaptergui';
-GRANT ALL PRIVILEGES ON adaptergui.* TO 'interlokuidb'@'localhost';
+CREATE USER 'interlokuidb'@'localhost' IDENTIFIED BY 'interlokuidb';
+GRANT ALL PRIVILEGES ON interlokuidb.* TO 'interlokuidb'@'localhost';
 ```
+
+or 
+
+```sql
+CREATE DATABASE interlokuidb;
+GRANT ALL ON interlokuidb.* TO 'interlokuidb'@'localhost' IDENTIFIED BY 'interlokuidb';
+```
+
  - Add a properties file named `interlokuidb.properties` in the `adapter/ui-resources` or in the `adapter/lib` directory with the following properties:
 
 ```properties
@@ -46,8 +54,8 @@ In order to use PostgreSQL you will need to follow these steps:
 
 ```sql
 CREATE DATABASE interlokuidb;
-CREATE USER adaptergui WITH PASSWORD 'adaptergui';
-GRANT ALL PRIVILEGES ON DATABASE interlokuidb TO adaptergui
+CREATE USER interlokuidb WITH PASSWORD 'interlokuidb';
+GRANT ALL PRIVILEGES ON DATABASE interlokuidb TO interlokuidb
 ```
  - Add a properties file named `interlokuidb.properties` in the `adapter/ui-resources` or in the `adapter/lib` directory with the following properties:
  
