@@ -107,6 +107,10 @@ You can convert to and from XML via [json-xml-transform-service][] by specifying
 
 {% include tip.html content="The general rule of thumb is if the JSON in question is simple, then use [simple-transformation-driver][], otherwise use a variation of [default-transformation-driver][] as appropriate." %}
 
+## JSON to CSV ##
+
+Since 3.6.6 you can convert to and from CSV via the [interlok-csv-json][] optional package. This adds new services that allow you to easily convert JSON to CSV and vice versa. It has a dependency on both [adp-simple-csv][] and [adp-json][].
+
 ## JSON Schema ##
 
 You can use [json-schema-service] to validate that a document conforms to a specific schema. You can also define specific behaviour if schema validation fails (the default is to throw an exception detailing all the schema violations).
@@ -173,3 +177,5 @@ along with configuration, which will throw an exception for error handling if th
 [com.adaptris.core.transform.json.jolt.EmptyStringToNull]: https://development.adaptris.net/javadocs/v3-snapshot/optional/json/com/adaptris/core/transform/json/jolt/EmptyStringToNull.html
 [com.adaptris.core.transform.json.jolt.NullToEmptyString]: https://development.adaptris.net/javadocs/v3-snapshot/optional/json/com/adaptris/core/transform/json/jolt/NullToEmptyString.html
 [json-path-splitter]: https://development.adaptris.net/javadocs/v3-snapshot/optional/json/com/adaptris/core/services/splitter/json/JsonPathSplitter.html
+[interlok-csv-json]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-csv-json/
+[adp-simple-csv]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/adp-simple-csv/

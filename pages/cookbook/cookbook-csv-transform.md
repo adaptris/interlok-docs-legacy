@@ -30,6 +30,10 @@ Using [csv-basic-format][] is probably the best way to get started; you can choo
 |RFC4180| Delimiter `,`, QuoteChar `"`, Record Separator `\r\n`|
 |TAB_DELIMITED| Delimiter `\t`, IgnoreSurroundingSpaces `true`|
 
+## CSV to JSON ##
+
+Since 3.6.6 you can convert to and from CSV via the [interlok-csv-json][] optional package. This adds new services that allow you to easily convert JSON to CSV and vice versa. It has a dependency on both [adp-simple-csv][] and [adp-json][].
+
 [adp-simple-csv]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/adp-simple-csv/
 [jdbc-data-query-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/JdbcDataQueryService.html
 [jdbc-csv-output]: https://development.adaptris.net/javadocs/v3-snapshot/optional/simple-csv/com/adaptris/csv/jdbc/CsvResultSetTranslator.html
@@ -40,3 +44,5 @@ Using [csv-basic-format][] is probably the best way to get started; you can choo
 [flat-file-transform-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/transform/FfTransformService.html
 [csv-basic-format]: https://development.adaptris.net/javadocs/v3-snapshot/optional/simple-csv/com/adaptris/core/transform/csv/BasicFormatBuilder.html
 [csv-custom-format]: https://development.adaptris.net/javadocs/v3-snapshot/optional/simple-csv/com/adaptris/core/transform/csv/CustomFormatBuilder.html
+[interlok-csv-json]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-csv-json/
+[adp-json]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/adp-json/

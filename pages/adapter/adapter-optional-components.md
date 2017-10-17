@@ -75,6 +75,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-aws-common][] | Common components required for accessing AWS| 3.3.0+
 |com.adaptris | [interlok-aws-sqs][] | Integration with Amazon SQS (requires [interlok-aws-common][]|3.3.0+
 |com.adaptris | [interlok-aws-s3][] | Integration with Amazon S3 (requires [interlok-aws-common][] | 3.3.0+
+|com.adaptris | [interlok-csv-json][] | Convert between CSV and JSON (requires both [adp-json][] and [adp-simple-csv][]) | 3.6.6+
 |com.adaptris | [interlok-elastic-search][] | Integration with ElasticSearch (requires [adp-simple-csv][]) | 3.4.1+
 |com.adaptris | [interlok-es5][] | Integration with ElasticSearch using v5 API (requires [adp-simple-csv][]) | 3.5.1+
 |com.adaptris | [interlok-expressions][] | Perform inline mathematic expressions | 3.6.4+
@@ -217,3 +218,4 @@ If you've added an optional components following the steps explained above you c
 [interlok-oauth-salesforce]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-oauth-salesforce/
 [interlok-oauth-azure]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-oauth-azure/
 [interlok-oauth-gcloud]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-oauth-gcloud/
+[interlok-csv-json]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-csv-json/
