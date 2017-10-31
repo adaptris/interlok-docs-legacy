@@ -84,6 +84,7 @@ Additional bootstrap properties will control the various authentication schemes 
 | vcs.always.reset | Whether or not to always discard any uncommitted changes when updating; defaults to false |
 | log4j12Url | __Deprecated__: use loggingConfigUrl instead.|
 | loggingConfigUrl | since 3.1.0 If specified then then an attempt is made to re-configure the logging (log4j1.2 or log4j2) subsystem with the referenced URL. This is done after any checkout/update is performed.|
+| vcs.auth | The authentication method to use, either "SSH" or "UsernamePassword", defaults to the later. |
 
 <br/>
 

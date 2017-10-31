@@ -47,6 +47,7 @@ Additional bootstrap properties will control the various authentication schemes 
 | vcs.ssh.proxy.type | since 3.5.1; if required, specify the type of proxy here `HTTP`, `SOCKS4`, `SOCKS5` (defaults to `HTTP`) |
 | vcs.ssh.proxy.username | since 3.5.0; if required the proxy username |
 | vcs.ssh.proxy.password | since 3.5.0; if required the proxy password |
+| vcs.auth | The authentication method to use, either "SSH" or "UsernamePassword", defaults to the later. |
 
 ## Example ##
 
