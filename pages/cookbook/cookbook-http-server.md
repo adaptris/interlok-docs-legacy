@@ -151,15 +151,15 @@ Both [jetty-standard-response-producer][] and [jetty-response-service][] (3.6.5+
 
 
 [interlok-legacyhttp]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-legacyhttp/
-[jetty-embedded-connection]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/http/jetty/EmbeddedConnection.html
-[jetty-http-connection]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/http/jetty/HttpConnection.html
-[jetty-https-connection]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/http/jetty/HttpsConnection.html
-[jetty-message-consumer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/http/jetty/JettyMessageConsumer.html
-[jetty-hash-login-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/http/jetty/HashLoginServiceFactory.html
-[verify-identity-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/security/access/VerifyIdentityService.html
-[branching-service-collection]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/BranchingServiceCollection.html
-[jetty-routing-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/http/jetty/JettyRoutingService.html
-[jetty-response-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/http/jetty/JettyResponseService.html
-[jetty-standard-response-producer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/http/jetty/StandardResponseProducer.html
-[http-request-parameter-converter-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/http/RequestParameterConverterService.html
-[[embedded-scripting-service]]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/EmbeddedScriptingService.html
+[jetty-embedded-connection]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/http/jetty/EmbeddedConnection.html
+[jetty-http-connection]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/http/jetty/HttpConnection.html
+[jetty-https-connection]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/http/jetty/HttpsConnection.html
+[jetty-message-consumer]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/http/jetty/JettyMessageConsumer.html
+[jetty-hash-login-service]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/http/jetty/HashLoginServiceFactory.html
+[verify-identity-service]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/security/access/VerifyIdentityService.html
+[branching-service-collection]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/BranchingServiceCollection.html
+[jetty-routing-service]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/http/jetty/JettyRoutingService.html
+[jetty-response-service]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/http/jetty/JettyResponseService.html
+[jetty-standard-response-producer]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/http/jetty/StandardResponseProducer.html
+[http-request-parameter-converter-service]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/http/RequestParameterConverterService.html
+[embedded-scripting-service]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/services/EmbeddedScriptingService.html
