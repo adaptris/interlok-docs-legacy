@@ -2,7 +2,7 @@ version: '3'
 services:
   jekyll:
     image: ricalo/jekyll
-    container_name: jekyll
+    container_name: interlok-docs
     hostname: jekyll
     ports:
       - '4000:4000'

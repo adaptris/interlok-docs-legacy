@@ -41,14 +41,18 @@ Add one or more profile using the add button and filling the details to connect 
 ## Opening config from VCS ##
 
 You can open a configuration from a remote version control system using the open config modal in the gui config page.
-The option "Load From Vcs" will be enabled if at least Subversion or Git libraries have been added to the adapter classpath.
+The option "Version Control" will be enabled if at least Subversion or Git libraries have been added to the adapter classpath.
 You will then be asked to select a profile to load an adapter config. You will also have to provide the password if you didn't save it before.
+
+![Open Config - Version Control](./images/ui-user-guide/vcs-open-config.png)
 
 ## Publish config to VCS ##
 
 To publish a config to a version control system repository you will have to click on the Publish Config button under the Save Config button. The button will be will be enabled if at least Subversion or Git libraries have been added to the adapter classpath.
 A modal will open where you can select the profile you want to publish your config to.
 You will also have to add a commit message and provide your password if not saved before.
+
+![Publish - Version Control](./images/ui-user-guide/vcs-publish.png)
 
 ## Troubleshooting ##
 
