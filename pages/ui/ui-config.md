@@ -144,6 +144,8 @@ To actually add the component, all you have to do is click on the required compo
 
 {% include tip.html content="When adding a service if you double click on the plus button the service will be added at the beginning of the service list." %}
 
+{% include note.html content="From 3.6.6 you can also add new component using the [Config page sidebar component](ui-config-sidebar.html#clipboard-sidebar)." %}
+
 ## Settings editor features ##
 
 The settings editor is available when you want to edit a component. This is always available by clicking on the edit icon ![Config page edit component action button](./images/ui-user-guide/config-action-edit.png){: .inline }. This editor allows you to edit the settings on a given component.
@@ -212,11 +214,13 @@ In the follow example, a service contains its own service list which also contai
 
 These service lists wouldn't be shown in the settings editor. Instead they are selectable by clicking on the service collection selector icon on the component visible on hover (see above). This then brings up a service collection area which can be operated on in the same manner as the workflows service list area.
 
-## Drag and Drop services ##
+## Drag and Drop ##
 
-Services and service collections are the only components in the config page which can be drag and drop.
+Services, service collections and connections are the only components in the config page which can be drag and drop.
 
-- Drag and drop in the same **service collections** will re-order the **service**.
-- Drag and drop in a different **service collection** will move the **service** to a different **service collection**.
-- Drag and drop from a **service collection** to the **shared service collection** will create a new **shared service** in the **shared components** and use this new **shared service** in the original **service collection**.
-- Drag and drop from the **shared service collection** to any other **service collection** will a the **shared service** to the ***service collection**.
+- Drag and drop a service in the same **service collections** will re-order the **service**.
+- Drag and drop a service in a different **service collection** will move the **service** to a different **service collection**.
+- Drag and drop a service from a **service collection** to the **shared service collection** will create a new **shared service** in the **shared components** and use this new **shared service** in the original **service collection**.
+- Drag and drop a service from the **shared service collection** to any other **service collection** will add the **shared service** to the ***service collection**.
+- Drag and drop a connection from a **channel connection area** to the **shared connection collection** will create a new **shared connection** in the **shared components** and use this new **shared connection** in the original **channel connection area**.
+- Drag and drop a connection from the **shared connection collection** to any **channel connection area** will add the **shared connection** to the ***channel connection area**.
