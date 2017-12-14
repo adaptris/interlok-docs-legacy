@@ -147,7 +147,7 @@ By default, Interlok will log to its own log4j context which is separately confi
     ...
     <ContainerLog name="ContainerLog">
       <PatternLayout>
-        <Pattern>[%t] [%c{1}] %m</Pattern>
+        <Pattern>[%d{yy/MM/dd HH:mm:ss}] (%p{lowerCase=true}) [%t] [%c{1}] %m%n</Pattern>
       </PatternLayout>
     </ContainerLog>
     ...
