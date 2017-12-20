@@ -398,6 +398,24 @@ entries:
 #      url: /advanced-custom-classloader.html
 #      output: web
 
+  - title: Service Tester
+    output: web
+
+    folderitems:
+    - title: Introduction
+      url: /service-tester-introduction.html
+      output: web
+    - title: Configuration
+      url: /service-tester-configuration.html
+      output: web
+    - title: Output
+      url: /service-tester-output.html
+      output: web
+    - title: Continuous Delivery
+      url: /service-tester-continuous-delivery.html
+      output: web
+
+
   - title: Developer
     output: web
 
