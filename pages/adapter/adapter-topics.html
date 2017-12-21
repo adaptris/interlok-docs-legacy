@@ -17,6 +17,7 @@ folder: adapter
   <button class="btn btn-primary" data-group="messaging">Messaging</button>
   <button class="btn btn-primary" data-group="advanced">Advanced</button>
   <button class="btn btn-primary" data-group="developer">Developer</button>
+  <button class="btn btn-primary" data-group="service-tester">Service Tester</button>
 </div>
 
 <div id="grid" class="row">
@@ -140,11 +141,30 @@ folder: adapter
             </div>
 
     </div>
+
+        <div class="col-xs-6 col-sm-4 col-md-4" data-groups='["service-tester"]'>
+
+             <div class="panel panel-default">
+               <div class="panel-heading">Service Tester</div>
+               <div class="panel-body">
+                  <ul>
+                {% for page in site.pages %}
+                {% for tag in page.tags %}
+                {% if tag == "service-tester" %}
+                     <li><a href="{{page.url | remove: '/'}}">{{page.title}}</a></li>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+                  </ul>
+               </div>
+            </div>
+
+    </div>
           <!-- sizer -->
       <div class="col-xs-6 col-sm-4 col-md-1 shuffle_sizer"></div>
 
 
-    </div><!-- /#grid -->
+</div><!-- /#grid -->
 
 {% unless site.output == "pdf" %}
 {% include initialize_shuffle.html %}
