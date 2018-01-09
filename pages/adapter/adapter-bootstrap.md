@@ -31,6 +31,7 @@ The list of keys and a brief description of each key is described below :
 | startAdapterQuietly | Defaults to true, and if false, then if an adapter fails to start, then the entire JVM will be terminated. |
 | useJavaLangManagementFactory | Defaults to true, and you should never have to change this |
 | validateConfig | Defaults to false, if true, then `javax.validation` style annotations will additionally be used to validate the configuration. |
+| operationTimeout | How long to wait for the adapter to start (in minutes) before giving up and bailing; defaults to 2 minutes. |
 
 ### Overriding keys using system properties
 
