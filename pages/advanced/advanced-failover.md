@@ -48,9 +48,25 @@ The main difference here is that you must define each machines host and port for
 
 Simple configuration is required as detailed below.
 
-### The start script ###
+### Starting ###
 
-Starting Interlok in failover mode simply requires changing the java main class and passing the name of the chosen bootstrap.properties file as the single parameter.
+#### interlok-boot ####
+
+As of 3.7 starting Interlok in failover mode can be done using interlok-boot with `--failover` argument and passing the name of the chosen bootstrap.properties file as a parameter.
+
+A short example of a windows start script; the last line setting the argument and the bootstrap.properties parameter;
+
+```
+set ADAPTRIS_HOME=C:\Adaptris\Interlok
+set JAVA_HOME=C:\Java\jdk1.8\bin
+
+cd %ADAPTRIS_HOME%
+%JAVA_HOME%\bin\java -jar lib\interlok-boot.jar --failover bootstrap.properties
+```
+
+#### Main Class ####
+
+Alternatively starting Interlok in failover mode simply requires changing the java main class and passing the name of the chosen bootstrap.properties file as the single parameter.
 
 NOTE: Make sure your chosen bootstrap properties file is on the classpath.
 
