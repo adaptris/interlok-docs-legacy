@@ -160,11 +160,12 @@ This pre-processor allows you to validate your configuration with an Interlok Re
 
 The following properties can be specified in the bootstrap.properties to control the behaviour of the schema validation;
 
-| Property | Default | Mandatory | Description |
+| Property | Default | Mandatory | Versions | Description |
 |----|----|----|----|
-| schema.file.url | | Yes | The url to the Interlok RelaxNG schema file.  Note, the schema file itself does not have to exist, if you specify the regeneration (below). |
-| schema.regenerate | false | No | Set to 'true' if you want to re-create the RelaxNG schema before we validate your configuration. |
-| schema.classpath.screen.patterns | `.*adp-core.*\\.jar` | No (but advised) | A comma separated list of regular expressions used to match all the jars that should be searched for valid components.|
+| schema.file.url | | Yes | all | The url to the Interlok RelaxNG schema file.  Note, the schema file itself does not have to exist, if you specify the regeneration (below). |
+| schema.regenerate | false | No | all | Set to 'true' if you want to re-create the RelaxNG schema before we validate your configuration. |
+| schema.classpath.screen.patterns | `.*adp-core.*\\.jar` | No | Up to 3.6.6 only |A comma separated list of regular expressions used to match all the jars that should be searched for valid components.|
+| schema.package.patterns | `com.adaptris,-com.adaptris.core.stubs` | No | since 3.7.0 | A comma separated list of packages that should be searched for valid components. You can blacklist a package by using a `-` at the front of the package (the default blacklists the `com.adaptris.core.stubs` package which just for unit-testing custom components)|
 
 ### Example ###
 
@@ -173,7 +174,7 @@ preProcessors=schema
 schema.file.url=file://localhost//path/to/my/schema.rng
 ```
 
-If the schema already exists, your configuration will be validated against that schema when you start Interlok.
+If the schema already exists, your configuration will be validated against that schema when you start Interlok; otherwise an exception may be thrown.
 
 ```
 preProcessors=schema
@@ -187,10 +188,10 @@ Regardless of whether the schema file exists or not a new file will be generated
 preProcessors=schema
 schema.file.url=file://localhost//path/to/my/schema.rng
 schema.regenerate=true
-schema.classpath.screen.patterns=.*adp-simple-csv.*\\.jar
+schema.package.patterns=io.github.adaptris,com.mycompany
 ```
 
-Regardless of whether the schema file exists or not a new file will be generated and then your configuration will be validated against it. Also, as well as checking `adp-core.jar`, it will also check `adp-simple-csv.jar` when attempting to find valid configuration sub-classes.
+Regardless of whether the schema file exists or not a new file will be generated and then your configuration will be validated against it. Also, as well as checking the default `com.adaptris` packages it will also check the `io.github.adaptris` and `com.mycompany` package (including sub packages)
 
 ## XInclude ##
 

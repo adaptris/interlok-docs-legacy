@@ -11,11 +11,17 @@ One of the more common integration scenarios that we encounter is to use Interlo
 
 {% include note.html content="Sometimes, for whatever reason, you don't want to use Jetty (if you _really can't_, then you're running Interlok using Java 7 and need to ask yourself _WHY?_). In this case you have access to  [interlok-legacyhttp][]. It depends on the built in JRE/Sun HTTP Server implementation but won't be as configurable as the jetty instance (and might be removed in later Java versions)." %}
 
-There is currently only a single message consumer type: [jetty-message-consumer][]. The destination for the consumer should match the URI endpoint that you wish to listen on (e.g. /path/to/my/api); wildcards are supported and will be dependent on the servlet implementation of the underlying jetty instance. Parameters from the URI can be stored as metadata (or object metadata) with an optional prefix, as can any HTTP transport headers.
+There is currently only a single message consumer type: [jetty-message-consumer][]. The destination for the consumer should match the URI endpoint that you wish to listen on (e.g. /path/to/my/api); wildcards are supported and will be dependent on the servlet implementation of the underlying jetty instance. Parameters from the URI can be stored as metadata (or object metadata) with an optional prefix, as can any HTTP transport headers. If no [jetty-standard-response-producer][] or [jetty-response-service][] is configured as part of the workflow, then a standard HTTP OK response is sent back to the caller with no content.
 
 {% include tip.html content="You can use [http-request-parameter-converter-service][] to convert _html form post_ payloads into metadata, if required." %}
 
 There are a number of supporting components that make will help you configure a workflow that provides the behaviour you need.
+
+## Single or multi-threaded processing
+
+If you use a [standard-workflow][] then requests are processed sequentially in order that they are received (i.e. single-threaded); switch to using [pooling-workflow][] as required. Because [pooling-workflow][] uses an internal thread pool to process requests you will need to either explicitly configure a [jetty-pooling-workflow-interceptor][] on the workflow instance or uniquely identify both the channel and workflow (via their respective unique-ids); this means that the HTTP response is not written prematurely before the response is available.
+
+{% include tip.html content="If you use a [pooling-workflow][] then you should name both the containing channel + workflow, or explicitly configure a [jetty-pooling-workflow-interceptor][] on the worklow." %}
 
 ## Access Control
 
@@ -163,3 +169,6 @@ Both [jetty-standard-response-producer][] and [jetty-response-service][] (3.6.5+
 [jetty-standard-response-producer]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/http/jetty/StandardResponseProducer.html
 [http-request-parameter-converter-service]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/http/RequestParameterConverterService.html
 [embedded-scripting-service]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/services/EmbeddedScriptingService.html
+[standard-workflow]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/StandardWorkflow.html
+[pooling-workflow]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/PoolingWorkflow.html
+[jetty-pooling-workflow-interceptor]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/http/jetty/JettyPoolingWorkflowInterceptor.html
