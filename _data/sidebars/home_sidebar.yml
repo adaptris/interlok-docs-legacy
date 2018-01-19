@@ -127,6 +127,10 @@ entries:
           url: /ui-config.html
           output: web
 
+        - title: Configuration Project
+          url: /ui-config-project.html
+          output: web
+
         - title: Templates
           url: /ui-templates.html
           output: web
