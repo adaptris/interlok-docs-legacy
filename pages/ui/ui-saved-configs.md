@@ -8,6 +8,8 @@ toc: false
 summary: The saved configs list allows you to easily save and re-open adapter configurations.
 ---
 
+{% include note.html content="The save config function has been limited from version 3.7.0. You cannot save to it anymore. Please use [Save Config Project](ui-saved-config-projects.html) instead." %}
+
 ## Getting Started ##
 
 To navigate to the saved config modal, you use the Saved Config button from the top navigation bar.
@@ -18,6 +20,7 @@ The config action bar:
 ## Saved Configs Modal ##
 
 You can manage a previously saved config in the modal:
+
 ![Config page saved configs modal](./images/ui-user-guide/config-saved-configs.png)
 
 For each config you can do the following actions:

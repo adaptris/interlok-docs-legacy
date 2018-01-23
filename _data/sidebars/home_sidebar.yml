@@ -135,10 +135,14 @@ entries:
           url: /ui-templates.html
           output: web
 
+        - title: Saved Config Projects
+          url: /ui-saved-config-projects.html
+          output: web
+
         - title: Saved Configs
           url: /ui-saved-configs.html
           output: web
-          
+
         - title: Config Sidebar
           url: /ui-config-sidebar.html
           output: web

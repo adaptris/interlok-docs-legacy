@@ -93,3 +93,31 @@ If you click on it that will open a dropdown where you can select a variable key
 
 If the variable you want to use does not exist you can add a new one by clicking on the **Add New** button, filling the key and value text box and clicking the **+** button
 ![Config Project Component Settings Variable Picker Toggler](./images/ui-user-guide/config-project-component-settings-modal-variable-add.png)
+
+## Save, Open and Download a Project ##
+
+The config project modal allows to configure the config project but doesn't persist it anywhere. To save a project you will need to click on the **Save Project** button in the config action bar.
+
+![Config page action bar](./images/ui-user-guide/config-action-bar.png)
+
+You will be prompted for the config project name. By default the Adapter unique id will be used.
+
+To open a saved project or to download it you will beed to open the [Saved Config Projects Modal](ui-saved-config-projects.html)
+
+### Config Project format ###
+
+The downloaded ZIP file will have a structure as follows:
+
+```
+my-project.zip
+  |- config-project.json
+  |- adapter.xml
+  |- variables.properties
+  |- variables-envOne.properties (optional)
+  |- variables-....properties (optional)
+  |- adapter-includes (optional)
+    |- workflow0.xml
+    |- workflow1.xml
+    |- ...
+```
+

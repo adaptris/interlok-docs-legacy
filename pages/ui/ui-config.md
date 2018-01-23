@@ -28,15 +28,14 @@ Just click on the Open Config button and that will open a modal displaying sever
 
 - **Active Adapter:** Retrieve a configuration from a running Adapter configured in the application.
 - **New:** Create a brand new Adapter configuration.
-- **File System:** Open an Adapter configuration file from your file system. It can be an adapter.xml file or a zip file * (since 3.6.5). 
+- **File System:** Open an Adapter configuration file from your file system. It can be an adapter.xml file or a zip file * (since 3.6.5). Click on the **I also have variables** link to [Import an Adapter Configuration](ui-export-import.html#config-import) with variable properties. (since 3.7.0)
 - **Saved Config:** Open an Adapter configuration from the list of previously [saved configurations](ui-saved-configs.html).
 - **Auto Saved:** Open an Adapter configuration from the last auto saved configuration.
 - **Use Template:** Create a new Adapter configuration from a template.
 - **Swagger:** Open an Adapter configuration using a Swagger file from your file system. Simple rest service swagger configuration (yaml or json) get converted to an adapter config with http jetty consumers. (Since 3.5.0)
 - **Version Control:** Retrieve a configuration from a Version Control System (Subversion or Git). For this option to be enabled [VCS](advanced-version-control.html) needs to be configured and you need at least one VCS Profile.
-- **Import:** Import an Adapter configuration with variable properties.
 
-{% include note.html content="* When using **File System:** with a zip file, the zip file need to be built with an adapter.xml in the zip root. Optionally a variables substitution file called _variables.properties_ can be added. An includes folder can also be added if the adapter.xml uses X-Includes, the folder name will have to be adapter-includes (_'nameOfAdapterXmlFile'_ + _'-includes'_) and contains all the X-Includes files." %}
+{% include note.html content="* When using **File System:** with a zip file, the zip file need to be built with the [Config Project Format](ui-config-project.html#config-project-format) with a config-project.json file. Or alternatively with an adapter.xml in the zip root and optionally a variables substitution file called _variables.properties_ can be added." %}
 
 ## Navigating the config page ##
 

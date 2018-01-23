@@ -35,8 +35,8 @@ Add one or more profile using the add button and filling the details to connect 
 - **Working Copy URL:** The location on the file system where the repository will be checked out. This is relative to the adapter-home/vcs-repos/directory. A default location is generated using your username, the vcs type and a timestamp.
 - **Remote Repo URL:** The URL for the remote repository.
 - **Revision:** (Since 3.6.5) The revision the remote repository. A revision can be a branch name, a revision number or a commit checksum depending on which VCS provider you are using. If left empty, the last checked out revision or the default revision will be used.
-- **Config File Name:** The name of the adapter xml configuration file. If not filled the default adapter.xml will be used. (Only used with config vcs profile)
-- **Properties File Name:** The name of the adapter variable substitutions properties file. If not filled no variable substitutions will be done when loading a config. (Only used with config vcs profile). Check [pre processors variable substitution](advanced-configuration-pre-processors.html#variable-substitution) for more details about variable substitutions.
+- **Config File Name:** The name of the adapter xml configuration file. If not filled the default adapter.xml will be used. (Only used with config vcs profile and only when a config-project.json file does not exist)
+- **Properties File Name:** The name of the adapter variable substitutions properties file. If not filled no variable substitutions will be done when loading a config. (Only used with config vcs profile and only when a config-project.json file does not exist). Check [pre processors variable substitution](advanced-configuration-pre-processors.html#variable-substitution) for more details about variable substitutions.
 
 ## Opening config from VCS ##
 
