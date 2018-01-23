@@ -35,7 +35,7 @@ Just click on the Open Config button and that will open a modal displaying sever
 - **Swagger:** Open an Adapter configuration using a Swagger file from your file system. Simple rest service swagger configuration (yaml or json) get converted to an adapter config with http jetty consumers. (Since 3.5.0)
 - **Version Control:** Retrieve a configuration from a Version Control System (Subversion or Git). For this option to be enabled [VCS](advanced-version-control.html) needs to be configured and you need at least one VCS Profile.
 
-{% include note.html content="* When using **File System:** with a zip file, the zip file need to be built with the [Config Project Format](ui-config-project.html#config-project-format) with a config-project.json file. Or alternatively with an adapter.xml in the zip root and optionally a variables substitution file called _variables.properties_ can be added." %}
+{% include note.html content="When using **File System:** with a zip file, the zip file need to be built with the [Config Project Format](ui-config-project.html#config-project-format) with a config-project.json file. Or alternatively with an adapter.xml in the zip root and optionally a variables substitution file called _variables.properties_ can be added." %}
 
 ## Navigating the config page ##
 
@@ -204,6 +204,14 @@ Since 3.5.0, the config settings editor has a useful sidebar. Shown in this vide
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/VGiSXpCHTTc" frameborder="0" allowfullscreen></iframe>
 
+Since 3.7.0 you can use the sidebar to encode some setting values using the URL Encoder.
+To do that, select URL Encoder in the sidebar dropdown, enter the value you want to encode and click on the **Encode** button.
+
+![Config Settings Editor Sidebar URL Encoder](./images/ui-user-guide/config-settings-editor-sidebar-url-encoder.png)
+
+
+The sidebar keep an history of the last ten encoded values while you stay on the config page.
+You can drag and drop the encoded values to any text input on a similar way as with the Metadata Preview and the Most Occurrences shown in the video above.
 
 ## Navigating service collections within components ##
 
