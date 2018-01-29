@@ -326,6 +326,14 @@ entries:
           url: /advanced-failover.html
           output: web
 
+      subfolders:
+      - title: JMS SSL
+        output: web
+        subfolderitems:
+        - title: WebsphereMQ SSL
+          url: /advanced-webspheremq-ssl.html
+          output: web
+          
     - title: JMX Runtime Controls
       url: /advanced-jmx.html
       output: web
