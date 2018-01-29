@@ -137,8 +137,8 @@ Interlok's configuration is actually very simple, there are 2 steps; linking the
 
 You will need to add the following 3 JVM parameters to your Interlok start script.
 
- - -Djavax.net.ssl.trustStore=<location of the client trust store> 
- - -Djavax.net.ssl.keyStore=<location of the client trust store> 
+ - -Djavax.net.ssl.trustStore=location of the client trust store above
+ - -Djavax.net.ssl.keyStore=location of the client trust store above
  - -Djavax.net.ssl.keyStorePassword=MyKeyStorePassword 
 
 Optionally, you can also add debugging to help figure out any errors during SSL communication;
