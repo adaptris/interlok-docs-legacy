@@ -8,6 +8,8 @@ toc: false
 summary: The Config Page sidebar allows you to drag and drop components into your adapter configuration.
 ---
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/OB_6QdVpi2s" frameborder="0" allowfullscreen></iframe>
+
 ## Getting Started ##
 
 To open the config pages sidebar, you use the sidebar button which is next to the Apply Config button.
