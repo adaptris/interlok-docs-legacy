@@ -333,6 +333,10 @@ entries:
         - title: WebsphereMQ SSL
           url: /advanced-webspheremq-ssl.html
           output: web
+
+        - title: Solace SSL
+          url: /advanced-solace-ssl.html
+          output: web
           
     - title: JMX Runtime Controls
       url: /advanced-jmx.html
