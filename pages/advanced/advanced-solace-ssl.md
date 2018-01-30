@@ -61,6 +61,10 @@ So the below example of each with a short description of the required value.
 	<vendor-implementation class="standard-jndi-implementation">
 		<jndi-params>
 			<key-value-pair>
+				<key>Solace_JMS_Authentication_Scheme</key>
+				<value>AUTHENTICATION_SCHEME_CLIENT_CERTIFICATE</value>
+			</key-value-pair>
+			<key-value-pair>
 				<key>Solace_JMS_SSL_TrustStore</key>
 				<value>Path to the client Trust Store</value>
 			</key-value-pair>
