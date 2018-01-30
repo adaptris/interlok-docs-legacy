@@ -42,7 +42,7 @@ In IBM Key Management, click Key Database File > New to create a key store. In t
 
 ### Creating the Queue Manager Certificate ###
 
-Still using the IBM Key Management tool, with your new server side key repository loaded, switch to Personal Certificates and click New Self-Signed. When prompted, enter ibmwebspheremq<your_qmgr_name> (for example ibmwebspheremqmqmqgr). It is important to follow this naming rule for the key label. For the other fields, enter anything you like. Click OK. You have created a personal certificate for your queue manager.
+Still using the IBM Key Management tool, with your new server side key repository loaded, switch to Personal Certificates and click New Self-Signed. When prompted, enter ibmwebspheremq(your_qmgr_name") (for example ibmwebspheremqmqmqgr). It is important to follow this naming rule for the key label. For the other fields, enter anything you like. Click OK. You have created a personal certificate for your queue manager.
 
 ![SelfSignedCertFigure3](./images/webspheremq-ssl/NewSelfSign-3.png)
 
@@ -99,11 +99,11 @@ Enter the following data:
 
  - Data type = "Binary DER data"
 
- - Certificate file name = <name of Queue Manager certificate>
+ - Certificate file name = "name of Queue Manager certificate"
 
- - Location = <location of the certificate>
+ - Location = "location of the certificate"
 
-Click OK. You will be prompted for a label, which should be in the form <ibmwebspheremq<qmname lowercase>.
+Click OK. You will be prompted for a label, which should be in the form ibmwebspheremq(qmname lowercase).
 
 Click OK to add the certificate.
 
