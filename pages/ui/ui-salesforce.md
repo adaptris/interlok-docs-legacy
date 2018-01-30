@@ -16,6 +16,8 @@ You also need to create a **Connected App** in your Salesforce account. More hel
 
 ## Getting Started ##
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/kPNPLQbpSKg" frameborder="0" allowfullscreen></iframe>
+
 To access the Salesforce config page, you should use the Salesforce button on the header navigation bar. The page is only accessible by admin and user roles.
 
 The header navigation bar:

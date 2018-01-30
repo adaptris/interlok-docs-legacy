@@ -8,6 +8,8 @@ toc: false
 summary: The Config Project allows you to manage your adapter configuration.
 ---
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/PrQQKOccbx8" frameborder="0" allowfullscreen></iframe>
+
 ## Introduction ##
 
 Since 3.7.0 the configuration page provide a way to save adapter configurations in a project.
