@@ -56,19 +56,23 @@ The following properties can be specified in the bootstrap.properties to control
 |----|----|----|----|
 | variable-substitution.varprefix | ${ | No | The value here will be prefixed to the variable name to search for in the configuration to be switched out. |
 | variable-substitution.varpostfix | } | No | The value here will be appended to the variable name to search for in the configuration to be switched out. |
-| variable-substitution.properties.url | | Yes | The URL to the property file containing the list of substitutions; in the form of variableName=Value. One substitution per line. |
+| variable-substitution.properties.url | | Yes | The URL to the property file containing the list of substitutions; in the form of variableName=Value. Multiple files are supported by adding a unique suffix for each filename which are then sorted before processing. |
+| variable-substitution.url.useHostname | false | No | _since 3.7.1_ if set to true, then each URL defined by `variable-substitution.properties.url` will be formatted passing in the hostname as the 1st parameter. |
 | variable-substitution.impl | simple | No | The substitution engine that will perform the variable substitution. Since 3.1.0 _simple_, _simpleWithLogging_, _strict_, _strictWithLogging_ are available.  |
 
 <br/>
 
-If you have in your bootstrap.properties:
+If you have in your bootstrap.properties :
 
 ```
 preProcessors=variableSubstitution
-variable-substitution.properties.url=file://localhost//path/to/my/variables
+variable-substitution.properties.url.1=file://localhost//path/to/my/shared-variables
+variable-substitution.properties.url.3=file://localhost//path/to/my/variables-%1$s
+variable-substitution.properties.url.2=file://localhost//path/to/my/local-variables
+variable-substitution.url.useHostname=true
 ```
 
-And variables.properties contains;
+Assuming that your hostname is _localhost.localdomain_ then the following files will be read `/path/to/my/shared-variables`, `/path/to/my/local-variables`, `/path/to/my/variables-localhost.localdomain` (in that order due to sort order) to resolve any variables. The last defined property takes precedence. After reading in the variables, let's assume that it contains :
 
 ```
 broker.url=tcp://localhost:2506
@@ -165,7 +169,7 @@ The following properties can be specified in the bootstrap.properties to control
 | schema.file.url | | Yes | all | The url to the Interlok RelaxNG schema file.  Note, the schema file itself does not have to exist, if you specify the regeneration (below). |
 | schema.regenerate | false | No | all | Set to 'true' if you want to re-create the RelaxNG schema before we validate your configuration. |
 | schema.classpath.screen.patterns | `.*adp-core.*\\.jar` | No | Up to 3.6.6 only |A comma separated list of regular expressions used to match all the jars that should be searched for valid components.|
-| schema.package.patterns | `com.adaptris,-com.adaptris.core.stubs` | No | since 3.7.0 | A comma separated list of packages that should be searched for valid components. You can blacklist a package by using a `-` at the front of the package (the default blacklists the `com.adaptris.core.stubs` package which just for unit-testing custom components)|
+| schema.package.patterns | `com.adaptris,-com.adaptris.core.stubs` | No | since 3.7.0 | A comma separated list of packages that should be searched for valid components. You can blacklist a package by using a `-` at the front of the package (the default blacklists the `com.adaptris.core.stubs` package which is just for unit-testing custom components)|
 
 ### Example ###
 
