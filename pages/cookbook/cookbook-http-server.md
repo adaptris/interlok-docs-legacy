@@ -23,6 +23,44 @@ If you use a [standard-workflow][] then requests are processed sequentially in o
 
 {% include tip.html content="If you use a [pooling-workflow][] then you should name both the containing channel + workflow, or explicitly configure a [jetty-pooling-workflow-interceptor][] on the worklow." %}
 
+## Long lived requests
+
+If the workflow is doing something that exceeds some arbitrary length (generally 30 seconds or a minute seem to be _magic_) then you may find that the HTTP connection is terminated before a response can be sent back to client. The adapter has support for the 102 response code defined by _RFC2518_; the client can send `Expect: 102-Processing` as a header which will cause a _102_ response code to be sent intermittently to the client (the time defaults to every 20 seconds, but this is configurable via `send-processing-interval`).
+
+{% include note.html content="If the time to execute a workflow extends past `timeout-action` (since 3.6.6) or `max-wait-time`; then this will cause jetty to send a response back to the client; in versions prior to 3.6.6, then this is always _200_ but is now defaulted to _202_ in `timeout-action`" %}
+
+This is supported quite nicely by curl; so if you added the header, then you can expect this kind of logging :
+
+```
+$ curl -vvv --header "Expect: 102-Processing" http://localhost:8080/mockActivity
+* timeout on name lookup is not supported
+*   Trying ::1...
+* TCP_NODELAY set
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0* Connected to localhost (::1) port 8080 (#0)
+> GET /mockActivity HTTP/1.1
+> Host: localhost:8080
+> User-Agent: curl/7.51.0
+> Accept: */*
+> Expect: 102-Processing
+>
+  0     0    0     0    0     0      0      0 --:--:--  0:00:19 --:--:--     0< HTTP/1.1 102 Processing
+  0     0    0     0    0     0      0      0 --:--:--  0:00:39 --:--:--     0< HTTP/1.1 102 Processing
+  0     0    0     0    0     0      0      0 --:--:--  0:00:59 --:--:--     0< HTTP/1.1 102 Processing
+  0     0    0     0    0     0      0      0 --:--:--  0:01:05 --:--:--     0< HTTP/1.1 200 OK
+< Content-Type: application/json
+< Transfer-Encoding: chunked
+< Server: Jetty(9.4.8.v20171121)
+<
+{ [65 bytes data]
+* Curl_http_done: called premature == 0
+100    61    0    61    0     0      0      0 --:--:--  0:01:05 --:--:--    14
+                  {"activity" : "complete"}
+
+* Connection #0 to host localhost left intact
+```
+
 ## Access Control
 
 ### JettyLoginServiceFactory
