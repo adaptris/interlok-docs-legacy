@@ -310,10 +310,6 @@ entries:
       url: /advanced-configuration-pre-processors.html
       output: web
 
-    - title: Deploy using ANT
-      url: /advanced-ant-ivy-deploy.html
-      output: web
-
       subfolders:
       - title: Failover
         output: web
@@ -326,6 +322,10 @@ entries:
           url: /advanced-failover.html
           output: web
 
+    - title: Deploy using ANT
+      url: /advanced-ant-ivy-deploy.html
+      output: web
+
       subfolders:
       - title: JMS SSL
         output: web
@@ -337,11 +337,11 @@ entries:
         - title: Solace SSL
           url: /advanced-solace-ssl.html
           output: web
-          
+
     - title: JMX Runtime Controls
       url: /advanced-jmx.html
       output: web
-
+      
     - title: JMX via JMS
       url: /advanced-jmx-jms.html
       output: web
