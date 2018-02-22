@@ -185,6 +185,7 @@ This annotation provides a _hint_ to the UI when presenting the information on s
 | `style` | contain information about the type of field this is; it is generally used on String fields that might need to be syntax highlighted or treated differently in some way |
 | `friendly` | (since __3.4.0__) contains information about what to display in various drop downs or similar. We use it for enums where the enum name may not be as nice as we want it. |
 | `expression` | (since __3.6.2__) if set to true, then the UI knows that this field supports the new `%message{key}` style expression.  |
+| `external` | (since __3.7.1__) if set to true, then the UI knows that this field supports the new `%sysprop{system-property}` or `%env{environment-variable-name}` style inputs. If you add this, then you need to remember to use `com.adaptris.interlok.resolver.ExternalResolver#resolve(String)` to resolve your configuration item when you actually come to use it.  |
 
 #### style ####
 
@@ -203,8 +204,20 @@ This annotation provides a _hint_ to the UI when presenting the information on s
 
 
 ```java
-@InputFieldHint(style = "PASSWORD")
+import com.adaptris.interlok.resolver.ExternalResolver;
+import com.adaptris.security.password.Password;
+
+@InputFieldHint(style = "PASSWORD", external=true)
 private String password;
+
+public void init() throws CoreException {
+  try {
+    String resolvedPassword = Password.decode(ExternalResolver.resolve(getPassword()));
+    doLogin(resolvedPassword);
+  } catch (Exception e) {
+    throw ExceptionHelper.wrapCoreException(e);
+  }
+}
 ```
 
 
