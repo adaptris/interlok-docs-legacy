@@ -22,7 +22,14 @@ Usage :
       MSCAPI:
       PW:
       ALTPW:
+```
 
+Since 3.7.1 this is also supported by `interlok-boot.jar`
+```
+$ java -jar lib/interlok-boot.jar -password PW: 123
+Cut and paste the following value where passwords are supported
+(should be a single line, with no spaces)
+PW:AAAAEFfDTvsuPuIKZ7qMckUbE3gAAAAQhKqy9Wj+Fyc4DIWRbsmBIwAAABC4oIWUnMb6MZNC6mCQqnj3
 ```
 
 | Password Style | Description |
