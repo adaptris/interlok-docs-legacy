@@ -91,6 +91,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-oauth-salesforce][] | Retrieve OAUTH access tokens from Salesforce | 3.6.5+
 |com.adaptris | [interlok-shell][] | Commandline runtime UI based on [CRaSH](http://www.crashub.org) | 3.4.1+
 |com.adaptris | [interlok-service-tester][] | Testing services as part of a CI pipeline | 3.5.0+
+|com.adaptris | [interlok-sshtunnel][] | Management component that opens one or more SSH tunnels | 3.7.1+ (opensource / licensed under ASLv2)
 |com.adaptris | [interlok-vcs-command-line][] | Interlok configuration hosted in a configurable VCS | 3.5.1+
 |com.adaptris | [interlok-vertx][] | [Clustered workflows and services](advanced-vertx.html); requires [adp-licensing][] | 3.5.0+
 |com.adaptris | [interlok-xa][] | XA support within the Adapter; requires [adp-licensing][] | 3.4.0+
