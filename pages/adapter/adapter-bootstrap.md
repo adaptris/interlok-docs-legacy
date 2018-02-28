@@ -175,6 +175,10 @@ webServerConfigUrl=./config/jetty.xml
 
 {% include tip.html content="since 3.6.0 then system properties prefixed with `jetty.` will added as config properties to the embedded jetty. Properties defined in _bootstrap.properties_ will always take precedence." %}
 
+#### SSH Tunnel ####
+
+We don't envisage you using the sshtunnel management component in production (if you need to, then we'd suggest you probably need to talk to your network team); however it can be useful to temporarily run an adapter locally that uses a tunnel to connect to a remote services. More documentation is available on the [interlok-sshtunnel][] github project page
+
 ### System Properties ###
 
 Properties prefixed by `sysprop.` (note the `.`) will be converted into system properties at boot time (minus the prefix). For instance specifying `sysprop.myEnvironment=ABCDE` will be equivalent to using `-DmyEnvironment=ABCDE` on the command-line. These will overwrite any system properties that you may have already specified on the command-line. Use one method or the other, don’t mix the two.
@@ -202,3 +206,4 @@ Pre-Processors are components that allow you to inject some additional processin
 [ManagementComponent]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/management/ManagementComponent.html
 [Authenticator]: http://docs.oracle.com/javase/7/docs/api/java/net/Authenticator.html
 [interlok-activemq]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-activemq/
+[interlok-sshtunnel]: https://github.com/adaptris/interlok-sshtunnel
