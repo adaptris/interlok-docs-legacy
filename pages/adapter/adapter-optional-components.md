@@ -83,6 +83,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-gcloud-pubsub][] | Connect to Google cloud pubsub|3.6.3+
 |com.adaptris | [interlok-hpcc][] | Connect to [HPCC](http://www.hpccsystems.com)|3.6.1+ (now opensource/ licensed under ASLv2)
 |com.adaptris | [interlok-jruby][] | Tighter coupling with [jruby](http://jruby.org) as an alternative to [ScriptingService][]/[EmbeddedScriptingService][]|3.6.3+ (opensource / licensed under ASLv2)
+|com.adaptris | [interlok-jq][] | JSON transformations using JQ-like syntax |3.7.0+ (opensource / licensed under ASLv2)
 |com.adaptris | [interlok-legacyhttp][] | servicing HTTP requests without Jetty (Java 7 compatible)| 3.6.4+
 |com.adaptris | [interlok-mqtt][] | Support for MQTT protocol | 3.5.1+
 |com.adaptris | [interlok-oauth-azure][] | Retrieve OAUTH access tokens from MS Azure | 3.6.5+
@@ -219,3 +220,5 @@ If you've added an optional components following the steps explained above you c
 [interlok-oauth-azure]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-oauth-azure/
 [interlok-oauth-gcloud]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-oauth-gcloud/
 [interlok-csv-json]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-csv-json/
+[interlok-jq]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-jq/
+[interlok-sshtunnel]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-sshtunnel/
