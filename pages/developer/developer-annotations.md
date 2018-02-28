@@ -201,6 +201,9 @@ This annotation provides a _hint_ to the UI when presenting the information on s
 | JAVASCRIPT | Allows the UI to provide javascript style highlighting on the field. |
 | HTML | Allows the UI to provide HTML highlighting on the field. |
 
+{% include important.html content="If the style is __PASSWORD__ then remember to use _com.adaptris.security.password.Password#decode(String)_ to decode the password at the appropriate time." %}
+
+{% include important.html content="If you are using __external=true__ then remember to use _com.adaptris.interlok.resolver.ExternalResolver#resolve(String)_ to resolve your configuration item when you actually come to use it." %}
 
 
 ```java
