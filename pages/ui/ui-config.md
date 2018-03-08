@@ -204,10 +204,16 @@ Since 3.5.0, the config settings editor has a useful sidebar. Shown in this vide
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/VGiSXpCHTTc" frameborder="0" allowfullscreen></iframe>
 
+
 Since 3.7.0 you can use the sidebar to encode some setting values using the URL Encoder.
 To do that, select URL Encoder in the sidebar dropdown, enter the value you want to encode and click on the **Encode** button.
 
 ![Config Settings Editor Sidebar URL Encoder](./images/ui-user-guide/config-settings-editor-sidebar-url-encoder.png)
+
+Since 3.7.1 you can use the sidebar to retrieve system properties for the selected running adapter.
+You can drag and drop the system properties in the text field which allow External (System Propertiess, Environment Variables), they are marked with the orange '%'.
+
+![Config Settings Editor Sidebar System Props](./images/ui-user-guide/config-settings-editor-sidebar-sysprop.png.png)
 
 
 The sidebar keep an history of the last ten encoded values while you stay on the config page.
