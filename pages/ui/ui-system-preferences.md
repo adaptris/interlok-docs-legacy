@@ -16,8 +16,9 @@ You can access the System Preferences page by clicking on the down arrow next to
 The system preferences are:
 
 - **Config Template Url:** Directory where are located the UI templates used in the configuration page.
-- **Config Export Url:** Directory where adapter configuration file get exported. The export is done in the configuration page.
+- **Config Export Url:** Directory where adapter configuration file get exported. The export is done in the configuration page. (Removed Since 3.7.1)
 - **Config Store Url:** Directory where configurations are saved (and auto saved).
+- **Config Project Store Url:** Directory where configurations projets are saved (and auto saved) (Since 3.7.0).
 - **Vcs Repo Url:** Directory where all the VCS (Suversion, Git) repositories get stored.
 - **Id Generator:** Random Id generator strategy for new component in the configuration page: (Since 3.5.0)
     - **Random Name:** The generated Id will be a mix of a random famous scientist surname and a random adjective, e.g. amazing-darwin. (Default Since 3.5.1)

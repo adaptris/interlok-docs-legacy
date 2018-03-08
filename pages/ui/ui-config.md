@@ -108,7 +108,6 @@ This component is a typical example and shows:
 - **Copy:** You can use this function to copy this component to the pages clipboard. You can hold 1 of each component type in the clipboard, which can then be used to Paste it to a given applicable area.
 - **Cut:** As copy, but on a Paste command, this would remove the source component.
 
-
 ## Delete component features ##
 
 To delete a given component, you would click on the trash can icon ![Config page delete component action button](./images/ui-user-guide/config-workflow-bar-action-delete.png){: .inline }  that's either in the header bar of that components area or if you hover over a given component it will present itself. Clicking on the trash can would therefore remove that component from the config.
@@ -144,6 +143,20 @@ To actually add the component, all you have to do is click on the required compo
 {% include tip.html content="When adding a service if you double click on the plus button the service will be added at the beginning of the service list." %}
 
 {% include note.html content="From 3.6.6 you can also add new component using the [Config page sidebar component](ui-config-sidebar.html#clipboard-sidebar)." %}
+
+## Applying a configuration ##
+
+To apply the current config to a running adapter you will simply need to click on the Apply Config button from the header action bar. ![Config page action bar apply config](./images/ui-user-guide/config-action-bar-apply-config.png) 
+
+This will open a modal where you can select which adapter you want to apply the config to and, optionally, which variable set you want to use for this adapter.
+
+![Config apply confirm modal](./images/ui-user-guide/config-apply-confirm-modal.png)
+
+Then you just need to click on Ok and the apply process will start. Another modal will be displayed to show you the status of each step of the apply process.
+
+![Config apply status modal](./images/ui-user-guide/config-apply-status-modal.png)
+
+If there is any error during the process they will be displayed in the main page.
 
 ## Settings editor features ##
 
