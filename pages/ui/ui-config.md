@@ -157,6 +157,7 @@ You will notice that there is a input control per field for that given component
 Next to the field name, there is an info icon, which if you hover over this, that fields javadoc part with show. As well as the inline help, if you click on the info icon that’s in the settings editor header, this will open a new browser window with that component type javadoc.
 
 As well as text inputs and radio inputs, there is also implementation selectors; the editor showing implementation selection:
+
 ![Typical edit component modal window](./images/ui-user-guide/config-edit-component-impl.png)
 
 This will allow you to select a given implementation for that field, this is handy if you need to select an error handler type for example.
@@ -213,7 +214,7 @@ To do that, select URL Encoder in the sidebar dropdown, enter the value you want
 Since 3.7.1 you can use the sidebar to retrieve system properties for the selected running adapter.
 You can drag and drop the system properties in the text field which allow External (System Propertiess, Environment Variables), they are marked with the orange '%'.
 
-![Config Settings Editor Sidebar System Props](./images/ui-user-guide/config-settings-editor-sidebar-sysprop.png.png)
+![Config Settings Editor Sidebar System Props](./images/ui-user-guide/config-settings-editor-sidebar-sysprop.png)
 
 
 The sidebar keep an history of the last ten encoded values while you stay on the config page.
