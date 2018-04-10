@@ -171,6 +171,10 @@ entries:
       url: /ui-salesforce.html
       output: web
 
+    - title: Service Tester
+      url: /ui-service-tester.html
+      output: web
+
     - title: Security
       url: /ui-security.html
       output: web
