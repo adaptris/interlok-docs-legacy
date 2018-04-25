@@ -209,9 +209,9 @@ This annotation provides a _hint_ to the UI when presenting the information on s
 | JSON | Allows the UI to provide JSON style highlighting on the field. |
 | JAVASCRIPT | Allows the UI to provide javascript style highlighting on the field. |
 | HTML | Allows the UI to provide HTML highlighting on the field. |
-| BLANKABLE | (Since 3.6.3) Allows the UI to expect a blank string value instead of null on the field . |
-| java.util.Locale | (Since 3.6.6) Allows the UI to provide an autocomplete text field of the all the java locales. |
-| java.util.TimeZone#getAvailableIDs | (Since 3.6.6) Allows the UI to provide an autocomplete text field of the all the java time zones. |
+| BLANKABLE | (Since __3.6.3__) Allows the UI to expect a blank string value instead of null on the field . |
+| java.util.Locale | (Since __3.6.6__) Allows the UI to provide an autocomplete text field of the all the java locales. |
+| java.util.TimeZone#getAvailableIDs | (Since __3.6.6__) Allows the UI to provide an autocomplete text field of the all the java time zones. |
 
 {% include important.html content="If the style is __PASSWORD__ then remember to use _com.adaptris.security.password.Password#decode(String)_ to decode the password at the appropriate time." %}
 
