@@ -129,7 +129,7 @@ For example if your component requires a configurable list of objects;
 private Set<MetadataElement> metadataElements;
 ```
 
-The above annotation will not marshall or expect when unmarshalling the list container element.  So instead of the following;
+The above annotation will not marshall or expect when unmarshalling the list container element. So instead of the following;
 
 ```xml
 <metadata-elements>
@@ -158,6 +158,15 @@ We will have;
 ```
 
 The only difference is the list container element "metadata-elements" wrapping the actual list items.
+
+### @XStreamOmitField ###
+
+```java
+@XStreamOmitField
+private int port;
+```
+
+The above annotation will omit the annotated field in the configuration xml even if it has a getter and a setter;
 
 ### @MarshallingCDATA ###
 
@@ -200,6 +209,9 @@ This annotation provides a _hint_ to the UI when presenting the information on s
 | JSON | Allows the UI to provide JSON style highlighting on the field. |
 | JAVASCRIPT | Allows the UI to provide javascript style highlighting on the field. |
 | HTML | Allows the UI to provide HTML highlighting on the field. |
+| BLANKABLE | (Since 3.6.3) Allows the UI to expect a blank string value instead of null on the field . |
+| java.util.Locale | (Since 3.6.6) Allows the UI to provide an autocomplete text field of the all the java locales. |
+| java.util.TimeZone#getAvailableIDs | (Since 3.6.6) Allows the UI to provide an autocomplete text field of the all the java time zones. |
 
 {% include important.html content="If the style is __PASSWORD__ then remember to use _com.adaptris.security.password.Password#decode(String)_ to decode the password at the appropriate time." %}
 
