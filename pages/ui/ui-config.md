@@ -224,14 +224,18 @@ To do that, select URL Encoder in the sidebar dropdown, enter the value you want
 
 ![Config Settings Editor Sidebar URL Encoder](./images/ui-user-guide/config-settings-editor-sidebar-url-encoder.png)
 
+The sidebar keep an history of the last ten encoded values while you stay on the config page.
+You can drag and drop the encoded values to any text input on a similar way as with the Metadata Preview and the Most Occurrences shown in the video above.
+
 Since 3.7.1 you can use the sidebar to retrieve system properties for the selected running adapter.
 You can drag and drop the system properties in the text field which allow External (System Propertiess, Environment Variables), they are marked with the orange '%'.
 
 ![Config Settings Editor Sidebar System Props](./images/ui-user-guide/config-settings-editor-sidebar-sysprop.png)
 
+Since 3.7.2 you can use the sidebar to connect to a database using a configured connection and retrive the list of tables and their columns details.
+You can drag and drop the table and column names in text fields.
 
-The sidebar keep an history of the last ten encoded values while you stay on the config page.
-You can drag and drop the encoded values to any text input on a similar way as with the Metadata Preview and the Most Occurrences shown in the video above.
+![Config Settings Editor Sidebar Database](./images/ui-user-guide/config-settings-editor-sidebar-database.png)
 
 ## Navigating service collections within components ##
 
