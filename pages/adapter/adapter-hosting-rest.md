@@ -126,14 +126,14 @@ POST data:
   <unique-id>MyMessageID</unique-id>
   <payload>My message payload</payload>
   <metadata>
-    <key-value-pair>
+    <metadata-element>
       <key>myMetadataKey1</key>
       <value>myMetadataValue1</value>
-        </key-value-pair>
-        <key-value-pair>
-            <key>myMetadata2</key>
-            <value>myMetadataValue2</value>
-        </key-value-pair>
+    </metadata-element>
+    <metadata-element>
+      <key>myMetadata2</key>
+      <value>myMetadataValue2</value>
+    </metadata-element>
   </metadata>
 </serializable-adaptris-message>
 
