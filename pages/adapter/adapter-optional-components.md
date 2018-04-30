@@ -15,7 +15,7 @@ As additional features are developed and released our public facing repository i
 | GroupID | ArtifactID | Description | Versions
 |----|----|----|----|
 |com.adaptris | [adp-actional-interceptor][] | Instrumentation of the adapter with Actional Management Server; requires additional jars not automatically delivered ||
-|com.adaptris | [adp-actional-stabiliser][] | Services that interact with the Actional Stabiliser Switch; requires additional jars not automatically delivered; requires [adp-licensing][] ||
+|com.adaptris | [adp-actional-stabiliser][] | Services that interact with the Actional Stabiliser Switch; requires additional jars not automatically delivered; requires [adp-licensing][] - May not work with the latest versions of actional if running outside of a Sonic container ||
 |com.adaptris | [adp-amazon-sqs][] | Connect to Amazon SQS either using their JMS compatibility layer or directly| 3.0.3 to 3.2.1
 |com.adaptris | [adp-amqp][] | Connect to a AMQP 0.9 / 1.0 provider ||
 |com.adaptris | [adp-apache-http][] | HTTP Producer implementation using the Apache HTTP client as the transport | 3.0.5+
@@ -49,7 +49,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [adp-profiler][] | Base package for supporting profiling (used by [adp-new-relic][] and [adp-stackify][]) ||
 |com.adaptris | [adp-restful-services][] | [Exposing Workflows as a RESTful service](adapter-hosting-rest.html)|3.0.6+
 |com.adaptris | [adp-reliable-messaging][] | Support for ordered and reliable messaging; requires [adp-licensing][] ||
-|com.adaptris | [adp-salesforce][] | Integration with Salesforce; requires [adp-licensing][] ||
+|com.adaptris | [adp-salesforce][] | Integration with Salesforce via WebServices (generally use their REST interface via HTTP/HTTPS instead); requires [adp-licensing][] ||
 |com.adaptris | [adp-sap][] | Integration with SAP via [IDocs](cookbook-sap-idoc.html) or [RFC/BAPI](cookbook-sap-rfc.html); requires additional jars not automatically delivered; requires [adp-licensing][] ||
 |com.adaptris | [adp-schema][] | RelaxNG [schema validation](advanced-configuration-pre-processors.html#schema-validation) for Interlok configuration files ||
 |com.adaptris | [adp-simple-csv][] | Transform a CSV file to XML ||
@@ -67,7 +67,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [adp-webservice-cxf][] | Accessing [external webservices](adapter-executing-ws.html)| 3.2.1+
 |com.adaptris | [adp-webservice-external][] | Accessing [external webservices](adapter-executing-ws.html); requires [adp-licensing][] ||
 |com.adaptris | [adp-webservice-internal][] | [Exposing workflows as webservices](adapter-hosting-ws.html)| 3.0.0 - 3.0.5|
-|com.adaptris | [adp-web-services][] | [Exposing workflows as webservices](adapter-hosting-ws.html); | 3.0.6
+|com.adaptris | [adp-web-services][] | [Exposing workflows as webservices](adapter-hosting-ws.html); | 3.0.6+
 |com.adaptris | [adp-webspheremq][] | Connection to a [WebsphereMQ instance](cookbook-native-wmq.html); requires [adp-licensing][] ||
 |com.adaptris | [adp-xinclude][] | [XInclude pre-processor](advanced-configuration-pre-processors.html#xinclude)||
 |com.adaptris | [adp-xml-security][] | XML security (JSR 106); requires [adp-licensing][] ||
@@ -75,12 +75,14 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-aws-common][] | Common components required for accessing AWS| 3.3.0+
 |com.adaptris | [interlok-aws-sqs][] | Integration with Amazon SQS (requires [interlok-aws-common][]|3.3.0+
 |com.adaptris | [interlok-aws-s3][] | Integration with Amazon S3 (requires [interlok-aws-common][] | 3.3.0+
+|com.adaptris | [interlok-aws-sns][] | Publish to an SNS topic (requires [interlok-aws-common][] | 3.7.2+
 |com.adaptris | [interlok-csv-json][] | Convert between CSV and JSON (requires both [adp-json][] and [adp-simple-csv][]) | 3.6.6+
 |com.adaptris | [interlok-elastic-search][] | Integration with ElasticSearch (requires [adp-simple-csv][]) | 3.4.1+
 |com.adaptris | [interlok-es5][] | Integration with ElasticSearch using v5 API (requires [adp-simple-csv][]) | 3.5.1+
 |com.adaptris | [interlok-expressions][] | Perform inline mathematic expressions | 3.6.4+
+|com.adaptris | [interlok-filesystem][] | Services for interacting with the filesystem | 3.6.6+
 |com.adaptris | [interlok-failover][] | Simplified failover not dependent on AOP profiling | 3.4.0+
-|com.adaptris | [interlok-gcloud-pubsub][] | Connect to Google cloud pubsub|3.6.3+
+|com.adaptris | [interlok-gcloud-pubsub][] | Connect to Google cloud pubsub (requires [interlok-oauth-gcloud][])|3.6.3+
 |com.adaptris | [interlok-hpcc][] | Connect to [HPCC](http://www.hpccsystems.com)|3.6.1+ (now opensource/ licensed under ASLv2)
 |com.adaptris | [interlok-jruby][] | Tighter coupling with [jruby](http://jruby.org) as an alternative to [ScriptingService][]/[EmbeddedScriptingService][]|3.6.3+ (opensource / licensed under ASLv2)
 |com.adaptris | [interlok-jq][] | JSON transformations using JQ-like syntax |3.7.0+ (opensource / licensed under ASLv2)
@@ -92,6 +94,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-shell][] | Commandline runtime UI based on [CRaSH](http://www.crashub.org) | 3.4.1+
 |com.adaptris | [interlok-service-tester][] | Testing services as part of a CI pipeline | 3.5.0+
 |com.adaptris | [interlok-sshtunnel][] | Management component that opens one or more SSH tunnels | 3.7.1+ (opensource / licensed under ASLv2)
+|com.adaptris | [interlok-stax][] | Using the STaX API to read/write XML | 3.6.6+
 |com.adaptris | [interlok-vcs-command-line][] | Interlok configuration hosted in a configurable VCS | 3.5.1+
 |com.adaptris | [interlok-vertx][] | [Clustered workflows and services](advanced-vertx.html); requires [adp-licensing][] | 3.5.0+
 |com.adaptris | [interlok-xa][] | XA support within the Adapter; requires [adp-licensing][] | 3.4.0+
@@ -129,13 +132,15 @@ or add something to your POM file
 
 ## Javadoc ##
 
-Interlock comes automatically with some javadocs for its installed components. The javadocs file can be found into `${adapter.home}/docs/javadocs`.
-You can access the javadocs by opening a browser at <http://localhost:8080/adapter-web-gui/javadocs>. **N.B** You will have to login into the Adapter UI to see the javadocs.
+Interlok comes automatically with some javadocs for its installed components. The javadocs file can be found into `${adapter.home}/docs/javadocs`.
+You can access the javadocs by opening a browser at <http://localhost:8080/interlok/javadocs> if the adapter is started.
 
-Optional components javadocs can be open in two ways:
+{% include note.html content="You will have to login into the Adapter UI to see the javadocs." %}
 
-- **The javadocs are within a folder:** Open your browser at <http://localhost:8080/adapter-web-gui/javadocs/optional/your-component/index.html> **e.g.** <http://localhost:8080/adapter-web-gui/javadocs/optional/xml-security/index.html>.
-- **The javadocs are in a jar file:** Open your browser at <http://localhost:8080/adapter-web-gui/javadocs/your-component.jar/index.html> **e.g.** <http://localhost:8080/adapter-web-gui/javadocs/optional/adp-swiftmq-3.0.3-RELEASE-javadoc.jar/index.html>.
+Optional components javadocs can be open edin two ways:
+
+- **The javadocs are within a folder:** Open your browser at <http://localhost:8080/interlok/javadocs/optional/your-component/index.html> **e.g.** <http://localhost:8080/interlok/javadocs/optional/xml-security/index.html>.
+- **The javadocs are in a jar file:** Open your browser at <http://localhost:8080/interlok/javadocs/your-component.jar/index.html> **e.g.** <http://localhost:8080/interlok/javadocs/optional/adp-swiftmq-3.0.3-RELEASE-javadoc.jar/index.html>.
 
 If you've added an optional components following the steps explained above you can copy the javadocs jar file into `${adapter.home}/docs/javadocs` to be able to access it via the browser. You will have to restart your adapter to be able to access the javadocs.
 
@@ -223,3 +228,6 @@ If you've added an optional components following the steps explained above you c
 [interlok-csv-json]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-csv-json/
 [interlok-jq]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-jq/
 [interlok-sshtunnel]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-sshtunnel/
+[interlok-filesystem]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-filesystem/
+[interlok-aws-sns]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-aws-sns/
+[interlok-stax]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-stax/
