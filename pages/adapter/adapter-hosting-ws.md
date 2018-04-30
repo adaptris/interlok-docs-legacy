@@ -6,7 +6,9 @@ sidebar: home_sidebar
 permalink: adapter-hosting-ws.html
 ---
 
-Interlok comes with a built-in jetty instance which is enabled for use.  The standard UI is built as a web application, but you may also expand on these by creating your own web applications and deploy those into Interlok's web server container. This means that you can expose workflows inside Interlok as web-services.
+{% include note.html content="This is only useful if you want to inject messages into an arbitrary workflow. Use a normal jetty based workflow if that is the intended endpoint" %}
+
+Generally, if you are using Interlok as an HTTP endpoint, then you would just use one of the standard HTTP consumers as part of a normal workflow ([Servicing HTTP requests](cookbook-http-server.html)); however, in certain situations it can be useful to expose an arbitrary workflow (e.g. a JMS bridge) so that you can inject messages into the workflow without doing additional configuration. This requires that you enable the built-in jetty instance, and to use a custom web application.
 
 ## Enabling the built-in Webserver ##
 
