@@ -15,7 +15,7 @@ As additional features are developed and released our public facing repository i
 | GroupID | ArtifactID | Description | Versions
 |----|----|----|----|
 |com.adaptris | [adp-actional-interceptor][] | Instrumentation of the adapter with Actional Management Server; requires additional jars not automatically delivered ||
-|com.adaptris | [adp-actional-stabiliser][] | Services that interact with the Actional Stabiliser Switch; requires additional jars not automatically delivered; requires [adp-licensing][] - May not work with the latest versions of actional if running outside of a Sonic container ||
+|com.adaptris | [adp-actional-stabiliser][] | Services that interact with the Actional Stabiliser Switch; requires additional jars not automatically delivered; requires [adp-licensing][] - This is compiled against Actional 8.2 and may not work with the latest versions of actional if running outside of a Sonic container (the jars are no longer available)||
 |com.adaptris | [adp-amazon-sqs][] | Connect to Amazon SQS either using their JMS compatibility layer or directly| 3.0.3 to 3.2.1
 |com.adaptris | [adp-amqp][] | Connect to a AMQP 0.9 / 1.0 provider ||
 |com.adaptris | [adp-apache-http][] | HTTP Producer implementation using the Apache HTTP client as the transport | 3.0.5+
