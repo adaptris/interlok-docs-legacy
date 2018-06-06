@@ -378,6 +378,7 @@ Validate that the annotated string is not NULL or empty.
 The difference to `@NotEmpty` is that trailing whitespaces are ignored.
 
 A simple example;
+
 ```java
 @NotBlank
 private String myString = null;
@@ -388,7 +389,8 @@ private String myString = null;
 Asserts that the annotated string, collection, map or array is not null or empty.
 
 A simple example;
-```
+
+```java
 @NotEmpty
 private List<Object> myObjects = null;
 ```
@@ -398,6 +400,7 @@ private List<Object> myObjects = null;
 This annotation allows you to specify a regular expression that the value of the field can be validated against. Typically this annotation would be used where the value of the field may only be a one of a list of values.
 
 A simple example;
+
 ```java
 @Pattern(regexp = "payload|xpath|metadata|constant|id")
 private String queryType;
@@ -408,6 +411,7 @@ private String queryType;
 This annotation is available from __3.7.3__ onwards and allows you to assert that the string represents a valid Number or a message expression <em>%message{key}</em>. Positive, negative and float values are accepted.
 
 A simple example;
+
 ```java
 @NumberExpression
 private String timeout;
@@ -427,6 +431,7 @@ The valid values are:
 * FALSE
 
 A simple example;
+
 ```java
 @BooleanExpression
 private String enable;
@@ -440,6 +445,7 @@ Per default the constraint verifies that the annotated value conforms to <a href
 Via the parameters <b>protocol</b>, <b>host</b> and <b>port</b> one can assert the corresponding parts of the parsed URL.
 
 A simple example;
+
 ```java
 @UrlExpression(protocol = "https")
 private String securedUrl;
