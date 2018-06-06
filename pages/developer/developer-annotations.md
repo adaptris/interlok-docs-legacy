@@ -395,10 +395,52 @@ private List<Object> myObjects = null;
 
 ### @Pattern ###
 
-This annotation allows you to specify a regular expression that the value of the field can be validated against.  Typically this annotation would be used where the value of the field may only be a one of a list of values.
+This annotation allows you to specify a regular expression that the value of the field can be validated against. Typically this annotation would be used where the value of the field may only be a one of a list of values.
 
 A simple example;
 ```java
 @Pattern(regexp = "payload|xpath|metadata|constant|id")
 private String queryType;
+```
+
+### @NumberExpression ###
+
+This annotation is available from __3.7.3__ onwards and allows you to assert that the string represents a valid Number or a message expression <em>%message{key}</em>. Positive, negative and float values are accepted.
+
+A simple example;
+```java
+@NumberExpression
+private String timeout;
+```
+
+### @BooleanExpression ###
+
+This annotation is available from __3.7.3__ onwards and allows you to assert that the string represents a valid Boolean or a message expression <em>%message{key}</em>.
+
+The valid values are:
+
+* true
+* false
+* True
+* False
+* TRUE
+* FALSE
+
+A simple example;
+```java
+@BooleanExpression
+private String enable;
+```
+
+### @UrlExpression ###
+
+This annotation is available from __3.7.3__ onwards and allows you to assert that the string represents a valid URL or a message expression <em>%message{key}</em>.
+
+Per default the constraint verifies that the annotated value conforms to <a href="http://www.ietf.org/rfc/rfc2396.txt">RFC2396</a>.
+Via the parameters <b>protocol</b>, <b>host</b> and <b>port</b> one can assert the corresponding parts of the parsed URL.
+
+A simple example;
+```java
+@UrlExpression(protocol = "https")
+private String securedUrl;
 ```
