@@ -23,6 +23,61 @@ If you use a [standard-workflow][] then requests are processed sequentially in o
 
 {% include tip.html content="If you use a [pooling-workflow][] then you should name both the containing channel + workflow, or explicitly configure a [jetty-pooling-workflow-interceptor][] on the worklow." %}
 
+## Using multiple workflows
+
+If you intend on spreading the work across multiple workflows then since 3.7.3 you have [jetty-async-workflow-interceptor][] that allows you to share the work over multiple workflows and supports either [standard-workflow][] or [pooling-workflow][]. It works in much the same fashion as the [jetty-pooling-workflow-interceptor][] but caches the _HttpServletResponse_ and other things in an expiring cache keyed against the unique message id. It has to be configured explicitly in either _REQUEST_ or _RESPONSE_ mode, depending on the type of workflow; REQUEST mode should always be configured on the workflow that is attached to the [jetty-message-consumer][], and RESPONSE mode on the workflow that will make the HTTP response to the client (it needs to be in the same Interlok instance).
+
+```xml
+<pooling-workflow>
+  <unique-id>JettyHandler</unique-id>
+  <jetty-async-workflow-interceptor>
+    <mode>REQUEST</mode>
+  </jetty-async-workflow-interceptor>
+  <consumer class="jetty-message-consumer">
+    <destination class="configured-consume-destination">
+      <destination>/dummy/index.html</destination>
+    </destination>
+  </consumer>
+
+  <service-collection class="service-list">
+    <services>
+      <standalone-producer>
+        ... produce to JMS.
+        <producer class="jms-queue-producer">
+          <correlation-id-source class="message-id-correlation-id-source"/>
+        </producer>
+      </standalone-producer>
+    </services>
+
+  </service-collection>
+</pooling-workflow>
+
+<pooling-workflow>
+  <unique-id>SendResponseToJetty</unique-id>
+  <jetty-async-workflow-interceptor>
+    <mode>RESPONSE</mode>
+  </jetty-async-workflow-interceptor>
+  <consumer class="jms-queue-consumer">
+    <correlation-id-source class="message-id-correlation-id-source"/>
+  </consumer>
+
+  <service-collection class="service-list">
+    <services>
+      <jetty-response-service>
+        <http-status>200</http-status>
+        <content-type>application/json</content-type>
+      </jetty-response-service>
+    </services>
+
+  </service-collection>
+</pooling-workflow>
+```
+
+1. `JettyHandler` just receives a request, and immediately hands off to a JMS queue. We use the new [message-id-correlation-id-source][] to record the current message-id as the _JMSCorrelationID_
+1. Some processing happens elsewhere.
+1. `SendResponseToJetty` listens on queue; again we use [message-id-correlation-id-source][] so that _JMSCorrelationID_ becomes the message-id of the message.
+1. We write the response.
+
 ## Long lived requests
 
 If the workflow is doing something that exceeds some arbitrary length (generally 30 seconds or a minute seem to be _magic_) then you may find that the HTTP connection is terminated before a response can be sent back to client. The adapter has support for the 102 response code defined by _RFC2518_; the client can send `Expect: 102-Processing` as a header which will cause a _102_ response code to be sent intermittently to the client (the time defaults to every 20 seconds, but this is configurable via `send-processing-interval`).
@@ -60,6 +115,18 @@ $ curl -vvv --header "Expect: 102-Processing" http://localhost:8080/mockActivity
 
 * Connection #0 to host localhost left intact
 ```
+
+## Cross Origin Requests / Additional Filters.
+
+If you need support for W3C's Access Control for Cross-Site Requests specification then you can enable it using the CrossOriginFilter that is available as part of jetty-servlets.jar (this should be bundled as part of the installation automatically, or if not, depend on it explicitly when building runtime libraries). You will need to use [jetty-embedded-connection][] as the connection as it relies on the `webdefault.xml` that is applied to all web application contexts.
+
+If you have a ROOT.war in your installation, and intend on having that in production, then just edit the existing `webdefault.xml` that is referenced by your jetty configuration files (usually _config/webdefault.xml_) and add the filter (as per the jetty [cross origin filter documentation][]). You can add any filter you wish
+
+{% include tip.html content="Other filters like the DoS filter / QoS filter can be added in the same way" %}
+
+If you will not have ROOT.war in your production environment; then you need to create a `jetty-webdefault.xml` that is available on the classpath (assuming a standard installation, putting it into the _config_ directory should be enough) and add the filter as per the jetty documentation.
+
+{% include note.html content="pre 3.7.3; you will need a `com/adaptris/core/management/webserver/jetty-webdefault-failsafe.xml` file on the classpath rather than jetty-webdefault.xml" %}
 
 ## Access Control
 
@@ -191,7 +258,7 @@ The [jetty-routing-service][] (3.6.4+) service allows you to listen on a wildcar
 
 ## JettyResponseService / StandardResponseProducer
 
-Both [jetty-standard-response-producer][] and [jetty-response-service][] (3.6.5+) perform the same function. The first is a producer (which can be wrapped by `StandaloneProducer` for insertion into a service list), and the second is just a service that abstracts that wrapping away from you (to avoid XML bloat, and to have cleaner UI representation). Under the covers [jetty-response-service][] simply wraps [jetty-standard-response-producer][], and supports the `%message{metadata-key}` syntax for content-type and http-status. If you need full control over configuration then use [jetty-standard-response-producer][].
+Both [jetty-standard-response-producer][] and [jetty-response-service][] (3.6.5+) perform the same function. The first is a producer (which can be wrapped by `StandaloneProducer` for insertion into a service list), and the second is just a service that abstracts that wrapping away from you (to avoid XML bloat, and to have cleaner UI representation). Under the covers [jetty-response-service][] simply wraps [jetty-standard-response-producer][], and supports the `%message{metadata-key}` syntax for content-type and http-status. If you need full control over configuration then use [jetty-standard-response-producer][]. A special service [jetty-commit-response][] is available to commit the response before the workflow finishes with the message.
 
 
 [interlok-legacyhttp]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-legacyhttp/
@@ -210,3 +277,7 @@ Both [jetty-standard-response-producer][] and [jetty-response-service][] (3.6.5+
 [standard-workflow]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/StandardWorkflow.html
 [pooling-workflow]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/PoolingWorkflow.html
 [jetty-pooling-workflow-interceptor]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/http/jetty/JettyPoolingWorkflowInterceptor.html
+[cross origin filter documentation]: https://www.eclipse.org/jetty/documentation/9.4.x/cross-origin-filter.html
+[jetty-async-workflow-interceptor]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/http/jetty/JettyAsyncWorkflowInterceptor.html
+[message-id-correlation-id-source]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/jms/MessageIdCorrelationIdSource.html
+[jetty-commit-response]: https://development.adaptris.net/javadocs/latest/Interlok-API/com/adaptris/core/http/jetty/ShortCutJettyResponse.html
