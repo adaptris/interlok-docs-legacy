@@ -30,6 +30,10 @@ entries:
       url: /adapter-commandline.html
       output: web
 
+    - title: Additional Resources
+      url: /adapter-additional.html
+      output: web
+
     - title: Change log
       url: /changelog.html
       output: web
@@ -345,7 +349,7 @@ entries:
     - title: JMX Runtime Controls
       url: /advanced-jmx.html
       output: web
-      
+
     - title: JMX via JMS
       url: /advanced-jmx-jms.html
       output: web
@@ -417,10 +421,6 @@ entries:
     - title: XA Integration
       url: /advanced-xa-integration.html
       output: web
-
-#    - title: Enabling a Custom Class Loader for Jetty
-#      url: /advanced-custom-classloader.html
-#      output: web
 
   - title: Service Tester
     output: web
