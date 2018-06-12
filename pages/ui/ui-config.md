@@ -232,7 +232,7 @@ You can drag and drop the system properties in the text field which allow Extern
 
 ![Config Settings Editor Sidebar System Props](./images/ui-user-guide/config-settings-editor-sidebar-sysprop.png)
 
-Since 3.7.2 you can use the sidebar to connect to a database using a configured connection and retrive the list of tables and their columns details.
+Since 3.7.2 you can use the sidebar to connect to a database using a configured connection and retrieve the list of tables and their columns details.
 You can drag and drop the table and column names in text fields.
 
 ![Config Settings Editor Sidebar Database](./images/ui-user-guide/config-settings-editor-sidebar-database.png)
