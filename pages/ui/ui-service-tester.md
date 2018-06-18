@@ -34,8 +34,10 @@ The actions are as follows:
 Button | Action | Meaning
 ------------ | ------------- | ------------
 ![The service tester new config button](./images/ui-user-guide/service-tester-new-config-btn.png) | New Config | Reset the page with a new config
-![The service tester upload config button](./images/ui-user-guide/service-tester-upload-config-btn.png) | Upload Config | Upload an xml config into the page
-![The service tester download config button](./images/ui-user-guide/service-tester-download-config-btn.png) | Download Config | Download the current config into an xml file
+![The service tester upload config button](./images/ui-user-guide/service-tester-upload-config-btn.png) | Upload Config | Upload an XML config into the page
+![The service tester load services fron adapter config button](./images/ui-user-guide/service-tester-load-services-from-adapter-config-btn.png) | Load Services From Adapter Config | Load in the page context all the services from an Adapter XML config so they can be used in the Tests Source (File or Inline)
+![The service tester generate services fron adapter config button](./images/ui-user-guide/service-tester-generate-services-from-adapter-config-btn.png) | Generate Services From Adapter Config | Generate tests for all selected services from an Adapter XML config. The Tests can either have a File or an Inline Source
+![The service tester download config button](./images/ui-user-guide/service-tester-download-config-btn.png) | Download Config | Download the current config into an XML file
 ![The service tester run config button](./images/ui-user-guide/service-tester-run-config-btn.png) | Run Config | Run the current config tests
 ![The service tester clear results button](./images/ui-user-guide/service-tester-clear-results-btn.png) | Clear Results | Run the current config tests results
 
@@ -55,6 +57,27 @@ The Service Test form inputs explained:
    - **External JMX Test client:** Use the specified JMX URL to find the adapter to run the tests.
    - **Local JMX Test client:** Use the local adapter to run the tests. This means the adapter running the UI will run the tests.
 
+## Looding/Generating Tests From Adapter Config ##
+
+Since 3.7.3 The Service Tester page allows to load services from an Adapter config to be able to user them as source (File or Inline) when creating a test.
+For that you will need to click on the **Load Services From Adapter Config** button in the page menu.
+
+A modal will open to select an Adapter config from diverse sources.
+
+![The service tester open interlok config container modal](./images/ui-user-guide/service-tester-open-interlok-config-container-modal.png)
+
+- **Active Adapter:** Retrieve a configuration from a running Adapter configured in the application.
+- **File System:** Open an Adapter configuration file from your file system. It can be an adapter.xml file or a zip file. Click on the **I also have variables** link to [Import an Adapter Configuration](ui-export-import.html#config-import) with variable properties.
+- **Saved Config:** Open an Adapter configuration from the list of previously [saved configurations](ui-saved-configs.html).
+- **Auto Saved:** Open an Adapter configuration from the last auto saved configuration.
+- **Version Control:** Retrieve a configuration from a Version Control System (Subversion or Git). For this option to be enabled [VCS](advanced-version-control.html) needs to be configured and you need at least one VCS Profile.
+
+You can also use the **Generate Services From Adapter Config** menu item to automatically generate one test per service.
+You will also be prompted to chose an Adapter config.
+Then you will have to select the Test Source type (File or Inline) and select the Channels or Workflows with the services you want to generate tests for.
+
+![The service tester select services modal](./images/ui-user-guide/service-tester-select-services-modal.png)
+
 ## Test ##
 
 A Test contains a service to test and a list of test cases to run against the service.
@@ -72,6 +95,12 @@ The Test form inputs explained:
     - **File Source:** Path to a file with the service xml configuration. **Note:** this will only work if the file is accessible by the adapter running the tests.
     - **Inline Source:** Service xml configuration.
 - **Preprocessors:** A list of preprocessors to apply on the service xml before running the tests.
+
+If some services have been loaded in the page context a dropdown with the list of services will be displayed.
+![The service tester select an adapter config service](./images/ui-user-guide/service-tester-select-an-adapter-config-service.png)
+
+- In the case of a File Source, selecting a service will create an XPath Preprocessor with the XPath of the selected service.
+- In the case of an Inline Source, selecting a service will add the service XML into the XML textarea.
 
 ## Test Case ##
 

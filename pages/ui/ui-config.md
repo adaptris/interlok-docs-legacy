@@ -28,7 +28,7 @@ Just click on the Open Config button and that will open a modal displaying sever
 
 - **Active Adapter:** Retrieve a configuration from a running Adapter configured in the application.
 - **New:** Create a brand new Adapter configuration.
-- **File System:** Open an Adapter configuration file from your file system. It can be an adapter.xml file or a zip file * (since 3.6.5). Click on the **I also have variables** link to [Import an Adapter Configuration](ui-export-import.html#config-import) with variable properties. (since 3.7.0)
+- **File System:** Open an Adapter configuration file from your file system. It can be an adapter.xml file or a zip file (since 3.6.5). Click on the **I also have variables** link to [Import an Adapter Configuration](ui-export-import.html#config-import) with variable properties. (since 3.7.0)
 - **Saved Config:** Open an Adapter configuration from the list of previously [saved configurations](ui-saved-configs.html).
 - **Auto Saved:** Open an Adapter configuration from the last auto saved configuration.
 - **Use Template:** Create a new Adapter configuration from a template.
