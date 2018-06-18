@@ -19,6 +19,7 @@ The preferences are:
 
 ## Dashboard Page Preferences ##
  - **Timeout (ms) for adapter command operations:** The timeout for the adapter commands such as Start Adapter, Stop Adapter, Start Channel ... The default value is 120000 ms (2 mins).
+ - **Switch the dashboard page to table mode:** This option toggle how the adapters are displayed in the dashboard page (Widget or Table). The option is also updated when the toggle button is used in the dashboard page. (Since 3.7.3)
 
 ## Configuration Page Preferences ##
  - **Display names in the component title:** Whether to display the component name in the component title or in the body. The default value is false.

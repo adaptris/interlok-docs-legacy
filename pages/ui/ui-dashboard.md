@@ -56,10 +56,11 @@ The Dashboard Page with annotations shows the various parts of the Dashboard Pag
 | ![Dashboard Adapter Control Force Stop](./images/ui-user-guide/dashboard-adapter-control-force-stop.png) | Under the Stop dropdown. Force Stop this Adapter (doesn't wait for services to finish) and free up any resources that it has used.
 | ![Dashboard Adapter Control Reload From Vcs](./images/ui-user-guide/dashboard-adapter-control-reload-from-vcs.png) | Under the Stop dropdown. Reload this Adapter configuration from Vcs and restart it. Only available for User and Admin users and if [version control](advanced-version-control.html#version-control-configuration) is configured for this Adapter. (Since 3.3)
 | ![Dashboard Adapter Control Support Pack](./images/ui-user-guide/dashboard-adapter-control-support-pack.png) | Under the Stop dropdown. Download a support pack containing log files and information about this Adapter. (Since 3.3)
+| ![Dashboard Adapter Control Edit Adapter](./images/ui-user-guide/dashboard-adapter-control-edit-adapter.png) | Under the Stop dropdown. Edit and Adapter name or tags. (Since 3.7.3)
 | ![Dashboard Adapter Control Refresh](./images/ui-user-guide/dashboard-adapter-control-refresh.png) | Refresh the Adapter status and details
 | ![Dashboard Adapter Control Remove](./images/ui-user-guide/dashboard-adapter-control-remove.png) | Remove the Adapter from the dashboard page
 
-- L. This area is for 'top level' functions, i.e. Add another Adapter to the UI or Refresh all the details on the Dashboard Page for all the Registered Adapters.
+- L. This area is for 'top level' functions, i.e. Add another Adapter to the UI, Refresh all the details on the Dashboard Page for all the Registered Adapters or Switch between the Widget and Table mode.
 
 {% include note.html content="All the data shown on the Dashboard Page is automatically refreshed, so there is no need to manually refresh the page, or use the refresh buttons" %}
 
@@ -251,6 +252,7 @@ The Add Adapter form inputs explained:
 - **Name:** This property is for display purposes and also an easy way to differentiate Adapters registered within the UI web application.
 - **Adapter Unique Id:** This is the Adapter unique identifier used in the Adapter configuration XML file: `<adapter><unique-id>adapterUid</unique-id</adapter>`. This is required for the UI to establish the JMX connection to the Adapter.
 - **URL:** The JMX URL used to connect to the Adapter, for example: localhost:5555. You can also provide the JMX protocol: service:jmx:jmxmp://localhost:5555
+- **Tags:** The tags associated to the Adapter to make it easier to filter Adapters. (Since 3.7.3)
 - **Advanced Options** - Clicking the Advanced Options link will unveil three more properties, all of which are optional :
     - **Disable Url Validation:** This options disable the JMX URL front-end validation. It should be use with care and only if you know that the JMX URL you are using is valid but fails validation (Since 3.6.5)
     - **Username:** The username needed to establish the JMX connection if you are using password protection for the adapter JMX connection as describe in [Password Protecting JMXMP](advanced-jmx.html#password-protecting-jmxmp-311) (Since 3.1.1)
@@ -263,6 +265,13 @@ The Dashboard Page with multiple registered Adapter instances:
 
 ![The Dashboard Page with multiple registered Adapter instances](./images/ui-user-guide/dashboard-page-with-2-adapters.png)
 
-On two widgets per row mode:
+## Table Mode ##
 
-![The Dashboard Page with multiple registered Adapter instances](./images/ui-user-guide/dashboard-page-with-2-adapters-small.png)
+Since 3.7.3 the dashboard page can display the Adapters in a table mode. This new mode make it easier to monitor several Adapters.
+
+To switch between the two modes just use the toggle button next to the "Add Adapter" button ![Dashboard table mode toggle btn](./images/ui-user-guide/dashboard-table-mode-toggle-btn.png)
+
+![The Dashboard Page with table mode](./images/ui-user-guide/dashboard-page-table-mode.png)
+
+Since 3.7.3 when creating an Adapter you can also add one or many tags that can be used for filtering.
+If at least one Adapter has a tag the tag list will be displayed above the Adapter list or table.
