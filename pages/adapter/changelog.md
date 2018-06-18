@@ -8,6 +8,8 @@ summary: This is the change log summarizing the key changes in Interlok for each
 toc: false
 ---
 
+{% include custom/release373.html %}
+
 {% include custom/release372.html %}
 
 {% include custom/release371.html %}
