@@ -59,7 +59,7 @@ The Service Test form inputs explained:
 
 ## Looding/Generating Tests From Adapter Config ##
 
-Since 3.7.3 The Service Tester page allows to load services from an Adapter config to be able to user them as source (File or Inline) when creating a test.
+Since 3.7.3 The Service Tester page allows to load services from an Adapter config to be able to use them as source (File or Inline) when creating a test.
 For that you will need to click on the **Load Services From Adapter Config** button in the page menu.
 
 A modal will open to select an Adapter config from diverse sources.
