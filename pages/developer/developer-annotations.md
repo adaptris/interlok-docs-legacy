@@ -264,6 +264,16 @@ This annotation is available from __3.4.1__ onwards and is a _hint_ to the UI th
 private String metadataKeyToSet;
 ```
 
+### @NumberExpression, @BooleanExpression, @UrlExpression ###
+
+Since __3.7.3__; these annotations provide additional validation for string members that should really be a specific type, but are strings to support the `%message{metadata-key}` style expression.
+
+| Annotation | Description |
+|----|----|
+| `NumberExpression` | Must be numeric or a valid `%message{metadata-key}` style expression.  |
+| `BooleanExpression` | Must be true/false or a valid `%message{metadata-key}` style expression.  |
+| `UrlExpression` | Must be a valid URL or a `%message{metadata-key}` style expression |
+
 ## Javadoc Taglets ##
 
 There are currently 2 custom taglets supported at the class level javadoc; the taglets will need to be explicitly included as part of your javadoc tag to generate the HTML snippets required.
