@@ -39,10 +39,12 @@ Currently you can choose between Multicast failover or Direct TCP failover.
 
 Direct TCP mode only since Interlok version 3.6.4
 
-The main benfit of multicast failover is that you can add new failover peers as and when you want.  Simply start a new instance and the new instance will be added to the failover cluster automatically.
+The main benfit of multicast failover is that you can add new failover peers as and when you want.  Simply start a new instance of Interlok and the new instance will be added to the failover cluster automatically.
 
 If multicast is not available on your environment then you can configure Direct TCP failover instead.
 The main difference here is that you must define each machines host and port for each instance in the failover cluster group in either the bootstrap.proprties, or via java system properties.
+
+Since Interlok version 3.7.4, you may now add new failover peers while using the Direct TCP mode without having to reconfigure the current peers.  Simply make sure your new instance has been configured with each of the host and port numbers of the current failover members, from there the existing members will update their own peer lists as the new instance comes online.
 
 ## Configuring Basic Interlok Failover ##
 
@@ -112,6 +114,7 @@ See the discussion below for a more detailed explaination of both properties.
 | failover.multicast.port | must be defined when working in multicast mode |
 | failover.tcp.port | must be defined if direct TCP mode is enabled |
 | failover.tcp.peers | must be defined if direct TCP mode is enabled, and is a `;` separated list of peers |
+| failover.tcp.host | optional property that specifies the host name or IP address of the current Interlok instance.  If not specified we will try to determine the local IP address. |
 | failover.slave.position | if you wish to preconfigure the slave position in the hierarchy then define this, otherwise one will be assigned |
 | failover.ping.interval.seconds | How often each instance will attempt to communicate with each other, defaults to 3 seconds |
 | interval.instance.timeout.seconds | How long before an instance is deemed as no longer available, defaults to 20 seconds |
@@ -176,19 +179,15 @@ TRACE [Failover Monitor Thread] [FailoverManager] Master not available, promotin
 INFO  [Failover Monitor Thread] [FailoverBootstrap] Promoting to MASTER
 ```
 
-Periodically, each instance in the failover cluster will report it's state and information (at TRACE level logging) about all known other online instances.
+If you set the JVM parameter interlok.failover.debug to true, then periodically each instance in the failover cluster will report it's state and information (at TRACE level logging) about all known other online instances.
 
-Example below shows the logging from the slave at position 2, where 4 instances are in the cluster; a master and 3 slaves.
+Example below shows the logging from the slave at position 1, where 4 instances are in the cluster; a master and 3 slaves.
 
 ```
-TRACE [Failover Monitor Thread] [FailoverManager]
-My instance:
-[ID: 9a6f9712-72ba-4153-aa96-69c662dd9639 --Type: Slave -- Slave position: 2 -- Last Contact: 13:11:23]
+TRACE [Failover Monitor Thread] [com.adaptris.failover.FailoverManager] com.adaptris.failover.FailoverManager@7ce58397[
+  Self=OnlineInstance[ID=1f0eab39-e917-4b02-b987-bf37d9620c3d,Type=slave,Position=1,last=Thu Jan 01 01:00:00 GMT 1970]
+  master=OnlineInstance[ID=10cc907e-f4ca-4cb4-b96f-9547035028c4,Type=master,Position=0,last=Mon Jul 23 12:34:39 BST 2018]
+  slaves=[OnlineInstance[ID=9c9fc821-f257-420c-bffa-6838b4baecbc,Type=slave,Position=2,last=Mon Jul 23 12:34:40 BST 2018], OnlineInstance[ID=b22c7478-dafd-4d95-af1d-3b13c8cc9080,Type=slave,Position=3,last=Mon Jul 23 12:34:41 BST 2018]]
+]
 
-Current master instance:
-[ID: 164d4cf5-6baa-434b-81f5-fa04ead32ca6 --Type: Master -- Slave position: 0 -- Last Contact: 13:11:21]
-
-Other online slave instances:
-[ID: d600d45c-7971-4e6c-bc28-28ed6a44e730 --Type: Slave -- Slave position: 3 -- Last Contact: 13:11:22]
-[ID: 6a20a986-e645-49d0-ac01-c19b1ef13e23 --Type: Slave -- Slave position: 1 -- Last Contact: 13:11:21]
 ```
