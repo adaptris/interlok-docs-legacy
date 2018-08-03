@@ -1,0 +1,62 @@
+## Version 3.8.0 ##
+
+Release Date : 2018-08
+
+### Bugs
+
+ - [INTERLOK-1878](https://adaptris.atlassian.net/browse/INTERLOK-1878) - Log extract from a failed message doesn't match the failed message...
+ - [INTERLOK-2252](https://adaptris.atlassian.net/browse/INTERLOK-2252) - Upgrade to derby 10.14.2.0+
+ - [INTERLOK-2261](https://adaptris.atlassian.net/browse/INTERLOK-2261) - Update shiro to 1.4.0
+ - [INTERLOK-2300](https://adaptris.atlassian.net/browse/INTERLOK-2300) - Sort out the javadocs for Interlok Kafka Optional Component
+ - [INTERLOK-2303](https://adaptris.atlassian.net/browse/INTERLOK-2303) - Upgrade quartz and c3p0 in UI pom
+ - [INTERLOK-2305](https://adaptris.atlassian.net/browse/INTERLOK-2305) - if-the-otherwise embedded service-list does not display nice in the UI
+ - [INTERLOK-2311](https://adaptris.atlassian.net/browse/INTERLOK-2311) - UI Projects - Null pointer exception when loading setting with var + text
+ - [INTERLOK-2318](https://adaptris.atlassian.net/browse/INTERLOK-2318) - UI Login - misspelling on page 'Pasword'
+ - [INTERLOK-2320](https://adaptris.atlassian.net/browse/INTERLOK-2320) - UI - Upgrade bouncycastle to 1.60
+ - [INTERLOK-2321](https://adaptris.atlassian.net/browse/INTERLOK-2321) - Core - Upgrade bouncycastle to 1.60
+ - [INTERLOK-2325](https://adaptris.atlassian.net/browse/INTERLOK-2325) - edi-xml-stream-service doesn't cope with escaped fields (composite)
+ - [INTERLOK-2334](https://adaptris.atlassian.net/browse/INTERLOK-2334) - xml-edi-service does not output empty fields
+
+### Improvements
+
+ - [INTERLOK-1509](https://adaptris.atlassian.net/browse/INTERLOK-1509) - Add redis "com.adaptris.cache" implementation
+ - [INTERLOK-2268](https://adaptris.atlassian.net/browse/INTERLOK-2268) - Apache Ignite support
+ - [INTERLOK-2272](https://adaptris.atlassian.net/browse/INTERLOK-2272) - Migrate cache interface into interlok
+ - [INTERLOK-2273](https://adaptris.atlassian.net/browse/INTERLOK-2273) - Create cache wrapper around ExpiringMap
+ - [INTERLOK-2274](https://adaptris.atlassian.net/browse/INTERLOK-2274) - Create interlok-cache project for eh-cache
+ - [INTERLOK-2276](https://adaptris.atlassian.net/browse/INTERLOK-2276) - Migrate cache services into interlok
+ - [INTERLOK-2315](https://adaptris.atlassian.net/browse/INTERLOK-2315) - Upgrade ehcache project to ehcache 2.10.5
+ - [INTERLOK-425](https://adaptris.atlassian.net/browse/INTERLOK-425) - Refactor interlok-opt/ehcache to use JSR107
+ - [INTERLOK-2072](https://adaptris.atlassian.net/browse/INTERLOK-2072) - Switch to using the ElasticSearch "Highlevel java REST client"
+ - [INTERLOK-2090](https://adaptris.atlassian.net/browse/INTERLOK-2090) - Failover TCP mode auto-discovery
+ - [INTERLOK-2176](https://adaptris.atlassian.net/browse/INTERLOK-2176) - Shouid all Javadocs for every optional project be published?
+ - [INTERLOK-2215](https://adaptris.atlassian.net/browse/INTERLOK-2215) - Migrate github candidates to gradle
+ - [INTERLOK-2228](https://adaptris.atlassian.net/browse/INTERLOK-2228) - UI User Prefs - Improve the way we store and handle the user preferences
+ - [INTERLOK-2230](https://adaptris.atlassian.net/browse/INTERLOK-2230) - UI - ConsumerMonitor Widget
+ - [INTERLOK-2231](https://adaptris.atlassian.net/browse/INTERLOK-2231) - Update FsConsumerMonitor to return generic getType to remove override
+ - [INTERLOK-2237](https://adaptris.atlassian.net/browse/INTERLOK-2237) - Consider moving Bals Beautification to it's own sub project.
+ - [INTERLOK-2260](https://adaptris.atlassian.net/browse/INTERLOK-2260) - Upgrade the interlok artifact downloader to use Spring boot 2.x
+ - [INTERLOK-2278](https://adaptris.atlassian.net/browse/INTERLOK-2278) - Use nexus lucene search to list the optional components in the UI
+ - [INTERLOK-2279](https://adaptris.atlassian.net/browse/INTERLOK-2279) - Add a new method getArtifactIdentifiers() to AdapterManager
+ - [INTERLOK-2286](https://adaptris.atlassian.net/browse/INTERLOK-2286) - Add subscriber group support to Kafka
+ - [INTERLOK-2292](https://adaptris.atlassian.net/browse/INTERLOK-2292) - interlok-csv: Create an Iterable OrderedCsvMapReader
+ - [INTERLOK-2293](https://adaptris.atlassian.net/browse/INTERLOK-2293) - interlok-csv: CSV metadata splitter
+ - [INTERLOK-2297](https://adaptris.atlassian.net/browse/INTERLOK-2297) - Rename all adp- artifacts to interlok-
+ - [INTERLOK-2302](https://adaptris.atlassian.net/browse/INTERLOK-2302) - %message{} resolution should support resolving the message-unique-id.
+ - [INTERLOK-2314](https://adaptris.atlassian.net/browse/INTERLOK-2314) - interlok-csv-json: JSON to CSV Add the ability to control header inclusion
+ - [INTERLOK-2324](https://adaptris.atlassian.net/browse/INTERLOK-2324) - Update snapshot release to 3.8-SNAPSHOT
+ - [INTERLOK-2326](https://adaptris.atlassian.net/browse/INTERLOK-2326) - interlok-service-tester: Gradle Plugin
+ - [INTERLOK-2335](https://adaptris.atlassian.net/browse/INTERLOK-2335) - interlok-apache-http: Expose more Client Builder options
+ - [INTERLOK-2283](https://adaptris.atlassian.net/browse/INTERLOK-2283) - UI - Create mockups for settings editor improvements (object lists)
+ - [INTERLOK-2289](https://adaptris.atlassian.net/browse/INTERLOK-2289) - UI API - add delete/patch operations for adapters (where key=name, or db-id)
+ - [INTERLOK-2291](https://adaptris.atlassian.net/browse/INTERLOK-2291) - UI Optional Components - add the correct link for all the opt comp javadocs
+ - [INTERLOK-2295](https://adaptris.atlassian.net/browse/INTERLOK-2295) - Update to xercesImpl 2.12
+ - [INTERLOK-2298](https://adaptris.atlassian.net/browse/INTERLOK-2298) - Update references of adp- to interlok- and dependencies on 3.7 to 3.8
+ - [INTERLOK-2299](https://adaptris.atlassian.net/browse/INTERLOK-2299) - UI Optional Components - decide what to do about the dead links for javadocs
+ - [INTERLOK-2322](https://adaptris.atlassian.net/browse/INTERLOK-2322) - Remove the legacy config store from the configuration page
+ - [INTERLOK-2342](https://adaptris.atlassian.net/browse/INTERLOK-2342) - Change direct dependencies text in optional components
+ - [INTERLOK-2343](https://adaptris.atlassian.net/browse/INTERLOK-2343) - New Icons required for optional page
+ - [INTERLOK-2344](https://adaptris.atlassian.net/browse/INTERLOK-2344) - Upgrade guava to 26.0-jre
+ - [INTERLOK-2345](https://adaptris.atlassian.net/browse/INTERLOK-2345) - interlok-jruby # advanced-builder should have a jruby-home
+ - [INTERLOK-2346](https://adaptris.atlassian.net/browse/INTERLOK-2346) - Upgrade spring to 4.3.18.RELEASE
+ - [INTERLOK-2351](https://adaptris.atlassian.net/browse/INTERLOK-2351) - Upgrade jacoco to 0.8.1
