@@ -7,6 +7,9 @@ permalink: advanced-profiler-failover.html
 summary: This page describes how to configure multiple Interlok instances to start up in failover mode (since 3.0.6)
 ---
 
+{% include important.html content="in 3.8.0; adp-profiler and adp-failover were renamed to interlok-profiler and interlok-profiler-failover respectively" %}
+
+
 ## Failover Mode ##
 
 When multiple instances of Interlok start in failover mode, only one single instance, known as the master, will fully start up ready to process messages.  All other Interlok instances in the cluster will sit and wait in a dormant state (slave) until they are promoted to the master.
@@ -20,8 +23,8 @@ Please note, some environments do not enable multicast broadcasting by default, 
 ### Installation ###
 
 For each Interlok instance you wish to join the failover cluster, you will need three additional optional components;
-- adp-failover
-- adp-profiler
+- interlok-profiler-failover
+- interlok-profiler
 - ehcache
 
 Each component will have a set of java library files (*.jar), each of which must be dropped into the lib directory of each Interlok instance in the failover cluster.
@@ -32,7 +35,7 @@ Each of the optional components mentioned above require their own configuration 
 
 ### Configuring the Profiling Component ###
 
-`com.adaptris:adp-profiler` uses AOP to fire events when the appropriate methods of [Workflow][], [AdaptrisMessageProducer][] or [Service][] are triggered. It requires `aspjectjweaver` as a java agent when starting the JVM. The recommendation is to not use the bundled wrapper executables, and to roll your own scripts which can provide the correct startup parameters to the JVM.
+`com.adaptris:interlok-profiler` uses AOP to fire events when the appropriate methods of [Workflow][], [AdaptrisMessageProducer][] or [Service][] are triggered. It requires `aspjectjweaver` as a java agent when starting the JVM. The recommendation is to not use the bundled wrapper executables, and to roll your own scripts which can provide the correct startup parameters to the JVM.
 
 An example windows script to start an Interlok instance in failover mode;
 
@@ -45,7 +48,7 @@ set JAVA_HOME=C:\Java\jdk1.7.0_55\bin
 
 set ASPECT_OPTIONS=-Dorg.aspectj.weaver.loadtime.configuration=META-INF/profiler-aop.xml
 
-set CLASSPATH=%CLASSPATH%;%ADAPTRIS_HOME%\lib\adp-core.jar;%ADAPTRIS_HOME%\config
+set CLASSPATH=%CLASSPATH%;%ADAPTRIS_HOME%\lib\interlok-core.jar;%ADAPTRIS_HOME%\config
 for /R %ADAPTRIS_HOME%\lib %%H in (*.jar) do set CLASSPATH=!CLASSPATH!;..\Interlok3.0.6\lib\%%~nxH
 
 %JAVA_HOME%\java -cp %CLASSPATH% -javaagent:lib/aspectjweaver-1.7.4.jar %ASPECT_OPTIONS% -Xmx1024m com.adaptris.core.management.SimpleBootstrap
@@ -184,7 +187,7 @@ TRACE [SimpleBootstrap:Channel1.START] [InitialisedState] Started [Channel(Chann
 TRACE [SimpleBootstrap] [ClosedState] Started [Adapter(FS-FS-Adapter)]
 ```
 
-[Workflow]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageListener.html#onAdaptrisMessage-com.adaptris.core.AdaptrisMessage-
-[Service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Service.html#doService-com.adaptris.core.AdaptrisMessage-
-[AdaptrisMessageProducer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageSender.html#produce-com.adaptris.core.AdaptrisMessage-com.adaptris.core.ProduceDestination-
-[SimpleBootstrap]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/management/SimpleBootstrap.html
+[Workflow]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/AdaptrisMessageListener.html#onAdaptrisMessage-com.adaptris.core.AdaptrisMessage-
+[Service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/Service.html#doService-com.adaptris.core.AdaptrisMessage-
+[AdaptrisMessageProducer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/AdaptrisMessageSender.html#produce-com.adaptris.core.AdaptrisMessage-com.adaptris.core.ProduceDestination-
+[SimpleBootstrap]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/management/SimpleBootstrap.html

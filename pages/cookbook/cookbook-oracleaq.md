@@ -7,6 +7,9 @@ permalink: cookbook-oracleaq.html
 summary: This document summarises configurations for consuming and producing JMS messages using OracleAQ.
 ---
 
+{% include important.html content="in 3.8.0; adp-jms-oraclemq was renamed to interlok-jms-oracleaq" %}
+
+
 This document summarises configurations for consuming and producing JMS messages using OracleAQ.  It is assumed that you have a passing knowledge of Interlok and its configuration. No Oracle knowledge is assumed, though you should have some passing familiarity with SQL. You will be expected to be able to manipulate and compile java classes exported from Oracle. This guide has been built with Oracle 10g in mind.  However if you happen to be using later Oracle versions, the only changes should be to the java archive files you will need to copy from your Oracle installation to your Interlok installation, mentioned later in this guide
 
 If you are an Oracle expert and everything is already setup, you can probably ignore almost all of the Oracle specific configuration instructions and do your own thing. If you aren't an Oracle expert and are setting up an Oracle instance from scratch, then you need to pay careful attention to the Oracle specific configuration instructions.
@@ -17,7 +20,7 @@ If you are an Oracle expert and everything is already setup, you can probably ig
 
 ### Interlok Pre-requisites ###
 
-Before you can start Interlok that is able to consume or produce from or to OracleAQ, you must first install the Interlok OracleAQ optional component into your Interlok installation. All available Interlok sub components are shipped with the standard Interlok installation.  Simply navigate to the _optional_ directory at the root of your Interlok installation and from there the `oracle` subdirectory.   Copy the java archive file named `adp-jms-oracleaq.jar` to your _lib_ directory in the root of your Interlok installation.  Finally you will also need to copy any required java archives for client access into the _lib_ directory of your Interlok installation directory. Generally speaking this will be all `jdbc14.jar` and `aqapi.jar`, however additional jars may be required depending on the connection method. All configuration examples for can be found in the _docs/optional/example-xml_ directory as normal.
+Before you can start Interlok that is able to consume or produce from or to OracleAQ, you must first install the Interlok OracleAQ optional component into your Interlok installation. All available Interlok sub components are shipped with the standard Interlok installation.  Simply navigate to the _optional_ directory at the root of your Interlok installation and from there the `oracle` subdirectory.   Copy the java archive file named `interlok-jms-oracleaq.jar` to your _lib_ directory in the root of your Interlok installation.  Finally you will also need to copy any required java archives for client access into the _lib_ directory of your Interlok installation directory. Generally speaking this will be all `jdbc14.jar` and `aqapi.jar`, however additional jars may be required depending on the connection method. All configuration examples for can be found in the _docs/optional/example-xml_ directory as normal.
 
 ----
 
@@ -274,26 +277,26 @@ The [TypeWrapper][] interface allows you to handle different types of data withi
 
 <br/>
 
-[oracleaq-implementation]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/OracleAqImplementation.html
-[oracle-topic-producer]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/OracleAqPasProducer.html
-[ReceipientList]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/RecipientList.html
-[oracleaq-configured-recipient]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/ConfiguredRecipient.html
-[oracleaq-metadata-recipient]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/MetadataRecipient.html
-[text-message-translator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/TextMessageTranslator.html
+[oracleaq-implementation]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/OracleAqImplementation.html
+[oracle-topic-producer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/OracleAqPasProducer.html
+[ReceipientList]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/RecipientList.html
+[oracleaq-configured-recipient]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/ConfiguredRecipient.html
+[oracleaq-metadata-recipient]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/MetadataRecipient.html
+[text-message-translator]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/TextMessageTranslator.html
 [SQLDeveloper]: http://www.oracle.com/technetwork/developer-tools/sql-developer/downloads/index.html
-[dynamic-adt-message-translator]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/DynamicAdtMessageTranslator.html
-[FieldMapper]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/FieldMapper.html
-[oracleaq-metadata-mapper]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/MetadataMapper.html
-[oracleaq-payload-mapper]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/PayloadMapper.html
-[oracleaq-message-id-mapper]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/MessageIdMapper.html
-[oracleaq-configured-field]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/ConfiguredField.html
-[oracleaq-xpath-field]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/XpathField.html
-[TypeWrapper]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/TypeWrapper.html
-[AdtMessageTranslator]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/AdtMessageTranslator.html
-[oracleaq-simple-type]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/SimpleType.html
-[oracleaq-blob-type]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/BlobType.html
-[oracleaq-clob-type]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/ClobType.html
-[oracleaq-date-type]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/DateType.html
-[oracleaq-time-type]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/TimeType.html
-[oracleaq-timestamp-type]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/TimestampType.html
-[ClobType.Handler]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/ClobType.Handler.html
+[dynamic-adt-message-translator]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/DynamicAdtMessageTranslator.html
+[FieldMapper]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/FieldMapper.html
+[oracleaq-metadata-mapper]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/MetadataMapper.html
+[oracleaq-payload-mapper]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/PayloadMapper.html
+[oracleaq-message-id-mapper]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/MessageIdMapper.html
+[oracleaq-configured-field]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/ConfiguredField.html
+[oracleaq-xpath-field]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/XpathField.html
+[TypeWrapper]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/TypeWrapper.html
+[AdtMessageTranslator]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/AdtMessageTranslator.html
+[oracleaq-simple-type]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/SimpleType.html
+[oracleaq-blob-type]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/BlobType.html
+[oracleaq-clob-type]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/ClobType.html
+[oracleaq-date-type]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/DateType.html
+[oracleaq-time-type]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/TimeType.html
+[oracleaq-timestamp-type]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/TimestampType.html
+[ClobType.Handler]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/ClobType.Handler.html

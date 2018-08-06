@@ -9,14 +9,17 @@ summary: This page describes how to profile Interlok and inject statistics into 
 
 {% include note.html content="If you don't know what [Stackify][] is then you can blithely ignore this document." %}
 
+{% include important.html content="in 3.8.0; adp-profiler and adp-stackify were renamed to interlok-profiler and interlok-stackify respectively" %}
+
+
 ## Installation ##
 
-The `com.adaptris:adp-profiler` and `com.adaptris:adp-stackify` artefacts are not normally shipped as part of a traditional installer; you can download them directly from our [public repository] or use [Ant+Ivy](advanced-ant-ivy-deploy.html) to deploy them.
+The `com.adaptris:interlok-profiler` and `com.adaptris:interlok-stackify` artefacts are not normally shipped as part of a traditional installer; you can download them directly from our [public repository] or use [Ant+Ivy](advanced-ant-ivy-deploy.html) to deploy them.
 
 
 ## Enabling the profiler ##
 
-`com.adaptris:adp-profiler` uses AOP to fire events when the appropriate methods of [Workflow][], [AdaptrisMessageProducer][] or [Service][] are triggered. It requires `aspjectjweaver` as a java agent when starting the JVM. The recommendation is to not use the bundled Interlok wrapper executables, and to roll your own scripts which can provide the correct startup parameters to the JVM. The aspects themselves are stored in `META-INF/profiler-aop.xml` which means that you need to set the appropriate aspectj system property to enable the aspects. To get meaningful information you need a concrete implementation of `com.adaptris.profiler.client.PluginFactory` which is where `com.adaptris:adp-stackify` comes in.
+`com.adaptris:interlok-profiler` uses AOP to fire events when the appropriate methods of [Workflow][], [AdaptrisMessageProducer][] or [Service][] are triggered. It requires `aspjectjweaver` as a java agent when starting the JVM. The recommendation is to not use the bundled Interlok wrapper executables, and to roll your own scripts which can provide the correct startup parameters to the JVM. The aspects themselves are stored in `META-INF/profiler-aop.xml` which means that you need to set the appropriate aspectj system property to enable the aspects. To get meaningful information you need a concrete implementation of `com.adaptris.profiler.client.PluginFactory` which is where `com.adaptris:interlok-stackify` comes in.
 
 {% include important.html content="Currently, it is only possible to profile classes that live in a `com.adaptris..*` package, to avoid additional overhead in the Aspects." %}
 
@@ -94,8 +97,8 @@ And should you drill down into the groups you can see the metrics over a period 
 
 [Stackify]: http://stackify.com/
 [public repository]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/
-[SimpleBootstrap]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/management/SimpleBootstrap.html
+[SimpleBootstrap]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/management/SimpleBootstrap.html
 [Stackify Agent]: https://stackify.screenstepslive.com/s/3095/m/7787/l/119709-installation-for-linux
-[Workflow]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageListener.html#onAdaptrisMessage-com.adaptris.core.AdaptrisMessage-
-[AdaptrisMessageProducer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageSender.html#produce-com.adaptris.core.AdaptrisMessage-com.adaptris.core.ProduceDestination-
-[Service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Service.html#doService-com.adaptris.core.AdaptrisMessage-
+[Workflow]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/AdaptrisMessageListener.html#onAdaptrisMessage-com.adaptris.core.AdaptrisMessage-
+[AdaptrisMessageProducer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/AdaptrisMessageSender.html#produce-com.adaptris.core.AdaptrisMessage-com.adaptris.core.ProduceDestination-
+[Service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/Service.html#doService-com.adaptris.core.AdaptrisMessage-

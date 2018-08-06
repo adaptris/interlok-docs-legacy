@@ -6,6 +6,8 @@ permalink: developer-annotations.html
 summary: This document is aimed at system developers who wish to create new or custom Interlok components and for those components to be fully integrated into the Interlok framework.
 ---
 
+{% include important.html content="in 3.8.0; adp-core-apt and adp-core were renamed to interlok-core-apt and interlok-core respectively" %}
+
 The Interlok code base uses annotations for a few reasons and all developers are encouraged to follow those recommendations detailed in this document; To fully incorporate your new components, you will need to make sure that the marshalling engine knows how to translate the configuration of your component into the running Interlok instance.
 
 And of course should an end-user want to incorporate schema validation, a newly generated schema will need to know the details of your component.
@@ -289,7 +291,7 @@ There are currently 2 custom taglets supported at the class level javadoc; the t
 </javadoc>
 ```
 
-{% include note.html content="You need to include `com.adaptris:adp-core-apt` as a dependency if you are using dependency management." %}
+{% include note.html content="You need to include `com.adaptris:interlok-core-apt` as a dependency if you are using dependency management." %}
 
 ### @license ###
 

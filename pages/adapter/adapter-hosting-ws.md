@@ -8,6 +8,8 @@ permalink: adapter-hosting-ws.html
 
 {% include note.html content="This is only useful if you want to inject messages into an arbitrary workflow. Use a normal jetty based workflow if that is the intended endpoint" %}
 
+{% include important.html content="since 3.8.0; adp-web-services has been renamed to interlok-web-services" %}
+
 Generally, if you are using Interlok as an HTTP endpoint, then you would just use one of the standard HTTP consumers as part of a normal workflow ([Servicing HTTP requests](cookbook-http-server.html)); however, in certain situations it can be useful to expose an arbitrary workflow (e.g. a JMS bridge) so that you can inject messages into the workflow without doing additional configuration. This requires that you enable the built-in jetty instance, and to use a custom web application.
 
 ## Enabling the built-in Webserver ##
@@ -23,16 +25,16 @@ As shown above "jetty", the embedded web server is enabled.
 
 # Installing the Web Services Component #
 
-Get the webservice application (_adp-web-services.war_), from either then [snapshot repository](https://development.adaptris.net/nexus/content/groups/adaptris-snapshots/com/adaptris/adp-web-services/) or the [release repository](https://development.adaptris.net/nexus/content/groups/public/com/adaptris/adp-web-services/). For versions 3.0.5 and earlier, the artefact was called adp-webservices-internal and can be found under that name.
+Get the webservice application (_interlok-web-services.war_), from either then [snapshot repository](https://development.adaptris.net/nexus/content/groups/adaptris-snapshots/com/adaptris/interlok-web-services/) or the [release repository](https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-web-services/). For versions 3.0.5 and earlier, the artefact was called adp-webservices-internal and can be found under that name.
 
-Rename the file to be _adp-web-services.war_ and drop it into the interlok web-app directory.  The default location for the web-app directory will be a directory named `webapps` in the root of your Interlok installation.  This folder should already exist, if not, create it.
+Rename the file to be _interlok-web-services.war_ and drop it into the interlok web-app directory.  The default location for the web-app directory will be a directory named `webapps` in the root of your Interlok installation.  This folder should already exist, if not, create it.
 
 You can check/change the location of the jetty web-app directory within the jetty.xml file.  A property named;
 
 ```xml
 <Set name="monitoredDirName"><Property name="jetty.home" default="." />/webapps</Set>
 ```
-You can check everything is correct, by starting Interlok and navigating to the following url (assuming, Interlok is running locally): `http://localhost:8080/adp-web-services/workflow-services?wsdl`
+You can check everything is correct, by starting Interlok and navigating to the following url (assuming, Interlok is running locally): `http://localhost:8080/interlok-web-services/workflow-services?wsdl`
 
 # Standard Interlok Web Services #
 
@@ -570,4 +572,4 @@ If message was successfully submitted to the workflow then you will get a simple
 ```
 
 
-[SerializableMessage]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/SerializableAdaptrisMessage.html
+[SerializableMessage]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/SerializableAdaptrisMessage.html

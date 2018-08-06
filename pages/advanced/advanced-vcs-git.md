@@ -7,6 +7,8 @@ permalink: advanced-vcs-git.html
 summary: Configure Interlok to automatically check out config from GIT when starting.
 ---
 
+{% include note.html content="This depends on the artifact com.adaptris:interlok-vcs-git. In 3.8.0; adp-vcs-git was renamed to interlok-vcs-git" %}
+
 ## Configuration ##
 
 ### Basic Configuration ###
@@ -156,5 +158,5 @@ The reason for this error is in FS_Win32.java:113 JGit tries to find native git 
 
 If you do see this error, you can ignore it knowing that version control with Git will work anyway.
 
-[VersionControlSystem]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/management/vcs/VersionControlSystem.html
+[VersionControlSystem]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/management/vcs/VersionControlSystem.html
 [public repository]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/

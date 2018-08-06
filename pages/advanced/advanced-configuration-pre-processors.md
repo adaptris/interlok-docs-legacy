@@ -317,8 +317,8 @@ class=com.adaptris.core.varsub.VariableSubstitutionPreProcessor
 ```
 
 
-[ConfigurationPreProcessor]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/runtime/ConfigurationPreProcessor.html
-[BootstrapProperties]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/management/BootstrapProperties.html
-[xstream-varsub-marshaller]: https://development.adaptris.net/javadocs/v3-snapshot/optional/varsub/com/adaptris/core/varsub/XStreamMarshaller.html
-[xstream-marshaller]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/XStreamMarshaller.html
-[xstream-xinclude-marshaller]: https://development.adaptris.net/javadocs/v3-snapshot/optional/xinclude/com/adaptris/core/xinclude/XStreamMarshaller.html
+[ConfigurationPreProcessor]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/runtime/ConfigurationPreProcessor.html
+[BootstrapProperties]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/management/BootstrapProperties.html
+[xstream-varsub-marshaller]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-varsub/3.8-SNAPSHOT/com/adaptris/core/varsub/XStreamMarshaller.html
+[xstream-marshaller]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/XStreamMarshaller.html
+[xstream-xinclude-marshaller]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-xinclude/3.8-SNAPSHOT/com/adaptris/core/xinclude/XStreamMarshaller.html

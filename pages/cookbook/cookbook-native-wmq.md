@@ -7,6 +7,8 @@ permalink: cookbook-native-wmq.html
 summary: This document summarises configurations for consuming and producing messages using the native IBM WebsphereMQ API.
 ---
 
+{% include important.html content="in 3.8.0; adp-webspheremq was renamed to interlok-webspheremq" %}
+
 This document summarises configurations for consuming and producing messages using the native IBM WebsphereMQ API. If you are attaching to WebsphereMQ via JMS, then the [JMS Guide][] contains specifics for that. It assumed that you have a passing knowledge of Interlok and its configuration. This guide has been built with MQSeries version 7.5 in mind.  However if you happen to be using another version, the only changes should be to the java archive files you will need to copy from your MQSeries installation to your Interlok installation, mentioned later in this guide.
 
 
@@ -16,7 +18,7 @@ This document summarises configurations for consuming and producing messages usi
 
 ### Interlok Pre-requisites ###
 
-Before you can start Interlok that is able to consume or produce from or to MSMQ, you must first install the Interlok MSMQ sub component into your Interlok installation. All available Interlok sub components are shipped with the standard Interlok installation.  Simply navigate to the _optional_ directory at the root of your Interlok installation and from there the `webspheremq` subdirectory.   Copy the java archive file named `adp-jms-websphere.jar` to your _lib_ directory in the root of your Interlok installation.  Finally you will also need to copy any required java archives for client access from your MQSeries installation into the _lib_ directory of your Interlok installation directory. Generally speaking this will be all `com.ibm.*.jar files`, along with `dhbcore.jar`, however additional jars may be required depending on the connection method. All configuration examples for can be found in the _docs/optional/example-xml_ directory as normal.
+Before you can start Interlok that is able to consume or produce from or to MSMQ, you must first install the Interlok MSMQ sub component into your Interlok installation. All available Interlok sub components are shipped with the standard Interlok installation.  Simply navigate to the _optional_ directory at the root of your Interlok installation and from there the `webspheremq` subdirectory.   Copy the java archive file named `interlok-webspheremq.jar` to your _lib_ directory in the root of your Interlok installation.  Finally you will also need to copy any required java archives for client access from your MQSeries installation into the _lib_ directory of your Interlok installation directory. Generally speaking this will be all `com.ibm.*.jar files`, along with `dhbcore.jar`, however additional jars may be required depending on the connection method. All configuration examples for can be found in the _docs/optional/example-xml_ directory as normal.
 
 ----
 
@@ -117,21 +119,21 @@ The configuration above is a minimal configuration needed to forward a message t
 
 
 [JMS Guide]: cookbook-jms.html
-[wmq-attached-connection]: https://development.adaptris.net/javadocs/v3-snapshot/optional/webspheremq/com/adaptris/core/wmq/AttachedConnection.html
-[wmq-detached-connection]: https://development.adaptris.net/javadocs/v3-snapshot/optional/webspheremq/com/adaptris/core/wmq/DetachedConnection.html
-[KeyValuePairSet]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/util/KeyValuePairSet.html
-[NativeConnection]: https://development.adaptris.net/javadocs/v3-snapshot/optional/webspheremq/com/adaptris/core/wmq/NativeConnection.html
-[wmq-native-producer]: https://development.adaptris.net/javadocs/v3-snapshot/optional/webspheremq/com/adaptris/core/wmq/NativeProducer.html
-[wmq-native-consumer]: https://development.adaptris.net/javadocs/v3-snapshot/optional/webspheremq/com/adaptris/core/wmq/NativeConsumer.html
-[wmq-forwarding-native-consumer-error-handler]: https://development.adaptris.net/javadocs/v3-snapshot/optional/webspheremq/com/adaptris/core/wmq/ForwardingNativeConsumerErrorHandler.html
-[PollingConsumer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisPollingConsumer.html
-[FieldMapper]: https://development.adaptris.net/javadocs/v3-snapshot/optional/webspheremq/com/adaptris/core/wmq/mapping/FieldMapper.html
-[wmq-metadata-field-mapper]: https://development.adaptris.net/javadocs/v3-snapshot/optional/webspheremq/com/adaptris/core/wmq/mapping/MetadataFieldMapper.html
-[charset-byte-translator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/util/text/CharsetByteTranslator.html
-[simple-byte-translator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/util/text/SimpleByteTranslator.html
-[base64-byte-translator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/util/text/Base64ByteTranslator.html
-[hex-string-byte-translator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/util/text/HexStringByteTranslator.html
-[wmq-message-id-mapper]: https://development.adaptris.net/javadocs/v3-snapshot/optional/webspheremq/com/adaptris/core/wmq/mapping/MessageIdMapper.html
-[wmq-configured-field]: https://development.adaptris.net/javadocs/v3-snapshot/optional/webspheremq/com/adaptris/core/wmq/mapping/ConfiguredField.html
-[wmq-xpath-field]: https://development.adaptris.net/javadocs/v3-snapshot/optional/webspheremq/com/adaptris/core/wmq/mapping/XpathField.html
-[wmq-uuid-field-mapper]: https://development.adaptris.net/javadocs/v3-snapshot/optional/webspheremq/com/adaptris/core/wmq/mapping/UuidFieldMapper.html
+[wmq-attached-connection]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.8-SNAPSHOT/com/adaptris/core/wmq/AttachedConnection.html
+[wmq-detached-connection]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.8-SNAPSHOT/com/adaptris/core/wmq/DetachedConnection.html
+[KeyValuePairSet]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/util/KeyValuePairSet.html
+[NativeConnection]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.8-SNAPSHOT/com/adaptris/core/wmq/NativeConnection.html
+[wmq-native-producer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.8-SNAPSHOT/com/adaptris/core/wmq/NativeProducer.html
+[wmq-native-consumer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.8-SNAPSHOT/com/adaptris/core/wmq/NativeConsumer.html
+[wmq-forwarding-native-consumer-error-handler]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.8-SNAPSHOT/com/adaptris/core/wmq/ForwardingNativeConsumerErrorHandler.html
+[PollingConsumer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/AdaptrisPollingConsumer.html
+[FieldMapper]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.8-SNAPSHOT/com/adaptris/core/wmq/mapping/FieldMapper.html
+[wmq-metadata-field-mapper]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.8-SNAPSHOT/com/adaptris/core/wmq/mapping/MetadataFieldMapper.html
+[charset-byte-translator]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/util/text/CharsetByteTranslator.html
+[simple-byte-translator]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/util/text/SimpleByteTranslator.html
+[base64-byte-translator]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/util/text/Base64ByteTranslator.html
+[hex-string-byte-translator]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/util/text/HexStringByteTranslator.html
+[wmq-message-id-mapper]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.8-SNAPSHOT/com/adaptris/core/wmq/mapping/MessageIdMapper.html
+[wmq-configured-field]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.8-SNAPSHOT/com/adaptris/core/wmq/mapping/ConfiguredField.html
+[wmq-xpath-field]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.8-SNAPSHOT/com/adaptris/core/wmq/mapping/XpathField.html
+[wmq-uuid-field-mapper]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.8-SNAPSHOT/com/adaptris/core/wmq/mapping/UuidFieldMapper.html

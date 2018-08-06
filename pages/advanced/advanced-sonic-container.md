@@ -7,7 +7,10 @@ permalink: advanced-sonic-container.html
 summary: This document is aimed at developers and system administrators who wish to run an instance of Interlok inside a SonicMQ container. You will be instructed on how to build a deployable package (car file) which can be deployed into a SonicMQ container and finally you'll be shown the various configuration options. It is assumed you will have sufficient knowledge of SonicMQ and basic configuration. The following documentation has been created and tested for SonicMQ versions 7.6, 8.5, 2013 and 2015.
 ---
 
-Interlok requires a minimum JVM version of 1.7. SonicMQ version 8.5 and earlier may be running with Java 1.6.  In this case you will need a separate install of Java 1.7 on the SonicMQ host machine. You can download the required files from either then [snapshot repository](https://development.adaptris.net/nexus/content/groups/adaptris-snapshots/com/adaptris/adp-sonicmf/) or the [release repository](https://development.adaptris.net/nexus/content/groups/public/com/adaptris/adp-sonicmf/).
+{% include important.html content="in 3.8.0; adp-sonicmf was renamed to interlok-sonicmf" %}
+
+
+Interlok requires a minimum JVM version of 1.7. SonicMQ version 8.5 and earlier may be running with Java 1.6.  In this case you will need a separate install of Java 1.7 on the SonicMQ host machine. You can download the required files from either then [snapshot repository](https://development.adaptris.net/nexus/content/groups/adaptris-snapshots/com/adaptris/interlok-sonicmf/) or the [release repository](https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-sonicmf/).
 
 ----
 
@@ -35,7 +38,7 @@ This contains the minimum property declarations that you'll need to execute the 
 | --------------- | ------------------- | ----------------------------------- |
 | interlok.version | 3.6.0               | The version of Interlok to download |
 | interlok.lib     | target/interlok/lib | Where to find Interlok libraries. If downloading, libraries will be placed here |
-| extra.lib        | extra-lib           | Where to find extra jar files. Place adp-sonicmf.jar here and any other libraries you want to include in the CAR file that are not automatically downloaded (IBM MQ jars, for example) |
+| extra.lib        | extra-lib           | Where to find extra jar files. Place interlok-sonicmf.jar here and any other libraries you want to include in the CAR file that are not automatically downloaded (IBM MQ jars, for example) |
 | car.name         | MFadapter.car       | The name of the CAR file. Useful if you need to have multiple CARs with different libraries included in the same Sonic domain |
 | car.pack200      | true                | Whether to apply pack200 compression to reduce CAR file size. |
 
@@ -54,7 +57,7 @@ Open a new command line window and navigate to the root directory of the CAR bui
 In order to download interlok and build the CAR file, run:
 
     $ ant
-    
+
 or if you only want to build the car file (because you already have an Interlok installation to package):
 
     $ ant build-car

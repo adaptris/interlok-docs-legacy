@@ -7,7 +7,9 @@ permalink: cookbook-json-transform.html
 summary: Using the JSON packge to perform JSON/XML and JSON to JSON transformations
 ---
 
-The [adp-json][] optional package handles JSON documents within the framework. It supports the majority of operations that are available for XML within the base packages. It is included as an optional package because it introduces a significant number of additional dependencies.  The key features are described here; some JSON specific implementations are also available to support other services such as [jdbc-json-first-resultset-output][] for [jdbc-data-query-service][]; [routing-json-path-syntax-identifier][] for [syntax-routing-service][]; [json-array-splitter][], [json-path-splitter][] as a [MessageSplitter][] implementation.
+{% include important.html content="in 3.8.0; adp-json and adp-simple-csv were renamed to interlok-json and interlok-csv respectively" %}
+
+The [interlok-json][] optional package handles JSON documents within the framework. It supports the majority of operations that are available for XML within the base packages. It is included as an optional package because it introduces a significant number of additional dependencies.  The key features are described here; some JSON specific implementations are also available to support other services such as [jdbc-json-first-resultset-output][] for [jdbc-data-query-service][]; [routing-json-path-syntax-identifier][] for [syntax-routing-service][]; [json-array-splitter][], [json-path-splitter][] as a [MessageSplitter][] implementation.
 
 ## JSON Path ##
 
@@ -109,7 +111,7 @@ You can convert to and from XML via [json-xml-transform-service][] by specifying
 
 ## JSON to CSV ##
 
-Since 3.6.6 you can convert to and from CSV via the [interlok-csv-json][] optional package. This adds new services that allow you to easily convert JSON to CSV and vice versa. It has a dependency on both [adp-simple-csv][] and [adp-json][].
+Since 3.6.6 you can convert to and from CSV via the [interlok-csv-json][] optional package. This adds new services that allow you to easily convert JSON to CSV and vice versa. It has a dependency on both [interlok-csv][] and [interlok-json][].
 
 ## JSON Schema ##
 
@@ -152,30 +154,30 @@ along with configuration, which will throw an exception for error handling if th
 
 
 
-[adp-json]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/adp-json/
-[jdbc-json-first-resultset-output]: https://development.adaptris.net/javadocs/v3-snapshot/optional/json/com/adaptris/core/json/jdbc/JdbcJsonOutput.html
-[jdbc-data-query-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/JdbcDataQueryService.html
-[routing-json-path-syntax-identifier]: https://development.adaptris.net/javadocs/v3-snapshot/optional/json/com/adaptris/core/services/routing/json/JsonPathSyntaxIdentifier.html
-[syntax-routing-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/routing/SyntaxRoutingService.html
+[interlok-json]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-json/
+[jdbc-json-first-resultset-output]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.8-SNAPSHOT/com/adaptris/core/json/jdbc/JdbcJsonOutput.html
+[jdbc-data-query-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/jdbc/JdbcDataQueryService.html
+[routing-json-path-syntax-identifier]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.8-SNAPSHOT/com/adaptris/core/services/routing/json/JsonPathSyntaxIdentifier.html
+[syntax-routing-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/routing/SyntaxRoutingService.html
 [JOLT]: https://github.com/bazaarvoice/jolt
 [JsonPath]: https://github.com/jayway/JsonPath
-[json-path-service]: https://development.adaptris.net/javadocs/v3-snapshot/optional/json/com/adaptris/core/services/path/json/JsonPathService.html
-[json-array-splitter]: https://development.adaptris.net/javadocs/v3-snapshot/optional/json/com/adaptris/core/services/splitter/json/JsonArraySplitter.html
-[MessageSplitter]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/splitter/MessageSplitter.html
-[json-to-metadata]: https://development.adaptris.net/javadocs/v3-snapshot/optional/json/com/adaptris/core/json/JsonToMetadata.html
-[json-transform-service]: https://development.adaptris.net/javadocs/v3-snapshot/optional/json/com/adaptris/core/transform/json/JsonTransformService.html
-[json-xml-transform-service]: https://development.adaptris.net/javadocs/v3-snapshot/optional/json/com/adaptris/core/transform/json/JsonXmlTransformService.html
+[json-path-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.8-SNAPSHOT/com/adaptris/core/services/path/json/JsonPathService.html
+[json-array-splitter]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.8-SNAPSHOT/com/adaptris/core/services/splitter/json/JsonArraySplitter.html
+[MessageSplitter]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/splitter/MessageSplitter.html
+[json-to-metadata]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.8-SNAPSHOT/com/adaptris/core/json/JsonToMetadata.html
+[json-transform-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.8-SNAPSHOT/com/adaptris/core/transform/json/JsonTransformService.html
+[json-xml-transform-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.8-SNAPSHOT/com/adaptris/core/transform/json/JsonXmlTransformService.html
 [json.org]: http://www.json.org/java/index.html
-[simple-transformation-driver]: https://development.adaptris.net/javadocs/v3-snapshot/optional/json/com/adaptris/core/transform/json/SimpleJsonTransformationDriver.html
-[default-transformation-driver]: https://development.adaptris.net/javadocs/v3-snapshot/optional/json/com/adaptris/core/transform/json/DefaultJsonTransformationDriver.html
+[simple-transformation-driver]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.8-SNAPSHOT/com/adaptris/core/transform/json/SimpleJsonTransformationDriver.html
+[default-transformation-driver]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.8-SNAPSHOT/com/adaptris/core/transform/json/DefaultJsonTransformationDriver.html
 [json-lib]: http://json-lib.sourceforge.net/
-[json-array-transformation-driver]: https://development.adaptris.net/javadocs/v3-snapshot/optional/json/com/adaptris/core/transform/json/JsonArrayTransformationDriver.html
-[json-object-transformation-driver]: https://development.adaptris.net/javadocs/v3-snapshot/optional/json/com/adaptris/core/transform/json/JsonObjectTransformationDriver.html
-[json-safe-transformation-driver]: https://development.adaptris.net/javadocs/v3-snapshot/optional/json/com/adaptris/core/transform/json/SafeJsonTransformationDriver.html
-[yaml-to-json]: https://development.adaptris.net/javadocs/v3-snapshot/optional/json/com/adaptris/core/transform/json/YamlToJsonService.html
-[json-schema-service]: https://development.adaptris.net/javadocs/v3-snapshot/optional/json/com/adaptris/core/json/schema/JsonSchemaService.html
-[com.adaptris.core.transform.json.jolt.EmptyStringToNull]: https://development.adaptris.net/javadocs/v3-snapshot/optional/json/com/adaptris/core/transform/json/jolt/EmptyStringToNull.html
-[com.adaptris.core.transform.json.jolt.NullToEmptyString]: https://development.adaptris.net/javadocs/v3-snapshot/optional/json/com/adaptris/core/transform/json/jolt/NullToEmptyString.html
-[json-path-splitter]: https://development.adaptris.net/javadocs/v3-snapshot/optional/json/com/adaptris/core/services/splitter/json/JsonPathSplitter.html
+[json-array-transformation-driver]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.8-SNAPSHOT/com/adaptris/core/transform/json/JsonArrayTransformationDriver.html
+[json-object-transformation-driver]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.8-SNAPSHOT/com/adaptris/core/transform/json/JsonObjectTransformationDriver.html
+[json-safe-transformation-driver]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.8-SNAPSHOT/com/adaptris/core/transform/json/SafeJsonTransformationDriver.html
+[yaml-to-json]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.8-SNAPSHOT/com/adaptris/core/transform/json/YamlToJsonService.html
+[json-schema-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.8-SNAPSHOT/com/adaptris/core/json/schema/JsonSchemaService.html
+[com.adaptris.core.transform.json.jolt.EmptyStringToNull]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.8-SNAPSHOT/com/adaptris/core/transform/json/jolt/EmptyStringToNull.html
+[com.adaptris.core.transform.json.jolt.NullToEmptyString]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.8-SNAPSHOT/com/adaptris/core/transform/json/jolt/NullToEmptyString.html
+[json-path-splitter]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.8-SNAPSHOT/com/adaptris/core/services/splitter/json/JsonPathSplitter.html
 [interlok-csv-json]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-csv-json/
-[adp-simple-csv]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/adp-simple-csv/
+[interlok-csv]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-csv/

@@ -9,7 +9,7 @@ summary: The Salesforce Config page help you to generate some config xml to inte
 
 ## Prerequisite ##
 
-To be able to generate salesforce xml templates or copy the xml config to the Config page clipboard you need to have the required **adp-apache-http** and **interlok-oauth-salesforce** [optional component installed](adapter-optional-components.html) into `${adapter.home}/lib` directory.
+To be able to generate salesforce xml templates or copy the xml config to the Config page clipboard you need to have the required **interlok-apache-http** and **interlok-oauth-salesforce** [optional component installed](adapter-optional-components.html) into `${adapter.home}/lib` directory.
 If you are not using those two optional components you will still be able to use the page but you will get a warning message. ![Salesforce warning message](./images/ui-user-guide/salesforce-warning-message.png)
 
 You also need to create a **Connected App** in your Salesforce account. More help on Salesforce developers site [here](https://developer.salesforce.com/docs/atlas.en-us.api_rest.meta/api_rest/intro_defining_remote_access_applications.htm) and [here](https://developer.salesforce.com/page/Connected_Apps) and [here](https://developer.salesforce.com/page/Digging_Deeper_into_OAuth_2.0_on_Force.com).
@@ -39,9 +39,9 @@ The first thing you will need to do in the Salesforce Config page is to authenti
   - **Client Secret:** Salesforce consumer secret
   - **Username:** Salesforce account username
   - **Password:** Salesforce account password + the security token. You can read more about security token on [Salesforce help site](https://help.salesforce.com/articleView?id=user_security_token.htm&type=0).
- 
+
  ![salesforce oauth password grant](./images/ui-user-guide/salesforce-oauth-password-grant.png)
- 
+
 You can remember the Salesforce credentials for the current session by keeping the checkbox ticked (Since 3.6.6).
 {% include note.html content="The credentials are stored in the browser session storage and will be cleared on log out or when the browser tab or window is closed." %}
 
@@ -64,7 +64,7 @@ You can select which standard object type you want to work within the dropdown a
 
 ![Salesforce SOQL builder](./images/ui-user-guide/salesforce-soql-builder.png)
 
-You can use Salesforce Object Query Language (SOQL) to search data into your organisation. SOQL is similar to SQL but specific to Salesforce. Read more about [SOQL](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm). 
+You can use Salesforce Object Query Language (SOQL) to search data into your organisation. SOQL is similar to SQL but specific to Salesforce. Read more about [SOQL](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm).
 The UI Salesforce config page helps building a SOQL for a SObject type. You can select the fields you want to query, add some were clauses, limit and order the list of returned SObjects.
 The SOQL panel also provide a **Build Config XML** button to generate an adapter service xml to use in the UI Config page. The service will query SObjects using the SOQL you've provided.
 

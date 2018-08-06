@@ -15,7 +15,7 @@ As additional features are developed and released our public facing repository i
 | GroupID | ArtifactID | Description | Versions | Notes
 |----|----|----|----|----|
 |com.adaptris | [adp-actional-interceptor][] | Instrumentation of the adapter with Actional Management Server; requires additional jars not automatically delivered | until 3.7.3|  _since 3.8.0_ use [interlok-actional-interceptor][] instead.
-|com.adaptris | [adp-actional-stabiliser][] | Services that interact with the Actional Stabiliser Switch; requires additional jars not automatically delivered; requires [adp-licensing][] - This is compiled against Actional 8.2 and may not work with the latest versions of actional if running outside of a Sonic container (the jars are no longer available)| until 3.7.3 | _since 3.8.0_ use [interlok-actional-stabliser][] instead|
+|com.adaptris | [adp-actional-stabiliser][] | Services that interact with the Actional Stabiliser Switch; requires additional jars not automatically delivered; requires [adp-licensing][] - This is compiled against Actional 8.2 and may not work with the latest versions of actional if running outside of a Sonic container (the jars are no longer available)| until 3.7.3 | _since 3.8.0_ use [interlok-actional-stabiliser][] instead|
 |com.adaptris | [adp-amazon-sqs][] | Connect to Amazon SQS either using their JMS compatibility layer or directly| 3.0.3 to 3.2.1
 |com.adaptris | [adp-amqp][] | Connect to a AMQP 0.9 / 1.0 provider | until 3.7.3 | _since 3.8.0_ use [interlok-amqp][] instead.|
 |com.adaptris | [adp-apache-http][] | HTTP Producer implementation using the Apache HTTP client as the transport | 3.0.5 - 3.7.3 | _since 3.8.0_ use [interlok-apache-http][] instead
@@ -33,7 +33,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [adp-fop][] | PDF Transformations| until 3.7.3 | does not require [adp-licensing][] from 3.3.0;  _since 3.8.0_ use [interlok-pdf][] instead.
 |com.adaptris | [adp-hornetq][] | Connect to HornetQ JMS (will become obsolete as HornetQ is merged into ActiveMQ) | until 3.7.3 |  _since 3.8.0_ use [interlok-hornetq][] instead.
 |com.adaptris | [adp-hpcc][] | Connect to [HPCC](http://www.hpccsystems.com)|3.3.0 - 3.6.0 only
-|com.adaptris | [adp-interfax][] | Integration with the Java FAX API; requires [adp-licensing][]| until 3.7.3 |  _since 3.8.0_ use [interlok-interface][] instead.
+|com.adaptris | [adp-interfax][] | Integration with the Java FAX API; requires [adp-licensing][]| until 3.7.3 |  _since 3.8.0_ use [interlok-interfax][] instead.
 |com.adaptris | [adp-ironmq][] | Connect to IronMQ| until 3.7.3 |does not require [adp-licensing][] from 3.3.0;  _since 3.8.0_ use [interlok-ironmq][] instead or [interlok-aws-sqs][] in JMS mode.
 |com.adaptris | [adp-jms-oracleaq][] | Connect to [Oracle via advanced queues](cookbook-oracleaq.html); requires additional jars not automatically delivered; ; requires [adp-licensing][]| until 3.7.3|  _since 3.8.0_ use [interlok-jms-oracleaq][] instead.
 |com.adaptris | [adp-jms-sonicmq][] | Connect to SonicMQ JMS; ; requires [adp-licensing][]| until 3.7.3 |  _since 3.8.0_ use [interlok-jms-sonicmq][] instead.
@@ -74,24 +74,26 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-actional-interceptor][] | Instrumentation of the adapter with Actional Management Server; requires additional jars not automatically delivered | 3.8.0+
 |com.adaptris | [interlok-actional-stabiliser][] | Services that interact with the Actional Stabiliser Switch; requires additional jars not automatically delivered; requires [interlok-licensing][] - This is compiled against Actional 8.2 and may not work with the latest versions of actional if running outside of a Sonic container (the jars are no longer available)| 3.8.0+ |
 |com.adaptris | [interlok-activemq][] | Embedding ActiveMQ as a management component| 3.6.0+ | available on [github](https://github.com/adaptris/interlok-activemq)
-|com.adaptris | [interlok-amqp][] | Connect to a AMQP 0.9 / 1.0 provider | 3.8.0 |
-|com.adaptris | [interlok-apache-http][] | HTTP Producer implementation using the Apache HTTP client as the transport | 3.8.0+
-|com.adaptris | [interlok-as2][] | Provides AS2 messaging support; requires [adp-licensing][] | 3.8.0+
+|com.adaptris | [interlok-amqp][] | Connect to a AMQP 0.9 / 1.0 provider | 3.8.0 |available on [github](https://github.com/adaptris/interlok-amqp)
+|com.adaptris | [interlok-apache-http][] | HTTP Producer implementation using the Apache HTTP client as the transport | 3.8.0+|available on [github](https://github.com/adaptris/interlok-apache-http)
+|com.adaptris | [interlok-as2][] | Provides AS2 messaging support; requires [interlok-licensing][] | 3.8.0+
 |com.adaptris | [interlok-aws-common][] | Common components required for accessing AWS| 3.3.0+ | available on [github](https://github.com/adaptris/interlok-aws)
-|com.adaptris | [interlok-aws-sqs][] | Integration with Amazon SQS (requires [interlok-aws-common][]|3.3.0+ | available on [github](https://github.com/adaptris/interlok-aws)
-|com.adaptris | [interlok-aws-s3][] | Integration with Amazon S3 (requires [interlok-aws-common][] | 3.3.0+ | available on [github](https://github.com/adaptris/interlok-aws)
-|com.adaptris | [interlok-aws-sns][] | Publish to an SNS topic (requires [interlok-aws-common][] | 3.7.2+ | available on [github](https://github.com/adaptris/interlok-aws)
+|com.adaptris | [interlok-aws-sqs][] | Integration with Amazon SQS (requires [interlok-aws-common][])|3.3.0+ | available on [github](https://github.com/adaptris/interlok-aws)
+|com.adaptris | [interlok-aws-s3][] | Integration with Amazon S3 (requires [interlok-aws-common][]) | 3.3.0+ | available on [github](https://github.com/adaptris/interlok-aws)
+|com.adaptris | [interlok-aws-sns][] | Publish to an SNS topic (requires [interlok-aws-common][]) | 3.7.2+ | available on [github](https://github.com/adaptris/interlok-aws)
 |com.adaptris | [interlok-cirrus-db-webapp][] | Provides access to the cirrus database for web applications | 3.8.0+
 |com.adaptris | [interlok-cirrus-db][] | Provides access to the cirrus database for adapter services | 3.8.0+
 |com.adaptris | [interlok-cirrus-services][] | Provides Cirrus routing services; requires [interlok-licensing][] | 3.8.0+
 |com.adaptris | [interlok-config-conditional][] | Conditional branching and looping | 3.7.3+ | available on [github](https://github.com/adaptris/interlok-config-conditional)
 |com.adaptris | [interlok-core-apt][] | [Custom annotations](developer-annotations.html)| 3.8.0+| available on [github](https://github.com/adaptris/interlok)
-|com.adaptris | [interlok-core][] | The base Interlok framework | 3.8.0+ |
-|com.adaptris | [interlok-csv][] | CSV operations, transforms etc. | 3.8.0+|
-|com.adaptris | [interlok-csv-json][] | Convert between CSV and JSON (requires both [adp-json][] and [adp-simple-csv][]) | 3.6.6+
+|com.adaptris | [interlok-core][] | The base Interlok framework | 3.8.0+ |available on [github](https://github.com/adaptris/interlok)
+|com.adaptris | [interlok-csv][] | CSV operations, transforms etc. | 3.8.0+|available on [github](https://github.com/adaptris/interlok-csv)
+|com.adaptris | [interlok-csv-json][] | Convert between CSV and JSON (requires both [interlok-json][] and [interlok-csv][]) | 3.6.6+|available on [github](https://github.com/adaptris/interlok-csv-json)
 |com.adaptris | [interlok-drools][] | Integration with JBoss Rules; | 3.8.0+|
-|com.adaptris | [interlok-elastic-search][] | Integration with ElasticSearch (requires [adp-simple-csv][]) | 3.4.1+
-|com.adaptris | [interlok-es5][] | Integration with ElasticSearch using v5 API (requires [adp-simple-csv][]) | 3.5.1+ | available on [github](https://github.com/adaptris/interlok-es5)
+|com.adaptris | [interlok-elastic-search][] | Integration with ElasticSearch (requires [interlok-csv][]) | 3.4.1+
+|com.adaptris | [interlok-ehcache][] | Integration with ehcache as a message store| 3.8.0+ |  available on [github](https://github.com/adaptris/interlok-cache)
+|com.adaptris | [interlok-es5][] | Integration with ElasticSearch using v5 API (requires [interlok-csv][]) | 3.5.1+ | available on [github](https://github.com/adaptris/interlok-es5)
+|com.adaptris | [interlok-es-rest][] | Integration with ElasticSearch via their high level REST client (requires [interlok-csv][]) | 3.8.0+ | available on [github](https://github.com/adaptris/interlok-es-rest)
 |com.adaptris | [interlok-expressions][] | Perform inline mathematic expressions | 3.6.4+ | available on [github](https://github.com/adaptris/interlok-expressions)
 |com.adaptris | [interlok-excel][] | Extract data from an Excel spreadsheet | 3.8.0+
 |com.adaptris | [interlok-filesystem][] | Services for interacting with the filesystem | 3.6.6+ | available on [github](https://github.com/adaptris/interlok-filesystem)
@@ -106,10 +108,11 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-jms-sonicmq][] | Connect to SonicMQ JMS; ; requires [interlok-licensing][]| 3.8.0+|
 |com.adaptris | [interlok-jmx-jms][] | Support for [JMX via JMS or AMQP 1.0](advanced-jmx-jms.html) | 3.8.0+
 |com.adaptris | [interlok-jruby][] | Tighter coupling with [jruby](http://jruby.org) as an alternative to [ScriptingService][]/[EmbeddedScriptingService][]|3.6.3+ | available on [github](https://github.com/adaptris/interlok-jruby)
+|com.adaptris | [interlok-jsr107-cache][] | Cache implementation that wraps JSR107 cache implementations |3.8.0+ | available on [github](https://github.com/adaptris/interlok-cache)
 |com.adaptris | [interlok-jq][] | JSON transformations using JQ-like syntax |3.7.0+ | available on [github](https://github.com/adaptris/interlok-jq)
-|com.adaptris | [interlok-json][] | Transform JSON data to and from XML | 3.8.0+ |
-|com.adaptris | [interlok-kafka][] | Connect to [Apache Kafka](http://kafka.apache.org/)| 3.8.0+
-|com.adaptris | [interlok-legacyhttp][] | servicing HTTP requests without Jetty (Java 7 compatible)| 3.6.4+
+|com.adaptris | [interlok-json][] | Transform JSON data to and from XML | 3.8.0+ |available on [github](https://github.com/adaptris/interlok-json)
+|com.adaptris | [interlok-kafka][] | Connect to [Apache Kafka](http://kafka.apache.org/)| 3.8.0+|available on [github](https://github.com/adaptris/interlok-kafka)
+|com.adaptris | [interlok-legacyhttp][] | servicing HTTP requests without Jetty (Java 7 Compatibile where base Interlok Version is)| 3.6.4+
 |com.adaptris | [interlok-licensing][] | Enforces a license on certain components | 3.8.0+
 |com.adaptris | [interlok-logging][] | Custom JMX Appender for [Log4j2](https://logging.apache.org/log4j) | | available on [github](https://github.com/adaptris/interlok)
 |com.adaptris | [interlok-mongodb][] | Support for MongoDB | 3.7.2+ | available on [github](https://github.com/adaptris/interlok-mongodb)
@@ -120,7 +123,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-oauth-azure][] | Retrieve OAUTH access tokens from MS Azure | 3.6.5+ | available on [github](https://github.com/adaptris/interlok-oauth)
 |com.adaptris | [interlok-oauth-gcloud][] | Retrieve OAUTH access tokens from Google Cloud | 3.6.5+ | available on [github](https://github.com/adaptris/interlok-oauth); package move from [interlok-gcloud-pubsub][]
 |com.adaptris | [interlok-oauth-salesforce][] | Retrieve OAUTH access tokens from Salesforce | 3.6.5+ | available on [github](https://github.com/adaptris/interlok-oauth)
-|com.adaptris | [interlok-oftp][] | Support for OFTP as a transport protocol; requires [interlok-licensing][] | until 3.8.0+|
+|com.adaptris | [interlok-oftp][] | Support for OFTP as a transport protocol; requires [interlok-licensing][] | 3.8.0+|
 |com.adaptris | [interlok-pdf][] | PDF Transformations| 3.8.0+
 |com.adaptris | [interlok-profiler][] | Base package for supporting profiling (used by [interlok-new-relic][] and [interlok-stackify][]) | 3.8.0+
 |com.adaptris | [interlok-profiler-failover][] | Running an adapter in failover mode; requires [interlok-profiler][]| 3.8.0+
@@ -130,28 +133,28 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-sap][] | Integration with SAP via [IDocs](cookbook-sap-idoc.html) or [RFC/BAPI](cookbook-sap-rfc.html); requires additional jars not automatically delivered; requires [interlok-licensing][] | 3.8.0+
 |com.adaptris | [interlok-schema][] | RelaxNG [schema validation](advanced-configuration-pre-processors.html#schema-validation) for Interlok configuration files | 3.8.0+
 |com.adaptris | [interlok-service-tester][] | Testing services as part of a CI pipeline | 3.5.0+ | available on [github](https://github.com/adaptris/interlok-service-tester)
-|com.adaptris | [interlok-shell][] | Commandline runtime UI based on [CRaSH](http://www.crashub.org) | 3.4.1+
+|com.adaptris | [interlok-shell][] | Commandline runtime UI based on [CRaSH](http://www.crashub.org) | 3.4.1+|available on [github](https://github.com/adaptris/interlok-shell)
 |com.adaptris | [interlok-socket][] | Fork of com.adaptris.socket.* into its own component  | 3.7.0+ | available on [github](https://github.com/adaptris/interlok-socket)
 |com.adaptris | [interlok-solace][] | Integration with Solace Systems as a JMS provider; requires additional jars not automatically delivered; requires [interlok-licensing][]| 3.8.0+
 |com.adaptris | [interlok-sonicmf][] | Interlok runtime as [part of a Sonic Container](advanced-sonic-container.html) | 3.8.0+
 |com.adaptris | [interlok-sshtunnel][] | Management component that opens one or more SSH tunnels | 3.7.1+ | available on [github](https://github.com/adaptris/interlok-sshtunnel)
-|com.adaptris | [interlok-stackify][] | Supports [Stackify Profiling](advanced-stackify-profiling.html); requires [interlok-profiler][] |3.8.0+
+|com.adaptris | [interlok-stackify][] | Supports [Stackify Profiling](advanced-stackify-profiling.html); requires [interlok-profiler][] |3.8.0+|available on [github](https://github.com/adaptris/interlok-stackify)
 |com.adaptris | [interlok-stax][] | Using the STaX API to read/write XML | 3.6.6+ | available on [github](https://github.com/adaptris/interlok-stax)
 |com.adaptris | [interlok-stubs][] | [Test Scaffolding](developer-services.html#writing-tests) for developers |3.8.0+
 |com.adaptris | [interlok-swift][] | Transform to and from the Swift message format; requires [interlok-licensing][] | 3.8.0+
 |com.adaptris | [interlok-swiftmq][] | Connect to a SwiftMQ instance or any AMQP1.0 broker; [requires SwiftMQ Client Download](http://swiftmq.com/downloads/index.html); requires [interlok-licensing][]| 3.8.0+
 |com.adaptris | [interlok-tibco][] | Connect to a Tibco instance; requires additional jars not automatically delivered; requires [interlok-licensing][]| 3.8.0+|
 |com.adaptris | [interlok-triggered][] | Channels that can be started via an external trigger; requires [interlok-licensing][] | 3.8.0+
-|com.adaptris | [interlok-varsub][] | [Variable substitution pre-processor](advanced-configuration-pre-processors.html#variable-substitution) | 3.8.0+
+|com.adaptris | [interlok-varsub][] | [Variable substitution pre-processor](advanced-configuration-pre-processors.html#variable-substitution) | 3.8.0+|available on [github](https://github.com/adaptris/interlok-varsub)
 |com.adaptris | [interlok-vcs-command-line][] | Interlok configuration hosted in a configurable VCS | 3.5.1+
-|com.adaptris | [interlok-vcs-git][] | Interlok configuration [hosted in git](advanced-vcs-git.html) | 3.8.0+
+|com.adaptris | [interlok-vcs-git][] | Interlok configuration [hosted in git](advanced-vcs-git.html) | 3.8.0+ | available on [github](https://github.com/adaptris/interlok-vcs-git)
 |com.adaptris | [interlok-vcs-subversion][] | Interlok configuration [hosted in subversion](advanced-vcs-svn.html) | 3.8.0+
-|com.adaptris | [interlok-vertx][] | [Clustered workflows and services](advanced-vertx.html); requires [adp-licensing][] | 3.5.0+
+|com.adaptris | [interlok-vertx][] | [Clustered workflows and services](advanced-vertx.html) | 3.5.0+| No longer licensed since _3.8.0_; available on [github](https://github.com/adaptris/interlok-vertx)
 |com.adaptris | [interlok-webservice-cxf][] | Accessing [external webservices](adapter-executing-ws.html)| 3.8.0+
 |com.adaptris | [interlok-webservice-external][] | Accessing [external webservices](adapter-executing-ws.html); requires [interlok-licensing][] | 3.8.0+
 |com.adaptris | [interlok-web-services][] | [Exposing workflows as webservices](adapter-hosting-ws.html); | 3.8.0+
 |com.adaptris | [interlok-webspheremq][] | Connection to a [WebsphereMQ instance](cookbook-native-wmq.html); requires [interlok-licensing][] | 3.8.0+
-|com.adaptris | [interlok-xinclude][] | [XInclude pre-processor](advanced-configuration-pre-processors.html#xinclude)| 3.8.0+
+|com.adaptris | [interlok-xinclude][] | [XInclude pre-processor](advanced-configuration-pre-processors.html#xinclude)| 3.8.0+|available on [github](https://github.com/adaptris/interlok-xinclude)
 |com.adaptris | [interlok-xa][] | XA support within the Adapter; requires [adp-licensing][] | 3.4.0+
 |com.adaptris | [interlok-xml-security][] | XML security (JSR 106); requires [interlok-licensing][] | 3.8.0+
 
@@ -329,8 +332,8 @@ If you've added an optional components following the steps explained above you c
 [interlok-hpcc]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-hpcc/
 [interlok-jruby]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-jruby/
 [interlok-gcloud-pubsub]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-gcloud-pubsub/
-[ScriptingService]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/ScriptingService.html
-[EmbeddedScriptingService]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/EmbeddedScriptingService.html
+[ScriptingService]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/ScriptingService.html
+[EmbeddedScriptingService]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/EmbeddedScriptingService.html
 [interlok-expressions]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-expressions/
 [interlok-legacyhttp]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-legacyhttp/
 [interlok-activemq]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-activemq/
@@ -348,3 +351,5 @@ If you've added an optional components following the steps explained above you c
 [interlok-mongodb]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-mongodb
 [interlok-socket]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-socket
 [interlok-logging]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-logging
+[interlok-es-rest]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-es-rest
+[interlok-jsr107-cache]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-jsr107-cache
