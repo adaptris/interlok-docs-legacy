@@ -8,7 +8,7 @@ toc: false
 summary: The saved configs list allows you to easily save and re-open adapter configurations.
 ---
 
-{% include note.html content="The save config function has been limited from version 3.7.0. You cannot save to it anymore. Please use [Save Config Project](ui-saved-config-projects.html) instead." %}
+{% include note.html content="The save config function has been limited from version 3.7.0 and removed from 3.8.0. You cannot save to it anymore. Please use [Save Config Project](ui-saved-config-projects.html) instead." %}
 
 ## Getting Started ##
 

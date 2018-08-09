@@ -269,7 +269,6 @@ This widget shows the data from the [ThreadMXBean](http://docs.oracle.com/javase
 - Peak – the peak live thread count since the Java virtual machine started or peak was reset.
 - Total Threads Started -the total number of threads created and also started since the Java virtual machine started.
 
-
 ### Platform System CPU Load ###
 
 This widget contains data concerning the cpu usage for the platform running this container.
@@ -352,6 +351,12 @@ The system will stop recording the non heap memory and the data will be cleared 
 - Y Axis – shows the amount of bytes
 - The Non Heap Used line - the amount of memory currently used (in bytes)
 
+### Container Consumer Messages Remaining ###
+
+This widget display the messages remaining to be processed in all the the Container Message Consumers supported by a Consumer Monitor MBean such as the Fs Consumer. (Since 3.8)
+
+![Runtime Widget - Container Consumer Messages Remaining](./images/ui-user-guide/widgets-adapter-consumer-messages-remaining.png)
+
 ## Aggregated Adapter Widgets ##
 
 (Since 3.3)
@@ -385,6 +390,12 @@ This widget is similar to [Channel Message Counts](ui-widgets.html#channel-messa
 ### Channel Control Panel ###
 
 This widget is exactly like the widget described in [Container Control Panel Widget](ui-widgets.html#control-panel), but will control a channel instead of an adapter. (Since 3.4)
+
+### Channel Consumer Messages Remaining ###
+
+This widget is exactly like the widget described in [Container Consumer Messages Remaining](ui-widgets.html#container-consumer-messages-remaining), but the data is concerned with the selected channel. (Since 3.8)
+
+![Runtime Widget - Channel Consumer Messages Remaining](./images/ui-user-guide/widgets-channel-consumer-messages-remaining.png)
 
 ## Workflow Widgets ##
 
@@ -469,6 +480,12 @@ This widget shows a pie chart displaying realtime metadata counts from the messa
 This widget will be enabled if a Metadata Count or Metadata Totals Interceptor has been configured for the workflow.
 
 ![Runtime Widget - Message Counts Pie](./images/ui-user-guide/widgets-workflow-message-metadata-counts-pie-widget.png)
+
+### Workflow Consumer Messages Remaining ###
+
+This widget is exactly like the widget described in [Container Consumer Messages Remaining](ui-widgets.html#container-consumer-messages-remaining), but the data is concerned with the selected workflow. (Since 3.8)
+
+![Runtime Widget - Workflow Consumer Messages Remaining](./images/ui-user-guide/widgets-workflow-consumer-messages-remaining.png)
 
 ## Widget Group ##
 
