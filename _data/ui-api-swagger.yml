@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "Interlok UI Api web service documentation."
-  version: "3.7.3-RELEASE"
+  version: "3.8.0-RELEASE"
   title: "Interlok UI Api Documentation"
 basePath: "/interlok/api"
 tags:
@@ -129,6 +129,31 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/AdapterEntity"
+    delete:
+      tags:
+      - "/adapter"
+      summary: "Delete an adapter"
+      description: ""
+      operationId: "delete"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id or Name of an Adapter in the UI or 'local' to\
+          \ get the UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|([^/]+)"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
   /external/adapter/{url}/{jmxUid}:
     get:
       tags:
@@ -170,6 +195,66 @@ paths:
           description: "successful operation"
           schema:
             $ref: "#/definitions/AdapterEntity"
+  /external/adapter/{adapter}/name:
+    put:
+      tags:
+      - "/adapter"
+      summary: "Update an adapter's name"
+      description: ""
+      operationId: "updateName"
+      consumes:
+      - "text/plain"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id or Name of an Adapter in the UI or 'local' to\
+          \ get the UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|([^/]+)"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
+  /external/adapter/{adapter}/tags:
+    put:
+      tags:
+      - "/adapter"
+      summary: "Update an adapter's tags"
+      description: ""
+      operationId: "updateTags"
+      consumes:
+      - "text/plain"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "adapter"
+        in: "path"
+        description: "The unique Id or Name of an Adapter in the UI or 'local' to\
+          \ get the UI local Adapter."
+        required: true
+        type: "string"
+        pattern: "(local)|([^/]+)"
+      - in: "body"
+        name: "body"
+        required: false
+        schema:
+          type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Result"
   /external/adapter/{adapter}/state:
     get:
       tags:
