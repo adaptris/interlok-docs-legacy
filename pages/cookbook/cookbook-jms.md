@@ -7,6 +7,9 @@ permalink: cookbook-jms.html
 summary: This document summarises various configurations and concepts for handling various types of JMS messaging platforms using Interlok. Interlok can be configured for the more popular flavours of JMS Provider. In most cases you will be required to add the vendor specific Interlok component to your Interlok installation.
 ---
 
+{% include important.html content="in 3.8.0; adp-jms-sonicmq, adp-jms-oracleaq, adp-webspheremq were renamed to interlok-jms-sonicmq, interlok-jms-oracleaq, interlok-webspheremq respectively" %}
+
+
 Each of the sub components are vendor specific and are known to work in most standard configuration instances. Installation of a sub component is very straight forward, simply drop the java archive files into your Interlok "lib" directory. However, it is recommended that you replace any vendor specific java archive files in your Interlok installation with those shipped with your JMS specific vendor.  This ensures that you get the best performance and reliability with Interlok.
 
 ----
@@ -270,7 +273,7 @@ The cached destination JNDI implementation extends the functionality of the stan
 
 ## SonicMQ ##
 
-Once you have acquired the Interlok SonicMQ sub component you can simply copy the java archive file named `adp-jms-sonicmq.jar` from the sub component directory to your `./lib/` directory in the root of your Interlok installation. Note, that all configuration examples can be found in the `./docs/example-xml/optional/jms-sonicmq` directory.
+Once you have acquired the Interlok SonicMQ sub component you can simply copy the java archive file named `interlok-jms-sonicmq.jar` from the sub component directory to your `./lib/` directory in the root of your Interlok installation. Note, that all configuration examples can be found in the `./docs/example-xml/optional/jms-sonicmq` directory.
 Unlike most Interlok sub components the base Interlok installation contains all of the required 3rd party java archive files to instantly allow access to SonicMQ 8.6 for very basic client usage.  There may be additional java archive files required depending on your intended SonicMQ usage; for example if you wish to use SonicMQ as a JNDI store then you will also require the `mfcontext.jar` from your SonicMQ installation. Any additional java archive files you do require from your SonicMQ installation will need to be copied into the `./lib/` directory at the root of your Interlok installation.
 
 ### Vendor Implementations ###
@@ -310,7 +313,7 @@ This functionality has been tested with SonicMQ versions 7.6 and 8.5. It is esse
 
 ## WebsphereMQ JMS ##
 
-Once you have acquired the Interlok MQSeries sub component you can simply copy the java archive file named `adp-jms-webspheremq.jar` from the sub component directory to your `./lib/` directory in the root of your Interlok installation. Note that all configuration examples can be found in the `./docs/example-xml/optional/webspheremq/` directory.
+Once you have acquired the Interlok MQSeries sub component you can simply copy the java archive file named `interlok-webspheremq.jar` from the sub component directory to your `./lib/` directory in the root of your Interlok installation. Note that all configuration examples can be found in the `./docs/example-xml/optional/webspheremq/` directory.
 
 Interlok does not come supplied with any of the required MQSeries java archive files.  You will need to copy the required java archives for client access from your MQSeries installation into the `./lib/` directory at the root of your Interlok installation. At the very least the required java archive files from your MQSeries installation will be; com.ibm.mq*.jar and dhbcore.jar.
 
@@ -338,7 +341,7 @@ In addition to the features exposed by the [basic-mq-series-implementation][], t
 
 ## OracleAQ JMS ##
 
-Once you have acquired the Interlok Oracle AQ sub component you can simply copy the java archive file named `adp-jms-oracleaq.jar` from the sub component directory to your `./lib/` directory in the root of your Interlok installation. Note that all configuration examples can be found in the `./docs/example-xml/jms-oracleaq/` directory. Depending on your Oracle installation specifics, you will need to copy the aqapi.jar and the jdbc14.jar from your Oracle installation into the Interlok `./lib` directory so that the required classes are available to Interlok during runtime.
+Once you have acquired the Interlok Oracle AQ sub component you can simply copy the java archive file named `interlok-jms-oracleaq.jar` from the sub component directory to your `./lib/` directory in the root of your Interlok installation. Note that all configuration examples can be found in the `./docs/example-xml/jms-oracleaq/` directory. Depending on your Oracle installation specifics, you will need to copy the aqapi.jar and the jdbc14.jar from your Oracle installation into the Interlok `./lib` directory so that the required classes are available to Interlok during runtime.
 
 ### Vendor Implementations ###
 
@@ -349,52 +352,52 @@ The associated vendor implementation class that should be used is [oracleaq-impl
 A feature of using Topics is that you can restrict the delivery of the message to a subset of listeners on the topic. This is achieved within Oracle AQ though the use of recipient lists. As this feature deviates from the standard JMS API; you have to use a different producer [oracleaq-topic-producer][] which understands the concept of AQjmsAgent. The provided implementation allows you to specify a [RecipientList][] implementation which then provides the AQjmsAgent instance which can be used in `AQjmsTopicPublisher#publish()`. The default implementation of [RecipientList][oracleaq-simple-recipient-list] allows you to configure multiple nested ConfiguredRecipient and MetadataRecipient instances. If this type of behaviour is not suitable for your purposes, then you will need to build a custom class that implements the RecipientList interface. However, in most cases, provided you can extract the required information as metadata, the standard implementation should be sufficient.
 
 
-[CorrelationIdSource]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/CorrelationIdSource.html
-[jms-reply-to-workflow]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/JmsReplyToWorkflow.html
-[ExtraFactoryConfiguration]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/jndi/ExtraFactoryConfiguration.html
-[no-op-jndi-factory-configuration]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/jndi/NoOpFactoryConfiguration.html
-[basic-sonic-mq-implementation]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-sonicmq/com/adaptris/core/jms/sonic/BasicSonicMqImplementation.html
-[advanced-sonic-mq-implementation]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-sonicmq/com/adaptris/core/jms/sonic/AdvancedSonicMqImplementation.html
-[text-message-translator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/TextMessageTranslator.html
-[bytes-message-translator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/BytesMessageTranslator.html
-[object-message-translator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/ObjectMessageTranslator.html
-[map-message-translator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/MapMessageTranslator.html
-[auto-convert-message-translator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/AutoConvertMessageTranslator.html
-[basic-javax-jms-message-translator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/BasicJavaxJmsMessageTranslator.html
-[sonic-multipart-message-translator]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-sonicmq/com/adaptris/core/jms/sonic/MultipartMessageTranslator.html
-[sonic-xml-message-translator]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-sonicmq/com/adaptris/core/jms/sonic/XmlMessageTranslator.html
-[sonic-large-message-producer]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-sonicmq/com/adaptris/core/jms/sonic/LargeMessageProducer.html
-[ProduceExceptionHandler]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ProduceExceptionHandler.html
-[sonic-large-message-consumer]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-sonicmq/com/adaptris/core/jms/sonic/LargeMessageConsumer.html
-[advanced-mq-series-implementation]: https://development.adaptris.net/javadocs/v3-snapshot/optional/webspheremq/com/adaptris/core/jms/wmq/AdvancedMqSeriesImplementation.html
-[basic-mq-series-implementation]: https://development.adaptris.net/javadocs/v3-snapshot/optional/webspheremq/com/adaptris/core/jms/wmq/BasicMqSeriesImplementation.html
-[oracleaq-implementation]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/OracleAqImplementation.html
-[oracleaq-topic-producer]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/OracleAqPasProducer.html
-[RecipientList]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/RecipientList.html
-[oracleaq-simple-recipient-list]: https://development.adaptris.net/javadocs/v3-snapshot/optional/jms-oracleaq/com/adaptris/core/jms/oracle/SimpleRecipientList.html
-[standard-jndi-implementation]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/jndi/StandardJndiImplementation.html
-[cached-destination-jndi-implementation]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/jndi/CachedDestinationJndiImplementation.html
-[jms-connection]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/JmsConnection.html
-[jms-topic-producer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/PasProducer.html
-[jms-topic-consumer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/PasConsumer.html
-[jms-queue-producer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/PtpProducer.html
-[jms-queue-consumer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/PtpConsumer.html
-[quartz-cron-poller]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/QuartzCronPoller.html
-[fixed-interval-poller]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/FixedIntervalPoller.html
-[jms-reply-to-workflow]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/JmsReplyToWorkflow.html
-[jms-transacted-workflow]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/JmsTransactedWorkflow.html
-[jms-reply-to-destination]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/JmsReplyToDestination.html
-[VendorImplementation]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/VendorImplementation.html
-[failover-jms-connection]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/FailoverJmsConnection.html
-[basic-active-mq-implementation]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/activemq/BasicActiveMqImplementation.html
-[basic-tibco-ems-implementation]: https://development.adaptris.net/javadocs/v3-snapshot/optional/tibco/com/adaptris/core/jms/tibco/BasicTibcoEmsImplementation.html
-[metadata-correlation-id-source]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/MetadataCorrelationIdSource.html
-[jms-connection-error-handler]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/JmsConnectionErrorHandler.html
-[active-jms-connection-error-handler]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/ActiveJmsConnectionErrorHandler.html
-[jms-topic-poller]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/PasPollingConsumer.html
-[jms-queue-poller]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/PtpPollingConsumer.html
-[jms-producer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/JmsConsumer.html
-[jms-consumer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/JmsProducer.html
-[jms-poller]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/JmsPollingConsumer.html
+[CorrelationIdSource]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/CorrelationIdSource.html
+[jms-reply-to-workflow]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/JmsReplyToWorkflow.html
+[ExtraFactoryConfiguration]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/jndi/ExtraFactoryConfiguration.html
+[no-op-jndi-factory-configuration]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/jndi/NoOpFactoryConfiguration.html
+[basic-sonic-mq-implementation]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-sonicmq/3.8-SNAPSHOT/com/adaptris/core/jms/sonic/BasicSonicMqImplementation.html
+[advanced-sonic-mq-implementation]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-sonicmq/3.8-SNAPSHOT/com/adaptris/core/jms/sonic/AdvancedSonicMqImplementation.html
+[text-message-translator]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/TextMessageTranslator.html
+[bytes-message-translator]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/BytesMessageTranslator.html
+[object-message-translator]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/ObjectMessageTranslator.html
+[map-message-translator]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/MapMessageTranslator.html
+[auto-convert-message-translator]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/AutoConvertMessageTranslator.html
+[basic-javax-jms-message-translator]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/BasicJavaxJmsMessageTranslator.html
+[sonic-multipart-message-translator]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-sonicmq/3.8-SNAPSHOT/com/adaptris/core/jms/sonic/MultipartMessageTranslator.html
+[sonic-xml-message-translator]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-sonicmq/3.8-SNAPSHOT/com/adaptris/core/jms/sonic/XmlMessageTranslator.html
+[sonic-large-message-producer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-sonicmq/3.8-SNAPSHOT/com/adaptris/core/jms/sonic/LargeMessageProducer.html
+[ProduceExceptionHandler]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/ProduceExceptionHandler.html
+[sonic-large-message-consumer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-sonicmq/3.8-SNAPSHOT/com/adaptris/core/jms/sonic/LargeMessageConsumer.html
+[advanced-mq-series-implementation]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.8-SNAPSHOT/com/adaptris/core/jms/wmq/AdvancedMqSeriesImplementation.html
+[basic-mq-series-implementation]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.8-SNAPSHOT/com/adaptris/core/jms/wmq/BasicMqSeriesImplementation.html
+[oracleaq-implementation]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/OracleAqImplementation.html
+[oracleaq-topic-producer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/OracleAqPasProducer.html
+[RecipientList]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/com/adaptris/core/jms/oracle/RecipientList.html
+[oracleaq-simple-recipient-list]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.8-SNAPSHOT/jms-oracleaq/com/adaptris/core/jms/oracle/SimpleRecipientList.html
+[standard-jndi-implementation]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/jndi/StandardJndiImplementation.html
+[cached-destination-jndi-implementation]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/jndi/CachedDestinationJndiImplementation.html
+[jms-connection]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/JmsConnection.html
+[jms-topic-producer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/PasProducer.html
+[jms-topic-consumer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/PasConsumer.html
+[jms-queue-producer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/PtpProducer.html
+[jms-queue-consumer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/PtpConsumer.html
+[quartz-cron-poller]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/QuartzCronPoller.html
+[fixed-interval-poller]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/FixedIntervalPoller.html
+[jms-reply-to-workflow]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/JmsReplyToWorkflow.html
+[jms-transacted-workflow]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/JmsTransactedWorkflow.html
+[jms-reply-to-destination]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/JmsReplyToDestination.html
+[VendorImplementation]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/VendorImplementation.html
+[failover-jms-connection]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/FailoverJmsConnection.html
+[basic-active-mq-implementation]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/activemq/BasicActiveMqImplementation.html
+[basic-tibco-ems-implementation]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-tibco/3.8-SNAPSHOT/com/adaptris/core/jms/tibco/BasicTibcoEmsImplementation.html
+[metadata-correlation-id-source]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/MetadataCorrelationIdSource.html
+[jms-connection-error-handler]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/JmsConnectionErrorHandler.html
+[active-jms-connection-error-handler]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/ActiveJmsConnectionErrorHandler.html
+[jms-topic-poller]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/PasPollingConsumer.html
+[jms-queue-poller]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/PtpPollingConsumer.html
+[jms-producer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/JmsConsumer.html
+[jms-consumer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/JmsProducer.html
+[jms-poller]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/JmsPollingConsumer.html
 
 {% include links.html %}

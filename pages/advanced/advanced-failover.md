@@ -83,7 +83,7 @@ set CLASSPATH=.
 set ADAPTRIS_HOME=C:\Adaptris\Interlok3.3
 set JAVA_HOME=C:\Java\jdk1.8.0_60\bin
 
-set CLASSPATH=%CLASSPATH%;%ADAPTRIS_HOME%\lib\adp-core.jar;%ADAPTRIS_HOME%\config
+set CLASSPATH=%CLASSPATH%;%ADAPTRIS_HOME%\lib\interlok-core.jar;%ADAPTRIS_HOME%\config
 for /R %ADAPTRIS_HOME%\lib %%H in (*.jar) do set CLASSPATH=!CLASSPATH!;..\Interlok3.3\lib\%%~nxH
 
 %JAVA_HOME%\java -cp %CLASSPATH% com.adaptris.failover.FailoverBootstrap bootstrap.properties

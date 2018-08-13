@@ -7,9 +7,12 @@ permalink: advanced-vcs-svn.html
 summary: Configure Interlok to automatically check out config from SVN when starting.
 ---
 
+{% include note.html content="This depends on the artifact com.adaptris:interlok-vcs-subversion. In 3.8.0; adp-vcs-subversion was renamed to interlok-vcs-subversion" %}
+
+
 ## Installation ##
 
-JavaHL is an (native, using JNI and javah) implementation of a high level Java API for Subversion and provides a minimal-but-complete set of APIs which expose the core Subversion C API to Java. JavaHL can be considered part of Subversion, so its version needs to match that of the Subversion you have installed. We have defaulted to Subclipse 1.8.x which is based on the Subversion 1.7.x client features and working copy format; these are the files that are present in the `optional/vcs-subversion` directory. If your working copy format is Subversion 1.8 or later then you can download [a later version of subclipse](http://subclipse.tigris.org/servlets/ProjectDocumentList?folderID=2240) directly and use those jar files instead (we have tested subclipse version 1.8.22 and 1.10.9 against the Subversion instance provided by [assembla.com](https://www.assembla.com/home) and [github](https://github.com)
+JavaHL is an (native, using JNI and javah) implementation of a high level Java API for Subversion and provides a minimal-but-complete set of APIs which expose the core Subversion C API to Java. JavaHL can be considered part of Subversion, so its version needs to match that of the Subversion you have installed. We have defaulted to Subclipse 1.8.x which is based on the Subversion 1.7.x client features and working copy format; iff your working copy format is Subversion 1.8 or later then you can download [a later version of subclipse](http://subclipse.tigris.org/servlets/ProjectDocumentList?folderID=2240) directly and use those jar files instead (we have tested subclipse version 1.8.22 and 1.10.9 against the Subversion instance provided by [assembla.com](https://www.assembla.com/home) and [github](https://github.com)
 
 As a result of the native libraries you will require additional DLL/shared objects; this page is basically a short overview of what you need to do and should be fine for standard subversion installations (HTTP / filesystem) on popular systems. Check [http://subclipse.tigris.org/wiki/JavaHL](http://subclipse.tigris.org/wiki/JavaHL) for more in-depth details on how to install JavaHL.
 
@@ -155,4 +158,4 @@ WARN  [StandardBootstrap] [Adapter.warnOnErrorHandlerBehaviour()] [Adapter(MyInt
 
 Be aware that if no initial log4j configuration is available on the classpath on startup then you will not have any logging until after checkout/update and logging reconfiguration is completed which will make it very hard to verify whether you have the configuration correct. In this example, you can see that the logging configuration has actually changed because the log4j2 configuration PatternLayout contains the method name in addition to the classname.
 
-[VersionControlSystem]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/management/vcs/VersionControlSystem.html
+[VersionControlSystem]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/management/vcs/VersionControlSystem.html

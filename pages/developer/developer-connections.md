@@ -113,11 +113,11 @@ So, the summary of what we did is as follows :
 
 
 
-[Service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/Service.html
-[AdaptrisMessageProducer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageProducer.html
-[AdaptrisMessageConsumer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisMessageConsumer.html
-[AdaptrisConnection]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisConnection.html
-[AdaptrisConnectionImp]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisConnectionImp.html
-[Password]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/security/password/Password.html
-[AllowRetriesConnection]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AllowsRetriesConnection.html
-[ExceptionHelper]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/util/ExceptionHelper.html
+[Service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/Service.html
+[AdaptrisMessageProducer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/AdaptrisMessageProducer.html
+[AdaptrisMessageConsumer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/AdaptrisMessageConsumer.html
+[AdaptrisConnection]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/AdaptrisConnection.html
+[AdaptrisConnectionImp]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/AdaptrisConnectionImp.html
+[Password]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/security/password/Password.html
+[AllowRetriesConnection]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/AllowsRetriesConnection.html
+[ExceptionHelper]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/util/ExceptionHelper.html

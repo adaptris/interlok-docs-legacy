@@ -25,7 +25,7 @@ The files in the zip file are:
 - `resources/ivy-interlok.xml` : An Ivy descriptor file that contains your dependencies and configurations.
 - `build.xml` : A standard build.xml file that can be tailored for your requirements.
 
-This example will download and install the nightly snapshot. You can of course change it to download and install a formal release (beta or otherwise); this is left as an exercise for you, but it is likely to mean changing the property `interlok.download.baseurl` and `adp-core-version` explicitly for the version you wish to install.
+This example will download and install the nightly snapshot. You can of course change it to download and install a formal release (beta or otherwise); this is left as an exercise for you, but it is likely to mean changing the property `interlok.download.baseurl` and `interlok-core-version` explicitly for the version you wish to install.
 
 
 ## Running the Example ##
@@ -79,11 +79,11 @@ The directory structure closely mirrors that of a standard installation, but wil
 If you wanted to enable certain optional components, then all you need to do is to add a dependency into `ivy-interlok.xml`; for instance, if we know that we will be wanting to do some CSV and JSON transformations we can add in.
 
 ```xml
-<dependency org="com.adaptris" name="adp-simple-csv" rev="${adp-core-version}" changing="true" conf="runtime->default"/>
-<dependency org="com.adaptris" name="adp-json" rev="${adp-core-version}" changing="true" conf="runtime->default"/>
+<dependency org="com.adaptris" name="interlok-csv" rev="${interlok-core-version}" changing="true" conf="runtime->default"/>
+<dependency org="com.adaptris" name="interlok-json" rev="${interlok-core-version}" changing="true" conf="runtime->default"/>
 ```
 
-Subsequently, whenever `ant deploy` is invoked; then the `simple-csv` and `json` components will be automatically downloaded, and put directly into the lib directory ready for use.
+Subsequently, whenever `ant deploy` is invoked; then the `interlok-csv` and `interlok-json` components will be automatically downloaded, and put directly into the lib directory ready for use.
 
 {% include note.html content="Some components (such as SAP) may have dependencies that are not publicly available; you should exclude them explicitly in the ivy file, or build your own repository to host them." %}
 

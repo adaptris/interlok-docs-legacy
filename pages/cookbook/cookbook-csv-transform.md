@@ -7,7 +7,10 @@ permalink: cookbook-csv-transform.html
 summary: Using the CSV packge to perform CSV to XML transformations
 ---
 
-The [adp-simple-csv][] optional package allows you to render CSV documents as XML. It also contains a [jdbc-csv-output][] so that you can output a CSV document directly from [jdbc-data-query-service][]. We're going to describe the transformation functionality here only. Under the covers, it uses a mixture of [commons-csv][] and [super-csv][].
+{% include important.html content="in 3.8.0; adp-simple-csv was renamed to interlok-csv" %}
+
+
+The [interlok-csv][] optional package allows you to render CSV documents as XML. It also contains a [jdbc-csv-output][] so that you can output a CSV document directly from [jdbc-data-query-service][]. We're going to describe the transformation functionality here only. Under the covers, it uses a mixture of [commons-csv][] and [super-csv][].
 
 ## Simple CSV to XML ##
 
@@ -32,17 +35,17 @@ Using [csv-basic-format][] is probably the best way to get started; you can choo
 
 ## CSV to JSON ##
 
-Since 3.6.6 you can convert to and from CSV via the [interlok-csv-json][] optional package. This adds new services that allow you to easily convert JSON to CSV and vice versa. It has a dependency on both [adp-simple-csv][] and [adp-json][].
+Since 3.6.6 you can convert to and from CSV via the [interlok-csv-json][] optional package. This adds new services that allow you to easily convert JSON to CSV and vice versa. It has a dependency on both [interlok-csv][] and [interlok-json][].
 
-[adp-simple-csv]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/adp-simple-csv/
-[jdbc-data-query-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/jdbc/JdbcDataQueryService.html
-[jdbc-csv-output]: https://development.adaptris.net/javadocs/v3-snapshot/optional/simple-csv/com/adaptris/csv/jdbc/CsvResultSetTranslator.html
+[interlok-csv]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-csv/
+[jdbc-data-query-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/jdbc/JdbcDataQueryService.html
+[jdbc-csv-output]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-csv/3.8-SNAPSHOT/com/adaptris/csv/jdbc/CsvResultSetTranslator.html
 [commons-csv]: https://commons.apache.org/proper/commons-csv/
 [super-csv]: http://super-csv.github.io/super-csv/
-[simple-csv-to-xml-transform]: https://development.adaptris.net/javadocs/v3-snapshot/optional/simple-csv/com/adaptris/core/transform/csv/SimpleCsvToXmlTransformService.html
-[raw-csv-to-xml-transform]: https://development.adaptris.net/javadocs/v3-snapshot/optional/simple-csv/com/adaptris/core/transform/csv/RawCsvToXmlTransformService.html
-[flat-file-transform-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/transform/FfTransformService.html
-[csv-basic-format]: https://development.adaptris.net/javadocs/v3-snapshot/optional/simple-csv/com/adaptris/core/transform/csv/BasicFormatBuilder.html
-[csv-custom-format]: https://development.adaptris.net/javadocs/v3-snapshot/optional/simple-csv/com/adaptris/core/transform/csv/CustomFormatBuilder.html
+[simple-csv-to-xml-transform]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-csv/3.8-SNAPSHOT/com/adaptris/core/transform/csv/SimpleCsvToXmlTransformService.html
+[raw-csv-to-xml-transform]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-csv/3.8-SNAPSHOT/com/adaptris/core/transform/csv/RawCsvToXmlTransformService.html
+[flat-file-transform-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/transform/FfTransformService.html
+[csv-basic-format]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-csv/3.8-SNAPSHOT/com/adaptris/core/transform/csv/BasicFormatBuilder.html
+[csv-custom-format]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-csv/3.8-SNAPSHOT/com/adaptris/core/transform/csv/CustomFormatBuilder.html
 [interlok-csv-json]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-csv-json/
-[adp-json]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/adp-json/
+[interlok-json]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-json/

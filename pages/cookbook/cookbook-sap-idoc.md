@@ -7,6 +7,8 @@ permalink: cookbook-sap-idoc.html
 summary: This is a brief checklist and documentation of what you have to do to configure Interlok to send and receive IDocs with SAP over ALE. The bulk of the SAP configuration should already be done by the in-house SAP team so they will tell you what you need to know. You will be already familiar with Interlok and its underlying concepts. No SAP knowledge is assumed. Interlok uses SAP JCo Standalone in order to achieve the desired integration (3.x).
 ---
 
+{% include note.html content="This depends on the artifact com.adaptris:interlok-sap. This will require a license." %}
+
 ## Software Pre-requisites ##
 
 Interlok does not ship with the specific jars required to connect to SAP via ALE. You will have to download these directly from SAP. They are free to download provided you have a login to their support center. You will need the following software packages for your platform:
@@ -172,15 +174,15 @@ You can track IDocs going into and out of the SAP system using _BD87_ to see all
 
 
 
-[sap-xml-tid-repository]: https://development.adaptris.net/javadocs/v3-snapshot/optional/sap/com/adaptris/core/sap/XmlFileRepository.html
-[dynamic-service-locator]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/dynamic/DynamicServiceLocator.html
-[sapjco3-idoc-consume-connection]: https://development.adaptris.net/javadocs/v3-snapshot/optional/sap/com/adaptris/core/sap/jco3/idoc/IdocConsumeConnection.html
-[sapjco3-idoc-consumer]: https://development.adaptris.net/javadocs/v3-snapshot/optional/sap/com/adaptris/core/sap/jco3/idoc/IdocConsumer.html
-[pooling-workflow]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/PoolingWorkflow.html
-[destination-provider-info]: https://development.adaptris.net/javadocs/v3-snapshot/optional/sap/com/adaptris/core/sap/jco3/JcoConnection.html#setDestinationProviderInfo-com.adaptris.core.sap.jco3.ProviderInfo-
-[server-provider-info]: https://development.adaptris.net/javadocs/v3-snapshot/optional/sap/com/adaptris/core/sap/jco3/idoc/IdocConsumeConnection.html#setServerProviderInfo-com.adaptris.core.sap.jco3.ProviderInfo-
-[xpath-metadata-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/metadata/xpath/XpathMetadataQuery.html
-[ConsumeDestination]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/ConsumeDestination.html
-[sapjco3-idoc-producer]: https://development.adaptris.net/javadocs/v3-snapshot/optional/sap/com/adaptris/core/sap/jco3/idoc/IdocProducer.html
-[sapjco3-automatic-trace-file-delete]: https://development.adaptris.net/javadocs/v3-snapshot/optional/sap/com/adaptris/core/sap/jco3/AutomaticTraceFileDelete.html
-[sapjco3-idoc-produce-connection]: https://development.adaptris.net/javadocs/v3-snapshot/optional/sap/com/adaptris/core/sap/jco3/idoc/IdocProduceConnection.html
+[sap-xml-tid-repository]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-sap/3.8-SNAPSHOT/com/adaptris/core/sap/XmlFileRepository.html
+[dynamic-service-locator]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/dynamic/DynamicServiceLocator.html
+[sapjco3-idoc-consume-connection]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-sap/3.8-SNAPSHOT/com/adaptris/core/sap/jco3/idoc/IdocConsumeConnection.html
+[sapjco3-idoc-consumer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-sap/3.8-SNAPSHOT/com/adaptris/core/sap/jco3/idoc/IdocConsumer.html
+[pooling-workflow]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/PoolingWorkflow.html
+[destination-provider-info]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-sap/3.8-SNAPSHOT/com/adaptris/core/sap/jco3/JcoConnection.html#setDestinationProviderInfo-com.adaptris.core.sap.jco3.ProviderInfo-
+[server-provider-info]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-sap/3.8-SNAPSHOT/com/adaptris/core/sap/jco3/idoc/IdocConsumeConnection.html#setServerProviderInfo-com.adaptris.core.sap.jco3.ProviderInfo-
+[xpath-metadata-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/metadata/xpath/XpathMetadataQuery.html
+[ConsumeDestination]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/ConsumeDestination.html
+[sapjco3-idoc-producer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-sap/3.8-SNAPSHOT/com/adaptris/core/sap/jco3/idoc/IdocProducer.html
+[sapjco3-automatic-trace-file-delete]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-sap/3.8-SNAPSHOT/com/adaptris/core/sap/jco3/AutomaticTraceFileDelete.html
+[sapjco3-idoc-produce-connection]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-sap/3.8-SNAPSHOT/com/adaptris/core/sap/jco3/idoc/IdocProduceConnection.html

@@ -55,8 +55,8 @@ In this instance we'll make the trigger a message on a JMS Topic; any message re
 {% include links.html %}
 
 
-[TriggeredChannel]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/adp-triggered/
-[AdaptrisPollingConsumer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdaptrisPollingConsumer.html
-[JmsPollingConsumer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/JmsPollingConsumer.html
-[FailedMessageRetrier]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/FailedMessageRetrier.html
-[RetryMessageErrorHandler]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/RetryMessageErrorHandler.html
+[TriggeredChannel]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-triggered/
+[AdaptrisPollingConsumer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/AdaptrisPollingConsumer.html
+[JmsPollingConsumer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/JmsPollingConsumer.html
+[FailedMessageRetrier]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/FailedMessageRetrier.html
+[RetryMessageErrorHandler]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/RetryMessageErrorHandler.html

@@ -7,6 +7,8 @@ permalink: adapter-executing-ws.html
 summary: This document is aimed at developers and system administrators who wish to make use to make calls to web-services outside of the domain of Interlok. Depending on how you want to execute the webservice; it will depend on either adp-webservice-cxf or adp-webservice-external.
 ---
 
+{% include important.html content="since 3.8.0; adp-webservice-cxf and adp-webservice-external have been renamed to interlok-webservice-cxf and interlok-webservice-external respectively" %}
+
 There are two ways of accessing external webservices from Interlok; through a generic [apache-cxf-soap-service][] which calls the webservice with the payload of the current message as the operation argument (the service will look after any required SOAP headers); or by generating a custom service which has its own specific standardised input file.
 
 
@@ -157,10 +159,10 @@ This is the expected payload you will be required to have as input for your new 
 For testing purposes you can simply consume this sample message document and configure your new service as the first service.
 
 
-[standard-soap-service]: https://development.adaptris.net/javadocs/v3-snapshot/optional/webservice-external/com/adaptris/core/services/wss/SoapService.html
-[apache-cxf-soap-service]: https://development.adaptris.net/javadocs/v3-snapshot/optional/webservice-cxf/com/adaptris/core/services/cxf/ApacheSoapService.html
-[snapshot]: https://development.adaptris.net/nexus/content/groups/adaptris-snapshots/com/adaptris/adp-webservice-external/
-[release]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/adp-webservice-external/
-[payload-from-metadata-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/metadata/PayloadFromMetadataService.html
-[log-message-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/LogMessageService.html
+[standard-soap-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webservice-external/3.8-SNAPSHOT/com/adaptris/core/services/wss/SoapService.html
+[apache-cxf-soap-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webservice-cxf/3.8-SNAPSHOT/com/adaptris/core/services/cxf/ApacheSoapService.html
+[snapshot]: https://development.adaptris.net/nexus/content/groups/adaptris-snapshots/com/adaptris/interlok-webservice-external/
+[release]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-webservice-external/
+[payload-from-metadata-service]:https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/metadata/PayloadFromMetadataService.html
+[log-message-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/LogMessageService.html
 

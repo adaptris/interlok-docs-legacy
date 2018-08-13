@@ -46,12 +46,12 @@ There are two ways in which to accomplish this, involving editing the ant task:
 ```
 
 
-2) Add your jar to the main classpath in ivy.xml, and then add an additional classpath filter. At present we just filter the main classpath for adp-core and use that as the search classpath.
+2) Add your jar to the main classpath in ivy.xml, and then add an additional classpath filter. At present we just filter the main classpath for interlok-core and use that as the search classpath.
 
 ```xml
 <restrict id="searchClasspath">
   <path refid="main.classpath"/>
-  <rsel:name name="adp-core*.jar"/> <!-- pick up the adp-core jar from the main classpath -->
+  <rsel:name name="interlok-core*.jar"/> <!-- pick up the interlok-core jar from the main classpath -->
   <rsel:name name="myCustomJarFile.jar"/> <!-- pick out your jar from the main classpath -->
 </restrict>
 ```
@@ -66,9 +66,9 @@ The project can be run easily from Eclipse using the standard Ivy configuration.
 
 Most of the unit tests will be unaffected by any updates to core. The following are the main ones that need updating:
 
-- `com.adatris.core.schema.relaxng.lookup.*` - These are reflection based and lookup classes on the classpath. The project is configured to only look at the `adp-core.jar` file. There are tests that find all services defined, and so any changes to such will need to be reflected in the tests.
-- `com.adatris.core.schema.relaxng.XSDClassAdapterBasicTest` - This class generates several schemas from small components all the way to the full adapter. Each generated schema is checked against its expected version and validated using a sample XML config. For these tests you will need to compare the expected schema against the actual schema and verify the changes.
-- `com.adatris.core.schema.relaxng.XSDBeautifyAdapterTest` - Much like the test above but it deals with a schema that can handle beautified adapter config.
+- `com.adaptris.core.schema.relaxng.lookup.*` - These are reflection based and lookup classes on the classpath. The project is configured to only look at the `interlok-core.jar` file. There are tests that find all services defined, and so any changes to such will need to be reflected in the tests.
+- `com.adaptris.core.schema.relaxng.XSDClassAdapterBasicTest` - This class generates several schemas from small components all the way to the full adapter. Each generated schema is checked against its expected version and validated using a sample XML config. For these tests you will need to compare the expected schema against the actual schema and verify the changes.
+- `com.adaptris.core.schema.relaxng.XSDBeautifyAdapterTest` - Much like the test above but it deals with a schema that can handle beautified adapter config.
 
 ### Additional checks on the generated schema ###
 

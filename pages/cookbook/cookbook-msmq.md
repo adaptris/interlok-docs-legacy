@@ -7,11 +7,13 @@ permalink: cookbook-msmq.html
 summary: This document summarises configurations for consuming and producing messages using MSMQ. We will also describe some best practices related to the MSMQ infrastructure. It assumed that you have a passing knowledge of Interlok and its configuration with a basic understanding of MSMQ.
 ---
 
+{% include important.html content="in 3.8.0; adp-msmq was renamed to interlok-msmq" %}
+
 ## Getting Started ##
 
 ### Interlok Pre-requisites ###
 
-Before you can start Interlok that is able to consume or produce from or to MSMQ, you must first install the Interlok MSMQ sub component into your Interlok installation. All available Interlok sub components are shipped with the standard Interlok installation.  Simply navigate to the _optional_ directory at the root of your Interlok installation.  Copy the java archive files named `adp-msmq.jar` and `izmcomjni.jar` from the sub component directory to your _lib_ directory in the root of your Interlok installation.  Finally you will also need to copy the `izmcomjni.dll` into the lib directory. All configuration examples for can be found in the _docs/optional/example-xml_ directory.
+Before you can start Interlok that is able to consume or produce from or to MSMQ, you must first install the Interlok MSMQ sub component into your Interlok installation. All available Interlok sub components are shipped with the standard Interlok installation.  Simply navigate to the _optional_ directory at the root of your Interlok installation.  Copy the java archive files named `interlok-msmq.jar` and `izmcomjni.jar` from the sub component directory to your _lib_ directory in the root of your Interlok installation.  Finally you will also need to copy the `izmcomjni.dll` into the lib directory. All configuration examples for can be found in the _docs/optional/example-xml_ directory.
 
 The JRE needs to be the 32bit version of the JRE, as the native bridge between Java/ActiveX is currently not 64bit compatible. If you have installed using the bundled JRE, then this will be the 64bit version, so you need to install and supply your own JRE.
 
@@ -127,16 +129,16 @@ Journaling can use up disk space quickly. If you must use journaling, to increas
 
 MSMQ uses the standard Windows security model; you can configure queues to permit only senders and receivers with appropriate security privileges. Using Windows security in messaging means it takes about significantly longer to send the same messages. Configure MSMQ not to send the security descriptors associated with the sending application by setting the message property AttachSenderID to False (the default is True)
 
-[MsmqMessageFormat]: https://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/MsmqMessageFormat.html
-[msmq-string-message-format]: https://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/StringMessageFormat.html
-[msmq-byte-array-message-format]: https://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/ByteArrayMessageFormat.html
-[standard-msmq-producer]: https://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/StandardMsmqProducer.html
-[msmq-polling-consumer]: https://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/MsmqPollingConsumer.html
-[PropertyMapper]: https://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/PropertyMapper.html
+[MsmqMessageFormat]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-msmq/3.8-SNAPSHOT/com/adaptris/core/msmq/MsmqMessageFormat.html
+[msmq-string-message-format]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-msmq/3.8-SNAPSHOT/com/adaptris/core/msmq/StringMessageFormat.html
+[msmq-byte-array-message-format]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-msmq/3.8-SNAPSHOT/com/adaptris/core/msmq/ByteArrayMessageFormat.html
+[standard-msmq-producer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-msmq/3.8-SNAPSHOT/com/adaptris/core/msmq/StandardMsmqProducer.html
+[msmq-polling-consumer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-msmq/3.8-SNAPSHOT/com/adaptris/core/msmq/MsmqPollingConsumer.html
+[PropertyMapper]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-msmq/3.8-SNAPSHOT/com/adaptris/core/msmq/PropertyMapper.html
 [MSDN Transaction Mode Reference]: http://msdn.microsoft.com/en-us/library/ms703934(VS.85).aspx
 [MSDN Share Mode Reference]: http://msdn.microsoft.com/en-us/library/ms706937(VS.85).aspx
 [MSDN Property Reference]: http://msdn.microsoft.com/en-us/library/ms705286(VS.85).aspx
-[msmq-configured-property]: https://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/ConfiguredProperty.html
-[msmq-message-id-mapper]: https://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/MessageIdMapper.html
-[msmq-metadata-mapper]: https://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/MetadataMapper.html
-[msmq-xpath-property]: https://development.adaptris.net/javadocs/v3-snapshot/optional/msmq/com/adaptris/core/msmq/XpathProperty.html
+[msmq-configured-property]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-msmq/3.8-SNAPSHOT/com/adaptris/core/msmq/ConfiguredProperty.html
+[msmq-message-id-mapper]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-msmq/3.8-SNAPSHOT/com/adaptris/core/msmq/MessageIdMapper.html
+[msmq-metadata-mapper]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-msmq/3.8-SNAPSHOT/com/adaptris/core/msmq/MetadataMapper.html
+[msmq-xpath-property]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-msmq/3.8-SNAPSHOT/com/adaptris/core/msmq/XpathProperty.html

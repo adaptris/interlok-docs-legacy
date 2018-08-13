@@ -11,7 +11,7 @@ Marshalling refers to the process by which Interlok will read the main XML confi
 This document describes the Interlok Marshalling configuration and Architecture.
 
 The control of marshalling is configured in a file called: bootstrap.properties.
-This contains a number of properties, the keys of which are defined in the following class: [com.adaptris.core.management.Constants](https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/management/Constants.html "com.adaptris.core.management.Constants")
+This contains a number of properties, the keys of which are defined in the following class: [com.adaptris.core.management.Constants](https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/management/Constants.html "com.adaptris.core.management.Constants")
 
 We will be focusing of the following settings which relate to the marshalling functionality:
 
@@ -36,7 +36,7 @@ The created marshaller is stored in a singleton for easy access across the syste
 
 ![Factories](./images/configuration-marshalling/Factories.png)
 
-There is a lot of configuration required to get the marshalling just the way we would like it, this is all taken care of within the factory class: [AdapterXStreanMarshallerFactory](https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/AdapterXStreamMarshallerFactory.html "AdapterXStreamMarshallerFactory"). The private methods give a hint to the various configuration files read in.
+There is a lot of configuration required to get the marshalling just the way we would like it, this is all taken care of within the factory class: [AdapterXStreanMarshallerFactory](https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/AdapterXStreamMarshallerFactory.html "AdapterXStreamMarshallerFactory"). The private methods give a hint to the various configuration files read in.
 
 ## Marshallers ##
 
@@ -58,5 +58,5 @@ The following unit tests are relevant to this functionality:
 - junit.test.classes=com/adaptris/core/marshaller/xstream/*.java
 
 
-[XStreamConfigManager]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/management/config/XStreamConfigManager.html
+[XStreamConfigManager]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/management/config/XStreamConfigManager.html
 [XStream]: http://xstream.codehaus.org/

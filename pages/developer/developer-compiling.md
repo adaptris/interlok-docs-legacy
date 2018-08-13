@@ -34,8 +34,8 @@ You really should consult the [Apache Ivy Documentation](http://ant.apache.org/i
 This contains all the repositories that are available through our Sonatype Nexus installation.
 
 - nexus-public : pretty much proxies everything that is public like M1/java.net/codehaus which hopefully means that you won't need anything other than nexus-public to get any open source package.
-- nexus-releases: The repository where Interlok releases are stored (i.e. adp-core-3.0B12-RELEASE).
-- nexus-snapshots: The repository where Interlok snapshots are stored (e.g. adp-core-3.0-SNAPSHOT).
+- nexus-releases: The repository where Interlok releases are stored (i.e. interlok-core-3.8.0B1-RELEASE).
+- nexus-snapshots: The repository where Interlok snapshots are stored (e.g. interlok-core-3.8-SNAPSHOT).
 
 It is possible that certain dependencies can fail; this is because they are not made publicly available by the maintainers and we are hosting them in our internal non-public facing repository. You can either source these files directory from your Interlok installation or have an explicit exclusion for them in your ivy.xml file. The exclusion should be sufficient unless you are referring to them expliclitly in your custom clases.
 
@@ -45,7 +45,7 @@ It is possible that certain dependencies can fail; this is because they are not 
 
 The supplied ivy.xml contains a default set of suggested dependencies; some are explicitly excluded as we are relying on a number of opensource packages and their dependency tree includes dependencies that are not required for minimal runtime.
 
-The two key dependencies for compilation are `com.adaptris:adp-core` and `com.adaptris:adp-core-apt`; adp-core is the framework itself which has a list of transitive depencencies; adp-core-apt is the annotation processor which provides some additional functionality during the compilation stage (this is discussed more fully in [Annotating Your Components](developer-annotations.html). `com.adaptris:adp-core-apt` contains  generalised junit extensions that simplify tests that you write (it auto-tests XML roundtripping, generates examples etc.).
+The two key dependencies for compilation are `com.adaptris:interlok-core` and `com.adaptris:interlok-core-apt`; interlok-core is the framework itself which has a list of transitive depencencies; interlok-core-apt is the annotation processor which provides some additional functionality during the compilation stage (this is discussed more fully in [Annotating Your Components](developer-annotations.html). `com.adaptris:interlok-stubs` contains  generalised junit extensions that simplify tests that you write (it auto-tests XML roundtripping, generates examples etc.).
 
 ### Additional ivy configurations ###
 

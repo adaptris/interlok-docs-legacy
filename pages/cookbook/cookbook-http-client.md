@@ -34,19 +34,21 @@ Generally speaking; you can handle the OAUTH bearer token using standard service
 
 ## Apache HTTP
 
-Because the standard `HttpURLConnection` doesn't support the `PATCH` method (and may never) there is also the [adp-apache-http][] optional package. This is based on the [Apache HTTP Components][] project which does support the `PATCH` method. It also offers you the capability of configuring a proxy server on a per-producer basis which can be useful in mixed environments. Configuration mirrors that of the standard http components as far as possible but with a different alias for Apache HTTP specific copmonents.
+{% include important.html content="in 3.8.0; adp-apache-http was renamed to interlok-apache-http" %}
+
+Because the standard `HttpURLConnection` doesn't support the `PATCH` method (and may never) there is also the [interlok-apache-http][] optional package. This is based on the [Apache HTTP Components][] project which does support the `PATCH` method. It also offers you the capability of configuring a proxy server on a per-producer basis which can be useful in mixed environments. Configuration mirrors that of the standard http components as far as possible but with a different alias for Apache HTTP specific copmonents.
 
 
-[adp-apache-http]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/adp-apache-http/
+[interlok-apache-http]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-apache-http/
 [Apache HTTP Components]: http://hc.apache.org/
 [Salesforce]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-oauth-salesforce/
 [Microsoft Azure]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-oauth-azure/
 [Google Cloud]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-oauth-gcloud/
-[get-oauth-token]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/http/oauth/GetOauthToken.html
-[standard-http-producer]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/http/client/net/StandardHttpProducer.html
-[http-request-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/http/client/net/HttpRequestService.html
-[http-status-exact-match]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/http/client/ExactMatch.html
-[http-status-range-match]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/http/client/RangeMatch.html
+[get-oauth-token]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/oauth/GetOauthToken.html
+[standard-http-producer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/client/net/StandardHttpProducer.html
+[http-request-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/client/net/HttpRequestService.html
+[http-status-exact-match]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/client/ExactMatch.html
+[http-status-range-match]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/client/RangeMatch.html
 [java networking properties]: https://docs.oracle.com/javase/8/docs/api/java/net/doc-files/net-properties.html
-[branching-service-enabler]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/services/BranchingServiceEnabler.html
-[http-branching-request-service]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/http/client/net/BranchingHttpRequestService.html
+[branching-service-enabler]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/BranchingServiceEnabler.html
+[http-branching-request-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/client/net/BranchingHttpRequestService.html

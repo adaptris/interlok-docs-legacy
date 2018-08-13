@@ -8,6 +8,9 @@ permalink: adapter-hosting-rest.html
 
 {% include note.html content="This is only useful if you want to inject messages into an arbitrary workflow. Use a normal jetty based workflow if that is the intended endpoint" %}
 
+{% include important.html content="since 3.8.0; adp-restful-services has been renamed to interlok-restful-services" %}
+
+
 Generally, if you are using Interlok as an HTTP endpoint, then you would just use one of the standard HTTP consumers as part of a normal workflow ([Servicing HTTP requests](cookbook-http-server.html)); however, in certain situations it can be useful to expose an arbitrary workflow (e.g. a JMS bridge) so that you can inject messages into the workflow without doing additional configuration. This requires that you enable the built-in jetty instance, and to use a custom web application.
 
 ## Enabling the built-in Webserver ##
@@ -24,9 +27,9 @@ As shown above "jetty", the embedded web server is enabled.
 
 # Installing the Restful Services Component #
 
-Get the restful services application (_adp-restful-services.war_), from either then [snapshot repository](https://development.adaptris.net/nexus/content/groups/adaptris-snapshots/com/adaptris/adp-restful-services/) or the [release repository](https://development.adaptris.net/nexus/content/groups/public/com/adaptris/adp-restful-services/).
+Get the restful services application (_interlok-restful-services.war_), from either then [snapshot repository](https://development.adaptris.net/nexus/content/groups/adaptris-snapshots/com/adaptris/interlok-restful-services/) or the [release repository](https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-restful-services/).
 
-Drop _adp-restful-services.war_ and drop it into the interlok web-app directory.  The default location for the web-app directory will be a directory named `webapps` in the root of your Interlok installation.  This folder should already exist, if not, create it.
+Drop _interlok-restful-services.war_ and drop it into the interlok web-app directory.  The default location for the web-app directory will be a directory named `webapps` in the root of your Interlok installation.  This folder should already exist, if not, create it.
 
 You can check/change the location of the jetty web-app directory within the jetty.xml file.  A property named;
 
@@ -42,7 +45,7 @@ There are two sets of restful services that allow you to inject messages into yo
 - Services that simply return a "true" value after successfully injecting a message (asynchronous).
 
 All clients wishing to use the restful services will use the HTTP method of POST and will target the following URL;
-`http://<host>:<port>/adp-restful-services/rest/service/...` followed by the required method and parameters as detailed by each services below.
+`http://<host>:<port>/interlok-restful-services/rest/service/...` followed by the required method and parameters as detailed by each services below.
 
 Additionally you must set the `Content-Type` HTTP header to the value `text/plain`.
 
@@ -119,7 +122,7 @@ Assuming that you have configured Interlok as above and it is up and running wit
 Your raw HTTP request will look something like this;
 
 ```
-POST http://<host>:<port>/adp-restful-services/rest/service/submitmessage?adapterId=FS-FS-Adapter&channelId=Channel1&workflowId=Workflow1&inputFormat=XML&outputFormat=JSON
+POST http://<host>:<port>/interlok-restful-services/rest/service/submitmessage?adapterId=FS-FS-Adapter&channelId=Channel1&workflowId=Workflow1&inputFormat=XML&outputFormat=JSON
 
 POST data:
 <serializable-adaptris-message>
@@ -179,7 +182,7 @@ There are 4 parameters and the POST data payload required for this service.
 Using the same Interlok configuration above, our raw HTTP POST, assuming you wish to have an XML formatted message returned would be;
 
 ```
-POST http://<host>:<port>/adp-restful-services/rest/service/submitpayload?adapterId=FS-FS-Adapter&channelId=Channel1&workflowId=Workflow1&outputFormat=XML
+POST http://<host>:<port>/interlok-restful-services/rest/service/submitpayload?adapterId=FS-FS-Adapter&channelId=Channel1&workflowId=Workflow1&outputFormat=XML
 
 POST data:
 My text payload back to XML
@@ -220,7 +223,7 @@ If the web-service should fail, you will receive an exception in the returned re
 Should you have specified JSON as the returned message type, then your raw POST request will look like this;
 
 ```
-POST http://<host>:<port>/adp-restful-services/rest/service/submitpayload?adapterId=FS-FS-Adapter&channelId=Channel1&workflowId=Workflow1&outputFormat=JSON
+POST http://<host>:<port>/interlok-restful-services/rest/service/submitpayload?adapterId=FS-FS-Adapter&channelId=Channel1&workflowId=Workflow1&outputFormat=JSON
 
 POST data:
 My text payload back to JSON
@@ -284,7 +287,7 @@ There are 4 parameters and the POST data required for this service.
 Using the same adapter configuration above, assuming our supplied message is XStream marshalled into XML, our raw HTTP POST request would be;
 
 ```
-POST http://<host>:<port>/adp-restful-services/rest/service/executemessage?adapterId=FS-FS-Adapter&channelId=Channel1&workflowId=Workflow1&inputFormat=XML
+POST http://<host>:<port>/interlok-restful-services/rest/service/executemessage?adapterId=FS-FS-Adapter&channelId=Channel1&workflowId=Workflow1&inputFormat=XML
 
 POST data:
 <serializable-adaptris-message>
@@ -335,7 +338,7 @@ There are 3 parameters and the POST data required for this service.
 Using the same adapter configuration above, our raw HTTP POST request, using some random XML as the payload, could be;
 
 ```
-POST http://<host>:<port>/adp-restful-services/rest/service/executepayload?adapterId=FS-FS-Adapter&channelId=Channel1&workflowId=Workflow1
+POST http://<host>:<port>/interlok-restful-services/rest/service/executepayload?adapterId=FS-FS-Adapter&channelId=Channel1&workflowId=Workflow1
 
 POST data:
 <resources>
@@ -361,4 +364,4 @@ User-Agent: Apache-HttpClient/4.2.6 (java 1.5)
 If your message was successfully submitted to the workflow then you will get a simple true/false response returned.
 
 
-[SerializableMessage]: https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/SerializableAdaptrisMessage.html
+[SerializableMessage]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/SerializableAdaptrisMessage.html
