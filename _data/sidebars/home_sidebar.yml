@@ -318,17 +318,10 @@ entries:
       url: /advanced-configuration-pre-processors.html
       output: web
 
-      subfolders:
-      - title: Failover
-        output: web
-        subfolderitems:
-        - title: Failover using the profiler
-          url: /advanced-profiler-failover.html
-          output: web
 
-        - title: Failover Clustering
-          url: /advanced-failover.html
-          output: web
+    - title: Failover Clustering
+      url: /advanced-failover.html
+      output: web
 
     - title: Deploy using ANT
       url: /advanced-ant-ivy-deploy.html
