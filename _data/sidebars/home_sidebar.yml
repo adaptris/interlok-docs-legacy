@@ -367,10 +367,6 @@ entries:
       - title: Profiling
         output: web
         subfolderitems:
-        - title: Failover using the profiler
-          url: /advanced-profiler-failover.html
-          output: web
-
         - title: Profiling with New Relic
           url: /advanced-new-relic-profiling.html
           output: web
