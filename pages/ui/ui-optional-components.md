@@ -49,7 +49,7 @@ Clicking on the component detector button ![Optional Component Detector Button](
 
 ![Optional Component Detector](./images/ui-user-guide/optional-component-detector.png)
 
-This page shows list all the offically supported optional components and show which one are installed for the selected Adapter.
+This page lists all the offically supported optional components and shows which one are installed for the selected Adapter.
 
 To change the selected Adapter just click on the dropdown and choose a different one. The listed Adapters are the Adapters registered in the Dashboard page.
  
