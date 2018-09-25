@@ -61,7 +61,7 @@ From 3.8.1, when using a Git VCS Profile the UI add some user information (only 
 ```
 [user]
 	name = UI User Name
-	email = VCS Profile username (most likely an email)
+	email = VCS Profile username (ideally an email)
 ```
 
 This is so people can easily determine who made the commit. This is mainly useful when the UI is installed on a server configured with a global git config file.
