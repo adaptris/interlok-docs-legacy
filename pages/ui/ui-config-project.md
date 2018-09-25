@@ -102,7 +102,7 @@ If you click on it that will open a token text field where you can add/select so
 
 ![Config Project Component Settings Variable Picker Toggler](./images/ui-user-guide/config-project-component-settings-modal-variable-picker.png)
 
-A variable key is surrounded by `${` and `}`. If the variable you want to use does not exist you can add a new one by typing `${varKey}` and `Enter` if you want an empty variable and provide the value later or `${varKey}=var Value`if you want to provide the value.
+A variable key is surrounded by `${` and `}`. If the variable you want to use does not exist you can add a new one by typing `${varKey}` and `Enter` if you want an empty variable and provide the value later or `${varKey}=var Value` and `Enter` if you want to provide the value.
 
 Note: When typing a token (variable key or free text) you will have to press `Enter` to fully add the token in the text field.
 
@@ -150,7 +150,7 @@ my-project.zip
           |- adapter-includes (optional)
             |- workflow0.xml
             |- workflow1.xml
-			|- ...
+            |- ...
     |- test
       |- interlok
         |- service-test.xml
