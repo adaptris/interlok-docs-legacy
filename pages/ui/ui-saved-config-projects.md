@@ -33,8 +33,9 @@ You can also upload a config XML file or a config project ZIP file in the webapp
 
 ## Save a Config Project ##
 
-You can save the current config in the page using the 'Save Project' button in the config page action bar.
-Clicking on the 'Save Project' button will prompt you for the name of the project. By default the Adapter unique id will be used.
+You can save the currently loaded config project using the 'Save Project' button in the config page action bar.
+Clicking on the 'Save Project' button will prompt you for either the project name or the project location for local file system projects.
+For new project the Adapter unique id will be used by default for the name.
 
 ![Config page save config project modal](./images/ui-user-guide/config-save-config-project.png)
 

@@ -31,6 +31,7 @@ The modal is divided in three tabs:
 - **X-Includes:** Where you can specify which part of the XML config file should be split into multiple files.
 - **Variables:** Where you can add key/variable pairs to use for the XML config [Variables Substitutions](advanced-configuration-pre-processors.html#variable-substitution).
 - **Variable XPaths:** Where you can specify which value of the XML config file should use Variables Substitutions using some XPaths. You should not need to add Xpaths/key pairs manually as that can be done in the [Component settings modal](#component-settings-modal).
+- **Tests:** Where you can specify the test config file name. This is the file used in the [Service Tester Page](ui-service-tester.html).
 
 ### General Tab ###
 
@@ -82,6 +83,14 @@ You should not need to edit anything in this tab except if you know which XPath 
 
 Generic XPaths (e.g. `//payload-hashing-service/metadata-key` instead of `/adapter/channel-list/channel[unique-id="ChannelId"]/workflow-list/standard-workflow[unique-id="WorkflowId"]/service-collection/services/payload-hashing-service[unique-id="HashPayload"]/metadata-key`) are supported for substitution but the variables will not appear as selected in the [Component settings modal](#component-settings-modal).
 
+### Tests Tab ###
+
+![Config Project Tests Tab](./images/ui-user-guide/config-project-tests-tab.png)
+
+In the Tests tab you can configure:
+
+- **Test XML File Name:** The name of the Service Tester config XML file. This is used when the project is saved or published to a [version control system](ui-version-control.html). This is optional and `service-test.xml` is used by default.
+
 ## Component Settings Modal ##
 
 ![Config Project Component Settings Modal](./images/ui-user-guide/config-project-component-settings-modal.png)
@@ -89,12 +98,13 @@ Generic XPaths (e.g. `//payload-hashing-service/metadata-key` instead of `/adapt
 If you have at least one variable in the config project, a variable picker will be show next to each Component settings.
 ![Config Project Component Settings Variable Picker Toggler](./images/ui-user-guide/config-project-component-settings-modal-variable-picker-toggler.png) ![Config Project Component Settings Variable Picker Toggler Selected](./images/ui-user-guide/config-project-component-settings-modal-variable-picker-toggler-selected.png)
 
-If you click on it that will open a dropdown where you can select a variable key.
+If you click on it that will open a token text field where you can add/select some variable keys and/or some free text.
 
 ![Config Project Component Settings Variable Picker Toggler](./images/ui-user-guide/config-project-component-settings-modal-variable-picker.png)
 
-If the variable you want to use does not exist you can add a new one by clicking on the **Add New** button, filling the key and value text box and clicking the **+** button
-![Config Project Component Settings Variable Picker Toggler](./images/ui-user-guide/config-project-component-settings-modal-variable-add.png)
+A variable key is surrounded by `${` and `}`. If the variable you want to use does not exist you can add a new one by typing `${varKey}` and `Enter` if you want an empty variable and provide the value later or `${varKey}=var Value`if you want to provide the value.
+
+Note: When typing a token (variable key or free text) you will have to press `Enter` to fully add the token in the text field.
 
 ## Save, Open and Download a Project ##
 
@@ -110,6 +120,8 @@ To open a saved project or to download it you will beed to open the [Saved Confi
 
 The downloaded ZIP file will have a structure as follows:
 
+Until 3.8.1 the project format is as below:
+
 ```
 my-project.zip
   |- config-project.json
@@ -121,5 +133,27 @@ my-project.zip
     |- workflow0.xml
     |- workflow1.xml
     |- ...
+```
+
+However since 3.8.1 all the new projects will be saved with a new structured format organised like Maven and Gradle projects.
+
+```
+my-project.zip
+  |_ src
+    |- main
+      |- interlok
+        |- config
+          |- adapter.xml
+          |- variables.properties
+          |- variables-envOne.properties (optional)
+          |- variables-....properties (optional)
+          |- adapter-includes (optional)
+            |- workflow0.xml
+            |- workflow1.xml
+			|- ...
+    |- test
+      |- interlok
+        |- service-test.xml
+  |- config-project.json
 ```
 
