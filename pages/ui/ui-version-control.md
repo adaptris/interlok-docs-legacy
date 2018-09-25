@@ -56,7 +56,7 @@ You will also have to add a commit message and provide your password if not save
 
 ## Git User Information ##
 
-From 3.8.1, when using a Git VCS Profile the UI add some user information (only if it doesn't already exist) into the /repo/.git/config file:
+Since 3.8.1, when using a Git VCS Profile the UI add some user information (only if it doesn't already exist) into the `/repo/.git/config file`:
 
 ```
 [user]
