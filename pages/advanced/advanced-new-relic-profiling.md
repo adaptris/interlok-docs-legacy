@@ -23,7 +23,7 @@ The `com.adaptris:interlok-profiler` and `com.adaptris:interlok-new-relic` artef
 
 {% include important.html content="Currently, it is only possible to profile classes that live in a `com.adaptris..*` package, to avoid additional overhead in the Aspects." %}
 
-You will need to have an `adp-profiler.properties` in your classpath which contains a single property `com.adaptris.profiler.plugin.factory=`. The profiler
+You will need to have an `interlok-profiler.properties` in your classpath which contains a single property `com.adaptris.profiler.plugin.factory=[your choice of plugin]`. The profiler
 plugins available for [New Relic][] are:
 
 - `com.adaptris.newrelic.NewRelicInterlokPluginFactory`: Generates custom metrics for all workflows, services, and producers.
@@ -83,7 +83,7 @@ done
 After that you need to specify the `-javaagent` parameters before using [SimpleBootstrap][] to start Interlok.
 
 ```bash
-$JAVA_HOME/bin/java -javaagent:/home/adaptris/adapter/lib/aspectjweaver.jar -javaagent:/home/adaptris/newrelic/newrelic.jar -Dorg.aspectj.weaver.loadtime.configuration=META-INF/profiler-aop.xml -cp "$MYCLASSPATH" $JAVA_ARGS com.adaptris.core.management.SimpleBootstrap bootstrap.properties
+$JAVA_HOME/bin/java -javaagent:/home/adaptris/newrelic/newrelic.jar -javaagent:/home/adaptris/adapter/lib/aspectjweaver.jar  -Dorg.aspectj.weaver.loadtime.configuration=META-INF/profiler-aop.xml -cp "$MYCLASSPATH" $JAVA_ARGS com.adaptris.core.management.SimpleBootstrap bootstrap.properties
 ```
 
 

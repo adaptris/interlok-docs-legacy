@@ -41,7 +41,17 @@ Clicking on the view more details button shows the optional component details wi
 
 ![Optional Component Discovery Details](./images/ui-user-guide/optional-component-details.png)
 
-This page shows all the links as described above, but also shows the dependencies that the component has and a link for the install instructions which takes you to [this documentation page][] 
+This modal shows some options and the dependencies that the component has and a link for the install instructions which takes you to [this documentation page][] 
+  
+## Optional Component Detector ##
+
+Clicking on the component detector button ![Optional Component Detector Button](./images/ui-user-guide/optional-component-detector-button.png) will open a modal that list which optional components are installed for the selected Adapter:
+
+![Optional Component Detector](./images/ui-user-guide/optional-component-detector.png)
+
+This page lists all the offically supported optional components and shows which one are installed for the selected Adapter.
+
+To change the selected Adapter just click on the dropdown and choose a different one. The listed Adapters are the Adapters registered in the Dashboard page.
  
 
 [artifact server]: https://development.adaptris.net/nexus/content/groups/

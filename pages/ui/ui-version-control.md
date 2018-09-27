@@ -54,6 +54,20 @@ You will also have to add a commit message and provide your password if not save
 
 ![Publish - Version Control](./images/ui-user-guide/vcs-publish.png)
 
+## Git User Information ##
+
+Since 3.8.1, when using a Git VCS Profile the UI add some user information (only if it doesn't already exist) into the `/repo/.git/config file`:
+
+```
+[user]
+	name = UI User Name
+	email = VCS Profile username (ideally an email)
+```
+
+This is so people can easily determine who made the commit. This is mainly useful when the UI is installed on a server configured with a global git config file.
+
+You can remove or edit this user information if you wish. You can read more about [Customizing Git Configuration](https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration).
+
 ## Troubleshooting ##
 
 The adapter gui doesn't support version control conflicts and merging. If some conflicts are found, an error message will be display and will ask you to download a zip file containing the working copy repository.

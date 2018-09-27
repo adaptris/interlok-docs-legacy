@@ -34,9 +34,12 @@ The actions are as follows:
 Button | Action | Meaning
 ------------ | ------------- | ------------
 ![The service tester new config button](./images/ui-user-guide/service-tester-new-config-btn.png) | New Config | Reset the page with a new config
+![The service tester open from saved projects button](./images/ui-user-guide/service-tester-open-from-saved-projects-btn.png) | Open from saved projects | Open a config from a saved config project. Since 3.8.1
+![The service tester open from saved on local file system button](./images/ui-user-guide/service-tester-open-from-saved-on-local-file-system-btn.png) | Open from saved on local file system | Open a config from a config project saved your local file system. Only available when the UI is accessed via localhost. Since 3.8.1
 ![The service tester upload config button](./images/ui-user-guide/service-tester-upload-config-btn.png) | Upload Config | Upload an XML config into the page
 ![The service tester load services fron adapter config button](./images/ui-user-guide/service-tester-load-services-from-adapter-config-btn.png) | Load Services From Adapter Config | Load in the page context all the services from an Adapter XML config so they can be used in the Tests Source (File or Inline)
 ![The service tester generate services fron adapter config button](./images/ui-user-guide/service-tester-generate-services-from-adapter-config-btn.png) | Generate Services From Adapter Config | Generate tests for all selected services from an Adapter XML config. The Tests can either have a File or an Inline Source
+![The service tester save config button](./images/ui-user-guide/service-tester-save-config-btn.png) | Save Config | Save the current config into a config project (existing, new or on the local file system)
 ![The service tester download config button](./images/ui-user-guide/service-tester-download-config-btn.png) | Download Config | Download the current config into an XML file
 ![The service tester run config button](./images/ui-user-guide/service-tester-run-config-btn.png) | Run Config | Run the current config tests
 ![The service tester clear results button](./images/ui-user-guide/service-tester-clear-results-btn.png) | Clear Results | Run the current config tests results
