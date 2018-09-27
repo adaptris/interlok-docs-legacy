@@ -371,10 +371,6 @@ entries:
           url: /advanced-new-relic-profiling.html
           output: web
 
-        - title: Profiling with Stackify
-          url: /advanced-stackify-profiling.html
-          output: web
-
     - title: Running in Docker
       url: /advanced-docker.html
       output: web
