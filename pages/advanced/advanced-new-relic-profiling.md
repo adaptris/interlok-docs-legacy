@@ -37,7 +37,7 @@ In this example we only want to profile [Workflow][] activity so we would use `c
 
 You may want to install the [New Relic Java Agent][]. In addition to providing metrics for standard components like JMS / JDBC; this also allows you to have a custom instrumentation extension file providing additional metrics about specific methods.
 
-{% include tip.html content="If you are using the [New Relic Java Agent][] (and why wouldn't you) then it should not be the first `javaagent` specified on the commandline." %}
+{% include tip.html content="If you are using the [New Relic Java Agent][] (and why wouldn't you) then it should be the first `javaagent` specified on the commandline." %}
 
 ### Custom New Relic extensions ###
 
