@@ -126,7 +126,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-oftp][] | Support for OFTP as a transport protocol; requires [interlok-licensing][] | 3.8.0+|
 |com.adaptris | [interlok-pdf][] | PDF Transformations| 3.8.0+
 |com.adaptris | [interlok-profiler][] | Base package for supporting profiling (used by [interlok-new-relic][] and [interlok-stackify][]) | 3.8.0+
-|com.adaptris | [interlok-profiler-failover][] | Running an adapter in failover mode; requires [interlok-profiler][]| 3.8.0+
+|com.adaptris | ~~[interlok-profiler-failover][]~~ | ~~Running an adapter in failover mode; requires [interlok-profiler][]~~| 3.8.0 only; removed in 3.8.1
 |com.adaptris | [interlok-restful-services][] | [Exposing Workflows as a RESTful service](adapter-hosting-rest.html)|3.8.0+
 |com.adaptris | [interlok-reliable-messaging][] | Support for ordered and reliable messaging; requires [interlok-licensing][] | 3.8.0+
 |com.adaptris | [interlok-salesforce][] | Integration with Salesforce via WebServices (generally use their REST interface via HTTP/HTTPS instead); requires [interlok-licensing][] | 3.8.0+
@@ -138,7 +138,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-solace][] | Integration with Solace Systems as a JMS provider; requires additional jars not automatically delivered; requires [interlok-licensing][]| 3.8.0+
 |com.adaptris | [interlok-sonicmf][] | Interlok runtime as [part of a Sonic Container](advanced-sonic-container.html) | 3.8.0+
 |com.adaptris | [interlok-sshtunnel][] | Management component that opens one or more SSH tunnels | 3.7.1+ | available on [github](https://github.com/adaptris/interlok-sshtunnel)
-|com.adaptris | [interlok-stackify][] | Supports [Stackify Profiling](advanced-stackify-profiling.html); requires [interlok-profiler][] |3.8.0+|available on [github](https://github.com/adaptris/interlok-stackify)
+|com.adaptris | ~~[interlok-stackify][]~~ | ~~Supports [Stackify Profiling](advanced-stackify-profiling.html); requires [interlok-profiler][]~~ |3.8.0 only, removed in 3.8.1|available on [github](https://github.com/adaptris/interlok-stackify)
 |com.adaptris | [interlok-stax][] | Using the STaX API to read/write XML | 3.6.6+ | available on [github](https://github.com/adaptris/interlok-stax)
 |com.adaptris | [interlok-stubs][] | [Test Scaffolding](developer-services.html#writing-tests) for developers |3.8.0+
 |com.adaptris | [interlok-swift][] | Transform to and from the Swift message format; requires [interlok-licensing][] | 3.8.0+
