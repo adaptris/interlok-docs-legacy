@@ -95,7 +95,7 @@ When using this transaction manager, you must set the transactions.properties pr
 
 #### The consumer/produce connections ####
 
-The connection is based on JNDI and can be configured almost exactly as any other Interlok JMS JNDI connection;
+Should you have acesss to a JNDI store for your chosen broker then the connection can be configured almost exactly as any other Interlok JMS JNDI connection;
 
 ```xml
 
@@ -114,6 +114,67 @@ The connection is based on JNDI and can be configured almost exactly as any othe
     </vendor-implementation>
   </xa-jms-connection>
 
+```
+
+__ As of Interlok 3.8.2__ 
+
+You may also configure specific vendor implementations such as for Solace, WebsphereMQ and Tibco EMS.  Examples of each below;
+
+Solace.  We have both the basic and advanced implementations, the basic one show below.:
+
+```xml
+  <xa-jms-connection>
+    <unique-id>xa-solace-connection</unique-id>
+    <user-name>admin</user-name>
+    <password>admin</password>
+    <vendor-implementation class="xa-basic-solace-implementation">
+      <broker-url>hostname:55555</broker-url>
+      <message-vpn>default</message-vpn>
+    </vendor-implementation>
+  </xa-jms-connection>
+```
+
+Websphere MQ.  We have both the basic and advanced implementations, the advanced one show below.:
+
+```xml
+  <xa-jms-connection>
+    <unique-id>xa-wmq-connection</unique-id>
+    <vendor-implementation class="xa-advanced-mq-series-implementation">
+	  <connection-factory-properties>
+	    <key-value-pair>
+		  <key>Channel</key>
+		  <value>ServerConnectionChan</value>
+		</key-value-pair>
+		<key-value-pair>
+		  <key>Port</key>
+		  <value>1414</value>
+		</key-value-pair>
+		<key-value-pair>
+		  <key>TransportType</key>
+		  <value>MQJMS_TP_BINDINGS_MQ</value>
+		</key-value-pair>
+		<key-value-pair>
+		  <key>HostName</key>
+		  <value>localhost</value>
+		</key-value-pair>
+		<key-value-pair>
+		  <key>QueueManager</key>
+		  <value>MyQM</value>
+		</key-value-pair>
+	  </connection-factory-properties>
+    </vendor-implementation>
+  </xa-jms-connection>
+```
+
+Tibco EMS:
+
+```xml
+  <xa-jms-connection>
+    <unique-id>xa-tibco-connection-1</unique-id>
+    <vendor-implementation class="xa-basic-tibco-ems-implementation">
+      <broker-url>tcp://localhost:7222</broker-url>
+    </vendor-implementation>
+  </xa-jms-connection>
 ```
 
 #### Connection error handling ####
