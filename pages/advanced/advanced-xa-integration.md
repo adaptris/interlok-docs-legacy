@@ -116,7 +116,7 @@ Should you have acesss to a JNDI store for your chosen broker then the connectio
 
 ```
 
-__ As of Interlok 3.8.2__ 
+__Since 3.8.2__ 
 
 You may also configure specific vendor implementations such as for Solace, WebsphereMQ and Tibco EMS.  Examples of each below;
 
