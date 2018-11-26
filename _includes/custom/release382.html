@@ -1,0 +1,77 @@
+## Version 3.8.2 ##
+
+Release Date : 2018-12
+
+### Bugs
+
+ - [INTERLOK-2375](https://adaptris.atlassian.net/browse/INTERLOK-2375) - JdbcSequenceNumberService ans SimpleSequenceNumberService are inconsistently configured
+ - [INTERLOK-2422](https://adaptris.atlassian.net/browse/INTERLOK-2422) - interlok-aws-sqs: When max-messages-per-poll is set consumer pulls an extra message
+ - [INTERLOK-2424](https://adaptris.atlassian.net/browse/INTERLOK-2424) - AdaptrisMessage#getWriter(encoding) is not predictable
+ - [INTERLOK-2430](https://adaptris.atlassian.net/browse/INTERLOK-2430) - check-cache and check-cache-and-retrieve services don't work with JSR107
+ - [INTERLOK-2433](https://adaptris.atlassian.net/browse/INTERLOK-2433) - JMX/JMS (ActiveMQ) needs to trust all packages
+ - [INTERLOK-2449](https://adaptris.atlassian.net/browse/INTERLOK-2449) - Re-enable the jdbc/sftp tests on dev-vm*
+ - [INTERLOK-2452](https://adaptris.atlassian.net/browse/INTERLOK-2452) - Version number now missing from startup logging
+ - [INTERLOK-2457](https://adaptris.atlassian.net/browse/INTERLOK-2457) - interlok-stax: StaxPathSplitter does not execute copyMetadata
+ - [INTERLOK-2464](https://adaptris.atlassian.net/browse/INTERLOK-2464) - UI-Salesforce Helper : need to be able to configure oauth token URL
+ - [INTERLOK-2466](https://adaptris.atlassian.net/browse/INTERLOK-2466) - UI: Fix interlok-ui snyk.io high severity vulns
+ - [INTERLOK-2467](https://adaptris.atlassian.net/browse/INTERLOK-2467) - Cannot Bump awsSDKVersion from 1.11.426 to 1.11.427
+ - [INTERLOK-2468](https://adaptris.atlassian.net/browse/INTERLOK-2468) - UI - Changing the role when updating a user doesn't work.
+ - [INTERLOK-2486](https://adaptris.atlassian.net/browse/INTERLOK-2486) - Issue with Flat File Transformer
+ - [INTERLOK-2494](https://adaptris.atlassian.net/browse/INTERLOK-2494) - UI Optional Components - update the 'download jar' url / ensure it works for Gradle/Maven snapshot builds
+ - [INTERLOK-2498](https://adaptris.atlassian.net/browse/INTERLOK-2498) - UI should cope with members that are a list but default to a "null"
+ - [INTERLOK-2514](https://adaptris.atlassian.net/browse/INTERLOK-2514) - Unable to configure 'Xpath Metadata Service > XML Document Factory Config > Entity Resolver' using the UI
+ - [INTERLOK-2515](https://adaptris.atlassian.net/browse/INTERLOK-2515) - Component Downloader - The component downloader should make sure snapshot artifcts are updated
+ - [INTERLOK-2522](https://adaptris.atlassian.net/browse/INTERLOK-2522) - UI Service Tester - the save button animation doesn't work correctly
+ - [INTERLOK-2525](https://adaptris.atlassian.net/browse/INTERLOK-2525) - Boolean type error with json-jdbc-upsert service
+
+### Improvements
+
+ - [INTERLOK-660](https://adaptris.atlassian.net/browse/INTERLOK-660) - Add a quick-add button (or in the add modal) in the dashboard that add the local adapter if it doesn't exist.
+ - [INTERLOK-1530](https://adaptris.atlassian.net/browse/INTERLOK-1530) - HTTP Producer using OKHTTP
+ - [INTERLOK-2141](https://adaptris.atlassian.net/browse/INTERLOK-2141) - Should optional component 'adp-webservice-external' have 'interlok-common' listed twice as a dependency in it's pom?
+ - [INTERLOK-2237](https://adaptris.atlassian.net/browse/INTERLOK-2237) - Remove beautification due to illegal module access
+ - [INTERLOK-2307](https://adaptris.atlassian.net/browse/INTERLOK-2307) - UI Projects - 'pretty print' config-project.json
+ - [INTERLOK-2308](https://adaptris.atlassian.net/browse/INTERLOK-2308) - UI Projects - allow configuration of x-includes directory structure
+ - [INTERLOK-2309](https://adaptris.atlassian.net/browse/INTERLOK-2309) - UI Projects - variables properties inheritance
+ - [INTERLOK-2317](https://adaptris.atlassian.net/browse/INTERLOK-2317) - JSON Metadata Splitter
+ - [INTERLOK-2360](https://adaptris.atlassian.net/browse/INTERLOK-2360) - Migrate 'interlok' to gradle
+ - [INTERLOK-2366](https://adaptris.atlassian.net/browse/INTERLOK-2366) - UI Component Search - create the 'component search' results page
+ - [INTERLOK-2367](https://adaptris.atlassian.net/browse/INTERLOK-2367) - UI Config - Improve the editing of object lists within the settings editor
+ - [INTERLOK-2386](https://adaptris.atlassian.net/browse/INTERLOK-2386) - Add a new interlok-kie package to replace interlok-drools
+ - [INTERLOK-2410](https://adaptris.atlassian.net/browse/INTERLOK-2410) - Upgrade interlok-excel to use poi-4.0.0
+ - [INTERLOK-2413](https://adaptris.atlassian.net/browse/INTERLOK-2413) - Review dependabot updates for 3.8.2
+ - [INTERLOK-2417](https://adaptris.atlassian.net/browse/INTERLOK-2417) - interlok-service-tester: Gradle Plugin set working directory
+ - [INTERLOK-2427](https://adaptris.atlassian.net/browse/INTERLOK-2427) - Interceptor that publishes the last timeslice
+ - [INTERLOK-2428](https://adaptris.atlassian.net/browse/INTERLOK-2428) - Management Component that can "start / stop" an external process
+ - [INTERLOK-2434](https://adaptris.atlassian.net/browse/INTERLOK-2434) - UI Widgets - define the features and rules that would be required to build custom widgets
+ - [INTERLOK-2439](https://adaptris.atlassian.net/browse/INTERLOK-2439) - Read File Service to set file Content Type as metadata
+ - [INTERLOK-2447](https://adaptris.atlassian.net/browse/INTERLOK-2447) - Migrate StaxGetRootElementService from odin-labs to interlok-stax
+ - [INTERLOK-2448](https://adaptris.atlassian.net/browse/INTERLOK-2448) - Migrate SymmetricKeyDecryptionService from odin-labs to interlok-core
+ - [INTERLOK-2451](https://adaptris.atlassian.net/browse/INTERLOK-2451) - Migrate odin-date-formatter-builder-with-optional-fraction to interlok-core
+ - [INTERLOK-2454](https://adaptris.atlassian.net/browse/INTERLOK-2454) - Add Ordered Item Metadata Filter
+ - [INTERLOK-2456](https://adaptris.atlassian.net/browse/INTERLOK-2456) - interlok-json: Metadata To Json Service
+ - [INTERLOK-2458](https://adaptris.atlassian.net/browse/INTERLOK-2458) - UI - Improve the user experience when a local adapter is disconnected
+ - [INTERLOK-2459](https://adaptris.atlassian.net/browse/INTERLOK-2459) - Json Streaming Splitter
+ - [INTERLOK-2461](https://adaptris.atlassian.net/browse/INTERLOK-2461) - interlok-service-tester: Shared Service Provider
+ - [INTERLOK-2465](https://adaptris.atlassian.net/browse/INTERLOK-2465) - JsonMapInsert + Upsert should support expression based tablenames
+ - [INTERLOK-2470](https://adaptris.atlassian.net/browse/INTERLOK-2470) - Bump hibernate-core to 5.3.7.Final
+ - [INTERLOK-2471](https://adaptris.atlassian.net/browse/INTERLOK-2471) - Bump spring-beans etc to 4.3.20.RELEASE
+ - [INTERLOK-2475](https://adaptris.atlassian.net/browse/INTERLOK-2475) - UI Widgets - Add a count custom widget
+ - [INTERLOK-2476](https://adaptris.atlassian.net/browse/INTERLOK-2476) - UI Widgets - Add a table custom widget
+ - [INTERLOK-2477](https://adaptris.atlassian.net/browse/INTERLOK-2477) - UI Widgets - Add a chart custom widget
+ - [INTERLOK-2485](https://adaptris.atlassian.net/browse/INTERLOK-2485) - interlok-json: Json Array Array Aggregator
+ - [INTERLOK-2487](https://adaptris.atlassian.net/browse/INTERLOK-2487) - Serializing Statistics improvement
+ - [INTERLOK-2489](https://adaptris.atlassian.net/browse/INTERLOK-2489) - UI Widget - Custom widget should work when the endpoints return a gzip encoded response.
+ - [INTERLOK-2492](https://adaptris.atlassian.net/browse/INTERLOK-2492) - Add annotation to indicate when something will be "removed"
+ - [INTERLOK-2497](https://adaptris.atlassian.net/browse/INTERLOK-2497) - Change nexus development.adaptris.net/nexus to nexus.adaptris.net/nexus in the component downloader and indexer
+ - [INTERLOK-2499](https://adaptris.atlassian.net/browse/INTERLOK-2499) - Stax should support additional XMLInputFactory properties
+ - [INTERLOK-2507](https://adaptris.atlassian.net/browse/INTERLOK-2507) - XA - vendor-imps other than just JNDI.
+ - [INTERLOK-2508](https://adaptris.atlassian.net/browse/INTERLOK-2508) - Add a send(Event, Map<>) method.
+ - [INTERLOK-2044](https://adaptris.atlassian.net/browse/INTERLOK-2044) - UI Config - Remove or Improve the popular group in the component sidebar
+ - [INTERLOK-2221](https://adaptris.atlassian.net/browse/INTERLOK-2221) - UI Version Alerts - improve the version alert message when you have multiple adapters out of version
+ - [INTERLOK-2282](https://adaptris.atlassian.net/browse/INTERLOK-2282) - UI - test the dashboard with many adapters and plan optimisation tasks
+ - [INTERLOK-2390](https://adaptris.atlassian.net/browse/INTERLOK-2390) - FtpConnection should using ExpiringMap
+ - [INTERLOK-2453](https://adaptris.atlassian.net/browse/INTERLOK-2453) - UI Projects - improve the variable properties naming
+ - [INTERLOK-2455](https://adaptris.atlassian.net/browse/INTERLOK-2455) - Consider using public interface of ParameterizeType, ... in Interlok XStreamUtils.java
+ - [INTERLOK-2474](https://adaptris.atlassian.net/browse/INTERLOK-2474) - SplitJoinService exception handling strategy
+ - [INTERLOK-2517](https://adaptris.atlassian.net/browse/INTERLOK-2517) - UI - Bump jetty and servlet api versions to match core.
