@@ -52,14 +52,22 @@ In the General tab you can configure:
 
 In the X-Includes tab you can select which part of the config file will be extracted from the main adapter.xml file.
 
+Since 3.8.2 when an x-include part is selected you can specify the file path to this component from the x-include dir.
+By default the x-include files are at the root of the x-include dir and use the xml tag name or type (workflow, consume-connection, produce-connection ...).
+If you wish to add the files in a sub folder you can set the file path to *dir/file*.
+For instance to have all the workflows in a folder named 'workflows' you can do *workflows/workflow*. (Only forward slashes '/' are allowed)
+
 ### Variables Tab ###
 
 ![Config Project Variables Tab](./images/ui-user-guide/config-project-variables-tab.png)
 
-In the Variables tab you set the name of the variables properties file. This is optional and `variables.properties` is used by default.
+In the Variables tab you set the name of the variables properties file. This is optional and if left empty, `variables#[-varsetname].properties` will be used by default.
 
-You can also add variable sets with all the variables key/value pairs you want to use in the XML configuration file.
-Each set will be saved in a different properties file. The default set will be named `variables.properties` and the other set will be named like `variables-setname.properties`.
+Since 3.8.2 the variables properties file names are more configurable. `#[-varsetname]` is the placeholder for the var set name but will be omitted for the default var set.
+The hyphen '-' in `#[-varsetname]` can be replaced by any character such as '.' or '_' and can be placed at the end like `#[varsetname.]`
+
+You can add variable sets with all the variables key/value pairs you want to use in the XML configuration file.
+Each set will be saved in a different properties file. The default set will be named `variables.properties` and the other set will be named like `variables-setname.properties` as explained above.
 
 You can use the **Upload Variables** button to upload a properties file and add all its properties as variables.
 

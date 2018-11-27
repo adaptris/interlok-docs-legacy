@@ -35,7 +35,6 @@ The components are organised into three different categories:
 	A bookmark can be removed by clicking again on the selected star on its right side.
     - **Deprecated:** The list of deprecated component for the current version of the UI.
 	It is advised to avoid using deprecated component as they may be removed in following releases.
-    - **Popular:** List some popular components.
     - **Since:** List components since the selected version. Only components marked with the since annotation will be listed. This is a new feature so a limited amount of components will be listed.
   - **By Tag:** You can select a tag in the dropdown and that will display all the components attached to this tag.
   A search bar is available when the list has more than ten components.
