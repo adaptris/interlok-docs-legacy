@@ -152,6 +152,10 @@ This will open a modal where you can select which adapter you want to apply the 
 
 ![Config apply confirm modal](./images/ui-user-guide/config-apply-confirm-modal.png)
 
+You can also apply the config with multiple variable sets. When more than one variable set have the same property the latest will take precedence.
+
+![Config apply confirm modal multi varset](./images/ui-user-guide/config-apply-confirm-modal-multi-varset.png)
+
 Then you just need to click on Ok and the apply process will start. Another modal will be displayed to show you the status of each step of the apply process.
 
 ![Config apply status modal](./images/ui-user-guide/config-apply-status-modal.png)
