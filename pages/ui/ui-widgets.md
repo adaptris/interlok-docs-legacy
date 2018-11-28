@@ -487,6 +487,170 @@ This widget is exactly like the widget described in [Container Consumer Messages
 
 ![Runtime Widget - Workflow Consumer Messages Remaining](./images/ui-user-guide/widgets-workflow-consumer-messages-remaining.png)
 
+## Custom Widgets ##
+
+(Since 3.8.2)
+
+A custom widgets allows a user to display in a table or chart data from a given endpoint.
+It can be added by clicking on the Custom Widget icon in the Add Widget modal when no adapter has been selected.
+
+![Runtime Widget - Custom Widget](./images/ui-user-guide/widgets-icon-custom-widget.png)
+
+Then the user will be prompted to enter some details for the endpoint.
+
+- *Name:* The name of the widget
+- *Endpoint:* The url of the endpoint where the UI will fetch data.
+- *RefreshTime:* The data refresh interval in milliseconds.
+
+![Runtime Widget - Custom Widget Prompt](./images/ui-user-guide/widgets-icon-custom-widget-prompt.png)
+
+The custom widget currently supports 3 kind of types:
+
+- *Count Widget:* An icon and a number.
+
+![Runtime Widget - Custom Widget Count](./images/ui-user-guide/widgets-custom-widget-count.png)
+
+The json format returned by the endpoint should be like:
+
+```
+{
+  "type" : "count",
+  "data" : {
+    "icon" : "times",
+    "value": 5
+  }
+}
+```
+
+The `icon` is one icon from [Font Awesome 4.7.0](https://fontawesome.com/v4.7.0/icons/) icon list.
+
+- *Table Widget:* Some data displayed in a table.
+
+![Runtime Widget - Custom Widget Table](./images/ui-user-guide/widgets-custom-widget-table.png)
+
+The json format returned by the endpoint should be like:
+
+```
+{
+  "type" : "table",
+  "data" : {
+    "direction" : "rows",
+    "headers": ["Col One", "Col Two"],
+    "values": [
+      [1, 25],
+      [4, 20],
+      [5, 10],
+      [3, 14],
+      [2, 6]
+    ]
+  }
+}
+```
+
+Or
+
+```
+{
+  "type" : "table",
+  "data" : {
+    "direction" : "columns",
+    "headers": ["Col One", "Col Two"],
+    "values": [
+      [1, 4, 5 ,3 ,2],
+      [25, 20, 10 ,14, 6]
+    ]
+  }
+}
+```
+
+- *Chart Widget:* Some data displayed in a chart.
+
+![Runtime Widget - Custom Widget Chart Line](./images/ui-user-guide/widgets-custom-widget-chart-line.png)
+
+The json format returned by the endpoint should be like:
+
+```
+{
+  "type" : "chart",
+  "data" : {
+    "type" : "line",
+    "direction" : "rows",
+    "headers": ["Col One", "Col Two"],
+    "values": [
+      [1, 25],
+      [4, 20],
+      [5, 10],
+      [3, 14],
+      [2, 6]
+    ]
+  }
+}
+```
+
+Or
+
+```
+{
+  "type" : "chart",
+  "data" : {
+    "type" : "line",
+    "direction" : "columns",
+    "headers": ["Col One", "Col Two"],
+    "values": [
+      [1, 4, 5 ,3 ,2],
+      [25, 20, 10 ,14, 6]
+    ]
+  }
+}
+```
+
+Where the `data.type` line can be line, area, scatter, bar, pie, donut, step.
+
+The chart widget also support timeseries.
+
+![Runtime Widget - Custom Widget Chart Timeseries](./images/ui-user-guide/widgets-custom-widget-chart-timeseries.png)
+
+```
+{
+  "type" : "chart",
+  "data" : {
+    "type" : "timeseries",
+    "direction" : "rows",
+    "headers": ["Col One", "Col Two"],
+    "x": ["10:00:00", "10:30:00", "11:00:00", "11:30:00", "12:00:00"],
+    "xFormat": "%H:%M:%S",
+    "values": [
+      [1, 25],
+      [4, 20],
+      [5, 10],
+      [3, 14],
+      [2, 6]
+    ]
+  }
+}
+```
+
+Or
+
+```
+{
+  "type" : "chart",
+  "data" : {
+    "type" : "timeseries",
+    "direction" : "columns",
+    "headers": ["Col One", "Col Two"],
+    "x": ["10:00:00", "10:30:00", "11:00:00", "11:30:00", "12:00:00"],
+    "xFormat": "%H:%M:%S",
+    "values": [
+      [1, 4, 5 ,3 ,2],
+      [25, 20, 10 ,14, 6]
+    ]
+  }
+}
+```
+
+{% include note.html content="The full content of the widgets will be refreshed every time so the endpoints need to return the all the data that need to be displayed." %}
+
 ## Widget Group ##
 
 (Since 3.4)
