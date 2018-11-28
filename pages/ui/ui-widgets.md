@@ -516,7 +516,7 @@ The count widget is just an icon and a number.
 
 The json format returned by the endpoint should be like:
 
-```xml
+```json
 {
   "type" : "count",
   "data" : {
@@ -536,7 +536,7 @@ The table widget display some data in a table format.
 
 The json format returned by the endpoint should be like:
 
-```xml
+```json
 {
   "type" : "table",
   "data" : {
@@ -555,7 +555,7 @@ The json format returned by the endpoint should be like:
 
 Or
 
-```xml
+```json
 {
   "type" : "table",
   "data" : {
@@ -577,7 +577,7 @@ The chart widget display some data in a chart format.
 
 The json format returned by the endpoint should be like:
 
-```xml
+```json
 {
   "type" : "chart",
   "data" : {
@@ -597,7 +597,7 @@ The json format returned by the endpoint should be like:
 
 Or
 
-```xml
+```json
 {
   "type" : "chart",
   "data" : {
@@ -618,7 +618,7 @@ The chart widget also support timeseries.
 
 ![Runtime Widget - Custom Widget Chart Timeseries](./images/ui-user-guide/widgets-custom-widget-chart-timeseries.png)
 
-```xml
+```json
 {
   "type" : "chart",
   "data" : {
@@ -640,7 +640,7 @@ The chart widget also support timeseries.
 
 Or
 
-```xml
+```json
 {
   "type" : "chart",
   "data" : {
