@@ -506,7 +506,7 @@ Then the user will be prompted to enter some details for the endpoint.
 
 The custom widget currently supports 3 kind of types:
 
-- *Count Widget:* An icon and a number.
+### *Count Widget:* An icon and a number.
 
 ![Runtime Widget - Custom Widget Count](./images/ui-user-guide/widgets-custom-widget-count.png)
 
@@ -524,7 +524,7 @@ The json format returned by the endpoint should be like:
 
 The `icon` is one icon from [Font Awesome 4.7.0](https://fontawesome.com/v4.7.0/icons/) icon list.
 
-- *Table Widget:* Some data displayed in a table.
+### *Table Widget:* Some data displayed in a table.
 
 ![Runtime Widget - Custom Widget Table](./images/ui-user-guide/widgets-custom-widget-table.png)
 
@@ -563,7 +563,7 @@ Or
 }
 ```
 
-- *Chart Widget:* Some data displayed in a chart.
+### *Chart Widget:* Some data displayed in a chart.
 
 ![Runtime Widget - Custom Widget Chart Line](./images/ui-user-guide/widgets-custom-widget-chart-line.png)
 
