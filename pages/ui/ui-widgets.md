@@ -130,6 +130,7 @@ This widget shows:
 ### Message Counts Chart ###
 
 This widget shows a chart that details the amount of messages that the workflows within this container have processed.
+
 ![Runtime Widget - Message Counts Chart](./images/ui-user-guide/widgets-message-counts-widget.png)
 
 This chart shows:
@@ -406,6 +407,7 @@ This widget is exactly like the widget described in [Container Details Widget](u
 ### Workflow Message Counts ###
 
 This widget shows a chart that details the amount of messages and the amount of error messages that the workflow have processed.
+
 ![Runtime Widget - Message Counts Chart](./images/ui-user-guide/widgets-workflow-message-counts-widget.png)
 
 This chart shows:
@@ -498,21 +500,23 @@ It can be added by clicking on the Custom Widget icon in the Add Widget modal wh
 
 Then the user will be prompted to enter some details for the endpoint.
 
-- *Name:* The name of the widget
-- *Endpoint:* The url of the endpoint where the UI will fetch data.
-- *RefreshTime:* The data refresh interval in milliseconds.
+- **Name:** The name of the widget
+- **Endpoint:** The url of the endpoint where the UI will fetch data.
+- **RefreshTime:** The data refresh interval in milliseconds.
 
 ![Runtime Widget - Custom Widget Prompt](./images/ui-user-guide/widgets-icon-custom-widget-prompt.png)
 
 The custom widget currently supports 3 kind of types:
 
-### *Count Widget:* An icon and a number.
+### Count Widget
+
+The count widget is just an icon and a number.
 
 ![Runtime Widget - Custom Widget Count](./images/ui-user-guide/widgets-custom-widget-count.png)
 
 The json format returned by the endpoint should be like:
 
-```
+```xml
 {
   "type" : "count",
   "data" : {
@@ -524,13 +528,15 @@ The json format returned by the endpoint should be like:
 
 The `icon` is one icon from [Font Awesome 4.7.0](https://fontawesome.com/v4.7.0/icons/) icon list.
 
-### *Table Widget:* Some data displayed in a table.
+### Table Widget
+
+The table widget display some data in a table format.
 
 ![Runtime Widget - Custom Widget Table](./images/ui-user-guide/widgets-custom-widget-table.png)
 
 The json format returned by the endpoint should be like:
 
-```
+```xml
 {
   "type" : "table",
   "data" : {
@@ -549,7 +555,7 @@ The json format returned by the endpoint should be like:
 
 Or
 
-```
+```xml
 {
   "type" : "table",
   "data" : {
@@ -563,13 +569,15 @@ Or
 }
 ```
 
-### *Chart Widget:* Some data displayed in a chart.
+### Chart Widget
+
+The chart widget display some data in a chart format.
 
 ![Runtime Widget - Custom Widget Chart Line](./images/ui-user-guide/widgets-custom-widget-chart-line.png)
 
 The json format returned by the endpoint should be like:
 
-```
+```xml
 {
   "type" : "chart",
   "data" : {
@@ -589,7 +597,7 @@ The json format returned by the endpoint should be like:
 
 Or
 
-```
+```xml
 {
   "type" : "chart",
   "data" : {
@@ -610,7 +618,7 @@ The chart widget also support timeseries.
 
 ![Runtime Widget - Custom Widget Chart Timeseries](./images/ui-user-guide/widgets-custom-widget-chart-timeseries.png)
 
-```
+```xml
 {
   "type" : "chart",
   "data" : {
@@ -632,7 +640,7 @@ The chart widget also support timeseries.
 
 Or
 
-```
+```xml
 {
   "type" : "chart",
   "data" : {
