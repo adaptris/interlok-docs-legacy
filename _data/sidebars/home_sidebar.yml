@@ -49,7 +49,7 @@ entries:
     - title: Optional Components
       url: /adapter-optional-components.html
       output: web
-
+  
     - title: Startup in Detail
       url: /adapter-bootstrap.html
       output: web
@@ -169,6 +169,10 @@ entries:
 
     - title: Optional Component Discovery
       url: /ui-optional-component-discovery.html
+      output: web
+
+    - title: Interlok Component Search
+      url: /ui-interlok-component-search.html
       output: web
 
     - title: Salesforce Config
