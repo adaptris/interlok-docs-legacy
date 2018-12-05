@@ -27,9 +27,9 @@ configurations {
 
 repositories {
   mavenCentral()
-  maven { url "https://development.adaptris.net/nexus/content/groups/public" }
-  maven { url "https://development.adaptris.net/nexus/content/repositories/snapshots" }
-  maven { url "https://development.adaptris.net/nexus/content/repositories/releases" }
+  maven { url "https://nexus.adaptris.net/nexus/content/groups/public" }
+  maven { url "https://nexus.adaptris.net/nexus/content/repositories/snapshots" }
+  maven { url "https://nexus.adaptris.net/nexus/content/repositories/releases" }
 }
 
 dependencies {

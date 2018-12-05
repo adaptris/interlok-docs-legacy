@@ -10,7 +10,7 @@ summary: This document is aimed at developers and system administrators who wish
 {% include important.html content="in 3.8.0; adp-sonicmf was renamed to interlok-sonicmf" %}
 
 
-Interlok requires a minimum JVM version of 1.7. SonicMQ version 8.5 and earlier may be running with Java 1.6.  In this case you will need a separate install of Java 1.7 on the SonicMQ host machine. You can download the required files from either then [snapshot repository](https://development.adaptris.net/nexus/content/groups/adaptris-snapshots/com/adaptris/interlok-sonicmf/) or the [release repository](https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-sonicmf/).
+Interlok requires a minimum JVM version of 1.7. SonicMQ version 8.5 and earlier may be running with Java 1.6.  In this case you will need a separate install of Java 1.7 on the SonicMQ host machine. You can download the required files from either then [snapshot repository](https://nexus.adaptris.net/nexus/content/groups/adaptris-snapshots/com/adaptris/interlok-sonicmf/) or the [release repository](https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-sonicmf/).
 
 ----
 

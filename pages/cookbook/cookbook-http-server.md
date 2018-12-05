@@ -261,23 +261,23 @@ The [jetty-routing-service][] (3.6.4+) service allows you to listen on a wildcar
 Both [jetty-standard-response-producer][] and [jetty-response-service][] (3.6.5+) perform the same function. The first is a producer (which can be wrapped by `StandaloneProducer` for insertion into a service list), and the second is just a service that abstracts that wrapping away from you (to avoid XML bloat, and to have cleaner UI representation). Under the covers [jetty-response-service][] simply wraps [jetty-standard-response-producer][], and supports the `%message{metadata-key}` syntax for content-type and http-status. If you need full control over configuration then use [jetty-standard-response-producer][]. A special service [jetty-commit-response][] is available to commit the response before the workflow finishes with the message.
 
 
-[interlok-legacyhttp]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-legacyhttp/
-[jetty-embedded-connection]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/jetty/EmbeddedConnection.html
-[jetty-http-connection]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/jetty/HttpConnection.html
-[jetty-https-connection]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/jetty/HttpsConnection.html
-[jetty-message-consumer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/jetty/JettyMessageConsumer.html
-[jetty-hash-login-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/jetty/HashLoginServiceFactory.html
-[verify-identity-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/security/access/VerifyIdentityService.html
-[branching-service-collection]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/BranchingServiceCollection.html
-[jetty-routing-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/jetty/JettyRoutingService.html
-[jetty-response-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/jetty/JettyResponseService.html
-[jetty-standard-response-producer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/jetty/StandardResponseProducer.html
-[http-request-parameter-converter-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/RequestParameterConverterService.html
-[embedded-scripting-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/EmbeddedScriptingService.html
-[standard-workflow]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/StandardWorkflow.html
-[pooling-workflow]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/PoolingWorkflow.html
-[jetty-pooling-workflow-interceptor]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/jetty/JettyPoolingWorkflowInterceptor.html
+[interlok-legacyhttp]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-legacyhttp/
+[jetty-embedded-connection]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/jetty/EmbeddedConnection.html
+[jetty-http-connection]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/jetty/HttpConnection.html
+[jetty-https-connection]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/jetty/HttpsConnection.html
+[jetty-message-consumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/jetty/JettyMessageConsumer.html
+[jetty-hash-login-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/jetty/HashLoginServiceFactory.html
+[verify-identity-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/security/access/VerifyIdentityService.html
+[branching-service-collection]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/BranchingServiceCollection.html
+[jetty-routing-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/jetty/JettyRoutingService.html
+[jetty-response-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/jetty/JettyResponseService.html
+[jetty-standard-response-producer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/jetty/StandardResponseProducer.html
+[http-request-parameter-converter-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/RequestParameterConverterService.html
+[embedded-scripting-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/EmbeddedScriptingService.html
+[standard-workflow]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/StandardWorkflow.html
+[pooling-workflow]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/PoolingWorkflow.html
+[jetty-pooling-workflow-interceptor]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/jetty/JettyPoolingWorkflowInterceptor.html
 [cross origin filter documentation]: https://www.eclipse.org/jetty/documentation/9.4.x/cross-origin-filter.html
-[jetty-async-workflow-interceptor]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/jetty/JettyAsyncWorkflowInterceptor.html
-[message-id-correlation-id-source]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/MessageIdCorrelationIdSource.html
-[jetty-commit-response]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/jetty/ShortCutJettyResponse.html
+[jetty-async-workflow-interceptor]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/jetty/JettyAsyncWorkflowInterceptor.html
+[message-id-correlation-id-source]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/MessageIdCorrelationIdSource.html
+[jetty-commit-response]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/jetty/ShortCutJettyResponse.html

@@ -120,5 +120,5 @@ which would produce the output :
 
 
 
-[flat-file-transform-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/transform/FfTransformService.html
+[flat-file-transform-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/transform/FfTransformService.html
 

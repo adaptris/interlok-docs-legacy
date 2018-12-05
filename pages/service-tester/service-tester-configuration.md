@@ -186,4 +186,4 @@ The easiest way to check what configuration options are avaialble in using the [
 </adapter>
 ```
 
-[examples]: https://development.adaptris.net/nexus/service/local/artifact/maven/redirect?r=releases&g=com.adaptris&a=interlok-service-tester&v=LATEST&c=examples
+[examples]: https://nexus.adaptris.net/nexus/service/local/artifact/maven/redirect?r=releases&g=com.adaptris&a=interlok-service-tester&v=LATEST&c=examples

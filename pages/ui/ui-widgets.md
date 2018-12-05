@@ -168,7 +168,7 @@ This table shows:
 - The date and time that the message failed
 - The failed message error description
 - An action button allowing you to retry the failed message
-In order to use the failed message retry action on this widget you need the correct config. You need a [failed-message-retrier](https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/DefaultFailedMessageRetrier.html) configured, which will allow a failed message to be reprocessed.
+In order to use the failed message retry action on this widget you need the correct config. You need a [failed-message-retrier](https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/DefaultFailedMessageRetrier.html) configured, which will allow a failed message to be reprocessed.
 
 ### Logging ###
 

@@ -274,4 +274,4 @@ Should the reply services fail, you can also configure a reply-processing-except
 
 [VertX]: http://vertx.io/
 [Hazelcast]: https://hazelcast.com/
-[interlok-vertx]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-vertx/
+[interlok-vertx]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-vertx/

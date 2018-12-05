@@ -22,9 +22,9 @@ Through use of [xpath-object-metadata-service] you can extract a node from the c
 
 
 
-[xml-transform-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/transform/XmlTransformService.html
-[xml-transform-pararmeter]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/transform/XmlTransformParameter.html
-[xpath-metadata-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/metadata/XpathMetadataService.html
-[xpath-object-metadata-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/metadata/XpathObjectMetadataService.html
-[xslt-transformer-factory]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/util/text/xml/XsltTransformerFactory.html
-[stx-transformer-factory]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/util/text/xml/StxTransformerFactory.html
+[xml-transform-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/transform/XmlTransformService.html
+[xml-transform-pararmeter]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/transform/XmlTransformParameter.html
+[xpath-metadata-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/metadata/XpathMetadataService.html
+[xpath-object-metadata-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/metadata/XpathObjectMetadataService.html
+[xslt-transformer-factory]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/util/text/xml/XsltTransformerFactory.html
+[stx-transformer-factory]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/util/text/xml/StxTransformerFactory.html

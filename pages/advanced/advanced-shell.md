@@ -204,5 +204,5 @@ crash.auth.simple.password=admin
 #crash.auth.key.path=/path/to/key/file
 ```
 
-[public repository]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/
+[public repository]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/
 [CRaSH]: http://www.crashub.org/

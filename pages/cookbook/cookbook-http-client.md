@@ -28,7 +28,7 @@ You can always use [branching-service-enabler][] wrapping a [http-request-servic
 
 ## OAUTH
 
-The [get-oauth-token][] service allows pluggable behaviour to support requesting a bearer token from an OAUTH server; you can use this later as your authentation token when making an API request. Currently supported implementations are [Google Cloud][], [Microsoft Azure][], and [Salesforce][]. Each of those are optional components that may require additional dependencies and can be plugged into your configuration as the `access-token-builder` within [get-oauth-token][]. If successful, the token builder stores the token against the specified header (default is _Authorization_) so that you can use it as part of your authentication process (normally via an instance of `HttpURLConnectionAuthenticator`).
+The [get-oauth-token][] service allows pluggable behaviour to support requesting a bearer token from an OAUTH server; you can use this later as your authentation token when making an API request. Currently supported implementations are [Google Cloud][], [Microsoft Azure][], [Salesforce][] and a [generic OAUTH][] implementation that simply sends key value pairs. Each of those are optional components that may require additional dependencies and can be plugged into your configuration as the `access-token-builder` within [get-oauth-token][]. If successful, the token builder stores the token against the specified header (default is _Authorization_) so that you can use it as part of your authentication process (normally via an instance of `HttpURLConnectionAuthenticator`).
 
 Generally speaking; you can handle the OAUTH bearer token using standard services; a combination of a `http-request-service` with JSON parsing/path will generally get you to the correct `Authorization` value (in fact this is all that the [Salesforce][] token builder does); using [get-oauth-token][] just abstracts away some of the manual configuration that you would need to do.
 
@@ -39,16 +39,17 @@ Generally speaking; you can handle the OAUTH bearer token using standard service
 Because the standard `HttpURLConnection` doesn't support the `PATCH` method (and may never) there is also the [interlok-apache-http][] optional package. This is based on the [Apache HTTP Components][] project which does support the `PATCH` method. It also offers you the capability of configuring a proxy server on a per-producer basis which can be useful in mixed environments. Configuration mirrors that of the standard http components as far as possible but with a different alias for Apache HTTP specific copmonents.
 
 
-[interlok-apache-http]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-apache-http/
+[interlok-apache-http]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-apache-http/
 [Apache HTTP Components]: http://hc.apache.org/
-[Salesforce]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-oauth-salesforce/
-[Microsoft Azure]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-oauth-azure/
-[Google Cloud]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-oauth-gcloud/
-[get-oauth-token]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/oauth/GetOauthToken.html
-[standard-http-producer]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/client/net/StandardHttpProducer.html
-[http-request-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/client/net/HttpRequestService.html
-[http-status-exact-match]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/client/ExactMatch.html
-[http-status-range-match]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/client/RangeMatch.html
+[Salesforce]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-oauth-salesforce/
+[Microsoft Azure]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-oauth-azure/
+[generic OAUTH]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-oauth-generic/
+[Google Cloud]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-oauth-gcloud/
+[get-oauth-token]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/oauth/GetOauthToken.html
+[standard-http-producer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/client/net/StandardHttpProducer.html
+[http-request-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/client/net/HttpRequestService.html
+[http-status-exact-match]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/client/ExactMatch.html
+[http-status-range-match]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/client/RangeMatch.html
 [java networking properties]: https://docs.oracle.com/javase/8/docs/api/java/net/doc-files/net-properties.html
-[branching-service-enabler]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/BranchingServiceEnabler.html
-[http-branching-request-service]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/client/net/BranchingHttpRequestService.html
+[branching-service-enabler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/BranchingServiceEnabler.html
+[http-branching-request-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/client/net/BranchingHttpRequestService.html

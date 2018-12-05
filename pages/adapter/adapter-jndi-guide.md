@@ -153,8 +153,8 @@ Should you need a DataSource to be used via JPA or Hibernate you can request a p
 
 The important part is the non-jta-data-source value, which includes the fully qualified (with _adapter:_ scheme) JNDI name. The _adapter_ scheme will point any JNDI client to Interloks context, which contains the list of configured shared-components.  And unless you have access to the java.naming.factory.initial environment property, you should always specify the _adapter_ scheme.
 
-[AdaptrisConnection]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/AdaptrisConnection.html
-[JmsConnection]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/JmsConnection.html
-[DatabaseConnection]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jdbc/DatabaseConnection.html
-[JdbcConnection]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jdbc/JdbcConnection.html
-[JdbcDataQueryService]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/jdbc/JdbcDataQueryService.html
+[AdaptrisConnection]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/AdaptrisConnection.html
+[JmsConnection]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/JmsConnection.html
+[DatabaseConnection]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jdbc/DatabaseConnection.html
+[JdbcConnection]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jdbc/JdbcConnection.html
+[JdbcDataQueryService]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/jdbc/JdbcDataQueryService.html

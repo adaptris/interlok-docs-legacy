@@ -120,4 +120,4 @@ TRACE [JMX-Request-0] [ClosedState.logActivity()] Initialised [NullProcessingExc
 TRACE [JMX-Request-0] [ChannelList.init()] Channels that can be manipulated are: [WebServer, WebClient]
 ```
 
-[interlok-vcs-command-line]: https://development.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-vcs-command-line/
+[interlok-vcs-command-line]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-vcs-command-line/

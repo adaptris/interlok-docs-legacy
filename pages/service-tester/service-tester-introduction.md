@@ -43,4 +43,4 @@ The following arguments are available to customise service tester execution:
 | `-serviceTestOutput`       | Output directory for test results (default: `./test-results`)         |
 | `-serviceTestPreProcessor` | Pre-processors to execute against test configuration (ex: `xinclude`) |
 
-[public repository]: https://development.adaptris.net/nexus/service/local/artifact/maven/redirect?r=releases&g=com.adaptris&a=interlok-service-tester&v=LATEST
+[public repository]: https://nexus.adaptris.net/nexus/service/local/artifact/maven/redirect?r=releases&g=com.adaptris&a=interlok-service-tester&v=LATEST

@@ -28,21 +28,21 @@ The discovery page upon opening:
 The page contains search tools and a list of discovered components:
 
  ![Optional Component Discovery Page Annotated](./images/ui-user-guide/optional-main-annotated.png)
- 
+
 ## Optional Component ##
 
 The optional component itself has the following options:
 
 ![Optional Component Discovery Page Annotated](./images/ui-user-guide/optional-component-annotated.png)
- 
+
 ## Optional Component Details ##
 
 Clicking on the view more details button shows the optional component details window:
 
 ![Optional Component Discovery Details](./images/ui-user-guide/optional-component-details.png)
 
-This modal shows some options and the dependencies that the component has and a link for the install instructions which takes you to [this documentation page][] 
-  
+This modal shows some options and the dependencies that the component has and a link for the install instructions which takes you to [this documentation page][]
+
 ## Optional Component Detector ##
 
 Clicking on the component detector button ![Optional Component Detector Button](./images/ui-user-guide/optional-component-detector-button.png) will open a modal that list which optional components are installed for the selected Adapter:
@@ -52,7 +52,7 @@ Clicking on the component detector button ![Optional Component Detector Button](
 This page lists all the offically supported optional components and shows which one are installed for the selected Adapter.
 
 To change the selected Adapter just click on the dropdown and choose a different one. The listed Adapters are the Adapters registered in the Dashboard page.
- 
 
-[artifact server]: https://development.adaptris.net/nexus/content/groups/
+
+[artifact server]: https://nexus.adaptris.net/nexus/content/groups/
 [this documentation page]: https://development.adaptris.net/docs/Interlok/adapter-optional-components.html#how-to-install

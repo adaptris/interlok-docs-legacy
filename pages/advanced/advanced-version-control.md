@@ -45,4 +45,4 @@ What you store in version control is really up to you. Only the `bootstrap.prope
 Note that if no log4j configuration is available on first start-up (on the classpath), then logging functionality may be impaired until one becomes available as specified by the `log4j12Url` property.
 
 
-[VersionControlSystem]: https://development.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/management/vcs/VersionControlSystem.html
+[VersionControlSystem]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/management/vcs/VersionControlSystem.html
