@@ -1,8 +1,25 @@
+## Version 3.8.2.2 ##
+
+Release Date : 2018-12-11
+
+The 3.8.2.2 release only contains bug fixes that relate only to the Interlok UI build.
+This version reverts all the settings editor changes that were made in version 3.8.2.
+
+### Bugs
+
+- [INTERLOK-2574](https://adaptris.atlassian.net/browse/INTERLOK-2574) - New Config settings editor is broken the tree view causes a crashed modal.
+
 ## Version 3.8.2.1 ##
 
 Release Date : 2018-12-07
 
 The 3.8.2.1 release only contains bug fixes that relate only to the Interlok UI build.
+
+This version has a Critical UI bug relating to the settings editor. This means you are unable to configure certain components correctly.
+This is because in the 3.8.2 release, we made changes to the way the editor displays collections of objects, unfortunately, it has been a very problematic huge change and it means 3.8.2.1 is unusable for configuring components in the UI with metadata filters. 
+
+As a result of this bug, we feel it is better if we release a 3.8.2.2 version that reverts the settings editor changes to how they were pre-3.8.2.
+This issue is a problem with the Interlok UI only, no other artefacts are affected.
 
 ### Bugs
 
@@ -13,7 +30,7 @@ The 3.8.2.1 release only contains bug fixes that relate only to the Interlok UI 
 
 Release Date : 2018-12-04
 
-The Interlok 3.8.2 release contains a broken Interlok UI (the 3.8.2.1 version should be used).
+The Interlok 3.8.2 release contains a broken Interlok UI (the 3.8.2.2 version should be used).
 
 ### Bugs
 
