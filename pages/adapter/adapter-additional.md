@@ -44,11 +44,11 @@ There are also some projects on github that showcase various configurations and 
 [github]: https://github.com/adaptris/interlok/tags
 [hpccsystems]: https://hpccsystems.com/
 [Interlok hello world]: https://github.com/mcwarman/interlok-hello-world
-[Interlok soiltype demo]: https://github.com/quotidian-ennui/interlok-soiltype-demo
-[Interlok API demo]: https://github.com/quotidian-ennui/interlok-api-demo
-[Interlok Salesforce demo]: https://github.com/quotidian-ennui/interlok-salesforce-demo
-[Interlok soiltype demo auth]: https://github.com/quotidian-ennui/interlok-soiltype-demo-auth
-[Interlok Jira MS Teams]: https://github.com/quotidian-ennui/interlok-jira-msteams
+[Interlok soiltype demo]: https://github.com/adaptris-labs/interlok-soiltype-demo
+[Interlok API demo]: https://github.com/adaptris-labs/interlok-api-demo
+[Interlok Salesforce demo]: https://github.com/adaptris-labs/interlok-salesforce-demo
+[Interlok soiltype demo auth]: https://github.com/adaptris-labs/interlok-soiltype-demo-auth
+[Interlok Jira MS Teams]: https://github.com/adaptris-labs/interlok-jira-msteams
 [Interlok Load Balanced]: https://github.com/mcwarman/interlok-load-balanced
 [Interlok failover]: https://github.com/mcwarman/interlok-failover
-[Interlok Twilio SMS]: https://github.com/quotidian-ennui/interlok-twilio-sms
+[Interlok Twilio SMS]: https://github.com/adaptris-labs/interlok-twilio-sms
