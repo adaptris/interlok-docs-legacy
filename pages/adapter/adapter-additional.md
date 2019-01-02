@@ -43,7 +43,7 @@ There are also some projects on github that showcase various configurations and 
 [docker hub]: https://hub.docker.com/r/adaptris/interlok/
 [github]: https://github.com/adaptris/interlok/tags
 [hpccsystems]: https://hpccsystems.com/
-[Interlok hello world]: https://github.com/mcwarman/interlok-hello-world
+[Interlok hello world]: https://github.com/adaptris-labs/interlok-hello-world
 [Interlok soiltype demo]: https://github.com/adaptris-labs/interlok-soiltype-demo
 [Interlok API demo]: https://github.com/adaptris-labs/interlok-api-demo
 [Interlok Salesforce demo]: https://github.com/adaptris-labs/interlok-salesforce-demo
