@@ -8,7 +8,7 @@ services:
     container_name: interlok-docs
     hostname: jekyll
     ports:
-      - '4000:4000'
+      - '127.0.0.1:4000:4000'
     volumes:
       - .:/srv/jekyll
     command: [ "jekyll", "serve", "--config", "_config.yml,_config_dev.yml", "--watch", "--force_polling" ]
