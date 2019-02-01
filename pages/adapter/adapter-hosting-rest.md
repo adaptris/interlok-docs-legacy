@@ -8,360 +8,116 @@ permalink: adapter-hosting-rest.html
 
 {% include note.html content="This is only useful if you want to inject messages into an arbitrary workflow. Use a normal jetty based workflow if that is the intended endpoint" %}
 
-{% include important.html content="since 3.8.0; adp-restful-services has been renamed to interlok-restful-services" %}
+{% include important.html content="since 3.8.3" %}
 
 
-Generally, if you are using Interlok as an HTTP endpoint, then you would just use one of the standard HTTP consumers as part of a normal workflow ([Servicing HTTP requests](cookbook-http-server.html)); however, in certain situations it can be useful to expose an arbitrary workflow (e.g. a JMS bridge) so that you can inject messages into the workflow without doing additional configuration. This requires that you enable the built-in jetty instance, and to use a custom web application.
+Generally, if you are using Interlok as an HTTP endpoint, then you would just use one of the standard HTTP consumers as part of a normal workflow ([Servicing HTTP requests](cookbook-http-server.html)); however, in certain situations it can be useful to expose an arbitrary workflow (e.g. a JMS bridge) so that you can inject messages into the workflow without doing additional configuration. This requires that you enable the built-in jetty instance, and the new "rest" management component.
 
-## Enabling the built-in Webserver ##
+## Enabling the built-in Webserver and REST components ##
 
 With a factory installation of Interlok, the embedded web server should already be enabled by default.  This can be checked in the bootstrap.properties for the "managementComponents" property.
 
 All enabled management components are listed, separated by colon's as the value to the "managementComponents" property;
 
 ```
-managementComponents=jetty:jmx
+managementComponents=jetty:jmx:rest
 ```
 
-As shown above "jetty", the embedded web server is enabled.
+As shown above "jetty", the embedded web server is enabled along with the "rest" component.
 
 # Installing the Restful Services Component #
 
-Get the restful services application (_interlok-restful-services.war_), from either then [snapshot repository](https://nexus.adaptris.net/nexus/content/groups/adaptris-snapshots/com/adaptris/interlok-restful-services/) or the [release repository](https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-restful-services/).
+You will need three extra java archive (jar) files which will be dropped into your base Interlok installations "lib" directory;
 
-Drop _interlok-restful-services.war_ and drop it into the interlok web-app directory.  The default location for the web-app directory will be a directory named `webapps` in the root of your Interlok installation.  This folder should already exist, if not, create it.
+- interlok-restful-workflow-services.jar
+- interlok-client.jar
+- interlok-jmx-client.jar
 
-You can check/change the location of the jetty web-app directory within the jetty.xml file.  A property named;
+You can obtain these jars either by;
 
-```xml
-<Set name="monitoredDirName"><Property name="jetty.home" default="." />/webapps</Set>
-```
+- building from source from our public github; [AdaptrisGitHub][]
+- downloading from our public nexus; [AdaptrisNexus][]
+- contacting our support team
+
+# Starting the restful services #
+
+Assuming you have the correct jar files and configuration in place as detailed above, you will see the following at debug level in the Interlok log files upon startup;
+
+{% include image.html file="restful/RestStartLogging.png" alt="Restful Start" %}
+
+The final line above shows the restful services component has completed it's initialization, you're now ready to fire your requests.
 
 # Standard Interlok Restful Services #
 
-There are two sets of restful services that allow you to inject messages into your Interlok workflows;
+## The API definition ##
 
-- Services that will wait for the message to be processed by the workflow and then return the resulting message (synchronous).
-- Services that simply return a "true" value after successfully injecting a message (asynchronous).
+There is a single http GET API endpoint that will return an OpenApi 3.0.1 API definition.
 
-All clients wishing to use the restful services will use the HTTP method of POST and will target the following URL;
-`http://<host>:<port>/interlok-restful-services/rest/service/...` followed by the required method and parameters as detailed by each services below.
+You can reach this definition with a HTTP GET to the root url of ;
+`http://<host>:<port>/workflow-services/`
 
-Additionally you must set the `Content-Type` HTTP header to the value `text/plain`.
+The definition is dynamically built in OpenApi 3.0.1 yaml format to include all of your Interlok workflows; a brief example;
 
-## Synchronous Services ##
-
-**Warning:  All synchronous services require Java 1.8+ only; since 3.0.6**
-
-### submitMessage ###
-
-This service allows you to inject a message directly into a workflow, bypassing the message consumer. As long as each workflow and channel in your Interlok configuration has a unique-id, you can target any workflow to process your message.
-
-Once the message has completed its processing in the targeted workflow, the resulting message is returned back to the calling process.
-
-#### Parameters ####
-
-There are 5 parameters and the POST data payload required for this service.
-
-| Parameter | Description |
-|----|----|
-| adapterId| This is the unique-id of the running Interlok adapter instance.|
-| channelId | This is the unique ID of the targeted channel.|
-| workflowId | This is the unique ID of the targeted workflow.|
-| inputFormat | Specifies the format of the supplied message; currently supported formats are JSON and XML|
-| outputFormat | Specifies the required format of the returned message; currently supported formats are JSON and XML|
-| POST data | The message is the XStream marshalled instance of the following class [SerializableMessage][]. For more information on the SerializableAdaptrisMessage, please see the java-doc for this class. |
-
-#### Example ####
-
-This example will use a very basic Interlok configuration and will assume the incoming format of the message is XML and the returned message is JSON formatted.
-
-The basic Interlok configuration;
-
-```xml
-<adapter>
-  <unique-id>FS-FS-Adapter</unique-id>
-  <channel-list>
-    <channel>
-      <unique-id>Channel1</unique-id>
-      <workflow-list>
-        <standard-workflow>
-          <unique-id>Workflow1</unique-id>
-          <consumer class="fs-consumer">
-            <unique-id>FS-Consumer</unique-id>
-            <destination class="configured-consume-destination">
-              <destination>messages_in</destination>
-            </destination>
-            <poller class="fixed-interval-poller">
-              <poll-interval>
-                <unit>SECONDS</unit>
-                <interval>10</interval>
-              </poll-interval>
-            </poller>
-            <create-dirs>true</create-dirs>
-          </consumer>
-          <producer class="fs-producer">
-            <unique-id>FS-Producer</unique-id>
-            <filename-creator class="formatted-filename-creator">
-              <filename-format>%2$tQ.xml</filename-format>
-            </filename-creator>
-            <destination class="configured-produce-destination">
-              <destination>messages_out</destination>
-            </destination>
-            <create-dirs>true</create-dirs>
-          </producer>
-        </standard-workflow>
-      </workflow-list>
-    </channel>
-  </channel-list>
-</adapter>
+```yaml
+openapi: 3.0.1
+info:
+  title: Interlok Workflow REST services
+  description: A REST entry point into your Interlok workflows.
+  version: "1.0"
+servers:
+  - url: 'http://yourhost:yourport'
+  /workflow-services/myAdapterId/myChannelId/myWorkflowId:
+    post:
+      description: Post your message directly into your Interlok workflow.
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+            examples:
+              '0':
+                value: MyMessageContent
+      responses:
+        '200':
+          description: The response content after your workflow has processed the incoming message.
+          content:
+            text/plain:
+              schema:
+                type: string
+              examples:
+                '0':
+                  value: MyMessageResponseContent
+      servers:
+        - url: 'http://yourhost:yourport'
+    servers:
+      - url: 'http://yourhost:yourport'
 ```
 
-Assuming that you have configured Interlok as above and it is up and running with the restful-services component, you can use your favourite client tool to fire a HTTP request at our restful-services server.
+By pointing an OpenApi 3.0.1 tool to the definition url you can visualize the full API available for this instance of Interlok.
 
-Your raw HTTP request will look something like this;
+Shown below is an example of using Swagger as the OpenApi tool;
 
-```
-POST http://<host>:<port>/interlok-restful-services/rest/service/submitmessage?adapterId=FS-FS-Adapter&channelId=Channel1&workflowId=Workflow1&inputFormat=XML&outputFormat=JSON
+{% include image.html file="restful/Swagger.png" alt="Swagger UI" %}
 
-POST data:
-<serializable-adaptris-message>
-  <unique-id>MyMessageID</unique-id>
-  <payload>My message payload</payload>
-  <metadata>
-    <metadata-element>
-      <key>myMetadataKey1</key>
-      <value>myMetadataValue1</value>
-    </metadata-element>
-    <metadata-element>
-      <key>myMetadata2</key>
-      <value>myMetadataValue2</value>
-    </metadata-element>
-  </metadata>
-</serializable-adaptris-message>
+Swagger, interprets the API definition and provides instant access to each workflow, via a http POST.
 
-[no cookies]
+## Injecting your messages into your Interlok workflows ##
 
-Request Headers:
-Connection: keep-alive
-Content-Type: text/plain
-Content-Length: 512
-Host: localhost:8080
-User-Agent: Apache-HttpClient/4.2.6 (java 1.5)
-```
+In true restful style you will POST to the base url with all of the Interlok instance id, channel id and workflow id built into the full url;
 
-Notice the entire XML marshalled message is the entire POST data.  The example above uses a very simple message, the payload equalling `My message payload` and a message id of `MyMessageID`. This also supplies some metadata for completeness.  It should be noted that you are not required to provide a unique-id, one will be generated for you if you choose not to supply one.
+`http://<host>:<port>/workflow-services/myInterlokId/myChannelId/myWorkflowId`
 
-If the restful-service should fail, you will receive an error in the body of the result.  If the restful service call should succeed, in this case you will find the supplied message produced to your local file system and you will receive a JSON marshalled message in the response body;
+The Interlok message content will be drawn from the body of your POST request.
 
-```xml
-{"serializable-adaptris-message":{"unique-id":"MyMessageID","payload":"My message payload","metadata":[{"key-value-pair":[{"key":"fsProduceDir","value":"C:\\Adaptris\\Interlok3.0.6\\messages_out"},{"key":"myMetadataKey1","value":"myMetadataValue1"},{"key":"producedname","value":"1442405528738.xml"},{"key":"myMetadata2","value":"myMetadataValue2"},{"key":"adpnextmlemarkersequence","value":2}]}]}}
-```
+Any http headers will be converted into Interlok message metadata.
 
+Again using Swagger, we can test POST'ing a simple message directly into one of our workflows;
 
-### submitPayload ###
+{% include image.html file="restful/SwaggerPost.png" alt="Swagger Post" %}
 
-This service allows you to inject a text payload directly into a workflow, bypassing the message consumer. As long as each workflow and channel in your Interlok configuration has a unique-id, you can target any workflow to process your message.
+If your message was successfully submitted to the workflow then you will get a http status 200 code response with the updated content as the body of the response.
 
-You do not need to marshall the supplied payload to either XML or JSON, but you can specify the format of the returned message.
+Should your request fail or cause an error, you will receive a http status 400 code along with details of the error in the body of the response.
 
-#### Parameters ####
-
-There are 4 parameters and the POST data payload required for this service.
-
-| Parameter | Description |
-|----|----|
-| adapterId| This is the unique-id of the running Interlok adapter instance.|
-| channelId | This is the unique ID of the targeted channel.|
-| workflowId | This is the unique ID of the targeted workflow.|
-| outputFormat | Specifies the required format of the returned message; currently supported formats are JSON and XML|
-| POST data | Your text payload that you wish to inject into a workflow. |
-
-#### Example ####
-
-Using the same Interlok configuration above, our raw HTTP POST, assuming you wish to have an XML formatted message returned would be;
-
-```
-POST http://<host>:<port>/interlok-restful-services/rest/service/submitpayload?adapterId=FS-FS-Adapter&channelId=Channel1&workflowId=Workflow1&outputFormat=XML
-
-POST data:
-My text payload back to XML
-
-[no cookies]
-
-Request Headers:
-Connection: keep-alive
-Content-Type: text/plain
-Content-Length: 27
-Host: localhost:8080
-User-Agent: Apache-HttpClient/4.2.6 (java 1.5)
-```
-
-If the web-service should fail, you will receive an exception in the returned response body.  If the web service call should succeed, you will get a similar response as the following;
-
-```xml
-<serializable-adaptris-message>
-  <unique-id>a5a4c20e-57ff-4904-86cb-254d40e4053c</unique-id>
-  <payload>My text payload back to XML</payload>
-  <metadata>
-    <key-value-pair>
-      <key>fsProduceDir</key>
-      <value>C:\Adaptris\Interlok3.0.6\messages_out</value>
-    </key-value-pair>
-    <key-value-pair>
-      <key>producedname</key>
-      <value>1442405528819.xml</value>
-    </key-value-pair>
-    <key-value-pair>
-      <key>adpnextmlemarkersequence</key>
-      <value>2</value>
-    </key-value-pair>
-  </metadata>
-</serializable-adaptris-message>
-```
-
-Should you have specified JSON as the returned message type, then your raw POST request will look like this;
-
-```
-POST http://<host>:<port>/interlok-restful-services/rest/service/submitpayload?adapterId=FS-FS-Adapter&channelId=Channel1&workflowId=Workflow1&outputFormat=JSON
-
-POST data:
-My text payload back to JSON
-
-[no cookies]
-
-Request Headers:
-Connection: keep-alive
-Content-Type: text/plain
-Content-Length: 27
-Host: localhost:8080
-User-Agent: Apache-HttpClient/4.2.6 (java 1.5)
-```
-
-And the successful response body will look similar to this;
-
-```json
-{
-    "serializable-adaptris-message": {
-        "unique-id": "f55a8313-3074-428a-b7e8-6454cbb5433f",
-        "payload": "My text payload back to JSON",
-        "metadata": [{
-            "key-value-pair": [{
-                "key": "fsProduceDir",
-                "value": "C:\\Adaptris\\Interlok3.0.6\\messages_out"
-            }, {
-                "key": "producedname",
-                "value": "1442405528853.xml"
-            }, {
-                "key": "adpnextmlemarkersequence",
-                "value": 2
-            }]
-        }]
-    }
-}
-```
-
-## Asynchronous Services ##
-
-**since 3.0.6**
-
-### executeMessage ###
-
-This service is a variation of `submitMessage` but does not require Java 1.8; and will only return true (or false) depending on whether the message was successfully injected into the workflow. As long as the workflow and channel in your Interlok configuration has a unique-id, you can target any workflow to process your message.
-
-#### Parameters ####
-
-There are 4 parameters and the POST data required for this service.
-
-| Parameter | Description |
-|----|----|
-| adapterId| This is the unique-id of the running Interlok adapter instance.|
-| channelId | This is the unique ID of the targeted channel.|
-| workflowId | This is the unique ID of the targeted workflow.|
-| inputFormat | Specifies the format of the supplied message; currently supported formats are JSON and XML|
-| POST data | The message is the XStream marshalled instance of the following class [SerializableMessage][]. For more information on the SerializableAdaptrisMessage, please see the java-doc for this class. |
-
-
-#### Example ####
-
-Using the same adapter configuration above, assuming our supplied message is XStream marshalled into XML, our raw HTTP POST request would be;
-
-```
-POST http://<host>:<port>/interlok-restful-services/rest/service/executemessage?adapterId=FS-FS-Adapter&channelId=Channel1&workflowId=Workflow1&inputFormat=XML
-
-POST data:
-<serializable-adaptris-message>
-  <unique-id>MyMessageID</unique-id>
-  <payload>My awesome XML payload no return</payload>
-  <metadata>
-    <key-value-pair>
-      <key>myMetadataKey1</key>
-      <value>myMetadataValue1</value>
-        </key-value-pair>
-        <key-value-pair>
-            <key>myMetadata2</key>
-          <value>myMetadataValue2</value>
-        </key-value-pair>
-  </metadata>
-</serializable-adaptris-message>
-
-[no cookies]
-
-Request Headers:
-Connection: keep-alive
-Content-Type: text/plain
-Content-Length: 522
-Host: localhost:8080
-User-Agent: Apache-HttpClient/4.2.6 (java 1.5)
-```
-
-If your message was successfully submitted to the workflow then you will get a simple true/false response returned.
-
-### executePayload ###
-
-This service is very similar to the execute method above, but simpoly allows you to provide a raw payload in the requests POST body.
-
-### Parameters ###
-
-There are 3 parameters and the POST data required for this service.
-
-| Parameter | Description |
-|----|----|
-| adapterId| This is the unique-id of the running Interlok adapter instance.|
-| channelId | This is the unique ID of the targeted channel.|
-| workflowId | This is the unique ID of the targeted workflow.|
-| POST data | Your text payload that you wish to inject into a workflow. |
-
-
-### Example ###
-
-Using the same adapter configuration above, our raw HTTP POST request, using some random XML as the payload, could be;
-
-```
-POST http://<host>:<port>/interlok-restful-services/rest/service/executepayload?adapterId=FS-FS-Adapter&channelId=Channel1&workflowId=Workflow1
-
-POST data:
-<resources>
-  <resource>
-    <directory>myDirectory</directory>
-    <filtering>true</filtering>
-    <random>
-      <exclude>context.file</exclude>
-    </random>
-  </resource>
-</resources>
-
-[no cookies]
-
-Request Headers:
-Connection: keep-alive
-Content-Type: text/plain
-Content-Length: 213
-Host: localhost:8080
-User-Agent: Apache-HttpClient/4.2.6 (java 1.5)
-```
-
-If your message was successfully submitted to the workflow then you will get a simple true/false response returned.
-
-
-[SerializableMessage]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/SerializableAdaptrisMessage.html
+[AdaptrisGitHub]: https://github.com/adaptris/
+[AdaptrisNexus]: https://nexus.adaptris.net/nexus/content/repositories/releases/
