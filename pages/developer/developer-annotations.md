@@ -290,8 +290,8 @@ private Boolean memberToBeRemoved;
 
 | Annotation Parameter | Description |
 |----|----|
-| `version` | The version the component will be removed |
-| `message` | A message to inform the user about the component removal |
+| `version` | The version the member will be removed |
+| `message` | A message to inform the user about the member removal |
 
 
 ### @NumberExpression, @BooleanExpression, @UrlExpression ###
