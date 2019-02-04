@@ -89,6 +89,9 @@ The Variables XPaths tab list all the associations between the config XML node v
 
 You should not need to edit anything in this tab except if you know which XPath to edit. The association can be done in the [Component settings modal](#component-settings-modal).
 
+If you need to add or edit manually some variables xpaths, since 3.8.3 the UI can help you validating the xpath to make sure they match something in the config page.
+Click on the 'Validate' button to do the validation and on Clear to clear the validation results.
+
 Generic XPaths (e.g. `//payload-hashing-service/metadata-key` instead of `/adapter/channel-list/channel[unique-id="ChannelId"]/workflow-list/standard-workflow[unique-id="WorkflowId"]/service-collection/services/payload-hashing-service[unique-id="HashPayload"]/metadata-key`) are supported for substitution but the variables will not appear as selected in the [Component settings modal](#component-settings-modal).
 
 ### Tests Tab ###
