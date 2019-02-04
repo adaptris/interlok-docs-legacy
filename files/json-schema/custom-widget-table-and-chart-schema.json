@@ -1,0 +1,68 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$ref": "#/definitions/TableChart",
+    "definitions": {
+        "TableChart": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": ["table", "chart"]
+                },
+                "data": {
+                    "$ref": "#/definitions/Data"
+                }
+            },
+            "required": [
+                "data",
+                "type"
+            ],
+            "title": "TableChart"
+        },
+        "Data": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "type": {
+                    "type": "string",
+                    "enum": ["line", "timeseries", "area", "scatter", "bar", "pie", "donut", "step"]
+                },
+                "direction": {
+                    "type": "string",
+                    "enum": ["rows", "columns"]
+                },
+                "headers": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "x": {
+                    "type": "array",
+                    "items": {
+                        "type": "string"
+                    }
+                },
+                "xFormat": {
+                    "type": "string",
+                }, 
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "number"
+                        }
+                    }
+                }
+            },
+            "required": [
+                "direction",
+                "headers",
+                "values"
+            ],
+            "title": "Data"
+        }
+    }
+}

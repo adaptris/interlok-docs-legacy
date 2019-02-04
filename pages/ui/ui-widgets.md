@@ -514,7 +514,7 @@ The count widget is just an icon and a number.
 
 ![Runtime Widget - Custom Widget Count](./images/ui-user-guide/widgets-custom-widget-count.png)
 
-The json format returned by the endpoint should be like:
+The JSON format returned by the endpoint should be like:
 
 ```json
 {
@@ -528,13 +528,15 @@ The json format returned by the endpoint should be like:
 
 The `icon` is one icon from [Font Awesome 4.7.0](https://fontawesome.com/v4.7.0/icons/) icon list.
 
+The JSON payload can be validated using the JSON schema: [custom-widget-count-schema](./files/json-schema/custom-widget-count-schema.json)
+
 ### Table Widget
 
 The table widget display some data in a table format.
 
 ![Runtime Widget - Custom Widget Table](./images/ui-user-guide/widgets-custom-widget-table.png)
 
-The json format returned by the endpoint should be like:
+The JSON format returned by the endpoint should be like:
 
 ```json
 {
@@ -568,6 +570,8 @@ Or
   }
 }
 ```
+
+The JSON payload can be validated using the JSON schema: [custom-widget-table-and-chart-schema](./files/json-schema/custom-widget-table-and-chart-schema.json)
 
 ### Chart Widget
 
@@ -575,7 +579,7 @@ The chart widget display some data in a chart format.
 
 ![Runtime Widget - Custom Widget Chart Line](./images/ui-user-guide/widgets-custom-widget-chart-line.png)
 
-The json format returned by the endpoint should be like:
+The JSON format returned by the endpoint should be like:
 
 ```json
 {
@@ -611,6 +615,8 @@ Or
   }
 }
 ```
+
+The JSON payload can be validated using the JSON schema: [custom-widget-table-and-chart-schema](./files/json-schema/custom-widget-table-and-chart-schema.json)
 
 Where the `data.type` line can be line, area, scatter, bar, pie, donut, step.
 
@@ -657,7 +663,11 @@ Or
 }
 ```
 
+The JSON payload can be validated using the JSON schema: [custom-widget-table-and-chart-schema](./files/json-schema/custom-widget-table-and-chart-schema.json)
+
 {% include note.html content="The full content of the widgets will be refreshed every time so the endpoints need to return the all the data that need to be displayed." %}
+
+{% include tip.html content="You can use <a href=\"https://www.jsonschemavalidator.net\" target=\"_blank\">https://www.jsonschemavalidator.net</a> to validate the JSON payload with the JSON schemas." %}
 
 ## Widget Group ##
 
