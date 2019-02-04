@@ -48,12 +48,12 @@ The Dashboard Page with annotations shows the various parts of the Dashboard Pag
 | ![Dashboard Adapter Control Info](./images/ui-user-guide/dashboard-adapter-control-info.png) | Show the Adapter Information (Version, Java and OS)
 | ![Dashboard Adapter Control Show Config](./images/ui-user-guide/dashboard-adapter-control-config.png) | Show the Adapter configuration (xml and diagram)
 | ![Dashboard Adapter Control Edit Config](./images/ui-user-guide/dashboard-adapter-control-edit-config.png) | Edit the Adapter configuration (in the config page)
-| ![Dashboard Adapter Control Garbage Collect](./images/ui-user-guide/gc-button-icon.png) | Request a Java Garbage Collection on the Adapter
-| ![Dashboard Adapter Control Thread Dump](./images/ui-user-guide/dashboard-adapter-control-thread-dump.png) | Generate a thread dump on the Adapter
 | ![Dashboard Adapter Control Start](./images/ui-user-guide/dashboard-adapter-control-start.png) | Start the Adapter
 | ![Dashboard Adapter Control Pause](./images/ui-user-guide/dashboard-adapter-control-pause.png) | Pause this Adapter from processing messages and allow it to retain any connections it has already initialised
 | ![Dashboard Adapter Control Stop](./images/ui-user-guide/dashboard-adapter-control-stop.png) | Stop this Adapter and free up any resources that it has used
 | ![Dashboard Adapter Control Force Stop](./images/ui-user-guide/dashboard-adapter-control-force-stop.png) | Under the Stop dropdown. Force Stop this Adapter (doesn't wait for services to finish) and free up any resources that it has used.
+| ![Dashboard Adapter Control Garbage Collect](./images/ui-user-guide/gc-button-icon.png) | Under the Stop dropdown. Request a Java Garbage Collection on the Adapter
+| ![Dashboard Adapter Control Thread Dump](./images/ui-user-guide/dashboard-adapter-control-thread-dump.png) | Under the Stop dropdown. Generate a thread dump on the Adapter
 | ![Dashboard Adapter Control Reload From Vcs](./images/ui-user-guide/dashboard-adapter-control-reload-from-vcs.png) | Under the Stop dropdown. Reload this Adapter configuration from Vcs and restart it. Only available for User and Admin users and if [version control](advanced-version-control.html#version-control-configuration) is configured for this Adapter. (Since 3.3)
 | ![Dashboard Adapter Control Support Pack](./images/ui-user-guide/dashboard-adapter-control-support-pack.png) | Under the Stop dropdown. Download a support pack containing log files and information about this Adapter. (Since 3.3)
 | ![Dashboard Adapter Control Edit Adapter](./images/ui-user-guide/dashboard-adapter-control-edit-adapter.png) | Under the Stop dropdown. Edit and Adapter name or tags. (Since 3.7.3)
