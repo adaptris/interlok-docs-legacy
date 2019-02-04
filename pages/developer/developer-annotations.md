@@ -72,7 +72,7 @@ Use this to so that the component can be discovered by the UI and made available
 
 ### @ComponentProfile ###
 
-since 3.1.1 you can use this annotation to provide some additional information so that the UI can display some additional information about the component when the selection screen pops up.
+Since 3.1.1 you can use this annotation to provide some additional information so that the UI can display some additional information about the component when the selection screen pops up.
 
 ```java
 @ComponentProfile(summary="A basic single threaded workflow", tag="workflow")
@@ -92,7 +92,7 @@ public class StandardWorkflow ... {
 
 ### @DisplayOrder ###
 
-since 3.2.0 you can use this annotation to apply ordering to a component when editing it in the UI. The following rules are generally applied by the UI:
+Since 3.2.0 you can use this annotation to apply ordering to a component when editing it in the UI. The following rules are generally applied by the UI:
 
 - The component unique ID is always presented first (regardless of your specified order)
 - Fields specified as part of _@DisplayOrder_ will always be displayed first in the settings editor.
@@ -116,6 +116,22 @@ public class AddTimestampMetadataService extends ServiceImp {
   private String offset;
 }
 ```
+
+### @Removal ###
+
+Since 3.8.2 you can use this annotation to add some information about when a component will be removed. This annotation should normally be used with the @Deprecated annotation.
+
+```java
+@Removal(version = "4.2", message = "Use XXX instead")
+public class ComponentToBeRemoved ... {
+  ...
+}
+```
+
+| Annotation Parameter | Description |
+|----|----|
+| `version` | The version the component will be removed |
+| `message` | A message to inform the user about the component removal |
 
 
 ## Member Level Annotations ##
@@ -189,7 +205,7 @@ The embedded script could have characters that would normally not be allowed in 
 
 ### @InputFieldHint ###
 
-This annotation provides a _hint_ to the UI when presenting the information on screen and is available from __3.0.2__ onwards. There are two elements to this annotation `style` and `friendly`.
+This annotation provides a _hint_ to the UI when presenting the information on screen and is available from __3.0.2__ onwards. There are four elements to this annotation `style`, `friendly`, `expression` and `external`.
 
 | Annotation Parameter | Description |
 |----|----|
@@ -237,12 +253,9 @@ public void init() throws CoreException {
 }
 ```
 
-
 ### @InputFieldDefault ###
 
 This annotation provides a _hint_ to the UI as to what the default value for this member is if left unconfigured. The annotation itself is available from __3.4.0__ onwards. Fields that are marked with this annotation will have additional information presented when hovered over.
-
-
 
 ```java
 @InputFieldDefault(value = "false")
@@ -265,6 +278,21 @@ This annotation is available from __3.4.1__ onwards and is a _hint_ to the UI th
 @AffectsMetadata
 private String metadataKeyToSet;
 ```
+
+### @Removal ###
+
+Since 3.8.2 you can use this annotation to add some information about when a member will be removed. This annotation should normally be used with the @Deprecated annotation.
+
+```java
+@Removal(version = "4.2", message = "Use XXX instead")
+private Boolean memberToBeRemoved;
+```
+
+| Annotation Parameter | Description |
+|----|----|
+| `version` | The version the component will be removed |
+| `message` | A message to inform the user about the component removal |
+
 
 ### @NumberExpression, @BooleanExpression, @UrlExpression ###
 
