@@ -16,6 +16,8 @@ There are two ways of accessing external webservices from Interlok; through a ge
 
 [apache-cxf-soap-service][] is the simplest way of executing a webservice; you just need to know the structure of the webservice document (which can be easily discovered by using SoapUI against the WSDL); map to it, and configure the service appropriately. In the majority of cases, this is the only service you will need. This service relies on the optional `optional/webservice-cxf` package.
 
+{% include important.html content="You should exclude `org.codehaus.woodstox:woodstox-core` and/or `org.fasterxml.woodstox:woodstox-core` from the dependency tree. This will cause problems with configuration unmarshalling and CDATA elements" %}
+
 ### Example ###
 
 If we wanted to call the [WebserviceX.net](http://webservicex.net/ws/default.aspx) currency converter webservice; then we can do that quite easily using [apache-cxf-soap-service][]. For the purposes of our example we are going to do a find out the current GBP to USD exchange rate; and to log the reply message.

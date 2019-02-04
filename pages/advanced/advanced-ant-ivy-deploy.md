@@ -27,6 +27,7 @@ The files in the zip file are:
 
 This example will download and install the nightly snapshot. You can of course change it to download and install a formal release (beta or otherwise); this is left as an exercise for you, but it is likely to mean changing the property `interlok.download.baseurl` and `interlok-core-version` explicitly for the version you wish to install.
 
+{% include important.html content="If you are using service-tester along with JSON assertions then you should exclude `com.vaadin.external.google:android-json` from the dependency tree. This can cause conflicts with normal Interlok JSON processing." %}
 
 ## Running the Example ##
 
