@@ -179,6 +179,10 @@ webServerConfigUrl=./config/jetty.xml
 
 We don't envisage you using the sshtunnel management component in production (if you need to, then we'd suggest you probably need to talk to your network team); however it can be useful to temporarily run an adapter locally that uses a tunnel to connect to a remote services. More documentation is available on the [interlok-sshtunnel][] github project page
 
+#### Exposing workflows via a REST interface ####
+
+Since 3.8.3 : see [Exposing Workflows as a RESTful service](adapter-hosting-rest.html)  for more details.
+
 ### System Properties ###
 
 Properties prefixed by `sysprop.` (note the `.`) will be converted into system properties at boot time (minus the prefix). For instance specifying `sysprop.myEnvironment=ABCDE` will be equivalent to using `-DmyEnvironment=ABCDE` on the command-line. These will overwrite any system properties that you may have already specified on the command-line. Use one method or the other, don’t mix the two.

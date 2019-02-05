@@ -129,7 +129,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-pdf][] | PDF Transformations| 3.8.0+
 |com.adaptris | [interlok-profiler][] | Base package for supporting profiling (used by [interlok-new-relic][] and [interlok-stackify][]) | 3.8.0+
 |com.adaptris | ~~[interlok-profiler-failover][]~~ | ~~Running an adapter in failover mode; requires [interlok-profiler][]~~| 3.8.0 only; removed in 3.8.1
-|com.adaptris | [interlok-restful-services][] | [Exposing Workflows as a RESTful service](adapter-hosting-rest.html)|3.8.0+
+|com.adaptris | ~~[interlok-restful-services][]~~ | ~~[Exposing Workflows as a RESTful service](adapter-hosting-rest.html)~~|3.8.0 to 3.8.2 only; removed in 3.8.3
 |com.adaptris | [interlok-reliable-messaging][] | Support for ordered and reliable messaging; requires [interlok-licensing][] | 3.8.0+
 |com.adaptris | [interlok-salesforce][] | Integration with Salesforce via WebServices (generally use their REST interface via HTTP/HTTPS instead); requires [interlok-licensing][] | 3.8.0+
 |com.adaptris | [interlok-sap][] | Integration with SAP via [IDocs](cookbook-sap-idoc.html) or [RFC/BAPI](cookbook-sap-rfc.html); requires additional jars not automatically delivered; requires [interlok-licensing][] | 3.8.0+
@@ -156,6 +156,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-webservice-external][] | Accessing [external webservices](adapter-executing-ws.html); requires [interlok-licensing][] | 3.8.0+
 |com.adaptris | [interlok-web-services][] | [Exposing workflows as webservices](adapter-hosting-ws.html); | 3.8.0+
 |com.adaptris | [interlok-webspheremq][] | Connection to a [WebsphereMQ instance](cookbook-native-wmq.html); requires [interlok-licensing][] | 3.8.0+
+|com.adaptris | [interlok-workflow-rest-services][] | [Exposing Workflows as a RESTful service](adapter-hosting-rest.html) | 3.8.3+|available on [github](https://github.com/adaptris/interlok-workflow-rest-services)
 |com.adaptris | [interlok-xinclude][] | [XInclude pre-processor](advanced-configuration-pre-processors.html#xinclude)| 3.8.0+|available on [github](https://github.com/adaptris/interlok-xinclude)
 |com.adaptris | [interlok-xa][] | XA support within the Adapter; requires [adp-licensing][] | 3.4.0+
 |com.adaptris | [interlok-xml-security][] | XML security (JSR 106); requires [interlok-licensing][] | 3.8.0+
@@ -357,3 +358,4 @@ If you've added an optional components following the steps explained above you c
 [interlok-jsr107-cache]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-jsr107-cache
 [interlok-kie]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-kie
 [interlok-okhttp]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-okhttp
+[interlok-workflow-rest-services]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-workflow-rest-services
