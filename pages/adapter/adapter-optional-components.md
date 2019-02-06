@@ -200,7 +200,7 @@ You can access the javadocs by opening a browser at <http://localhost:8080/inter
 
 {% include note.html content="You will have to login into the Adapter UI to see the javadocs." %}
 
-Optional components javadocs can be open edin two ways:
+Optional components javadocs can be opened in two ways:
 
 - **The javadocs are within a folder:** Open your browser at <http://localhost:8080/interlok/javadocs/optional/your-component/index.html> **e.g.** <http://localhost:8080/interlok/javadocs/optional/xml-security/index.html>.
 - **The javadocs are in a jar file:** Open your browser at <http://localhost:8080/interlok/javadocs/your-component.jar/index.html> **e.g.** <http://localhost:8080/interlok/javadocs/optional/adp-swiftmq-3.0.3-RELEASE-javadoc.jar/index.html>.
