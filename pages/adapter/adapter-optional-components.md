@@ -200,6 +200,10 @@ You can access the javadocs by opening a browser at <http://localhost:8080/inter
 
 {% include note.html content="You will have to login into the Adapter UI to see the javadocs." %}
 
+You can also see the javadocs for a specific component when using the settings modal in the UI config page by hovering the (i) icon near the setting name.
+
+If the tooltip has `Help not found` it's most likely that the setting does not have any javadoc or the javadocs jar has not been added to `${adapter.home}/docs/javadocs`.
+
 Optional components javadocs can be opened in two ways:
 
 - **The javadocs are within a folder:** Open your browser at <http://localhost:8080/interlok/javadocs/optional/your-component/index.html> **e.g.** <http://localhost:8080/interlok/javadocs/optional/xml-security/index.html>.
