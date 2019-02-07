@@ -88,6 +88,49 @@ Subsequently, whenever `ant deploy` is invoked; then the `interlok-csv` and `int
 
 {% include note.html content="Some components (such as SAP) may have dependencies that are not publicly available; you should exclude them explicitly in the ivy file, or build your own repository to host them." %}
 
+## Excluding dependencies ##
+
+You will see that we have excluded a number of dependencies by default. This is a variation of _DLL hell_ as some open source projects rely on outdated or dependencies that have migrated to a new groupId, or are deprecated.
+
+This is the list of exclusions that we will generally configure.
+
+| Group / Module ID    | Why  |
+|---|---|
+| ch.qos.logback:logback-* | Since we default to log4j2 we want to exclude logback |
+| org.slf4j:slf4j-logj12 | We use log4j2's own compatibility layer with log4j1.2 |
+| log4j:log4j | No need for log4j1.2 if we're using log4j2... |
+| commons-logging | SLF4J provides as compatibility layer for commons logging (org.slf4j:jcl-over-slf4j) |
+| io.netty:netty-common | Some of our projects depend on netty-all (elastic) which bundles everything. Having netty-common often causes conflicts when building the dependency tree. |
+| ant / junit / org.apache.ant / org.mockito | This is to ensure that we don't bundle testing framework / build framework artifacts. You don't need junit at runtime. |
+| javax.mail:mail | This is superseded by com.sun.mail:javax.mail since we don't want to rely on a 2013 implementation. |
+| c3po | This is superseded by com.mchange:c3p0 |
+| net.sf.saxon:saxon | This is superseded by net.sf.saxon:Saxon-HE |
+| xalan:xalan | We use Saxon as the standard XSLT transformation provider for XSLT2.0 and above. |
+| org.codehaus.woodstox, org.fasterxml.woodstox | woodstox-core.jar causes problems with CDATA elements in configuration, and also webservices |
+| org.tigris.subversion | The subversion packages aren't publiclly available, so we exclude them |
+| javax.media:jai_core | This isn't publiclly distributed, and some geo-spatial libraries require it |
+| org.glassfish.hk2.external | This repackages a bunch of other opensource components, sometimes they aren't the right version |
+| org.eclipse.jetty.orbit:javax.mail.glassfish | Yet another bundling of javamail.|
+| com.vaadin.external.google:android-json | Use org.json:json instead if you need json, this implementation isn't a drop-in replacement and causes problems with JSON schema processing |
+
+If you're using maven, then you should generate a dependency report to figure out where to put the right exclusions. If you're using gradle then just do a global exclusion inside the `configurations{}` block.
+
+```
+configurations {
+  javadoc {}
+  all*.exclude group: 'c3p0'
+  all*.exclude group: 'commons-logging'
+  all*.exclude group: 'javamail'
+  all*.exclude group: 'javax.mail', module: 'mail'
+  all*.exclude group: 'org.glassfish.hk2.external'
+  all*.exclude group: 'xalan', module: 'xalan'
+  all*.exclude group: 'net.sf.saxon', module: 'saxon'
+  all*.exclude group: 'org.codehaus.woodstox'
+  all*.exclude group: 'org.eclipse.jetty.orbit', module: 'javax.mail.glassfish'
+}
+```
+
+
 [Apache Ant]: http://ant.apache.org
 [Apache Ivy]: http://ant.apache.org/ivy/
 [gradle]: https://gradle.org
