@@ -65,7 +65,7 @@ The directory structure closely mirrors that of a standard installation, but wil
 
 ### Build.xml sequence ###
 
-1. Download `ivy.jar` and put it into the `ivy` directory.
+1. Download `ivy.jar` and put it into the `build` directory.
 1. Resolves the `ivy-interlok.xml` file and updates the ivy cache.
 1. Downloads all of the dependencies specified in the `ivy-interlok.xml` file and copies them into the `${interlokInstallDirectory}/lib` directory.
 1. Downloads all of the javadoc dependencies specified in the `ivy-interlok.xml` file and copies them into the `${interlokInstallDirectory}/docs/javadocs` directory.
@@ -111,7 +111,7 @@ This is the list of exclusions that we will generally configure.
 | javax.media:jai_core | This isn't publiclly distributed, and some geo-spatial libraries require it |
 | org.glassfish.hk2.external | This repackages a bunch of other opensource components, sometimes they aren't the right version |
 | org.eclipse.jetty.orbit:javax.mail.glassfish | Yet another bundling of javamail.|
-| com.vaadin.external.google:android-json | Use org.json:json instead if you need json, this implementation isn't a drop-in replacement and causes problems with JSON schema processing |
+| com.vaadin.external.google:android-json | Use org.json:json instead if you need json; android-java isn't a drop-in replacement and causes problems with JSON schema processing |
 
 If you're using maven, then you should generate a dependency report to figure out where to put the right exclusions. If you're using gradle then just do a global exclusion inside the `configurations{}` block.
 
