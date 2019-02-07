@@ -29,6 +29,7 @@ There are also some projects on github that showcase various configurations and 
 
 | Github project | Description
 |----|----|
+| [Interlok install builder][] | Building a local installation of interlok with optional dependencies |
 | [Interlok hello world][] | An example hello world listener that is also auto-deployed onto Heroku |
 | [Interlok soiltype demo][] | A caching interlok instance around [http://rest.soilgrids.org](http://rest.soilgrids.org) giving you a soiltype for a give lat/lon combination |
 | [Interlok soiltype demo auth][] | The same as [Interlok soiltype demo][] but with an HTTP authorization layer on top |
@@ -37,6 +38,7 @@ There are also some projects on github that showcase various configurations and 
 | [Interlok Jira MS Teams][] | Using Interlok as a webhook between Jira and Microsoft Teams (other chat applications are available) and is the configuration associated with [https://interlok.adaptris.net/blog/2018/05/10/jira-interlok-msteams.html](https://interlok.adaptris.net/blog/2018/05/10/jira-interlok-msteams.html)
 | [Interlok Load Balanced][] | Running Interlok behind haproxy and is the configuration associated with [https://interlok.adaptris.net/blog/2017/08/31/interlok-docker-and-load-balancing.html](https://interlok.adaptris.net/blog/2017/08/31/interlok-docker-and-load-balancing.html)
 | [Interlok failover][] | Docker based example of running Interlok in failover mode |
+| [Interlok custom components][] | Example build files for when you need to write your own custom components |
 | [Interlok Twilio SMS][] | Real world example of writing your own custom component |
 
 
@@ -52,3 +54,5 @@ There are also some projects on github that showcase various configurations and 
 [Interlok Load Balanced]: https://github.com/mcwarman/interlok-load-balanced
 [Interlok failover]: https://github.com/mcwarman/interlok-failover
 [Interlok Twilio SMS]: https://github.com/adaptris-labs/interlok-twilio-sms
+[Interlok install builder]: https://github.com/adaptris-labs/interlok-install-builder
+[Interlok custom components]: https://github.com/adaptris/interlok-custom-component-example
