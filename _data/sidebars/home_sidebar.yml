@@ -457,6 +457,10 @@ entries:
       url: /developer-services.html
       output: web
 
+    - title: UI Database
+      url: /developer-ui-db.html
+      output: web
+
     - title: UI API Getting Started
       url: /developer-ui-api.html
       output: web
