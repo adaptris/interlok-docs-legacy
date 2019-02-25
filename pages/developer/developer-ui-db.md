@@ -64,7 +64,7 @@ Table "gui_user_roles" {
 #
 # "jmx_uid": unique identifier used in the Adapter configuration XML
 # "url": JMX URL used to connect to an Adapter
-# "tags": comma-separated values of tags used for filtering 
+# "tags": comma-separated values of tags used for filtering e.g. "local-adapter,dev-adapter,pauls,for-mail-processing"
 #
 Table "adapter_entity" {
   "id" int PK
@@ -87,6 +87,10 @@ Table "adapter_entity" {
 #
 # "adapter": depending on the widget type, either "adapter_entity"."id" or "adapter_entity"."url"|"adapter_entity"."jmx_uid" e.g. "service:jmx:jmxmp://localhost:5555|my-super-adapter"
 # "type": e.g. "details", "message-counts-chart", "platform-memory-heap-chart", etc.
+# "component_name": for adapter widgets then the Adapter UID is used e.g. "my-super-adapter", for channel widgets then it should be the channel uid e.g. "WebServer" and for workflow widgets, it would be the workflow uid @ the channel uid, e.g. "DefaultURL@WebServer"
+# "position_x": imagine 12 columns, so x should be 00 to 09 (09 only for widgets with width 3)
+# "position_y": starts at 00, 2nd row would be 04 (if widgets above had height 4)
+# "height"/"width": most widgets are 4&4 by default
 #
 Table "widget_setting" {
   "id" int PK
@@ -121,6 +125,9 @@ Table "widget_group" {
 #
 # The users VCS Profile
 #
+# "type": "Git" or "Subversion"
+# "scope": "CONFIG" or "TEMPLATE"
+#
 Table "vcs_profile" {
   "id" int PK
   "created" datetime
@@ -146,6 +153,8 @@ Table "vcs_profile" {
 
 #
 # Data collected for the platform widgets 
+#
+# "type": "widget_setting"."type" e.g. "memoryHeap", "memoryNonHeap", "cpuLoadProcess", "cpuLoadSystem", etc.
 #
 Table "platform_data" {
   "id" int PK
