@@ -41,6 +41,7 @@ Table "gui_user" {
 
 #
 # The Users Role
+#
 # "name": "admin", "monitor", "user" or "viewOnly"
 #
 Table "role" {
