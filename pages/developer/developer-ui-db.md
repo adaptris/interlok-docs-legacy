@@ -85,7 +85,7 @@ Table "adapter_entity" {
 #
 # The widgets on the runtime page
 #
-# "adapter": depending on the widget type, either "adapter_entity"."id" or "adapter_entity"."url"|"adapter_entity"."jmx_uid"' e.g. "service:jmx:jmxmp://localhost:5555|my-super-adapter"
+# "adapter": depending on the widget type, either "adapter_entity"."id" or "adapter_entity"."url"|"adapter_entity"."jmx_uid" e.g. "service:jmx:jmxmp://localhost:5555|my-super-adapter"
 # "type": e.g. "details", "message-counts-chart", "platform-memory-heap-chart", etc.
 #
 Table "widget_setting" {
