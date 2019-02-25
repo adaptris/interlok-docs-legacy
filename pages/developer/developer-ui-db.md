@@ -29,8 +29,8 @@ Table "gui_user" {
   "updated" datetime
   "first_name" varchar
   "last_name" varchar
-  "password" varchar
-  "password_uuid" longtext
+  "password" varchar        //Hash of password, PBKDF2 with SHA-1 as the hashing algorithm.
+  "password_uuid" longtext  //not used; is for 'forgot password' feature (still in backlog)
   "username" varchar
 }
 
@@ -40,7 +40,7 @@ Table "role" {
   "created" datetime
   "updated" datetime
   "description" varchar
-  "name" varchar
+  "name" varchar            //"admin", "monitor", "user" or "viewOnly"
 }
 
 # Ties together the User and Role
@@ -58,12 +58,12 @@ Table "adapter_entity" {
   "config_last_updated" datetime
   "jmx_env" varchar
   "jmx_password" varchar
-  "jmx_uid" varchar
+  "jmx_uid" varchar         //unique identifier used in the Adapter configuration XML
   "jmx_username" varchar
   "name" varchar
   "ordering" int
-  "url" varchar
-  "tags" varchar
+  "url" varchar             //JMX URL used to connect to an Adapter
+  "tags" varchar            //comma-separated values of tags used for filtering 
 }
 
 # The widgets on the runtime page
@@ -71,14 +71,14 @@ Table "widget_setting" {
   "id" int PK
   "created" datetime
   "updated" datetime
-  "adapter" varchar
+  "adapter" varchar             //depending on the widget type, either "adapter_entity"."id" or '"adapter_entity"."url"|"adapter_entity"."jmx_uid"' e.g. "service:jmx:jmxmp://localhost:5555|my-super-adapter"
   "component_name" varchar
   "height" varchar
   "position_x" varchar
   "position_y" varchar
   "refresh_time" bigint
   "sub_type" varchar
-  "type" varchar
+  "type" varchar                //e.g. "details", "message-counts-chart", "platform-memory-heap-chart", etc.
   "type_name" varchar
   "width" varchar
   "widget_group" int            //"widget_group"."id"
@@ -148,11 +148,11 @@ Table "alert" {
   "created" datetime
   "updated" datetime
   "active" bit
-  "active_from" datetime
-  "active_to" datetime
-  "author" varchar
+  "active_from" datetime        //deprecated
+  "active_to" datetime          //deprecated
+  "author" varchar              //deprecated
   "title" varchar
-  "type" varchar
+  "type" varchar                //"INFORMATION", "WARNING" or "IMPORTANT"
   "value" varchar
 }
 
@@ -161,8 +161,8 @@ Table "system_preference" {
   "id" int PK
   "created" datetime
   "updated" datetime
-  "name" varchar
-  "value" varchar
+  "name" varchar                //"adapterGuiConfigProjecStoreUrl", "adapterGuiConfigTemplatesUrl", "adapterGuiIdGenerator" or "adapterGuiVcsReposUrl"
+  "value" varchar               // IF "name"=="adapterGuiIdGenerator" THEN "classNameAndRandomIdGenerator", "guidGenerator" or "randomNameGenerator" ELSE file location
 }
 
 # deprecated! (was going to be used to create rules based alerts)
@@ -209,7 +209,7 @@ Table "template_bookmark" {
   "id" int PK
   "created" datetime
   "updated" datetime
-  "template_id" varchar
+  "template_id" varchar     //examples: "classpath/channel", "classpath/standard-workflow", "file-system/Soap-Web-Service"
   "gui_user" int            //"gui_user"."id"
 }
 
@@ -218,8 +218,8 @@ Table "user_preference" {
   "id" int PK
   "created" datetime
   "updated" datetime
-  "name" varchar
-  "value" varchar
+  "name" varchar            //"actionButtonSize", "adapterManagementTimeout", "alwaysLoadActive", "alwaysShowActionButtons", "autoOpenSettingsOnAdd", "componentContainerAutoCollaspe", "dashboardTableMode", "deleteFileOnIgnoreFailedMsg", "disableRemoveConfirmDialog", "displayNameInComponentTitle", "displayWelcome", "editorVimMode", "enableTechnicalPreview", "hideWidgetChartLastIndex", "prettifyNames", "reverseOrderOfLoggingMonitor"
+  "value" varchar           //IF "name"=="actionButtonSize" THEN "small", "normal" or "large" ELSE IF "name"=="adapterManagementTimeout" THEN n ELSE "true" or "false"
   "gui_user" int            //"gui_user"."id"
 }
 ```
