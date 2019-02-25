@@ -169,6 +169,8 @@ Table "platform_data" {
 #
 # Data collected for the message metrics widgets 
 #
+# "component_name": the workflow uid @ the channel uid e.g. "Send@Invoices", "Receive@Invoices", "Receive@InventoryUpdates", etc.
+#
 Table "message_metrics_data" {
   "id" int PK
   "created" datetime
