@@ -51,8 +51,8 @@ There are also some projects on github that showcase various configurations and 
 [Interlok Salesforce demo]: https://github.com/adaptris-labs/interlok-salesforce-demo
 [Interlok soiltype demo auth]: https://github.com/adaptris-labs/interlok-soiltype-demo-auth
 [Interlok Jira MS Teams]: https://github.com/adaptris-labs/interlok-jira-msteams
-[Interlok Load Balanced]: https://github.com/mcwarman/interlok-load-balanced
-[Interlok failover]: https://github.com/mcwarman/interlok-failover
+[Interlok Load Balanced]: https://github.com/adaptris-labs/interlok-load-balanced
+[Interlok failover]: https://github.com/adaptris-labs/interlok-failover
 [Interlok Twilio SMS]: https://github.com/adaptris-labs/interlok-twilio-sms
 [Interlok install builder]: https://github.com/adaptris-labs/interlok-install-builder
 [Interlok custom components]: https://github.com/adaptris/interlok-custom-component-example
