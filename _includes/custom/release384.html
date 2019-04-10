@@ -1,0 +1,58 @@
+## Version 3.8.4 ##
+
+Release Date : 2019-04
+
+### Bugs
+
+ - [INTERLOK-2251](https://adaptris.atlassian.net/browse/INTERLOK-2251) - interlok-filesystem + zip slip
+ - [INTERLOK-2587](https://adaptris.atlassian.net/browse/INTERLOK-2587) - UI Config - 'Import Config with variables' modal doesn't reset the 'Config Selected' message upon opening
+ - [INTERLOK-2588](https://adaptris.atlassian.net/browse/INTERLOK-2588) - UI Projects - the "Upload variables" button doesn't work when the variable set name isn't present
+ - [INTERLOK-2627](https://adaptris.atlassian.net/browse/INTERLOK-2627) - UI Config Page - Services with connections do not have recommended connections displayed first
+ - [INTERLOK-2648](https://adaptris.atlassian.net/browse/INTERLOK-2648) - UI Config Page : variable builder "trims trailing white space"
+ - [INTERLOK-2654](https://adaptris.atlassian.net/browse/INTERLOK-2654) - UI VCS Templates - Using a VCS Profile and Creating a new template in config, it fails to add the new file to the commit
+ - [INTERLOK-2660](https://adaptris.atlassian.net/browse/INTERLOK-2660) - json-streaming + stax no longer build on Windows.
+ - [INTERLOK-2668](https://adaptris.atlassian.net/browse/INTERLOK-2668) - XmlSchemaValidator does not support file URLs
+ - [INTERLOK-2674](https://adaptris.atlassian.net/browse/INTERLOK-2674) - UI Config - Copy a component which has some non latin1 characters in its javadoc fails.
+ - [INTERLOK-2682](https://adaptris.atlassian.net/browse/INTERLOK-2682) - interlok-apache-http: apache-http-response-headers-as-metadata does not override existing metadata
+ - [INTERLOK-2685](https://adaptris.atlassian.net/browse/INTERLOK-2685) - UI Config Page - The class impl selector fails when nested in a class (XmlValidationService > XmlSchemaValidator > cache connection)
+ - [INTERLOK-2704](https://adaptris.atlassian.net/browse/INTERLOK-2704) - UI Config Page - On import single item lists do not generate correct XPaths
+ - [INTERLOK-2717](https://adaptris.atlassian.net/browse/INTERLOK-2717) - UI Projects - Xincs directory slash is incorrect in the outputted xml
+ - [INTERLOK-2738](https://adaptris.atlassian.net/browse/INTERLOK-2738) - Change docker-entrypoint.sh to lower networkaddress.ttl
+
+### Improvements
+
+ - [INTERLOK-1937](https://adaptris.atlassian.net/browse/INTERLOK-1937) - Improve the inline javadocs, so they work better for nested component tabs
+ - [INTERLOK-2224](https://adaptris.atlassian.net/browse/INTERLOK-2224) - UI - Default user credentials should be driven by properties
+ - [INTERLOK-2535](https://adaptris.atlassian.net/browse/INTERLOK-2535) - UI Projects - update the variable xpaths when dragging components with variables around the config page
+ - [INTERLOK-2544](https://adaptris.atlassian.net/browse/INTERLOK-2544) - UI Component Search - link the component search results to its corresponding optional component
+ - [INTERLOK-2548](https://adaptris.atlassian.net/browse/INTERLOK-2548) - UI Version Upgrade - update Knockout to latest version
+ - [INTERLOK-2589](https://adaptris.atlassian.net/browse/INTERLOK-2589) - UI Config Page - keep a selectable list of 'Local project path' values on the 'open project from local file system' option
+ - [INTERLOK-2590](https://adaptris.atlassian.net/browse/INTERLOK-2590) - UI Config/UI Service Tester - Once you've opened a project, switching between these pages should auto reopen the project
+ - [INTERLOK-2592](https://adaptris.atlassian.net/browse/INTERLOK-2592) - UI Config Page - Open modal 'Import Config' should allow multiple variable sets to be uploaded
+ - [INTERLOK-2598](https://adaptris.atlassian.net/browse/INTERLOK-2598) - Generation of the OAuth Signature for OAUTH1.0 / RFC 5849
+ - [INTERLOK-2600](https://adaptris.atlassian.net/browse/INTERLOK-2600) - UI Config Page - Create new feature to validate the ui project variables outside the 'apply config' modal
+ - [INTERLOK-2608](https://adaptris.atlassian.net/browse/INTERLOK-2608) - UI Config Page - remove the 'active' flag on the ui projects variable sets, and improve the variable token selector in the settings editor to display all tokens from all variable sets.
+ - [INTERLOK-2614](https://adaptris.atlassian.net/browse/INTERLOK-2614) - UI Config Page - "Reload project from Filesystem"
+ - [INTERLOK-2624](https://adaptris.atlassian.net/browse/INTERLOK-2624) - JMS 2.0 - Handle acknowledgements from async producers
+ - [INTERLOK-2625](https://adaptris.atlassian.net/browse/INTERLOK-2625) - XML Exception Report service that includes workflowId and Message
+ - [INTERLOK-2634](https://adaptris.atlassian.net/browse/INTERLOK-2634) - dependabot updates for 3.8.4
+ - [INTERLOK-2643](https://adaptris.atlassian.net/browse/INTERLOK-2643) - Add a metadata filter by size
+ - [INTERLOK-2647](https://adaptris.atlassian.net/browse/INTERLOK-2647) - Add log-metadata to WorkflowImp or limit length of metadata in AdaptrisMessage.toString()
+ - [INTERLOK-2651](https://adaptris.atlassian.net/browse/INTERLOK-2651) - UI Projects -x-includes should allow you to set specific include location not just <projectname>/includes/
+ - [INTERLOK-2652](https://adaptris.atlassian.net/browse/INTERLOK-2652) - Upgrade wrappers to latest gradle 5.x
+ - [INTERLOK-2658](https://adaptris.atlassian.net/browse/INTERLOK-2658) - Fix all the "high-vulns" found by spotbugs
+ - [INTERLOK-2659](https://adaptris.atlassian.net/browse/INTERLOK-2659) - Enable spotbugs on interlok-ui
+ - [INTERLOK-2672](https://adaptris.atlassian.net/browse/INTERLOK-2672) - Add a service-list implementation that auto maps against StaX implementations
+ - [INTERLOK-2683](https://adaptris.atlassian.net/browse/INTERLOK-2683) - interlok-config-conditional: Do While
+ - [INTERLOK-2686](https://adaptris.atlassian.net/browse/INTERLOK-2686) - Interlok-aws-s3: Move CheckFileExistsOperation for use within Interlok
+ - [INTERLOK-2687](https://adaptris.atlassian.net/browse/INTERLOK-2687) - PoolingWorkflow commons-pool-evictor thread too much logging
+ - [INTERLOK-2690](https://adaptris.atlassian.net/browse/INTERLOK-2690) - Apache Artemis running in docker
+ - [INTERLOK-2691](https://adaptris.atlassian.net/browse/INTERLOK-2691) - Use kubernetes as the container orchestration
+ - [INTERLOK-2701](https://adaptris.atlassian.net/browse/INTERLOK-2701) - Upgrade current profiler project to be more versatile
+ - [INTERLOK-2702](https://adaptris.atlassian.net/browse/INTERLOK-2702) - Deprecated DynamicServiceLocator; merge functionality into DynamicServiceExecutor
+ - [INTERLOK-2703](https://adaptris.atlassian.net/browse/INTERLOK-2703) - JDBC Splitting XML Payload Translator does not include metadata in split messages
+ - [INTERLOK-2707](https://adaptris.atlassian.net/browse/INTERLOK-2707) - Change ServiceExtractor interface to return a Service
+ - [INTERLOK-2725](https://adaptris.atlassian.net/browse/INTERLOK-2725) - MetadataServices should have a "metadata-logger"
+ - [INTERLOK-2661](https://adaptris.atlassian.net/browse/INTERLOK-2661) - UI: Identify and fix the high priority issues reported by spotbugs
+ - [INTERLOK-2675](https://adaptris.atlassian.net/browse/INTERLOK-2675) - Abbrevate the logging from StatementParameter
+ - [INTERLOK-2681](https://adaptris.atlassian.net/browse/INTERLOK-2681) - Upgrade or supersede ReadFileService to use a MessageDrivenDestination
