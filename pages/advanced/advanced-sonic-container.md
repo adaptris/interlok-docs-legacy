@@ -22,11 +22,11 @@ SonicMQ provides a java container for which you may run your own programs. Adapt
 
 ## Creating the CAR file ##
 
-We have provided a utility program called the "CAR builder" to create a CAR file from your Interlok version 3.x installation. Please contact Adaptris support for a copy of this tool.
+We have provided a utility program called the "CAR builder" to create a CAR file from your Interlok version 3.x installation.
 
 ### Pre-requisites for the CAR builder ###
 
-The Adaptris CAR builder requires apache-ant version 1.8.3+ and optionally an installation of Interlok 3.x.
+The Adaptris CAR builder requires apache-ant version 1.8.3+ and optionally an installation of Interlok 3.x; since it uses ANT + ivy under the covers, you are able to modify the build.xml / ivy.xml for your purposes. The supplied configuration is illustrative and may not be suitable for your requirements.
 
 ### Configuring the CAR builder ###
 
@@ -38,7 +38,7 @@ This contains the minimum property declarations that you'll need to execute the 
 | --------------- | ------------------- | ----------------------------------- |
 | interlok.version | 3.6.0               | The version of Interlok to download |
 | interlok.lib     | target/interlok/lib | Where to find Interlok libraries. If downloading, libraries will be placed here |
-| extra.lib        | extra-lib           | Where to find extra jar files. Place interlok-sonicmf.jar here and any other libraries you want to include in the CAR file that are not automatically downloaded (IBM MQ jars, for example) |
+| extra.lib        | car-lib           | Where to find extra jar files. __Place interlok-sonicmf.jar here and any other libraries you want to include in the CAR file that are not automatically downloaded__ (IBM MQ jars, for example) |
 | car.name         | MFadapter.car       | The name of the CAR file. Useful if you need to have multiple CARs with different libraries included in the same Sonic domain |
 | car.pack200      | true                | Whether to apply pack200 compression to reduce CAR file size. |
 
@@ -48,19 +48,27 @@ If you already have an Interlok installation you want to package, set the `inter
 
 Open a new command line window and navigate to the root directory of the CAR builder tool. Run `ant -projecthelp` to get an overview of the available commands:
 
-    build-car          Build the CAR file
-    clean-all          Clean the target directory
-    clean-car          Clean the car build directory
-    download-interlok  Download Interlok libraries and dependencies
-    Default target: download-and-build
+```
+Main targets:
+
+ build-car           Build the CAR file
+ clean               Clean up build directories
+ clean-all           Clean the target directory
+ clean-car           Clean the car build directory
+ download-and-build  Download interlok and build car
+ download-interlok   Download Interlok libraries and dependencies
+Default target: download-and-build
+```
 
 In order to download interlok and build the CAR file, run:
-
-    $ ant
-
+```
+$ ant
+```
 or if you only want to build the car file (because you already have an Interlok installation to package):
 
-    $ ant build-car
+```
+$ ant build-car
+```
 
 Once the CAR builder has completed you will find a new CAR file in the 'target' directory of the CAR builder installation.
 
@@ -72,12 +80,12 @@ Once the CAR builder has completed you will find a new CAR file in the 'target' 
 
 The Interlok CAR file can be quite large in size depending on the number and size of 3rd party libraries required to run your Interlok configuration.
 
-SonicMQ can sometimes have problems installing large CAR files and although this problem is rare, the fix is straight forward; simply modify either SonicMQ script "startmc.bat" or "startmc.sh" (depending on whether your SonicMQ is installed on windows or linux) which can be found in your SonicMQ installation, to include increase the max memory for the JVM `-Xmx512mb` at the point the JRE is executed (e.g. just after the `%MGMTCONSOLE_JRE%`)
+SonicMQ can sometimes have problems installing large CAR files and although this problem is rare, the fix is straight forward; simply modify either SonicMQ script "startmc.bat" or "startmc.sh" (depending on whether your SonicMQ is installed on windows or linux) which can be found in your SonicMQ installation, to include increase the max memory for the JVM `-Xmx512M` at the point the JRE is executed (e.g. just after the `%MGMTCONSOLE_JRE%`)
 
 Finally, we must also enable custom components within SonicMQ.  This feature essentially unlocks the ability to run Java programs inside the SonicMQ container. This involves modifying the same "startmc" file and enabling custom components by adding a system property
 
 ```
-    -Dsonicsw.ma.genericComponent=true
+-Dsonicsw.ma.genericComponent=true
 ```
 
 An example of a windows version of the modified "startmc" script will look like the following (not including the –Xmx switch, add this if needed);
@@ -115,27 +123,27 @@ You will be able to add your newly created generic component to any standard Son
 | Deployment parameter     | Description | Since |
 | ------------------------ | ----------- | ----- |
 | bootstrap.properties.url | The URL (in SonicFS) of your bootstrap.properties file | 3.0.1 |
-| jmxserviceurl            | The JMX Service URL | |
-| adapterxmlurl            | The URL for adapter.xml | |
-| licenseurl               | Where to find the license.properties file |
-| log4jurl                 | The URL for your log4j configuration file |
-| managementComponents     | The management components to load |
-| preProcessors            | Configuration preprocessors to apply |
+| jmxserviceurl            | The JMX Service URL | consider switching to bootstrap.properties.url |
+| adapterxmlurl            | The URL for adapter.xml | consider switching to bootstrap.properties.url |
+| licenseurl               | Where to find the license.properties file | consider switching to bootstrap.properties.url |
+| log4jurl                 | The URL for your log4j configuration file | consider switching to bootstrap.properties.url |
+| managementComponents     | The management components to enable | consider switching to bootstrap.properties.url |
+| preProcessors            | Configuration preprocessors to apply | consider switching to bootstrap.properties.url |
 
-You can specify either `bootstrap.properties.url` (since version 3.0.1) or you can specify the individual settings in their respective deployment properties. Please see the documentation about bootstrap.properties for the meanings of these settings.
+You can specify either `bootstrap.properties.url` (since version 3.0.1) or you can specify the individual settings instead of their respective deployment properties. Please see the documentation about [bootstrap.properties](./adapter-bootstrap.html) for the meanings of these settings. Note that if you don't configure any management components, you won't get any management components enabled.
 
 Should you choose to upload your bootstrap.properties into the sonicfs, you may also want to make sure the file resources within the bootstrap.properties also reference files in sonicfs.
 
 The main reason for using the bootstrap.properties.url deployment parameter above the previous method would be to be able to have the full leverage of pre-processors and custom parameters within the bootstrap.properties.
 
-Next, you need to make sure the SonicMQ container starts Interlok with the correct version of java. By default all container components will be executed with the version installed with SonicMQ.  You may need to specify a later version of Java. To do this, you can edit your custom container and make sure the path to your java 1.7+ installation is specified as shown here;
+Next, you need to make sure the SonicMQ container starts Interlok with the correct version of java. By default all container components will be executed with the version installed with SonicMQ.  You may need to specify a later version of Java. To do this, you can edit your custom container and make sure the path to your java 1.8+ installation is specified as shown here;
 
 ![Java version](./images/sonic-container/sonicmq-container-Figure8.png)
 
-Finally, to configure the logging you will need to add the following switch (modify the path to your log4j configuration as needed) to the Java VM options in the container properties;
+Finally, to configure the logging you may need to add the following switch (modify the path to your log4j configuration as needed) to the Java VM options in the container properties to force log4j configuration from a specific location.
 
 ```
-  -Dlog4j.configurationFile=sonicfs:///System/Interlok/log4j2.xml
+-Dlog4j.configurationFile=sonicfs:///System/Interlok/log4j2.xml
 ```
 
 ![JVM Options](./images/sonic-container/sonicmq-container-Figure9.png)
@@ -159,6 +167,11 @@ By default, Interlok will log to its own log4j context which is separately confi
 </Configuration>
 ```
 
+## JMX ##
+
+By default, unless otherwise specified, JMX is disabled. In order to expose the standard Adapter JMX controls (e.g. starting / stopping individual channels); add jmxserviceurl as a deployment parameter (along with the appropriate setting e.g. `service:jmx:jmxmp://localhost:5555`) and `managementComponents=jmx` as a deployment parameter. This means that the same JMX controls will be exposed as when running as a standalone process. Once enabled you can connect to it via jconsole (if the jmxremote*.jars are in the classpath) with the specified jmx service url or via the Interlok Web UI.
+
+
 ## Deployment parameters variable substitution ##
 
 To use Sonic deployment parameters for variable replacements in your adapter.xml, add the following configuration to your `bootstrap.properties`:
@@ -169,7 +182,7 @@ variable-substitution.properties.url=sonicfs:///Interlok/Adapters/environment.pr
 deployment-parameters.impl=STRICT_WITH_LOGGING
 ```
 
-This will allow variables in your adapter.xml to be resolved from xinclude, a file called environment.properties, Java system properties, environment variables and Sonic deployment parameters.
+This will allow variables in your adapter.xml to be resolved from xinclude, a file called environment.properties, Java system properties, environment variables and Sonic deployment parameters, in that order; _variableSubstitution,xinclude,systemProperties,environmentVariables_ will require additional jars, consult the [pre-processors documentation](./advanced-configuration-pre-processors.html) for more information.
 
 ## Native Library support ##
 
@@ -179,8 +192,3 @@ Most native libraries may not work as expected while being bundled into a CAR fi
 
 The Adaptris MSMQ component relies on a combination of files that cannot be put into directory services; you will need to define "jacozoom.dir" as a system property on the container that will host the Adapter and set it to your external Interlok installations lib directory; ${adapter_home}/lib
 
-----
-
-## Further configuration ##
-
-One of the standard deployment parameters that can be enabled is jmxserviceurl. In order to expose the standard Adapter JMX controls (e.g. starting / stopping individual channels); add jmxserviceurl as a deployment parameter and put in service:jmx:jmxmp://localhost:5555. Choose your own port number as required. This means that the same JMX controls will be exposed as when running as a standalone process. Once enabled you can connect to it via jconsole (if the jmxremote*.jars are in the classpath) with the specified jmx service url or via the Interlok Web UI.
