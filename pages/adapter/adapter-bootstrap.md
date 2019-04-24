@@ -179,6 +179,35 @@ webServerConfigUrl=./config/jetty.xml
 
 We don't envisage you using the sshtunnel management component in production (if you need to, then we'd suggest you probably need to talk to your network team); however it can be useful to temporarily run an adapter locally that uses a tunnel to connect to a remote services. More documentation is available on the [interlok-sshtunnel][] github project page
 
+#### Exec Component ####
+
+[interlok-exec][] allows you to startup up arbitrary programs as part of the bootstrap of Interlok. Bear in mind that Interlok isn't really a process manager, and you should always consider using the appropriate tool for the job (e.g. systemd to startup your external program as a service). However, if that isn't possible then [interlok-exec][] can start processes which are subsequently managed as part of the Interlok instance lifecycle. When enabled executables are grouped using an identifier in the form `exec.IDENTIFIER.cmd`; this is easiest to illustrate with an example:
+
+```
+managementComponents=jmx:exec:jetty
+
+exec.activemq.working.dir=/home/vagrant/activemq
+exec.activemq.start.command=./bin/activemq.sh start
+exec.activemq.stop.command=./bin/activemq.sh stop
+exec.activemq.process.monitor.ms=10000
+exec.activemq.process.debug=true
+
+exec.tomcat.working.dir=/home/vagrant/tomcat
+exec.tomcat.start.command=./bin/catalina.sh start
+exec.tomcat.process.monitor.ms=10000
+exec.tomcat.process.debug=true
+
+```
+
+In this instance there are two executable groups configured so
+
+* Upon start we execute `catalina.sh start` and `activemq.sh start` respectively. The working directories for those processes are `/home/vagrant/tomcat` and `/home/vagrant/activemq` respectively.
+  * Any output to standard error/output will be redirected at TRACE level to the standard interlok logfile 
+* Every 10 seconds, we check the process to see if they are alive
+  * Because process.debug is true, then you will get logging in any configured log file at trace level for the process monitoring
+  * If the process is dead, than we attempt to restart the executable.
+* Upon interlok shutdown, the script `activemq.sh stop` will be executed for the _activemq_ exec group only.
+
 #### Exposing workflows via a REST interface ####
 
 Since 3.8.3 : see [Exposing Workflows as a RESTful service](adapter-hosting-rest.html)  for more details.
@@ -211,3 +240,4 @@ Pre-Processors are components that allow you to inject some additional processin
 [Authenticator]: http://docs.oracle.com/javase/7/docs/api/java/net/Authenticator.html
 [interlok-activemq]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-activemq/
 [interlok-sshtunnel]: https://github.com/adaptris/interlok-sshtunnel
+[interlok-exec]: https://github.com/adaptris/interlok-exec
