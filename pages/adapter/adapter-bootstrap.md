@@ -177,9 +177,13 @@ webServerConfigUrl=./config/jetty.xml
 
 #### SSH Tunnel ####
 
+Since 3.7.1
+
 We don't envisage you using the sshtunnel management component in production (if you need to, then we'd suggest you probably need to talk to your network team); however it can be useful to temporarily run an adapter locally that uses a tunnel to connect to a remote services. More documentation is available on the [interlok-sshtunnel][] github project page
 
 #### Exec Component ####
+
+Since 3.8.2
 
 [interlok-exec][] allows you to startup up arbitrary programs as part of the bootstrap of Interlok. Bear in mind that Interlok isn't really a process manager, and you should always consider using the appropriate tool for the job (e.g. systemd to startup your external program as a service). However, if that isn't possible then [interlok-exec][] can start processes which are subsequently managed as part of the Interlok instance lifecycle. When enabled executables are grouped using an identifier in the form `exec.IDENTIFIER.cmd`; this is easiest to illustrate with an example:
 
