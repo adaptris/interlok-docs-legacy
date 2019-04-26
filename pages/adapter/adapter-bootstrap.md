@@ -16,13 +16,13 @@ The list of keys and a brief description of each key is described below :
 | adapterConfigUrl | This is an primary means of locating adapter runtime configuration; use any supported URL scheme, specify a `file:///` scheme for a local file|
 | adapterTemplatesUrl | __Deprecated__ : Configure this directly in the UI; A file URL for a directory that contains all the templates that will be searched by the UI; defaults to `file://localhost/./ui-resources/config-templates`|
 | adapterScmUrl | __Deprecated__ : Configure this directly in the UI; a file URL that for a directory where the UI will backup any configuration that is saved/applied; defaults to `file://localhost/./ui-resources/config-store`|
-| beautifyXStreamOutput | Defaults to false, and if true, means that an attempt is made to remove all `class=` attributes, and to only use the raw alias as the element name. this means that where the same interface is used (e.g. for `produce-connection` + `consume-connection`, order becomes important.|
+| beautifyXStreamOutput | __Removed in 3.8.2__: Defaults to false, and if true, means that an attempt is made to remove all `class=` attributes, and to only use the raw alias as the element name. this means that where the same interface is used (e.g. for `produce-connection` + `consume-connection`, order becomes important). |
 | configManager | Defaults to [XStreamConfigManager][]; you should never have to change this|
 | enableLocalJndiServer| defaults to false, and should be set to true, if you intend on having [shared components][adapter-jndi-guide] accessible via the `adapter:` scheme|
-| httpEnableProxyAuth | Defaults to false, and if true, means that a custom [Authenticator][] is inserted to authenticate against any HTTP Proxy servers|
+| httpEnableProxyAuth | Defaults to true, which means that a custom [Authenticator][] is inserted to authenticate against requests made that are of the type _RequestorType.PROXY_. The custom authenticator takes the username from one of the system properties `http.proxyUser`,`https.proxyUser`,`proxyUser` and the password from `http.proxyPassword`, `https.proxyPassword`, `proxyPass`. This can override certain behaviours available by default in your JDK (for instance, if you have a separate username/password combination for HTTP / HTTPS proxies)|
 | jetty. | Properties prefixed by this key will be converted passed into to the embedded jetty instance (since 3.6.0) |
 | licenseUrl| _Removed since 3.1.0_ The URL containing the license key for your adapter. At installation time, licenceUrl defaults to license.properties which is populated with your license key information. There is generally no reason to change this value. In some deployment scenarios licenceUrl may be a remote HTTP URL|
-| log4j12Url | __Deprecated__ : use loggingUrl instead |
+| log4j12Url | __Removed in 3.9.0__ : use loggingUrl instead |
 | loggingConfigUrl | since 3.1.0 - If specified then then an attempt is made to configure the logging (log4j1.2 or log4j2) subsystem with the referenced URL; if this is not configured then logging initialisation uses the standard defaults for log4j. |
 | managementComponents | a list of `:` separated management components that will be started.
 | marshallerOutputType | The default output type for the marshaller; this defaults to XML and you should never have to modify this|
@@ -202,7 +202,7 @@ exec.tomcat.process.debug=true
 In this instance there are two executable groups configured so
 
 * Upon start we execute `catalina.sh start` and `activemq.sh start` respectively. The working directories for those processes are `/home/vagrant/tomcat` and `/home/vagrant/activemq` respectively.
-  * Any output to standard error/output will be redirected at TRACE level to the standard interlok logfile 
+  * Any output to standard error/output will be redirected at TRACE level to the standard interlok logfile
 * Every 10 seconds, we check the process to see if they are alive
   * Because process.debug is true, then you will get logging in any configured log file at trace level for the process monitoring
   * If the process is dead, than we attempt to restart the executable.
