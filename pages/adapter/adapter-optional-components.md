@@ -84,38 +84,42 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-cirrus-db-webapp][] | Provides access to the cirrus database for web applications | 3.8.0+
 |com.adaptris | [interlok-cirrus-db][] | Provides access to the cirrus database for adapter services | 3.8.0+
 |com.adaptris | [interlok-cirrus-services][] | Provides Cirrus routing services; requires [interlok-licensing][] | 3.8.0+
-|com.adaptris | [interlok-config-conditional][] | Conditional branching and looping | 3.7.3+ | available on [github](https://github.com/adaptris/interlok-config-conditional)
+|com.adaptris | ~~[interlok-config-conditional][]~~ | ~~Conditional branching and looping~~ | 3.7.3 - 3.8.4 only; merged into [interlok-core][] from 3.9.0 onwards | available on [github](https://github.com/adaptris/interlok-config-conditional)
 |com.adaptris | [interlok-core-apt][] | [Custom annotations](developer-annotations.html)| 3.8.0+| available on [github](https://github.com/adaptris/interlok)
 |com.adaptris | [interlok-core][] | The base Interlok framework | 3.8.0+ |available on [github](https://github.com/adaptris/interlok)
 |com.adaptris | [interlok-csv][] | CSV operations, transforms etc. | 3.8.0+|available on [github](https://github.com/adaptris/interlok-csv)
 |com.adaptris | [interlok-csv-json][] | Convert between CSV and JSON (requires both [interlok-json][] and [interlok-csv][]) | 3.6.6+|available on [github](https://github.com/adaptris/interlok-csv-json)
-|com.adaptris | [interlok-drools][] | Integration with JBoss Rules; | 3.8.0+|
-|com.adaptris | [interlok-elastic-search][] | Integration with ElasticSearch (requires [interlok-csv][]) | 3.4.1+
-|com.adaptris | [interlok-ehcache][] | Integration with ehcache as a message store| 3.8.0+ |  available on [github](https://github.com/adaptris/interlok-cache)
-|com.adaptris | [interlok-es5][] | Integration with ElasticSearch using v5 API (requires [interlok-csv][]) | 3.5.1+ | available on [github](https://github.com/adaptris/interlok-es5)
+|com.adaptris | ~~[interlok-drools][]~~ | ~~Integration with JBoss Rules;~~ | 3.8.0+; deprecated in favour of [interlok-kie][]| available on [github](https://github.com/adaptris/interlok-drools)
+|com.adaptris | ~~[interlok-elastic-search][]~~ | ~~Integration with ElasticSearch via the v2 API (requires [interlok-csv][])~~ | 3.4.1+; deprecated in favour of [interlok-es-rest][] | available on [github](https://github.com/adaptris/interlok-elasticsearch)
+|com.adaptris | [interlok-ehcache][] | Integration with ehcache as a cache provider | 3.8.0+ |  available on [github](https://github.com/adaptris/interlok-cache)
+|com.adaptris | ~~[interlok-es5][]~~ | ~~I0ntegration with ElasticSearch using v5 API (requires [interlok-csv][])~~ | 3.5.1+; deprecated in favour of [interlok-es-rest][] | available on [github](https://github.com/adaptris/interlok-es5)
 |com.adaptris | [interlok-es-rest][] | Integration with ElasticSearch via their high level REST client (requires [interlok-csv][]) | 3.8.0+ | available on [github](https://github.com/adaptris/interlok-es-rest)
 |com.adaptris | [interlok-expressions][] | Perform inline mathematic expressions | 3.6.4+ | available on [github](https://github.com/adaptris/interlok-expressions)
 |com.adaptris | [interlok-excel][] | Extract data from an Excel spreadsheet | 3.8.0+
+|com.adaptris | [interlok-exec][] | Management component executes arbitrary programs | 3.8.2+ | available on [github](https://github.com/adaptris/interlok-exec)
 |com.adaptris | [interlok-filesystem][] | Services for interacting with the filesystem | 3.6.6+ | available on [github](https://github.com/adaptris/interlok-filesystem)
 |com.adaptris | [interlok-failover][] | Simplified failover not dependent on AOP profiling | 3.4.0+
+|com.adaptris | [interlok-flatfile][] | Flat file transformations; migrated from [interlok-core][] into its own optional component |3.9.0+ | available on [github](https://github.com/adaptris/interlok-flatfile)
 |com.adaptris | [interlok-gcloud-pubsub][] | Connect to Google cloud pubsub (requires [interlok-oauth-gcloud][])|3.6.3+ | available on [github](https://github.com/adaptris/interlok-gcloud-pubsub)
-|com.adaptris | [interlok-hornetq][] | Connect to HornetQ JMS (will become obsolete as HornetQ is merged into ActiveMQ) | 3.8.0+
+|com.adaptris | ~~[interlok-hornetq][]~~ | ~~Connect to HornetQ JMS (will become obsolete as HornetQ is merged into ActiveMQ)~~ | 3.8.0+
 |com.adaptris | [interlok-hpcc][] | Connect to [HPCC](http://www.hpccsystems.com)|3.6.1+ | available on [github](https://github.com/adaptris/interlok-hpcc)
 |com.adaptris | [interlok-interfax][] | Integration with the Java FAX API; requires [interlok-licensing][]| 3.8.0+
 |com.adaptris | [interlok-ironmq][] | Connect to IronMQ| 3.8.0+| you could use [interlok-aws-sqs][] in JMS mode.
 |com.adaptris | [interlok-jclouds-blobstore][] | Use [Apache jclouds](https://jcloud.apache.org) to access your cloud storage |3.7.3+ | available on [github](https://github.com/adaptris/interlok-jclouds)
-|com.adaptris | [interlok-jms-oracleaq][] | Connect to [Oracle via advanced queues](cookbook-oracleaq.html); requires additional jars not automatically delivered; ; requires [interlok-licensing][]| 3.8.0+
-|com.adaptris | [interlok-jms-sonicmq][] | Connect to SonicMQ JMS; ; requires [interlok-licensing][]| 3.8.0+|
+|com.adaptris | [interlok-jms-oracleaq][] | Connect to [Oracle via advanced queues](cookbook-oracleaq.html); requires additional jars not automatically delivered; requires [interlok-licensing][]| 3.8.0+
+|com.adaptris | [interlok-jms-sonicmq][] | Connect to SonicMQ JMS; requires additional jars not automatically delivered; requires [interlok-licensing][]| 3.8.0+|
 |com.adaptris | [interlok-jmx-jms][] | Support for [JMX via JMS or AMQP 1.0](advanced-jmx-jms.html) | 3.8.0+
 |com.adaptris | [interlok-jruby][] | Tighter coupling with [jruby](http://jruby.org) as an alternative to [ScriptingService][]/[EmbeddedScriptingService][]|3.6.3+ | available on [github](https://github.com/adaptris/interlok-jruby)
 |com.adaptris | [interlok-jsr107-cache][] | Cache implementation that wraps JSR107 cache implementations |3.8.0+ | available on [github](https://github.com/adaptris/interlok-cache)
 |com.adaptris | [interlok-jq][] | JSON transformations using JQ-like syntax |3.7.0+ | available on [github](https://github.com/adaptris/interlok-jq)
 |com.adaptris | [interlok-json][] | Transform JSON data to and from XML | 3.8.0+ |available on [github](https://github.com/adaptris/interlok-json)
+|com.adaptris | [interlok-json-streaming][] | Transform JSON via a STaX like interface | 3.8.2+ |available on [github](https://github.com/adaptris/interlok-json-streaming)
 |com.adaptris | [interlok-kafka][] | Connect to [Apache Kafka](http://kafka.apache.org/)| 3.8.0+|available on [github](https://github.com/adaptris/interlok-kafka)
 |com.adaptris | [interlok-kie][] | Integration with the drools business rule management system from KIE group | 3.8.2+|available on [github](https://github.com/adaptris/interlok-kie)
 |com.adaptris | [interlok-legacyhttp][] | servicing HTTP requests without Jetty (Java 7 Compatibile where base Interlok Version is)| 3.6.4+
 |com.adaptris | [interlok-licensing][] | Enforces a license on certain components | 3.8.0+
 |com.adaptris | [interlok-logging][] | Custom JMX Appender for [Log4j2](https://logging.apache.org/log4j) | | available on [github](https://github.com/adaptris/interlok)
+|com.adaptris | [interlok-mail][] | Support for Email servers; migrated from [interlok-core][] into its own optional component | 3.9.0+ | available on [github](https://github.com/adaptris/interlok-mail)
 |com.adaptris | [interlok-mongodb][] | Support for MongoDB | 3.7.2+ | available on [github](https://github.com/adaptris/interlok-mongodb)
 |com.adaptris | [interlok-mqtt][] | Support for MQTT protocol | 3.5.1+ | available on [github](https://github.com/adaptris/interlok-mqtt)
 |com.adaptris | [interlok-msmq][] | Connect to MSMQ via ActiveX; requires [interlok-licensing][]| 3.8.0+| Requires a 32bit JVM due to JNI.
@@ -133,10 +137,10 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-reliable-messaging][] | Support for ordered and reliable messaging; requires [interlok-licensing][] | 3.8.0+
 |com.adaptris | [interlok-salesforce][] | Integration with Salesforce via WebServices (generally use their REST interface via HTTP/HTTPS instead); requires [interlok-licensing][] | 3.8.0+
 |com.adaptris | [interlok-sap][] | Integration with SAP via [IDocs](cookbook-sap-idoc.html) or [RFC/BAPI](cookbook-sap-rfc.html); requires additional jars not automatically delivered; requires [interlok-licensing][] | 3.8.0+
-|com.adaptris | [interlok-schema][] | RelaxNG [schema validation](advanced-configuration-pre-processors.html#schema-validation) for Interlok configuration files | 3.8.0+
+|com.adaptris | ~~[interlok-schema][]~~ | ~~RelaxNG [schema validation](advanced-configuration-pre-processors.html#schema-validation) for Interlok configuration files~~ | 3.8.0+, deprecated since 3.9.0
 |com.adaptris | [interlok-service-tester][] | Testing services as part of a CI pipeline | 3.5.0+ | available on [github](https://github.com/adaptris/interlok-service-tester)
 |com.adaptris | [interlok-shell][] | Commandline runtime UI based on [CRaSH](http://www.crashub.org) | 3.4.1+|available on [github](https://github.com/adaptris/interlok-shell)
-|com.adaptris | [interlok-socket][] | Fork of com.adaptris.socket.* into its own component  | 3.7.0+ | available on [github](https://github.com/adaptris/interlok-socket)
+|com.adaptris | [interlok-socket][] | Vanilla Socket support; migrated from [interlok-core][] into its own component  | 3.7.0+ | available on [github](https://github.com/adaptris/interlok-socket)
 |com.adaptris | [interlok-solace][] | Integration with Solace Systems as a JMS provider; requires additional jars not automatically delivered; requires [interlok-licensing][]| 3.8.0+
 |com.adaptris | [interlok-sonicmf][] | Interlok runtime as [part of a Sonic Container](advanced-sonic-container.html) | 3.8.0+
 |com.adaptris | [interlok-sshtunnel][] | Management component that opens one or more SSH tunnels | 3.7.1+ | available on [github](https://github.com/adaptris/interlok-sshtunnel)
@@ -158,7 +162,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-webspheremq][] | Connection to a [WebsphereMQ instance](cookbook-native-wmq.html); requires [interlok-licensing][] | 3.8.0+
 |com.adaptris | [interlok-workflow-rest-services][] | [Exposing Workflows as a RESTful service](adapter-hosting-rest.html) | 3.8.3+|available on [github](https://github.com/adaptris/interlok-workflow-rest-services)
 |com.adaptris | [interlok-xinclude][] | [XInclude pre-processor](advanced-configuration-pre-processors.html#xinclude)| 3.8.0+|available on [github](https://github.com/adaptris/interlok-xinclude)
-|com.adaptris | [interlok-xa][] | XA support within the Adapter; requires [adp-licensing][] | 3.4.0+
+|com.adaptris | [interlok-xa][] | XA support within the Adapter; requires [interlok-licensing][] | 3.4.0+
 |com.adaptris | [interlok-xml-security][] | XML security (JSR 106); requires [interlok-licensing][] | 3.8.0+
 
 
@@ -363,3 +367,7 @@ If you've added an optional components following the steps explained above you c
 [interlok-kie]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-kie
 [interlok-okhttp]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-okhttp
 [interlok-workflow-rest-services]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-workflow-rest-services
+[interlok-flatfile]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-flatfile
+[interlok-mail]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-mail
+[interlok-exec]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-exec
+[interlok-json-streaming]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-json-streaming
