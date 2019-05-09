@@ -457,6 +457,10 @@ entries:
       url: /developer-services.html
       output: web
 
+    - title: Interlok Profiler
+      url: /developer-profiler.html
+      output: web
+      
     - title: UI API Getting Started
       url: /developer-ui-api.html
       output: web
