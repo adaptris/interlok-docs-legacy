@@ -8,7 +8,7 @@ permalink: adapter-installation.html
 
 # Installation #
 
-Installation is pretty easy. Download the installer, and execute it.
+Installation is pretty easy. Download the installer, and execute it; due to a change in Java licensing as of 2019 you need to provide your own 64bit JVM.
 
 ## Unix ##
 
@@ -18,7 +18,6 @@ Installation is pretty easy. Download the installer, and execute it.
 ## Windows ##
 
 - Download the appropriate [windows installer][] and execute it.
-- If you do not have a Java virtual machine installed, be sure to download the package above which includes one. The default bundled JRE is 64bit.
 - On Windows 2012 R2 you may have to run the installer in Windows 7 compatibility mode.
 
 ### Elevated Rights ###
@@ -26,15 +25,6 @@ Installation is pretty easy. Download the installer, and execute it.
 Because on Windows you can install the adapter as a service; then the installer will ask for elevated rights; in the instance that you cannot provide elevated rights then you can force the installer to run as the invoker. This means, of course, that you will not be able to install the adapter as a service. You need to set the `__COMPAT_LAYER` environment variable to be `RUNASINVOKER` before starting the installer.
 
 {% include image.html file="user-guide/run-as-invoker.png" alt="RunAsInvoker" %}
-
-
-### Starting with an alternate JVM ###
-
-On Some Windows platforms (particularly x64); you may not be able to execute the installer without explicitly providing path to the java executable. This can be done by passing in the LAX_VM switch on the commandline.
-
-```
-.\install-without-jre.exe LAX_VM "C:\Program Files\jdk1.8.0_102\bin\javaw.exe"
-```
 
 ### Windows DLL failed to load ###
 
@@ -58,6 +48,16 @@ Flexeraawm$aaa: Windows DLL failed to load
 ```
 
 If you are in this situation, you should install with the bundled JRE (using `install-with-jre.exe`); selecting the bundled JRE as the java runtime to use. After installation, edit the `adapter.lax` file and modify java location to your preferred version. Doing it this way allows you to _uninstall_ the application from the control panel; otherwise you have to use the `Uninstall.exe LAX_VM="path/to/a/1.8.0_51/java"` from the commandline in order to uninstall.
+
+
+## Starting with an alternate JVM ##
+
+On Some platforms; you may not be able to execute the installer without explicitly providing path to the java executable. This can be done by passing in the LAX_VM switch on the commandline and works on both Windows and Unix platforms. On Unix systems; if you installed java via the distribution repos, then you may not have a JAVA_HOME environment variable; the installer may not be able to find java.
+
+```
+.\install-without-jre.exe LAX_VM "C:\Program Files\jdk1.8.0_102\bin\javaw.exe"
+sh ./install-without-jre.bin LAX_VM "/docker-java-home/bin/java"
+```
 
 ## Unattended Installation ##
 
