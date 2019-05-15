@@ -308,6 +308,10 @@ entries:
         - title: CSV to XML
           url: /cookbook-csv-transform.html
           output: web
+          
+        - title: EDI Transformation
+          url: /cookbook-edi-transform.html
+          output: web
 
   - title: Advanced
     output: web
