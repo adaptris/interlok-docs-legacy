@@ -164,6 +164,33 @@ JMS connections within your Interlok workflows will be able to access the broker
 
 __Note:__ Sometimes the ActiveMQ broker can take a few seconds to fully start-up and initialize, therefore connection errors may be logged by Interlok during startup if you are using ActiveMQ as part of a channel/workflow.  Simply wait for the connections to be re-established.
 
+#### Apache Artemis ####
+
+Since 3.9.0
+
+Much the same as the ActiveMQ component above, you can instead launch a JMS 2.0 broker if the Artemis management component is specified via `managementComponents=artemis` and if you have downloaded the [interlok-mgmt-artemis][] component, including the required dependencies into your Interlok lib directory, then upon Interlok start-up an Apache Artemis broker will also be started.
+
+You can supply your own Artemis configuration by setting the following property `activemq.config.filename` in your bootstrap.properties file. Simply set the value of this property to be the exact name of your Artemis broker configuration file (which of course will need to be on the Interlok classpath, typically in your Interlok/config directory). Should you choose not to supply your own configuration file a default minimal configuration will be applied which will have all security disabled.
+
+Connections to the locally running broker use JNDI;
+
+```xml
+<vendor-implementation class="standard-jndi-implementation">
+  <jndi-params>
+	<key-value-pair>
+	  <key>java.naming.factory.initial</key>
+	  <value>org.apache.activemq.artemis.jndi.ActiveMQInitialContextFactory</value>
+	</key-value-pair>
+	<key-value-pair>
+	  <key>java.naming.provider.url</key>
+	  <value>tcp://localhost:61616?type=CF</value>
+	</key-value-pair>
+  </jndi-params>
+  <jndi-name>ConnectionFactory</jndi-name>
+  <extra-factory-configuration class="no-op-jndi-factory-configuration"/>
+</vendor-implementation>
+```
+
 #### Jetty Component ####
 
 If jetty is enabled via `managementComponents=jetty` then an additional key is required : `webServerConfigUrl`. This should contain the fully qualified filename for a jetty configuration file. As the UI requires the jetty component and communicates with Adapters using JMX, then if you intend on using the UI you should always have `managementComponents=jmx:jetty`.
@@ -242,6 +269,6 @@ Pre-Processors are components that allow you to inject some additional processin
 [XStreamConfigManager]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/management/config/XStreamConfigManager.html
 [ManagementComponent]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/management/ManagementComponent.html
 [Authenticator]: http://docs.oracle.com/javase/7/docs/api/java/net/Authenticator.html
-[interlok-activemq]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-activemq/
+[interlok-mgmt-artemis]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-mgmt-artemis/
 [interlok-sshtunnel]: https://github.com/adaptris/interlok-sshtunnel
 [interlok-exec]: https://github.com/adaptris/interlok-exec
