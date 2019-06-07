@@ -14,14 +14,22 @@ The development and consultancy team blog about various interesting things that 
 
 All our releases are published as docker images on [docker hub][].
 
+Since there are going to be changes around the official openjdk docker images with respect to java 8 support; we also pre-build some images based on alternative openjdk binaries provided by [AWS](https://aws.amazon.com/corretto/) and [Azul Systems](https://www.azul.com/downloads/zulu/)
+
 | Tag | Description
 |----|----|
-|snapshot| The snapshot build; built against the nightly release; based on the _openjdk:8-jdk_ docker image
 |x.y.z | The formal x.y.z release as per the tag on [github][]; based on the _openjdk:8-jdk_ docker image
-|snapshot-alpine| The snapshot build; built against the nightly release; based on the _openjdk:8-jdk-alpine_ docker image
 |x.y.z-alpine | The formal x.y.z release as per the tag on [github][]; based on the _openjdk:8-jdk-alpine_ docker image
-|snapshot-hpcc| The snapshot build; built against the nightly release; installs and runs `dfuplus` from [hpccsystems][] as well as interlok; based on the _centos:7_ image with [https://github.com/Yelp/dumb-init](https://github.com/Yelp/dumb-init)
+|x.y.z-zulu | The formal x.y.z release as per the tag on [github][]; based on the _azul/zulu-openjdk:8_ docker image
+|x.y.z-zulu-alpine | The formal x.y.z release as per the tag on [github][]; based on the _azul/zulu-openjdk-alpine:8_ docker image
+|x.y.z-corretto | The formal x.y.z release as per the tag on [github][]; based on the _amazoncorretto:8_ docker image
 |x.y.z-hpcc| The formal x.y.z release as per the tag on [github][]; installs and runs `dfuplus` from [hpccsystems][] as well as interlok; based on the _centos:7_ image with [https://github.com/Yelp/dumb-init](https://github.com/Yelp/dumb-init)
+|latest, latest-alpine, latest-zulu, latest-zulu-alpine, latest-corretto| Built on schedule using the latest stable interlok tag, but pulling in any changes in the upstream docker image
+|snapshot| The snapshot build; nightly snapshot jars overlaid on top of the _adaptris/interlok:latest_ docker image
+|snapshot-alpine| The snapshot build; nightly snapshot jars overlaid on top of the _adaptris/interlok:latest:alpine_ docker image
+|snapshot-zulu| The snapshot build; nightly snapshot jars overlaid on top of the _adaptris/interlok:latest-zulu_ docker image
+|snapshot-zulu-alpine| The snapshot build; nightly snapshot jars overlaid on top of the _adaptris/interlok:latest-zulu-alpine_ docker image
+|snapshot-hpcc| The snapshot build; overlaid on top of the _adaptris/interlok:latest-hpcc_ docker image
 
 ## Github projects
 
