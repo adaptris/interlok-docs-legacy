@@ -164,7 +164,13 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-webspheremq][] | Connection to a [WebsphereMQ instance](cookbook-native-wmq.html); requires [interlok-licensing][] | 3.8.0+
 |com.adaptris | [interlok-workflow-rest-services][] | [Exposing Workflows as a RESTful service](adapter-hosting-rest.html) | 3.8.3+|available on [github](https://github.com/adaptris/interlok-workflow-rest-services)
 |com.adaptris | [interlok-xinclude][] | [XInclude pre-processor](advanced-configuration-pre-processors.html#xinclude)| 3.8.0+|available on [github](https://github.com/adaptris/interlok-xinclude)
-|com.adaptris | [interlok-xa][] | XA support within the Adapter; requires [interlok-licensing][] | 3.4.0+
+|com.adaptris | ~~[interlok-xa][]~~ | ~~XA support within the Adapter; requires [interlok-licensing][]~~ | 3.4.0 - 3.8.4; removed in 3.9.0 | XA support was split into various sub modules; see below
+|com.adaptris | [interlok-xa-activemq][] | ActiveMQ XA JMS Vendor implementaiton; requires [interlok-licensing][] | 3.9.0+
+|com.adaptris | [interlok-xa-atomikos][] | XA support using Atomikos as the transaction manage; requires [interlok-licensing][] | 3.9.0+ | Use this artefact in conjunction one of the other supported providers
+|com.adaptris | [interlok-xa-jms][] | XA/JMS support within the Adapter; requires [interlok-licensing][] | 3.9.0+
+|com.adaptris | [interlok-xa-solace][] | Solace XA JMS Vendor implementaiton; requires [interlok-licensing][] | 3.9.0+
+|com.adaptris | [interlok-xa-tibco][] | Tibco XA JMS Vendor implementaiton; requires [interlok-licensing][] | 3.9.0+
+|com.adaptris | [interlok-xa-wmq][] | WebsphereMQ XA JMS Vendor implementaiton; requires [interlok-licensing][] | 3.9.0+
 |com.adaptris | [interlok-xml-security][] | XML security (JSR 106); requires [interlok-licensing][] | 3.8.0+
 
 
@@ -375,3 +381,9 @@ If you've added an optional components following the steps explained above you c
 [interlok-json-streaming]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-json-streaming
 [interlok-flyway]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-flyway
 [interlok-artemis]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-artemis
+[interlok-xa-activemq]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-xa-activemq
+[interlok-xa-atomikos]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-xa-atomikos
+[interlok-xa-jms]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-xa-jms
+[interlok-xa-solace]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-xa-solace
+[interlok-xa-tibco]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-xa-tibco
+[interlok-xa-wmq]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-xa-wmq
