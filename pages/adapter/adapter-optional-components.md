@@ -76,6 +76,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-activemq][] | Embedding ActiveMQ as a management component| 3.6.0+ | available on [github](https://github.com/adaptris/interlok-activemq)
 |com.adaptris | [interlok-amqp][] | Connect to a AMQP 0.9 / 1.0 provider | 3.8.0 |available on [github](https://github.com/adaptris/interlok-amqp)
 |com.adaptris | [interlok-apache-http][] | HTTP Producer implementation using the Apache HTTP client as the transport | 3.8.0+|available on [github](https://github.com/adaptris/interlok-apache-http)
+|com.adaptris | [interlok-artemis][] | Embedding ArtemisMQ as a management component| 3.9.0+ | available on [github](https://github.com/adaptris/interlok-artemis)
 |com.adaptris | [interlok-as2][] | Provides AS2 messaging support; requires [interlok-licensing][] | 3.8.0+
 |com.adaptris | [interlok-aws-common][] | Common components required for accessing AWS| 3.3.0+ | available on [github](https://github.com/adaptris/interlok-aws)
 |com.adaptris | [interlok-aws-sqs][] | Integration with Amazon SQS (requires [interlok-aws-common][])|3.3.0+ | available on [github](https://github.com/adaptris/interlok-aws)
@@ -100,6 +101,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-filesystem][] | Services for interacting with the filesystem | 3.6.6+ | available on [github](https://github.com/adaptris/interlok-filesystem)
 |com.adaptris | [interlok-failover][] | Simplified failover not dependent on AOP profiling | 3.4.0+
 |com.adaptris | [interlok-flatfile][] | Flat file transformations; migrated from [interlok-core][] into its own optional component |3.9.0+ | available on [github](https://github.com/adaptris/interlok-flatfile)
+|com.adaptris | [interlok-flyway][] | JdbcPooledConnection wrapper that includes flyway support |3.9.0+ | available on [github](https://github.com/adaptris/interlok-flyway)
 |com.adaptris | [interlok-gcloud-pubsub][] | Connect to Google cloud pubsub (requires [interlok-oauth-gcloud][])|3.6.3+ | available on [github](https://github.com/adaptris/interlok-gcloud-pubsub)
 |com.adaptris | ~~[interlok-hornetq][]~~ | ~~Connect to HornetQ JMS (will become obsolete as HornetQ is merged into ActiveMQ)~~ | 3.8.0+
 |com.adaptris | [interlok-hpcc][] | Connect to [HPCC](http://www.hpccsystems.com)|3.6.1+ | available on [github](https://github.com/adaptris/interlok-hpcc)
@@ -371,3 +373,5 @@ If you've added an optional components following the steps explained above you c
 [interlok-mail]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-mail
 [interlok-exec]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-exec
 [interlok-json-streaming]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-json-streaming
+[interlok-flyway]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-flyway
+[interlok-artemis]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-artemis
