@@ -14,63 +14,6 @@ As additional features are developed and released our public facing repository i
 
 | GroupID | ArtifactID | Description | Versions | Notes
 |----|----|----|----|----|
-|com.adaptris | [adp-actional-interceptor][] | Instrumentation of the adapter with Actional Management Server; requires additional jars not automatically delivered | until 3.7.3|  _since 3.8.0_ use [interlok-actional-interceptor][] instead.
-|com.adaptris | [adp-actional-stabiliser][] | Services that interact with the Actional Stabiliser Switch; requires additional jars not automatically delivered; requires [adp-licensing][] - This is compiled against Actional 8.2 and may not work with the latest versions of actional if running outside of a Sonic container (the jars are no longer available)| until 3.7.3 | _since 3.8.0_ use [interlok-actional-stabiliser][] instead|
-|com.adaptris | [adp-amazon-sqs][] | Connect to Amazon SQS either using their JMS compatibility layer or directly| 3.0.3 to 3.2.1
-|com.adaptris | [adp-amqp][] | Connect to a AMQP 0.9 / 1.0 provider | until 3.7.3 | _since 3.8.0_ use [interlok-amqp][] instead.|
-|com.adaptris | [adp-apache-http][] | HTTP Producer implementation using the Apache HTTP client as the transport | 3.0.5 - 3.7.3 | _since 3.8.0_ use [interlok-apache-http][] instead
-|com.adaptris | [adp-as2][] | Provides AS2 messaging support; requires [adp-licensing][] | until 3.7.3|  _since 3.8.0_ use [interlok-as2][] instead |
-|com.adaptris | [adp-cirrus-db-webapp][] | Provides access to the cirrus database for web applications | until 3.7.3|   _since 3.8.0_ use [interlok-cirrus-db-webapp][] instead|
-|com.adaptris | [adp-cirrus-db][] | Provides access to the cirrus database for adapter services | until 3.7.3|_since 3.8.0_ use [interlok-cirrus-db][] instead|
-|com.adaptris | [adp-cirrus-services][] | Provides Cirrus routing services; requires [adp-licensing][] |  until 3.7.3 |_since 3.8.0_ use [interlok-cirrus-services][] instead|
-|com.adaptris | [adp-core-apt][] | [Custom annotations](developer-annotations.html)| until 3.7.3| available on [github](https://github.com/adaptris/interlok);  _since 3.8.0_ use [interlok-core-apt][] instead
-|com.adaptris | [adp-core][] | The base Interlok framework | until 3.7.3 | available on [github](https://github.com/adaptris/interlok);  _since 3.8.0_ use [interlok-core][] instead.
-|com.adaptris | [adp-drools][] | Integration with JBoss Rules; | until 3.7.3 | does not require [adp-licensing][] from 3.3.0;  _since 3.8.0_ use [interlok-drools][] instead.
-|com.adaptris | [adp-edi-legacy][] | Legacy v2.x style EDI Transforms; requires [adp-licensing][]| until 3.7.3 |  _since 3.8.0_ use [interlok-edi-legacy][] instead.
-|com.adaptris | [adp-edi-stream][] | Stream based EDI transformations; requires [adp-licensing][]| until 3.7.3|  _since 3.8.0_ use [interlok-edi-stream][] instead
-|com.adaptris | [adp-ehcache][] | Integration with ehcache as a message store| until 3.7.3 | does not require [adp-licensing][] since 3.3.0;  _since 3.8.0_ use [interlok-ehcache][] instead.
-|com.adaptris | [adp-failover][] | Running an adapter in failover mode; requires [adp-profiler][]| until 3.7.3 |  _since 3.8.0_ use [interlok-profiler-failover][] instead.
-|com.adaptris | [adp-fop][] | PDF Transformations| until 3.7.3 | does not require [adp-licensing][] from 3.3.0;  _since 3.8.0_ use [interlok-pdf][] instead.
-|com.adaptris | [adp-hornetq][] | Connect to HornetQ JMS (will become obsolete as HornetQ is merged into ActiveMQ) | until 3.7.3 |  _since 3.8.0_ use [interlok-hornetq][] instead.
-|com.adaptris | [adp-hpcc][] | Connect to [HPCC](http://www.hpccsystems.com)|3.3.0 - 3.6.0 only
-|com.adaptris | [adp-interfax][] | Integration with the Java FAX API; requires [adp-licensing][]| until 3.7.3 |  _since 3.8.0_ use [interlok-interfax][] instead.
-|com.adaptris | [adp-ironmq][] | Connect to IronMQ| until 3.7.3 |does not require [adp-licensing][] from 3.3.0;  _since 3.8.0_ use [interlok-ironmq][] instead or [interlok-aws-sqs][] in JMS mode.
-|com.adaptris | [adp-jms-oracleaq][] | Connect to [Oracle via advanced queues](cookbook-oracleaq.html); requires additional jars not automatically delivered; ; requires [adp-licensing][]| until 3.7.3|  _since 3.8.0_ use [interlok-jms-oracleaq][] instead.
-|com.adaptris | [adp-jms-sonicmq][] | Connect to SonicMQ JMS; ; requires [adp-licensing][]| until 3.7.3 |  _since 3.8.0_ use [interlok-jms-sonicmq][] instead.
-|com.adaptris | [adp-jmx-jms][] | Support for [JMX via JMS or AMQP 1.0](advanced-jmx-jms.html) | until 3.7.3 |  _since 3.8.0_ use [interlok-jmx-jms][] instead.
-|com.adaptris | [adp-json][] | Transform JSON data to and from XML | until 3.7.3 |  _since 3.8.0_ use [interlok-json][] instead.
-|com.adaptris | [adp-kafka][] | Connect to [Apache Kafka](http://kafka.apache.org/)|3.2.1-3.7.3|  _since 3.8.0_ use [interlok-kafka][] instead.
-|com.adaptris | [adp-licensing][] | Enforces a license on certain components | until 3.7.3|  _since 3.8.0_ use [interlok-licensing][] instead.
-|com.adaptris | [adp-msmq][] | Connect to MSMQ via ActiveX; requires [adp-licensing][]| until 3.7.3 |  _since 3.8.0_ use [interlok-msmq][] instead. Requires a 32bit JVM due to JNI.
-|com.adaptris | [adp-msmq-javonet][] | Connect to MSMQ via .NET - Requires a license from [javonet](https://www.javonet.com); requires [adp-licensing][]|3.0.6-3.7.3|  _since 3.8.0_ use [interlok-msmq-javonet][]
-|com.adaptris | [adp-new-relic][] | Supports [New Relic Profiling](advanced-new-relic-profiling.html); requires [adp-profiler][] | until 3.7.3 |  _since 3.8.0_ use [interlok-new-relic][]
-|com.adaptris | [adp-oftp][] | Support for OFTP as a transport protocol; requires [adp-licensing][] | until 3.7.3 |  _since 3.8.0_ use [interlok-oftp][] instead.
-|com.adaptris | [adp-poi][] | Extract data from an Excel spreadsheet | until 3.7.3|  _since 3.8.0_ use [interlok-excel][] instead.
-|com.adaptris | [adp-profiler][] | Base package for supporting profiling (used by [adp-new-relic][] and [adp-stackify][]) | until 3.7.3 |  _since 3.8.0_ use [interlok-profiler][] instead.
-|com.adaptris | [adp-restful-services][] | [Exposing Workflows as a RESTful service](adapter-hosting-rest.html)|3.0.6 - 3.7.3 |  _since 3.8.0_ use [interlok-restful-services][] instead
-|com.adaptris | [adp-reliable-messaging][] | Support for ordered and reliable messaging; requires [adp-licensing][] | until 3.7.3 |  _since 3.8.0_ use [interlok-reliable-messaging][] instead
-|com.adaptris | [adp-salesforce][] | Integration with Salesforce via WebServices (generally use their REST interface via HTTP/HTTPS instead); requires [adp-licensing][] | until 3.7.3 |  _since 3.8.0_ use [interlok-salesforce][] instead
-|com.adaptris | [adp-sap][] | Integration with SAP via [IDocs](cookbook-sap-idoc.html) or [RFC/BAPI](cookbook-sap-rfc.html); requires additional jars not automatically delivered; requires [adp-licensing][] | until 3.7.3 |  _since 3.8.0_ use [interlok-sap][] instead.
-|com.adaptris | [adp-schema][] | RelaxNG [schema validation](advanced-configuration-pre-processors.html#schema-validation) for Interlok configuration files | until 3.7.3 |  _since 3.8.0_ use [interlok-schema][] instead.
-|com.adaptris | [adp-simple-csv][] | Transform a CSV file to XML | until 3.7.3 |  _since 3.8.0_ use [interlok-csv][] instead.
-|com.adaptris | [adp-solace][] | Integration with Solace Systems as a JMS provider; requires additional jars not automatically delivered; requires [adp-licensing][]| until 3.7.3 |  _since 3.8.0_ use [interlok-solace][] instead.
-|com.adaptris | [adp-sonicmf][] | Interlok runtime as [part of a Sonic Container](advanced-sonic-container.html) | until 3.7.3 |  _since 3.8.0_ use [interlok-sonicmf][] instead.
-|com.adaptris | [adp-stackify][] | Supports [Stackify Profiling](advanced-stackify-profiling.html); requires [adp-profiler][] | until 3.7.3 |  _since 3.8.0_ use [interlok-stackify][] instead.
-|com.adaptris | [adp-stubs][] | [Test Scaffolding](developer-services.html#writing-tests) for developers | until 3.7.3|  _since 3.8.0_ use [interlok-stubs][] instead.
-|com.adaptris | [adp-swift][] | Transform to and from the Swift message format; requires [adp-licensing][] | until 3.7.3|  _since 3.8.0_ use [interlok-swift][] instead.
-|com.adaptris | [adp-swiftmq][] | Connect to a SwiftMQ instance or any AMQP1.0 broker; [requires SwiftMQ Client Download](http://swiftmq.com/downloads/index.html); requires [adp-licensing][]| until 3.7.3 |  _since 3.8.0_ use [interlok-swiftmq][] instead.
-|com.adaptris | [adp-tibco][] | Connect to a Tibco instance; requires additional jars not automatically delivered; requires [adp-licensing][]| until 3.7.3|  _since 3.8.0_ use use [interlok-tibco][] instead.
-|com.adaptris | [adp-triggered][] | Channels that can be started via an external trigger; requires [adp-licensing][] | until 3.7.3 |  _since 3.8.0_ use [interlok-triggered][] instead
-|com.adaptris | [adp-varsub][] | [Variable substitution pre-processor](advanced-configuration-pre-processors.html#variable-substitution) | until 3.7.3|  _since 3.8.0_ use [interlok-varsub][] instead.
-|com.adaptris | [adp-vcs-git][] | Interlok configuration [hosted in git](advanced-vcs-git.html) | 3.0.3 - 3.7.3 |  _since 3.8.0_ use [interlok-vcs-git][] instead.
-|com.adaptris | [adp-vcs-subversion][] | Interlok configuration [hosted in subversion](advanced-vcs-svn.html) | 3.0.2 - 3.7.3 |  _since 3.8.0_ use [interlok-vcs-subversion][] instead.
-|com.adaptris | [adp-webservice-cxf][] | Accessing [external webservices](adapter-executing-ws.html)| 3.2.1-3.7.3 |  _since 3.8.0_ use [interlok-webservice][] instead.
-|com.adaptris | [adp-webservice-external][] | Accessing [external webservices](adapter-executing-ws.html); requires [adp-licensing][] | until 3.7.3|  _since 3.8.0_ use [interlok-webservice-external][] instead.
-|com.adaptris | [adp-webservice-internal][] | [Exposing workflows as webservices](adapter-hosting-ws.html)| 3.0.0 - 3.0.5|
-|com.adaptris | [adp-web-services][] | [Exposing workflows as webservices](adapter-hosting-ws.html); | 3.0.6 - 3.7.3 |  _since 3.8.0_ use [interlok-web-services][] instead.
-|com.adaptris | [adp-webspheremq][] | Connection to a [WebsphereMQ instance](cookbook-native-wmq.html); requires [adp-licensing][] | until 3.7.3|  _since 3.8.0_ use interlok-webspheremq instead
-|com.adaptris | [adp-xinclude][] | [XInclude pre-processor](advanced-configuration-pre-processors.html#xinclude)| until 3.7.3 |  _since 3.8.0_ use [interlok-xinclude][] instead
-|com.adaptris | [adp-xml-security][] | XML security (JSR 106); requires [adp-licensing][] | until 3.7.3 |  _since 3.8.0_ use [interlok-xml-security][] instead.
 |com.adaptris | [interlok-actional-interceptor][] | Instrumentation of the adapter with Actional Management Server; requires additional jars not automatically delivered | 3.8.0+
 |com.adaptris | [interlok-actional-stabiliser][] | Services that interact with the Actional Stabiliser Switch; requires additional jars not automatically delivered; requires [interlok-licensing][] - This is compiled against Actional 8.2 and may not work with the latest versions of actional if running outside of a Sonic container (the jars are no longer available)| 3.8.0+ |
 |com.adaptris | [interlok-activemq][] | Embedding ActiveMQ as a management component| 3.6.0+ | available on [github](https://github.com/adaptris/interlok-activemq)
@@ -222,6 +165,70 @@ Optional components javadocs can be opened in two ways:
 - **The javadocs are in a jar file:** Open your browser at <http://localhost:8080/interlok/javadocs/your-component.jar/index.html> **e.g.** <http://localhost:8080/interlok/javadocs/optional/adp-swiftmq-3.0.3-RELEASE-javadoc.jar/index.html>.
 
 If you've added an optional components following the steps explained above you can copy the javadocs jar file into `${adapter.home}/docs/javadocs` to be able to access it via the browser. You will have to restart your adapter to be able to access the javadocs.
+
+## Optional Components prior to 3.7.3 ##
+
+In release 3.8.0; we renamed all the artefacts so that they consistently started with `interlok-`; the list of associated artefacts that were renamed is listed below.
+
+| GroupID | ArtifactID | Description | Versions | Notes
+|----|----|----|----|----|
+|com.adaptris | [adp-actional-interceptor][] | Instrumentation of the adapter with Actional Management Server; requires additional jars not automatically delivered | until 3.7.3|  _since 3.8.0_ use [interlok-actional-interceptor][] instead.
+|com.adaptris | [adp-actional-stabiliser][] | Services that interact with the Actional Stabiliser Switch; requires additional jars not automatically delivered; requires [adp-licensing][] - This is compiled against Actional 8.2 and may not work with the latest versions of actional if running outside of a Sonic container (the jars are no longer available)| until 3.7.3 | _since 3.8.0_ use [interlok-actional-stabiliser][] instead|
+|com.adaptris | [adp-amazon-sqs][] | Connect to Amazon SQS either using their JMS compatibility layer or directly| 3.0.3 to 3.2.1
+|com.adaptris | [adp-amqp][] | Connect to a AMQP 0.9 / 1.0 provider | until 3.7.3 | _since 3.8.0_ use [interlok-amqp][] instead.|
+|com.adaptris | [adp-apache-http][] | HTTP Producer implementation using the Apache HTTP client as the transport | 3.0.5 - 3.7.3 | _since 3.8.0_ use [interlok-apache-http][] instead
+|com.adaptris | [adp-as2][] | Provides AS2 messaging support; requires [adp-licensing][] | until 3.7.3|  _since 3.8.0_ use [interlok-as2][] instead |
+|com.adaptris | [adp-cirrus-db-webapp][] | Provides access to the cirrus database for web applications | until 3.7.3|   _since 3.8.0_ use [interlok-cirrus-db-webapp][] instead|
+|com.adaptris | [adp-cirrus-db][] | Provides access to the cirrus database for adapter services | until 3.7.3|_since 3.8.0_ use [interlok-cirrus-db][] instead|
+|com.adaptris | [adp-cirrus-services][] | Provides Cirrus routing services; requires [adp-licensing][] |  until 3.7.3 |_since 3.8.0_ use [interlok-cirrus-services][] instead|
+|com.adaptris | [adp-core-apt][] | [Custom annotations](developer-annotations.html)| until 3.7.3| available on [github](https://github.com/adaptris/interlok);  _since 3.8.0_ use [interlok-core-apt][] instead
+|com.adaptris | [adp-core][] | The base Interlok framework | until 3.7.3 | available on [github](https://github.com/adaptris/interlok);  _since 3.8.0_ use [interlok-core][] instead.
+|com.adaptris | [adp-drools][] | Integration with JBoss Rules; | until 3.7.3 | does not require [adp-licensing][] from 3.3.0;  _since 3.8.0_ use [interlok-drools][] instead.
+|com.adaptris | [adp-edi-legacy][] | Legacy v2.x style EDI Transforms; requires [adp-licensing][]| until 3.7.3 |  _since 3.8.0_ use [interlok-edi-legacy][] instead.
+|com.adaptris | [adp-edi-stream][] | Stream based EDI transformations; requires [adp-licensing][]| until 3.7.3|  _since 3.8.0_ use [interlok-edi-stream][] instead
+|com.adaptris | [adp-ehcache][] | Integration with ehcache as a message store| until 3.7.3 | does not require [adp-licensing][] since 3.3.0;  _since 3.8.0_ use [interlok-ehcache][] instead.
+|com.adaptris | [adp-failover][] | Running an adapter in failover mode; requires [adp-profiler][]| until 3.7.3 |  _since 3.8.0_ use [interlok-profiler-failover][] instead.
+|com.adaptris | [adp-fop][] | PDF Transformations| until 3.7.3 | does not require [adp-licensing][] from 3.3.0;  _since 3.8.0_ use [interlok-pdf][] instead.
+|com.adaptris | [adp-hornetq][] | Connect to HornetQ JMS (will become obsolete as HornetQ is merged into ActiveMQ) | until 3.7.3 |  _since 3.8.0_ use [interlok-hornetq][] instead.
+|com.adaptris | [adp-hpcc][] | Connect to [HPCC](http://www.hpccsystems.com)|3.3.0 - 3.6.0 only
+|com.adaptris | [adp-interfax][] | Integration with the Java FAX API; requires [adp-licensing][]| until 3.7.3 |  _since 3.8.0_ use [interlok-interfax][] instead.
+|com.adaptris | [adp-ironmq][] | Connect to IronMQ| until 3.7.3 |does not require [adp-licensing][] from 3.3.0;  _since 3.8.0_ use [interlok-ironmq][] instead or [interlok-aws-sqs][] in JMS mode.
+|com.adaptris | [adp-jms-oracleaq][] | Connect to [Oracle via advanced queues](cookbook-oracleaq.html); requires additional jars not automatically delivered; ; requires [adp-licensing][]| until 3.7.3|  _since 3.8.0_ use [interlok-jms-oracleaq][] instead.
+|com.adaptris | [adp-jms-sonicmq][] | Connect to SonicMQ JMS; ; requires [adp-licensing][]| until 3.7.3 |  _since 3.8.0_ use [interlok-jms-sonicmq][] instead.
+|com.adaptris | [adp-jmx-jms][] | Support for [JMX via JMS or AMQP 1.0](advanced-jmx-jms.html) | until 3.7.3 |  _since 3.8.0_ use [interlok-jmx-jms][] instead.
+|com.adaptris | [adp-json][] | Transform JSON data to and from XML | until 3.7.3 |  _since 3.8.0_ use [interlok-json][] instead.
+|com.adaptris | [adp-kafka][] | Connect to [Apache Kafka](http://kafka.apache.org/)|3.2.1-3.7.3|  _since 3.8.0_ use [interlok-kafka][] instead.
+|com.adaptris | [adp-licensing][] | Enforces a license on certain components | until 3.7.3|  _since 3.8.0_ use [interlok-licensing][] instead.
+|com.adaptris | [adp-msmq][] | Connect to MSMQ via ActiveX; requires [adp-licensing][]| until 3.7.3 |  _since 3.8.0_ use [interlok-msmq][] instead. Requires a 32bit JVM due to JNI.
+|com.adaptris | [adp-msmq-javonet][] | Connect to MSMQ via .NET - Requires a license from [javonet](https://www.javonet.com); requires [adp-licensing][]|3.0.6-3.7.3|  _since 3.8.0_ use [interlok-msmq-javonet][]
+|com.adaptris | [adp-new-relic][] | Supports [New Relic Profiling](advanced-new-relic-profiling.html); requires [adp-profiler][] | until 3.7.3 |  _since 3.8.0_ use [interlok-new-relic][]
+|com.adaptris | [adp-oftp][] | Support for OFTP as a transport protocol; requires [adp-licensing][] | until 3.7.3 |  _since 3.8.0_ use [interlok-oftp][] instead.
+|com.adaptris | [adp-poi][] | Extract data from an Excel spreadsheet | until 3.7.3|  _since 3.8.0_ use [interlok-excel][] instead.
+|com.adaptris | [adp-profiler][] | Base package for supporting profiling (used by [adp-new-relic][] and [adp-stackify][]) | until 3.7.3 |  _since 3.8.0_ use [interlok-profiler][] instead.
+|com.adaptris | [adp-restful-services][] | [Exposing Workflows as a RESTful service](adapter-hosting-rest.html)|3.0.6 - 3.7.3 |  _since 3.8.0_ use [interlok-restful-services][] instead
+|com.adaptris | [adp-reliable-messaging][] | Support for ordered and reliable messaging; requires [adp-licensing][] | until 3.7.3 |  _since 3.8.0_ use [interlok-reliable-messaging][] instead
+|com.adaptris | [adp-salesforce][] | Integration with Salesforce via WebServices (generally use their REST interface via HTTP/HTTPS instead); requires [adp-licensing][] | until 3.7.3 |  _since 3.8.0_ use [interlok-salesforce][] instead
+|com.adaptris | [adp-sap][] | Integration with SAP via [IDocs](cookbook-sap-idoc.html) or [RFC/BAPI](cookbook-sap-rfc.html); requires additional jars not automatically delivered; requires [adp-licensing][] | until 3.7.3 |  _since 3.8.0_ use [interlok-sap][] instead.
+|com.adaptris | [adp-schema][] | RelaxNG [schema validation](advanced-configuration-pre-processors.html#schema-validation) for Interlok configuration files | until 3.7.3 |  _since 3.8.0_ use [interlok-schema][] instead.
+|com.adaptris | [adp-simple-csv][] | Transform a CSV file to XML | until 3.7.3 |  _since 3.8.0_ use [interlok-csv][] instead.
+|com.adaptris | [adp-solace][] | Integration with Solace Systems as a JMS provider; requires additional jars not automatically delivered; requires [adp-licensing][]| until 3.7.3 |  _since 3.8.0_ use [interlok-solace][] instead.
+|com.adaptris | [adp-sonicmf][] | Interlok runtime as [part of a Sonic Container](advanced-sonic-container.html) | until 3.7.3 |  _since 3.8.0_ use [interlok-sonicmf][] instead.
+|com.adaptris | [adp-stackify][] | Supports [Stackify Profiling](advanced-stackify-profiling.html); requires [adp-profiler][] | until 3.7.3 |  _since 3.8.0_ use [interlok-stackify][] instead.
+|com.adaptris | [adp-stubs][] | [Test Scaffolding](developer-services.html#writing-tests) for developers | until 3.7.3|  _since 3.8.0_ use [interlok-stubs][] instead.
+|com.adaptris | [adp-swift][] | Transform to and from the Swift message format; requires [adp-licensing][] | until 3.7.3|  _since 3.8.0_ use [interlok-swift][] instead.
+|com.adaptris | [adp-swiftmq][] | Connect to a SwiftMQ instance or any AMQP1.0 broker; [requires SwiftMQ Client Download](http://swiftmq.com/downloads/index.html); requires [adp-licensing][]| until 3.7.3 |  _since 3.8.0_ use [interlok-swiftmq][] instead.
+|com.adaptris | [adp-tibco][] | Connect to a Tibco instance; requires additional jars not automatically delivered; requires [adp-licensing][]| until 3.7.3|  _since 3.8.0_ use use [interlok-tibco][] instead.
+|com.adaptris | [adp-triggered][] | Channels that can be started via an external trigger; requires [adp-licensing][] | until 3.7.3 |  _since 3.8.0_ use [interlok-triggered][] instead
+|com.adaptris | [adp-varsub][] | [Variable substitution pre-processor](advanced-configuration-pre-processors.html#variable-substitution) | until 3.7.3|  _since 3.8.0_ use [interlok-varsub][] instead.
+|com.adaptris | [adp-vcs-git][] | Interlok configuration [hosted in git](advanced-vcs-git.html) | 3.0.3 - 3.7.3 |  _since 3.8.0_ use [interlok-vcs-git][] instead.
+|com.adaptris | [adp-vcs-subversion][] | Interlok configuration [hosted in subversion](advanced-vcs-svn.html) | 3.0.2 - 3.7.3 |  _since 3.8.0_ use [interlok-vcs-subversion][] instead.
+|com.adaptris | [adp-webservice-cxf][] | Accessing [external webservices](adapter-executing-ws.html)| 3.2.1-3.7.3 |  _since 3.8.0_ use [interlok-webservice][] instead.
+|com.adaptris | [adp-webservice-external][] | Accessing [external webservices](adapter-executing-ws.html); requires [adp-licensing][] | until 3.7.3|  _since 3.8.0_ use [interlok-webservice-external][] instead.
+|com.adaptris | [adp-webservice-internal][] | [Exposing workflows as webservices](adapter-hosting-ws.html)| 3.0.0 - 3.0.5|
+|com.adaptris | [adp-web-services][] | [Exposing workflows as webservices](adapter-hosting-ws.html); | 3.0.6 - 3.7.3 |  _since 3.8.0_ use [interlok-web-services][] instead.
+|com.adaptris | [adp-webspheremq][] | Connection to a [WebsphereMQ instance](cookbook-native-wmq.html); requires [adp-licensing][] | until 3.7.3|  _since 3.8.0_ use interlok-webspheremq instead
+|com.adaptris | [adp-xinclude][] | [XInclude pre-processor](advanced-configuration-pre-processors.html#xinclude)| until 3.7.3 |  _since 3.8.0_ use [interlok-xinclude][] instead
+|com.adaptris | [adp-xml-security][] | XML security (JSR 106); requires [adp-licensing][] | until 3.7.3 |  _since 3.8.0_ use [interlok-xml-security][] instead.
 
 
 [adp-amazon-sqs]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/adp-amazon-sqs/
