@@ -54,7 +54,7 @@ Simple configuration is required as detailed below.
 
 #### interlok-boot ####
 
-As of 3.7 starting Interlok in failover mode can be done using interlok-boot with `--failover` argument and passing the name of the chosen bootstrap.properties file as a parameter.
+As of 3.7 starting Interlok in failover mode can be done using interlok-boot with `--failover` argument and passing the name of the chosen bootstrap.properties file as a parameter. Note that this is the preferred way to start your interlok instance in failover mode. The lax file can be tailored to use interlok boot.
 
 A short example of a windows start script; the last line setting the argument and the bootstrap.properties parameter;
 
@@ -66,45 +66,17 @@ cd %ADAPTRIS_HOME%
 %JAVA_HOME%\bin\java -jar lib\interlok-boot.jar --failover bootstrap.properties
 ```
 
+#### lax file with interlok-boot ####
+
+Leave the `lax.main.class` property as-is, but modify the `lax.command.line.args` to be `--failover bootstrap.properties`; this effectively does the same as the java -jar method.
+
 #### Main Class ####
 
-Alternatively starting Interlok in failover mode simply requires changing the java main class and passing the name of the chosen bootstrap.properties file as the single parameter.
-
-NOTE: Make sure your chosen bootstrap properties file is on the classpath.
-
-If you choose to create your own Interlok startup script make sure that the following class is set as the main class in the java command;
-
-- com.adaptris.failover.FailoverBootstrap
-
-A short example of a windows start script; the last line setting the main class and the bootstrap.properties parameter;
+The main class is `com.adaptris.failover.SimpleBootstrap`; make sure you have all jars in the classpath. Pass in your bootstrap.properties as the single commandline argument; note that here we have skipped over building up the classpath; it's assumed that you can do that.
 
 ```
-set CLASSPATH=.
-set ADAPTRIS_HOME=C:\Adaptris\Interlok3.3
-set JAVA_HOME=C:\Java\jdk1.8.0_60\bin
-
-set CLASSPATH=%CLASSPATH%;%ADAPTRIS_HOME%\lib\interlok-core.jar;%ADAPTRIS_HOME%\config
-for /R %ADAPTRIS_HOME%\lib %%H in (*.jar) do set CLASSPATH=!CLASSPATH!;..\Interlok3.3\lib\%%~nxH
-
-%JAVA_HOME%\java -cp %CLASSPATH% com.adaptris.failover.FailoverBootstrap bootstrap.properties
+java -cp $CLASSPATH com.adaptris.failover.SimpleBootstrap bootstrap.properties
 ```
-
-Alternatively you can modify the Interlok LAX file to set the main class like so;
-
-- lax.main.class=com.adaptris.failover.FailoverBootstrap
-
-And then adding the location of the bootstrap.properties file as the single parameter like so;
-
-- lax.command.line.args=bootstrap.properties
-
-If you are using Direct TCP failover mode as discussed above then you have the option of setting the failover peers in either the bootstrap.properties (shown below) or as system properties.
-
-If you choose system properties, then the following will need to be added to you start script/lax file;
-
--  -Dfailover.tcp.port=
--  -Dfailover.tcp.peers=
-
-See the discussion below for a more detailed explaination of both properties.
 
 ### Bootstrap Properties ###
 
