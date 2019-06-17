@@ -151,6 +151,10 @@ entries:
           url: /ui-config-sidebar.html
           output: web
 
+        - title: Config Navigation Tree
+          url: /ui-config-navigation-tree.html
+          output: web
+
         - title: Version Control
           url: /ui-version-control.html
           output: web
