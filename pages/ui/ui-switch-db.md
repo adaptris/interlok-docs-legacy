@@ -62,7 +62,7 @@ GRANT ALL PRIVILEGES ON DATABASE interlokuidb TO interlokuidb
 ```properties
 dataSource.provider=postgresql
 dataSource.driverClass=org.postgresql.Driver
-dataSource.jdbcURL=jdbc:postgresql://localhost:32770/interlokuidb?autoReconnect=true
+dataSource.jdbcURL=jdbc:postgresql://localhost:5432/interlokuidb?autoReconnect=true
 dataSource.user=interlokuidb
 dataSource.password=interlokuidb
 ```
