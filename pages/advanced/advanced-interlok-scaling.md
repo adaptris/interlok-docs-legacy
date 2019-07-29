@@ -40,7 +40,7 @@ Then simply copy and paste the following (every character) into the command line
 ```
 #### Helm ####
 Helm is the default tool used by many dev-ops administators to install packages directly into Kubernetes.
-We'll use chocolatey to install help.  On your command line type the following;
+We'll use chocolatey to install Helm.  On your command line type the following;
 ```
 choco install kubernetes-helm
 ```
@@ -229,6 +229,7 @@ This is a pre-built Apache JMeter configuration that lets you inject message str
 Simply click on the "Thread Pool" node on the left in JMeter and modify the "Loop Count" to any number you want; when we say any number, lets keep it below 100 for now.
 
 ** Optional **
+
 If you want to follow the Interlok logs as each message is processed then this can be done with the following two commands.
 
 The first gives you the full name of the interlok pod.  Copy it to your clip board after the output from the following command;
@@ -246,6 +247,7 @@ Wait a few moments and fire some more messages into Interlok with a different nu
 The importance of this is simply that Prometheus doesn't know about our custom Interlok metrics until they are sent.  By generating messages into Interlok, we will be sending those metrics into Prometheus.
 
 ** Also optional **
+
 The next step is checking the metrics now exist in Prometheus.
 
 The first step is to gain access to the Prometheus server through port-forwarding.
@@ -458,7 +460,7 @@ If however you do not receive any items at all, then simply push a few more mess
 If you receive an error from this command along the lines of "server unavailable" then you are suffering from the Prometheus adapter restarting itself.  You might just have to wait until it's back up and running.
 
 ### Install the Interlok HPA ###
-This is final step of required configuration.
+This is the final step of required configuration.
 The HPA is the "Horizontal Pod Autoscaler".  This is responsible for configuring how many instances of Interlok you would prefer to be running at a minimum and how many after scaling you want as a maximum.  It also lets us configure the trigger for scaling; in other words for our example, after how many messages are processed should we start scaling up.
 
 On your command line (assuming you are in your git cloned project as mentioned above);
@@ -469,9 +471,9 @@ After a moment or two, you can take a look at the details for the autoscaler;
 ```
 kubectl describe hpa
 ```
-Considering we only have one horizontal pod autoscaler, you can get away with the above command, if you happen to multiple of them in your environment you may need to specify the name of the autoscaler which in our example is called; "interlok-autoscaler".
+Considering we only have one horizontal pod autoscaler, you can get away with the above command, if you happen to have multiple HPA's in your environment you may need to specify the name of the autoscaler, which in our example is called; "interlok-autoscaler".
 
-You'll see some interesting statistics in the output, which might if the metrics API has not had a chance yet to analyze the stats show values of "unknown".  Given a a little time, you see the autoscaler has discovered our interlok metrics and has decided not to scale yet.
+You'll see some interesting statistics in the output, which might if the metrics API has not had a chance yet to analyze the stats show values of "unknown".  Given a little time, you'll see the autoscaler has discovered our interlok metrics and has decided not to scale yet.
 
 The HPA we just installed says, if we are processing more than 100 messages then please autoscale us.
 
@@ -482,7 +484,7 @@ You'll see something like this;
 
 ![AutoscalerFigure](./images/scaling/image11.png)
 
-From the output we can the "Deployment pods" says we currently have 1, but we desire 2.
+From the output we can see the "Deployment pods" says we currently have 1, but we desire 2.
 This is because our 150 messages have broken through the 100 messages boundary.  We can also see in the final line, that Kubernetes has decided we need two(!) instances of Interlok due to the maximum message boundary being broken.
 
 Now if we do a quick look at the number of pods running in the default namespace we should see two instances of Interlok;
@@ -509,7 +511,7 @@ To get the Graphana password, base64 encoded do the following;
 ```
 kubectl get secret --namespace monitoring graphana-grafana -o jsonpath="{.data.admin-password}"
 ```
-The raw output from this command needs to be base64 decoded, you happen to have a base64 decoder through your command line, then great pipe the output of this command into that decoder tool.
+The raw output from this command needs to be base64 decoded, if you happen to have a base64 decoder through your command line, then great, pipe the output of this command into that decoder tool.
 
 If not, then simply use a free online base64 decoder.  The result in either case is your new admin password.
 
@@ -524,7 +526,7 @@ kubectl port-forward -n monitoring graphanaPodName 3000
 ```
 ####  Login through your browser ####
 Navigate to "http://localhost:3000".
-Type "admin" as your password and the base64 decoded password from above.
+Type "admin" as your username and the base64 decoded password from above.
 
 ![GraphanaFigure1](./images/scaling/image14.png)
 
@@ -613,7 +615,7 @@ spec:
 ```
 There are three important properties that are set here for Interlok to send generated metrics;
 
-The first is overriding the JAVA_OPTS with the "prometheusEndpointUrl".  This Interlok how to reach the server.
+The first is overriding the JAVA_OPTS with the "prometheusEndpointUrl".  This tells Interlok how to reach the metric server.
 The next two properties are environment properties that will be populated by the Interlok deployment instances  namespace and pod name.
 
 These must always appear in any Interlok deployment that wishes to send meaningful metrics to Prometheus.
