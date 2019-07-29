@@ -426,12 +426,15 @@ Using JMeter fire 150 messages into Interlok
 
 Then wait a moment and "describe" the HPA again (command above).
 You'll see something like this;
+
 ![AutoscalerFigure](./images/scaling/image11.png)
 
 From the output we can the "Deployment pods" says we currently have 1, but we desire 2.
 This is because our 150 messages have broken through the 100 messages boundary.  We can also see in the final line, that Kubernetes has decided we need two(!) instances of Interlok due to the maximum message boundary being broken.
 Now if we do a quick look at the number of pods running in the default namespace we should see two instances of Interlok;
+
 ![AutoscalerFigure](./images/scaling/image12.png)
+
 We have just been autoscaled.
 
 ## Further Information ##
@@ -465,6 +468,7 @@ kubectl port-forward -n monitoring graphanaPodName 3000
 ####  Login through your browser ####
 Navigate to "http://localhost:3000".
 Type "admin" as your password and the base64 decoded password from above.
+
 ![GraphanaFigure1](./images/scaling/image14.png)
 
 #### Configure the data source ####
@@ -474,7 +478,9 @@ Now hit the "Save and test" button.
 On the left, choose "Dashboards" and from the context menu choose "Manage".
 Create a new dashboard.
 Hit the "Add Query" button and copy the below configuration;
+
 ![GraphanaFigure2](./images/scaling/image15.png)
+
 This graph shows the value of the Interlok "MessageMetrics" metric in the last 5 minutes.  Feel free to shove more messages into Interlok through JMeter and keep an eye on the graph.
 ## How does it all work? ##
 That's a big question and has been broken down into a few sections below.
@@ -561,7 +567,9 @@ This is where the Prometheus-adapter comes in.  Although a far more detailed exp
 The first line tells the adapter what to search for in Prometheus to get a list of available metrics.  We're using a regular expression, but for our simple example, we could have just had "MessageMetrics" as the value here.
 The resources are the important part.  You must combine a metric with a given Kubernetes resource.  Remember the Interlok deployment config above?  That gives Interlok the envionrment variables to get the current instances namespace and pod-name.  Interlok uses those to add labels to the metrics it pushes to the pushgateway.
 In fact if you query Prometheus for "MessageMetrics" you'll get something like this back;
+
  ![PromMetric](./images/scaling/image16.png)
+ 
 Notice how we have the metric name, followed by key-value pairs.
 |Key|Value  |
 |--|--|
