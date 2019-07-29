@@ -322,6 +322,10 @@ entries:
 
     folderitems:
 
+    - title: Autoscaling - Kubernetes
+      url: /advanced-interlok-scaling.html
+      output: web
+      
     - title: Clustered Workflows / Services
       url: /advanced-vertx.html
       output: web
