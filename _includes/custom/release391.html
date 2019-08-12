@@ -1,0 +1,53 @@
+## Version 3.9.1 ##
+
+Release Date : 2019-08
+
+### Bugs
+
+- [INTERLOK-2599](https://adaptris.atlassian.net/browse/INTERLOK-2599) - UI Config Page - user prefs 'Prettify names' & 'Collapse component container' aren't working together correctly
+- [INTERLOK-2744](https://adaptris.atlassian.net/browse/INTERLOK-2744) - Rewrite HttpConsumerTests to remove timing issues.
+- [INTERLOK-2755](https://adaptris.atlassian.net/browse/INTERLOK-2755) - UI: Can't reposition a service-list if it is open in config pane
+- [INTERLOK-2806](https://adaptris.atlassian.net/browse/INTERLOK-2806) - UI: Autocomplete is not supported apart from Timezone / Locale
+- [INTERLOK-2818](https://adaptris.atlassian.net/browse/INTERLOK-2818) - Interlok Widget: Message Counts Chart
+- [INTERLOK-2819](https://adaptris.atlassian.net/browse/INTERLOK-2819) - UI StandaloneProducer do not show "recommended producers" first
+- [INTERLOK-2848](https://adaptris.atlassian.net/browse/INTERLOK-2848) - jetty-message-consumer allows invalid encoding to be set
+- [INTERLOK-2859](https://adaptris.atlassian.net/browse/INTERLOK-2859) - Saxon 9.9.1 breaks interlok-webservice-cxf
+- [INTERLOK-2863](https://adaptris.atlassian.net/browse/INTERLOK-2863) - UI Salesforce - build get-oauth-token faulty - consumer-secret is truncated and token-url not set
+- [INTERLOK-2877](https://adaptris.atlassian.net/browse/INTERLOK-2877) - JMS Queue Consumer Templated Component described as a topic / includes unneccessary whitespace
+- [INTERLOK-2880](https://adaptris.atlassian.net/browse/INTERLOK-2880) - SonicMQ ant task does not work with gradle
+- [INTERLOK-2885](https://adaptris.atlassian.net/browse/INTERLOK-2885) - UI Config Page - The workflow and service containers are higher than the connection, consumer and producer containers.
+- [INTERLOK-2886](https://adaptris.atlassian.net/browse/INTERLOK-2886) - UI - Jackson Databind Vulnerability
+- [INTERLOK-2887](https://adaptris.atlassian.net/browse/INTERLOK-2887) - UI Startup - Getting a stacktrace at startup - Could not create/verify default admin user
+- [INTERLOK-2888](https://adaptris.atlassian.net/browse/INTERLOK-2888) - UI Config - In the setting editor when clicking on the + button to load implementation of a nested component the existing value is removed.
+- [INTERLOK-2891](https://adaptris.atlassian.net/browse/INTERLOK-2891) - UI Service Test - Editing the Service Test Unique Id or Test Adapter Type cause a js error.
+- [INTERLOK-2897](https://adaptris.atlassian.net/browse/INTERLOK-2897) - RabbitMQ interoperability with "bunny"
+- [INTERLOK-2898](https://adaptris.atlassian.net/browse/INTERLOK-2898) - Cannot configure dynamic-service-from-database
+- [INTERLOK-2900](https://adaptris.atlassian.net/browse/INTERLOK-2900) - UI Config Page - The 'Add Variable Set' and 'Delete' buttons look different in the Import Config with variables modal.
+- [INTERLOK-2901](https://adaptris.atlassian.net/browse/INTERLOK-2901) - Custom Entity Resolvers are not executed in XML services
+- [INTERLOK-2902](https://adaptris.atlassian.net/browse/INTERLOK-2902) - Jetty Embedded Connection does not throw exception if misconfigured
+
+### Improvements
+
+- [INTERLOK-2612](https://adaptris.atlassian.net/browse/INTERLOK-2612) - Migrate to commons-lang3
+- [INTERLOK-2650](https://adaptris.atlassian.net/browse/INTERLOK-2650) - UI : Add MS SQLServer as a supported interlok-ui Database
+- [INTERLOK-2669](https://adaptris.atlassian.net/browse/INTERLOK-2669) - UI Config Page - Change the settings editor so the advanced flag is set on a per class basis.
+- [INTERLOK-2712](https://adaptris.atlassian.net/browse/INTERLOK-2712) - UI Config Page - Navigation Tree - support services
+- [INTERLOK-2721](https://adaptris.atlassian.net/browse/INTERLOK-2721) - jetty-connection: Wrap JDBCLoginService
+- [INTERLOK-2784](https://adaptris.atlassian.net/browse/INTERLOK-2784) - interlok-aws: Kinesis Data Streams Producer
+- [INTERLOK-2799](https://adaptris.atlassian.net/browse/INTERLOK-2799) - JettyMessageConsumer make role authenticated as metadata value
+- [INTERLOK-2801](https://adaptris.atlassian.net/browse/INTERLOK-2801) - UI - When loading a property file that has duplicate keys an "unhelpful" error appears
+- [INTERLOK-2807](https://adaptris.atlassian.net/browse/INTERLOK-2807) - JGroups - Management Component
+- [INTERLOK-2809](https://adaptris.atlassian.net/browse/INTERLOK-2809) - Investigation into auto-scaling
+- [INTERLOK-2844](https://adaptris.atlassian.net/browse/INTERLOK-2844) - Standardised Id Generator for LNR
+- [INTERLOK-2845](https://adaptris.atlassian.net/browse/INTERLOK-2845) - Add configurable behaviour to do/while + while when max-loops exceeded
+- [INTERLOK-2851](https://adaptris.atlassian.net/browse/INTERLOK-2851) - CheckCache should probably be a "condition"
+- [INTERLOK-2852](https://adaptris.atlassian.net/browse/INTERLOK-2852) - Implementation of filter functionality within an aggregator
+- [INTERLOK-2871](https://adaptris.atlassian.net/browse/INTERLOK-2871) - interlok-cxf: Add ability to add headers to Outbound Request
+- [INTERLOK-2872](https://adaptris.atlassian.net/browse/INTERLOK-2872) - Services (All) - deprecate the setLookupName field
+- [INTERLOK-2884](https://adaptris.atlassian.net/browse/INTERLOK-2884) - Add a "simple appending aggregator"
+- [INTERLOK-2889](https://adaptris.atlassian.net/browse/INTERLOK-2889) - interlok-aws-s3: Add List Operation
+- [INTERLOK-2893](https://adaptris.atlassian.net/browse/INTERLOK-2893) - Turn elastic-rest into a multi-module project for feature parity with es5
+- [INTERLOK-2780](https://adaptris.atlassian.net/browse/INTERLOK-2780) - UI Config - Import with variables validation requires improvement
+- [INTERLOK-2837](https://adaptris.atlassian.net/browse/INTERLOK-2837) - UI Config - Settings Editor - the recommended choices on the impl selector don't have an order applied.
+- [INTERLOK-2865](https://adaptris.atlassian.net/browse/INTERLOK-2865) - Fix CDATA issue with woodstox
+- [INTERLOK-2896](https://adaptris.atlassian.net/browse/INTERLOK-2896) - Add documentation for the issues described in INTERLOK-2816 and INTERLOK-2894
