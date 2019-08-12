@@ -272,3 +272,7 @@ Services, service collections and connections are the only components in the con
 - Drag and drop a service from the **shared service collection** to any other **service collection** will add the **shared service** to the ***service collection**.
 - Drag and drop a connection from a **channel connection area** to the **shared connection collection** will create a new **shared connection** in the **shared components** and use this new **shared connection** in the original **channel connection area**.
 - Drag and drop a connection from the **shared connection collection** to any **channel connection area** will add the **shared connection** to the ***channel connection area**.
+
+{% include note.html content="When a service collection is open, like in the image below, it cannot be drag and dropped to prevent moving it in itself or in its descendants. The service collection will become drag and droppable again when closed." %}
+
+![service collection canoot dnd](./images/ui-user-guide/config-service-list-cannot-dnd.png)

@@ -322,6 +322,10 @@ entries:
 
     folderitems:
 
+    - title: Autoscaling - Kubernetes
+      url: /advanced-interlok-scaling.html
+      output: web
+      
     - title: Clustered Workflows / Services
       url: /advanced-vertx.html
       output: web
@@ -468,7 +472,11 @@ entries:
     - title: Interlok Profiler
       url: /developer-profiler.html
       output: web
-      
+
+    - title: Java Generics And the UI
+      url: /developer-ui-java-generics-and-ui.html
+      output: web
+
     - title: UI API Getting Started
       url: /developer-ui-api.html
       output: web
