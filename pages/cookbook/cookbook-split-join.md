@@ -100,6 +100,44 @@ And the output (the transform just swaps the `data` element to be `verified`)
 </envelope>
 ```
 
+## Filtering messages ##
+
+As of Interlok v3.9.1B the aggregator classes feature a filter that allows you to select which messages qualify to be merged. This is especially useful when processing a list of records as it effectively implements the filter pipeline integration pattern.
+
+The filter functionality makes use of the recently added Condition and Operator classes.
+
+The following config snippet configures the json array aggregator to only merge those messages that have a metadata element that is equal to "false":
+
+```xml
+<aggregator class="json-array-aggregator">
+	<filter-condition class="metadata">
+		<operator class="equals">
+			<value>false</value>
+		</operator>
+		<metadata-key>IsDeleted</metadata-key>
+	</filter-condition>
+</aggregator>
+```
+
+Conditionals can be grouped together such as the following which states that only those messages that are not empty and who have a deleted metadata item equal to "false" should merged:
+
+```xml
+<aggregator class="json-array-aggregator">
+	<filter-condition class="and">
+		<not>
+			<condition class="payload">
+				<operator class="is-empty"/>
+			</condition>
+		</not>
+		<metadata>
+			<operator class="equals">
+				<value>False</value>
+			</operator>
+			<metadata-key>deleted</metadata-key>
+		</metadata>
+	</filter-condition>
+</aggregator>
+```
 
 [advanced-message-splitter-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/splitter/AdvancedMessageSplitterService.html
 [service-list]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/ServiceList.html
