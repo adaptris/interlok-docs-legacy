@@ -86,7 +86,7 @@ Elastic search is a great tool for data collection and analysis and the followin
 						<include-payload>true</include-payload>
 					</log-message-service>
 
-					<service class="com.adaptris.json2csv.MetricsToElasticsearchBulkService">
+					<service class="com.adaptris.profilermetrics.MetricsToElasticsearchBulkService">
 						<unique-id>metrics-json-to-csv-service</unique-id>
 						<index-name>profilermetrics</index-name>
 						<type-name>default</type-name>
@@ -175,7 +175,7 @@ Writing the metrics to a csv file which can later be imported into another tool 
 						<include-payload>true</include-payload>
 					</log-message-service>
 
-					<service class="com.adaptris.json2csv.MetricsToCSVService">
+					<service class="com.adaptris.profilermetrics.MetricsToCSVService">
 						<unique-id>metrics-json-to-csv-service</unique-id>
 						<channel-include-patterns>
 							<string>firco-filter-clink-request-processing-channel</string>
@@ -255,7 +255,7 @@ Sometimes you may wish to manipulate the JSON message according to your requirem
 						<include-payload>true</include-payload>
 					</log-message-service>
 
-					<service class="com.adaptris.json2csv.MetricsToFlatJsonService">
+					<service class="com.adaptris.profilermetrics.MetricsToFlatJsonService">
 						<unique-id>metrics-json-to-csv-service</unique-id>
 						<index-name>profilermetrics</index-name>
 						<type-name>default</type-name>
