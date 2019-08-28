@@ -130,6 +130,42 @@ Note there is no auto detection of message details or a validation option when g
 
 Metadata configuration options are the same as for the previous service.
 
+## Cache Configuration ##
+
+From Interlok V3.9.0 the EdiStream package was updated to make use of an external cache configuration to store the Grammar parsing data. When your config has multiple edi conversion services adding a shared cache offers far better memory management.
+Should you only have a single edi conversion service then a default cache will be automatically added behind the scenes and will be sufficient.
+
+To configure a shared cache follow the following steps:
+
+* Firstly you will need the optional interlok-ehcache(ehcache) package installed. Just copy the jars from the optional/ehcache folder into the lib directory.
+
+* Add a cache connection to the shared connections section of the config.
+
+~~~ xml
+<connection class="cache-connection">
+  <unique-id>connection-cache</unique-id>
+  <cache-instance class="default-ehcache">
+  <cache-name>interlokEdiStreamRuleCache</cache-name>
+  <event-listener>
+	  <listeners/>
+  </event-listener>
+  <eviction-policy>LRU</eviction-policy>
+  </cache-instance>
+</connection>
+~~~
+
+* For each of the conversion services add a reference to the central cache:
+
+~~~ xml
+<edi-rules-cache class="com.adaptris.adapter.edistream.parser.InterlokRulesCache">
+  <cache-connection class="shared-connection">
+    <lookup-name>connection-cache</lookup-name>
+  </cache-connection>
+</edi-rules-cache>
+~~~
+
+* Advanced users can tune the cache to control how frequently it is updated which is determined by how often the grammar files change.
+
 ## Additional ##
 
 There is also an [interlok-edi-legacy][] package which is the older edi package. The new stream package was designed to offer higher performance and more efficiency over the previous one especially when dealing with large files. The old package works perfectly well for most common scenarios though.
