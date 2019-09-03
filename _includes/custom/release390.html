@@ -4,6 +4,8 @@ Release Date : 2019-06-25
 
 {% include tip.html content="Due to improvements in how we load classes within the UI; it is possible to get some WARN messages in the logfile from 'org.reflections' concerning missing classes ('could not get type for name X from any class loader'); these warnings can be safely ignored, and you should put &lt;Logger name='org.reflections' level='ERROR'&#x2F;&gt; in your log4j2.xml configuration." %}
 
+{% include tip.html content="Javadocs are now distributed as jar files, since this mirrors the artefact production system. If you want to access the Javadocs directly, then either use the Interlok UI or point your browser to <a href='https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/' target='_blank'>https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/</a>" %}
+    
 ### Bugs
 
  - [INTERLOK-2743](https://adaptris.atlassian.net/browse/INTERLOK-2743) - SftpAuthenticationWrapper eats exceptions.
