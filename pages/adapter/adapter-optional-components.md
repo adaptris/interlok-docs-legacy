@@ -34,10 +34,12 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-csv][] | CSV operations, transforms etc. | 3.8.0+|available on [github](https://github.com/adaptris/interlok-csv)
 |com.adaptris | [interlok-csv-json][] | Convert between CSV and JSON (requires both [interlok-json][] and [interlok-csv][]) | 3.6.6+|available on [github](https://github.com/adaptris/interlok-csv-json)
 |com.adaptris | ~~[interlok-drools][]~~ | ~~Integration with JBoss Rules;~~ | 3.8.0+; deprecated in favour of [interlok-kie][]| available on [github](https://github.com/adaptris/interlok-drools)
-|com.adaptris | ~~[interlok-elastic-search][]~~ | ~~Integration with ElasticSearch via the v2 API (requires [interlok-csv][])~~ | 3.4.1+; deprecated in favour of [interlok-es-rest][] | available on [github](https://github.com/adaptris/interlok-elasticsearch)
+|com.adaptris | [interlok-elastic-common][] | Transport agnostic support for [interlok-elastic-rest][] - requires [interlok-csv][] | 3.9.1+ | available on [github](https://github.com/adaptris/interlok-elastic)
+|com.adaptris | [interlok-elastic-rest][] | Integration with ElasticSearch via their high level REST client (requires [interlok-elastic-common][]) | 3.9.1+ | available on [github](https://github.com/adaptris/interlok-elastic)
+|com.adaptris | ~~[interlok-elastic-search][]~~ | ~~Integration with ElasticSearch via the v2 API (requires [interlok-csv][])~~ | 3.4.1+; deprecated in favour of [interlok-elastic-rest][] | available on [github](https://github.com/adaptris/interlok-elasticsearch)
 |com.adaptris | [interlok-ehcache][] | Integration with ehcache as a cache provider | 3.8.0+ |  available on [github](https://github.com/adaptris/interlok-cache)
-|com.adaptris | ~~[interlok-es5][]~~ | ~~I0ntegration with ElasticSearch using v5 API (requires [interlok-csv][])~~ | 3.5.1+; deprecated in favour of [interlok-es-rest][] | available on [github](https://github.com/adaptris/interlok-es5)
-|com.adaptris | [interlok-es-rest][] | Integration with ElasticSearch via their high level REST client (requires [interlok-csv][]) | 3.8.0+ | available on [github](https://github.com/adaptris/interlok-es-rest)
+|com.adaptris | ~~[interlok-es5][]~~ | ~~Integration with ElasticSearch using v5 API (requires [interlok-csv][])~~ | 3.5.1+; deprecated in favour of [interlok-elastic-rest][] | available on [github](https://github.com/adaptris/interlok-es5)
+|com.adaptris | ~~[interlok-es-rest][]~~ | ~~Integration with ElasticSearch via their high level REST client (requires [interlok-csv][])~~ | 3.8.0+; deprecated in favour of [interlok-elastic-rest][] | available on [github](https://github.com/adaptris/interlok-es-rest)
 |com.adaptris | [interlok-expressions][] | Perform inline mathematic expressions | 3.6.4+ | available on [github](https://github.com/adaptris/interlok-expressions)
 |com.adaptris | [interlok-excel][] | Extract data from an Excel spreadsheet | 3.8.0+
 |com.adaptris | [interlok-exec][] | Management component executes arbitrary programs | 3.8.2+ | available on [github](https://github.com/adaptris/interlok-exec)
@@ -61,7 +63,9 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-json-streaming][] | Transform JSON via a STaX like interface | 3.8.2+ |available on [github](https://github.com/adaptris/interlok-json-streaming)
 |com.adaptris | [interlok-kafka][] | Connect to [Apache Kafka](http://kafka.apache.org/)| 3.8.0+|available on [github](https://github.com/adaptris/interlok-kafka)
 |com.adaptris | [interlok-kie][] | Integration with the drools business rule management system from KIE group | 3.8.2+|available on [github](https://github.com/adaptris/interlok-kie)
-|com.adaptris | [interlok-legacyhttp][] | servicing HTTP requests without Jetty (Java 7 Compatibile where base Interlok Version is)| 3.6.4+
+|com.adaptris | [interlok-kubernetes-metrics][] | [Reporting metrics to kubernetes](advanced-interlok-scaling.html)| 3.9.1+|available on [github](https://github.com/adaptris/interlok-kubernetes)
+|com.adaptris | [interlok-kubernetes-prometheus][] | [Reporting metrics to kubernetes](advanced-interlok-scaling.html)| 3.9.1+|available on [github](https://github.com/adaptris/interlok-kubernetes)
+|com.adaptris | ~~[interlok-legacyhttp][]~~ | ~~servicing HTTP requests without Jetty (Java 7 Compatibile where base Interlok Version is)~~ | 3.6.4+; upgrade to Java 8 already! | available on [github](https://github.com/adaptris/interlok-legacyhttp)
 |com.adaptris | [interlok-licensing][] | Enforces a license on certain components | 3.8.0+
 |com.adaptris | [interlok-logging][] | Custom JMX Appender for [Log4j2](https://logging.apache.org/log4j) | | available on [github](https://github.com/adaptris/interlok)
 |com.adaptris | [interlok-mail][] | Support for Email servers; migrated from [interlok-core][] into its own optional component | 3.9.0+ | available on [github](https://github.com/adaptris/interlok-mail)
@@ -76,7 +80,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-oftp][] | Support for OFTP as a transport protocol; requires [interlok-licensing][] | 3.8.0+|
 |com.adaptris | [interlok-okhttp][] | HTTP Producer implementation using the OKHTTP client as the transport | 3.8.2+|available on [github](https://github.com/adaptris/interlok-okhttp)
 |com.adaptris | [interlok-pdf][] | PDF Transformations| 3.8.0+
-|com.adaptris | [interlok-profiler][] | Base package for supporting profiling (used by [interlok-new-relic][] and [interlok-stackify][]) | 3.8.0+
+|com.adaptris | [interlok-profiler][] | Base package for supporting profiling (used by [interlok-new-relic][] and [interlok-stackify][]) | 3.8.0+ | available on [github](https://github.com/adaptris/interlok-profiler)
 |com.adaptris | ~~[interlok-profiler-failover][]~~ | ~~Running an adapter in failover mode; requires [interlok-profiler][]~~| 3.8.0 only; removed in 3.8.1
 |com.adaptris | ~~[interlok-restful-services][]~~ | ~~[Exposing Workflows as a RESTful service](adapter-hosting-rest.html)~~|3.8.0 to 3.8.2 only; removed in 3.8.3
 |com.adaptris | [interlok-reliable-messaging][] | Support for ordered and reliable messaging; requires [interlok-licensing][] | 3.8.0+
@@ -394,3 +398,7 @@ In release 3.8.0; we renamed all the artefacts so that they consistently started
 [interlok-xa-solace]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-xa-solace
 [interlok-xa-tibco]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-xa-tibco
 [interlok-xa-wmq]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-xa-wmq
+[interlok-elastic-rest]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-elastic-rest
+[interlok-elastic-common]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-elastic-common
+[interlok-kubernetes-metrics]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-kubernetes-metrics
+[interlok-kubernetes-prometheus]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-kubernetes-prometheus
