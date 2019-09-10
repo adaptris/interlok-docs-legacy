@@ -22,6 +22,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-artemis][] | Embedding ArtemisMQ as a management component| 3.9.0+ | available on [github](https://github.com/adaptris/interlok-artemis)
 |com.adaptris | [interlok-as2][] | Provides AS2 messaging support; requires [interlok-licensing][] | 3.8.0+
 |com.adaptris | [interlok-aws-common][] | Common components required for accessing AWS| 3.3.0+ | available on [github](https://github.com/adaptris/interlok-aws)
+|com.adaptris | [interlok-aws-kinesis][] | Publish to AWS kinesis (requires [interlok-aws-common][]) | 3.9.1+ | available on [github](https://github.com/adaptris/interlok-aws)
 |com.adaptris | [interlok-aws-sqs][] | Integration with Amazon SQS (requires [interlok-aws-common][])|3.3.0+ | available on [github](https://github.com/adaptris/interlok-aws)
 |com.adaptris | [interlok-aws-s3][] | Integration with Amazon S3 (requires [interlok-aws-common][]) | 3.3.0+ | available on [github](https://github.com/adaptris/interlok-aws)
 |com.adaptris | [interlok-aws-sns][] | Publish to an SNS topic (requires [interlok-aws-common][]) | 3.7.2+ | available on [github](https://github.com/adaptris/interlok-aws)
@@ -375,6 +376,7 @@ In release 3.8.0; we renamed all the artefacts so that they consistently started
 [interlok-sshtunnel]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-sshtunnel/
 [interlok-filesystem]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-filesystem/
 [interlok-aws-sns]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-aws-sns/
+[interlok-aws-kinesis]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-aws-kinesis/
 [interlok-stax]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-stax/
 [interlok-jclouds-blobstore]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-jclouds-blobstore/
 [interlok-config-conditional]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-config-conditional
