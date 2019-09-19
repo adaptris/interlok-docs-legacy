@@ -97,7 +97,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | ~~[interlok-stackify][]~~ | ~~Supports [Stackify Profiling](advanced-stackify-profiling.html); requires [interlok-profiler][]~~ |3.8.0 only, removed in 3.8.1|available on [github](https://github.com/adaptris/interlok-stackify)
 |com.adaptris | [interlok-stax][] | Using the STaX API to read/write XML | 3.6.6+ | available on [github](https://github.com/adaptris/interlok-stax)
 |com.adaptris | [interlok-stubs][] | [Test Scaffolding](developer-services.html#writing-tests) for developers |3.8.0+
-|com.adaptris | [interlok-swift][] | Transform to and from the Swift message format; requires [interlok-licensing][] | 3.8.0+
+|com.adaptris | [interlok-swift][] | Transform to and from the Swift message format; | 3.8.0+| available on [github](https://github.com/adaptris/interlok-swift). Does not require [interlok-licensing][] from 3.9.2+
 |com.adaptris | [interlok-swiftmq][] | Connect to a SwiftMQ instance or any AMQP1.0 broker; [requires SwiftMQ Client Download](http://swiftmq.com/downloads/index.html); requires [interlok-licensing][]| 3.8.0+
 |com.adaptris | [interlok-tibco][] | Connect to a Tibco instance; requires additional jars not automatically delivered; requires [interlok-licensing][]| 3.8.0+|
 |com.adaptris | [interlok-triggered][] | Channels that can be started via an external trigger; requires [interlok-licensing][] | 3.8.0+
