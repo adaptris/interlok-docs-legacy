@@ -6,7 +6,7 @@ permalink: developer-ui-java-generics-and-ui.html
 summary: This document is aimed at system developers who wish to create new or custom Interlok components and for those components to be fully integrated into the Interlok framework.
 ---
 
-{% include note.html content="The following issues are on the UI only. The adapter itself supports any number of generics or inheritances." %}
+{% include note.html content="The following issues are on the UI only and for version 3.9.1 and lower. The adapter itself and Ui version 3.9.2+ support any number of generics or inheritances." %}
 
 ## Multiple inheritances with generics
 
