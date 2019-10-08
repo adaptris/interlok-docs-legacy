@@ -149,6 +149,20 @@ In order to use the stats and metrics widgets you need the correct config. You n
 
 This widget is similar to [Message Counts Chart](ui-widgets.html#message-counts-chart) but keeps data for 24 hours. (Since 3.5.1)
 
+### Message Counts Pie Chart ###
+
+This widget shows a chart that shows the amount of messages that the workflows within this container have processed.
+
+![Runtime Widget - Message Counts Pie Chart](./images/ui-user-guide/widgets-message-counts-pie-widget.png)
+
+In order to use the stats and metrics widgets you need the correct config. You need a [message-metrics-interceptor](advanced-interceptors.html#message-metrics-interceptor) configured, which will gather the data that's being shown on this widget.
+
+{% include tip.html content="You need a `message-metrics-interceptors` configured at a workflow level which will gather the data that can be shown on this widget." %}
+
+### Daily Message Counts Pie Chart ###
+
+This widget is similar to [Message Counts Pie Chart](ui-widgets.html#message-counts-pie-chart) but keeps data for 24 hours. (Since 3.9.2)
+
 ### Control Panel ###
 
 This widget allows quick control (Start, Close, Stop) of the adapter from the runtime page. (Since 3.4)
