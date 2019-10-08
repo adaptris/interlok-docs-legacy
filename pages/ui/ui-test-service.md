@@ -57,6 +57,8 @@ You can also use the download button ![The test service message download button]
 
 And the upload button ![The test service message upload button](./images/ui-user-guide/config-test-service-modal-upload.png) to quickly use a message which have been saved before to test a service collection.
 
+{% include note.html content="From 3.9.2+ The download button will download a MIME encoded message. The upload button supports both the old format and the new MIME encode message." %}
+
 You can test a service collection and step through each service and verify it's output, as seen in this video:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/7LNN38jnvcg" frameborder="0" allowfullscreen></iframe>
