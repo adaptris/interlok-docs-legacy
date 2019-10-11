@@ -203,6 +203,10 @@ entries:
       url: /ui-switch-db.html
       output: web
 
+    - title: Profiler Monitor
+      url: /ui-profiler-monitor.html
+      output: web
+
   - title: Integration Guides
     output: web
     folderitems:
