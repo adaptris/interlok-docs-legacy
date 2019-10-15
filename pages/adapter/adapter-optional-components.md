@@ -26,6 +26,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-aws-sqs][] | Integration with Amazon SQS (requires [interlok-aws-common][])|3.3.0+ | available on [github](https://github.com/adaptris/interlok-aws)
 |com.adaptris | [interlok-aws-s3][] | Integration with Amazon S3 (requires [interlok-aws-common][]) | 3.3.0+ | available on [github](https://github.com/adaptris/interlok-aws)
 |com.adaptris | [interlok-aws-sns][] | Publish to an SNS topic (requires [interlok-aws-common][]) | 3.7.2+ | available on [github](https://github.com/adaptris/interlok-aws)
+|com.adaptris | [interlok-azure-cosmosdb][] | Interacting with Azure CosmosDB | 3.9.2+ | available on [github](https://github.com/adaptris/interlok-azure)
 |com.adaptris | [interlok-cirrus-db-webapp][] | Provides access to the cirrus database for web applications | 3.8.0+
 |com.adaptris | [interlok-cirrus-db][] | Provides access to the cirrus database for adapter services | 3.8.0+
 |com.adaptris | [interlok-cirrus-services][] | Provides Cirrus routing services; requires [interlok-licensing][] | 3.8.0+
@@ -406,3 +407,4 @@ In release 3.8.0; we renamed all the artefacts so that they consistently started
 [interlok-kubernetes-metrics]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-kubernetes-metrics
 [interlok-kubernetes-prometheus]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-kubernetes-prometheus
 [interlok-pgp]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-pgp
+[interlok-azure-cosmosdb]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-azure-cosmosdb
