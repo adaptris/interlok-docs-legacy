@@ -4,17 +4,16 @@ keywords: interlok
 tags: [ui, profiler]
 sidebar: home_sidebar
 permalink: ui-profiler-monitor.html
-summary: Since 3.9.2 the gui has a page that allows you to monitor running adapters using the [profiler](developer-profiler.html).
+summary: Since 3.9.2 the gui has a page that allows you to monitor running adapters using the Interlok Profiler.
 ---
 
 ## Prerequisite ##
 
 As of 3.9.2 the page is still a **beta feature** and therefore the connected user needs to have the user preference **Enable technical preview features** set to true in order to see the Monitor menu item.
 
-Interlok will also need some specific jar files to get the profiler monitor page to work. Follow the information [here](developer-profiler.html#setting-up) to set up Interlok Profiler.
+{% include note.html content="Interlok will also need some specific jar files to get the profiler monitor page to work. Follow the information [here](developer-profiler.html#setting-up) to set up [Interlok Profiler](developer-profiler.html).<br>" %}
 
-The difference with the guide will be that the **interlok-profiler.properties** file will need to have the following properties:
-*com.adaptris.monitor.agent.EventPropagator=JMX* instead of *com.adaptris.monitor.agent.EventPropagator=MULTICAST*
+{% include note.html content="<br>The difference with the guide will be that the <b>interlok-profiler.properties</b> file will need to have the following properties:<br><i>com.adaptris.monitor.agent.EventPropagator=JMX</i> instead of <i>com.adaptris.monitor.agent.EventPropagator=MULTICAST</i>" %}
 
 
 ## Getting Started ##
