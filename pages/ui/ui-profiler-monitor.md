@@ -13,7 +13,7 @@ As of 3.9.2 the page is still a **beta feature** and therefore the connected use
 
 {% include note.html content="Interlok will also need some specific jar files to get the profiler monitor page to work. Follow the information [here](developer-profiler.html#setting-up) to set up [Interlok Profiler](developer-profiler.html).<br>" %}
 
-{% include note.html content="<br>The difference with the guide will be that the <b>interlok-profiler.properties</b> file will need to have the following properties:<br><i>com.adaptris.monitor.agent.EventPropagator=JMX</i> instead of <i>com.adaptris.monitor.agent.EventPropagator=MULTICAST</i>" %}
+{% include note.html content="The difference with the guide will be that the <b>interlok-profiler.properties</b> file will need to have the following properties:<br><i>com.adaptris.monitor.agent.EventPropagator=JMX</i> instead of <i>com.adaptris.monitor.agent.EventPropagator=MULTICAST</i>" %}
 
 
 ## Getting Started ##
