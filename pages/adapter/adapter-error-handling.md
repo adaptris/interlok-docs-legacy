@@ -152,16 +152,16 @@ The [FailedMessageRetrier] component allows messages that have failed, to be ret
 - The directory which is polled by [default-failed-message-retrier][] could be the same directory where failed messages are written by the [ProcessingExceptionHandler] (you may as well just use a [retry-message-error-handler][]); but this is not advised.
 
 
-[AdaptrisMessage]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/AdaptrisMessage.html
-[FailedMessageRetrier]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/FailedMessageRetrier.html
-[ProcessingExceptionHandler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/ProcessingExceptionHandler.html
-[part of a Workflow]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/WorkflowImp.html#setMessageErrorHandler-com.adaptris.core.ProcessingExceptionHandler-
-[part of a Channel]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/Channel.html#setMessageErrorHandler-com.adaptris.core.ProcessingExceptionHandler-
-[globally at the Adapter]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/Adapter.html#setMessageErrorHandler-com.adaptris.core.ProcessingExceptionHandler-
-[service-list]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/ServiceList.html
-[Service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/Service.html
-[standard-processing-exception-handler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/StandardProcessingExceptionHandler.html
-[retry-message-error-handler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/RetryMessageErrorHandler.html
-[at the Adapter]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/Adapter.html#setFailedMessageRetrier-com.adaptris.core.FailedMessageRetrier-
-[default-failed-message-retrier]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/DefaultFailedMessageRetrier.html
-[always-handle-exception]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/RootProcessingExceptionHandler.html#setAlwaysHandleException-java.lang.Boolean-
+[AdaptrisMessage]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/AdaptrisMessage.html
+[FailedMessageRetrier]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/FailedMessageRetrier.html
+[ProcessingExceptionHandler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/ProcessingExceptionHandler.html
+[part of a Workflow]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/WorkflowImp.html#setMessageErrorHandler-com.adaptris.core.ProcessingExceptionHandler-
+[part of a Channel]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/Channel.html#setMessageErrorHandler-com.adaptris.core.ProcessingExceptionHandler-
+[globally at the Adapter]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/Adapter.html#setMessageErrorHandler-com.adaptris.core.ProcessingExceptionHandler-
+[service-list]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/ServiceList.html
+[Service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/Service.html
+[standard-processing-exception-handler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/StandardProcessingExceptionHandler.html
+[retry-message-error-handler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/RetryMessageErrorHandler.html
+[at the Adapter]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/Adapter.html#setFailedMessageRetrier-com.adaptris.core.FailedMessageRetrier-
+[default-failed-message-retrier]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/DefaultFailedMessageRetrier.html
+[always-handle-exception]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/RootProcessingExceptionHandler.html#setAlwaysHandleException-java.lang.Boolean-

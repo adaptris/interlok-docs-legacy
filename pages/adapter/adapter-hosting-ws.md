@@ -572,4 +572,4 @@ If message was successfully submitted to the workflow then you will get a simple
 ```
 
 
-[SerializableMessage]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/SerializableAdaptrisMessage.html
+[SerializableMessage]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/SerializableAdaptrisMessage.html

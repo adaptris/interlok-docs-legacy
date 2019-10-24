@@ -407,28 +407,28 @@ which results in
 
 
 
-[jdbc-data-query-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/jdbc/JdbcDataQueryService.html
-[jdbc-xml-payload-translator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/jdbc/XmlPayloadTranslator.html
-[jdbc-merge-into-xml-payload]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/jdbc/MergeResultSetIntoXmlPayload.html
-[DocumentMerge]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/util/text/xml/DocumentMerge.html
-[xml-insert-node]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/util/text/xml/InsertNode.html
-[xml-replace-node]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/util/text/xml/ReplaceNode.html
-[xml-replace-original]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/util/text/xml/ReplaceOriginal.html
-[jdbc-first-row-metadata-translator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/jdbc/FirstRowMetadataTranslator.html
-[jdbc-all-rows-metadata-translator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/jdbc/AllRowsMetadataTranslator.html
-[metadata-filter-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/metadata/MetadataFilterService.html
-[XML ResultSetTranslator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/jdbc/XmlPayloadTranslatorImpl.html
-[jdbc-statement-parameter]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/jdbc/StatementParameter.html
-[Capitalize]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.ColumnStyle.html#Capitalize
-[UpperCase]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.ColumnStyle.html#UpperCase
-[LowerCase]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.ColumnStyle.html#LowerCase
-[NoStyle]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.ColumnStyle.html#NoStyle
-[list of ColumnTranslator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.html#setColumnTranslators-java.util.List-
-[ColumnTranslator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/jdbc/types/ColumnTranslator.html
+[jdbc-data-query-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/JdbcDataQueryService.html
+[jdbc-xml-payload-translator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/XmlPayloadTranslator.html
+[jdbc-merge-into-xml-payload]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/MergeResultSetIntoXmlPayload.html
+[DocumentMerge]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/util/text/xml/DocumentMerge.html
+[xml-insert-node]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/util/text/xml/InsertNode.html
+[xml-replace-node]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/util/text/xml/ReplaceNode.html
+[xml-replace-original]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/util/text/xml/ReplaceOriginal.html
+[jdbc-first-row-metadata-translator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/FirstRowMetadataTranslator.html
+[jdbc-all-rows-metadata-translator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/AllRowsMetadataTranslator.html
+[metadata-filter-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/metadata/MetadataFilterService.html
+[XML ResultSetTranslator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/XmlPayloadTranslatorImpl.html
+[jdbc-statement-parameter]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/StatementParameter.html
+[Capitalize]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.ColumnStyle.html#Capitalize
+[UpperCase]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.ColumnStyle.html#UpperCase
+[LowerCase]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.ColumnStyle.html#LowerCase
+[NoStyle]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.ColumnStyle.html#NoStyle
+[list of ColumnTranslator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.html#setColumnTranslators-java.util.List-
+[ColumnTranslator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/types/ColumnTranslator.html
 [String.format]: http://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html
 [SimpleDateFormat]: http://docs.oracle.com/javase/7/docs/api/java/text/SimpleDateFormat.html
-[Metadata ResultSetTranslator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/jdbc/MetadataResultSetTranslatorImpl.html
-[ResultSetTranslator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/jdbc/ResultSetTranslator.html
+[Metadata ResultSetTranslator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/MetadataResultSetTranslatorImpl.html
+[ResultSetTranslator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/ResultSetTranslator.html
 
 
 {% include links.html %}

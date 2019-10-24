@@ -120,5 +120,5 @@ There is now support for dynamic invocation of SAP RFC and BAPI modules. The str
 
 There are now a lot more optional components which interface with different systems. Check the directory structure in the optional directory for more information.
 
-[JmsConnection]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/JmsConnection.html
+[JmsConnection]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/jms/JmsConnection.html
 [Apache Ivy]: http://ivy.apache.org

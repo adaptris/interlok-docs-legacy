@@ -365,8 +365,8 @@ In release 3.8.0; we renamed all the artefacts so that they consistently started
 [interlok-hpcc]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-hpcc/
 [interlok-jruby]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-jruby/
 [interlok-gcloud-pubsub]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-gcloud-pubsub/
-[ScriptingService]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/ScriptingService.html
-[EmbeddedScriptingService]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/EmbeddedScriptingService.html
+[ScriptingService]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/ScriptingService.html
+[EmbeddedScriptingService]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/EmbeddedScriptingService.html
 [interlok-expressions]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-expressions/
 [interlok-legacyhttp]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-legacyhttp/
 [interlok-activemq]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-activemq/

@@ -45,11 +45,11 @@ Because the standard `HttpURLConnection` doesn't support the `PATCH` method (and
 [Microsoft Azure]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-oauth-azure/
 [generic OAUTH]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-oauth-generic/
 [Google Cloud]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-oauth-gcloud/
-[get-oauth-token]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/oauth/GetOauthToken.html
-[standard-http-producer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/client/net/StandardHttpProducer.html
-[http-request-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/client/net/HttpRequestService.html
-[http-status-exact-match]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/client/ExactMatch.html
-[http-status-range-match]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/client/RangeMatch.html
+[get-oauth-token]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/http/oauth/GetOauthToken.html
+[standard-http-producer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/http/client/net/StandardHttpProducer.html
+[http-request-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/http/client/net/HttpRequestService.html
+[http-status-exact-match]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/http/client/ExactMatch.html
+[http-status-range-match]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/http/client/RangeMatch.html
 [java networking properties]: https://docs.oracle.com/javase/8/docs/api/java/net/doc-files/net-properties.html
-[branching-service-enabler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/services/BranchingServiceEnabler.html
-[http-branching-request-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/http/client/net/BranchingHttpRequestService.html
+[branching-service-enabler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/BranchingServiceEnabler.html
+[http-branching-request-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/http/client/net/BranchingHttpRequestService.html

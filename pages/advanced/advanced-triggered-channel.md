@@ -55,12 +55,12 @@ If for instance, an adapter is running on a remote machine, and you don't have t
     - stop the channel
 
 
-[triggered-channel]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-triggered/3.8-SNAPSHOT//com/adaptris/core/triggered/TriggeredChannel.html
-[AdaptrisPollingConsumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/AdaptrisPollingConsumer.html
-[jms-queue-consumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/PtpConsumer.html
-[one-time-poller]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-triggered/3.8-SNAPSHOT//com/adaptris/core/triggered/OneTimePoller.html
-[triggered-retry-message-error-handler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-triggered/3.8-SNAPSHOT//com/adaptris/core/triggered/RetryMessageErrorHandler.html
-[triggered-jmx-consumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-triggered/3.8-SNAPSHOT//com/adaptris/core/triggered/JmxConsumer.html
-[FailedMessageRetrier]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/FailedMessageRetrier.html
-[retry-message-error-handler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/RetryMessageErrorHandler.html
-[JmsPollingConsumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.8-SNAPSHOT/com/adaptris/core/jms/JmsPollingConsumer.html
+[triggered-channel]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-triggered/3.9-SNAPSHOT/com/adaptris/core/triggered/TriggeredChannel.html
+[AdaptrisPollingConsumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/AdaptrisPollingConsumer.html
+[jms-queue-consumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/jms/PtpConsumer.html
+[one-time-poller]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-triggered/3.9-SNAPSHOT/com/adaptris/core/triggered/OneTimePoller.html
+[triggered-retry-message-error-handler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-triggered/3.9-SNAPSHOT//com/adaptris/core/triggered/RetryMessageErrorHandler.html
+[triggered-jmx-consumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-triggered/3.9-SNAPSHOT//com/adaptris/core/triggered/JmxConsumer.html
+[FailedMessageRetrier]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/FailedMessageRetrier.html
+[retry-message-error-handler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/RetryMessageErrorHandler.html
+[JmsPollingConsumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/jms/JmsPollingConsumer.html
