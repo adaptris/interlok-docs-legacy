@@ -338,6 +338,9 @@ entries:
       url: /advanced-configuration-pre-processors.html
       output: web
 
+    - title: AS4 and Holodeck
+      url: /advanced-as4-holodeck.html
+      output: web
 
     - title: Failover Clustering
       url: /advanced-failover.html
