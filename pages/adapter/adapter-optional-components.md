@@ -27,19 +27,24 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-aws-s3][] | Integration with Amazon S3 (requires [interlok-aws-common][]) | 3.3.0+ | available on [github](https://github.com/adaptris/interlok-aws)
 |com.adaptris | [interlok-aws-sns][] | Publish to an SNS topic (requires [interlok-aws-common][]) | 3.7.2+ | available on [github](https://github.com/adaptris/interlok-aws)
 |com.adaptris | [interlok-azure-cosmosdb][] | Interacting with Azure CosmosDB | 3.9.2+ | available on [github](https://github.com/adaptris/interlok-azure)
+|com.adaptris | [interlok-cassandra][] | Interacting with Cassandra datastores | 3.8.0+ | available on [github](https://github.com/adaptris/interlok-cassandra)
 |com.adaptris | [interlok-cirrus-db-webapp][] | Provides access to the cirrus database for web applications | 3.8.0+
 |com.adaptris | [interlok-cirrus-db][] | Provides access to the cirrus database for adapter services | 3.8.0+
 |com.adaptris | [interlok-cirrus-services][] | Provides Cirrus routing services; requires [interlok-licensing][] | 3.8.0+
+|com.adaptris | [interlok-client][] | Additional workflow support| 3.8.0+
+|com.adaptris | [interlok-client-jmx][] | interact with workflows via JMX | 3.8.0+
 |com.adaptris | ~~[interlok-config-conditional][]~~ | ~~Conditional branching and looping~~ | 3.7.3 - 3.8.4 only; merged into [interlok-core][] from 3.9.0 onwards | available on [github](https://github.com/adaptris/interlok-config-conditional)
 |com.adaptris | [interlok-core-apt][] | [Custom annotations](developer-annotations.html)| 3.8.0+| available on [github](https://github.com/adaptris/interlok)
 |com.adaptris | [interlok-core][] | The base Interlok framework | 3.8.0+ |available on [github](https://github.com/adaptris/interlok)
 |com.adaptris | [interlok-csv][] | CSV operations, transforms etc. | 3.8.0+|available on [github](https://github.com/adaptris/interlok-csv)
 |com.adaptris | [interlok-csv-json][] | Convert between CSV and JSON (requires both [interlok-json][] and [interlok-csv][]) | 3.6.6+|available on [github](https://github.com/adaptris/interlok-csv-json)
 |com.adaptris | ~~[interlok-drools][]~~ | ~~Integration with JBoss Rules;~~ | 3.8.0+; deprecated in favour of [interlok-kie][]| available on [github](https://github.com/adaptris/interlok-drools)
+|com.adaptris | [interlok-edi-legacy][] | Legacy support for EDI to XML transforms; requires [interlok-licensing][]| 3.8.0+
+|com.adaptris | [interlok-edi-stream][] | Support for EDI to XML transforms; requires [interlok-licensing][]| 3.8.0+
+|com.adaptris | [interlok-ehcache][] | Integration with ehcache as a cache provider | 3.8.0+ |  available on [github](https://github.com/adaptris/interlok-cache)
 |com.adaptris | [interlok-elastic-common][] | Transport agnostic support for [interlok-elastic-rest][] - requires [interlok-csv][] | 3.9.1+ | available on [github](https://github.com/adaptris/interlok-elastic)
 |com.adaptris | [interlok-elastic-rest][] | Integration with ElasticSearch via their high level REST client (requires [interlok-elastic-common][]) | 3.9.1+ | available on [github](https://github.com/adaptris/interlok-elastic)
 |com.adaptris | ~~[interlok-elastic-search][]~~ | ~~Integration with ElasticSearch via the v2 API (requires [interlok-csv][])~~ | 3.4.1+; deprecated in favour of [interlok-elastic-rest][] | available on [github](https://github.com/adaptris/interlok-elasticsearch)
-|com.adaptris | [interlok-ehcache][] | Integration with ehcache as a cache provider | 3.8.0+ |  available on [github](https://github.com/adaptris/interlok-cache)
 |com.adaptris | ~~[interlok-es5][]~~ | ~~Integration with ElasticSearch using v5 API (requires [interlok-csv][])~~ | 3.5.1+; deprecated in favour of [interlok-elastic-rest][] | available on [github](https://github.com/adaptris/interlok-es5)
 |com.adaptris | ~~[interlok-es-rest][]~~ | ~~Integration with ElasticSearch via their high level REST client (requires [interlok-csv][])~~ | 3.8.0+; deprecated in favour of [interlok-elastic-rest][] | available on [github](https://github.com/adaptris/interlok-es-rest)
 |com.adaptris | [interlok-expressions][] | Perform inline mathematic expressions | 3.6.4+ | available on [github](https://github.com/adaptris/interlok-expressions)
@@ -75,6 +80,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-mqtt][] | Support for MQTT protocol | 3.5.1+ | available on [github](https://github.com/adaptris/interlok-mqtt)
 |com.adaptris | [interlok-msmq][] | Connect to MSMQ via ActiveX; requires [interlok-licensing][]| 3.8.0+| Requires a 32bit JVM due to JNI.
 |com.adaptris | [interlok-msmq-javonet][] | Connect to MSMQ via .NET - Requires a license from [javonet](https://www.javonet.com); requires [interlok-licensing][]|3.8.0+
+|com.adaptris | [interlok-nats][] | Support for NATS.io | 3.9.3+ | available on [github](https://github.com/adaptris/interlok-nats)
 |com.adaptris | [interlok-new-relic][] | Supports [New Relic Profiling](advanced-new-relic-profiling.html); requires [interlok-profiler][] | 3.8.0+
 |com.adaptris | [interlok-oauth-azure][] | Retrieve OAUTH access tokens from MS Azure | 3.6.5+ | available on [github](https://github.com/adaptris/interlok-oauth)
 |com.adaptris | [interlok-oauth-gcloud][] | Retrieve OAUTH access tokens from Google Cloud | 3.6.5+ | available on [github](https://github.com/adaptris/interlok-oauth); package move from [interlok-gcloud-pubsub][]
@@ -408,3 +414,9 @@ In release 3.8.0; we renamed all the artefacts so that they consistently started
 [interlok-kubernetes-prometheus]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-kubernetes-prometheus
 [interlok-pgp]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-pgp
 [interlok-azure-cosmosdb]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-azure-cosmosdb
+[interlok-client-jmx]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-client-jmx
+[interlok-client]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-client
+[interlok-cassandra]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-cassandra
+[interlok-edi-legacy]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-edi-legacy
+[interlok-edi-stream]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-edi-stream
+[interlok-nats]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-nats
