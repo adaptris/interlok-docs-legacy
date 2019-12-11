@@ -33,10 +33,12 @@ Each workflows displays its services with some near real time message processing
 
 You can navigate into service lists just by clicking on them. To go back you need to use the breadcrumb above the diagram.
 
-The Show Grap toggler above the diagram allows to show / hide a chart that will display the messages average taken per workflow in nano seconds.
+The Show Grap toggler above the diagram allows to show / hide a chart that will display the messages average taken per workflow in the selected metrics.
 The plot will be added in the chart only if the UI receive data from the profiler (if there is activities in the workflow).
 
 ![Profiler monitor page with chart](./images/ui-user-guide/profiler-monitor-page-with-chart.png)
+
+You can add up to five monitors using the "Add a Profiler Monitor" button. Each profiler can use different adapters and or channels.
 
 
 {% include note.html content="The profiler monitor page is a prototype and may change substantially in the next releases. It also has several known issues." %}

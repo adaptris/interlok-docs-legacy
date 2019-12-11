@@ -210,6 +210,7 @@ This annotation provides a _hint_ to the UI when presenting the information on s
 | Annotation Parameter | Description |
 |----|----|
 | `style` | contain information about the type of field this is; it is generally used on String fields that might need to be syntax highlighted or treated differently in some way |
+| `ofType` | (since __3.9.3__) a class name that tells the UI to provide an autocomplete text field of the the names of all implementations of the given class or interface. |
 | `friendly` | (since __3.4.0__) contains information about what to display in various drop downs or similar. We use it for enums where the enum name may not be as nice as we want it. |
 | `expression` | (since __3.6.2__) if set to true, then the UI knows that this field supports the new `%message{key}` style expression.  |
 | `external` | (since __3.7.1__) if set to true, then the UI knows that this field supports the new `%sysprop{system-property}` or `%env{environment-variable-name}` style inputs. If you add this, then you need to remember to use `com.adaptris.interlok.resolver.ExternalResolver#resolve(String)` to resolve your configuration item when you actually come to use it.  |
@@ -230,6 +231,8 @@ This annotation provides a _hint_ to the UI when presenting the information on s
 | BLANKABLE | (Since __3.6.3__) Allows the UI to expect a blank string value instead of null on the field . |
 | java.util.Locale | (Since __3.6.6__) Allows the UI to provide an autocomplete text field of the all the java locales. |
 | java.util.TimeZone#getAvailableIDs | (Since __3.6.6__) Allows the UI to provide an autocomplete text field of the all the java time zones. |
+| com.package.MyEnum | (Since __3.8.0__) Allows the UI to provide an autocomplete text field of the all the values of the enum. |
+| com.package.MyClass#returnStringArrayMethod | (Since __3.8.0__) Allows the UI to provide an autocomplete text field of the all the string in the array. |
 
 {% include important.html content="If the style is __PASSWORD__ then remember to use _com.adaptris.security.password.Password#decode(String)_ to decode the password at the appropriate time." %}
 
@@ -251,6 +254,12 @@ public void init() throws CoreException {
     throw ExceptionHelper.wrapCoreException(e);
   }
 }
+```
+
+```java
+@InputFieldHint(ofType = "java.io.FileFilter")
+@AdvancedConfig
+private String fileFilterImp;
 ```
 
 ### @InputFieldDefault ###

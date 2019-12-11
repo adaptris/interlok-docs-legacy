@@ -36,6 +36,7 @@ You will have to select 'In Message' to enter data to send and 'Out Message' to 
 ![The side bar test service with a message sent](./images/ui-user-guide/config-edit-component-test-service-message-sent.png)
 
 You can select the adapter you want to test the service against by selecting 'Test Parameters'.
+You can also select some variable sets if you want to test the service with variable replacement.
 
 ![The test service select adapter](./images/ui-user-guide/config-edit-component-test-service-select-adapter.png)
 
@@ -50,6 +51,8 @@ The displayed modal is a bit different and shows the list of nested services.
 ![The test service modal](./images/ui-user-guide/config-test-service-collection-modal.png)
 
 Clicking on the send button will test step by step all the nested services instead of testing the full service collection at once.
+
+Clicking on a service component will start (or fast forward) the testing from that service. All the services before that will not be ran.
 
 The rest will work the same way as the test service modal.
 

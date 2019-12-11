@@ -57,6 +57,8 @@ By default the x-include files are at the root of the x-include dir and use the 
 If you wish to add the files in a sub folder you can set the file path to *dir/file*.
 For instance to have all the workflows in a folder named 'workflows' you can do *workflows/workflow*. (Only forward slashes '/' are allowed)
 
+Since 3.9.3 If "Use unique id instead of index" is enabled, this option will append the component unique id, if it exists, to the file name.
+
 ### Variables Tab ###
 
 ![Config Project Variables Tab](./images/ui-user-guide/config-project-variables-tab.png)

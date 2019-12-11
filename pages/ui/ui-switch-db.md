@@ -116,3 +116,19 @@ If the user and password are provided in the jdbc url they will override any oth
 ```
 -DdataSource.provider=mysql -DdataSource.driverClass=com.mysql.jdbc.Driver -DdataSource.jdbcURL="jdbc:mysql://localhost:3306/interlokuidb?user=interlokuidb&password=int3rL0cku1DB&autoReconnect=true"
 ```
+
+## Password Encryption  ##
+
+Since version 3.9.3 the database passwords can be encrypted using the standard [Interlok password encryption](advanced-password-handling.html).
+
+Either in the properties file like:
+
+```properties
+dataSource.user=PW:AAAAEGhquvSq/...
+```
+
+Or using a system properties like:
+
+```
+ -DdataSource.password=PW:AAAAEGhquvSq/...
+```
