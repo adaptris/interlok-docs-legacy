@@ -38,7 +38,7 @@ The plot will be added in the chart only if the UI receive data from the profile
 
 ![Profiler monitor page with chart](./images/ui-user-guide/profiler-monitor-page-with-chart.png)
 
-You can add up to five monitors using the "Add a Profiler Monitor" button. Each profiler can use different adapters and or channels.
+You can add up to five monitors using the "Add a Profiler Monitor" button. Each profiler can use different adapters and/or channels.
 
 
 {% include note.html content="The profiler monitor page is a prototype and may change substantially in the next releases. It also has several known issues." %}

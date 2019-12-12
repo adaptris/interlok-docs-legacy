@@ -127,7 +127,7 @@ Either in the properties file like:
 dataSource.user=PW:AAAAEGhquvSq/...
 ```
 
-Or using a system properties like:
+Or using system properties like:
 
 ```
  -DdataSource.password=PW:AAAAEGhquvSq/...

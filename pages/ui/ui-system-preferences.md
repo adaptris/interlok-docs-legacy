@@ -26,4 +26,4 @@ The system preferences are:
     - **Creates a GUID using com.adaptris.util.GuidGenerator:** The ID is generated using the com.adaptris.util.GuidGenerator class, e.g. 37cc799e-bd50-4560-a735-1320e0a78ebe
 - **Disable External Resources:** Disable automatic loading of external resources such as optional components information or Interlok blog articles. (Since 3.9.3)
 
-**All the changes require a container restart to take effect.**
+{% include note.html content="All the changes require a container restart to take effect." %}
