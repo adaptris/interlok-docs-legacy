@@ -316,7 +316,7 @@ entries:
         - title: CSV to XML
           url: /cookbook-csv-transform.html
           output: web
-          
+
         - title: EDI Transformation
           url: /cookbook-edi-transform.html
           output: web
@@ -329,7 +329,7 @@ entries:
     - title: Autoscaling - Kubernetes
       url: /advanced-interlok-scaling.html
       output: web
-      
+
     - title: Clustered Workflows / Services
       url: /advanced-vertx.html
       output: web
@@ -376,6 +376,10 @@ entries:
 
     - title: Memory Requirements
       url: /advanced-memory-requirements.html
+      output: web
+
+    - title: Multi-Payload Messages
+      url: /advanced-multi-payload-messages.html
       output: web
 
     - title: Password Handling
