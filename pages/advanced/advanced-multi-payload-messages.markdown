@@ -120,7 +120,7 @@ service (list). By default this process is single threaded but a thread
 pool can be used to parallelize the loop.
 
 ```xml
-    <for-each>
+    <for-each-payload>
         <unique-id>for-each-id</unique-id>
         <then>
             <service class="shared-service">
@@ -129,5 +129,5 @@ pool can be used to parallelize the loop.
             </service>
         </then>
         <thread-count>1</thread-count>
-    </for-each>
+    </for-each-payload>
 ```
