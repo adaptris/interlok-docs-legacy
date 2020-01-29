@@ -101,13 +101,21 @@ You can convert to and from XML via [json-xml-transform-service][] by specifying
 
 |Implementation| Description|
 |----|----
-|[simple-transformation-driver][]| The simplest driver that uses [json.org][] as the implementation. It adds a root element `json` or `json-array` depending on the JSON received, each fieldname in the JSON document creates a new XML element. This is the preferred implementation if you are using relatively simple JSON documents and you know that the fieldnames aren't invalid XML element names; if fieldnames contain invalid XML characters, then output will still be generated, but subsequent XML parsing steps will fail.|
-|[default-transformation-driver][]| The default driver based on [json-lib][]. It allows you to provide type hints for conversion purposes, and supports both json objects and arrays converted to and from XML; XML that should be rendered as a json array with a single element is possible; this would not be the case with [simple-transformation-driver][]. It will also attempt to make XML names _safe_ according to the XML specification; if fieldnames contain invalid XML characters, then the XML output will not accurately reflect the JSON field.|
+|[simple-transformation-driver][]| The simplest driver that uses [json.org][] as the implementation. It adds a root element `json` or `json-array` depending on the JSON received, each fieldname in the JSON document creates a new XML element. This is the preferred implementation if you are using relatively simple JSON documents and you know that the fieldnames aren't invalid XML element names; if fieldnames contain invalid XML characters, then output will still be generated, but subsequent XML parsing steps will fail. _This is the default driver as of 3.10_|
+|[jsonlib-transformation-driver][]| The driver based on [json-lib][]. It allows you to provide type hints for conversion purposes, and supports both json objects and arrays converted to and from XML; XML that should be rendered as a json array with a single element is possible; this would not be the case with [simple-transformation-driver][]. It will also attempt to make XML names _safe_ according to the XML specification; if fieldnames contain invalid XML characters, then the XML output will not accurately reflect the JSON field.|
+|~~[default-transformation-driver][]~~| This was the default prior to 3.10, but has been replaced by [jsonlib-transformation-driver][] since its performance characteristics aren't predictable enough for it to remain the default|
 |[json-array-transformation-driver][]| Same behaviour as [default-transformation-driver][] but only allows json arrays|
 |[json-object-transformation-driver][]| Same behaviour as [default-transformation-driver][] but only allows json objects|
 |[json-safe-transformation-driver][]| _Since 3.6.4_ Same behaviour as [default-transformation-driver][] but strips any formatting prior to rendering XML as JSON as [default-transformation-driver][] can be sensitive to whitespace. Since you are very likely to be executing a stylesheet to get your data into the right format anyway, you should use `<xsl:strip-space elements="*" />` appropriately in your stylesheet.|
 
-{% include tip.html content="The general rule of thumb is if the JSON in question is simple, then use [simple-transformation-driver][], otherwise use a variation of [default-transformation-driver][] as appropriate." %}
+{% include tip.html content="The general rule of thumb is if the JSON in question is simple, then use [simple-transformation-driver][], otherwise use a variation of [jsonlib-transformation-driver][] as appropriate." %}
+
+{% include warning.html content="In some processing situations [jsonlib-transformation-driver][] can be very CPU bound due to the way it handles XML; you may need to do some profiling to see if degrades performance excessively." %}
+
+### JSON to XML via StAX events ###
+
+_Since 3.8.2_ you can use the [interlok-json-streaming][] optional component to perform conversions to and from XML. This package contains a `XMLInputFactory` and `XMLOutputFactory` implementations for use with STaX events. Coupled with [stax-streaming-service][] from [interlok-stax][] you perform conversion to and from XML without building a DOM in memory; this is the preferred mechanism for converting huge documents.
+
 
 ## JSON to CSV ##
 
@@ -153,31 +161,34 @@ along with configuration, which will throw an exception for error handling if th
 ```
 
 
-
+[interlok-stax]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-stax/
 [interlok-json]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-json/
-[jdbc-json-first-resultset-output]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.9-SNAPSHOT/com/adaptris/core/json/jdbc/JdbcJsonOutput.html
-[jdbc-data-query-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/JdbcDataQueryService.html
-[routing-json-path-syntax-identifier]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.9-SNAPSHOT/com/adaptris/core/services/routing/json/JsonPathSyntaxIdentifier.html
-[syntax-routing-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/routing/SyntaxRoutingService.html
+[interlok-json-streaming]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-json-streaming/
+[jdbc-json-first-resultset-output]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.10-SNAPSHOT/com/adaptris/core/json/jdbc/JdbcJsonOutput.html
+[jdbc-data-query-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.10-SNAPSHOT/com/adaptris/core/services/jdbc/JdbcDataQueryService.html
+[routing-json-path-syntax-identifier]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.10-SNAPSHOT/com/adaptris/core/services/routing/json/JsonPathSyntaxIdentifier.html
+[syntax-routing-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.10-SNAPSHOT/com/adaptris/core/services/routing/SyntaxRoutingService.html
 [JOLT]: https://github.com/bazaarvoice/jolt
 [JsonPath]: https://github.com/jayway/JsonPath
-[json-path-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.9-SNAPSHOT/com/adaptris/core/services/path/json/JsonPathService.html
-[json-array-splitter]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.9-SNAPSHOT/com/adaptris/core/services/splitter/json/JsonArraySplitter.html
-[MessageSplitter]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/splitter/MessageSplitter.html
-[json-to-metadata]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.9-SNAPSHOT/com/adaptris/core/json/JsonToMetadata.html
-[json-transform-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.9-SNAPSHOT/com/adaptris/core/transform/json/JsonTransformService.html
-[json-xml-transform-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.9-SNAPSHOT/com/adaptris/core/transform/json/JsonXmlTransformService.html
+[json-path-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.10-SNAPSHOT/com/adaptris/core/services/path/json/JsonPathService.html
+[json-array-splitter]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.10-SNAPSHOT/com/adaptris/core/services/splitter/json/JsonArraySplitter.html
+[MessageSplitter]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.10-SNAPSHOT/com/adaptris/core/services/splitter/MessageSplitter.html
+[json-to-metadata]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.10-SNAPSHOT/com/adaptris/core/json/JsonToMetadata.html
+[json-transform-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.10-SNAPSHOT/com/adaptris/core/transform/json/JsonTransformService.html
+[json-xml-transform-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.10-SNAPSHOT/com/adaptris/core/transform/json/JsonXmlTransformService.html
 [json.org]: http://www.json.org/java/index.html
-[simple-transformation-driver]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.9-SNAPSHOT/com/adaptris/core/transform/json/SimpleJsonTransformationDriver.html
-[default-transformation-driver]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.9-SNAPSHOT/com/adaptris/core/transform/json/DefaultJsonTransformationDriver.html
+[simple-transformation-driver]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.10-SNAPSHOT/com/adaptris/core/transform/json/SimpleJsonTransformationDriver.html
+[default-transformation-driver]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.10-SNAPSHOT/com/adaptris/core/transform/json/DefaultJsonTransformationDriver.html
 [json-lib]: http://json-lib.sourceforge.net/
-[json-array-transformation-driver]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.9-SNAPSHOT/com/adaptris/core/transform/json/JsonArrayTransformationDriver.html
-[json-object-transformation-driver]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.9-SNAPSHOT/com/adaptris/core/transform/json/JsonObjectTransformationDriver.html
-[json-safe-transformation-driver]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.9-SNAPSHOT/com/adaptris/core/transform/json/SafeJsonTransformationDriver.html
-[yaml-to-json]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.9-SNAPSHOT/com/adaptris/core/transform/json/YamlToJsonService.html
-[json-schema-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.9-SNAPSHOT/com/adaptris/core/json/schema/JsonSchemaService.html
-[com.adaptris.core.transform.json.jolt.EmptyStringToNull]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.9-SNAPSHOT/com/adaptris/core/transform/json/jolt/EmptyStringToNull.html
-[com.adaptris.core.transform.json.jolt.NullToEmptyString]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.9-SNAPSHOT/com/adaptris/core/transform/json/jolt/NullToEmptyString.html
-[json-path-splitter]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.9-SNAPSHOT/com/adaptris/core/services/splitter/json/JsonPathSplitter.html
+[json-array-transformation-driver]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.10-SNAPSHOT/com/adaptris/core/transform/json/JsonArrayTransformationDriver.html
+[json-object-transformation-driver]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.10-SNAPSHOT/com/adaptris/core/transform/json/JsonObjectTransformationDriver.html
+[json-safe-transformation-driver]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.10-SNAPSHOT/com/adaptris/core/transform/json/SafeJsonTransformationDriver.html
+[jsonlib-transformation-driver]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.10-SNAPSHOT/com/adaptris/core/transform/json/JsonlibTransformationDriver.html
+[yaml-to-json]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.10-SNAPSHOT/com/adaptris/core/transform/json/YamlToJsonService.html
+[json-schema-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.10-SNAPSHOT/com/adaptris/core/json/schema/JsonSchemaService.html
+[com.adaptris.core.transform.json.jolt.EmptyStringToNull]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.10-SNAPSHOT/com/adaptris/core/transform/json/jolt/EmptyStringToNull.html
+[com.adaptris.core.transform.json.jolt.NullToEmptyString]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.10-SNAPSHOT/com/adaptris/core/transform/json/jolt/NullToEmptyString.html
+[json-path-splitter]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.10-SNAPSHOT/com/adaptris/core/services/splitter/json/JsonPathSplitter.html
 [interlok-csv-json]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-csv-json/
 [interlok-csv]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-csv/
+[stax-streaming-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-stax/3.10-SNAPSHOT/com/adaptris/stax/StaxStreamingService.html
