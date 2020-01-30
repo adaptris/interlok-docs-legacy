@@ -243,3 +243,187 @@ We can also see the time in nanoseconds that each service in the workflow named 
 
 ![Services](./images/prometheus/servicenanos.PNG)
 
+## Sample Configuration
+
+```xml
+<adapter>
+  <unique-id>MyInterlokInstance</unique-id>
+  <start-up-event-imp>com.adaptris.core.event.StandardAdapterStartUpEvent</start-up-event-imp>
+  <heartbeat-event-imp>com.adaptris.core.HeartbeatEvent</heartbeat-event-imp>
+  <shared-components>
+    <connections/>
+    <services/>
+  </shared-components>
+  <event-handler class="default-event-handler">
+    <unique-id>DefaultEventHandler</unique-id>
+    <connection class="null-connection">
+      <unique-id>reverent-noyce</unique-id>
+    </connection>
+    <producer class="null-message-producer">
+      <unique-id>gigantic-feynman</unique-id>
+    </producer>
+  </event-handler>
+  <message-error-handler class="null-processing-exception-handler">
+    <unique-id>tender-goodall</unique-id>
+  </message-error-handler>
+  <failed-message-retrier class="no-retries">
+    <unique-id>pensive-boyd</unique-id>
+  </failed-message-retrier>
+  <channel-list>
+    <channel>
+      <consume-connection class="jetty-embedded-connection">
+        <unique-id>embeddedJettyConnection</unique-id>
+      </consume-connection>
+      <produce-connection class="null-connection">
+        <unique-id>cranky-nightingale</unique-id>
+      </produce-connection>
+      <workflow-list>
+        <standard-workflow>
+          <consumer class="jetty-message-consumer">
+            <message-factory class="multi-payload-message-factory">
+              <default-char-encoding>UTF-8</default-char-encoding>
+              <default-payload-id>default-payload</default-payload-id>
+            </message-factory>
+            <unique-id>httpMessageConsumer</unique-id>
+            <destination class="configured-consume-destination">
+              <destination>/endpoint1</destination>
+            </destination>
+            <parameter-handler class="jetty-http-ignore-parameters"/>
+            <header-handler class="jetty-http-ignore-headers"/>
+          </consumer>
+          <service-collection class="service-list">
+            <unique-id>hopeful-mayer</unique-id>
+            <services>
+              <payload-to-metadata>
+                <unique-id>payloadToMetadataService</unique-id>
+                <key>payload</key>
+                <metadata-target>Standard</metadata-target>
+                <encoding>None</encoding>
+              </payload-to-metadata>
+              <add-payload-service>
+                <unique-id>addPayloadService</unique-id>
+                <new-payload-id>my-new-payload</new-payload-id>
+                <new-payload class="metadata-data-input-parameter">
+                  <metadata-key>payload</metadata-key>
+                </new-payload>
+              </add-payload-service>
+              <switch-payload-service>
+                <unique-id>switchPayloadService</unique-id>
+                <new-payload-id>my-new-payload</new-payload-id>
+              </switch-payload-service>
+              <log-message-service>
+                <unique-id>logMessageService</unique-id>
+                <log-level>DEBUG</log-level>
+              </log-message-service>
+              <add-metadata-service>
+                <unique-id>addMetadataService</unique-id>
+                <metadata-element>
+                  <key>myKey</key>
+                  <value>myValue</value>
+                </metadata-element>
+              </add-metadata-service>
+              <jetty-response-service>
+                <unique-id>jettyResponseService</unique-id>
+                <http-status>200</http-status>
+                <content-type>text/plain</content-type>
+                <response-header-provider class="jetty-no-response-headers"/>
+              </jetty-response-service>
+            </services>
+          </service-collection>
+          <producer class="null-message-producer">
+            <unique-id>nullProducer</unique-id>
+          </producer>
+          <produce-exception-handler class="null-produce-exception-handler"/>
+          <unique-id>standardWorkflow</unique-id>
+          <message-metrics-interceptor>
+            <unique-id>standardWorkflow-MessageMetrics</unique-id>
+            <timeslice-duration>
+              <unit>MINUTES</unit>
+              <interval>5</interval>
+            </timeslice-duration>
+            <timeslice-history-count>12</timeslice-history-count>
+          </message-metrics-interceptor>
+          <in-flight-workflow-interceptor>
+            <unique-id>standardWorkflow-InFlight</unique-id>
+          </in-flight-workflow-interceptor>
+        </standard-workflow>
+        <standard-workflow>
+          <consumer class="jetty-message-consumer">
+            <message-factory class="multi-payload-message-factory">
+              <default-char-encoding>UTF-8</default-char-encoding>
+              <default-payload-id>default-payload</default-payload-id>
+            </message-factory>
+            <unique-id>secondHttpMessageConsumer</unique-id>
+            <destination class="configured-consume-destination">
+              <destination>/endpoint2</destination>
+            </destination>
+            <parameter-handler class="jetty-http-ignore-parameters"/>
+            <header-handler class="jetty-http-ignore-headers"/>
+          </consumer>
+          <service-collection class="service-list">
+            <unique-id>hopeful-mayer</unique-id>
+            <services>
+              <payload-to-metadata>
+                <unique-id>secondPayloadToMetadataService</unique-id>
+                <key>payload</key>
+                <metadata-target>Standard</metadata-target>
+                <encoding>None</encoding>
+              </payload-to-metadata>
+              <add-payload-service>
+                <unique-id>secondAddPayloadService</unique-id>
+                <new-payload-id>my-new-payload</new-payload-id>
+                <new-payload class="metadata-data-input-parameter">
+                  <metadata-key>payload</metadata-key>
+                </new-payload>
+              </add-payload-service>
+              <switch-payload-service>
+                <unique-id>secondSwitchPayloadService</unique-id>
+                <new-payload-id>my-new-payload</new-payload-id>
+              </switch-payload-service>
+              <log-message-service>
+                <unique-id>secondLogMessageService</unique-id>
+                <log-level>DEBUG</log-level>
+              </log-message-service>
+              <add-metadata-service>
+                <unique-id>secondAddMetadataService</unique-id>
+                <metadata-element>
+                  <key>myKey</key>
+                  <value>myValue</value>
+                </metadata-element>
+              </add-metadata-service>
+              <jetty-response-service>
+                <unique-id>secondJettyResponseService</unique-id>
+                <http-status>200</http-status>
+                <content-type>text/plain</content-type>
+                <response-header-provider class="jetty-no-response-headers"/>
+              </jetty-response-service>
+            </services>
+          </service-collection>
+          <producer class="null-message-producer">
+            <unique-id>secondNullProducer</unique-id>
+          </producer>
+          <produce-exception-handler class="null-produce-exception-handler"/>
+          <unique-id>secondStandardWorkflow</unique-id>
+          <message-metrics-interceptor>
+            <unique-id>standardWorkflow-MessageMetrics</unique-id>
+            <timeslice-duration>
+              <unit>MINUTES</unit>
+              <interval>5</interval>
+            </timeslice-duration>
+            <timeslice-history-count>12</timeslice-history-count>
+          </message-metrics-interceptor>
+          <in-flight-workflow-interceptor>
+            <unique-id>standardWorkflow-InFlight</unique-id>
+          </in-flight-workflow-interceptor>
+        </standard-workflow>
+      </workflow-list>
+      <unique-id>http_channel</unique-id>
+    </channel>
+  </channel-list>
+  <message-error-digester class="standard-message-error-digester">
+    <unique-id>ErrorDigest</unique-id>
+    <digest-max-size>100</digest-max-size>
+  </message-error-digester>
+</adapter>
+
+```
