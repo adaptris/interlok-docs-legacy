@@ -62,7 +62,11 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-jclouds-blobstore][] | Use [Apache jclouds](https://jcloud.apache.org) to access your cloud storage |3.7.3+ | available on [github](https://github.com/adaptris/interlok-jclouds)
 |com.adaptris | [interlok-jms-oracleaq][] | Connect to [Oracle via advanced queues](cookbook-oracleaq.html); requires additional jars not automatically delivered; requires [interlok-licensing][]| 3.8.0+
 |com.adaptris | [interlok-jms-sonicmq][] | Connect to SonicMQ JMS; requires additional jars not automatically delivered; requires [interlok-licensing][]| 3.8.0+|
-|com.adaptris | [interlok-jmx-jms][] | Support for [JMX via JMS or AMQP 1.0](advanced-jmx-jms.html) | 3.8.0+
+|com.adaptris | ~~[interlok-jmx-jms][]~~| Support for [JMX via JMS or AMQP 1.0](advanced-jmx-jms.html) | 3.8.0+; removed in 3.10.0|
+|com.adaptris | [interlok-jmx-activemq][]| ActiveMQ Provider for [JMX via JMS or AMQP 1.0](advanced-jmx-jms.html) | 3.10+ | available on [github](https://github.com/adaptris/interlok-jmx-jms)
+|com.adaptris | [interlok-jmx-amqp][]| AMQP Provider for [JMX via JMS or AMQP 1.0](advanced-jmx-jms.html) | 3.10+ | available on [github](https://github.com/adaptris/interlok-jmx-jms)
+|com.adaptris | [interlok-jmx-jms-common][]| Provider neutral runtime support for [JMX via JMS or AMQP 1.0](advanced-jmx-jms.html) | 3.10+ | available on [github](https://github.com/adaptris/interlok-jmx-jms)
+|com.adaptris | [interlok-jmx-solace][]| Solace Provider for [JMX via JMS or AMQP 1.0](advanced-jmx-jms.html) | 3.10+ | available on [github](https://github.com/adaptris/interlok-jmx-jms)
 |com.adaptris | [interlok-jruby][] | Tighter coupling with [jruby](http://jruby.org) as an alternative to [ScriptingService][]/[EmbeddedScriptingService][]|3.6.3+ | available on [github](https://github.com/adaptris/interlok-jruby)
 |com.adaptris | [interlok-jsr107-cache][] | Cache implementation that wraps JSR107 cache implementations |3.8.0+ | available on [github](https://github.com/adaptris/interlok-cache)
 |com.adaptris | [interlok-jq][] | JSON transformations using JQ-like syntax |3.7.0+ | available on [github](https://github.com/adaptris/interlok-jq)
@@ -371,8 +375,8 @@ In release 3.8.0; we renamed all the artefacts so that they consistently started
 [interlok-hpcc]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-hpcc/
 [interlok-jruby]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-jruby/
 [interlok-gcloud-pubsub]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-gcloud-pubsub/
-[ScriptingService]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/ScriptingService.html
-[EmbeddedScriptingService]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/EmbeddedScriptingService.html
+[ScriptingService]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.10-SNAPSHOT/com/adaptris/core/services/ScriptingService.html
+[EmbeddedScriptingService]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.10-SNAPSHOT/com/adaptris/core/services/EmbeddedScriptingService.html
 [interlok-expressions]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-expressions/
 [interlok-legacyhttp]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-legacyhttp/
 [interlok-activemq]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-activemq/
@@ -420,3 +424,7 @@ In release 3.8.0; we renamed all the artefacts so that they consistently started
 [interlok-edi-legacy]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-edi-legacy
 [interlok-edi-stream]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-edi-stream
 [interlok-nats]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-nats
+[interlok-jmx-activemq]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-jmx-activemq
+[interlok-jmx-amqp]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-jmx-amqp
+[interlok-jmx-jms-common]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-jmx-jms-common
+[interlok-jmx-solace]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-jmx-solace
