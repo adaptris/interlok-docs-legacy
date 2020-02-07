@@ -131,3 +131,51 @@ pool can be used to parallelize the loop.
         <thread-count>1</thread-count>
     </for-each-payload>
 ```
+
+## Data Parameters
+
+### Input
+
+There are three data input parameters that are multi-payload aware, and
+as such they require a payload ID from where to get the data. Depending
+on the expected data type in the payload, it can be treated as a string,
+a byte[] or an input stream.
+
+* Multi-payload string input
+* Multi-payload byte[] input
+* Multi-payload stream input
+
+### Output
+
+There are also three corresponding data output parameters that will
+write data to a new or existing payload.
+
+* Multi-payload string output
+* Multi-payload byte[] output
+* Multi-payload stream output
+
+### Usage Example XML
+
+As an example of where these may be useful, see the example XML
+configuration below for the PGP Encrypt service (which is not
+multi-payload aware), but is able to reference three payload. Two for
+input: they public key and the plain text to encrypt; and one for
+streaming the encrypted cipher text out to a newly created payload.
+
+```xml
+    <pgp-encrypt>
+        <unique-id>trusting-bohr</unique-id>
+        <public-key class="multi-payload-string-input-parameter">
+            <payload-id>publickey</payload-id>
+        </public-key>
+        <clear-text class="multi-payload-byte-array-input-parameter">
+            <payload-id>plaintext</payload-id>
+        </clear-text>
+        <cipher-text class="multi-payload-stream-output-parameter">
+            <content-encoding>UTF-8</content-encoding>
+            <payload-id>ciphertext</payload-id>
+        </cipher-text>
+        <armor-encoding>true</armor-encoding>
+        <integrity-check>true</integrity-check>
+    </pgp-encrypt>
+```
