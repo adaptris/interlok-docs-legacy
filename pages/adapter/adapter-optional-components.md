@@ -93,7 +93,8 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-okhttp][] | HTTP Producer implementation using the OKHTTP client as the transport | 3.8.2+|available on [github](https://github.com/adaptris/interlok-okhttp)
 |com.adaptris | [interlok-pdf][] | PDF Transformations| 3.8.0+
 |com.adaptris | [interlok-pgp][] | Encrypt/Decrypt/Sign/Verify using PGP | 3.9.2+|available on [github](https://github.com/adaptris/interlok-pgp)
-|com.adaptris | [interlok-profiler][] | Base package for supporting profiling (used by [interlok-new-relic][] and [interlok-stackify][]) | 3.8.0+ | available on [github](https://github.com/adaptris/interlok-profiler)
+|com.adaptris | [interlok-profiler][] | Base package for supporting profiling (used by [interlok-new-relic][] and [interlok-profiler-prometheus][]) | 3.8.0+ | available on [github](https://github.com/adaptris/interlok-profiler)
+|com.adaptris | [interlok-profiler-prometheus][] | [Interlok Prometheus profiling](advanced-profiler-prometheus.html) | 3.10.0+ | available on [github](https://github.com/adaptris/interlok-profiler-prometheus)
 |com.adaptris | ~~[interlok-profiler-failover][]~~ | ~~Running an adapter in failover mode; requires [interlok-profiler][]~~| 3.8.0 only; removed in 3.8.1
 |com.adaptris | ~~[interlok-restful-services][]~~ | ~~[Exposing Workflows as a RESTful service](adapter-hosting-rest.html)~~|3.8.0 to 3.8.2 only; removed in 3.8.3
 |com.adaptris | [interlok-reliable-messaging][] | Support for ordered and reliable messaging; requires [interlok-licensing][] | 3.8.0+
@@ -299,6 +300,7 @@ In release 3.8.0; we renamed all the artefacts so that they consistently started
 [interlok-excel]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-excel/
 [adp-profiler]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/adp-profiler/
 [interlok-profiler]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-profiler/
+[interlok-profiler-prometheus]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-profiler-prometheus/
 [adp-reliable-messaging]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/adp-reliable-messaging/
 [interlok-reliable-messaging]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-reliable-messaging/
 [adp-salesforce]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/adp-salesforce/

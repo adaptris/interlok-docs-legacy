@@ -393,9 +393,13 @@ entries:
         - title: Profiling with New Relic
           url: /advanced-new-relic-profiling.html
           output: web
-          
+
         - title: Profiling with Prometheus
           url: /advanced-profiler-prometheus.html
+          output: web
+
+        - title: Automagically adding logging context
+          url: /advanced-profiler-logging-context.html
           output: web
 
     - title: Running in Docker
@@ -478,10 +482,6 @@ entries:
 
     - title: Custom Services
       url: /developer-services.html
-      output: web
-
-    - title: Interlok Profiler
-      url: /developer-profiler.html
       output: web
 
     - title: Java Generics And the UI
