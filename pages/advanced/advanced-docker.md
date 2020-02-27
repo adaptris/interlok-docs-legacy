@@ -10,7 +10,18 @@ There is now a public docker image for [Interlok](https://hub.docker.com/r/adapt
 
 You'll still need to build your own docker images, but what you want to do is customize the basic installation with your _own dependencies_ and _configuration_. We have an example project hosted on [github.com](https://github.com/adaptris-labs/docker-interlok-template) that you can fork to bootstrap your own image. Branches exist within the project to demonstrate different build tools (ant, gradle, maven) building the resulting docker image. If you just want to get started, go ahead and clone [https://github.com/adaptris-labs/docker-interlok-template](https://github.com/adaptris-labs/docker-interlok-template); all of this should be pretty obvious already to someone familiar with docker. Pull requests are always welcome.
 
-## Customisations ##
+## docker-interlok-template
+
+The [docker-interlok-template](https://github.com/adaptris-labs/docker-interlok-template) project contains 4 branches; each of those branches should have a sufficient README that you can ignore the rest of this document. However, we will briefly describe each of the branches.
+
+{% include important.html content="Internally we use gradle to manage our configurations so the `gradle-docker-build` is the preferred branch and the one that gets the most love" %}
+
+* The default branch is `gradle-docker-build` which uses gradle to build the docker image; basically `./gradlew docker`. This matches our UI project build system, so is the one that we'll be updating.
+* `ant-ivy-build` uses [ant+ivy](advanced-ant-ivy-deploy.html) to resolve dependencies and then a command exec to create the docker image
+* `docker-build` can be executed using a standard docker build command (e.g. `docker build . --tag myimage`) but ultimately still uses ant+ivy to manage your dependencies.
+* `mvn-docker-build` uses maven with the spotify docker maven plugin; it use usable, but make sure you inspect the pom.xml since there may be exceptions arising from how maven-metadata is handled by maven.
+
+## Doing it from scratch, because I'm old skool
 
 I've prepared my local environment using [ant+ivy](advanced-ant-ivy-deploy.html) to get all the required jar files I needed, and resulting file structure of it looks like this :
 
@@ -39,7 +50,8 @@ ENTRYPOINT ["/docker-entrypoint.sh"]
 
 
 ```
-To build the container, build as you would any other docker image `docker build --tag myinterlok .` This will build the docker container in your local Docker storage. Run it like you would any other container `docker run -p 8080:8080 myinterlok` and you should be able to connect to the UI using `http://localhost:8080`. Check the [docker-entrypoint.sh][] in the main [github project][] to see how to customise various startup options.
+
+To build the container based on the *above file structure*, build as you would any other docker image `docker build --tag myinterlok .` This will build the docker container in your local Docker storage. Run it like you would any other container `docker run -p 8080:8080 myinterlok` and you should be able to connect to the UI using `http://localhost:8080`. Check the [docker-entrypoint.sh][] in the main [github project][] to see how to customise various startup options.
 
 ## Misc ##
 
