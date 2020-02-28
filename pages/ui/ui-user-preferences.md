@@ -8,7 +8,7 @@ permalink: ui-user-preferences.html
 
 The GUI web application allows to configure some user properties to change the way a user interact with the ui:
 
-![User Preferences](./images/ui-user-guide/user-preferences-global.png)
+![User Preferences](./images/ui-user-guide/user-preferences-global-tab.png)
 
 You can access the User Preferences modal by clicking on the down arrow next to your user name and on the User Preferences item.
 
@@ -16,7 +16,7 @@ The preferences are:
 
 ## Global Preferences ##
 
-![User Preferences Global](./images/ui-user-guide/user-preferences-global.png)
+![User Preferences Global](./images/ui-user-guide/user-preferences-global-tab.png)
 
  - **Disable the remove component confirm dialog:** Before deleting components in the config page the application will prompt the user for confirmation. The prompt can be disabled, very useful when a lot of components need to be deleted. The default value is true. (Since 3.2)
  
@@ -26,14 +26,14 @@ The preferences are:
   
 ## Dashboard Page Preferences ##
 
-![User Preferences Dashboard](./images/ui-user-guide/user-preferences-dashboard.png)
+![User Preferences Dashboard](./images/ui-user-guide/user-preferences-dashboard-tab.png)
 
  - **Timeout (ms) for adapter command operations:** The timeout for the adapter commands such as Start Adapter, Stop Adapter, Start Channel ... The default value is 120000 ms (2 mins).
  - **Switch the dashboard page to table mode:** This option toggle how the adapters are displayed in the dashboard page (Widget or Table). The option is also updated when the toggle button is used in the dashboard page. (Since 3.7.3)
 
 ## Configuration Page Preferences ##
 
-![User Preferences Configuration](./images/ui-user-guide/user-preferences-configuration.png)
+![User Preferences Configuration](./images/ui-user-guide/user-preferences-configuration-tab.png)
 
  - **Display names in the component title:** Whether to display the component name in the component title or in the body. The default value is false.
  - **Prettify names in the component title:** The ui can display the component type and uid nicely (remove hyphen, underscore and split camel case uid). The default value is true.
@@ -48,7 +48,7 @@ The preferences are:
  
 ## Runtime Widget Page Preferences ##
 
-![User Preferences Runtime](./images/ui-user-guide/user-preferences-runtime.png)
+![User Preferences Runtime](./images/ui-user-guide/user-preferences-runtime-tab.png)
 
  - **Hide the last index plot on the charts:** Whether or not charts should hide the last index. The default value is false.
 
