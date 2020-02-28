@@ -2,7 +2,7 @@
 swagger: "2.0"
 info:
   description: "Interlok UI Api web service documentation."
-  version: "3.8.2-RELEASE"
+  version: "3.10.0-RELEASE"
   title: "Interlok UI Api Documentation"
 basePath: "/interlok/api"
 tags:

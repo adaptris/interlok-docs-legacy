@@ -135,6 +135,10 @@ To run a single test case, click on the Run button on the test case dropdown.
 
 ![The service tester test case run button](./images/ui-user-guide/service-tester-test-case-run-btn.png)
 
+To run all the test cases for a test, click on the Run button on the test dropdown.
+
+![The service tester test run button](./images/ui-user-guide/service-tester-test-case-run-btn.png)
+
 Once the tests have run the results will be displayed on each test cases.
 
 ![The service tester run results](./images/ui-user-guide/service-tester-run-results.png)
