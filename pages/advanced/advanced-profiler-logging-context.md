@@ -26,7 +26,34 @@ Note that there are 3 profiler configurations available in the [interlok-profile
 
 ## What it does
 
-Before every invocation of the methods `doService(), onAdaptrisMessage()` within the _com.adaptris..*_ package namespace it will add the current message's uniqueId and if available, the parentMessageId against the keys `messageId` and `parentMessageId` respectively. We restrict the package check to avoid excessive loadtime when starting the application. If you do have a custom code, and it's in your own package namespace then just compile something similar : you can find the source code on [github](https://github.com/adaptris/interlok-profiler) - [LoggingContextAspect][])
+The code itself is very simple actually, and it's probably easier to just have it here in its entirety:
+
+```java
+  public static final String MESSAGE_ID_CONTEXT = "messageId";
+  public static final String PARENT_ID_CONTEXT = "parentMessageId";
+
+  @Before("(call(* com.adaptris.core.Service+.doService(com.adaptris.core.AdaptrisMessage)) "
+      + "|| call(* com.adaptris.core.AdaptrisMessageListener+.onAdaptrisMessage(com.adaptris.core.AdaptrisMessage)) "
+      + "|| call(* com.adaptris.core.AdaptrisMessageListener+.onAdaptrisMessage(com.adaptris.core.AdaptrisMessage, java.util.function.Consumer))) ")
+  public synchronized void beforeService(JoinPoint jp) {
+    AdaptrisMessage msg = (AdaptrisMessage) jp.getArgs()[0];
+    String msgId = msg.getUniqueId();
+    String parentId = msg.getMetadataValue(CoreConstants.PARENT_UNIQUE_ID_KEY);
+    MDC.put(MESSAGE_ID_CONTEXT, msgId);
+    if (StringUtils.isNotEmpty(parentId)) {
+      MDC.put(PARENT_ID_CONTEXT, parentId);
+    }
+  }
+
+  @Before("call(* com.adaptris.core.PollerImp+.processMessages())")
+  public synchronized void beforeProcessMessages(JoinPoint jp) {
+    MDC.remove(MESSAGE_ID_CONTEXT);
+    MDC.remove(PARENT_ID_CONTEXT);
+  }
+```
+
+* Before every invocation of `doService(), onAdaptrisMessage()` within concrete implementations of _Service_ or _AdaptrisMessageListener_  add the current message's uniqueId and if available, the parentMessageId against the keys `messageId` and `parentMessageId` respectively.
+* Before every invocation of `processMessages()` within a concrete subclass of PollerImp, remove the contextual information.
 
 ## Log4j2 configuration
 
