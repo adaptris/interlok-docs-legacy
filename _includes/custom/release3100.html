@@ -1,6 +1,6 @@
 ## Version 3.10.0 ##
 
-Release Date : 2020-02
+Release Date : 2020-03
 
 ### Bugs
 
@@ -12,6 +12,7 @@ Release Date : 2020-02
 - [INTERLOK-3132](https://adaptris.atlassian.net/browse/INTERLOK-3132) - ClassCastException with profiler when using custom services
 - [INTERLOK-3135](https://adaptris.atlassian.net/browse/INTERLOK-3135) - Profiler - Adding consumer events to map is wrong.
 - [INTERLOK-3138](https://adaptris.atlassian.net/browse/INTERLOK-3138) - UI - Warning and stacktrace for jxpaths class not found on startup
+- [INTERLOK-3144](https://adaptris.atlassian.net/browse/INTERLOK-3144) - Service Tester - Running a ServiceTest with a workingDirectory with space in its name results in failed tests
 - [INTERLOK-3145](https://adaptris.atlassian.net/browse/INTERLOK-3145) - interlok-custom-component-example Does not include the anno-processor
 - [INTERLOK-3155](https://adaptris.atlassian.net/browse/INTERLOK-3155) - StaxSplitter removes empty/whitespace elements when it probably shouldn't.
 - [INTERLOK-3166](https://adaptris.atlassian.net/browse/INTERLOK-3166) - FtpConsumers do not work with FileBackedMessages
@@ -21,6 +22,8 @@ Release Date : 2020-02
 - [INTERLOK-3175](https://adaptris.atlassian.net/browse/INTERLOK-3175) - CircleCI builds broken due to java.security rewrite
 - [INTERLOK-3180](https://adaptris.atlassian.net/browse/INTERLOK-3180) - UI doesn't start on 3.10-SNAPSHOT (CentOS 6)
 - [INTERLOK-3186](https://adaptris.atlassian.net/browse/INTERLOK-3186) - UI: Variables in KeyValuePairSets don't work.
+- [INTERLOK-3201](https://adaptris.atlassian.net/browse/INTERLOK-3201) - JettyManagementComponent broken with spaces in path.
+- [INTERLOK-3205](https://adaptris.atlassian.net/browse/INTERLOK-3205) - Add null protection to JsonPathService
 
 ### Improvements
 
@@ -31,6 +34,7 @@ Release Date : 2020-02
 - [INTERLOK-2552](https://adaptris.atlassian.net/browse/INTERLOK-2552) - UI Version Upgrade - update xml2json js to latest version
 - [INTERLOK-2562](https://adaptris.atlassian.net/browse/INTERLOK-2562) - UI Config - allow the service-collection panels to have larger labels
 - [INTERLOK-2688](https://adaptris.atlassian.net/browse/INTERLOK-2688) - interlok-jmx-jms should be separated into individual provider projects
+- [INTERLOK-2706](https://adaptris.atlassian.net/browse/INTERLOK-2706) - Add support for apache-geode via Cache
 - [INTERLOK-2760](https://adaptris.atlassian.net/browse/INTERLOK-2760) - Add a "monitoring.war" file that only tells you the status of channels and workflows
 - [INTERLOK-2761](https://adaptris.atlassian.net/browse/INTERLOK-2761) - Add %payload{} as a resolveable item; that's structurally aware
 - [INTERLOK-2820](https://adaptris.atlassian.net/browse/INTERLOK-2820) - UI - Optional Component Docs
@@ -38,13 +42,13 @@ Release Date : 2020-02
 - [INTERLOK-2858](https://adaptris.atlassian.net/browse/INTERLOK-2858) - Core - Update commons collections to 4.3
 - [INTERLOK-2867](https://adaptris.atlassian.net/browse/INTERLOK-2867) - Remove GenerateBeanInfo annotation
 - [INTERLOK-2938](https://adaptris.atlassian.net/browse/INTERLOK-2938) - Switch to running as a "non-root" user in docker containers
+- [INTERLOK-2962](https://adaptris.atlassian.net/browse/INTERLOK-2962) - Upgrade WMQ jars for vanilla and XA projects
 - [INTERLOK-2967](https://adaptris.atlassian.net/browse/INTERLOK-2967) - Switch to 8-jre variants for docker images
 - [INTERLOK-2984](https://adaptris.atlassian.net/browse/INTERLOK-2984) - Migrate away from Junit3 to Junit5 (or at the minimum junit 4)
 - [INTERLOK-3010](https://adaptris.atlassian.net/browse/INTERLOK-3010) - Un-synchronised Workflow
 - [INTERLOK-3011](https://adaptris.atlassian.net/browse/INTERLOK-3011) - Profiler adapter for Prometheus
 - [INTERLOK-3018](https://adaptris.atlassian.net/browse/INTERLOK-3018) - UI Optional Component - Improve the layout of the page itself (make better use of space)
 - [INTERLOK-3020](https://adaptris.atlassian.net/browse/INTERLOK-3020) - UI Optional Component - add a feature to hide deprecated components
-- [INTERLOK-3022](https://adaptris.atlassian.net/browse/INTERLOK-3022) - Interlok-Start - create a POC app that allows users to generate a gradle project to start working with Interlok
 - [INTERLOK-3056](https://adaptris.atlassian.net/browse/INTERLOK-3056) - Add callback support to AdaptrisMessageListener
 - [INTERLOK-3061](https://adaptris.atlassian.net/browse/INTERLOK-3061) - System Properties not supported by the UI.
 - [INTERLOK-3063](https://adaptris.atlassian.net/browse/INTERLOK-3063) - Service-Tester "selecting a file source should pre-fill the file"
@@ -52,6 +56,7 @@ Release Date : 2020-02
 - [INTERLOK-3069](https://adaptris.atlassian.net/browse/INTERLOK-3069) - interlok-service-tester: Assertion unique-id should either be configurable in the UI or deprecated.
 - [INTERLOK-3075](https://adaptris.atlassian.net/browse/INTERLOK-3075) - ServiceTester : there be a JSON-Path assertion
 - [INTERLOK-3077](https://adaptris.atlassian.net/browse/INTERLOK-3077) - Remove volume definitions from docker images
+- [INTERLOK-3083](https://adaptris.atlassian.net/browse/INTERLOK-3083) - UI - Improve the 'User Preferences' modal (it's getting too long)
 - [INTERLOK-3084](https://adaptris.atlassian.net/browse/INTERLOK-3084) - WMQ Native Producer does not log errors.
 - [INTERLOK-3086](https://adaptris.atlassian.net/browse/INTERLOK-3086) - Multipart messages - Splitting
 - [INTERLOK-3087](https://adaptris.atlassian.net/browse/INTERLOK-3087) - Multipart messages - conditional for-each
@@ -73,6 +78,7 @@ Release Date : 2020-02
 - [INTERLOK-3168](https://adaptris.atlassian.net/browse/INTERLOK-3168) - UI Config - promote the 'navigation tree' from 'Technical preview' to be part of release
 - [INTERLOK-3169](https://adaptris.atlassian.net/browse/INTERLOK-3169) - UI - Upgrade libs from interlok-ui-deps
 - [INTERLOK-3170](https://adaptris.atlassian.net/browse/INTERLOK-3170) - JSONToFixedCVS should allow you to configure the CSV style
+- [INTERLOK-3174](https://adaptris.atlassian.net/browse/INTERLOK-3174) - Remove getUniqueId use in the UI for ServiceTester
 - [INTERLOK-3176](https://adaptris.atlassian.net/browse/INTERLOK-3176) - Add support for dead letter queues in SQS
 - [INTERLOK-3073](https://adaptris.atlassian.net/browse/INTERLOK-3073) - Service-Tester when importing tests from config; name the test the same as the project
 - [INTERLOK-3076](https://adaptris.atlassian.net/browse/INTERLOK-3076) - UI - Upgrade Hibernate to 5.4.x and mockito to 3.1.0
@@ -84,3 +90,5 @@ Release Date : 2020-02
 - [INTERLOK-3173](https://adaptris.atlassian.net/browse/INTERLOK-3173) - UI - Upgrade jacoco to 0.8.5
 - [INTERLOK-3179](https://adaptris.atlassian.net/browse/INTERLOK-3179) - Base64 w/o newlines
 - [INTERLOK-3182](https://adaptris.atlassian.net/browse/INTERLOK-3182) - Bump kafka version from 1.1.1 to 2.4.0
+- [INTERLOK-3183](https://adaptris.atlassian.net/browse/INTERLOK-3183) - metadata-tokens bug in payload-from-metadata-service
+- [INTERLOK-3190](https://adaptris.atlassian.net/browse/INTERLOK-3190) - Add a logging context aspect to the profiler
