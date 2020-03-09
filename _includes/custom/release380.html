@@ -6,6 +6,16 @@ This release requires Java 8; Java 7 is no longer supported. Additionally there 
 
 {% include important.html content="Use interlok-boot.jar instead of adp-core.jar when running directly from the commandline; also adp-core.jar has been renamed to interlok-core.jar" %}
 
+### Key Highlights
+
+- We have upgraded a lot of our libraries and projects which were Ant based have now been moved to Gradle.
+- It's important to note that this Interlok version has been compiled for Java 8 and above.
+- To enforce a clean break, all artefact names have been changed from adp-[component] to interlok-[component].
+- Cache services have been migrated into Interlok
+- There is now a new optional component to access ElasticSearch via their "High-level java REST client"
+- Failover TCP mode auto-discovery
+- Every optional component now has published Javadocs
+
 ### Bugs
 
  - [INTERLOK-1878](https://adaptris.atlassian.net/browse/INTERLOK-1878) - Log extract from a failed message doesn't match the failed message...

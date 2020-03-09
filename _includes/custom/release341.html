@@ -4,8 +4,17 @@ Release Date : 2016-10-05
 
 {% include important.html content="Because of issues with XStream and AliasedJavaBeanConverter not honouring some annotations; if you are using [JmsTransactedWorkflow](https://development.adaptris.net/javadocs/v3-snapshot/Interlok-API/com/adaptris/core/jms/JmsTransactedWorkflow.html) you will need to remove any interceptors manually and reconfigure them after upgrading." %}
 
-### Bugs
+### Key Highlights
 
+- Branching service display & testing improvements
+- Edit remote configuration that cannot be loaded by the UI
+- The log monitor page has been upgraded to use Server-Sent Events (SSE).
+- Additional JSON support; (JSON schema validator, directly export JSON from JDBC)
+- A new shell based runtime tool
+- JDBC Data Capture now supports batching
+- Framework for easily validating access via message contents
+ 
+### Bugs
 
 - [INTERLOK-857](https://adaptris.atlassian.net/browse/INTERLOK-857) - Input field rendered too small
 - [INTERLOK-959](https://adaptris.atlassian.net/browse/INTERLOK-959) - Hard coded references to bootstrap.properties
