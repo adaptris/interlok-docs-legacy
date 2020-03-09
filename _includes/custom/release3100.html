@@ -2,6 +2,31 @@
 
 Release Date : 2020-03
 
+### Key Highlights
+
+- The [UI Optional Component Page](ui-optional-component-discovery.html) has had many improvements, including:
+    - new layouts for the list page to maximise space
+    - a new table-mode option for the list page
+    - a reworked details modal to make things clearer
+    - integration of project readme documents into the details window
+    - more filtering options added, for better filtering of deprecated and licensed components
+- The [UI Service Tester Page](ui-service-tester.html) has had many improvements, including:
+    - It is now easier to save new service tester config into an existing config project
+    - A run option has been added to the test item that will run all its test cases.
+    - When adding a new Test the Default Config File Source is now selected by default.
+    - Improved the naming of tests when importing from existing config
+    - Interlok now uses the service-unique-preprocessor instead of xpath preprocessor when generating service tests
+- The UI User Preference 'Always attempt to load the active adapter' has now been set to false by default as we continue to promote the use of project based configuration.  
+- Added support for the Interlok to use the Prometheus pushgateway
+- You can now run Interlok in docker as a non-privilaged user -> By default, the standard docker images will run Interlok as an unprivileged user
+- interlok-jmx-jms has been separated into individual provider projects
+- Initial support for Asynchronous messaging
+- The Default JSON transformation driver is now "simple-json"
+- apache-geode is now supported as a caching provider
+- Prototype support for multi-payload messages
+- Prototype expression language for extracting data out of payloads
+
+
 ### Bugs
 
 - [INTERLOK-2737](https://adaptris.atlassian.net/browse/INTERLOK-2737) - UI - Apache Shiro Web Vulnerability
