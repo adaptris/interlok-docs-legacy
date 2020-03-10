@@ -2,6 +2,19 @@
 
 Release Date : 2019-02-21
 
+### Key Highlights
+
+- Config projects continued improvements: xpath validation for variables; variable token selectors now available on lists and KeyValuePairSets; outputted files now retain order where possible and properties retain users comments, making it easier to work with vcs.
+- Component Search improvements include added pagination to the results page and style improvements
+- There is a new UI user-preference flag "enable technical preview features" for users who want our UI beta features
+- New "rest" management component that replaces interlok-restful-services
+- Added JMS 2.0 support
+- Improved performance for very large JSON->XML and XML->JSON transformations
+- Support added for interlok-aws to enable withEndpointConfiguration for use with custom endpoints
+- JdbcDataQueryService improvements allow you to have dynamic column translators
+- JdbcDataCaptureService will now give you the number of rows updated
+- Actional Interceptor now supports nested services, such as splitters. 
+
 ### Bugs
 
  - [INTERLOK-743](https://adaptris.atlassian.net/browse/INTERLOK-743) - Intermittent JMX issue

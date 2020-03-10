@@ -5,6 +5,17 @@ Release Date : 2018-12-11
 The 3.8.2.2 release only contains bug fixes that relate only to the Interlok UI build.
 This version reverts all the settings editor changes that were made in version 3.8.2.
 
+### Key Highlights
+
+- Config projects improvements to allow more customisation and easier to use with VCS.
+- The UI Widgets Page allows the ability to create widgets that are backed by data from custom endpoints.
+- New UI 'Component Search' page that allows you to search an Elasticsearch index containing all our Interlok components.
+- New management component that can start and stop an external process on Interlok JVM start-up
+- New optional component 'interlok-json-streaming' that lets you perform streaming operations on JSON
+- Services JsonMapInsert and Upsert now support expression based table names
+- New optional component 'interlok-kie' that is an upgraded replacement for 'interlok-drools'
+- Improved Interceptor that publishes the last timeslice
+
 ### Bugs
 
 - [INTERLOK-2574](https://adaptris.atlassian.net/browse/INTERLOK-2574) - New Config settings editor is broken the tree view causes a crashed modal.

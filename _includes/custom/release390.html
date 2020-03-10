@@ -6,6 +6,22 @@ Release Date : 2019-06-25
 
 {% include tip.html content="Javadocs are now distributed as jar files, since this mirrors the artefact production system. If you want to access the Javadocs directly, then either use the Interlok UI or point your browser to <a href='https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/' target='_blank'>https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/</a>" %}
     
+### Key Highlights
+
+- [UI Projects](ui-config-project.html) - We have improved the [variable selector in the settings editor](ui-config-project.html#component-settings-modal) so it populates empty settings upon variable selection (making sure that element is outputted upon Apply Config)
+- [UI Projects](ui-config-project.html) - Our service testing features now support testing with variable sets
+- [UI Config Navigation Tree](ui-config-navigation-tree.html), there is now a new way to navigate the config page, which will make is easier to traverse large configuration
+- The [config-conditional](https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9.0-RELEASE/com/adaptris/core/services/conditional/package-summary.html) components have been promoted into the core Interlok release
+- New [Switch Service](https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9.0-RELEASE/com/adaptris/core/services/conditional/Switch.html) which replaces some use cases for [branching-service-collection](https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9.0-RELEASE/com/adaptris/core/BranchingServiceCollection.html)
+- Our [JMS/XA components](advanced-xa-integration.html) have been split into their own specific modules, i.e. XA-ActiveMQ, XA-Atomikos, XA-Solace, XA-Tibco, XA-WebsphereMQ & (a non- provider specific) XA-JMS
+- The Email Integration components have been moved into their own optional component ([interlok-mail](https://github.com/adaptris/interlok-mail))
+- Also, the Flat file integration components have been moved into their own optional component ([interlok-flatfile](https://github.com/adaptris/interlok-flatfile))
+- There is now a [docker](https://hub.docker.com/r/adaptris/interlok/) image for Amazon Corretto + Azul
+- Some additional notes:
+    - The new optional components, ([interlok-mail](https://github.com/adaptris/interlok-mail)) & ([interlok-flatfile](https://github.com/adaptris/interlok-flatfile)) are bundled into the 3.9.0 install. So this change has no immediate effect, once you install, they will still be in the 'lib' directory.
+    - Config Items that were marked for removal in 3.9.0 have been removed, so there will be config changes if moving from 3.8 to 3.9
+    - The [UI Config Navigation Tree](ui-config-navigation-tree.html) is a beta feature, to access it you have to switch on the '[User Preferences](ui-user-preferences.html)'>'Enable technical preview features'
+
 ### Bugs
 
  - [INTERLOK-2743](https://adaptris.atlassian.net/browse/INTERLOK-2743) - SftpAuthenticationWrapper eats exceptions.

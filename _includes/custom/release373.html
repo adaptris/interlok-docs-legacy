@@ -2,6 +2,16 @@
 
 Release Date : 2018-06-29
 
+### Key Highlights
+
+- There is now a new 'table view' feature on the UI Dashboard. This is helpful when you are monitoring many Adapters.
+- The service tester ui is now ‘config aware’ and will allow you to generate test cases based upon a selected configuration.
+- The DynamicServiceLocator component helper has been improved to allow you to upload the dynamic service data so you can re-edit the data.
+- A new jetty-no-backlog-interceptor that will return a 503 status automatically when all workers in a workflow are busy.
+- Apache jclouds blob-store implementation to support backblaze / azureblob / aws-s3
+- More natural conditional services rather than branching-service-collection.
+- Interceptor to facilitate handling HTTP requests across multiple workflows
+
 ### Bugs
 
  - [INTERLOK-1070](https://adaptris.atlassian.net/browse/INTERLOK-1070) - Y-Axis on metrics charts incorrect for small ranges
