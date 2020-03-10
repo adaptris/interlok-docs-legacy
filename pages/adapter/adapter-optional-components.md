@@ -28,10 +28,10 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-aws-sns][] | Publish to an SNS topic (requires [interlok-aws-common][]) | 3.7.2+ | available on [github](https://github.com/adaptris/interlok-aws)
 |com.adaptris | [interlok-azure-cosmosdb][] | Interacting with Azure CosmosDB | 3.9.2+ | available on [github](https://github.com/adaptris/interlok-azure)
 |com.adaptris | [interlok-cassandra][] | Interacting with Cassandra datastores | 3.8.0+ | available on [github](https://github.com/adaptris/interlok-cassandra)
-|com.adaptris | [interlok-cirrus-db-webapp][] | Provides access to the cirrus database for web applications | 3.8.0+
-|com.adaptris | [interlok-cirrus-db][] | Provides access to the cirrus database for adapter services | 3.8.0+
-|com.adaptris | [interlok-cirrus-services][] | Provides Cirrus routing services; requires [interlok-licensing][] | 3.8.0+
-|com.adaptris | [interlok-client][] | Additional workflow support| 3.8.0+
+|com.adaptris | ~~[interlok-cirrus-db-webapp][]~~ | ~~Provides access to the cirrus database for web applications~~ | 3.8.0+ | Now retired; you should have no need for this.
+|com.adaptris | ~~[interlok-cirrus-db][]~~ | ~~Provides access to the cirrus database for adapter services~~ | 3.8.0+ | Now retired; you should have no need for this
+|com.adaptris | ~~[interlok-cirrus-services][]~~ | ~~Provides Cirrus routing services; requires [interlok-licensing][]~~ | 3.8.0+ | Now retired; you should have no need for this
+|com.adaptris | [interlok-client][] | Additional workflow support| 3.8.0+ | available on [github](https://github.com/adaptris/interlok)
 |com.adaptris | [interlok-client-jmx][] | interact with workflows via JMX | 3.8.0+
 |com.adaptris | ~~[interlok-config-conditional][]~~ | ~~Conditional branching and looping~~ | 3.7.3 - 3.8.4 only; merged into [interlok-core][] from 3.9.0 onwards | available on [github](https://github.com/adaptris/interlok-config-conditional)
 |com.adaptris | [interlok-core-apt][] | [Custom annotations](developer-annotations.html)| 3.8.0+| available on [github](https://github.com/adaptris/interlok)
@@ -67,6 +67,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-jmx-amqp][]| AMQP Provider for [JMX via JMS or AMQP 1.0](advanced-jmx-jms.html) | 3.10+ | available on [github](https://github.com/adaptris/interlok-jmx-jms)
 |com.adaptris | [interlok-jmx-jms-common][]| Provider neutral runtime support for [JMX via JMS or AMQP 1.0](advanced-jmx-jms.html) | 3.10+ | available on [github](https://github.com/adaptris/interlok-jmx-jms)
 |com.adaptris | [interlok-jmx-solace][]| Solace Provider for [JMX via JMS or AMQP 1.0](advanced-jmx-jms.html) | 3.10+ | available on [github](https://github.com/adaptris/interlok-jmx-jms)
+|com.adaptris | [interlok-jmx-sonicmq][]| SonicMQ Provider for [JMX via JMS or AMQP 1.0](advanced-jmx-jms.html) | 3.10+ |
 |com.adaptris | [interlok-jruby][] | Tighter coupling with [jruby](http://jruby.org) as an alternative to [ScriptingService][]/[EmbeddedScriptingService][]|3.6.3+ | available on [github](https://github.com/adaptris/interlok-jruby)
 |com.adaptris | [interlok-jsr107-cache][] | Cache implementation that wraps JSR107 cache implementations |3.8.0+ | available on [github](https://github.com/adaptris/interlok-cache)
 |com.adaptris | [interlok-jq][] | JSON transformations using JQ-like syntax |3.7.0+ | available on [github](https://github.com/adaptris/interlok-jq)
@@ -430,3 +431,4 @@ In release 3.8.0; we renamed all the artefacts so that they consistently started
 [interlok-jmx-amqp]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-jmx-amqp
 [interlok-jmx-jms-common]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-jmx-jms-common
 [interlok-jmx-solace]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-jmx-solace
+[interlok-jmx-sonicmq]: https://nexus.adaptris.net/nexus/content/groups/interlok/com/adaptris/interlok-jmx-sonicmq
