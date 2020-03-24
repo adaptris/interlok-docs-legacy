@@ -19,10 +19,11 @@ For ease of installation you will need access to a docker engine, your favourite
 - Apache JMeter
 
 Additionally, you will also need a few jar files to drop into your Interlok installations "lib" directory.
-Specifically, you will need the Interlok jar files and dependent jar files from these two Interlok components;
+Specifically, you will need the Interlok jar files and dependent jar files from these three Interlok components;
 
  - [interlok-profiler](https://github.com/adaptris/interlok-profiler)
  - [interlok-profiler-prometheus](https://github.com/adaptris/interlok-profiler-prometheus)
+ - [interlok-monitor-agent](https://github.com/adaptris/interlok-monitor-agent)
 
 
 ## Docker Configuration
