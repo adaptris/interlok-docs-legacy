@@ -1,3 +1,12 @@
+---
+title: Interlok Profiler for developers
+keywords: interlok,profiler
+tags: [developer]
+sidebar: home_sidebar
+permalink: developer-profiler.html
+summary: Guide for developers on Interlok profile events
+---
+
 # Interlok Profiler for developers
 
 A guide for Java developers who want to work with Interlok profiling events for your own monitoring/alerting system.
