@@ -35,16 +35,158 @@ Simply copy the jar files from the optional component directory into the lib dir
 
 ## Failover Modes ##
 
-Currently you can choose between Multicast failover or Direct TCP failover.
+Currently you can choose between Multicast failover, JGroups or Direct TCP failover.
 
-Direct TCP mode only since Interlok version 3.6.4
+### Direct TCP ###
 
-The main benfit of multicast failover is that you can add new failover peers as and when you want.  Simply start a new instance of Interlok and the new instance will be added to the failover cluster automatically.
+Direct TCP mode only since Interlok version __3.6.4__
 
-If multicast is not available on your environment then you can configure Direct TCP failover instead.
-The main difference here is that you must define each machines host and port for each instance in the failover cluster group in either the bootstrap.proprties, or via java system properties.
+On some environments you may not have access to multicast, or simply the reach of multicast doesn't reach all of your Interlok nodes.  In this case consider using Direct TCP, where you specify the list of hosts and ports of each node in the failover cluster prior to starting your cluster.
+
+You will add the following properties to your bootstrap.properties file;
+```
+failover.socket.mode=tcp
+failover.tcp.port=4446
+failover.tcp.peers=localhost:4444;localhost:4445
+```
+
+The first property tells the failover system to use direct TCP for cluster node communication.  The second property specifies the port that this instance will use for TCP communication.  Finally the third property is a "semi-colon" separated list of known nodes in your failover cluster.
 
 Since Interlok version 3.7.4, you may now add new failover peers while using the Direct TCP mode without having to reconfigure the current peers.  Simply make sure your new instance has been configured with each of the host and port numbers of the current failover members, from there the existing members will update their own peer lists as the new instance comes online.
+
+### Multicast ###
+
+Multicast mode is the easiest to configure and if multicast is available for your environment, then you can copy the following configuration into each of your Interlok failover cluster nodes, bootstrap.properties;
+
+```
+failover.socket.mode=multicast
+failover.multicast.group=224.0.0.4
+failover.multicast.port=4446
+```
+The first property tells the failover system to use multicast for cluster node communication.  The second and third properties specify the multicast address and port.
+
+### JGroups ###
+
+If you wish to have finer control over the network communication between each node in the failover cluster, then you can supply your own JGroups configuration file.  JGroups supports TCP and multicast.  Jgroups also supports discovery of new nodes; in other words you can spawn new nodes in to the cluster at any time and they will be added to the known list of available nodes.
+
+To switch the failover mode to JGroups set the following properties in each of the failover nodes bootstrap.properties;
+
+```
+failover.socket.mode=jgroups
+failover.jgroups.config.file=./config/jgroups.xml
+failover.jgroups.cluster.name=myFailoverCluster
+```
+
+The first property tells the failover system to use JGroups configuration for cluster node communication.  The second property specifies the location of your JGroups configuration file.  The third property allows you to set a cluster name, allowing for multiple clusters within your network.
+
+For detailed information on the JGroups configuration file, see [here](http://jgroups.org/manual5/index.html).
+
+Sample JGroups configuration file for TCP communication where the initial Interlok node is listening on port 7878;
+
+```xml
+<!--
+    TCP based stack, with flow control and message bundling. This is usually used when IP
+    multicasting cannot be used in a network, e.g. because it is disabled (routers discard multicast).
+    Note that TCP.bind_addr and TCPPING.initial_hosts should be set, possibly via system properties, e.g.
+    -Djgroups.bind_addr=192.168.5.2 and -Djgroups.tcpping.initial_hosts=192.168.5.2[7878]
+    author: Bela Ban
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="urn:org:jgroups"
+        xsi:schemaLocation="urn:org:jgroups http://www.jgroups.org/schema/jgroups.xsd">
+    <TCP bind_addr="localhost"
+		 bind_port="7878"
+         recv_buf_size="130k"
+         send_buf_size="130k"
+         max_bundle_size="64K"
+         sock_conn_timeout="300"
+
+         thread_pool.min_threads="0"
+         thread_pool.max_threads="20"
+         thread_pool.keep_alive_time="30000"/>
+
+    <TCPPING async_discovery="true"
+             initial_hosts="localhost[7878]"
+             port_range="2"/>
+    <MERGE3  min_interval="10000"
+             max_interval="30000"/>
+    <FD_SOCK/>
+    <FD timeout="3000" max_tries="3" />
+    <VERIFY_SUSPECT timeout="1500"  />
+    <BARRIER />
+    <pbcast.NAKACK2 use_mcast_xmit="false"
+                   discard_delivered_msgs="true"/>
+    <UNICAST3 />
+    <pbcast.STABLE desired_avg_gossip="50000"
+                   max_bytes="4M"/>
+    <pbcast.GMS print_local_addr="true" join_timeout="2000"/>
+    <UFC max_credits="2M"
+         min_threshold="0.4"/>
+    <MFC max_credits="2M"
+         min_threshold="0.4"/>
+    <FRAG2 frag_size="60K"  />
+    <!--RSVP resend_interval="2000" timeout="10000"/-->
+    <pbcast.STATE_TRANSFER/>
+</config>
+```
+A sample multicast example;
+
+```xml
+<!--
+  Default stack using IP multicasting. It is similar to the "udp"
+  stack in stacks.xml, but doesn't use streaming state transfer and flushing
+  author: Bela Ban
+-->
+
+<config xmlns="urn:org:jgroups"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="urn:org:jgroups http://www.jgroups.org/schema/jgroups.xsd">
+    <UDP
+         mcast_port="${jgroups.udp.mcast_port:45588}"
+         ip_ttl="4"
+         tos="8"
+         ucast_recv_buf_size="5M"
+         ucast_send_buf_size="5M"
+         mcast_recv_buf_size="5M"
+         mcast_send_buf_size="5M"
+         max_bundle_size="64K"
+         enable_diagnostics="true"
+         thread_naming_pattern="cl"
+
+         thread_pool.min_threads="0"
+         thread_pool.max_threads="20"
+         thread_pool.keep_alive_time="30000"/>
+
+    <PING />
+    <MERGE3 max_interval="30000"
+            min_interval="10000"/>
+    <FD_SOCK/>
+    <FD_ALL/>
+    <VERIFY_SUSPECT timeout="1500"  />
+    <BARRIER />
+    <pbcast.NAKACK2 xmit_interval="500"
+                    xmit_table_num_rows="100"
+                    xmit_table_msgs_per_row="2000"
+                    xmit_table_max_compaction_time="30000"
+                    use_mcast_xmit="false"
+                    discard_delivered_msgs="true"/>
+    <UNICAST3 xmit_interval="500"
+              xmit_table_num_rows="100"
+              xmit_table_msgs_per_row="2000"
+              xmit_table_max_compaction_time="60000"
+              conn_expiry_timeout="0"/>
+    <pbcast.STABLE desired_avg_gossip="50000"
+                   max_bytes="4M"/>
+    <pbcast.GMS print_local_addr="true" join_timeout="2000"/>
+    <UFC max_credits="2M"
+         min_threshold="0.4"/>
+    <MFC max_credits="2M"
+         min_threshold="0.4"/>
+    <FRAG2 frag_size="60K"  />
+    <RSVP resend_interval="2000" timeout="10000"/>
+    <pbcast.STATE_TRANSFER />
+</config>
+```
 
 ## Configuring Basic Interlok Failover ##
 
@@ -80,30 +222,18 @@ java -cp $CLASSPATH com.adaptris.failover.SimpleBootstrap bootstrap.properties
 
 ### Bootstrap Properties ###
 
+In addition to the properties specified above depending on the chosen mode, there are a few other properties that can also be set;
+
 | Property | Notes |
-| failover.socket.mode | if `tcp` switches to direct TCP mode; if not specified multicast mode |
-| failover.multicast.group | must be defined when working in multicast mode |
-| failover.multicast.port | must be defined when working in multicast mode |
-| failover.tcp.port | must be defined if direct TCP mode is enabled |
-| failover.tcp.peers | must be defined if direct TCP mode is enabled, and is a `;` separated list of peers |
-| failover.tcp.host | optional property that specifies the host name or IP address of the current Interlok instance.  If not specified we will try to determine the local IP address. |
+| failover.tcp.host | Optional property, only used with Direct TCP mode that specifies the host name or IP address of the current Interlok instance.  If not specified we will try to determine the local IP address. |
 | failover.slave.position | if you wish to preconfigure the slave position in the hierarchy then define this, otherwise one will be assigned |
 | failover.ping.interval.seconds | How often each instance will attempt to communicate with each other, defaults to 3 seconds |
 | interval.instance.timeout.seconds | How long before an instance is deemed as no longer available, defaults to 20 seconds |
 
 
-Both `failover.tcp.port` and `failover.tcp.peers` may either be set in the bootstrap.proprties or as java system proprties.
-
-#### Example bootstrap.properties ####
-
-Assumes the local instance can listen for TCP failover events on port 15555 and that there are two further instances in the failover cluster who happen to be running on the same machine (localhost) and are listening on ports 15556 and 15557 respectively.
-
-```
-failover.tcp.port=15555
-failover.tcp.peers=localhost:15556;localhost:15557
-```
-
 #### Example Java system properties ####
+
+It is also possible to specify the bootstrap properties described above as system properties instead.
 
 Assumes the local instance can listen for TCP failover events on port 4444 and that there are two further instances in the failover cluster who happen to be running on the same machine (localhost) and are listening on ports 15556 and 15557 respectively.
 

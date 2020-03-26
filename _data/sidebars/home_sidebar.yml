@@ -483,6 +483,10 @@ entries:
     - title: Custom Services
       url: /developer-services.html
       output: web
+      
+    - title: Working with the profiler
+      url: /developer-profiler.html
+      output: web
 
     - title: Java Generics And the UI
       url: /developer-ui-java-generics-and-ui.html
