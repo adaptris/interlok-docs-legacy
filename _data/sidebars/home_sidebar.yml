@@ -402,6 +402,10 @@ entries:
           url: /advanced-profiler-logging-context.html
           output: web
 
+    - title: Resolvable Expressions
+      url: /advanced-expressions.html
+      output: web
+
     - title: Running in Docker
       url: /advanced-docker.html
       output: web
@@ -483,7 +487,7 @@ entries:
     - title: Custom Services
       url: /developer-services.html
       output: web
-      
+
     - title: Working with the profiler
       url: /developer-profiler.html
       output: web
