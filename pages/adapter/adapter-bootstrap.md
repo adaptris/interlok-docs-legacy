@@ -199,11 +199,14 @@ In some systems the temp directory is periodically purged, this can stop the GUI
 
 - The better and more stable solution is changing the location in which the WAR directories are generated. The following will explain in the simlplest way how to achieve this.
 
+You will need to begin by creating the directory that you would your WAR to be generated in from now on.
 In the adapter's config directory locate and open the `jetty.xml` file and locate the `jetty.home` property within the `org.eclipse.jetty.deploy.providers.WebAppProvider` class tag below that property insert the following:
 </br > `<Set name="tempDir"><Property name="jetty.home" default="." />`__${/desired/temp/path}__`</Set>`
-</br> This will set your new path to '/desired/temp/path' for the GUI's WAR directories finally before starting the adapter create the directories for the WARs to be generated in.
+</br > This will set your new path to '/desired/temp/path' for the GUI's WAR directories finally before starting the adapter create the directories for the WARs to be generated in.
 
 ---
+
+</br >
 
 If jetty is enabled via `managementComponents=jetty` then an additional key is required : `webServerConfigUrl`. This should contain the fully qualified filename for a jetty configuration file. As the UI requires the jetty component and communicates with Adapters using JMX, then if you intend on using the UI you should always have `managementComponents=jmx:jetty`.
 
