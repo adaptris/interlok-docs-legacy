@@ -64,7 +64,7 @@ If many keys are prefixed by `adapterConfigUrl`, then the following rules will a
 
 Which means that you can configure something like :
 
-```
+```properties
 adapterConfigUrl=http://localhost/adapter.xml
 adapterConfigUrl.1=http://localhost/adapter2.xml
 adapterConfigUrl.2=file:///./config/adapter3.xml
@@ -86,11 +86,11 @@ If the JMX management component is specified via `managementComponents=jmx` then
 |jmxserviceurl.objectname| The ObjectName to be associated with the `JMXConnectorServer` when registering it as an MBean, defaults to `Adaptris:type=JmxConnectorServer`|
 |jmxserviceurl.env.| Each property that matches this prefix is passed through to the JMXConnectorServer as part of its environment (minus the prefix); if the JMXConnectorServer required specific configuration, this is where you would do it. e.g. `jmxserviceurl.env.myEnvironment=ABCDE` would cause an environment containing `myEnvironment=ABCDE` to be passed into `JMXConnectorServerFactory#newJMXConnectorServer()`. The environment will be the equivalent of `Map<String, String>()`.
 
-<br/>
+</br>
 
 So, if we wanted to enable JMX over JMS using SonicMQ then we could have :
 
-```
+```properties
 managementComponents=jmx
 jmxserviceurl=service:jmx:sonicmq:///tcp://localhost:2506
 jmxserviceurl.env.jmx.brokerUser=Administrator
@@ -193,9 +193,24 @@ Connections to the locally running broker use JNDI;
 
 #### Jetty Component ####
 
+In some systems the temp directory is periodically purged, this can stop the GUI from serving it's pages. There are two ways in which to handle this;
+
+- The simple solution is to stop and restart your adapter's instance this will recreate the necessary WAR directories for the GUI to run.
+
+- The better and more stable solution is changing the location in which the WAR directories are generated. The following will explain in the simlplest way how to achieve this.
+
+You will need to begin by creating the directory that you would your WAR to be generated in from now on.
+In the adapter's config directory locate and open the `jetty.xml` file and locate the `jetty.home` property within the `org.eclipse.jetty.deploy.providers.WebAppProvider` class tag below that property insert the following:
+</br > `<Set name="tempDir"><Property name="jetty.home" default="." />`__${/desired/temp/path}__`</Set>`
+</br > This will set your new path to '/desired/temp/path' for the GUI's WAR directories finally before starting the adapter create the directories for the WARs to be generated in.
+
+---
+
+</br >
+
 If jetty is enabled via `managementComponents=jetty` then an additional key is required : `webServerConfigUrl`. This should contain the fully qualified filename for a jetty configuration file. As the UI requires the jetty component and communicates with Adapters using JMX, then if you intend on using the UI you should always have `managementComponents=jmx:jetty`.
 
-```
+```properties
 managementComponents=jetty:jmx
 webServerConfigUrl=./config/jetty.xml
 ```
@@ -214,7 +229,7 @@ Since 3.8.2
 
 [interlok-exec][] allows you to startup up arbitrary programs as part of the bootstrap of Interlok. Bear in mind that Interlok isn't really a process manager, and you should always consider using the appropriate tool for the job (e.g. systemd to startup your external program as a service). However, if that isn't possible then [interlok-exec][] can start processes which are subsequently managed as part of the Interlok instance lifecycle. When enabled executables are grouped using an identifier in the form `exec.IDENTIFIER.cmd`; this is easiest to illustrate with an example:
 
-```
+```properties
 managementComponents=jmx:exec:jetty
 
 exec.activemq.working.dir=/home/vagrant/activemq
@@ -232,12 +247,12 @@ exec.tomcat.process.debug=true
 
 In this instance there are two executable groups configured so
 
-* Upon start we execute `catalina.sh start` and `activemq.sh start` respectively. The working directories for those processes are `/home/vagrant/tomcat` and `/home/vagrant/activemq` respectively.
-  * Any output to standard error/output will be redirected at TRACE level to the standard interlok logfile
-* Every 10 seconds, we check the process to see if they are alive
-  * Because process.debug is true, then you will get logging in any configured log file at trace level for the process monitoring
-  * If the process is dead, than we attempt to restart the executable.
-* Upon interlok shutdown, the script `activemq.sh stop` will be executed for the _activemq_ exec group only.
+- Upon start we execute `catalina.sh start` and `activemq.sh start` respectively. The working directories for those processes are `/home/vagrant/tomcat` and `/home/vagrant/activemq` respectively.
+  - Any output to standard error/output will be redirected at TRACE level to the standard interlok logfile
+- Every 10 seconds, we check the process to see if they are alive
+  - Because process.debug is true, then you will get logging in any configured log file at trace level for the process monitoring
+  - If the process is dead, than we attempt to restart the executable.
+- Upon interlok shutdown, the script `activemq.sh stop` will be executed for the _activemq_ exec group only.
 
 #### Exposing workflows via a REST interface ####
 
@@ -251,7 +266,7 @@ Sensitive system property values may be stored encoded in the file; they will be
 
 If you were using JRuby, and you wanted to ensure that variable scope was threadsafe; and you needed to specify a javax.net.ssl keystore and password; the keystore password is of course sensitive so you have encrypted it.
 
-```
+```properties
 sysprop.org.jruby.embed.localcontext.scope=threadsafe
 # Not all the text shown here for brevity.
 sysprop.javax.net.ssl.keyStorePassword={password}PW:AA...N
