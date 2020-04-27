@@ -1,0 +1,73 @@
+## Version 3.10.1 ##
+
+Release Date : 2020-04
+
+### Key Highlights
+
+- Use failed messages in the UI Config testing features
+- UI Config Projects new 'Additional Files' tab
+- There is now a 2nd UI Service Tester Page available which is a  proof of concept page experimenting with a new style, aiming to make it easier to configure service tester config
+- The UI Dashboard Page has new features that make it easier to add clustered Adapter instances 
+- UI Optional Component has been improved to make it easier to switch between release and snapshot components
+- Interlok Runtime improvements include:
+    - New methods to the Cache interface allowing a Per-item cache expiry where supported by the underlying cache provider
+    - New AWS Key management services to work with Amazon KMS; sign/verify documents via KMS API
+    - A new service get-and-cache-oauth-token that allows you to get an OAUTH Access Token and re-use it repeatedly
+    - Added support for RefreshToken in the OAUTH AccessToken
+    - Change of dependency from com.sun.mail:javax.mail to jakarta mail
+    - Solace JCSMP early development as an alternative to JMS
+    - Profiling to Prometheus now gives additional metrics; average speed of workflow processing and failed message counts.
+
+### Bugs
+- [INTERLOK-2996](https://adaptris.atlassian.net/browse/INTERLOK-2996) - UI Configuring a triggered channel.
+- [INTERLOK-3032](https://adaptris.atlassian.net/browse/INTERLOK-3032) - UI - Generics still not handled quite correctly for drop downs.
+- [INTERLOK-3222](https://adaptris.atlassian.net/browse/INTERLOK-3222) - Information Disclosure out of "health-check" management component.
+- [INTERLOK-3227](https://adaptris.atlassian.net/browse/INTERLOK-3227) - UI Projects - Using variables in adapter advanced components can break all other existing variable xpaths
+- [INTERLOK-3228](https://adaptris.atlassian.net/browse/INTERLOK-3228) - UI Projects - The variable xpaths on adapter advanced components can be wrong
+- [INTERLOK-3229](https://adaptris.atlassian.net/browse/INTERLOK-3229) - interlok-aws-s3: Download operation doesn't clean up files in long running splitter.
+- [INTERLOK-3230](https://adaptris.atlassian.net/browse/INTERLOK-3230) - ChannelRestartProduceExceptionHandler doesn't fully restart channels.
+- [INTERLOK-3235](https://adaptris.atlassian.net/browse/INTERLOK-3235) - UI - Apache Shiro Web Vulnerability
+- [INTERLOK-3237](https://adaptris.atlassian.net/browse/INTERLOK-3237) - UI - fix Vulnerability with commons-configuration2
+- [INTERLOK-3238](https://adaptris.atlassian.net/browse/INTERLOK-3238) - UI - fix Vulnerability with snakeyaml
+- [INTERLOK-3245](https://adaptris.atlassian.net/browse/INTERLOK-3245) - UI - XML External Entity (XXE) Injection
+
+### Improvements
+
+- [INTERLOK-1528](https://adaptris.atlassian.net/browse/INTERLOK-1528) - Test failed messages within the UI
+- [INTERLOK-1914](https://adaptris.atlassian.net/browse/INTERLOK-1914) - Possible locking issue around restarts
+- [INTERLOK-2857](https://adaptris.atlassian.net/browse/INTERLOK-2857) - UI - Clustering - Auto Add instances
+- [INTERLOK-2981](https://adaptris.atlassian.net/browse/INTERLOK-2981) - Should Interlok and Interlok UI be separate processes
+- [INTERLOK-3021](https://adaptris.atlassian.net/browse/INTERLOK-3021) - UI Optional Component - improve the feature that switches the page between releases and snapshots
+- [INTERLOK-3035](https://adaptris.atlassian.net/browse/INTERLOK-3035) - Mongo DB Connection - Suppport connection retrial when the connection fail a few times.
+- [INTERLOK-3124](https://adaptris.atlassian.net/browse/INTERLOK-3124) - JMX: Do we need to add a "what management components are enabled"
+- [INTERLOK-3127](https://adaptris.atlassian.net/browse/INTERLOK-3127) - UI Service Tester - create a POC service tester page in the new 'one-note' style
+- [INTERLOK-3154](https://adaptris.atlassian.net/browse/INTERLOK-3154) - Add a validating CSV Aggregator
+- [INTERLOK-3158](https://adaptris.atlassian.net/browse/INTERLOK-3158) - Per-item cache expiry where supported by the underlying cache provider
+- [INTERLOK-3160](https://adaptris.atlassian.net/browse/INTERLOK-3160) - UI Service Test - When a project is loaded have possibility to generate service tests from loaded project config
+- [INTERLOK-3185](https://adaptris.atlassian.net/browse/INTERLOK-3185) - Component Project Template
+- [INTERLOK-3191](https://adaptris.atlassian.net/browse/INTERLOK-3191) - Document Profiler for developers
+- [INTERLOK-3192](https://adaptris.atlassian.net/browse/INTERLOK-3192) - Docker image in labs for Prometheus/Graphana
+- [INTERLOK-3193](https://adaptris.atlassian.net/browse/INTERLOK-3193) - Profiler - Add support for additional metrics.
+- [INTERLOK-3194](https://adaptris.atlassian.net/browse/INTERLOK-3194) - UI : Save project should create additional files
+- [INTERLOK-3197](https://adaptris.atlassian.net/browse/INTERLOK-3197) - Switch from com.sun.mail:javax.mail -> jakarta mail
+- [INTERLOK-3199](https://adaptris.atlassian.net/browse/INTERLOK-3199) - interlok parent gradle adding non-built-in plugins to force owasp checks
+- [INTERLOK-3202](https://adaptris.atlassian.net/browse/INTERLOK-3202) - JCSMP - Update to use the new onAdaptrisMessage
+- [INTERLOK-3204](https://adaptris.atlassian.net/browse/INTERLOK-3204) - New transformation service
+- [INTERLOK-3206](https://adaptris.atlassian.net/browse/INTERLOK-3206) - Document use of JGroups in clustering/failover
+- [INTERLOK-3208](https://adaptris.atlassian.net/browse/INTERLOK-3208) - REST api for clustering,
+- [INTERLOK-3210](https://adaptris.atlassian.net/browse/INTERLOK-3210) - Clustering - Add the adapter ID
+- [INTERLOK-3211](https://adaptris.atlassian.net/browse/INTERLOK-3211) - AWS Key management services
+- [INTERLOK-3214](https://adaptris.atlassian.net/browse/INTERLOK-3214) - Add escaping services for single and double quote
+- [INTERLOK-3223](https://adaptris.atlassian.net/browse/INTERLOK-3223) - OAUTH - AccessToken should support refresh_token
+- [INTERLOK-3224](https://adaptris.atlassian.net/browse/INTERLOK-3224) - interlok-aws-s3: List Operation only returns the first 1000 results
+- [INTERLOK-3225](https://adaptris.atlassian.net/browse/INTERLOK-3225) - Shorten the OAUTH authentication chain
+- [INTERLOK-3232](https://adaptris.atlassian.net/browse/INTERLOK-3232) - SMTP - Expressions
+- [INTERLOK-3234](https://adaptris.atlassian.net/browse/INTERLOK-3234) - Add support for a SMB consumer/producer
+- [INTERLOK-3252](https://adaptris.atlassian.net/browse/INTERLOK-3252) - workflow-rest-services should add a logging context
+- [INTERLOK-2899](https://adaptris.atlassian.net/browse/INTERLOK-2899) - Remove package.html -> package-info.java for all existing projects
+- [INTERLOK-3216](https://adaptris.atlassian.net/browse/INTERLOK-3216) - Upgrade swiftMQ client to 12.x
+- [INTERLOK-3221](https://adaptris.atlassian.net/browse/INTERLOK-3221) - Ui - Upgrade jersey to 2.30.1
+- [INTERLOK-3242](https://adaptris.atlassian.net/browse/INTERLOK-3242) - Bump flyway-core from 6.0.4 to 6.3.3
+- [INTERLOK-3243](https://adaptris.atlassian.net/browse/INTERLOK-3243) - Bump hibernate.version from 5.4.10.Final to 5.4.14.Final
+- [INTERLOK-3244](https://adaptris.atlassian.net/browse/INTERLOK-3244) - Bump hibernate-validator from 6.1.3.Final to 6.1.4.Final
+- [INTERLOK-3249](https://adaptris.atlassian.net/browse/INTERLOK-3249) - UI - Add new optional component icons for 3.10.1
