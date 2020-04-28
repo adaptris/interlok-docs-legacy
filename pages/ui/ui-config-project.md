@@ -104,6 +104,18 @@ In the Tests tab you can configure:
 
 - **Test XML File Name:** The name of the Service Tester config XML file. This is used when the project is saved or published to a [version control system](ui-version-control.html). This is optional and `service-test.xml` is used by default.
 
+### Additional Files Tab ###
+
+![Config Project Additional Files Tab](./images/ui-user-guide/config-project-additional-files-tab.png)
+
+In the Additional Files tab you can add additional config files to be saved with your config when saving a project. (Since 3.10.1)
+
+When a file is selected you can specify the file path to this component from the config dir.
+By default the additional files are at the root of the config dir and use their default name (bootstrap.properties, log4j2.xml, jetty.xml and webdefault.xml).
+If you wish to add the files in a sub folder you can set the file path to *dir/file*.
+
+If the files are unselected they will be removed from the project on the next project save.
+
 ## Component Settings Modal ##
 
 ![Config Project Component Settings Modal](./images/ui-user-guide/config-project-component-settings-modal.png)
