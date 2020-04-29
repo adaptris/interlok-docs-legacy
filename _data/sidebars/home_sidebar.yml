@@ -325,6 +325,10 @@ entries:
     output: web
 
     folderitems:
+    
+    - title: Logic blocks in configuration
+      url: /advanced-conditional.html
+      output: web
 
     - title: Autoscaling - Kubernetes
       url: /advanced-interlok-scaling.html
