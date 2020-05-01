@@ -4,7 +4,7 @@ Release Date : 2018-05-04
 
 ### Key Highlights
 
-- Service-Tester UI, You are now able to build unit tests for your Interlok Config from within the UI and you can export the configured unit tests for use in your CI system. 
+- Service-Tester UI, You are now able to build unit tests for your Interlok Config from within the UI and you can export the configured unit tests for use in your CI system.
 - The UI config settings editor now has a new sidebar that can be used to view metadata on any given connectable database.
 - Support added for "mime-encoded" failed messages that are large
 - New optional component for MongoDB for: Create, Update and Delete operation
@@ -12,48 +12,48 @@ Release Date : 2018-05-04
 
 ### Bugs
 
- - [INTERLOK-1094](https://adaptris.atlassian.net/browse/INTERLOK-1094) - Intermittent Concurrent Modification Exception on apply
- - [INTERLOK-1526](https://adaptris.atlassian.net/browse/INTERLOK-1526) - UI Config - JavaScript error when switching between form/xml on a optional component
- - [INTERLOK-1929](https://adaptris.atlassian.net/browse/INTERLOK-1929) - Shared-Services cannot be used as a direct child of a BranchingServiceCollection via the UI
- - [INTERLOK-2156](https://adaptris.atlassian.net/browse/INTERLOK-2156) - JDBC StoredPreocedureProducer MSSQLServer
- - [INTERLOK-2158](https://adaptris.atlassian.net/browse/INTERLOK-2158) - SQL Server - multi result sets not handled.
- - [INTERLOK-2159](https://adaptris.atlassian.net/browse/INTERLOK-2159) - UI - Javadocs Tooltip links broken
- - [INTERLOK-2163](https://adaptris.atlassian.net/browse/INTERLOK-2163) - UI Config - Settings editor - changes to in focus settings aren't being saved using crtl-s to save modal window
- - [INTERLOK-2171](https://adaptris.atlassian.net/browse/INTERLOK-2171) - S3 Uploads intermittently get "Upload Canceled" exception
- - [INTERLOK-2175](https://adaptris.atlassian.net/browse/INTERLOK-2175) - 3.7.1 Introduces java.lang.IllegalArgumentException with FlatfileTransformService (and possibly others) using http urls rather than file
- - [INTERLOK-2182](https://adaptris.atlassian.net/browse/INTERLOK-2182) - Interlok artifact downloader does not download interlok snapshots
+ - `INTERLOK-1094` - Intermittent Concurrent Modification Exception on apply
+ - `INTERLOK-1526` - UI Config - JavaScript error when switching between form/xml on a optional component
+ - `INTERLOK-1929` - Shared-Services cannot be used as a direct child of a BranchingServiceCollection via the UI
+ - `INTERLOK-2156` - JDBC StoredPreocedureProducer MSSQLServer
+ - `INTERLOK-2158` - SQL Server - multi result sets not handled.
+ - `INTERLOK-2159` - UI - Javadocs Tooltip links broken
+ - `INTERLOK-2163` - UI Config - Settings editor - changes to in focus settings aren't being saved using crtl-s to save modal window
+ - `INTERLOK-2171` - S3 Uploads intermittently get "Upload Canceled" exception
+ - `INTERLOK-2175` - 3.7.1 Introduces java.lang.IllegalArgumentException with FlatfileTransformService (and possibly others) using http urls rather than file
+ - `INTERLOK-2182` - Interlok artifact downloader does not download interlok snapshots
 
 ### Improvements
 
- - [INTERLOK-1655](https://adaptris.atlassian.net/browse/INTERLOK-1655) - Introduce a "flatten mime-part" service for handling emails in conjunction with RawMailConsumer
- - [INTERLOK-1830](https://adaptris.atlassian.net/browse/INTERLOK-1830) - [GUI] - Use new applyService for testing if available
- - [INTERLOK-2004](https://adaptris.atlassian.net/browse/INTERLOK-2004) - UI Config - create a settings editor sidebar that uses database metadata
- - [INTERLOK-2030](https://adaptris.atlassian.net/browse/INTERLOK-2030) - Services that wrap services should now implement ServiceWrapper
- - [INTERLOK-2033](https://adaptris.atlassian.net/browse/INTERLOK-2033) - Add support for Amazon SNS
- - [INTERLOK-2047](https://adaptris.atlassian.net/browse/INTERLOK-2047) - UI Projects - add uids onto the xincs filenames
- - [INTERLOK-2052](https://adaptris.atlassian.net/browse/INTERLOK-2052) - UI - remove the optional interlok socket dependency from the ui
- - [INTERLOK-2053](https://adaptris.atlassian.net/browse/INTERLOK-2053) - UI - improve the connection-to consumer/producer validation rules
- - [INTERLOK-2068](https://adaptris.atlassian.net/browse/INTERLOK-2068) - Add "unique-id" support to the /external/adapter/{id}/ REST API.
- - [INTERLOK-2089](https://adaptris.atlassian.net/browse/INTERLOK-2089) - Upgrade Flyway to 4.2.0
- - [INTERLOK-2094](https://adaptris.atlassian.net/browse/INTERLOK-2094) - New optional component for MongoDB for: Create, Update and Delete operations
- - [INTERLOK-2095](https://adaptris.atlassian.net/browse/INTERLOK-2095) - Investigate MongoDB Read operation
- - [INTERLOK-2108](https://adaptris.atlassian.net/browse/INTERLOK-2108) - Make StatelessServiceWrapper/SharedService/DynamicSharedService consistent vis-a-vis continue-on-fail
- - [INTERLOK-2115](https://adaptris.atlassian.net/browse/INTERLOK-2115) - UI Config - DynamicServiceLocator helper v3.0 - use service settings
- - [INTERLOK-2128](https://adaptris.atlassian.net/browse/INTERLOK-2128) - Support "mime-encoded" failed messages that are large.
- - [INTERLOK-2130](https://adaptris.atlassian.net/browse/INTERLOK-2130) - Service-tester - 2nd version which allows users to run test suite on front-end while configuring
- - [INTERLOK-2133](https://adaptris.atlassian.net/browse/INTERLOK-2133) - Service-tester - 3rd version - allow user to run individual test cases on front-end
- - [INTERLOK-2135](https://adaptris.atlassian.net/browse/INTERLOK-2135) - Service-tester - Use a dropdown to load the external adapter
- - [INTERLOK-2136](https://adaptris.atlassian.net/browse/INTERLOK-2136) - Service-tester - Use a Default/Local Adapter as default for the Test Client
- - [INTERLOK-2137](https://adaptris.atlassian.net/browse/INTERLOK-2137) - Service-tester - add copy and paste options to test-list, test, and test-case
- - [INTERLOK-2138](https://adaptris.atlassian.net/browse/INTERLOK-2138) - Service-tester - Use modal to hide service test uniqueId and test client
- - [INTERLOK-2139](https://adaptris.atlassian.net/browse/INTERLOK-2139) - Service-tester - Improve labelling around 'test client'
- - [INTERLOK-2160](https://adaptris.atlassian.net/browse/INTERLOK-2160) - Service-tester - Add a filter for the tests to easily find a test and only show the failing tests
- - [INTERLOK-2161](https://adaptris.atlassian.net/browse/INTERLOK-2161) - Do not show properties with @XStreamOmitField in the UI
- - [INTERLOK-2167](https://adaptris.atlassian.net/browse/INTERLOK-2167) - Add a custom connection timeout property to the Standard HTTP Producer
- - [INTERLOK-2179](https://adaptris.atlassian.net/browse/INTERLOK-2179) - Logging service write arbitrary messages to logs
- - [INTERLOK-2180](https://adaptris.atlassian.net/browse/INTERLOK-2180) - interlok-filesystem: TarGZip unarchive service
- - [INTERLOK-2122](https://adaptris.atlassian.net/browse/INTERLOK-2122) - Logging inconsistency for StateManagedComponents vs Non State managed.
- - [INTERLOK-2151](https://adaptris.atlassian.net/browse/INTERLOK-2151) - Documentation - update the @InputFieldHint doc page
- - [INTERLOK-2170](https://adaptris.atlassian.net/browse/INTERLOK-2170) - Add @InputFieldDefault annotation to the DefaultServiceNameProvider#separator
- - [INTERLOK-2183](https://adaptris.atlassian.net/browse/INTERLOK-2183) - FileDataInputParameter should use URLHelper
- - [INTERLOK-2184](https://adaptris.atlassian.net/browse/INTERLOK-2184) - JdbcTimestampParameter doesn't support nanoseconds
+ - `INTERLOK-1655` - Introduce a "flatten mime-part" service for handling emails in conjunction with RawMailConsumer
+ - `INTERLOK-1830` - [GUI] - Use new applyService for testing if available
+ - `INTERLOK-2004` - UI Config - create a settings editor sidebar that uses database metadata
+ - `INTERLOK-2030` - Services that wrap services should now implement ServiceWrapper
+ - `INTERLOK-2033` - Add support for Amazon SNS
+ - `INTERLOK-2047` - UI Projects - add uids onto the xincs filenames
+ - `INTERLOK-2052` - UI - remove the optional interlok socket dependency from the ui
+ - `INTERLOK-2053` - UI - improve the connection-to consumer/producer validation rules
+ - `INTERLOK-2068` - Add "unique-id" support to the /external/adapter/{id}/ REST API.
+ - `INTERLOK-2089` - Upgrade Flyway to 4.2.0
+ - `INTERLOK-2094` - New optional component for MongoDB for: Create, Update and Delete operations
+ - `INTERLOK-2095` - Investigate MongoDB Read operation
+ - `INTERLOK-2108` - Make StatelessServiceWrapper/SharedService/DynamicSharedService consistent vis-a-vis continue-on-fail
+ - `INTERLOK-2115` - UI Config - DynamicServiceLocator helper v3.0 - use service settings
+ - `INTERLOK-2128` - Support "mime-encoded" failed messages that are large.
+ - `INTERLOK-2130` - Service-tester - 2nd version which allows users to run test suite on front-end while configuring
+ - `INTERLOK-2133` - Service-tester - 3rd version - allow user to run individual test cases on front-end
+ - `INTERLOK-2135` - Service-tester - Use a dropdown to load the external adapter
+ - `INTERLOK-2136` - Service-tester - Use a Default/Local Adapter as default for the Test Client
+ - `INTERLOK-2137` - Service-tester - add copy and paste options to test-list, test, and test-case
+ - `INTERLOK-2138` - Service-tester - Use modal to hide service test uniqueId and test client
+ - `INTERLOK-2139` - Service-tester - Improve labelling around 'test client'
+ - `INTERLOK-2160` - Service-tester - Add a filter for the tests to easily find a test and only show the failing tests
+ - `INTERLOK-2161` - Do not show properties with @XStreamOmitField in the UI
+ - `INTERLOK-2167` - Add a custom connection timeout property to the Standard HTTP Producer
+ - `INTERLOK-2179` - Logging service write arbitrary messages to logs
+ - `INTERLOK-2180` - interlok-filesystem: TarGZip unarchive service
+ - `INTERLOK-2122` - Logging inconsistency for StateManagedComponents vs Non State managed.
+ - `INTERLOK-2151` - Documentation - update the @InputFieldHint doc page
+ - `INTERLOK-2170` - Add @InputFieldDefault annotation to the DefaultServiceNameProvider#separator
+ - `INTERLOK-2183` - FileDataInputParameter should use URLHelper
+ - `INTERLOK-2184` - JdbcTimestampParameter doesn't support nanoseconds

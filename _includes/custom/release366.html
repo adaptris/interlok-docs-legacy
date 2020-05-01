@@ -13,61 +13,61 @@ Release Date : 2017-11
 
 ### Bugs
 
-- [INTERLOK-1668](https://adaptris.atlassian.net/browse/INTERLOK-1668) - Adapter component properties with @NotBlank are not always (never?) validated in the UI
-- [INTERLOK-1873](https://adaptris.atlassian.net/browse/INTERLOK-1873) - Nested components do not show javadocs in Config
-- [INTERLOK-1874](https://adaptris.atlassian.net/browse/INTERLOK-1874) - Most used sidebar shows passwords
-- [INTERLOK-1917](https://adaptris.atlassian.net/browse/INTERLOK-1917) - @Deprecated and no @XStreamAlias should never show up.
-- [INTERLOK-1925](https://adaptris.atlassian.net/browse/INTERLOK-1925) - DispositionOptions is not order independent
-- [INTERLOK-1926](https://adaptris.atlassian.net/browse/INTERLOK-1926) - large message IO is very slow
-- [INTERLOK-1931](https://adaptris.atlassian.net/browse/INTERLOK-1931) - TriggeredChannel + OneTimePoller + FsConsumer does not work.
-- [INTERLOK-1936](https://adaptris.atlassian.net/browse/INTERLOK-1936) - MailProducers do not allow you to specify the Content-Transfer-Encoding for attachments
-- [INTERLOK-1949](https://adaptris.atlassian.net/browse/INTERLOK-1949) - resolve() doesn't work with MetadataResolver indirection.
-- [INTERLOK-1953](https://adaptris.atlassian.net/browse/INTERLOK-1953) - JdbcResultSet should use getColumnLabel rather than getColumnName
-- [INTERLOK-1964](https://adaptris.atlassian.net/browse/INTERLOK-1964) - Return a 404 instead of a 500 when the a javadoc file cannot be found
-- [INTERLOK-1966](https://adaptris.atlassian.net/browse/INTERLOK-1966) - Exceptions Consuming Messages Are Logged At TRACE Level
-- [INTERLOK-1967](https://adaptris.atlassian.net/browse/INTERLOK-1967) - Cannot configure a StandardProcessingExceptionHandler
-- [INTERLOK-1969](https://adaptris.atlassian.net/browse/INTERLOK-1969) - Saxon 9.7 Does Not Get Picked Up By Xpath Factories
-- [INTERLOK-1973](https://adaptris.atlassian.net/browse/INTERLOK-1973) - RetryMessageErrorHandler never stops?
-- [INTERLOK-1976](https://adaptris.atlassian.net/browse/INTERLOK-1976) - JsonBatchInsert converts null to "null"
-- [INTERLOK-1978](https://adaptris.atlassian.net/browse/INTERLOK-1978) - multi-item-configured-xpath-query fails if nodes are empty
+- `INTERLOK-1668` - Adapter component properties with @NotBlank are not always (never?) validated in the UI
+- `INTERLOK-1873` - Nested components do not show javadocs in Config
+- `INTERLOK-1874` - Most used sidebar shows passwords
+- `INTERLOK-1917` - @Deprecated and no @XStreamAlias should never show up.
+- `INTERLOK-1925` - DispositionOptions is not order independent
+- `INTERLOK-1926` - large message IO is very slow
+- `INTERLOK-1931` - TriggeredChannel + OneTimePoller + FsConsumer does not work.
+- `INTERLOK-1936` - MailProducers do not allow you to specify the Content-Transfer-Encoding for attachments
+- `INTERLOK-1949` - resolve() doesn't work with MetadataResolver indirection.
+- `INTERLOK-1953` - JdbcResultSet should use getColumnLabel rather than getColumnName
+- `INTERLOK-1964` - Return a 404 instead of a 500 when the a javadoc file cannot be found
+- `INTERLOK-1966` - Exceptions Consuming Messages Are Logged At TRACE Level
+- `INTERLOK-1967` - Cannot configure a StandardProcessingExceptionHandler
+- `INTERLOK-1969` - Saxon 9.7 Does Not Get Picked Up By Xpath Factories
+- `INTERLOK-1973` - RetryMessageErrorHandler never stops?
+- `INTERLOK-1976` - JsonBatchInsert converts null to "null"
+- `INTERLOK-1978` - multi-item-configured-xpath-query fails if nodes are empty
 
 ### Improvements
 
-- [INTERLOK-800](https://adaptris.atlassian.net/browse/INTERLOK-800) - Consumer/Producer "Replace" should make use of the new annotations.
-- [INTERLOK-826](https://adaptris.atlassian.net/browse/INTERLOK-826) - CSV->JSON in adp-simple-csv
-- [INTERLOK-1512](https://adaptris.atlassian.net/browse/INTERLOK-1512) - Logging Monitor should have a drop down for the appender
-- [INTERLOK-1811](https://adaptris.atlassian.net/browse/INTERLOK-1811) - Jetty PoolingWorkflow monitor should not return 200 OK
-- [INTERLOK-1822](https://adaptris.atlassian.net/browse/INTERLOK-1822) - UI Config sidebar - Impl a user driven bookmarks list
-- [INTERLOK-1836](https://adaptris.atlassian.net/browse/INTERLOK-1836) - UI Config Project-aware - impl a project-aware creation tool
-- [INTERLOK-1840](https://adaptris.atlassian.net/browse/INTERLOK-1840) - UI Config Project-aware - Impl a feature to load/import the project-aware context / update load from vcs
-- [INTERLOK-1854](https://adaptris.atlassian.net/browse/INTERLOK-1854) - Add 'release version' to ComponentProfile that defines when a component was created
-- [INTERLOK-1856](https://adaptris.atlassian.net/browse/INTERLOK-1856) - UI Config - Setting editor - change behaviour when adding components to lists that have required fields
-- [INTERLOK-1879](https://adaptris.atlassian.net/browse/INTERLOK-1879) - UI - Deprecated components should display the text from the annotation
-- [INTERLOK-1882](https://adaptris.atlassian.net/browse/INTERLOK-1882) - UI Config - shared connections, add dnd features to this component
-- [INTERLOK-1884](https://adaptris.atlassian.net/browse/INTERLOK-1884) - InterlokLauncher should "treat" config differently
-- [INTERLOK-1888](https://adaptris.atlassian.net/browse/INTERLOK-1888) - NewerThan / OlderThan should take absolute values
-- [INTERLOK-1889](https://adaptris.atlassian.net/browse/INTERLOK-1889) - Add Large CSV support to CSV -> XML
-- [INTERLOK-1890](https://adaptris.atlassian.net/browse/INTERLOK-1890) - Add better support for large XML transforms
-- [INTERLOK-1893](https://adaptris.atlassian.net/browse/INTERLOK-1893) - Make javadoc links property driven in builds
-- [INTERLOK-1899](https://adaptris.atlassian.net/browse/INTERLOK-1899) - UI Config - Add a scratchpad feature
-- [INTERLOK-1901](https://adaptris.atlassian.net/browse/INTERLOK-1901) - UI Salesforce - enable the scratchpad feature on the Salesforce page
-- [INTERLOK-1902](https://adaptris.atlassian.net/browse/INTERLOK-1902) - UI Config sidebar - Impl a search in the component lists tab
-- [INTERLOK-1907](https://adaptris.atlassian.net/browse/INTERLOK-1907) - Kafka consumer/producer should use a connection
-- [INTERLOK-1930](https://adaptris.atlassian.net/browse/INTERLOK-1930) - Add Locale + Timezone Support to reformat date service
-- [INTERLOK-1935](https://adaptris.atlassian.net/browse/INTERLOK-1935) - Add a hard-limit to PollingConsumers for no. messages to handle each poll
-- [INTERLOK-1813](https://adaptris.atlassian.net/browse/INTERLOK-1813) - Editing a VCS profile doesn't show the SSH private key
-- [INTERLOK-1832](https://adaptris.atlassian.net/browse/INTERLOK-1832) - JdbcPooledConnection should "makeConnection()" as part of init
-- [INTERLOK-1885](https://adaptris.atlassian.net/browse/INTERLOK-1885) - Update the signing certificates
-- [INTERLOK-1897](https://adaptris.atlassian.net/browse/INTERLOK-1897) - Add tests for SystemPreferenceController, UserController, Parameter and ValidationMessage
-- [INTERLOK-1906](https://adaptris.atlassian.net/browse/INTERLOK-1906) - When creating the salesforce-oauth service; encode the passwords
-- [INTERLOK-1909](https://adaptris.atlassian.net/browse/INTERLOK-1909) - OAUTH jars not signed
-- [INTERLOK-1911](https://adaptris.atlassian.net/browse/INTERLOK-1911) - Add signing for gcloud-pubsub
-- [INTERLOK-1913](https://adaptris.atlassian.net/browse/INTERLOK-1913) - Detect if SalesforceAccessToken is available when starting the Salesforce browser.
-- [INTERLOK-1915](https://adaptris.atlassian.net/browse/INTERLOK-1915) - UI Salesforce - persist the authorization form values during the browser session
-- [INTERLOK-1932](https://adaptris.atlassian.net/browse/INTERLOK-1932) - interlok-hpcc should derive the dstscluster from metadata
-- [INTERLOK-1934](https://adaptris.atlassian.net/browse/INTERLOK-1934) - ZipFileFactory should work with both compressed + uncompressed inputs
-- [INTERLOK-1948](https://adaptris.atlassian.net/browse/INTERLOK-1948) - Add test for TemplateBookmarkService and TemplateBookmarkDao
-- [INTERLOK-1954](https://adaptris.atlassian.net/browse/INTERLOK-1954) - JsonResultSet + CSV ResultSet should support column style
-- [INTERLOK-1961](https://adaptris.atlassian.net/browse/INTERLOK-1961) - UI - Remove unused alert rule classes
-- [INTERLOK-1979](https://adaptris.atlassian.net/browse/INTERLOK-1979) - Add project descriptors for new optional projects
-- [INTERLOK-1980](https://adaptris.atlassian.net/browse/INTERLOK-1980) - New service "commons-compress-unzip-service"
+- `INTERLOK-800` - Consumer/Producer "Replace" should make use of the new annotations.
+- `INTERLOK-826` - CSV->JSON in adp-simple-csv
+- `INTERLOK-1512` - Logging Monitor should have a drop down for the appender
+- `INTERLOK-1811` - Jetty PoolingWorkflow monitor should not return 200 OK
+- `INTERLOK-1822` - UI Config sidebar - Impl a user driven bookmarks list
+- `INTERLOK-1836` - UI Config Project-aware - impl a project-aware creation tool
+- `INTERLOK-1840` - UI Config Project-aware - Impl a feature to load/import the project-aware context / update load from vcs
+- `INTERLOK-1854` - Add 'release version' to ComponentProfile that defines when a component was created
+- `INTERLOK-1856` - UI Config - Setting editor - change behaviour when adding components to lists that have required fields
+- `INTERLOK-1879` - UI - Deprecated components should display the text from the annotation
+- `INTERLOK-1882` - UI Config - shared connections, add dnd features to this component
+- `INTERLOK-1884` - InterlokLauncher should "treat" config differently
+- `INTERLOK-1888` - NewerThan / OlderThan should take absolute values
+- `INTERLOK-1889` - Add Large CSV support to CSV -> XML
+- `INTERLOK-1890` - Add better support for large XML transforms
+- `INTERLOK-1893` - Make javadoc links property driven in builds
+- `INTERLOK-1899` - UI Config - Add a scratchpad feature
+- `INTERLOK-1901` - UI Salesforce - enable the scratchpad feature on the Salesforce page
+- `INTERLOK-1902` - UI Config sidebar - Impl a search in the component lists tab
+- `INTERLOK-1907` - Kafka consumer/producer should use a connection
+- `INTERLOK-1930` - Add Locale + Timezone Support to reformat date service
+- `INTERLOK-1935` - Add a hard-limit to PollingConsumers for no. messages to handle each poll
+- `INTERLOK-1813` - Editing a VCS profile doesn't show the SSH private key
+- `INTERLOK-1832` - JdbcPooledConnection should "makeConnection()" as part of init
+- `INTERLOK-1885` - Update the signing certificates
+- `INTERLOK-1897` - Add tests for SystemPreferenceController, UserController, Parameter and ValidationMessage
+- `INTERLOK-1906` - When creating the salesforce-oauth service; encode the passwords
+- `INTERLOK-1909` - OAUTH jars not signed
+- `INTERLOK-1911` - Add signing for gcloud-pubsub
+- `INTERLOK-1913` - Detect if SalesforceAccessToken is available when starting the Salesforce browser.
+- `INTERLOK-1915` - UI Salesforce - persist the authorization form values during the browser session
+- `INTERLOK-1932` - interlok-hpcc should derive the dstscluster from metadata
+- `INTERLOK-1934` - ZipFileFactory should work with both compressed + uncompressed inputs
+- `INTERLOK-1948` - Add test for TemplateBookmarkService and TemplateBookmarkDao
+- `INTERLOK-1954` - JsonResultSet + CSV ResultSet should support column style
+- `INTERLOK-1961` - UI - Remove unused alert rule classes
+- `INTERLOK-1979` - Add project descriptors for new optional projects
+- `INTERLOK-1980` - New service "commons-compress-unzip-service"

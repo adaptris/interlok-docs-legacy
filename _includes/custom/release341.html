@@ -13,62 +13,62 @@ Release Date : 2016-10-05
 - A new shell based runtime tool
 - JDBC Data Capture now supports batching
 - Framework for easily validating access via message contents
- 
+
 ### Bugs
 
-- [INTERLOK-857](https://adaptris.atlassian.net/browse/INTERLOK-857) - Input field rendered too small
-- [INTERLOK-959](https://adaptris.atlassian.net/browse/INTERLOK-959) - Hard coded references to bootstrap.properties
-- [INTERLOK-1099](https://adaptris.atlassian.net/browse/INTERLOK-1099) - SLF4J bridge should remove all existing handlers
-- [INTERLOK-1109](https://adaptris.atlassian.net/browse/INTERLOK-1109) - No way to set statement in JDBC Data Query Service via standard UI
-- [INTERLOK-1110](https://adaptris.atlassian.net/browse/INTERLOK-1110) - UI - Upgrade to apache shiro 1.2.6
-- [INTERLOK-1112](https://adaptris.atlassian.net/browse/INTERLOK-1112) - Adapter-Web-GUI fails to start depending on optional component dependencies
-- [INTERLOK-1113](https://adaptris.atlassian.net/browse/INTERLOK-1113) - jms+jmx depends on spring 3.2 which breaks the UI
-- [INTERLOK-1116](https://adaptris.atlassian.net/browse/INTERLOK-1116) - JMSProducerImpl get/set Priority has behaviour
-- [INTERLOK-1145](https://adaptris.atlassian.net/browse/INTERLOK-1145) - Still too much pointless logging from the UI
-- [INTERLOK-1157](https://adaptris.atlassian.net/browse/INTERLOK-1157) - Jetty Consumer does not support PATCH
-- [INTERLOK-1158](https://adaptris.atlassian.net/browse/INTERLOK-1158) - UI Widgets - platform runtime details VM arguments showing a js function
-- [INTERLOK-1159](https://adaptris.atlassian.net/browse/INTERLOK-1159) - Initial Adapter start failure leaves channels in an inconsistent state
-- [INTERLOK-1161](https://adaptris.atlassian.net/browse/INTERLOK-1161) - Basic Solace Implementation requires both Broker URL and Hostname
-- [INTERLOK-1162](https://adaptris.atlassian.net/browse/INTERLOK-1162) - Queue producer template autofills spaces in queue name
-- [INTERLOK-1163](https://adaptris.atlassian.net/browse/INTERLOK-1163) - Solace JMS Replicated VPN failover doesn't work with Solace JMS API 7.1.2
-- [INTERLOK-1166](https://adaptris.atlassian.net/browse/INTERLOK-1166) - MqSeriesImplementations extends URLVendorImplementation incorrectly
+- `INTERLOK-857` - Input field rendered too small
+- `INTERLOK-959` - Hard coded references to bootstrap.properties
+- `INTERLOK-1099` - SLF4J bridge should remove all existing handlers
+- `INTERLOK-1109` - No way to set statement in JDBC Data Query Service via standard UI
+- `INTERLOK-1110` - UI - Upgrade to apache shiro 1.2.6
+- `INTERLOK-1112` - Adapter-Web-GUI fails to start depending on optional component dependencies
+- `INTERLOK-1113` - jms+jmx depends on spring 3.2 which breaks the UI
+- `INTERLOK-1116` - JMSProducerImpl get/set Priority has behaviour
+- `INTERLOK-1145` - Still too much pointless logging from the UI
+- `INTERLOK-1157` - Jetty Consumer does not support PATCH
+- `INTERLOK-1158` - UI Widgets - platform runtime details VM arguments showing a js function
+- `INTERLOK-1159` - Initial Adapter start failure leaves channels in an inconsistent state
+- `INTERLOK-1161` - Basic Solace Implementation requires both Broker URL and Hostname
+- `INTERLOK-1162` - Queue producer template autofills spaces in queue name
+- `INTERLOK-1163` - Solace JMS Replicated VPN failover doesn't work with Solace JMS API 7.1.2
+- `INTERLOK-1166` - MqSeriesImplementations extends URLVendorImplementation incorrectly
 
 ### Improvements
 
-- [INTERLOK-777](https://adaptris.atlassian.net/browse/INTERLOK-777) - Update javamail to 1.5.5
-- [INTERLOK-964](https://adaptris.atlassian.net/browse/INTERLOK-964) - Add an annotation that defines that a given member affects metadata
-- [INTERLOK-965](https://adaptris.atlassian.net/browse/INTERLOK-965) - UI Config - Add a Generate ID Button on the settings editor
-- [INTERLOK-976](https://adaptris.atlassian.net/browse/INTERLOK-976) - UI - Alerts / Notes module required
-- [INTERLOK-1031](https://adaptris.atlassian.net/browse/INTERLOK-1031) - Have a CraSH instance embedded as a management component
-- [INTERLOK-1033](https://adaptris.atlassian.net/browse/INTERLOK-1033) - UI Widgets - Convert existing Memory and System load chart to C3
-- [INTERLOK-1043](https://adaptris.atlassian.net/browse/INTERLOK-1043) - UI - Quick Edit Config & Apply
-- [INTERLOK-1049](https://adaptris.atlassian.net/browse/INTERLOK-1049) - XA - Review startup/shutdown
-- [INTERLOK-1058](https://adaptris.atlassian.net/browse/INTERLOK-1058) - UI Logging - update the logging monitor to use websockets to gain data
-- [INTERLOK-1063](https://adaptris.atlassian.net/browse/INTERLOK-1063) - UI Dashboard - Add "delete" functionality to "ignore error" functionality
-- [INTERLOK-1068](https://adaptris.atlassian.net/browse/INTERLOK-1068) - UI - Upgrade the UI to use jersey 2.x
-- [INTERLOK-1078](https://adaptris.atlassian.net/browse/INTERLOK-1078) - Use JDBC Batching In Data Query Service
-- [INTERLOK-1079](https://adaptris.atlassian.net/browse/INTERLOK-1079) - 'Web Services' Security
-- [INTERLOK-1081](https://adaptris.atlassian.net/browse/INTERLOK-1081) - UI Config - improve the visuals of the branching service list
-- [INTERLOK-1082](https://adaptris.atlassian.net/browse/INTERLOK-1082) - In settings modal merge the 2 ways to add sub component
-- [INTERLOK-1093](https://adaptris.atlassian.net/browse/INTERLOK-1093) - UI Config - Improve the action buttons on the edit component modal
-- [INTERLOK-1097](https://adaptris.atlassian.net/browse/INTERLOK-1097) - Add a XALAN based transformer factory
-- [INTERLOK-1098](https://adaptris.atlassian.net/browse/INTERLOK-1098) - MimeAggregator + subclasses should allow you to set the content-type
-- [INTERLOK-1102](https://adaptris.atlassian.net/browse/INTERLOK-1102) - AdaptrisMessageConsumerImp to be StateManaged
-- [INTERLOK-1107](https://adaptris.atlassian.net/browse/INTERLOK-1107) - Shell - Single Message injection command(s)
-- [INTERLOK-1108](https://adaptris.atlassian.net/browse/INTERLOK-1108) - Shell - Documentation
-- [INTERLOK-1115](https://adaptris.atlassian.net/browse/INTERLOK-1115) - Remove use of org.glassfish.hk2.external
-- [INTERLOK-1117](https://adaptris.atlassian.net/browse/INTERLOK-1117) - Add an adapter reload to interlok-shell
-- [INTERLOK-1119](https://adaptris.atlassian.net/browse/INTERLOK-1119) - Add a JSON ResultSetTranslator
-- [INTERLOK-1120](https://adaptris.atlassian.net/browse/INTERLOK-1120) - Add a monolithic "interlok" command to interlok-shell
-- [INTERLOK-1121](https://adaptris.atlassian.net/browse/INTERLOK-1121) - Add tab "Completion" to channel and workflow interlok-shell commands
-- [INTERLOK-1124](https://adaptris.atlassian.net/browse/INTERLOK-1124) - Have JDBCDataQueryService report the number of results from the query
-- [INTERLOK-1125](https://adaptris.atlassian.net/browse/INTERLOK-1125) - UI - Change the way Branching Service Collection First Service are added
-- [INTERLOK-1131](https://adaptris.atlassian.net/browse/INTERLOK-1131) - Add large message support to JSON packages where possible.
-- [INTERLOK-1132](https://adaptris.atlassian.net/browse/INTERLOK-1132) - interlok-shell add the ability to set JMX username and password
-- [INTERLOK-1134](https://adaptris.atlassian.net/browse/INTERLOK-1134) - Testing Branching Service Collection is "confusing".
-- [INTERLOK-1135](https://adaptris.atlassian.net/browse/INTERLOK-1135) - NextServiceID is never displayed during a "test service" unless part of a BranchingServiceCollection test
-- [INTERLOK-1143](https://adaptris.atlassian.net/browse/INTERLOK-1143) - JMS Translators - producer should default to the same message implementation as the consumer
-- [INTERLOK-1148](https://adaptris.atlassian.net/browse/INTERLOK-1148) - UI Logging - the 2nd line tabs to show a filtered subset of results from the all tab
-- [INTERLOK-1152](https://adaptris.atlassian.net/browse/INTERLOK-1152) - Add "Inflight Messages" to REST API
-- [INTERLOK-1155](https://adaptris.atlassian.net/browse/INTERLOK-1155) - Shell - Set payload from file in message-inject
-- [INTERLOK-1165](https://adaptris.atlassian.net/browse/INTERLOK-1165) - JmsConnection should default a JmsConnectionErrorHandler
+- `INTERLOK-777` - Update javamail to 1.5.5
+- `INTERLOK-964` - Add an annotation that defines that a given member affects metadata
+- `INTERLOK-965` - UI Config - Add a Generate ID Button on the settings editor
+- `INTERLOK-976` - UI - Alerts / Notes module required
+- `INTERLOK-1031` - Have a CraSH instance embedded as a management component
+- `INTERLOK-1033` - UI Widgets - Convert existing Memory and System load chart to C3
+- `INTERLOK-1043` - UI - Quick Edit Config & Apply
+- `INTERLOK-1049` - XA - Review startup/shutdown
+- `INTERLOK-1058` - UI Logging - update the logging monitor to use websockets to gain data
+- `INTERLOK-1063` - UI Dashboard - Add "delete" functionality to "ignore error" functionality
+- `INTERLOK-1068` - UI - Upgrade the UI to use jersey 2.x
+- `INTERLOK-1078` - Use JDBC Batching In Data Query Service
+- `INTERLOK-1079` - 'Web Services' Security
+- `INTERLOK-1081` - UI Config - improve the visuals of the branching service list
+- `INTERLOK-1082` - In settings modal merge the 2 ways to add sub component
+- `INTERLOK-1093` - UI Config - Improve the action buttons on the edit component modal
+- `INTERLOK-1097` - Add a XALAN based transformer factory
+- `INTERLOK-1098` - MimeAggregator + subclasses should allow you to set the content-type
+- `INTERLOK-1102` - AdaptrisMessageConsumerImp to be StateManaged
+- `INTERLOK-1107` - Shell - Single Message injection command(s)
+- `INTERLOK-1108` - Shell - Documentation
+- `INTERLOK-1115` - Remove use of org.glassfish.hk2.external
+- `INTERLOK-1117` - Add an adapter reload to interlok-shell
+- `INTERLOK-1119` - Add a JSON ResultSetTranslator
+- `INTERLOK-1120` - Add a monolithic "interlok" command to interlok-shell
+- `INTERLOK-1121` - Add tab "Completion" to channel and workflow interlok-shell commands
+- `INTERLOK-1124` - Have JDBCDataQueryService report the number of results from the query
+- `INTERLOK-1125` - UI - Change the way Branching Service Collection First Service are added
+- `INTERLOK-1131` - Add large message support to JSON packages where possible.
+- `INTERLOK-1132` - interlok-shell add the ability to set JMX username and password
+- `INTERLOK-1134` - Testing Branching Service Collection is "confusing".
+- `INTERLOK-1135` - NextServiceID is never displayed during a "test service" unless part of a BranchingServiceCollection test
+- `INTERLOK-1143` - JMS Translators - producer should default to the same message implementation as the consumer
+- `INTERLOK-1148` - UI Logging - the 2nd line tabs to show a filtered subset of results from the all tab
+- `INTERLOK-1152` - Add "Inflight Messages" to REST API
+- `INTERLOK-1155` - Shell - Set payload from file in message-inject
+- `INTERLOK-1165` - JmsConnection should default a JmsConnectionErrorHandler
