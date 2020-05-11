@@ -1,6 +1,6 @@
 ## Version 3.10.1 ##
 
-Release Date : 2020-04
+Release Date : 2020-05-11
 
 ### Key Highlights
 
@@ -17,8 +17,9 @@ Release Date : 2020-04
     - Change of dependency from com.sun.mail:javax.mail to jakarta mail
     - Solace JCSMP early development as an alternative to JMS
     - Profiling to Prometheus now gives additional metrics; average speed of workflow processing and failed message counts.
-    - Added support for SMB consumer/producer
+    - Added support for a SMB consumer/producer
     - interlok-shell has been marked as Deprecated, since it isn't supported in Java 11
+    - A new exciting experimental installer based on JavaFX that allows you to pre-select optional components that you want to bundle into your installation
 
 ### Bugs
 - `INTERLOK-2996` - UI Configuring a triggered channel.
@@ -32,6 +33,7 @@ Release Date : 2020-04
 - `INTERLOK-3237` - UI - fix Vulnerability with commons-configuration2
 - `INTERLOK-3238` - UI - fix Vulnerability with snakeyaml
 - `INTERLOK-3245` - UI - XML External Entity (XXE) Injection
+- `INTERLOK-3254` - interlok-shell "help" doesn't work
 
 ### Improvements
 
@@ -66,6 +68,8 @@ Release Date : 2020-04
 - `INTERLOK-3232` - SMTP - Expressions
 - `INTERLOK-3234` - Add support for a SMB consumer/producer
 - `INTERLOK-3252` - workflow-rest-services should add a logging context
+- `INTERLOK-3255` - Deprecate interlok-shell since it isn't supported in Java 11
+- `INTERLOK-3267` - Javafx installer - Downloads page
 - `INTERLOK-2899` - Remove package.html -> package-info.java for all existing projects
 - `INTERLOK-3216` - Upgrade swiftMQ client to 12.x
 - `INTERLOK-3221` - Ui - Upgrade jersey to 2.30.1
