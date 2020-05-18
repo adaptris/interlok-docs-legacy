@@ -13,57 +13,57 @@ Release Date : 2017-08-30
 
 ### Bugs
 
-- [INTERLOK-1563](https://adaptris.atlassian.net/browse/INTERLOK-1563) - Timing Issue causing NPE in ClusteredEventBus
-- [INTERLOK-1581](https://adaptris.atlassian.net/browse/INTERLOK-1581) - schema fails with NPE when interlok-vertx is included
-- [INTERLOK-1582](https://adaptris.atlassian.net/browse/INTERLOK-1582) - Schema cannot load the schema it has generated when adp-amqp is included
-- [INTERLOK-1714](https://adaptris.atlassian.net/browse/INTERLOK-1714) - GUI "test facility" does not allow you to step through to next services if service fails and is configured to "continue on fail"
-- [INTERLOK-1715](https://adaptris.atlassian.net/browse/INTERLOK-1715) - Replacing a service via XML editor doesn't render afterwards
-- [INTERLOK-1722](https://adaptris.atlassian.net/browse/INTERLOK-1722) - "log" should be like "message" in Scripting Service validator
-- [INTERLOK-1724](https://adaptris.atlassian.net/browse/INTERLOK-1724) - Add advanced components from XML snippet does not add the component
-- [INTERLOK-1725](https://adaptris.atlassian.net/browse/INTERLOK-1725) - Saved Advance Components Templates are not displayed in the Add Components from Templates
-- [INTERLOK-1732](https://adaptris.atlassian.net/browse/INTERLOK-1732) - SharedService should implement EventHandlerAware
-- [INTERLOK-1734](https://adaptris.atlassian.net/browse/INTERLOK-1734) - GUI not able to find javadocs for inner clases e.g. PollingTrigger.MessageProvider
-- [INTERLOK-1739](https://adaptris.atlassian.net/browse/INTERLOK-1739) - Triggered Channel does not report "status" properly
-- [INTERLOK-1744](https://adaptris.atlassian.net/browse/INTERLOK-1744) - AdaptrisMessage#resolve() throws NPE on non-existent metadata key
-- [INTERLOK-1758](https://adaptris.atlassian.net/browse/INTERLOK-1758) - UI needs to differentiate between nul" and the empty string.
-- [INTERLOK-1761](https://adaptris.atlassian.net/browse/INTERLOK-1761) - Indented XML has different output on JsonXmlTransformService using default driver
-- [INTERLOK-1763](https://adaptris.atlassian.net/browse/INTERLOK-1763) - JsonPathSyntaxIdentifier doesn't follow the same semantics as other identifiers
-- [INTERLOK-1764](https://adaptris.atlassian.net/browse/INTERLOK-1764) - Swagger 'try-it-out' does not work with the UI REST API
-- [INTERLOK-1765](https://adaptris.atlassian.net/browse/INTERLOK-1765) - Documentation Site: Installation links not valid or syntax incorrect
-- [INTERLOK-1778](https://adaptris.atlassian.net/browse/INTERLOK-1778) - adp-schema doesn't work with reflections 0.9.11
-- [INTERLOK-1787](https://adaptris.atlassian.net/browse/INTERLOK-1787) - UI - ssh keyfile VCS profile does not work
+- `INTERLOK-1563` - Timing Issue causing NPE in ClusteredEventBus
+- `INTERLOK-1581` - schema fails with NPE when interlok-vertx is included
+- `INTERLOK-1582` - Schema cannot load the schema it has generated when adp-amqp is included
+- `INTERLOK-1714` - GUI "test facility" does not allow you to step through to next services if service fails and is configured to "continue on fail"
+- `INTERLOK-1715` - Replacing a service via XML editor doesn't render afterwards
+- `INTERLOK-1722` - "log" should be like "message" in Scripting Service validator
+- `INTERLOK-1724` - Add advanced components from XML snippet does not add the component
+- `INTERLOK-1725` - Saved Advance Components Templates are not displayed in the Add Components from Templates
+- `INTERLOK-1732` - SharedService should implement EventHandlerAware
+- `INTERLOK-1734` - GUI not able to find javadocs for inner clases e.g. PollingTrigger.MessageProvider
+- `INTERLOK-1739` - Triggered Channel does not report "status" properly
+- `INTERLOK-1744` - AdaptrisMessage#resolve() throws NPE on non-existent metadata key
+- `INTERLOK-1758` - UI needs to differentiate between nul" and the empty string.
+- `INTERLOK-1761` - Indented XML has different output on JsonXmlTransformService using default driver
+- `INTERLOK-1763` - JsonPathSyntaxIdentifier doesn't follow the same semantics as other identifiers
+- `INTERLOK-1764` - Swagger 'try-it-out' does not work with the UI REST API
+- `INTERLOK-1765` - Documentation Site: Installation links not valid or syntax incorrect
+- `INTERLOK-1778` - adp-schema doesn't work with reflections 0.9.11
+- `INTERLOK-1787` - UI - ssh keyfile VCS profile does not work
 
 ### Improvements
 
-- [INTERLOK-1285](https://adaptris.atlassian.net/browse/INTERLOK-1285) - Doc Section/Page Request: "How do I transform XML Message data to JSON format? and vice-versa?"
-- [INTERLOK-1291](https://adaptris.atlassian.net/browse/INTERLOK-1291) - Doc Section/Page Request: "How do you transform a CSV file to XML using Interlok?"
-- [INTERLOK-1375](https://adaptris.atlassian.net/browse/INTERLOK-1375) - UI API - Enable a "Local" Version of the GUI REST API
-- [INTERLOK-1496](https://adaptris.atlassian.net/browse/INTERLOK-1496) - Add an helper service to get exceptions into JSON
-- [INTERLOK-1518](https://adaptris.atlassian.net/browse/INTERLOK-1518) - UI Salesforce - Create initial integration components
-- [INTERLOK-1596](https://adaptris.atlassian.net/browse/INTERLOK-1596) - CheckCacheService should have the option to retrieve the cached item as well
-- [INTERLOK-1663](https://adaptris.atlassian.net/browse/INTERLOK-1663) - UI Config - Stop the 'Shared Service' component being added to Shared services
-- [INTERLOK-1665](https://adaptris.atlassian.net/browse/INTERLOK-1665) - UI Config - Allow shared services to be reorderable
-- [INTERLOK-1666](https://adaptris.atlassian.net/browse/INTERLOK-1666) - UI Config - Allow creation of Shared Service by dragging existing service into the list area.
-- [INTERLOK-1681](https://adaptris.atlassian.net/browse/INTERLOK-1681) - Add custom retry policy support to AWS (ClientConfigurationBuilder)
-- [INTERLOK-1700](https://adaptris.atlassian.net/browse/INTERLOK-1700) - Added shared-service support to AdapterManager
-- [INTERLOK-1702](https://adaptris.atlassian.net/browse/INTERLOK-1702) - Ensure removal of SharedServices from JNDI on apply
-- [INTERLOK-1718](https://adaptris.atlassian.net/browse/INTERLOK-1718) - Failover - support for direct TCP not Multicast
-- [INTERLOK-1721](https://adaptris.atlassian.net/browse/INTERLOK-1721) - Write a service to replace the "http-router" scripting service
-- [INTERLOK-1729](https://adaptris.atlassian.net/browse/INTERLOK-1729) - UI Config - Allow creation of Service by dragging existing Shared service into the service list area.
-- [INTERLOK-1730](https://adaptris.atlassian.net/browse/INTERLOK-1730) - Cache Google Cloud PubSub Publisher to increase performance
-- [INTERLOK-1731](https://adaptris.atlassian.net/browse/INTERLOK-1731) - Dynamic Shared Service Lookup
-- [INTERLOK-1733](https://adaptris.atlassian.net/browse/INTERLOK-1733) - ReadMetadataFromFilesystem should not "need" filename-creator
-- [INTERLOK-1735](https://adaptris.atlassian.net/browse/INTERLOK-1735) - Add an XSLT Preprocessor
-- [INTERLOK-1737](https://adaptris.atlassian.net/browse/INTERLOK-1737) - Google Cloud Credential Provider that uses the Application Default
-- [INTERLOK-1738](https://adaptris.atlassian.net/browse/INTERLOK-1738) - Show Ironmq some love
-- [INTERLOK-1741](https://adaptris.atlassian.net/browse/INTERLOK-1741) - Disallow workflow operations on TriggeredChannel
-- [INTERLOK-1742](https://adaptris.atlassian.net/browse/INTERLOK-1742) - Store message metadata as S3 user metadata
-- [INTERLOK-1746](https://adaptris.atlassian.net/browse/INTERLOK-1746) - UI Config - Make the "Add component" modal content a knockout component
-- [INTERLOK-1749](https://adaptris.atlassian.net/browse/INTERLOK-1749) - Solace JMX over JMS
-- [INTERLOK-1757](https://adaptris.atlassian.net/browse/INTERLOK-1757) - Change ehcache to be a connection
-- [INTERLOK-821](https://adaptris.atlassian.net/browse/INTERLOK-821) - UI Config - settings editor - nested objects need to obey display order
-- [INTERLOK-1505](https://adaptris.atlassian.net/browse/INTERLOK-1505) - Review String parameters so that we use the AdaptrisMessage.resolve(String) method
-- [INTERLOK-1740](https://adaptris.atlassian.net/browse/INTERLOK-1740) - Add a getWrappedClass() to AdapterComponentMBean
-- [INTERLOK-1750](https://adaptris.atlassian.net/browse/INTERLOK-1750) - Ugly NPE in MetadataToPayloadService
-- [INTERLOK-1751](https://adaptris.atlassian.net/browse/INTERLOK-1751) - Support Server Side encryption for S3 uploads
-- [INTERLOK-1614](https://adaptris.atlassian.net/browse/INTERLOK-1614) - UI Start Up - Improve the time it takes for jetty to start with the ui war
+- `INTERLOK-1285` - Doc Section/Page Request: "How do I transform XML Message data to JSON format? and vice-versa?"
+- `INTERLOK-1291` - Doc Section/Page Request: "How do you transform a CSV file to XML using Interlok?"
+- `INTERLOK-1375` - UI API - Enable a "Local" Version of the GUI REST API
+- `INTERLOK-1496` - Add an helper service to get exceptions into JSON
+- `INTERLOK-1518` - UI Salesforce - Create initial integration components
+- `INTERLOK-1596` - CheckCacheService should have the option to retrieve the cached item as well
+- `INTERLOK-1663` - UI Config - Stop the 'Shared Service' component being added to Shared services
+- `INTERLOK-1665` - UI Config - Allow shared services to be reorderable
+- `INTERLOK-1666` - UI Config - Allow creation of Shared Service by dragging existing service into the list area.
+- `INTERLOK-1681` - Add custom retry policy support to AWS (ClientConfigurationBuilder)
+- `INTERLOK-1700` - Added shared-service support to AdapterManager
+- `INTERLOK-1702` - Ensure removal of SharedServices from JNDI on apply
+- `INTERLOK-1718` - Failover - support for direct TCP not Multicast
+- `INTERLOK-1721` - Write a service to replace the "http-router" scripting service
+- `INTERLOK-1729` - UI Config - Allow creation of Service by dragging existing Shared service into the service list area.
+- `INTERLOK-1730` - Cache Google Cloud PubSub Publisher to increase performance
+- `INTERLOK-1731` - Dynamic Shared Service Lookup
+- `INTERLOK-1733` - ReadMetadataFromFilesystem should not "need" filename-creator
+- `INTERLOK-1735` - Add an XSLT Preprocessor
+- `INTERLOK-1737` - Google Cloud Credential Provider that uses the Application Default
+- `INTERLOK-1738` - Show Ironmq some love
+- `INTERLOK-1741` - Disallow workflow operations on TriggeredChannel
+- `INTERLOK-1742` - Store message metadata as S3 user metadata
+- `INTERLOK-1746` - UI Config - Make the "Add component" modal content a knockout component
+- `INTERLOK-1749` - Solace JMX over JMS
+- `INTERLOK-1757` - Change ehcache to be a connection
+- `INTERLOK-821` - UI Config - settings editor - nested objects need to obey display order
+- `INTERLOK-1505` - Review String parameters so that we use the AdaptrisMessage.resolve(String) method
+- `INTERLOK-1740` - Add a getWrappedClass() to AdapterComponentMBean
+- `INTERLOK-1750` - Ugly NPE in MetadataToPayloadService
+- `INTERLOK-1751` - Support Server Side encryption for S3 uploads
+- `INTERLOK-1614` - UI Start Up - Improve the time it takes for jetty to start with the ui war

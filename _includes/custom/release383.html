@@ -13,71 +13,71 @@ Release Date : 2019-02-21
 - Support added for interlok-aws to enable withEndpointConfiguration for use with custom endpoints
 - JdbcDataQueryService improvements allow you to have dynamic column translators
 - JdbcDataCaptureService will now give you the number of rows updated
-- Actional Interceptor now supports nested services, such as splitters. 
+- Actional Interceptor now supports nested services, such as splitters.
 
 ### Bugs
 
- - [INTERLOK-743](https://adaptris.atlassian.net/browse/INTERLOK-743) - Intermittent JMX issue
- - [INTERLOK-1223](https://adaptris.atlassian.net/browse/INTERLOK-1223) - Adapter GUI doesn't play nice with other applications (permissions-engine-client)
- - [INTERLOK-2290](https://adaptris.atlassian.net/browse/INTERLOK-2290) - Optional component download is broken on non-RBI hardware.
- - [INTERLOK-2506](https://adaptris.atlassian.net/browse/INTERLOK-2506) - UI Snyk Alert - fix vulnerable module: org.springframework:spring-web (Authentication Bypass)
- - [INTERLOK-2530](https://adaptris.atlassian.net/browse/INTERLOK-2530) - Release javadocs do not have links to interlok-core
- - [INTERLOK-2536](https://adaptris.atlassian.net/browse/INTERLOK-2536) - Actional Interceptor doesn't support nested services.
- - [INTERLOK-2559](https://adaptris.atlassian.net/browse/INTERLOK-2559) - UI Dashboard - Find missing adapter request should not be done in view only mode
- - [INTERLOK-2568](https://adaptris.atlassian.net/browse/INTERLOK-2568) - UI Config Page - unable to configure the 'validation-stage' in a 'xml-rule-validator' for the 'xml-validation-service ' without using the xml editor
- - [INTERLOK-2570](https://adaptris.atlassian.net/browse/INTERLOK-2570) - UI Projects - variable substitution doesn't work for xml-validation-service/validators/xml-schema-validator/schema
- - [INTERLOK-2580](https://adaptris.atlassian.net/browse/INTERLOK-2580) - UI Config - When saving a project the Local File System option should only be available when running the ui on localhost
- - [INTERLOK-2585](https://adaptris.atlassian.net/browse/INTERLOK-2585) - Upgrade jackson to 2.9.8
- - [INTERLOK-2593](https://adaptris.atlassian.net/browse/INTERLOK-2593) - interlok-boot does not handle hidden / "whiteout" files correctly.
- - [INTERLOK-2596](https://adaptris.atlassian.net/browse/INTERLOK-2596) - UI Projects - improve the imported/saved setting of the ui-project "structured" flag value
- - [INTERLOK-2597](https://adaptris.atlassian.net/browse/INTERLOK-2597) - Invalid group reference when using xml-validation-service
- - [INTERLOK-2604](https://adaptris.atlassian.net/browse/INTERLOK-2604) - UI Config Page - Apply config after changing 'Adapter Unique ID' and having a 'runtime validation' fault causes ui re-apply confusion
- - [INTERLOK-2615](https://adaptris.atlassian.net/browse/INTERLOK-2615) - UI - Loading project resolves nested properties
- - [INTERLOK-2616](https://adaptris.atlassian.net/browse/INTERLOK-2616) - UI Config Page - The Service Tester Modal doesn't work if you haven't loaded config from the active adapter or selected adapter from apply modal
- - [INTERLOK-2621](https://adaptris.atlassian.net/browse/INTERLOK-2621) - UI Config Page - Autosave is unable to save config (when using a freshly installed Adapter, thats never saved a project before)
- - [INTERLOK-2623](https://adaptris.atlassian.net/browse/INTERLOK-2623) - Interlok-oauth projects manifest files miss some information
- - [INTERLOK-2628](https://adaptris.atlassian.net/browse/INTERLOK-2628) - Service-Tester does not play nice with json-schema
+ - `INTERLOK-743` - Intermittent JMX issue
+ - `INTERLOK-1223` - Adapter GUI doesn't play nice with other applications (permissions-engine-client)
+ - `INTERLOK-2290` - Optional component download is broken on non-RBI hardware.
+ - `INTERLOK-2506` - UI Snyk Alert - fix vulnerable module: org.springframework:spring-web (Authentication Bypass)
+ - `INTERLOK-2530` - Release javadocs do not have links to interlok-core
+ - `INTERLOK-2536` - Actional Interceptor doesn't support nested services.
+ - `INTERLOK-2559` - UI Dashboard - Find missing adapter request should not be done in view only mode
+ - `INTERLOK-2568` - UI Config Page - unable to configure the 'validation-stage' in a 'xml-rule-validator' for the 'xml-validation-service ' without using the xml editor
+ - `INTERLOK-2570` - UI Projects - variable substitution doesn't work for xml-validation-service/validators/xml-schema-validator/schema
+ - `INTERLOK-2580` - UI Config - When saving a project the Local File System option should only be available when running the ui on localhost
+ - `INTERLOK-2585` - Upgrade jackson to 2.9.8
+ - `INTERLOK-2593` - interlok-boot does not handle hidden / "whiteout" files correctly.
+ - `INTERLOK-2596` - UI Projects - improve the imported/saved setting of the ui-project "structured" flag value
+ - `INTERLOK-2597` - Invalid group reference when using xml-validation-service
+ - `INTERLOK-2604` - UI Config Page - Apply config after changing 'Adapter Unique ID' and having a 'runtime validation' fault causes ui re-apply confusion
+ - `INTERLOK-2615` - UI - Loading project resolves nested properties
+ - `INTERLOK-2616` - UI Config Page - The Service Tester Modal doesn't work if you haven't loaded config from the active adapter or selected adapter from apply modal
+ - `INTERLOK-2621` - UI Config Page - Autosave is unable to save config (when using a freshly installed Adapter, thats never saved a project before)
+ - `INTERLOK-2623` - Interlok-oauth projects manifest files miss some information
+ - `INTERLOK-2628` - Service-Tester does not play nice with json-schema
 
 ### Improvements
 
- - [INTERLOK-338](https://adaptris.atlassian.net/browse/INTERLOK-338) - Add in JMS 2.0 support
- - [INTERLOK-367](https://adaptris.atlassian.net/browse/INTERLOK-367) - UI Dashboard - Consider options to handle action operations when state errors are expected
- - [INTERLOK-1561](https://adaptris.atlassian.net/browse/INTERLOK-1561) - UI Config - Should removing shared components result in further actions?
- - [INTERLOK-1843](https://adaptris.atlassian.net/browse/INTERLOK-1843) - TestService should support new forward-search capabilities
- - [INTERLOK-2018](https://adaptris.atlassian.net/browse/INTERLOK-2018) - Interlok CSV: Line number as attribute on record element
- - [INTERLOK-2244](https://adaptris.atlassian.net/browse/INTERLOK-2244) - UI Projects - Enable variables token selector on settings editors simple lists and KeyValuePairSets
- - [INTERLOK-2372](https://adaptris.atlassian.net/browse/INTERLOK-2372) - Management component to replace interlok-restful-services
- - [INTERLOK-2401](https://adaptris.atlassian.net/browse/INTERLOK-2401) - UI Projects - ensure changes made to xml, json and properties, should, if possible retain order etc, so vcs systems can show diffs.
- - [INTERLOK-2444](https://adaptris.atlassian.net/browse/INTERLOK-2444) - UI Projects - can we open a ui-project without a config-project.json
- - [INTERLOK-2473](https://adaptris.atlassian.net/browse/INTERLOK-2473) - Use staxon to do JSON->XML and XML->JSON for very large messages
- - [INTERLOK-2495](https://adaptris.atlassian.net/browse/INTERLOK-2495) - UI Config - update the settings editor to show @Removal warning messages
- - [INTERLOK-2502](https://adaptris.atlassian.net/browse/INTERLOK-2502) - UI Widget - Create a 'Custom Widgets JSON Schema' for developers to work with.
- - [INTERLOK-2509](https://adaptris.atlassian.net/browse/INTERLOK-2509) - UI Dashboard - Only request data for visible and not disconnected adapter
- - [INTERLOK-2512](https://adaptris.atlassian.net/browse/INTERLOK-2512) - UI Dashboard - Drop in flight indicator in table mode
- - [INTERLOK-2531](https://adaptris.atlassian.net/browse/INTERLOK-2531) - UI Service Tester - Set test working directory
- - [INTERLOK-2533](https://adaptris.atlassian.net/browse/INTERLOK-2533) - UI Component Search - add pagination to the 'component search' results page
- - [INTERLOK-2534](https://adaptris.atlassian.net/browse/INTERLOK-2534) - UI Component Search - add more 'component data' to the search results page
- - [INTERLOK-2541](https://adaptris.atlassian.net/browse/INTERLOK-2541) - UI Component Search - add input for 'version' so users can search for specific versions of components
- - [INTERLOK-2556](https://adaptris.atlassian.net/browse/INTERLOK-2556) - JdbcDataCaptureService should give you the number of rows updated
- - [INTERLOK-2557](https://adaptris.atlassian.net/browse/INTERLOK-2557) - JdbcDataQueryService -> dynamic column translators?
- - [INTERLOK-2558](https://adaptris.atlassian.net/browse/INTERLOK-2558) - simple-payload-translator does not cope with compressed-data
- - [INTERLOK-2564](https://adaptris.atlassian.net/browse/INTERLOK-2564) - UI Index Page - Add component search page to the index page
- - [INTERLOK-2569](https://adaptris.atlassian.net/browse/INTERLOK-2569) - UI - Create a new user-preference flag "enable technical preview features"
- - [INTERLOK-2591](https://adaptris.atlassian.net/browse/INTERLOK-2591) - UI Config Page - Create feature to validate the xpaths in the ui project modal
- - [INTERLOK-2605](https://adaptris.atlassian.net/browse/INTERLOK-2605) - interlok-service-tester: Support working directory property resolution
- - [INTERLOK-2606](https://adaptris.atlassian.net/browse/INTERLOK-2606) - Update copyright date to 2019
- - [INTERLOK-2618](https://adaptris.atlassian.net/browse/INTERLOK-2618) - interlok-aws: Support withEndpointConfiguration for use with localstack
- - [INTERLOK-2626](https://adaptris.atlassian.net/browse/INTERLOK-2626) - Add removal annotation information to the elastic search indexed componenent
- - [INTERLOK-988](https://adaptris.atlassian.net/browse/INTERLOK-988) - "Shrink" the action panel on the dashboard page
- - [INTERLOK-1677](https://adaptris.atlassian.net/browse/INTERLOK-1677) - Settings are not preserved when switching implementations
- - [INTERLOK-1767](https://adaptris.atlassian.net/browse/INTERLOK-1767) - UI Config - Improve metadata preview default message label
- - [INTERLOK-2395](https://adaptris.atlassian.net/browse/INTERLOK-2395) - Upgrade pooling-message-services commons-pool to 2.6.0
- - [INTERLOK-2526](https://adaptris.atlassian.net/browse/INTERLOK-2526) - UI Service Tester - update the 'file' input on generated tests to match the new project structure
- - [INTERLOK-2555](https://adaptris.atlassian.net/browse/INTERLOK-2555) - UI Component Search - improve indexer by adding new annotation @indexable on components that arent a subtype of AdaptrisComponent
- - [INTERLOK-2563](https://adaptris.atlassian.net/browse/INTERLOK-2563) - UI Version - make sure the version in interlokui.properties is correct after the hotfix merge
- - [INTERLOK-2575](https://adaptris.atlassian.net/browse/INTERLOK-2575) - UI Dashboard - Stop the auto population of the add-adapter>advanced options>username + password fields.
- - [INTERLOK-2582](https://adaptris.atlassian.net/browse/INTERLOK-2582) - UI Projects - Remove arbitrary character length restriction from varsub filename length
- - [INTERLOK-2617](https://adaptris.atlassian.net/browse/INTERLOK-2617) - Add a new method to msg.resolve() for PayloadFromMetadata
- - [INTERLOK-2619](https://adaptris.atlassian.net/browse/INTERLOK-2619) - Add "Category" to LoggingServiceIMpl
- - [INTERLOK-2545](https://adaptris.atlassian.net/browse/INTERLOK-2545) - dependabot updates for 3.8.3
- - [INTERLOK-2632](https://adaptris.atlassian.net/browse/INTERLOK-2632) - UI Component Search - improve indexer to download non-public jars so it can index components such as interlok-solace
+ - `INTERLOK-338` - Add in JMS 2.0 support
+ - `INTERLOK-367` - UI Dashboard - Consider options to handle action operations when state errors are expected
+ - `INTERLOK-1561` - UI Config - Should removing shared components result in further actions?
+ - `INTERLOK-1843` - TestService should support new forward-search capabilities
+ - `INTERLOK-2018` - Interlok CSV: Line number as attribute on record element
+ - `INTERLOK-2244` - UI Projects - Enable variables token selector on settings editors simple lists and KeyValuePairSets
+ - `INTERLOK-2372` - Management component to replace interlok-restful-services
+ - `INTERLOK-2401` - UI Projects - ensure changes made to xml, json and properties, should, if possible retain order etc, so vcs systems can show diffs.
+ - `INTERLOK-2444` - UI Projects - can we open a ui-project without a config-project.json
+ - `INTERLOK-2473` - Use staxon to do JSON->XML and XML->JSON for very large messages
+ - `INTERLOK-2495` - UI Config - update the settings editor to show @Removal warning messages
+ - `INTERLOK-2502` - UI Widget - Create a 'Custom Widgets JSON Schema' for developers to work with.
+ - `INTERLOK-2509` - UI Dashboard - Only request data for visible and not disconnected adapter
+ - `INTERLOK-2512` - UI Dashboard - Drop in flight indicator in table mode
+ - `INTERLOK-2531` - UI Service Tester - Set test working directory
+ - `INTERLOK-2533` - UI Component Search - add pagination to the 'component search' results page
+ - `INTERLOK-2534` - UI Component Search - add more 'component data' to the search results page
+ - `INTERLOK-2541` - UI Component Search - add input for 'version' so users can search for specific versions of components
+ - `INTERLOK-2556` - JdbcDataCaptureService should give you the number of rows updated
+ - `INTERLOK-2557` - JdbcDataQueryService -> dynamic column translators?
+ - `INTERLOK-2558` - simple-payload-translator does not cope with compressed-data
+ - `INTERLOK-2564` - UI Index Page - Add component search page to the index page
+ - `INTERLOK-2569` - UI - Create a new user-preference flag "enable technical preview features"
+ - `INTERLOK-2591` - UI Config Page - Create feature to validate the xpaths in the ui project modal
+ - `INTERLOK-2605` - interlok-service-tester: Support working directory property resolution
+ - `INTERLOK-2606` - Update copyright date to 2019
+ - `INTERLOK-2618` - interlok-aws: Support withEndpointConfiguration for use with localstack
+ - `INTERLOK-2626` - Add removal annotation information to the elastic search indexed componenent
+ - `INTERLOK-988` - "Shrink" the action panel on the dashboard page
+ - `INTERLOK-1677` - Settings are not preserved when switching implementations
+ - `INTERLOK-1767` - UI Config - Improve metadata preview default message label
+ - `INTERLOK-2395` - Upgrade pooling-message-services commons-pool to 2.6.0
+ - `INTERLOK-2526` - UI Service Tester - update the 'file' input on generated tests to match the new project structure
+ - `INTERLOK-2555` - UI Component Search - improve indexer by adding new annotation @indexable on components that arent a subtype of AdaptrisComponent
+ - `INTERLOK-2563` - UI Version - make sure the version in interlokui.properties is correct after the hotfix merge
+ - `INTERLOK-2575` - UI Dashboard - Stop the auto population of the add-adapter>advanced options>username + password fields.
+ - `INTERLOK-2582` - UI Projects - Remove arbitrary character length restriction from varsub filename length
+ - `INTERLOK-2617` - Add a new method to msg.resolve() for PayloadFromMetadata
+ - `INTERLOK-2619` - Add "Category" to LoggingServiceIMpl
+ - `INTERLOK-2545` - dependabot updates for 3.8.3
+ - `INTERLOK-2632` - UI Component Search - improve indexer to download non-public jars so it can index components such as interlok-solace

@@ -62,7 +62,7 @@ public class Channel ... {
 }
 ```
 
-When this class is un-marshalled, regardless of the non-transient class members only those with public getters and setters will be un-marshalled. This class is deprecated with no replacement as of __3.4.1__. The reason for this is tracked as [INTERLOK-1085](https://adaptris.atlassian.net/browse/INTERLOK-1085). You are encouraged to change your class so that getters and setters have no behaviour.
+When this class is un-marshalled, regardless of the non-transient class members only those with public getters and setters will be un-marshalled. This class is deprecated with no replacement as of __3.4.1__. You are encouraged to change your class so that getters and setters have no behaviour.
 
 {% include important.html content="This class is deprecated with no replacement as of __3.4.1__." %}
 
