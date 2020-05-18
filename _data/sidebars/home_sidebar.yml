@@ -329,6 +329,10 @@ entries:
     - title: Logic blocks in configuration
       url: /advanced-conditional.html
       output: web
+      
+    - title: Clustering Instances
+      url: /advanced-cluster.html
+      output: web
 
     - title: Autoscaling - Kubernetes
       url: /advanced-interlok-scaling.html
