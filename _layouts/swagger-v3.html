@@ -39,7 +39,7 @@ layout: default
 	<div id="swagger-ui-container" class="swagger-ui-wrap" style="max-width: 100%">
         <!-- <h2>{{ swagger.info.title }}</h2> -->
         <span style="color: #999">
-          [ <span style="font-variant: small-caps">base url</span>: {{ swagger.basePath }} , <span style="font-variant: small-caps">api version</span>: {{ swagger.info.version }} ]
+          [ <span style="font-variant: small-caps">base url</span>: {% if swagger.servers and swagger.servers.size > 0 %}{{ swagger.servers[0].url }}{% endif %} , <span style="font-variant: small-caps">api version</span>: {{ swagger.info.version }} ]
         </span>
         <!-- <p>{{ swagger.info.description }}</p> -->
 
@@ -111,9 +111,9 @@ layout: default
                                     <li><a class="snippet-link selected" href="#">Model Schema</a></li>
                                   </ul>
                                   <div class="signature-container">
-                                    <div class="description" data-schema="{{ response[1].schema | jsonify | escape }}" style="display: none;">
+                                    <div class="description" data-schema="{{ response[1].content['application/json'].schema | jsonify | escape }}" style="display: none;">
                                     </div>
-                                    <div class="snippet" data-schema="{{ response[1].schema | jsonify | escape }}" style="display: block;">
+                                    <div class="snippet" data-schema="{{ response[1].content['application/json'].schema | jsonify | escape }}" style="display: block;">
                                       <pre>
                                         <code class="json"></code>
                                       </pre>
@@ -129,9 +129,11 @@ layout: default
                             <div>
                               <label for="">Response Content Type</label>
                               <select name="responseContentType">
-                                {% for content_type in method[1].produces %}
-                                <option value="{{ content_type }}">{{ content_type }}</option>
-                                {% endfor %}
+							    {% if method[1].responses.default and method[1].responses.default.content %}
+							    {% for content_type in method[1].responses.default.content %}
+							    <option value="{{ content_type[0] }}">{{ content_type[0] }}</option>
+							    {% endfor %}
+							    {% endif %}
                               </select>
                             </div>
                           </div>
@@ -174,46 +176,9 @@ layout: default
                                       {% if parameter.required %}
                                         <input class="parameter required" minlength="1" name="url" placeholder="(required)" type="text" value="{{ parameter.default }}">
                                       {% else %}
-                                        <input class="parameter" minlength="1" name="url" placeholder="" type="text" value="{{ parameter.default }}">
+                                        <input class="parameter" minlength="1" name="url" placeholder=""   type="text" value="{{ parameter.default }}">
                                       {% endif %}
                                     {% endif %}
-                                  {% endif %}
-                                  {% if parameter.in == 'body' %}
-                                  
-                                    <!-- <textarea class="body-textarea"  data-schema="{{ parameter.schema | jsonify | escape }}">{{ parameter.default }}</textarea> -->
-                                    <div class="model-signature">
-                                      <div>
-                                        <div>
-                                          <ul class="signature-nav">
-                                            <li><a class="description-link" href="#">Model</a></li>
-                                            <li><a class="snippet-link selected" href="#">Model Schema</a></li>
-                                          </ul>
-                                          <div class="signature-container">
-                                            <div class="body-description description" data-schema="{{ parameter.schema | jsonify | escape }}" style="display: none;">
-                                            </div>
-                                            <div class="body-snippet snippet" data-schema="{{ parameter.schema | jsonify | escape }}" style="display: block;">
-                                              <pre>
-                                                <code class="json"></code>
-                                              </pre>
-                                              <small class="notice"></small>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </div>
-                                    
-                                    <div class="editor_holder"></div>
-                                    <br/>
-                                    <div class="parameter-content-type">
-                                      <div>
-                                        <label for="">Parameter Content Type</label>
-                                        <select name="parameterContentType">
-                                          {% for content_type in method[1].consumes %}
-                                          <option value="{{ content_type }}">{{ content_type }}</option>
-                                          {% endfor %}
-                                        </select>
-                                      </div>
-                                    </div>
                                   {% endif %}
                                 </td>
                                 <td>
@@ -251,6 +216,47 @@ layout: default
                               {% endfor %}
                             </tbody>
                           </table>
+						  {% if method[1].requestBody %}
+						  <h4>Request Body</h4>
+							{% if method[1].requestBody.content and method[1].requestBody.content["application/json"] %}
+							  <div>
+								<!-- <textarea class="body-textarea"  data-schema="{{ parameter.schema | jsonify | escape }}">{{ parameter.default }}</textarea> -->
+								<div class="model-signature">
+								  <div>
+									<div>
+									  <ul class="signature-nav">
+										<li><a class="description-link" href="#">Model</a></li>
+										<li><a class="snippet-link selected" href="#">Model Schema</a></li>
+									  </ul>
+									  <div class="signature-container">
+										<div class="body-description description" data-schema="{{ method[1].requestBody.content['application/json'].schema | jsonify | escape }}" style="display: none;">
+										</div>
+										<div class="body-snippet snippet" data-schema="{{ method[1].requestBody.content['application/json'].schema | jsonify | escape }}" style="display: block;">
+										  <pre>
+											<code class="json"></code>
+										  </pre>
+										  <small class="notice"></small>
+										</div>
+									  </div>
+									</div>
+								  </div>
+								</div>
+								
+								<div class="editor_holder"></div>
+								<br/>
+								<div class="parameter-content-type">
+								  <div>
+									<label for="">Parameter Content Type</label>
+									<select name="parameterContentType">
+									  {% for content_type in method[1].requestBody.content %}
+									  <option value="{{ content_type[0] }}">{{ content_type[0] }}</option>
+									  {% endfor %}
+									</select>
+								  </div>
+								</div>
+							  </div>
+							{% endif %}
+						  {% endif %}
                           <h4 class="curl">Curl Example</h4>
                           <div class="block curl">
                             {% if method[1].produces and method[1].produces[0] %}
@@ -278,7 +284,7 @@ layout: default
                                 {% endif %}
                               {% endif %}
                             {% endfor %}
-                            <pre>curl -X {{ method[0] | upcase }} {{ contentTypeHeader }}{{ acceptHeader }}{{ contentBody }}'http://host:8080{{ swagger.basePath }}{{ route[0] }}{{ urlQuery }}'</pre>
+                            <pre>curl -X {{ method[0] | upcase }} {{ contentTypeHeader }}{{ acceptHeader }}{{ contentBody }}'http://host:8080{% if swagger.servers and swagger.servers.size > 0 %}{{ swagger.servers[0].url }}{% endif %}{{ route[0] }}{{ urlQuery }}'</pre>
                           </div>
                           <div class="sandbox_header" style="display:none">
                             <input class="submit" type="submit" value="Try it out!">
@@ -366,7 +372,8 @@ function init() {
     /* End Init Model and Model Schema tabs */
     
     /* Json vesion of the swagger yamk */
-    var definitionsYaml = {{ swagger.definitions | jsonify }};
+	// Previously swagger.definitions
+    var definitionsYaml = {{ swagger.components.schemas | jsonify }};
     
     /* Json swagger definitions holder */
     var swagger = {};
@@ -434,7 +441,9 @@ SwaggerSpecConverter.prototype.models = function(obj, swagger) {
   }
   var name;
 
-  swagger.definitions = swagger.definitions || {};
+  // Previously swagger.definitions
+  swagger.components = swagger.components || {};
+  swagger.components.schemas = swagger.components.schemas || {};
   for(name in obj) {
     var existingModel = obj[name];
     var _enum = [];
@@ -463,7 +472,7 @@ SwaggerSpecConverter.prototype.models = function(obj, swagger) {
     }
 
     schema.required = existingModel.required;
-    swagger.definitions[name] = schema;
+    swagger.components.schemas[name] = schema;
   }
 };
 
@@ -735,12 +744,12 @@ SwaggerSpecConverter.prototype.toJsonSchema = function(source) {
     }
   }
   else if(source.$ref) {
-    return {$ref: '#/definitions/' + this.modelMap[source.$ref] || source.$ref};
+    return {$ref: '#/components/schemas/' + this.modelMap[source.$ref] || source.$ref};
   }
   else if(lcType === 'void' || lcType === '')
     {return {};}
   else {
-    return {$ref: '#/definitions/' + this.modelMap[source.type] || source.type};
+    return {$ref: '#/components/schemas/' + this.modelMap[source.type] || source.type};
   }
 };
 
@@ -1294,8 +1303,8 @@ if (typeof name === 'undefined') {
     return null;
   }
 
-  if (name.indexOf('#/definitions/') === 0) {
-    return name.substring('#/definitions/'.length);
+  if (name.indexOf('#/components/schemas/') === 0) {
+    return name.substring('#/components/schemas/'.length);
   } else {
     return name;
   }

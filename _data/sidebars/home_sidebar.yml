@@ -508,6 +508,10 @@ entries:
       url: /developer-ui-api.html
       output: web
 
+    - title: UI API Swagger V3 Doc
+      url: /developer-ui-api-swagger-v3-doc.html
+      output: web
+      
     - title: UI API Swagger Doc
       url: /developer-ui-api-swagger-doc.html
       output: web

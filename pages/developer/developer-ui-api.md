@@ -9,13 +9,152 @@ summary: The UI has its own API. This can be used to do some simple operations, 
 
 ## Interlok UI API Swagger Documentation ##
 
-For a complete descriptions of all the possible operation with the API please have a look at [UI API Swagger Documentation](developer-ui-api-swagger-doc.html).
+For a complete descriptions of all the possible operation with the API please have a look at:
+
+* [UI API Swagger Documentation](developer-ui-api-swagger-v3-doc.html) for Interlok 3.10.2+.
+* [UI API Swagger Documentation](developer-ui-api-swagger-doc.html) for older version of Interlok.
 
 ## Swagger Goodness ##
 
 The Interlok UI API is accessible via restful web services. The best way to learn how to use the Interlok UI API is to use Swagger UI. You can see all the available operations by using it.
 
 Learn more about [Swagger](http://swagger.io/) and [Swagger UI](http://swagger.io/swagger-ui/).
+
+## Interlok UI 3.10.2+ ##
+
+From 3.10.2+ the Interlok UI API is using Swagger V3 Open API. For older version have a look at [Interlok UI 3.10.1 and older](developer-ui-api.html#interlok-ui-3101-and-older).
+
+Once you've downloaded Swagger UI you should copy it into the `adapter/webapp` folder.
+You should be able to access it via [http://localhost:8080/swagger-ui-3.25.4/dist/index.html](http://localhost:8080/swagger-ui-3.25.4/dist/index.html) (where /swagger-ui-3.25.4/dist/ is the name of the folder you copied into `adapter/webapp`).
+
+The default API url in Swagger UI is a pet store example.
+Replace it with it the Interlok UI API url [http://localhost:8080/interlok/api/openapi.json](http://localhost:8080/interlok/api/openapi.json).
+
+If you access this url directly you will see the json Swagger definition for the Interlok UI API with a list of all the operations which looks something like: 
+
+```json
+{
+  "openapi" : "3.0.1",
+  "info" : {
+    "title" : "Interlok Artifact Downloader Api Documentation",
+    "description" : "Interlok Artifact Downloader Api web service documentation.",
+    "version" : "3.10-SNAPSHOT"
+  },
+  "servers" : [ {
+    "url" : "/interlok/api"
+  } ],
+  "tags" : [ {
+    "name" : "/adapter/failed-messages"
+  }, {
+    "name" : "/channel"
+  }, {
+    "name" : "/adapter/metrics"
+  }, {
+    "name" : "/channel/failed-messages"
+  }, {
+    "name" : "/adapter/platform"
+  }, {
+    "name" : "/workflow/metrics"
+  }, {
+    "name" : "/workflow/failed-messages"
+  }, {
+    "name" : "/adapter/component-checker"
+  }, {
+    "name" : "/channel/metrics"
+  }, {
+    "name" : "/adapter"
+  }, {
+    "name" : "/workflow"
+  } ],
+    "/external/adapter" : {
+      "get" : {
+        "tags" : [ "/adapter" ],
+        "description" : "List all register adapters in the Interlok UI",
+        "operationId" : "list",
+        "parameters" : [ {
+          "name" : "pageSize",
+          "in" : "query",
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32",
+            "default" : -1
+          }
+        }, {
+          "name" : "page",
+          "in" : "query",
+          "schema" : {
+            "type" : "integer",
+            "format" : "int32",
+            "default" : -1
+          }
+        } ],
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/AdapterJmxInterlokDetails"
+                  }
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "type" : "array",
+                  "items" : {
+                    "$ref" : "#/components/schemas/AdapterJmxInterlokDetails"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post" : {
+        "tags" : [ "/adapter" ],
+        "description" : "Add an adapter in the Interlok UI",
+        "operationId" : "save_1",
+        "requestBody" : {
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/AdapterJmxInterlokDetails"
+              }
+            },
+            "application/xml" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/AdapterJmxInterlokDetails"
+              }
+            }
+          }
+        },
+        "responses" : {
+          "default" : {
+            "description" : "default response",
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AdapterJmxInterlokDetails"
+                }
+              },
+              "application/xml" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/AdapterJmxInterlokDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+...
+```
+
+## Interlok UI 3.10.1 and older ##
+
+This is for older vesion of Interlok UI, 3.10.1 and older. For newer version have a look at [Interlok UI 3.10.1+](developer-ui-api.html#interlok-ui-3102).
 
 Once you've downloaded Swagger UI you should copy it into the `adapter/webapp` folder.
 You should be able to access it via [http://localhost:8080/swagger-ui-2.1.4/dist/index.html](http://localhost:8080/swagger-ui-2.1.4/dist/index.html) (where /swagger-ui-2.1.4/dist/ is the name of the folder you copied into `adapter/webapp`).
@@ -121,7 +260,8 @@ If you access this url directly you will see the json Swagger definition for the
 ...
 ```
 
-Back to the Swagger UI, you should get a list of all the Interlok UI API operations e.g.
+
+Back to the Swagger UI, you should get a list of all the Interlok UI API operations (The page may slightly look different depending on which version of Swagger UI you are using.) e.g.
 
 ![Local Swagger UI With Data](./images/ui-api/swagger-with-interlok-data.png)
 

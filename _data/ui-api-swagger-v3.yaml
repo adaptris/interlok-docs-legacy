@@ -1,0 +1,6405 @@
+openapi: 3.0.1
+info:
+  title: Interlok Artifact Downloader Api Documentation
+  description: Interlok Artifact Downloader Api web service documentation.
+  version: 3.10.2-RELEASE
+servers:
+- url: /interlok/api
+tags:
+- name: /adapter
+- name: /adapter/failed-messages
+- name: /adapter/metrics
+- name: /adapter/platform
+- name: /channel
+- name: /channel/failed-messages
+- name: /channel/metrics
+- name: /adapter/component-checker
+- name: /workflow
+- name: /workflow/failed-messages
+- name: /workflow/metrics
+- name: deprecated
+paths:
+  /external/adapter/{url}/{jmxUid}:
+    get:
+      tags:
+      - /adapter
+      description: Get an adapter
+      operationId: get
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdapterEntity"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/AdapterEntity"
+  /external/adapter/{adapter}:
+    get:
+      tags:
+      - /adapter
+      description: Get an adapter
+      operationId: get_1
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdapterEntity"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/AdapterEntity"
+    delete:
+      tags:
+      - /adapter
+      description: Delete an adapter
+      operationId: delete
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/adapter:
+    get:
+      tags:
+      - /adapter
+      description: List all register adapters in the Interlok UI
+      operationId: list
+      parameters:
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: -1
+      - name: page
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: -1
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/AdapterJmxInterlokDetails"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/AdapterJmxInterlokDetails"
+    post:
+      tags:
+      - /adapter
+      description: Add an adapter in the Interlok UI
+      operationId: save_1
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AdapterJmxInterlokDetails"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/AdapterJmxInterlokDetails"
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AdapterJmxInterlokDetails"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/AdapterJmxInterlokDetails"
+  /external/adapter/{adapter}/state:
+    get:
+      tags:
+      - /adapter
+      description: Get an adapter's state
+      operationId: getState
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StateWrapper"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/StateWrapper"
+    put:
+      tags:
+      - /adapter
+      description: Update an adapter's state
+      operationId: updateState_1
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      - name: adpMgmtTimeout
+        in: query
+        description: The max timeout to wait for in milliseconds
+        schema:
+          type: string
+      - name: option
+        in: query
+        schema:
+          type: string
+          enum:
+          - FORCE_CLOSE
+          - FORCE_CLOSE_IF_FAIL
+          - RESTART
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StateWrapper"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/StateWrapper"
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/adapter/{url}/{jmxUid}/state:
+    get:
+      tags:
+      - /adapter
+      description: Get an adapter's state
+      operationId: getState_1
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StateWrapper"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/StateWrapper"
+    put:
+      tags:
+      - /adapter
+      description: Update an adapter's state
+      operationId: updateState
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: adpMgmtTimeout
+        in: query
+        description: The max timeout to wait for in milliseconds
+        schema:
+          type: string
+      - name: option
+        in: query
+        schema:
+          type: string
+          enum:
+          - FORCE_CLOSE
+          - FORCE_CLOSE_IF_FAIL
+          - RESTART
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StateWrapper"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/StateWrapper"
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/adapter/batch:
+    post:
+      tags:
+      - /adapter
+      description: Add multiple adapters in the Interlok UI
+      operationId: save
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/AdapterJmxInterlokDetails"
+          application/xml:
+            schema:
+              type: array
+              items:
+                $ref: "#/components/schemas/AdapterJmxInterlokDetails"
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/AdapterJmxInterlokDetails"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/AdapterJmxInterlokDetails"
+  /external/adapter/{adapter}/configuration:
+    get:
+      tags:
+      - /adapter
+      description: Get an adapter's configuration
+      operationId: configuration
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /external/adapter/{url}/{jmxUid}/configuration:
+    get:
+      tags:
+      - /adapter
+      description: Get an adapter's configuration
+      operationId: configuration_1
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /external/adapter/{url}/{jmxUid}/details:
+    get:
+      tags:
+      - /adapter
+      description: Get details for an adapter
+      operationId: details
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ComponentDetails"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ComponentDetails"
+  /external/adapter/{adapter}/details:
+    get:
+      tags:
+      - /adapter
+      description: Get details for an adapter
+      operationId: details_1
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ComponentDetails"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ComponentDetails"
+  /external/adapter/{adapter}/name:
+    put:
+      tags:
+      - /adapter
+      description: Update an adapter's name
+      operationId: updateName
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/adapter/{adapter}/tags:
+    put:
+      tags:
+      - /adapter
+      description: Update an adapter's tags
+      operationId: updateTags
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          text/plain:
+            schema:
+              type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/adapter/{adapter}/failed-messages/count:
+    get:
+      tags:
+      - /adapter/failed-messages
+      description: Get the number of failed messages for an adapter
+      operationId: failedMessagesCount
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Count"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Count"
+  /external/adapter/{adapter}/failed-messages/ignore:
+    put:
+      tags:
+      - /adapter/failed-messages
+      description: Ignore an adapter failed message
+      operationId: ignoreFailedMessage
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      - name: deleteMsgFile
+        in: query
+        description: "Delete message file on the adapter file system when ignoring\
+          \ a failed message. Once deleted, this can't be undone."
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+          application/xml:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+    post:
+      tags:
+      - /adapter/failed-messages
+      description: Ignore all the adapter failed message
+      operationId: ignoreAllFailedMessage
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      - name: deleteMsgFile
+        in: query
+        description: "Delete message file on the adapter file system when ignoring\
+          \ a failed message. Once deleted, this can't be undone."
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/adapter/{adapter}/failed-messages/total-count:
+    get:
+      tags:
+      - /adapter/failed-messages
+      description: Get an adapter total failed messages count since started
+      operationId: totalFailedMessagesCount
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Count"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Count"
+  /external/adapter/{adapter}/failed-messages/retry:
+    put:
+      tags:
+      - /adapter/failed-messages
+      description: Retry an adapter failed message
+      operationId: retryFailedMessage
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+          application/xml:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+    post:
+      tags:
+      - /adapter/failed-messages
+      description: Retry all the adapter failed messages
+      operationId: retryAllFailedMessage
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/adapter/{adapter}/failed-messages/last-hundred:
+    get:
+      tags:
+      - /adapter/failed-messages
+      description: Get all the failed messages for an adapter
+      operationId: lastHundredFailedMessages
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/FailedMessageEntity"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/FailedMessageEntity"
+  /external/adapter/{adapter}/failed-messages:
+    get:
+      tags:
+      - /adapter/failed-messages
+      description: Get all the failed messages for an adapter
+      operationId: failedMessages
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      - name: from
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: to
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 100
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/FailedMessageEntity"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/FailedMessageEntity"
+  /external/adapter/{url}/{jmxUid}/failed-messages/count:
+    get:
+      tags:
+      - /adapter/failed-messages
+      description: Get the number of failed messages for an adapter
+      operationId: failedMessagesCount_1
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Count"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Count"
+  /external/adapter/{url}/{jmxUid}/failed-messages/ignore:
+    put:
+      tags:
+      - /adapter/failed-messages
+      description: Ignore an adapter failed message
+      operationId: ignoreFailedMessage_1
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: deleteMsgFile
+        in: query
+        description: "Delete message file on the adapter file system when ignoring\
+          \ a failed message. Once deleted, this can't be undone."
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+          application/xml:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+    post:
+      tags:
+      - /adapter/failed-messages
+      description: Ignore all the adapter failed message
+      operationId: ignoreAllFailedMessage_1
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: deleteMsgFile
+        in: query
+        description: "Delete message file on the adapter file system when ignoring\
+          \ a failed message. Once deleted, this can't be undone."
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/adapter/{url}/{jmxUid}/failed-messages/total-count:
+    get:
+      tags:
+      - /adapter/failed-messages
+      description: Get an adapter total failed messages count since started
+      operationId: totalFailedMessagesCount_1
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Count"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Count"
+  /external/adapter/{url}/{jmxUid}/failed-messages/retry:
+    put:
+      tags:
+      - /adapter/failed-messages
+      description: Retry an adapter failed message
+      operationId: retryFailedMessage_1
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                type: string
+          application/xml:
+            schema:
+              type: array
+              items:
+                type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+    post:
+      tags:
+      - /adapter/failed-messages
+      description: Retry all the adapter failed messages
+      operationId: retryAllFailedMessage_1
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/adapter/{url}/{jmxUid}/failed-messages/last-hundred:
+    get:
+      tags:
+      - /adapter/failed-messages
+      description: Get all the failed messages for an adapter
+      operationId: lastHundredFailedMessages_1
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/FailedMessageEntity"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/FailedMessageEntity"
+  /external/adapter/{url}/{jmxUid}/failed-messages:
+    get:
+      tags:
+      - /adapter/failed-messages
+      description: Get all the failed messages for an adapter
+      operationId: failedMessages_1
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: from
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 0
+      - name: to
+        in: query
+        schema:
+          type: integer
+          format: int32
+          default: 100
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/FailedMessageEntity"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/FailedMessageEntity"
+  /external/adapter/{adapter}/metrics/message-metrics:
+    get:
+      tags:
+      - /adapter/metrics
+      description: Get an adapter message metrics statistics
+      operationId: getMessageMetricsStatistics
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+  /external/adapter/{adapter}/metrics/message-metrics/{id}:
+    get:
+      tags:
+      - /adapter/metrics
+      description: Get an adapter message metrics statistics for the given id
+      operationId: getMessageMetricsStatistics_1
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+  /external/adapter/{url}/{jmxUid}/metrics/message-metrics:
+    get:
+      tags:
+      - /adapter/metrics
+      description: Get an adapter message metrics statistics
+      operationId: getMessageMetricsStatistics_2
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+  /external/adapter/{url}/{jmxUid}/metrics/message-metrics/{id}:
+    get:
+      tags:
+      - /adapter/metrics
+      description: Get an adapter message metrics statistics for the given id
+      operationId: getMessageMetricsStatistics_3
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+  /external/adapter/{adapter}/platform/runtime-properties:
+    get:
+      tags:
+      - /adapter/platform
+      description: Get an adapter platform runtime properties
+      operationId: platformRuntimeProperties
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/plain:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/csv:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+  /external/adapter/{adapter}/platform/memory-non-heap-properties:
+    get:
+      tags:
+      - /adapter/platform
+      description: Get an adapter platform memory non heap properties
+      operationId: platformMemoryNonHeapProperties
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/plain:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/csv:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+  /external/adapter/{adapter}/platform/memory-properties:
+    get:
+      tags:
+      - /adapter/platform
+      description: Get an adapter platform memory properties
+      operationId: platformMemoryProperties
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/plain:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/csv:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+  /external/adapter/{adapter}/platform/memory-heap-properties:
+    get:
+      tags:
+      - /adapter/platform
+      description: Get an adapter platform memory heap properties
+      operationId: platformMemoryHeapProperties
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/plain:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/csv:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+  /external/adapter/{adapter}/platform/runtime-system-properties:
+    get:
+      tags:
+      - /adapter/platform
+      description: Get an adapter platform runtime system properties
+      operationId: platformRuntimeSystemProperties
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/plain:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/csv:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+  /external/adapter/{adapter}/platform/runtime-path-properties:
+    get:
+      tags:
+      - /adapter/platform
+      description: Get an adapter platform runtime path properties
+      operationId: platformRuntimePathProperties
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/plain:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/csv:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+  /external/adapter/{adapter}/platform/operating-system-properties:
+    get:
+      tags:
+      - /adapter/platform
+      description: Get an adapter platform operating system properties
+      operationId: platformOperatingSystemProperties
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/plain:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/csv:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+  /external/adapter/{adapter}/platform/gc:
+    get:
+      tags:
+      - /adapter/platform
+      description: Run an adapter jvm garbage collector
+      operationId: runsGarbageCollector
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/adapter/{adapter}/platform/thread-properties:
+    get:
+      tags:
+      - /adapter/platform
+      description: Get an adapter platform thread properties
+      operationId: platformThreadProperties
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/plain:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/csv:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+  /external/adapter/{adapter}/platform/operating-system-load-properties:
+    get:
+      tags:
+      - /adapter/platform
+      description: Get an adapter platform operating system load properties
+      operationId: platformOperatingSystemLoadProperties
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/plain:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/csv:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+  /external/adapter/{adapter}/platform/thread-dump:
+    get:
+      tags:
+      - /adapter/platform
+      description: Get an adapter thread dump
+      operationId: generateThreadDump
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/adapter/{url}/{jmxUid}/platform/runtime-properties:
+    get:
+      tags:
+      - /adapter/platform
+      description: Get an adapter platform runtime properties
+      operationId: platformRuntimeProperties_1
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/plain:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/csv:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+  /external/adapter/{url}/{jmxUid}/platform/memory-non-heap-properties:
+    get:
+      tags:
+      - /adapter/platform
+      description: Get an adapter platform memory non heap properties
+      operationId: platformMemoryNonHeapProperties_1
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/plain:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/csv:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+  /external/adapter/{url}/{jmxUid}/platform/memory-properties:
+    get:
+      tags:
+      - /adapter/platform
+      description: Get an adapter platform memory properties
+      operationId: platformMemoryProperties_1
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/plain:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/csv:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+  /external/adapter/{url}/{jmxUid}/platform/memory-heap-properties:
+    get:
+      tags:
+      - /adapter/platform
+      description: Get an adapter platform memory heap properties
+      operationId: platformMemoryHeapProperties_1
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/plain:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/csv:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+  /external/adapter/{url}/{jmxUid}/platform/runtime-system-properties:
+    get:
+      tags:
+      - /adapter/platform
+      description: Get an adapter platform runtime system properties
+      operationId: platformRuntimeSystemProperties_1
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/plain:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/csv:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+  /external/adapter/{url}/{jmxUid}/platform/runtime-path-properties:
+    get:
+      tags:
+      - /adapter/platform
+      description: Get an adapter platform runtime path properties
+      operationId: platformRuntimePathProperties_1
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/plain:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/csv:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+  /external/adapter/{url}/{jmxUid}/platform/operating-system-properties:
+    get:
+      tags:
+      - /adapter/platform
+      description: Get an adapter platform operating system properties
+      operationId: platformOperatingSystemProperties_1
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/plain:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/csv:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+  /external/adapter/{url}/{jmxUid}/platform/gc:
+    get:
+      tags:
+      - /adapter/platform
+      description: Run an adapter jvm garbage collector
+      operationId: runsGarbageCollector_1
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/adapter/{url}/{jmxUid}/platform/thread-properties:
+    get:
+      tags:
+      - /adapter/platform
+      description: Get an adapter platform thread properties
+      operationId: platformThreadProperties_1
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/plain:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/csv:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+  /external/adapter/{url}/{jmxUid}/platform/operating-system-load-properties:
+    get:
+      tags:
+      - /adapter/platform
+      description: Get an adapter platform operating system load properties
+      operationId: platformOperatingSystemLoadProperties_1
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            application/xml:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/plain:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+            text/csv:
+              schema:
+                type: object
+                properties:
+                  empty:
+                    type: boolean
+                additionalProperties:
+                  type: object
+  /external/adapter/{url}/{jmxUid}/platform/thread-dump:
+    get:
+      tags:
+      - /adapter/platform
+      description: Get an adapter thread dump
+      operationId: generateThreadDump_1
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/adapter/{adapter}/channel/{channel}:
+    get:
+      tags:
+      - /channel
+      description: Get a channel for an adapter
+      operationId: get_2
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChannelEntity"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ChannelEntity"
+  /external/adapter/{adapter}/channel/count:
+    get:
+      tags:
+      - /channel
+      description: Counts channels for an adapter
+      operationId: count
+      parameters:
+      - name: adapter
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Count"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Count"
+  /external/adapter/{adapter}/channel:
+    get:
+      tags:
+      - /channel
+      description: Lists channels for an adapter
+      operationId: list_1
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ChannelEntity"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ChannelEntity"
+  /external/adapter/{adapter}/channel/{channel}/state:
+    get:
+      tags:
+      - /channel
+      description: Get a channel's state
+      operationId: getState_2
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StateWrapper"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/StateWrapper"
+    put:
+      tags:
+      - /channel
+      description: Update a channel's state
+      operationId: updateState_2
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+      - name: adpMgmtTimeout
+        in: query
+        description: adpMgmtTimeout
+        schema:
+          type: string
+      - name: option
+        in: query
+        schema:
+          type: string
+          enum:
+          - FORCE_CLOSE
+          - FORCE_CLOSE_IF_FAIL
+          - RESTART
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StateWrapper"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/StateWrapper"
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/adapter/{adapter}/channel/{channel}/configuration:
+    get:
+      tags:
+      - /channel
+      description: Get a channel's configuration
+      operationId: configuration_2
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /external/adapter/{adapter}/channel/{channel}/details:
+    get:
+      tags:
+      - /channel
+      description: Get details for a channel
+      operationId: details_2
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ComponentDetails"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ComponentDetails"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}:
+    get:
+      tags:
+      - /channel
+      operationId: get_3
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        schema:
+          type: string
+      - name: channel
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChannelEntity"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ChannelEntity"
+  /external/adapter/{url}/{jmxUid}/channel/count:
+    get:
+      tags:
+      - /channel
+      operationId: count_1
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Count"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Count"
+  /external/adapter/{url}/{jmxUid}/channel:
+    get:
+      tags:
+      - /channel
+      operationId: list_2
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ChannelEntity"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ChannelEntity"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/state:
+    get:
+      tags:
+      - /channel
+      operationId: getState_3
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        schema:
+          type: string
+      - name: channel
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StateWrapper"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/StateWrapper"
+    put:
+      tags:
+      - /channel
+      operationId: updateState_3
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        schema:
+          type: string
+      - name: channel
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: adpMgmtTimeout
+        in: query
+        schema:
+          type: string
+      - name: option
+        in: query
+        schema:
+          type: string
+          enum:
+          - FORCE_CLOSE
+          - FORCE_CLOSE_IF_FAIL
+          - RESTART
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StateWrapper"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/StateWrapper"
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/configuration:
+    get:
+      tags:
+      - /channel
+      operationId: configuration_3
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        schema:
+          type: string
+      - name: channel
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/details:
+    get:
+      tags:
+      - /channel
+      operationId: details_3
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        schema:
+          type: string
+      - name: channel
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ComponentDetails"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ComponentDetails"
+  /external/adapter/{adapter}/channel/{channel}/failed-messages/count:
+    get:
+      tags:
+      - /channel/failed-messages
+      description: Get the number of failed messages for a channel
+      operationId: failedMessagesCount_2
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Count"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Count"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/failed-messages/count:
+    get:
+      tags:
+      - /channel/failed-messages
+      description: Get the number of failed messages for a channel
+      operationId: failedMessagesCount_3
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Count"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Count"
+  /external/adapter/{adapter}/channel/{channel}/metrics/message-metrics:
+    get:
+      tags:
+      - /channel/metrics
+      description: Get a channel message metrics statistics
+      operationId: getMessageMetricsStatistics_4
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+  /external/adapter/{adapter}/channel/{channel}/metrics/message-metrics/{id}:
+    get:
+      tags:
+      - /channel/metrics
+      description: Get a channel message metrics statistics for the given id
+      operationId: getMessageMetricsStatistics_5
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/metrics/message-metrics:
+    get:
+      tags:
+      - /channel/metrics
+      description: Get a channel message metrics statistics
+      operationId: getMessageMetricsStatistics_6
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        schema:
+          type: string
+      - name: channel
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/metrics/message-metrics/{id}:
+    get:
+      tags:
+      - /channel/metrics
+      description: Get a channel message metrics statistics for the given id
+      operationId: getMessageMetricsStatistics_7
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        schema:
+          type: string
+      - name: channel
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+  /external/adapter/{adapter}/component-checker/check-service:
+    post:
+      tags:
+      - /adapter/component-checker
+      description: Send a message through a a service (collection) to check its validity
+      operationId: checkService
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ComponentCheckWrapper"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/ComponentCheckWrapper"
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MessageEntity"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/MessageEntity"
+  /external/adapter/{url}/{jmxUid}/component-checker/check-service:
+    post:
+      tags:
+      - /adapter/component-checker
+      description: Send a message through a a service (collection) to check its validity
+      operationId: checkService_1
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ComponentCheckWrapper"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/ComponentCheckWrapper"
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MessageEntity"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/MessageEntity"
+  /external/adapter/{adapter}/channel/{channel}/workflow/{workflow}:
+    get:
+      tags:
+      - /workflow
+      description: Gets a workflow for a channel
+      operationId: get_4
+      parameters:
+      - name: adapter
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WorkflowEntity"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/WorkflowEntity"
+  /external/adapter/{adapter}/channel/{channel}/workflow/count:
+    get:
+      tags:
+      - /workflow
+      description: Counts workflows for a channel
+      operationId: count_2
+      parameters:
+      - name: adapter
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Count"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Count"
+  /external/adapter/{adapter}/channel/{channel}/workflow:
+    get:
+      tags:
+      - /workflow
+      description: Lists workflows for a channel
+      operationId: list_3
+      parameters:
+      - name: adapter
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/WorkflowEntity"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/WorkflowEntity"
+  /external/adapter/{adapter}/channel/{channel}/workflow/{workflow}/state:
+    get:
+      tags:
+      - /workflow
+      description: Get a workflow's state
+      operationId: getState_4
+      parameters:
+      - name: adapter
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StateWrapper"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/StateWrapper"
+    put:
+      tags:
+      - /workflow
+      description: Update a workflow's state
+      operationId: updateState_4
+      parameters:
+      - name: adapter
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      - name: adpMgmtTimeout
+        in: query
+        description: adpMgmtTimeout
+        schema:
+          type: string
+      - name: option
+        in: query
+        schema:
+          type: string
+          enum:
+          - FORCE_CLOSE
+          - FORCE_CLOSE_IF_FAIL
+          - RESTART
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StateWrapper"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/StateWrapper"
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/adapter/{adapter}/channel/{channel}/workflow/{workflow}/configuration:
+    get:
+      tags:
+      - /workflow
+      description: Get a workflow's configuration
+      operationId: configuration_4
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /external/adapter/{adapter}/channel/{channel}/workflow/{workflow}/details:
+    get:
+      tags:
+      - /workflow
+      description: Get details for a workflow
+      operationId: details_4
+      parameters:
+      - name: adapter
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ComponentDetails"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ComponentDetails"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow/{workflow}:
+    get:
+      tags:
+      - /workflow
+      description: Gets a workflow for a channel
+      operationId: get_5
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WorkflowEntity"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/WorkflowEntity"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow/count:
+    get:
+      tags:
+      - /workflow
+      description: Counts workflows for a channel
+      operationId: count_3
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Count"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Count"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow:
+    get:
+      tags:
+      - /workflow
+      description: Lists workflows for a channel
+      operationId: list_4
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/WorkflowEntity"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/WorkflowEntity"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow/{workflow}/state:
+    get:
+      tags:
+      - /workflow
+      description: Get a workflow's state
+      operationId: getState_5
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StateWrapper"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/StateWrapper"
+    put:
+      tags:
+      - /workflow
+      description: Update a workflow's state
+      operationId: updateState_5
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      - name: adpMgmtTimeout
+        in: query
+        description: adpMgmtTimeout
+        schema:
+          type: string
+      - name: option
+        in: query
+        schema:
+          type: string
+          enum:
+          - FORCE_CLOSE
+          - FORCE_CLOSE_IF_FAIL
+          - RESTART
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StateWrapper"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/StateWrapper"
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow/{workflow}/configuration:
+    get:
+      tags:
+      - /workflow
+      description: Get a workflow's configuration
+      operationId: configuration_5
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow/{workflow}/details:
+    get:
+      tags:
+      - /workflow
+      description: Get details for a workflow
+      operationId: details_5
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ComponentDetails"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ComponentDetails"
+  /external/adapter/{adapter}/channel/{channel}/workflow/{workflow}/failed-messages/count:
+    get:
+      tags:
+      - /workflow/failed-messages
+      description: Get the number of failed messages for a workflow
+      operationId: failedMessagesCount_4
+      parameters:
+      - name: adapter
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Count"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Count"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow/{workflow}/failed-messages/count:
+    get:
+      tags:
+      - /workflow/failed-messages
+      description: Get the number of failed messages for a workflow
+      operationId: failedMessagesCount_5
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Count"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Count"
+  /external/adapter/{adapter}/channel/{channel}/workflow/{workflow}/metrics/metadata-statistics-ids:
+    get:
+      tags:
+      - /workflow/metrics
+      description: Get all the metadata statistics ids for a workflow
+      operationId: messageMetadataStatisticsIds
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+            application/xml:
+              schema:
+                type: array
+                items:
+                  type: string
+  /external/adapter/{adapter}/channel/{channel}/workflow/{workflow}/metrics/message-metrics-ids:
+    get:
+      tags:
+      - /workflow/metrics
+      description: Get all the message metrics statistics ids for a workflow
+      operationId: messageMetricsStatisticsIds
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+            application/xml:
+              schema:
+                type: array
+                items:
+                  type: string
+  /external/adapter/{adapter}/channel/{channel}/workflow/{workflow}/metrics/message-metrics/{id}:
+    get:
+      tags:
+      - /workflow/metrics
+      description: Get a workflow message metrics statistics for the given id
+      operationId: getMessageMetricsStatistics_9
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            text/csv:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+    delete:
+      tags:
+      - /workflow/metrics
+      description: Delete the workflow message metrics statistics for the given id
+      operationId: clearMessageMetricsStatistics
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/adapter/{adapter}/channel/{channel}/workflow/{workflow}/metrics/metadata-statistics/{id}:
+    get:
+      tags:
+      - /workflow/metrics
+      description: Get a workflow matadata statistics for the given id
+      operationId: getMetadataStatistics
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetadataStatisticsEntity"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/MetadataStatisticsEntity"
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/MetadataStatisticsEntity"
+            text/csv:
+              schema:
+                $ref: "#/components/schemas/MetadataStatisticsEntity"
+    delete:
+      tags:
+      - /workflow/metrics
+      description: Delete the workflow matadata statistics for the given id
+      operationId: clearMetadataStatistics
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/adapter/{adapter}/channel/{channel}/workflow/{workflow}/metrics/message-metrics:
+    get:
+      tags:
+      - /workflow/metrics
+      description: Get a workflow message metrics statistics. The first found will
+        be returned
+      operationId: getMessageMetricsStatistics_8
+      parameters:
+      - name: adapter
+        in: path
+        description: The unique Id or Name of an Adapter in the UI or 'local' to get
+          the UI local Adapter.
+        required: true
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            text/csv:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow/{workflow}/metrics/metadata-statistics-ids:
+    get:
+      tags:
+      - /workflow/metrics
+      description: Get all the metadata statistics ids for a workflow
+      operationId: messageMetadataStatisticsIds_1
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+            application/xml:
+              schema:
+                type: array
+                items:
+                  type: string
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow/{workflow}/metrics/message-metrics-ids:
+    get:
+      tags:
+      - /workflow/metrics
+      description: Get all the message metrics statistics ids for a workflow
+      operationId: messageMetricsStatisticsIds_1
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+            application/xml:
+              schema:
+                type: array
+                items:
+                  type: string
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow/{workflow}/metrics/message-metrics/{id}:
+    get:
+      tags:
+      - /workflow/metrics
+      description: Get a workflow message metrics statistics for the given id
+      operationId: getMessageMetricsStatistics_11
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            text/csv:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+    delete:
+      tags:
+      - /workflow/metrics
+      description: Delete the workflow message metrics statistics for the given id
+      operationId: clearMessageMetricsStatistics_1
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow/{workflow}/metrics/metadata-statistics/{id}:
+    get:
+      tags:
+      - /workflow/metrics
+      description: Get a workflow matadata statistics for the given id
+      operationId: getMetadataStatistics_1
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetadataStatisticsEntity"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/MetadataStatisticsEntity"
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/MetadataStatisticsEntity"
+            text/csv:
+              schema:
+                $ref: "#/components/schemas/MetadataStatisticsEntity"
+    delete:
+      tags:
+      - /workflow/metrics
+      description: Delete the workflow matadata statistics for the given id
+      operationId: clearMetadataStatistics_1
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/adapter/{url}/{jmxUid}/channel/{channel}/workflow/{workflow}/metrics/message-metrics:
+    get:
+      tags:
+      - /workflow/metrics
+      description: Get a workflow message metrics statistics. The first found will
+        be returned
+      operationId: getMessageMetricsStatistics_10
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            text/csv:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+  /external/channel/{url}/{jmxUid}/{channel}:
+    get:
+      tags:
+      - deprecated
+      operationId: get_6
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        schema:
+          type: string
+      - name: channel
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChannelEntity"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ChannelEntity"
+  /external/channel/{url}/{jmxUid}/count:
+    get:
+      tags:
+      - deprecated
+      operationId: count_4
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Count"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Count"
+  /external/channel/{url}/{jmxUid}:
+    get:
+      tags:
+      - deprecated
+      operationId: list_5
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ChannelEntity"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/ChannelEntity"
+  /external/channel/{url}/{jmxUid}/{channel}/state:
+    get:
+      tags:
+      - deprecated
+      operationId: getState_6
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        schema:
+          type: string
+      - name: channel
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StateWrapper"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/StateWrapper"
+    put:
+      tags:
+      - deprecated
+      operationId: updateState_6
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        schema:
+          type: string
+      - name: channel
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: adpMgmtTimeout
+        in: query
+        schema:
+          type: string
+      - name: option
+        in: query
+        schema:
+          type: string
+          enum:
+          - FORCE_CLOSE
+          - FORCE_CLOSE_IF_FAIL
+          - RESTART
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StateWrapper"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/StateWrapper"
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/channel/{url}/{jmxUid}/{channel}/configuration:
+    get:
+      tags:
+      - deprecated
+      operationId: configuration_6
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        schema:
+          type: string
+      - name: channel
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /external/channel/{url}/{jmxUid}/{channel}/details:
+    get:
+      tags:
+      - deprecated
+      operationId: details_6
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        schema:
+          type: string
+      - name: channel
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ComponentDetails"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ComponentDetails"
+  /external/channel/{url}/{jmxUid}/{channel}/failed-messages/count:
+    get:
+      tags:
+      - deprecated
+      description: Get the number of failed messages for a channel
+      operationId: failedMessagesCount_6
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Count"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Count"
+  /external/channel/{url}/{jmxUid}/{channel}/metrics/message-metrics:
+    get:
+      tags:
+      - deprecated
+      description: Get a channel message metrics statistics
+      operationId: getMessageMetricsStatistics_12
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        schema:
+          type: string
+      - name: channel
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+  /external/channel/{url}/{jmxUid}/{channel}/metrics/message-metrics/{id}:
+    get:
+      tags:
+      - deprecated
+      description: Get a channel message metrics statistics for the given id
+      operationId: getMessageMetricsStatistics_13
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        schema:
+          type: string
+      - name: channel
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+  /external/workflow/{url}/{jmxUid}/{channel}/{workflow}:
+    get:
+      tags:
+      - deprecated
+      description: Gets a workflow for a channel
+      operationId: get_7
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/WorkflowEntity"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/WorkflowEntity"
+  /external/workflow/{url}/{jmxUid}/{channel}/count:
+    get:
+      tags:
+      - deprecated
+      description: Counts workflows for a channel
+      operationId: count_5
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Count"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Count"
+  /external/workflow/{url}/{jmxUid}/{channel}:
+    get:
+      tags:
+      - deprecated
+      description: Lists workflows for a channel
+      operationId: list_6
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/WorkflowEntity"
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/WorkflowEntity"
+  /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/state:
+    get:
+      tags:
+      - deprecated
+      description: Get a workflow's state
+      operationId: getState_7
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/StateWrapper"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/StateWrapper"
+    put:
+      tags:
+      - deprecated
+      description: Update a workflow's state
+      operationId: updateState_7
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      - name: adpMgmtTimeout
+        in: query
+        description: adpMgmtTimeout
+        schema:
+          type: string
+      - name: option
+        in: query
+        schema:
+          type: string
+          enum:
+          - FORCE_CLOSE
+          - FORCE_CLOSE_IF_FAIL
+          - RESTART
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/StateWrapper"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/StateWrapper"
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/configuration:
+    get:
+      tags:
+      - deprecated
+      description: Get a workflow's configuration
+      operationId: configuration_7
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: object
+  /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/details:
+    get:
+      tags:
+      - deprecated
+      description: Get details for a workflow
+      operationId: details_7
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ComponentDetails"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/ComponentDetails"
+  /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/failed-messages/count:
+    get:
+      tags:
+      - deprecated
+      description: Get the number of failed messages for a workflow
+      operationId: failedMessagesCount_7
+      parameters:
+      - name: url
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Count"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Count"
+  /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/metrics/metadata-statistics-ids:
+    get:
+      tags:
+      - deprecated
+      description: Get all the metadata statistics ids for a workflow
+      operationId: messageMetadataStatisticsIds_2
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+            application/xml:
+              schema:
+                type: array
+                items:
+                  type: string
+  /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/metrics/message-metrics-ids:
+    get:
+      tags:
+      - deprecated
+      description: Get all the message metrics statistics ids for a workflow
+      operationId: messageMetricsStatisticsIds_2
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+            application/xml:
+              schema:
+                type: array
+                items:
+                  type: string
+  /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/metrics/message-metrics/{id}:
+    get:
+      tags:
+      - deprecated
+      description: Get a workflow message metrics statistics for the given id
+      operationId: getMessageMetricsStatistics_15
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            text/csv:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+    delete:
+      tags:
+      - deprecated
+      description: Delete the workflow message metrics statistics for the given id
+      operationId: clearMessageMetricsStatistics_2
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/metrics/metadata-statistics/{id}:
+    get:
+      tags:
+      - deprecated
+      description: Get a workflow matadata statistics for the given id
+      operationId: getMetadataStatistics_2
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MetadataStatisticsEntity"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/MetadataStatisticsEntity"
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/MetadataStatisticsEntity"
+            text/csv:
+              schema:
+                $ref: "#/components/schemas/MetadataStatisticsEntity"
+    delete:
+      tags:
+      - deprecated
+      description: Delete the workflow matadata statistics for the given id
+      operationId: clearMetadataStatistics_2
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Result"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/Result"
+  /external/workflow/{url}/{jmxUid}/{channel}/{workflow}/metrics/message-metrics:
+    get:
+      tags:
+      - deprecated
+      description: Get a workflow message metrics statistics. The first found will
+        be returned
+      operationId: getMessageMetricsStatistics_14
+      parameters:
+      - name: url
+        in: path
+        description: The JMX URL used to connect to an Adapter.
+        required: true
+        schema:
+          type: string
+      - name: jmxUid
+        in: path
+        description: The unique identifier used in the Adapter configuration XML.
+        required: true
+        schema:
+          type: string
+      - name: Jmx-Credentials
+        in: header
+        description: "The JMX credentials used to connect to an Adapter. You can encode\
+          \ the password using the Interlok utility class 'Password.encode(plain,\
+          \ Password.PORTABLE_PASSWORD)'."
+        schema:
+          type: string
+      - name: jmxEnv
+        in: query
+        description: The JMX environment parameters used to connect to an Adapter.
+        schema:
+          type: string
+      - name: channel
+        in: path
+        description: The channel unique id.
+        required: true
+        schema:
+          type: string
+          default: none
+      - name: workflow
+        in: path
+        description: The workflow unique id.
+        required: true
+        schema:
+          type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            application/xml:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            text/plain:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+            text/csv:
+              schema:
+                $ref: "#/components/schemas/MessageMetricsStatisticsEntity"
+components:
+  schemas:
+    AdapterEntity:
+      required:
+      - jmxUid
+      - name
+      - url
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int32
+        created:
+          type: string
+          format: date-time
+        updated:
+          type: string
+          format: date-time
+        name:
+          maxLength: 127
+          minLength: 1
+          type: string
+        jmxUid:
+          maxLength: 127
+          minLength: 1
+          type: string
+        tags:
+          maxLength: 512
+          minLength: 0
+          type: string
+        url:
+          maxLength: 255
+          minLength: 1
+          pattern: "(service:jmx:)(.*)(://)(.*)"
+          type: string
+        jmxUsername:
+          maxLength: 255
+          minLength: 0
+          type: string
+        jmxPassword:
+          maxLength: 255
+          minLength: 0
+          type: string
+        jmxEnv:
+          maxLength: 512
+          minLength: 0
+          type: string
+        configLastUpdated:
+          type: string
+          format: date-time
+        ordering:
+          type: integer
+          format: int32
+        autoDiscovered:
+          type: boolean
+        state:
+          type: string
+          enum:
+          - CLOSED
+          - INITIALISED
+          - STARTED
+          - STOPPED
+          - DISCONNECTED
+        configFileUrl:
+          type: string
+        channels:
+          type: array
+          items:
+            $ref: "#/components/schemas/ChannelEntity"
+        type:
+          type: string
+      xml:
+        name: adapter
+    ChannelEntity:
+      type: object
+      properties:
+        name:
+          type: string
+        state:
+          type: string
+          enum:
+          - CLOSED
+          - INITIALISED
+          - STARTED
+          - STOPPED
+          - DISCONNECTED
+        workflows:
+          type: array
+          items:
+            $ref: "#/components/schemas/WorkflowEntity"
+        type:
+          type: string
+        id:
+          type: string
+      xml:
+        name: channel
+    WorkflowEntity:
+      type: object
+      properties:
+        name:
+          type: string
+        lifeCycleActionsDisabled:
+          type: boolean
+        state:
+          type: string
+          enum:
+          - CLOSED
+          - INITIALISED
+          - STARTED
+          - STOPPED
+          - DISCONNECTED
+        type:
+          type: string
+        id:
+          type: string
+      xml:
+        name: workflow
+    AdapterJmxInterlokDetails:
+      type: object
+      properties:
+        jmxUid:
+          type: string
+        url:
+          type: string
+        jmxUsername:
+          type: string
+        jmxPassword:
+          type: string
+        jmxEnv:
+          type: string
+        id:
+          type: integer
+          format: int32
+        name:
+          type: string
+        tags:
+          type: string
+      xml:
+        name: adapter
+    Result:
+      type: object
+      properties:
+        id:
+          type: string
+        value:
+          type: boolean
+        message:
+          type: string
+        state:
+          type: string
+        stackTrace:
+          type: string
+    StateWrapper:
+      type: object
+      properties:
+        id:
+          type: string
+        state:
+          type: string
+          enum:
+          - CLOSED
+          - INITIALISED
+          - STARTED
+          - STOPPED
+          - DISCONNECTED
+      xml:
+        name: state-wrapper
+    ComponentDetails:
+      type: object
+      properties:
+        id:
+          type: string
+        state:
+          type: string
+          enum:
+          - CLOSED
+          - INITIALISED
+          - STARTED
+          - STOPPED
+          - DISCONNECTED
+        lastStarted:
+          type: string
+          format: date-time
+        lastStopped:
+          type: string
+          format: date-time
+        inFlight:
+          type: integer
+          format: int32
+        uptime:
+          type: string
+        downtime:
+          type: string
+      xml:
+        name: component-details
+    Count:
+      type: object
+      properties:
+        value:
+          type: integer
+          format: int32
+    FailedMessageEntity:
+      type: object
+      properties:
+        id:
+          type: string
+        payload:
+          type: string
+        payloadEncoding:
+          type: string
+        nextServiceId:
+          type: string
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+        workflowId:
+          type: string
+        date:
+          type: string
+          format: date-time
+        fileSystemPath:
+          type: string
+        stackTrace:
+          type: string
+        error:
+          type: string
+        canRetry:
+          type: boolean
+      xml:
+        name: failed-message
+    MessageMetricsStatisticsEntity:
+      type: object
+      properties:
+        id:
+          type: string
+        endMillisForTimeSliceIndex:
+          type: array
+          items:
+            type: integer
+            format: int64
+        timeSliceDurationSeconds:
+          type: integer
+          format: int32
+        parentChannelName:
+          type: string
+        parentWorkflowName:
+          type: string
+        numberOfMessagesForTimeSliceIndex:
+          type: array
+          items:
+            type: integer
+            format: int32
+        numberOfErrorMessagesForTimeSliceIndex:
+          type: array
+          items:
+            type: integer
+            format: int32
+        totalSizeOfMessagesForTimeSliceIndex:
+          type: array
+          items:
+            type: integer
+            format: int64
+        totalStringStats:
+          type: string
+        numberOfTimeSlices:
+          type: integer
+          format: int32
+    PropertiesWrapper:
+      type: object
+      properties:
+        empty:
+          type: boolean
+      additionalProperties:
+        type: object
+    MessageEntity:
+      type: object
+      properties:
+        id:
+          type: string
+        payload:
+          type: string
+        payloadEncoding:
+          type: string
+        nextServiceId:
+          type: string
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+      xml:
+        name: message
+    ComponentCheckWrapper:
+      type: object
+      properties:
+        service:
+          type: string
+        message:
+          $ref: "#/components/schemas/MessageEntity"
+        rewriteConnections:
+          type: boolean
+      xml:
+        name: component-check-wrapper
+    MetadataStatisticsEntity:
+      type: object
+      properties:
+        id:
+          type: string
+        endMillisForTimeSliceIndex:
+          type: array
+          items:
+            type: integer
+            format: int64
+        timeSliceDurationSeconds:
+          type: integer
+          format: int32
+        parentChannelName:
+          type: string
+        parentWorkflowName:
+          type: string
+        metadataKeys:
+          uniqueItems: true
+          type: array
+          items:
+            type: string
+        totalCountForTimeSliceIndex:
+          type: array
+          items:
+            type: object
+            additionalProperties:
+              type: integer
+              format: int32
+        numberOfTimeSlices:
+          type: integer
+          format: int32
