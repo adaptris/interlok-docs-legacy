@@ -76,7 +76,7 @@ The configuration file `adapter.xml` an XML representation of a graph of Java ob
 
 The standard camel case java naming convention is converted to use a `-` in XML element names, so `uniqueId` becomes `<unique-id>`; all string and primitive types are expressed as elements in XML and conversion is handled automatically. In cases where the property being set is an interface or abstract type, it is necessary to supply the runtime type of the implementation to use; which is where the `class=` attribute comes in (you can see this in the example above).
 
-All standard classes are [annotated with an alias](developer-annotations.htmlmd#class-level-annotations) which gives you a friendly name to use rather than the fully qualified class name. You can still use the fully qualified classname if you wish; but package/class names do change from time to time so using the friendly name is preferred. In the example above `fs-consumer` is the friendly name for the class `com.adaptris.core.fs.FsConsumer`.
+All standard classes are [annotated with an alias](developer-annotations.html#class-level-annotations) which gives you a friendly name to use rather than the fully qualified class name. You can still use the fully qualified classname if you wish; but package/class names do change from time to time so using the friendly name is preferred. In the example above `fs-consumer` is the friendly name for the class `com.adaptris.core.fs.FsConsumer`.
 
 ## What is a Connection ##
 
@@ -137,11 +137,11 @@ The Adaptris Interlok installer ships with a number of modular components that c
 [AdaptrisMessage]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/AdaptrisMessage.html
 [ServiceList]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/ServiceList.html
 [FtpProducer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/ftp/FtpProducer.html
-[DefaultSmtpProducer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/mail/DefaultSmtpProducer.html
-[JdkHttpProducer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/http/JdkHttpProducer.html
+[DefaultSmtpProducer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mail/3.9-SNAPSHOT/com/adaptris/core/mail/DefaultSmtpProducer.html
+[JdkHttpProducer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/http/client/net/StandardHttpProducer.html
 [JmsProducer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/jms/JmsProducer.html
 [FtpConsumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/ftp/FtpConsumer.html
-[DefaultMailConsumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/mail/DefaultMailConsumer.html
+[DefaultMailConsumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mail/3.9-SNAPSHOT/com/adaptris/core/mail/DefaultMailConsumer.html
 [JmsConsumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/jms/JmsConsumer.html
 [NullService]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/NullService.html
 [standard-workflow]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/StandardWorkflow.html

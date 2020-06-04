@@ -277,7 +277,7 @@ Both [jetty-standard-response-producer][] and [jetty-response-service][] (3.6.5+
 [standard-workflow]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/StandardWorkflow.html
 [pooling-workflow]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/PoolingWorkflow.html
 [jetty-pooling-workflow-interceptor]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/http/jetty/JettyPoolingWorkflowInterceptor.html
-[cross origin filter documentation]: https://www.eclipse.org/jetty/documentation/9.4.x/cross-origin-filter.html
+[cross origin filter documentation]: https://www.eclipse.org/jetty/documentation/current/cross-origin-filter.html
 [jetty-async-workflow-interceptor]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/http/jetty/JettyAsyncWorkflowInterceptor.html
 [message-id-correlation-id-source]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/jms/MessageIdCorrelationIdSource.html
 [jetty-commit-response]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/http/jetty/ShortCutJettyResponse.html

@@ -20,7 +20,7 @@ There are two ways of accessing external webservices from Interlok; through a ge
 
 ### Example ###
 
-If we wanted to call the [WebserviceX.net](http://webservicex.net/ws/default.aspx) currency converter webservice; then we can do that quite easily using [apache-cxf-soap-service][]. For the purposes of our example we are going to do a find out the current GBP to USD exchange rate; and to log the reply message.
+If we wanted to call the a currency converter webservice; then we can do that quite easily using [apache-cxf-soap-service][]. For the purposes of our example we are going to do a find out the current GBP to USD exchange rate; and to log the reply message.
 
 ```xml
 <service-collection class="service-list">

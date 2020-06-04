@@ -22,7 +22,7 @@ If you want to use any of the optional components, then copy the corresponding j
 
 ### The Web UI ###
 
-`${adapter.home}/config/jetty.xml` contains the settings for the embedded web server. This can be modified if port 8080 is in-use on the adapter machine. Start the adapter, and the embedded webserver will automatically start. You can access the UI using [http://localhost:8080/adapter-web-gui/](http://localhost:8080/adapter-web-gui/) from your browser. The default credentials are admin / admin. The underlying web application communicates with the adapter via JMX, so you can attach to the adapter using any JMX tool you prefer (e.g. jconsole) provided your classpath contains all the correct libraries.
+`${adapter.home}/config/jetty.xml` contains the settings for the embedded web server. This can be modified if port 8080 is in-use on the adapter machine. Start the adapter, and the embedded webserver will automatically start. You can access the UI using [http://localhost:8080/interlok/](http://localhost:8080/interlok/) from your browser. The default credentials are admin / admin. The underlying web application communicates with the adapter via JMX, so you can attach to the adapter using any JMX tool you prefer (e.g. jconsole) provided your classpath contains all the correct libraries.
 
 ### License ###
 
@@ -121,4 +121,4 @@ There is now support for dynamic invocation of SAP RFC and BAPI modules. The str
 There are now a lot more optional components which interface with different systems. Check the directory structure in the optional directory for more information.
 
 [JmsConnection]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/jms/JmsConnection.html
-[Apache Ivy]: http://ivy.apache.org
+[Apache Ivy]: https://ant.apache.org/ivy/

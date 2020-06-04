@@ -95,7 +95,7 @@ Each of the [PropertyMapper][] implementations have the following specific behav
 
 ## MSMQ Best Practices ##
 
-There is a Microsoft MSMQ best practice document which is available for download: [http://download.microsoft.com/download/F/C/9/FC9989A2-DA75-4D96-B654-4BD29CF6AEE1/MSMQBestPractice.doc](http://download.microsoft.com/download/F/C/9/FC9989A2-DA75-4D96-B654-4BD29CF6AEE1/MSMQBestPractice.doc). The following are the best practices that we have found to increase overall performance and reliability of MSMQ.
+There is a Microsoft MSMQ best practice document which is available for download: [https://docs.microsoft.com/en-us/dotnet/framework/wcf/feature-details/best-practices-for-queued-communication](https://docs.microsoft.com/en-us/dotnet/framework/wcf/feature-details/best-practices-for-queued-communication). The following are the best practices that we have found to increase overall performance and reliability of MSMQ.
 
 ### Use Private Queues ###
 

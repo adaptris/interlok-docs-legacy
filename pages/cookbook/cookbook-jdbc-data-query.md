@@ -419,10 +419,10 @@ which results in
 [metadata-filter-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/metadata/MetadataFilterService.html
 [XML ResultSetTranslator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/XmlPayloadTranslatorImpl.html
 [jdbc-statement-parameter]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/StatementParameter.html
-[Capitalize]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.ColumnStyle.html#Capitalize
-[UpperCase]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.ColumnStyle.html#UpperCase
-[LowerCase]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.ColumnStyle.html#LowerCase
-[NoStyle]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.ColumnStyle.html#NoStyle
+[Capitalize]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/StyledResultTranslatorImp.ColumnStyle.html#Capitalize
+[UpperCase]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/StyledResultTranslatorImp.ColumnStyle.html#UpperCase
+[LowerCase]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/StyledResultTranslatorImp.ColumnStyle.html#LowerCase
+[NoStyle]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/StyledResultTranslatorImp.ColumnStyle.html#NoStyle
 [list of ColumnTranslator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/ResultSetTranslatorImp.html#setColumnTranslators-java.util.List-
 [ColumnTranslator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/types/ColumnTranslator.html
 [String.format]: http://docs.oracle.com/javase/7/docs/api/java/util/Formatter.html
