@@ -1397,8 +1397,8 @@ I am the body of an email without attachments.
 [body-handler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mail/3.9-SNAPSHOT/com/adaptris/core/mail/attachment/BodyHandler.html
 [configured-consume-destination]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/ConfiguredConsumeDestination.html
 [copy-metadata-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/metadata/CopyMetadataService.html
-[default-mail-consumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/mail/DefaultMailConsumer.html
-[default-smtp-producer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/mail/DefaultSmtpProducer.html
+[default-mail-consumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mail/3.9-SNAPSHOT/com/adaptris/core/mail/DefaultMailConsumer.html
+[default-smtp-producer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mail/3.9-SNAPSHOT/com/adaptris/core/mail/DefaultSmtpProducer.html
 [fixed-interval-poller]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/FixedIntervalPoller.html
 [fs-consumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/fs/FsConsumer.html
 [fs-producer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/fs/FsProducer.html
