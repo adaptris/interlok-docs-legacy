@@ -59,7 +59,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-hpcc][] | Connect to [HPCC](http://www.hpccsystems.com)|3.6.1+ | available on [github](https://github.com/adaptris/interlok-hpcc)
 |com.adaptris | [interlok-interfax][] | Integration with the Java FAX API; requires [interlok-licensing][]| 3.8.0+
 |com.adaptris | [interlok-ironmq][] | Connect to IronMQ| 3.8.0+| you could use [interlok-aws-sqs][] in JMS mode.
-|com.adaptris | [interlok-jclouds-blobstore][] | Use [Apache jclouds](https://jcloud.apache.org) to access your cloud storage |3.7.3+ | available on [github](https://github.com/adaptris/interlok-jclouds)
+|com.adaptris | [interlok-jclouds-blobstore][] | Use [Apache jclouds](https://jclouds.apache.org/) to access your cloud storage |3.7.3+ | available on [github](https://github.com/adaptris/interlok-jclouds)
 |com.adaptris | [interlok-jms-oracleaq][] | Connect to [Oracle via advanced queues](cookbook-oracleaq.html); requires additional jars not automatically delivered; requires [interlok-licensing][]| 3.8.0+
 |com.adaptris | [interlok-jms-sonicmq][] | Connect to SonicMQ JMS; requires additional jars not automatically delivered; requires [interlok-licensing][]| 3.8.0+|
 |com.adaptris | ~~[interlok-jmx-jms][]~~| Support for [JMX via JMS or AMQP 1.0](advanced-jmx-jms.html) | 3.8.0+; removed in 3.10.0|
@@ -73,13 +73,13 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-jq][] | JSON transformations using JQ-like syntax |3.7.0+ | available on [github](https://github.com/adaptris/interlok-jq)
 |com.adaptris | [interlok-json][] | Transform JSON data to and from XML | 3.8.0+ |available on [github](https://github.com/adaptris/interlok-json)
 |com.adaptris | [interlok-json-streaming][] | Transform JSON via a STaX like interface | 3.8.2+ |available on [github](https://github.com/adaptris/interlok-json-streaming)
-|com.adaptris | [interlok-kafka][] | Connect to [Apache Kafka](http://kafka.apache.org/)| 3.8.0+|available on [github](https://github.com/adaptris/interlok-kafka)
+|com.adaptris | [interlok-kafka][] | Connect to [Apache Kafka](https://kafka.apache.org/)| 3.8.0+|available on [github](https://github.com/adaptris/interlok-kafka)
 |com.adaptris | [interlok-kie][] | Integration with the drools business rule management system from KIE group | 3.8.2+|available on [github](https://github.com/adaptris/interlok-kie)
 |com.adaptris | [interlok-kubernetes-metrics][] | [Reporting metrics to kubernetes](advanced-interlok-scaling.html)| 3.9.1+|available on [github](https://github.com/adaptris/interlok-kubernetes)
 |com.adaptris | [interlok-kubernetes-prometheus][] | [Reporting metrics to kubernetes](advanced-interlok-scaling.html)| 3.9.1+|available on [github](https://github.com/adaptris/interlok-kubernetes)
 |com.adaptris | ~~[interlok-legacyhttp][]~~ | ~~servicing HTTP requests without Jetty (Java 7 Compatibile where base Interlok Version is)~~ | 3.6.4+; upgrade to Java 8 already! | available on [github](https://github.com/adaptris/interlok-legacyhttp)
 |com.adaptris | [interlok-licensing][] | Enforces a license on certain components | 3.8.0+
-|com.adaptris | [interlok-logging][] | Custom JMX Appender for [Log4j2](https://logging.apache.org/log4j) | | available on [github](https://github.com/adaptris/interlok)
+|com.adaptris | [interlok-logging][] | Custom JMX Appender for [Log4j2](https://logging.apache.org/log4j/2.x/) | | available on [github](https://github.com/adaptris/interlok)
 |com.adaptris | [interlok-mail][] | Support for Email servers; migrated from [interlok-core][] into its own optional component | 3.9.0+ | available on [github](https://github.com/adaptris/interlok-mail)
 |com.adaptris | [interlok-mongodb][] | Support for MongoDB | 3.7.2+ | available on [github](https://github.com/adaptris/interlok-mongodb)
 |com.adaptris | [interlok-mqtt][] | Support for MQTT protocol | 3.5.1+ | available on [github](https://github.com/adaptris/interlok-mqtt)
@@ -108,14 +108,14 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-solace][] | Integration with Solace Systems as a JMS provider; requires additional jars not automatically delivered; requires [interlok-licensing][]| 3.8.0+
 |com.adaptris | [interlok-sonicmf][] | Interlok runtime as [part of a Sonic Container](advanced-sonic-container.html) | 3.8.0+
 |com.adaptris | [interlok-sshtunnel][] | Management component that opens one or more SSH tunnels | 3.7.1+ | available on [github](https://github.com/adaptris/interlok-sshtunnel)
-|com.adaptris | ~~[interlok-stackify][]~~ | ~~Supports [Stackify Profiling](advanced-stackify-profiling.html); requires [interlok-profiler][]~~ |3.8.0 only, removed in 3.8.1|available on [github](https://github.com/adaptris/interlok-stackify)
+|com.adaptris | ~~[interlok-stackify][]~~ | ~~Supports Stackify Profiling; requires [interlok-profiler][]~~ |3.8.0 only, removed in 3.8.1|available on [github](https://github.com/adaptris/interlok-stackify)
 |com.adaptris | [interlok-stax][] | Using the STaX API to read/write XML | 3.6.6+ | available on [github](https://github.com/adaptris/interlok-stax)
 |com.adaptris | [interlok-stubs][] | [Test Scaffolding](developer-services.html#writing-tests) for developers |3.8.0+
 |com.adaptris | [interlok-swift][] | Transform to and from the Swift message format; | 3.8.0+| available on [github](https://github.com/adaptris/interlok-swift). Does not require [interlok-licensing][] from 3.9.2+
 |com.adaptris | [interlok-swiftmq][] | Connect to a SwiftMQ instance or any AMQP1.0 broker; [requires SwiftMQ Client Download](http://swiftmq.com/downloads/index.html); requires [interlok-licensing][]| 3.8.0+
 |com.adaptris | [interlok-tibco][] | Connect to a Tibco instance; requires additional jars not automatically delivered; requires [interlok-licensing][]| 3.8.0+|
 |com.adaptris | [interlok-triggered][] | Channels that can be started via an external trigger; requires [interlok-licensing][] | 3.8.0+
-|com.adaptris | [interlok-varsub][] | [Variable substitution pre-processor](advanced-configuration-pre-processors.html#variable-substitution) | 3.8.0+|available on [github](https://github.com/adaptris/interlok-varsub)
+|com.adaptris | [interlok-varsub][] | [Variable substitution pre-processor](advanced-configuration-pre-processors.html#variable-substitution) | 3.8.0+|available on [github](https://github.com/adaptris/interlok-variable-substitution)
 |com.adaptris | [interlok-vcs-command-line][] | Interlok configuration hosted in a configurable VCS | 3.5.1+
 |com.adaptris | [interlok-vcs-git][] | Interlok configuration [hosted in git](advanced-vcs-git.html) | 3.8.0+ | available on [github](https://github.com/adaptris/interlok-vcs-git)
 |com.adaptris | [interlok-vcs-subversion][] | Interlok configuration [hosted in subversion](advanced-vcs-svn.html) | 3.8.0+
@@ -232,7 +232,7 @@ In release 3.8.0; we renamed all the artefacts so that they consistently started
 |com.adaptris | [adp-simple-csv][] | Transform a CSV file to XML | until 3.7.3 |  _since 3.8.0_ use [interlok-csv][] instead.
 |com.adaptris | [adp-solace][] | Integration with Solace Systems as a JMS provider; requires additional jars not automatically delivered; requires [adp-licensing][]| until 3.7.3 |  _since 3.8.0_ use [interlok-solace][] instead.
 |com.adaptris | [adp-sonicmf][] | Interlok runtime as [part of a Sonic Container](advanced-sonic-container.html) | until 3.7.3 |  _since 3.8.0_ use [interlok-sonicmf][] instead.
-|com.adaptris | [adp-stackify][] | Supports [Stackify Profiling](advanced-stackify-profiling.html); requires [adp-profiler][] | until 3.7.3 |  _since 3.8.0_ use [interlok-stackify][] instead.
+|com.adaptris | [adp-stackify][] | Supports Stackify Profiling; requires [adp-profiler][] | until 3.7.3 |  _since 3.8.0_ use [interlok-stackify][] instead.
 |com.adaptris | [adp-stubs][] | [Test Scaffolding](developer-services.html#writing-tests) for developers | until 3.7.3|  _since 3.8.0_ use [interlok-stubs][] instead.
 |com.adaptris | [adp-swift][] | Transform to and from the Swift message format; requires [adp-licensing][] | until 3.7.3|  _since 3.8.0_ use [interlok-swift][] instead.
 |com.adaptris | [adp-swiftmq][] | Connect to a SwiftMQ instance or any AMQP1.0 broker; [requires SwiftMQ Client Download](http://swiftmq.com/downloads/index.html); requires [adp-licensing][]| until 3.7.3 |  _since 3.8.0_ use [interlok-swiftmq][] instead.

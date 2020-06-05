@@ -176,7 +176,7 @@ along with configuration, which will throw an exception for error handling if th
 [json-to-metadata]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.10-SNAPSHOT/com/adaptris/core/json/JsonToMetadata.html
 [json-transform-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.10-SNAPSHOT/com/adaptris/core/transform/json/JsonTransformService.html
 [json-xml-transform-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.10-SNAPSHOT/com/adaptris/core/transform/json/JsonXmlTransformService.html
-[json.org]: http://www.json.org/java/index.html
+[json.org]: https://www.json.org/json-en.html
 [simple-transformation-driver]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.10-SNAPSHOT/com/adaptris/core/transform/json/SimpleJsonTransformationDriver.html
 [default-transformation-driver]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.10-SNAPSHOT/com/adaptris/core/transform/json/DefaultJsonTransformationDriver.html
 [json-lib]: http://json-lib.sourceforge.net/

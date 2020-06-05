@@ -1393,40 +1393,40 @@ I am the body of an email without attachments.
 
 
 [add-metadata-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/metadata/AddMetadataService.html
-[attachment-handler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/mail/attachment/AttachmentHandler.html
-[body-handler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/mail/attachment/BodyHandler.html
+[attachment-handler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mail/3.9-SNAPSHOT/com/adaptris/core/mail/attachment/AttachmentHandler.html
+[body-handler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mail/3.9-SNAPSHOT/com/adaptris/core/mail/attachment/BodyHandler.html
 [configured-consume-destination]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/ConfiguredConsumeDestination.html
 [copy-metadata-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/metadata/CopyMetadataService.html
-[default-mail-consumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/mail/DefaultMailConsumer.html
-[default-smtp-producer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/mail/DefaultSmtpProducer.html
+[default-mail-consumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mail/3.9-SNAPSHOT/com/adaptris/core/mail/DefaultMailConsumer.html
+[default-smtp-producer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mail/3.9-SNAPSHOT/com/adaptris/core/mail/DefaultSmtpProducer.html
 [fixed-interval-poller]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/FixedIntervalPoller.html
 [fs-consumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/fs/FsConsumer.html
 [fs-producer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/fs/FsProducer.html
 [hMailServer]: https://www.hmailserver.com
 [IMAP Javadocs]: https://javamail.java.net/nonav/docs/api/com/sun/mail/imap/package-summary.html
-[javamail-receiver-factory]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/mail/JavamailReceiverFactory.html
+[javamail-receiver-factory]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mail/3.9-SNAPSHOT/com/adaptris/mail/JavamailReceiverFactory.html
 [javax.mail.jar]: https://java.net/projects/javamail/downloads
-[mail-consumer-imp]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/mail/MailConsumerImp.html
-[mail-content-creator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/mail/attachment/MailContentCreator.html
-[mail-receiver-factory]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/mail/MailReceiverFactory.html
-[mime-mail-creator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/mail/attachment/MimeMailCreator.html
-[multi-attachment-smtp-producer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/mail/attachment/MultiAttachmentSmtpProducer.html
+[mail-consumer-imp]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mail/3.9-SNAPSHOT/com/adaptris/core/mail/MailConsumerImp.html
+[mail-content-creator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mail/3.9-SNAPSHOT/com/adaptris/core/mail/attachment/MailContentCreator.html
+[mail-receiver-factory]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mail/3.9-SNAPSHOT/com/adaptris/mail/MailReceiverFactory.html
+[mime-mail-creator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mail/3.9-SNAPSHOT/com/adaptris/core/mail/attachment/MimeMailCreator.html
+[multi-attachment-smtp-producer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mail/3.9-SNAPSHOT/com/adaptris/core/mail/attachment/MultiAttachmentSmtpProducer.html
 [null-connection]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/NullConnection.html
 [part-selector]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/util/text/mime/PartSelector.html
 [poller]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/Poller.html
 [POP3 Javadocs]: https://javamail.java.net/nonav/docs/api/com/sun/mail/pop3/package-summary.html
-[pop3-receiver-factory]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/mail/Pop3ReceiverFactory.html
-[pop3s-receiver-factory]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/mail/Pop3sReceiverFactory.html
+[pop3-receiver-factory]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mail/3.9-SNAPSHOT/com/adaptris/mail/Pop3ReceiverFactory.html
+[pop3s-receiver-factory]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mail/3.9-SNAPSHOT/com/adaptris/mail/Pop3sReceiverFactory.html
 [quartz-cron-poller]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/QuartzCronPoller.html
-[raw-mail-consumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/mail/RawMailConsumer.html
+[raw-mail-consumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mail/3.9-SNAPSHOT/com/adaptris/core/mail/RawMailConsumer.html
 [select-by-content-id]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/util/text/mime/SelectByContentId.html
 [select-by-header]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/util/text/mime/SelectByHeader.html
 [select-by-position]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/util/text/mime/SelectByPosition.html
 [SMTP Javadocs]: https://javamail.java.net/nonav/docs/api/com/sun/mail/smtp/package-summary.html
 [Thunderbird]: https://www.mozilla.org/en-GB/thunderbird/
-[xml-attachment-handler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/mail/attachment/XmlAttachmentHandler.html
-[xml-body-handler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/mail/attachment/XmlBodyHandler.html
-[xml-mail-creator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/mail/attachment/XmlMailCreator.html
+[xml-attachment-handler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mail/3.9-SNAPSHOT/com/adaptris/core/mail/attachment/XmlAttachmentHandler.html
+[xml-body-handler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mail/3.9-SNAPSHOT/com/adaptris/core/mail/attachment/XmlBodyHandler.html
+[xml-mail-creator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-mail/3.9-SNAPSHOT/com/adaptris/core/mail/attachment/XmlMailCreator.html
 
 
 {% include links.html %}

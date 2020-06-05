@@ -374,7 +374,7 @@ A feature of using Topics is that you can restrict the delivery of the message t
 [oracleaq-implementation]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.9-SNAPSHOT/com/adaptris/core/jms/oracle/OracleAqImplementation.html
 [oracleaq-topic-producer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.9-SNAPSHOT/com/adaptris/core/jms/oracle/OracleAqPasProducer.html
 [RecipientList]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.9-SNAPSHOT/com/adaptris/core/jms/oracle/RecipientList.html
-[oracleaq-simple-recipient-list]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.9-SNAPSHOT/jms-oracleaq/com/adaptris/core/jms/oracle/SimpleRecipientList.html
+[oracleaq-simple-recipient-list]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-oracleaq/3.9-SNAPSHOT/com/adaptris/core/jms/oracle/SimpleRecipientList.html
 [standard-jndi-implementation]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/jms/jndi/StandardJndiImplementation.html
 [cached-destination-jndi-implementation]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/jms/jndi/CachedDestinationJndiImplementation.html
 [jms-connection]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/jms/JmsConnection.html
@@ -390,7 +390,7 @@ A feature of using Topics is that you can restrict the delivery of the message t
 [VendorImplementation]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/jms/VendorImplementation.html
 [failover-jms-connection]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/jms/FailoverJmsConnection.html
 [basic-active-mq-implementation]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/jms/activemq/BasicActiveMqImplementation.html
-[basic-tibco-ems-implementation]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jms-tibco/3.9-SNAPSHOT/com/adaptris/core/jms/tibco/BasicTibcoEmsImplementation.html
+[basic-tibco-ems-implementation]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-tibco/3.9-SNAPSHOT/com/adaptris/core/jms/tibco/BasicTibcoEmsImplementation.html
 [metadata-correlation-id-source]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/jms/MetadataCorrelationIdSource.html
 [jms-connection-error-handler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/jms/JmsConnectionErrorHandler.html
 [active-jms-connection-error-handler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/jms/ActiveJmsConnectionErrorHandler.html

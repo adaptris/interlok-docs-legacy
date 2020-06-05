@@ -59,4 +59,4 @@ The following unit tests are relevant to this functionality:
 
 
 [XStreamConfigManager]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/management/config/XStreamConfigManager.html
-[XStream]: http://xstream.codehaus.org/
+[XStream]: https://x-stream.github.io/

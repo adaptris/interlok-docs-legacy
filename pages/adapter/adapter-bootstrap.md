@@ -283,6 +283,6 @@ Pre-Processors are components that allow you to inject some additional processin
 [XStreamConfigManager]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/management/config/XStreamConfigManager.html
 [ManagementComponent]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/management/ManagementComponent.html
 [Authenticator]: http://docs.oracle.com/javase/7/docs/api/java/net/Authenticator.html
-[interlok-mgmt-artemis]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-mgmt-artemis/
+[interlok-mgmt-artemis]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-artemis/
 [interlok-sshtunnel]: https://github.com/adaptris/interlok-sshtunnel
 [interlok-exec]: https://github.com/adaptris/interlok-exec

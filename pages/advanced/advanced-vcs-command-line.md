@@ -9,7 +9,7 @@ summary: Configure Interlok to automatically check out config from VCS when star
 
 ## Configuration ##
 
-[interlok-vcs-command-line][] allows you to configure an arbitrary version control system (rather than the optional [git](advanced-vcs-git.html]) or [subversion](advanced-vcs-svn.html)) for use with the adapter. You will have to make sure that the commandline executable is available to the adapter; and that it already works from the commandline. Authentication will not be handled directly by interlok.
+[interlok-vcs-command-line][] allows you to configure an arbitrary version control system (rather than the optional [git](advanced-vcs-git.html) or [subversion](advanced-vcs-svn.html)) for use with the adapter. You will have to make sure that the commandline executable is available to the adapter; and that it already works from the commandline. Authentication will not be handled directly by interlok.
 
 ### Repository Configuration ###
 

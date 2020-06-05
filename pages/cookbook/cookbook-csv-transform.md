@@ -44,7 +44,7 @@ Since 3.6.6 you can convert to and from CSV via the [interlok-csv-json][] option
 [super-csv]: http://super-csv.github.io/super-csv/
 [simple-csv-to-xml-transform]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-csv/3.9-SNAPSHOT/com/adaptris/core/transform/csv/SimpleCsvToXmlTransformService.html
 [raw-csv-to-xml-transform]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-csv/3.9-SNAPSHOT/com/adaptris/core/transform/csv/RawCsvToXmlTransformService.html
-[flat-file-transform-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/transform/FfTransformService.html
+[flat-file-transform-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-flatfile/3.9-SNAPSHOT/com/adaptris/core/transform/flatfile/FlatfileTransformService.html
 [csv-basic-format]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-csv/3.9-SNAPSHOT/com/adaptris/core/transform/csv/BasicFormatBuilder.html
 [csv-custom-format]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-csv/3.9-SNAPSHOT/com/adaptris/core/transform/csv/CustomFormatBuilder.html
 [interlok-csv-json]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-csv-json/
