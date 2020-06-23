@@ -1,0 +1,66 @@
+## Version 3.10.2 ##
+
+Release Date : 2020-06
+
+### Key Highlights
+
+- UI Config Projects new `Optional Components` tab displays which additional optional components are needed in the Config XML
+- Interlok Runtime improvements include:
+    - The XML schema validation has been improved to report on all schema violations rather than just the first one
+    - New endpoints that supply `readiness` and `liveness` information in the interlok-workflow-rest-services health-check component
+    - A new interlok-aws-s3 amazon-s3-extended-copy operation which mirrors CopyOperation but exposes additional object tags and object metadata
+    - interlok-jclouds-blobstore jclouds-blobstore-connection now supports AWS session tokens when connecting to S3
+    - interlok-aws-common added support for Signing HTTP Requests to the AWS managed Elasticsearch Service
+    - Improved performance for BlobStorage object listings, which are now lazy loaded. This covers many components such as aws ListOperation, JsonBlobListRenderer, CsvBlobListRenderer etc.
+    - If you enable the jetty management component w/o an accompanying jetty.xml configuration, a fail-safe one will be used
+    - The docker base images will now use a JDK and not a JRE (as certain things like CRaSH requires a JDK)
+
+### Bugs
+
+
+- `INTERLOK-2932` - UI Dashboard - Adapter names and tags are not refreshed correctly in the UI
+- `INTERLOK-3181` - Upgrade POI to 4.12 on interlok-excel
+- `INTERLOK-3198` - UI: Missing deprecation warning in splitter
+- `INTERLOK-3230` - ChannelRestartProduceExceptionHandler doesn`t fully restart channels.
+- `INTERLOK-3233` - interlok-stubs : log4j2 jars aren`t optional.
+- `INTERLOK-3263` - UI Service Tester - Issue loading service tester config from the `local adapter storage` (\ui-resources\config-project-store)
+- `INTERLOK-3297` - UI - Not starting with jackson-databind 2.11.0 because of swagger
+- `INTERLOK-3298` - Atrifact Downloader - Remote Code Execution (RCE)
+- `INTERLOK-3305` - Fix interlok-install-builder for 3.10.2
+- `INTERLOK-3309` - interlok-okhttp relies on ptsv2 (which is broken)
+- `INTERLOK-3317` - interlok-gcloud-pubsub: review dependencies needed for it to work
+- `INTERLOK-3321` - gcloud-pubsub has an undeclared dependency on gson
+- `INTERLOK-3324` - UI: New projects do not always save as a structured project
+- `INTERLOK-3325` - interlok-aws-common should depend on jackson-dataformat-cbor
+
+### Improvements
+
+- `INTERLOK-2594` - config-test should validate shared connection references
+- `INTERLOK-3039` - Hotfixes are not coped with at all by the UI
+- `INTERLOK-3048` - Config Conditional Operator: "Is Not Empty", "In" and "Not In"
+- `INTERLOK-3123` - Bump google-cloud-pubsub from 1.98.0 to 1.102.0
+- `INTERLOK-3206` - Document use of JGroups in clustering/failover
+- `INTERLOK-3219` - Remove the need for jetty.xml/webdefault.xml
+- `INTERLOK-3231` - Investigate RetryMessHandler with a restarting produce exception handler
+- `INTERLOK-3241` - UI : Save project should create used optional component list
+- `INTERLOK-3247` - Listing BlobStorage objects should not force creation of Collection
+- `INTERLOK-3248` - Synchronous Kinesis Stream Producer
+- `INTERLOK-3259` - interlok-solace doesn`t need solace jars as optional
+- `INTERLOK-3260` - interlok-workflow-rest-services: Liveness vs Readiness Probes
+- `INTERLOK-3277` - JMS bridging - failures on produce
+- `INTERLOK-3283` - License expiry event as a heartbeat
+- `INTERLOK-3290` - Update XML schema validation to report all validation errors
+- `INTERLOK-3291` - Cluster Manager - Override the JGroups config
+- `INTERLOK-3292` - Upgrade WMQ to the latest
+- `INTERLOK-3295` - Add support for Signing HTTP Requests to the AWS managed Elasticsearch Service
+- `INTERLOK-3303` - interlok-jcloud-blobstore: Allow connection to S3 using sessionToken
+- `INTERLOK-3315` - Remove deprecated jetty config sockerLingerTime
+- `INTERLOK-3318` - interlok-aws-s3: New copy-operation that copies object metadata and tags.
+- `INTERLOK-3328` - Revert docker base images to use JDK not JRE
+- `INTERLOK-2895` - RandomIntervalPoller -> might be nice to have a "real timestamp"
+- `INTERLOK-3280` - UI - Upgrade dependencies
+- `INTERLOK-3285` - Mark interlok-salesforce as deprecated
+- `INTERLOK-3308` - UI Optional Component Page - Create UI Icons for additional optional components
+- `INTERLOK-3311` - interlok-install-builder - check that the installer build process includes the appropriate jar artefact for mail javadocs
+- `INTERLOK-3319` - UI - Bump flyway-core from 6.4.0 to 6.4.3
+- `INTERLOK-3332` - UI - More dependencies upgrade
