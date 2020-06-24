@@ -32,6 +32,8 @@ The modal is divided in three tabs:
 - **Variables:** Where you can add key/variable pairs to use for the XML config [Variables Substitutions](advanced-configuration-pre-processors.html#variable-substitution).
 - **Variable XPaths:** Where you can specify which value of the XML config file should use Variables Substitutions using some XPaths. You should not need to add Xpaths/key pairs manually as that can be done in the [Component settings modal](#component-settings-modal).
 - **Tests:** Where you can specify the test config file name. This is the file used in the [Service Tester Page](ui-service-tester.html).
+- **Additional Files:** Where you can specify the additional files to be added in the config dir.
+- **Optional Components:** Where you can see the list of optional components used in the cofig xml.
 
 ### General Tab ###
 
@@ -115,6 +117,20 @@ By default the additional files are at the root of the config dir and use their 
 If you wish to add the files in a sub folder you can set the file path to *dir/file*.
 
 If the files are unselected they will be removed from the project on the next project save.
+
+### Optional Components Tab ###
+
+![Config Project Optional Components Tab](./images/ui-user-guide/config-project-optional-components-tab.png)
+
+In the Optional Components tab you can see the list of optional components used in the project config xml. (Since 3.10.2)
+
+The list is generated when the project is saved. and can be used to add the used optional components as dependencies in a dependency manager tool such as [Gradle](https://gradle.org/).
+
+To make it easier to copy the optional components dependencies into a build.gradle file you can select the Gradle tab and copy the Gradle snippet.
+
+![Config Project Optional Components Gradle Tab](./images/ui-user-guide/config-project-optional-components-gradle-tab.png)
+
+Note: The UI will be only be able to manage optional components which are in its classpath.
 
 ## Component Settings Modal ##
 
