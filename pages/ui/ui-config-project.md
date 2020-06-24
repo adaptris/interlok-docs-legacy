@@ -124,7 +124,7 @@ If the files are unselected they will be removed from the project on the next pr
 
 In the Optional Components tab you can see the list of optional components used in the project config xml. (Since 3.10.2)
 
-The list is generated when the project is saved. and can be used to add the used optional components as dependencies in a dependency manager tool such as [Gradle](https://gradle.org/).
+The list is generated when the project is saved and can be utilised to add the optional components as dependencies in a dependency manager tool such as [Gradle](https://gradle.org/).
 
 To make it easier to copy the optional components dependencies into a build.gradle file you can select the Gradle tab and copy the Gradle snippet.
 
