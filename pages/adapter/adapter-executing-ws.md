@@ -55,6 +55,8 @@ If we wanted to call the a currency converter webservice; then we can do that qu
 
 ## Service Generation ##
 
+{% include important.html content="since 3.11.0; This has been removed, and is only included as an historical archive and will be removed without warning" %}
+
 This is a more fully featured way of handling a webservice; and is included for completeness. In the majority of cases [apache-cxf-soap-service][] will handle everything you need.  Part of the installation now ships with a tool that will generate Interlok services based on a provided WSDL. These generated services can be seamlessly configured into your Adapter configuration.
 
 This leaves us with a 2 step process;
@@ -167,4 +169,3 @@ For testing purposes you can simply consume this sample message document and con
 [release]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-webservice-external/
 [payload-from-metadata-service]:https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/metadata/PayloadFromMetadataService.html
 [log-message-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/LogMessageService.html
-

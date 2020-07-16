@@ -6,9 +6,8 @@ sidebar: home_sidebar
 permalink: adapter-hosting-ws.html
 ---
 
+{% include important.html content="since 3.11.0; This has been removed, and is only included as an historical archive" %}
 {% include note.html content="This is only useful if you want to inject messages into an arbitrary workflow. Use a normal jetty based workflow if that is the intended endpoint" %}
-
-{% include important.html content="since 3.8.0; adp-web-services has been renamed to interlok-web-services" %}
 
 Generally, if you are using Interlok as an HTTP endpoint, then you would just use one of the standard HTTP consumers as part of a normal workflow ([Servicing HTTP requests](cookbook-http-server.html)); however, in certain situations it can be useful to expose an arbitrary workflow (e.g. a JMS bridge) so that you can inject messages into the workflow without doing additional configuration. This requires that you enable the built-in jetty instance, and to use a custom web application.
 
