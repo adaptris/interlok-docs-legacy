@@ -33,6 +33,14 @@ JMXConnector connector = JMXConnectorFactory.connect(new JMXServiceURL("service:
 
 ```
 
+### Connecting via the UI with credentials ###
+
+If you are securing JMX as mentioned above, then you must also provide those credentials to the Interlok UI.
+
+When adding an Interlok instance to your UI dashboard simply select the **Advanced Options** and enter your chosen username and password as shown here;
+
+![Credentials via the UI](./images/jmx/add-adapter-credentials.png)
+
 ## Connecting with JVisualVM ##
 
 ### Local ###
