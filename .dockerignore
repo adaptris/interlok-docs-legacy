@@ -1,0 +1,6 @@
+.git
+.gitattributes
+.gitignore
+.whitesource
+.gradle
+create-docs-site.sh
