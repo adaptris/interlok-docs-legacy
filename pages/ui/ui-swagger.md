@@ -204,7 +204,7 @@ paths:
 
 This will give an Adapter configuration xml like:
 
-** Interlok config from 3.11**
+**Interlok config from 3.11**
 
 ```xml
 <adapter>
@@ -281,7 +281,7 @@ This will give an Adapter configuration xml like:
 </adapter>
 ```
 
-** Interlok config up to 3.11**
+**Interlok config up to 3.11**
 
 ```xml
 <adapter>
@@ -831,7 +831,7 @@ definitions:
 
 This will give an Adapter configuration xml like:
 
-** Interlok config from 3.11**
+**Interlok config from 3.11**
 
 ```xml
 <adapter>
@@ -983,7 +983,7 @@ This will give an Adapter configuration xml like:
 </adapter>
 ```
 
-** Interlok config up to 3.11**
+**Interlok config up to 3.11**
 
 ```xml
 <adapter>
