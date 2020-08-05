@@ -19,9 +19,105 @@ Since 3.7.0 the generated xml configuration will depends on how your swagger con
 
 Both can be used at the same time and in that case the XML configuration will have a mix of Pooling Workflows and Jetty Routing Service.
 
+Since 3.11.0 the Swagger yaml or json configuration have to use the [OpenApi 3 format](https://swagger.io/specification/).
+
 ## Using Pooling Workflow ##
 
-Below is an example of a Swagger configuration that can be converted to an adapter Configuration (the JSON equivalent works the same way).
+Below are examples of OpenAPI and Swagger configurations that can be converted to an adapter Configuration (the JSON equivalent works the same way).
+
+**OpenAPI from 3.11**
+
+```yaml
+openapi: 3.0.1
+info:
+  title: Gatekeeper Lookup API
+  description: Gatekeeper Lookups
+  version: 0.0.1
+servers:
+- url: http://test.host.com:8080/
+paths:
+  /lookups/gatekeeper/weather/daily:
+    get:
+      tags:
+      - weather
+      summary: Daily Historical Weather
+      description: |
+        Get daily weather data based on a latitude, longitude and start/end timestamp.
+      parameters:
+      - name: lat
+        in: query
+        description: Latitude component of location, e.g. 51.501364
+        required: true
+        schema:
+          type: number
+          format: double
+      - name: lon
+        in: query
+        description: Longitude component of location, e.g. -0.14189
+        required: true
+        schema:
+          type: number
+          format: double
+      - name: start
+        in: query
+        description: The date in yyyy-MM-dd'T'HH:mm:ssX e.g. 2016-01-01T12:00:00Z
+        required: true
+        schema:
+          type: string
+          format: dateTime
+      - name: end
+        in: query
+        description: The date in yyyy-MM-dd'T'HH:mm:ssX e.g. 2016-01-10T12:00:00Z
+        required: true
+        schema:
+          type: string
+          format: dateTime
+      responses:
+        200:
+          description: The Weather
+          content:
+            application/json: {}
+        400:
+          description: Problem with Parameters
+          content: {}
+        500:
+          description: Unexpected error
+          content: {}
+  /lookups/gatekeeper/soiltypes:
+    get:
+      tags:
+      - soil
+      summary: Get Soiltype information
+      description: Get Soil type information based on latitude + longitude
+      parameters:
+      - name: lat
+        in: query
+        description: Latitude component of location, e.g. 51.501364
+        required: true
+        schema:
+          type: number
+          format: double
+      - name: lon
+        in: query
+        description: Longitude component of location, e.g. -0.14189
+        required: true
+        schema:
+          type: number
+          format: double
+      responses:
+        200:
+          description: The Soil Information
+          content:
+            application/json: {}
+        400:
+          description: Problem with Parameters
+          content: {}
+        500:
+          description: Unexpected error
+          content: {}
+```
+
+**Swagger up to 3.11**
 
 ```yaml
 swagger: '2.0'
@@ -107,6 +203,85 @@ paths:
 ```
 
 This will give an Adapter configuration xml like:
+
+**Interlok config from 3.11**
+
+```xml
+<adapter>
+  <unique-id>Gatekeeper Lookup API</unique-id>
+  <channel-list>
+    <channel>
+      <unique-id>Gatekeeper Lookup API</unique-id>
+      <auto-start>false</auto-start>
+      <consume-connection class="jetty-embedded-connection">
+        <unique-id>Embedded Jetty Connection</unique-id>
+      </consume-connection>
+      <workflow-list>
+        <pooling-workflow>
+          <unique-id>Get Soiltype information</unique-id>
+          <send-events>false</send-events>
+          <consumer class="jetty-message-consumer">
+            <unique-id>Get Soiltype information</unique-id>
+            <path>/lookups/gatekeeper/soiltypes</path>
+            <methods>GET</methods>
+            <parameter-handler class="jetty-http-parameters-as-metadata"/>
+            <header-handler class="jetty-http-ignore-headers"/>
+          </consumer>
+          <service-collection class="service-list">
+            <services>
+              <standalone-producer>
+                <unique-id>SendResponse</unique-id>
+                <producer class="jetty-standard-response-producer">
+                  <unique-id>ResponseProducer</unique-id>
+                  <status-provider class="http-configured-status">
+                    <status>OK_200</status>
+                    <text>The Soil Information</text>
+                  </status-provider>
+                  <content-type-provider class="http-configured-content-type-provider">
+                    <mime-type>application/json</mime-type>
+                  </content-type-provider>
+                  <send-payload>true</send-payload>
+                </producer>
+              </standalone-producer>
+            </services>
+          </service-collection>
+        </pooling-workflow>
+        <pooling-workflow>
+          <unique-id>Daily Historical Weather</unique-id>
+          <send-events>false</send-events>
+          <consumer class="jetty-message-consumer">
+            <unique-id>Daily Historical Weather</unique-id>
+            <path>/lookups/gatekeeper/weather/daily</path>
+            <methods>GET</methods>
+            <parameter-handler class="jetty-http-parameters-as-metadata"/>
+            <header-handler class="jetty-http-ignore-headers"/>
+          </consumer>
+          <service-collection class="service-list">
+            <services>
+              <standalone-producer>
+                <unique-id>SendResponse</unique-id>
+                <producer class="jetty-standard-response-producer">
+                  <unique-id>ResponseProducer</unique-id>
+                  <status-provider class="http-configured-status">
+                    <status>OK_200</status>
+                    <text>The Weather</text>
+                  </status-provider>
+                  <content-type-provider class="http-configured-content-type-provider">
+                    <mime-type>application/json</mime-type>
+                  </content-type-provider>
+                  <send-payload>true</send-payload>
+                </producer>
+              </standalone-producer>
+            </services>
+          </service-collection>
+        </pooling-workflow>
+      </workflow-list>
+    </channel>
+  </channel-list>
+</adapter>
+```
+
+**Interlok config up to 3.11**
 
 ```xml
 <adapter>
@@ -235,7 +410,234 @@ This will give an Adapter configuration xml like:
 
 ## Using Jetty Routing Service ##
 
-Below is an example of a Swagger configuration that can be converted to an adapter Configuration (the JSON equivalent works the same way).
+Below are examples of OpenAPI and Swagger configurations that can be converted to an adapter Configuration (the JSON equivalent works the same way).
+
+**OpenAPI from 3.11**
+
+```yaml
+openapi: 3.0.1
+info:
+  title: Simple Contact Manager
+  description: This is a simple little contact manager database.
+  version: 1.0.0
+servers:
+- url: http://test.host.com:8080/
+paths:
+  /subPath/contacts:
+    get:
+      summary: Get All the contacts
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseResult'
+        400:
+          description: Couldn't handle it
+          content: {}
+        500:
+          description: Error during processing
+          content: {}
+    post:
+      summary: Add a new contact
+      requestBody:
+        description: Contact that needs to be added.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactId'
+        400:
+          description: Couldn't handle it
+          content: {}
+        500:
+          description: Error during processing
+          content: {}
+      x-codegen-request-body-name: body
+  /subPath/contacts/{contactId}:
+    get:
+      summary: Get a contact by contactId
+      parameters:
+      - name: contactId
+        in: path
+        description: The ID that needs to be fetched.
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseResult'
+        400:
+          description: Couldn't handle it
+          content: {}
+        500:
+          description: Error during processing
+          content: {}
+    delete:
+      summary: Delete a contact by contactId
+      parameters:
+      - name: contactId
+        in: path
+        description: The ID that needs to be deleted.
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactDeleted'
+        400:
+          description: Couldn't handle it
+          content: {}
+        500:
+          description: Error during processing
+          content: {}
+    patch:
+      summary: Update an existing contact
+      parameters:
+      - name: contactId
+        in: path
+        description: The ID that needs to be patched.
+        required: true
+        schema:
+          type: string
+      requestBody:
+        description: Contact that should be modified
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Contact'
+        required: true
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseResult'
+        400:
+          description: Couldn't handle it
+          content: {}
+        500:
+          description: Error during processing
+          content: {}
+      x-codegen-request-body-name: body
+  /subPath/contacts/{contactId}/addresses/{addressName}:
+    get:
+      summary: Get a contact address by contactId and addressName
+      parameters:
+      - name: contactId
+        in: path
+        description: The ID that needs to be fetched.
+        required: true
+        schema:
+          type: string
+      - name: addressName
+        in: path
+        description: The Name of the address that needs to be fetched.
+        required: true
+        schema:
+          type: string
+      responses:
+        200:
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatabaseResult'
+        400:
+          description: Couldn't handle it
+          content: {}
+        500:
+          description: Error during processing
+          content: {}
+components:
+  schemas:
+    ContactId:
+      type: object
+      properties:
+        id:
+          type: string
+          example: ee57e611-1498-4652-a37c-12d55e686ca5
+    ContactDeleted:
+      type: object
+      properties:
+        id:
+          type: string
+          example: ee57e611-1498-4652-a37c-12d55e686ca5
+        status:
+          type: string
+          enum:
+          - deleted
+    DatabaseContact:
+      type: object
+      properties:
+        id:
+          type: string
+          example: ee57e611-1498-4652-a37c-12d55e686ca5
+        FirstName:
+          type: string
+          example: John
+        LastName:
+          type: string
+          example: Smith
+        Email:
+          type: string
+          example: john.smith@abclabs.com
+        Phone:
+          type: string
+          example: +44 1234 56789
+        LastUpdated:
+          type: string
+          example: 2017-05-07 15:13:38.0
+        Created:
+          type: string
+          example: 2017-05-07 15:13:38.0
+    Contact:
+      required:
+      - Email
+      - FirstName
+      - LastName
+      - Phone
+      type: object
+      properties:
+        FirstName:
+          type: string
+          example: John
+        LastName:
+          type: string
+          example: Smith
+        Email:
+          type: string
+          example: john.smith@abclabs.com
+        Phone:
+          type: string
+          example: +44 1234 56789
+    DatabaseResult:
+      type: object
+      properties:
+        result:
+          type: array
+          items:
+            $ref: '#/components/schemas/DatabaseContact'
+```
+
+**Swagger up to 3.11**
 
 ```yaml
 swagger: "2.0"
@@ -429,6 +831,160 @@ definitions:
 
 This will give an Adapter configuration xml like:
 
+**Interlok config from 3.11**
+
+```xml
+<adapter>
+  <unique-id>Simple Contact Manager</unique-id>
+  <channel-list>
+    <channel>
+      <unique-id>Simple Contact Manager</unique-id>
+      <auto-start>false</auto-start>
+      <consume-connection class="jetty-embedded-connection">
+        <unique-id>Embedded Jetty Connection</unique-id>
+      </consume-connection>
+      <workflow-list>
+        <standard-workflow>
+          <unique-id>subPath API</unique-id>
+          <consumer class="jetty-message-consumer">
+            <unique-id>/subPath/*</unique-id>
+            <path>/subPath/*</path>
+            <parameter-handler class="jetty-http-parameters-as-metadata"/>
+            <header-handler class="jetty-http-ignore-headers"/>
+          </consumer>
+          <service-collection class="service-list">
+            <services>
+              <branching-service-collection>
+                <unique-id>HTTP Router</unique-id>
+                <first-service-id>Route</first-service-id>
+                <services>
+                  <jetty-routing-service>
+                    <unique-id>Route</unique-id>
+                    <route>
+                      <condition>
+                        <url-pattern>^/subPath/contacts/([^\/]+)/addresses/(.+)$</url-pattern>
+                        <metadata-key>contactId</metadata-key>
+                        <metadata-key>addressName</metadata-key>
+                        <method>GET</method>
+                      </condition>
+                      <service-id>Get a contact address by contactId and addressName</service-id>
+                    </route>
+                    <route>
+                      <condition>
+                        <url-pattern>^/subPath/contacts/(.+)$</url-pattern>
+                        <metadata-key>contactId</metadata-key>
+                        <method>DELETE</method>
+                      </condition>
+                      <service-id>Delete a contact by contactId</service-id>
+                    </route>
+                    <route>
+                      <condition>
+                        <url-pattern>^/subPath/contacts/(.+)$</url-pattern>
+                        <metadata-key>contactId</metadata-key>
+                        <method>GET</method>
+                      </condition>
+                      <service-id>Get a contact by contactId</service-id>
+                    </route>
+                    <route>
+                      <condition>
+                        <url-pattern>^/subPath/contacts/(.+)$</url-pattern>
+                        <metadata-key>contactId</metadata-key>
+                        <method>PATCH</method>
+                      </condition>
+                      <service-id>Update an existing contact</service-id>
+                    </route>
+                    <route>
+                      <condition>
+                        <url-pattern>^/subPath/contacts$</url-pattern>
+                        <method>GET</method>
+                      </condition>
+                      <service-id>Get All the contacts</service-id>
+                    </route>
+                    <route>
+                      <condition>
+                        <url-pattern>^/subPath/contacts$</url-pattern>
+                        <method>POST</method>
+                      </condition>
+                      <service-id>Add a new contact</service-id>
+                    </route>
+                    <default-service-id>NotHandled</default-service-id>
+                  </jetty-routing-service>
+                  <service-list>
+                    <unique-id>Get a contact address by contactId and addressName</unique-id>
+                    <services>
+                    </services>
+                  </service-list>
+                  <service-list>
+                    <unique-id>Delete a contact by contactId</unique-id>
+                    <services>
+                    </services>
+                  </service-list>
+                  <service-list>
+                    <unique-id>Get a contact by contactId</unique-id>
+                    <services>
+                    </services>
+                  </service-list>
+                  <service-list>
+                    <unique-id>Update an existing contact</unique-id>
+                    <services>
+                    </services>
+                  </service-list>
+                  <service-list>
+                    <unique-id>Get All the contacts</unique-id>
+                    <services>
+                    </services>
+                  </service-list>
+                  <service-list>
+                    <unique-id>Add a new contact</unique-id>
+                    <services>
+                    </services>
+                  </service-list>
+                  <service-list>
+                    <unique-id>NotHandled</unique-id>
+                    <services>
+                      <add-metadata-service>
+                        <unique-id>Add 400 Response Code</unique-id>
+                        <metadata-element>
+                          <key>ResponseCode</key>
+                          <value>400</value>
+                        </metadata-element>
+                      </add-metadata-service>
+                      <payload-from-template>
+                        <unique-id>Add Not Handled Status Message</unique-id>
+                        <metadata-tokens/>
+                        <template><![CDATA[{"Status" : "Not Handled; please check"}]]></template>
+                      </payload-from-template>
+                    </services>
+                  </service-list>
+                </services>
+              </branching-service-collection>
+              <standalone-producer>
+                <unique-id>SendResponse</unique-id>
+                <producer class="jetty-standard-response-producer">
+                  <unique-id>ResponseProducer</unique-id>
+                  <status-provider class="http-metadata-status">
+                    <code-key>ResponseCode</code-key>
+                    <default-status>OK_200</default-status>
+                  </status-provider>
+                  <response-header-provider class="jetty-no-response-headers"/>
+                  <content-type-provider class="http-metadata-content-type-provider">
+                    <metadata-key>ResponseContenType</metadata-key>
+                    <default-mime-type>application/json</default-mime-type>
+                  </content-type-provider>
+                  <send-payload>true</send-payload>
+                </producer>
+              </standalone-producer>
+            </services>
+          </service-collection>
+        </standard-workflow>
+      </workflow-list>
+    </channel>
+  </channel-list>
+</adapter>
+```
+
+**Interlok config up to 3.11**
+
 ```xml
 <adapter>
   <unique-id>Simple Contact Manager</unique-id>
@@ -595,3 +1151,4 @@ It will be converted to an Channel xml configuration files supporting the define
 To create a channel using a Swagger config you simply need to click on the *Add Channel* button and once the modal is opened select *Swagger Snippet*.
 You can then copy a Swagger config or just drag and drop a _swagger.yaml_ or _swagger.json_ file into the text area.
 
+Since 3.11.0 the Swagger yaml or json configuration have to use the [OpenApi 3 format](https://swagger.io/specification/).
