@@ -4,11 +4,11 @@ keywords: interlok,prometheus,profiler
 tags: [advanced]
 sidebar: home_sidebar
 permalink: advanced-profiler-prometheus.html
-summary: Using Prometheus and Graphana to view Interlok metrics.
+summary: Using Prometheus and Grafana to view Interlok metrics.
 ---
 **Since 3.10+**
 
-This document will walk you through the setup and configuration to have Interlok post profiling data directly into Prometheus.  You'll then be shown some of the basics of Prometheus and Graphana to view your Interlok metrics.
+This document will walk you through the setup and configuration to have Interlok post profiling data directly into Prometheus.  You'll then be shown some of the basics of Prometheus and Grafana to view your Interlok metrics.
 
 ## Prerequisites.
 
@@ -28,7 +28,7 @@ Specifically, you will need the Interlok jar files and dependent jar files from 
 
 ## Docker Configuration
 
-We'll use Docker to install and run 3 components; Prometheus, Prometheus-pushgateway and Graphana.  Following the steps below for each.
+We'll use Docker to install and run 3 components; Prometheus, Prometheus-pushgateway and Grafana.  Following the steps below for each.
 
 ### Prometheus Pushgateway
 
@@ -119,13 +119,13 @@ Now you can simply start the Prometheus engine with the full path to your new co
 docker run -d -v C:\prometheus.yml:/etc/prometheus/prometheus.yml -p 9090:9090 prom/prometheus
 ```
 
-### Graphana
-There are simply two stages to the Graphana setup, the first is to run it in Docker and then we simply setup the Prometheus data-source.  We'll be playing around with Graphana a little later in this guide, but for now start it up;
+### Grafana
+There are simply two stages to the Grafana setup, the first is to run it in Docker and then we simply setup the Prometheus data-source.  We'll be playing around with Grafana a little later in this guide, but for now start it up;
 ```
 docker run -d -p 3000:3000 grafana/grafana
 ```
 
-Now you can log into Graphana with your browser on [http://localhost:3000](http://localhost:3000) .
+Now you can log into Grafana with your browser on [http://localhost:3000](http://localhost:3000) .
 
 The default username and password is usually __admin__ for both.  You should then be promted to create a new data source.  For this we'll need the Prometheus engines container IP address.  Using the same two commands as shown in the previous section; __docker ps__ and __docker network inspect bridge__, find the IP address of the Prometheus engine, not the pushgateway.
 Choose Prometheus as the data source type and enter the host with your IP address as shown below;
@@ -192,7 +192,7 @@ This assumes you're running Interlok on the same host as your Docker engine.  If
 
 ## The metrics
 
-The following will become important later when we start querying for metrics in Graphana.
+The following will become important later when we start querying for metrics in Grafana.
 
 Currently Interlok pushes two types of metrics; the number of messages processed and the average amount of time a component takes to process a single message.
 
@@ -218,9 +218,9 @@ If you're using the same configuration as this guide then use your HTTP posting 
 
 Continually fire messages into Interlok for a few seconds or so and then move onto the next section to see the results of those metrics.
 
-## Graphana
+## Grafana
 
-You should have created the Prometheus data source in Graphana in a previous section so now you will create a new dashboard which will allow you to create new queries.  This guide will not go into detail on how to use Graphana or the power of Prometheus's query language, but we can show a couple of potentially useful queries below.
+You should have created the Prometheus data source in Grafana in a previous section so now you will create a new dashboard which will allow you to create new queries.  This guide will not go into detail on how to use Grafana or the power of Prometheus's query language, but we can show a couple of potentially useful queries below.
 
 __Note:__ The following queries may need to be changed to match your workflows unique id's, if you are not using this guides configuration.
 
@@ -230,7 +230,7 @@ Using the query;
 ```
 In the following configuration window;
 
-![Config](./images/prometheus/graphanaConfig.PNG)
+![Config](./images/prometheus/grafanaConfig.PNG)
 
 We end up with the following messages processed by workflow chart;
 
