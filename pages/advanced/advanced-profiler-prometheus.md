@@ -24,13 +24,19 @@ Specifically, you will need the Interlok jar files and dependent jar files from 
  - [interlok-profiler](https://github.com/adaptris/interlok-profiler)
  - [interlok-profiler-prometheus](https://github.com/adaptris/interlok-profiler-prometheus)
  - [interlok-monitor-agent](https://github.com/adaptris/interlok-monitor-agent)
+ - [interlok-workflow-rest-services](https://github.com/adaptris/interlok-workflow-rest-services)
 
 
 ## Docker Configuration
 
-We'll use Docker to install and run 3 components; Prometheus, Prometheus-pushgateway and Grafana.  Following the steps below for each.
+There are currently two methods to populate Prometheus with Interlok metrics; pushgateway and scraping.
+Allowing Prometheus to scrape metrics from Interlok is the preferred method, however this requires the Jetty component to be started, so if you prefer to not start Jetty then we have the pushgateway method as an alternative.
+
+We'll use Docker to install and run 2 or 3 components; Prometheus, Prometheus-pushgateway and Grafana.  Following the steps below for each.
 
 ### Prometheus Pushgateway
+
+Skip this step if you're running the Jetty container for Interlok.
 
 On your command line simply run the latest Prometheus pushgateway.  The run phase will automatically download the latest image before starting.
 
@@ -39,7 +45,11 @@ C:\>docker run -d -p 9091:9091 prom/pushgateway
 ```
 ### Prometheus Engine
 
-Before the engine can be installed into Docker we need to provide our own custom yml configuration file that specifies how the Prometheus engine will scrape metrics from the pushgateway.  The first step is to retrieve the IP address of the pushgateway container.  We do that by first getting the name of the pushgateway container with __docker ps__ and using that name we can find the IP address of that container using __docker network inspect bridge__  as shown below.
+Before the engine can be installed into Docker we need to provide our own custom yml configuration file that specifies how the Prometheus engine will scrape metrics from either the pushgateway or directly from Interlok.  
+
+#### If you're using the pushgateway method;
+
+The first step is to retrieve the IP address of the pushgateway container.  We do that by first getting the name of the pushgateway container with __docker ps__ and using that name we can find the IP address of that container using __docker network inspect bridge__  as shown below.
 
 ```
 C:\>docker ps
@@ -119,6 +129,34 @@ Now you can simply start the Prometheus engine with the full path to your new co
 docker run -d -v C:\prometheus.yml:/etc/prometheus/prometheus.yml -p 9090:9090 prom/prometheus
 ```
 
+#### If you're using the Prometheus scrape method;
+
+Create a new file named prometheus.yml with the following content;
+
+```yml
+global:
+  scrape_interval: 15s
+
+scrape_configs:
+  - job_name: 'prometheus'
+    scrape_interval: 5s
+    static_configs:
+      - targets: ['localhost:9090']
+
+  - job_name: 'interlok'
+    honor_labels: true
+    scrape_interval: 5s
+    metrics_path: 'prometheus/metrics'
+    static_configs:
+      - targets: ['host.docker.internal:8082']
+```
+Now modify the target host and port name on the last line to point to your installation of Interlok.
+
+Finally start Prometheus with the full path to your new configuration file like this;
+```
+docker run -d -v C:\prometheus.yml:/etc/prometheus/prometheus.yml -p 9090:9090 prom/prometheus
+```
+
 ### Grafana
 There are simply two stages to the Grafana setup, the first is to run it in Docker and then we simply setup the Prometheus data-source.  We'll be playing around with Grafana a little later in this guide, but for now start it up;
 ```
@@ -127,7 +165,7 @@ docker run -d -p 3000:3000 grafana/grafana
 
 Now you can log into Grafana with your browser on [http://localhost:3000](http://localhost:3000) .
 
-The default username and password is usually __admin__ for both.  You should then be promted to create a new data source.  For this we'll need the Prometheus engines container IP address.  Using the same two commands as shown in the previous section; __docker ps__ and __docker network inspect bridge__, find the IP address of the Prometheus engine, not the pushgateway.
+The default username and password is usually __admin__ for both.  You should then be prompted to create a new data source.  For this we'll need the Prometheus engines container IP address/host name.  Using the same two commands as shown in the previous section; __docker ps__ and __docker network inspect bridge__, find the IP address of the Prometheus engine, not the pushgateway.
 Choose Prometheus as the data source type and enter the host with your IP address as shown below;
 
 ![PrometheusDataSource](./images/prometheus/datasource.PNG)
@@ -136,7 +174,7 @@ Choose Prometheus as the data source type and enter the host with your IP addres
 
 In this guide we will be using a fairly simple Interlok configuration with two workflows that accept HTTP requests, run some services and simply return the result to the caller.  You can absolutely use any Interlok configuration you wish, but if you wish to use the same one as this guide, you can find a full copy at the very bottom of this guide.  Simply copy the content into the file named __adapter.xml__ in your Interlok __config__ directory.
 
-Assuming you have installed the required jar files as mentioned at the top of this document, we now need to configure the interlok-profiler and the specify the Prometheus pushgateway endpoint in the Interlok bootstrap.properties.
+Assuming you have installed the required jar files as mentioned at the top of this document, we now need to configure the interlok-profiler and the specify the Prometheusmetric population method.
 
 When running the profiler it is always suggested to create your own scrip to launch the Interlok process.  Essentially we need to start the Java process with a javaagent, with the profiling configuration.  Here is a windows batch script (start-interlok-with-profiler.bat) that does the necessary;
 ```
@@ -160,6 +198,7 @@ Now we need a new file in your __config__ directory of your Interlok installatio
 com.adaptris.profiler.plugin.factory=com.adaptris.monitor.agent.InterlokMonitorPluginFactory
 com.adaptris.monitor.agent.EventPropagator=JMX
 ```
+#### If you've chosen to use the pushgateway to populate Prometheus
 
 Finally, we need to configure the Prometheus pushgateway endpoint for Interlok and make sure the interlok-profiler-prometheus management component starts up.  Edit the file named __bootstrap.properties__ in your __config__ directory at the root of your Interlok installation.  Add the management component named __profiler-prometheus__ to the management component list and add an additional property named __prometheusEndpointUrl__ as shown below;
 
@@ -189,6 +228,15 @@ prometheusEndpointUrl=localhost:9091
 ```
 
 This assumes you're running Interlok on the same host as your Docker engine.  If you are not, then change the __localhost__ part of the Url to the IP/host of the Prometheus pushgateway Docker container.
+
+#### If you've chosen to use the scraping method to populate Prometheus
+
+Simply modify Interlok's bootstrap.properties to include a new management component named __prometheus-rest__, also make sure the colon separated list includes __jetty__ and __jmx__ as shown below;
+
+```
+# What management components to enable.
+managementComponents=jetty:jmx:prometheus-rest
+```
 
 ## The metrics
 
