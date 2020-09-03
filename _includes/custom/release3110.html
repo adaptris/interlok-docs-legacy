@@ -1,0 +1,89 @@
+## Version 3.11.0 ##
+
+Release Date : 2020-09
+
+### Key Highlights
+
+- The UI Config Page has improved support for project documentation (README.md & markdown comments in channels, workflows and collections)
+- UI Config Projects new `Optional Components` tab displays which additional optional components are needed in the Config XML
+- Interlok Runtime improvements include:
+    - [ProduceDestination and ConsumeDestination have been deprecated](https://github.com/adaptris/interlok/blob/develop/docs/adr/0005-remove-produce-destination.md) and replaced with simplified configuration elements
+    - [Json](https://github.com/adaptris/interlok-json) [Schema Validation](https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.11-SNAPSHOT/com/adaptris/core/json/schema/JsonSchemaService.html) now reports more detailed exceptions
+    - [JsonTransformService](https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json/3.11-SNAPSHOT/com/adaptris/core/transform/json/JsonTransformService.html) now supports json and yaml
+    - [JSON](https://github.com/adaptris/interlok-json) can now be [encoded](https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json-web-token/3.11-SNAPSHOT/com/adaptris/core/jwt/JWTEncoder.html) and [decoded](https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-json-web-token/3.11-SNAPSHOT/com/adaptris/core/jwt/JWTDecoder.html) to the [JWT](http://www.jsonwebtoken.io) ([JSON Web Token](https://github.com/adaptris/interlok-json-web-token)) standards
+    - Added support for a [HTTP endpoint](https://github.com/adaptris/interlok-workflow-rest-services) that [Prometheus can scrape for metrics](https://interlok.adaptris.net/interlok-docs/advanced-profiler-prometheus.html)
+    - Integrated asynchronous publishing via the JCSMP API into the Interlok bridging model.  We now support the basic message payload types of text, bytes, xml-bytes and xml-content.
+
+### Bugs
+
+- 'INTERLOK-2646' - interlok-service-tester: assert-xpath-equals does not support attributes
+- 'INTERLOK-3142' - JMXMP Vulnerability needs verification / recommendations.
+- 'INTERLOK-3195' - UI interlok-3.9.3-RELEASE.war: bootstrap.min.js has CVEs
+- 'INTERLOK-3250' - AdapterRegistryMBean.getManagementComponentInfo() can result in exception as ManagementComponentInfo needs serialization
+- 'INTERLOK-3382' - UI: Variable Set order produces different results
+- 'INTERLOK-3383' - UI - Configuring XA shows config errors
+- 'INTERLOK-3384' - Assert Xpath Equals returns only a single attribute or element
+- 'INTERLOK-3386' - UI System Property - interlok.ui.disableExternalResources=true appears like it doesn't effect anything
+- 'INTERLOK-3392' - RetryMessageHandler removes success/failure callbacks
+- 'INTERLOK-3393' - BranchingHttpRequestService requires a DefaultServiceId but it is not marked as required
+- 'INTERLOK-3396' - Using StandaloneRequestor->Apache HTTP producer with response handler factory -> metadata, empties the AdaptrisMessage payload
+- 'INTERLOK-3399' - UI Config - settings error when using StandaloneProducer with a shared connection
+- 'INTERLOK-3402' - Artifact Downloader - XML Entity Expansion
+- 'INTERLOK-3408' - Monitor-agent overwrites existing ActivityMaps
+- 'INTERLOK-3409' - UI: Dependency Violation - jquery 3.4.1 and hibernate-core-5.4.17
+- 'INTERLOK-3412' - Profiling monitor agent doesn't handle nested services
+- 'INTERLOK-3413' - UI - Disable URL Rewrite in Jetty for the session ID.
+- 'INTERLOK-3423' - Artifact Downloader - XML Entity Expansion
+
+### Improvements
+
+- 'INTERLOK-3368' - UI - More dependencies upgrade
+- 'INTERLOK-3389' - UI - Bump swagger-v3.version from 2.1.3 to 2.1.4
+- 'INTERLOK-2601' - Make json-streaming interface a TransformationDriver
+- 'INTERLOK-2611' - Improve performance pooling-message-splitter for large splits
+- 'INTERLOK-3060' - Jolt transforms stored as YAML
+- 'INTERLOK-3090' - AdaptrisMessageEncoder should have generics associated with write/read
+- 'INTERLOK-3121' - UI Config - Support README.md file in the config page
+- 'INTERLOK-3203' - SwiftMQ - unit tests fail occassionally
+- 'INTERLOK-3251' - UI Dashboard - Add Adapter Management Info to the Information modal
+- 'INTERLOK-3276' - JCSMP further improvements
+- 'INTERLOK-3286' - -configtest should also report on configuration violations
+- 'INTERLOK-3292' - Upgrade WMQ to the latest
+- 'INTERLOK-3322' - Add CSV/XML implementations that use super-csv
+- 'INTERLOK-3323' - Remove dependency on dev-vm03 for "html-docs"
+- 'INTERLOK-3329' - Deprecated ConsumeDestination and ProduceDestination
+- 'INTERLOK-3334' - eclipse-jgit 5.8.0 breaks vcs-git
+- 'INTERLOK-3335' - UI - Swagger To Config XML - Upgrade to the latest Openapi (Swagger v3)
+- 'INTERLOK-3336' - Remove some optional/* files from the the installation
+- 'INTERLOK-3338' - UI - Salesforce - Update the GetOauthToken template used by the salesforce helper page
+- 'INTERLOK-3339' - Archive / Get Rid of deprecated projects
+- 'INTERLOK-3345' - XA - Default XA resource names to UUID
+- 'INTERLOK-3346' - XA Resource name config check
+- 'INTERLOK-3347' - Config-Objects - Generate samples
+- 'INTERLOK-3361' - JsonSchema Validation should report more detailed exceptions
+- 'INTERLOK-3362' - Migrate msmq-javonet to gradle
+- 'INTERLOK-3369' - UI Config - extend 'expert' mode in settings editor to allow visibility of null deprecated members
+- 'INTERLOK-3370' - GenericOauthToken should have a better default "metadata filter"
+- 'INTERLOK-3371' - Add support for JWT
+- 'INTERLOK-3373' - JMS consumer - pass the commit code into the message listener as a lambda.
+- 'INTERLOK-3374' - Deprecate native WMQ
+- 'INTERLOK-3377' - XaJmsProducer should extend JmsProducer rather than copy pasta
+- 'INTERLOK-3380' - UI: optionalComponentsInUse should be sorted to help git history
+- 'INTERLOK-3381' - Remove items marked for removal in 3.11.0
+- 'INTERLOK-3387' - interlok-elastic: Make uniqueid JSON path resolvable
+- 'INTERLOK-3390' - UI: Channel/Workflow in deprecation warning isn't required.
+- 'INTERLOK-3391' - UI Config - upgrade comments modal to allow markdown input to be previewed.
+- 'INTERLOK-3395' - JsonSchema "isn't strict enough" in some cases
+- 'INTERLOK-3397' - UI Config - Improve shared-service component 'Lookup Name' input
+- 'INTERLOK-3398' - -ConfigCheck should also check references from SharedService exist in shared-components
+- 'INTERLOK-3400' - UI Config - validate if the lookup name in a shared-service component exists
+- 'INTERLOK-3404' - startQuietly=false doesn't kill the JVM
+- 'INTERLOK-3405' - Add new setting to JettyConsumer to use default encoding
+- 'INTERLOK-3407' - Restful service to allow Prometheus to scrape metrics
+- 'INTERLOK-3410' - UI - Upgrade knockout.js and C3.js
+- 'INTERLOK-3411' - Update the Profiler produce cut-points
+- 'INTERLOK-3414' - Profiler - producer request method
+- 'INTERLOK-3418' - JmsAsyncProducer
+- 'INTERLOK-3420' - Jms consumer synchronous mode
+- 'INTERLOK-3421' - Jcsmp message translators
+- 'INTERLOK-3425' - Improve performance for pooling-splitter when wait-while-busy=true
