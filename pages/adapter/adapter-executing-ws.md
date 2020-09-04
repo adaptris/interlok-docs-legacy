@@ -163,7 +163,6 @@ This is the expected payload you will be required to have as input for your new 
 For testing purposes you can simply consume this sample message document and configure your new service as the first service.
 
 
-[standard-soap-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webservice-external/3.11-SNAPSHOT/com/adaptris/core/services/wss/SoapService.html
 [apache-cxf-soap-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webservice-cxf/3.11-SNAPSHOT/com/adaptris/core/services/cxf/ApacheSoapService.html
 [snapshot]: https://nexus.adaptris.net/nexus/content/groups/adaptris-snapshots/com/adaptris/interlok-webservice-external/
 [release]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/interlok-webservice-external/
