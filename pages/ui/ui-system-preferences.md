@@ -26,11 +26,13 @@ The system preferences are:
     - **Random Name:** The generated Id will be a mix of a random famous scientist surname and a random adjective, e.g. amazing-darwin. (Default Since 3.5.1).
     - **Class Name and Random Id:** The generated Id will be a mix of the component class name or alias and a random number, e.g. Channel-1209003.
     - **Creates a GUID using com.adaptris.util.GuidGenerator:** The ID is generated using the com.adaptris.util.GuidGenerator class, e.g. 37cc799e-bd50-4560-a735-1320e0a78ebe.
-- **Disable External Resources:** Disable automatic loading of external resources such as optional components information or Interlok blog articles. (Since 3.9.3). 
+- **Disable External Resources:** Disable automatic loading of external resources such as optional components information or Interlok blog articles. (Since 3.9.3).
+
+{% include note.html content="All the changes require a container restart to take effect." %}
 
 ## System Properties
 
-The system preference **Disable External Resources:** can be set using the system property *interlok.ui.disableExternalResources*:
+The system preference **Disable External Resources** can be set using the system property *interlok.ui.disableExternalResources*:
 
 ```
 -Dinterlok.ui.disableExternalResources=true
@@ -41,5 +43,3 @@ for example, to start interlok and disable automatic external resources loading:
 ```
 java -Dinterlok.ui.disableExternalResources=true -jar lib/interlok-boot.jar 
 ```
-
-{% include note.html content="All the changes require a container restart to take effect." %}
