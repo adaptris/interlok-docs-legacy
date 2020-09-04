@@ -84,14 +84,14 @@ Taking the example document above, we want to insert the entire document as a ne
 
 {% include note.html content="For a full discussion about [jdbc-statement-parameters][jdbc-statement-parameter] then you can look at the [Statement Parameters section of Data Extract using JDBC](cookbook-jdbc-data-query.html#statement-parameters)" %}
 
-[jdbc-data-capture-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/JdbcDataCaptureService.html
-[jdbc-raw-data-capture-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/raw/JdbcRawDataCaptureService.html
-[jdbc-stored-procedure-producer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/jdbc/JdbcStoredProcedureProducer.html
-[Service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/Service.html
-[AdaptrisMessage]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/AdaptrisMessage.html
-[iterate over an XPath]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/JdbcDataCaptureService.html#setIterates-java.lang.Boolean-
-[jdbc-data-query-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/JdbcDataQueryService.html
-[jdbc-statement-parameter]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/StatementParameter.html
-[jdbc-batching-data-capture-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/services/jdbc/JdbcBatchingDataCaptureService.html
+[jdbc-data-capture-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/services/jdbc/JdbcDataCaptureService.html
+[jdbc-raw-data-capture-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/services/jdbc/raw/JdbcRawDataCaptureService.html
+[jdbc-stored-procedure-producer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/jdbc/JdbcStoredProcedureProducer.html
+[Service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/Service.html
+[AdaptrisMessage]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/AdaptrisMessage.html
+[iterate over an XPath]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/services/jdbc/JdbcDataCaptureService.html#setIterates-java.lang.Boolean-
+[jdbc-data-query-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/services/jdbc/JdbcDataQueryService.html
+[jdbc-statement-parameter]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/services/jdbc/StatementParameter.html
+[jdbc-batching-data-capture-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/services/jdbc/JdbcBatchingDataCaptureService.html
 
 {% include links.html %}

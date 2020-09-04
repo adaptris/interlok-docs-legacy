@@ -57,24 +57,24 @@ Each [marker event] will have a creation time (ms since the epoch) associated wi
 
 If you do not care about these types of events, then you can turn them off on a per workflow basis by setting `send-events=false` on the workflows. Doing this may have a marginal performance improvement as the act of turning the internal object into a `String` has some cost associated with it.
 
-[marker event]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/MleMarker.html
-[Workflow]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/Workflow.html
-[EventHandlerAware]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/EventHandlerAware.html
-[default-event-handler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/DefaultEventHandler.html
+[marker event]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/MleMarker.html
+[Workflow]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/Workflow.html
+[EventHandlerAware]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/EventHandlerAware.html
+[default-event-handler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/DefaultEventHandler.html
 [AdapterLifecycleEvents]: #adapter-lifecycle-events
-[AdapterLifecycleEvent]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/AdapterLifecycleEvent.html
+[AdapterLifecycleEvent]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/AdapterLifecycleEvent.html
 [MessageLifecycleEvents]: #message-lifecycle-events
-[MessageLifecycleEvent]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/MessageLifecycleEvent.html
-[AdaptrisMessage]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/AdaptrisMessage.html
-[part of the Adapter]:https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/Adapter.html#setEventHandler-com.adaptris.core.EventHandler-
-[Service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/Service.html
-[xstream-json-marshaller]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/XStreamJsonMarshaller.html
-[adapter-close-event]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/event/AdapterCloseEvent.html
-[adapter-init-event]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/event/AdapterInitEvent.html
-[periodic schedule]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/Adapter.html#setHeartbeatEventInterval-com.adaptris.util.TimeInterval-
-[adapter-shutdown-event]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/event/AdapterShutdownEvent.html
-[adapter-start-event]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/event/AdapterStartEvent.html
-[standard-adapter-start-up-event]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/event/StandardAdapterStartUpEvent.html
-[adapter-stop-event]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/event/AdapterStopEvent.html
-[heartbeat-event]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/HeartbeatEvent.html
-[license-expiry-warning-event]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/event/LicenseExpiryWarningEvent.html
+[MessageLifecycleEvent]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/MessageLifecycleEvent.html
+[AdaptrisMessage]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/AdaptrisMessage.html
+[part of the Adapter]:https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/Adapter.html#setEventHandler-com.adaptris.core.EventHandler-
+[Service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/Service.html
+[xstream-json-marshaller]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/XStreamJsonMarshaller.html
+[adapter-close-event]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/event/AdapterCloseEvent.html
+[adapter-init-event]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/event/AdapterInitEvent.html
+[periodic schedule]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/Adapter.html#setHeartbeatEventInterval-com.adaptris.util.TimeInterval-
+[adapter-shutdown-event]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/event/AdapterShutdownEvent.html
+[adapter-start-event]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/event/AdapterStartEvent.html
+[standard-adapter-start-up-event]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/event/StandardAdapterStartUpEvent.html
+[adapter-stop-event]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/event/AdapterStopEvent.html
+[heartbeat-event]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/HeartbeatEvent.html
+[license-expiry-warning-event]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/event/LicenseExpiryWarningEvent.html

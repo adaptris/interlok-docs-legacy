@@ -109,6 +109,6 @@ Using the adapter in its very simplest form adds an overhead of approximately 0.
 
 [Perf4J]: https://github.com/perf4j/perf4j
 [jmsloadtester]: https://github.com/niesfisch/jmsloadtester
-[standard-workflow]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/StandardWorkflow.html
-[pooling-workflow]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/PoolingWorkflow.html
+[standard-workflow]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/StandardWorkflow.html
+[pooling-workflow]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/PoolingWorkflow.html
 

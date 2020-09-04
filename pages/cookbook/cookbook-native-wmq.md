@@ -119,21 +119,21 @@ The configuration above is a minimal configuration needed to forward a message t
 
 
 [JMS Guide]: cookbook-jms.html
-[wmq-attached-connection]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.9-SNAPSHOT/com/adaptris/core/wmq/AttachedConnection.html
-[wmq-detached-connection]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.9-SNAPSHOT/com/adaptris/core/wmq/DetachedConnection.html
-[KeyValuePairSet]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/util/KeyValuePairSet.html
-[NativeConnection]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.9-SNAPSHOT/com/adaptris/core/wmq/NativeConnection.html
-[wmq-native-producer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.9-SNAPSHOT/com/adaptris/core/wmq/NativeProducer.html
-[wmq-native-consumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.9-SNAPSHOT/com/adaptris/core/wmq/NativeConsumer.html
-[wmq-forwarding-native-consumer-error-handler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.9-SNAPSHOT/com/adaptris/core/wmq/ForwardingNativeConsumerErrorHandler.html
-[PollingConsumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/AdaptrisPollingConsumer.html
-[FieldMapper]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.9-SNAPSHOT/com/adaptris/core/wmq/mapping/FieldMapper.html
-[wmq-metadata-field-mapper]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.9-SNAPSHOT/com/adaptris/core/wmq/mapping/MetadataFieldMapper.html
-[charset-byte-translator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/util/text/CharsetByteTranslator.html
-[simple-byte-translator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/util/text/SimpleByteTranslator.html
-[base64-byte-translator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/util/text/Base64ByteTranslator.html
-[hex-string-byte-translator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/util/text/HexStringByteTranslator.html
-[wmq-message-id-mapper]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.9-SNAPSHOT/com/adaptris/core/wmq/mapping/MessageIdMapper.html
-[wmq-configured-field]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.9-SNAPSHOT/com/adaptris/core/wmq/mapping/ConfiguredField.html
-[wmq-xpath-field]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.9-SNAPSHOT/com/adaptris/core/wmq/mapping/XpathField.html
-[wmq-uuid-field-mapper]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.9-SNAPSHOT/com/adaptris/core/wmq/mapping/UuidFieldMapper.html
+[wmq-attached-connection]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.11-SNAPSHOT/com/adaptris/core/wmq/AttachedConnection.html
+[wmq-detached-connection]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.11-SNAPSHOT/com/adaptris/core/wmq/DetachedConnection.html
+[KeyValuePairSet]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/util/KeyValuePairSet.html
+[NativeConnection]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.11-SNAPSHOT/com/adaptris/core/wmq/NativeConnection.html
+[wmq-native-producer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.11-SNAPSHOT/com/adaptris/core/wmq/NativeProducer.html
+[wmq-native-consumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.11-SNAPSHOT/com/adaptris/core/wmq/NativeConsumer.html
+[wmq-forwarding-native-consumer-error-handler]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.11-SNAPSHOT/com/adaptris/core/wmq/ForwardingNativeConsumerErrorHandler.html
+[PollingConsumer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/AdaptrisPollingConsumer.html
+[FieldMapper]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.11-SNAPSHOT/com/adaptris/core/wmq/mapping/FieldMapper.html
+[wmq-metadata-field-mapper]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.11-SNAPSHOT/com/adaptris/core/wmq/mapping/MetadataFieldMapper.html
+[charset-byte-translator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/util/text/CharsetByteTranslator.html
+[simple-byte-translator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/util/text/SimpleByteTranslator.html
+[base64-byte-translator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/util/text/Base64ByteTranslator.html
+[hex-string-byte-translator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/util/text/HexStringByteTranslator.html
+[wmq-message-id-mapper]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.11-SNAPSHOT/com/adaptris/core/wmq/mapping/MessageIdMapper.html
+[wmq-configured-field]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.11-SNAPSHOT/com/adaptris/core/wmq/mapping/ConfiguredField.html
+[wmq-xpath-field]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.11-SNAPSHOT/com/adaptris/core/wmq/mapping/XpathField.html
+[wmq-uuid-field-mapper]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-webspheremq/3.11-SNAPSHOT/com/adaptris/core/wmq/mapping/UuidFieldMapper.html

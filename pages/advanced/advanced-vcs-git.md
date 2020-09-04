@@ -158,5 +158,5 @@ The reason for this error is in FS_Win32.java:113 JGit tries to find native git 
 
 If you do see this error, you can ignore it knowing that version control with Git will work anyway.
 
-[VersionControlSystem]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/management/vcs/VersionControlSystem.html
+[VersionControlSystem]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/management/vcs/VersionControlSystem.html
 [public repository]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/

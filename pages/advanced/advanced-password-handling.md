@@ -46,6 +46,6 @@ Subsequently, where supported, you can use the encoded form of the password, and
 As of __3.7.1__ there is support for the special syntax `%env{MY_ENV_VAR}` and `%sysprop{my.system.property}` where those values will be resolved at runtime from environment variables or system properties respectively. Support for external resolution will be marked by tne _external_ parameter of the `@InputFieldHint` annotation. Any fields annotated with `@InputFieldHint(external = true)` will have an indicator within the UI.
 
 
-[com.adaptris.security.password.Password]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/security/password/Password.html
-[JmsConnection#Password]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/jms/JmsConnection.html#setPassword-java.lang.String-
-[DatabaseConnection#Password]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/jdbc/DatabaseConnection.html#setPassword-java.lang.String-
+[com.adaptris.security.password.Password]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/security/password/Password.html
+[JmsConnection#Password]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/jms/JmsConnection.html#setPassword-java.lang.String-
+[DatabaseConnection#Password]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/jdbc/DatabaseConnection.html#setPassword-java.lang.String-

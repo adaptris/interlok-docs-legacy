@@ -131,6 +131,6 @@ All keys are case sensitive, and if specified in the URL will be stripped before
 
 
 [Apache Qpid]: https://qpid.apache.org/
-[JmsJmxConnectorServer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jmx-jms/3.9-SNAPSHOT/com/adaptris/jmx/remote/jms/JmsJmxConnectorServer.html
+[JmsJmxConnectorServer]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-jmx-jms/3.11-SNAPSHOT/com/adaptris/jmx/remote/jms/JmsJmxConnectorServer.html
 [ActiveMQ]: http://activemq.apache.org/
 

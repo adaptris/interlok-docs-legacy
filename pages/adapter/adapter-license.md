@@ -26,4 +26,4 @@ The standard license includes everything in basic, and covers everything that is
 The enterprise license unlocks everything.
 
 
-[standard-workflow]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/StandardWorkflow.html
+[standard-workflow]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/StandardWorkflow.html

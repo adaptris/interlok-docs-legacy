@@ -161,17 +161,17 @@ If our document was modified to be
 Then validation would fail, but only because `/document/parent[@id='Hades']` does not exist in the document; the other [ValidationStages][ValidationStage] would still pass.
 
 
-[xml-validation-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/transform/XmlValidationService.html
-[xml-basic-validator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/transform/XmlBasicValidator.html
-[xml-schema-validator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/transform/XmlSchemaValidator.html
-[xml-rule-validator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/transform/XmlRuleValidator.html
-[MessageValidator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/core/transform/MessageValidator.html
-[xml-content-not-null]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/transform/validate/NotNullContentValidation.html
-[xml-content-in-list]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/transform/validate/SimpleListContentValidation.html
-[xml-content-not-in-list]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/transform/validate/NotInListContentValidation.html
-[xml-content-is-null]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/transform/validate/IsNullContentValidation.html
-[xml-content-regexp]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/transform/validate/RegexpContentValidation.html
-[ContentValidation]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/transform/validate/ContentValidation.html
-[ValidationStage]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.9-SNAPSHOT/com/adaptris/transform/validate/ValidationStage.html
+[xml-validation-service]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/transform/XmlValidationService.html
+[xml-basic-validator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/transform/XmlBasicValidator.html
+[xml-schema-validator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/transform/XmlSchemaValidator.html
+[xml-rule-validator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/transform/XmlRuleValidator.html
+[MessageValidator]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/core/transform/MessageValidator.html
+[xml-content-not-null]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/transform/validate/NotNullContentValidation.html
+[xml-content-in-list]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/transform/validate/SimpleListContentValidation.html
+[xml-content-not-in-list]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/transform/validate/NotInListContentValidation.html
+[xml-content-is-null]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/transform/validate/IsNullContentValidation.html
+[xml-content-regexp]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/transform/validate/RegexpContentValidation.html
+[ContentValidation]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/transform/validate/ContentValidation.html
+[ValidationStage]: https://nexus.adaptris.net/nexus/content/sites/javadocs/com/adaptris/interlok-core/3.11-SNAPSHOT/com/adaptris/transform/validate/ValidationStage.html
 
 
