@@ -247,7 +247,9 @@ This example will demonstrate the use of xpath expression resolution as a data i
     <digest-max-size>100</digest-max-size>
   </message-error-digester>
 </adapter>
-  ```
+```
+
+<br />
 
 Once your adapter is started what you should get is the following on the config page:
 
