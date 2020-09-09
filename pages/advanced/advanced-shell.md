@@ -8,6 +8,8 @@ permalink: advanced-shell.html
 
 Interlok supports an integrated Java shell called [CRaSH][]. You can use [CRaSH][] to `ssh` into your running interlok instance.
 
+{% include important.html content="This is deprecated notice because Interlok Sheel will not work with Java 11, and the underlying libraries are well out of date" %}
+
 ## Usage ##
 
 To login to an interlok shell; `ssh` to host of the interlok instance providing the port and authentication details set in the [configuration](#crash-properties):
@@ -203,6 +205,11 @@ crash.auth.simple.password=admin
 #crash.auth=key
 #crash.auth.key.path=/path/to/key/file
 ```
+
+## Known Issues ##
+
+* Interlok Shell is known to work well with Linux and Mac command line tools but if you want to run it on Windows you will need to use [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
+* Interlok Shell does not work on Windows with OpenJDK 64-Bit Server VM (Zulu 8.42)
 
 [public repository]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/
 [CRaSH]: http://www.crashub.org/

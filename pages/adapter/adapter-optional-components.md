@@ -104,7 +104,7 @@ As additional features are developed and released our public facing repository i
 |com.adaptris | [interlok-sap][] | Integration with SAP via [IDocs](cookbook-sap-idoc.html) or [RFC/BAPI](cookbook-sap-rfc.html); requires additional jars not automatically delivered; requires [interlok-licensing][] | 3.8.0+
 |com.adaptris | ~~[interlok-schema][]~~ | ~~RelaxNG [schema validation](advanced-configuration-pre-processors.html#schema-validation) for Interlok configuration files~~ | 3.8.0-3.10.2, deprecated since 3.9.0; removed in 3.11.0
 |com.adaptris | [interlok-service-tester][] | Testing services as part of a CI pipeline | 3.5.0+ | available on [github](https://github.com/adaptris/interlok-service-tester)
-|com.adaptris | [interlok-shell][] | Commandline runtime UI based on [CRaSH](http://www.crashub.org) | 3.4.1+|available on [github](https://github.com/adaptris/interlok-shell)
+|com.adaptris | [interlok-shell][] | Commandline runtime UI based on [CRaSH](http://www.crashub.org) | 3.4.1+, deprecated since 3.11.0 |available on [github](https://github.com/adaptris/interlok-shell)
 |com.adaptris | [interlok-socket][] | Vanilla Socket support; migrated from [interlok-core][] into its own component  | 3.7.0+ | available on [github](https://github.com/adaptris/interlok-socket)
 |com.adaptris | [interlok-solace][] | Integration with Solace Systems as a JMS provider; requires additional jars not automatically delivered; requires [interlok-licensing][]| 3.8.0+
 |com.adaptris | [interlok-sonicmf][] | Interlok runtime as [part of a Sonic Container](advanced-sonic-container.html) | 3.8.0+
