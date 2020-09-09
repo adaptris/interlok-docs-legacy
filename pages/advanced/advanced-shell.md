@@ -208,7 +208,7 @@ crash.auth.simple.password=admin
 
 ## Known Issues ##
 
-* Interlok Shell is known to work well with Linux and Mac command line tools but if you want to run it on Windows you will need to use [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
+* Interlok Shell is known to work well with Linux and Mac command line tools but to run it on Windows you will need to use [Windows Subsystem for Linux](https://docs.microsoft.com/en-us/windows/wsl/install-win10).
 * Interlok Shell does not work on Windows with OpenJDK 64-Bit Server VM (Zulu 8.42)
 
 [public repository]: https://nexus.adaptris.net/nexus/content/groups/public/com/adaptris/
