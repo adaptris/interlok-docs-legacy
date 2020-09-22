@@ -1,6 +1,6 @@
 ## Version 3.11.0 ##
 
-Release Date : 2020-09
+Release Date : 2020-09-22
 
 ### Key Highlights
 
@@ -33,11 +33,15 @@ Release Date : 2020-09
 - 'INTERLOK-3412' - Profiling monitor agent doesn't handle nested services
 - 'INTERLOK-3413' - UI - Disable URL Rewrite in Jetty for the session ID.
 - 'INTERLOK-3423' - Artifact Downloader - XML Entity Expansion
+- 'INTERLOK-3432' - ExternalResolver isn't thread-safe under heavy load
+- 'INTERLOK-3434' - Packaging issues with com.adaptris.core.Resolver
+- 'INTERLOK-3437' - configcheck shared component checker doesn't support pre-processors
 
 ### Improvements
 
 - 'INTERLOK-3368' - UI - Dependencies upgrade - bump versions for swagger, swagger-v3, flyway-core, maven-site-plugin, jackson and spotbugs-maven-plugin
 - 'INTERLOK-3389' - UI - Bump swagger-v3.version from 2.1.3 to 2.1.4
+- 'INTERLOK-3430' - UI FX Installer - Using system prop -Dinterlok.version when running installer is not supported
 - 'INTERLOK-2601' - Make json-streaming interface a TransformationDriver
 - 'INTERLOK-2611' - Improve performance pooling-message-splitter for large splits
 - 'INTERLOK-3060' - Jolt transforms stored as YAML
@@ -86,3 +90,4 @@ Release Date : 2020-09
 - 'INTERLOK-3420' - Jms consumer synchronous mode
 - 'INTERLOK-3421' - Jcsmp message translators
 - 'INTERLOK-3425' - Improve performance for pooling-splitter when wait-while-busy=true
+- 'INTERLOK-3429' - UI Templates - Update templates so they don't use deprecated members
