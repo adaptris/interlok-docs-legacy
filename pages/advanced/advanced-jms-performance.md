@@ -7,7 +7,7 @@ permalink: advanced-jms-performance.html
 summary: Sample JMS bridging performance.
 ---
 
-While performance will vary greatly with each environment never being truly equal, this document will share performance statistics generated from a set of JMS bridging tests run from an AWS deployment.
+While performance will vary greatly with each environment never being truly equal, this document will share performance statistics generated from a set of JMS bridging tests run from an AWS deployment. This is Interlok acting in a single-threaded manner using a StandardWorkflow or similar and is designed to expose the performance characteristics based on changing Interlok configuration. No other tuning was done for the various components; this means there was no JVM tuning of interlok or changing the default behaviour of the various messaging providers.
 
 ## Environment.
 
