@@ -86,6 +86,8 @@ These tests use a combination of both JMS and the Solace native JCSMP API.
 
 ### JMS 2.0 Asynchronous Producer
 
+Consuming from Solace using JMS and producing to WebsphereMQ using a JMS 2.0 asynchronous producer.
+
 ![AWS-Environment](./images/jms-performance/solace-wmq-jms-async.png)
 
 ### JMS + XA
