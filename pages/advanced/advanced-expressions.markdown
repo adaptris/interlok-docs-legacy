@@ -122,11 +122,22 @@ using an XPath expression.
 
     Wikipedia,Wiktionary
 
-### Detailed Weather Forecast Report Example with Adapter config and use of Xpath as a Data Input Parameter: 
+### Xpath as a Data Input Parameter- Weather Forecast Report Example
+
 <br />
-This example will demonstrate the use of xpath expression resolution as a data input parameter. Below is a simple adapter that checks parts of a weather forecast based on a polling interval consumer it then outputs the calls made into simple text file into your adapters subdirectory. For this run you will need to go to [openweathermap](https://openweathermap.org) and [sign-up](https://home.openweathermap.org/users/sign_up) with a free account to recieve an API key that will allow you to succesfully make calls to their API. The next step is to configure a fresh adapter and in the interest of making it easier below is the XML config you will need to copy and paste over whats in your fresh adapter.xml file need in order to make this work:
+
+Before we start it's important to note that *__`exctracting the XML in such a manner best avoided unless working with small files and small queries as doing so will be to the detriment of performance.`__* This is the result of parsing the payload and recreating the entire Document Object Model (DOM) for each attempt in resolving a query. `A more appropriate solution for bigger files and queries can be found here:` [Xpath Service Example](#json-path-service-example)
+
 <br />
-<br />
+
+This example will demonstrate the use of xpath expression resolution as a data input parameter.
+Below is a simple adapter that checks parts of a weather forecast based on a polling interval consumer.
+It then outputs the calls made into a simple text file in your adapter's subdirectory.
+For this to run you will need to go to [openweathermap](https://openweathermap.org) and [sign-up](https://home.openweathermap.org/users/sign_up) for a free account to recieve an API key that, will allow you to succesfully make calls to their API.
+The next step is to configure a fresh adapter and in the interest of making it easier, below is the XML config you will need.
+Copy it and replace whats currently in your adapter.xml file:
+
+#### Adapter Config XML
 
 ```xml
   <adapter>
@@ -251,17 +262,22 @@ This example will demonstrate the use of xpath expression resolution as a data i
 
 <br />
 
-Once your adapter is started what you should get is the following on the config page:
+Once the adapter is started navigate to the config page it should look like the below:
 
-#### The Adapter
+#### The Xpath Adapter
 
 ![Adapter](./images/advanced/weather-forecast-xpath-example/weatherForecastAdapter.png)
 
-#### The polling consumer: *Set at 2 hour intervals*
+#### The polling consumer
+*Set to 2 hour intervals*
 
 ![Consumer](./images/advanced/weather-forecast-xpath-example/pollingConsumer.png)
 
-#### The simple HTTP Get request: Pointing to the correct address *(dont forget to update the API Key to your own)*
+#### The HTTP GET request
+Pointing to the correct address
+
+- *(dont forget to update the API Key to your own)*
+- In the below draw attention to the content type. In this case as we are expecting to receive xml from the GET request, that is what we set the content type to.
 
 ![HTTP-Request](./images/advanced/weather-forecast-xpath-example/httpRequestService.png)
 
@@ -269,11 +285,12 @@ Once your adapter is started what you should get is the following on the config 
 http://api.openweathermap.org/data/2.5/weather?q=London,uk&_APPID{INSERT API KEY HERE}_&mode=xml
 ```
 
-#### The 'Add Payload Service': *The Xpath expressions inputting the information we want extracted from the API*
+#### The 'Add Payload Service'
+*The Xpath expressions inputting the information we want extracted from the API*
 
 ![Add-Payload-Service](./images/advanced/weather-forecast-xpath-example/addPayloadService.png)
 
-##### The xpath queries: 
+##### The xpath queries
 
 ```xml
 City: %payload{xpath:current/city/@name}
@@ -288,7 +305,8 @@ Humidity: %payload{xpath:current/humidity/@value}%payload{xpath:current/humidity
 Raining: %payload{xpath:current/precipitation/@mode}
 ```
 
-#### The Producer: *creating the directory you will the weather forecast report in and also the report itself*
+#### The Producer
+*creating the weather forecast directory and the report itself*
 
 ![Producer-File-System-Settings](./images/advanced/weather-forecast-xpath-example/filesystemProducerSettings.png)
 
@@ -308,6 +326,7 @@ All this should culminate in a text file being created every 2 hours in the `wea
                     Humidity: 61%
                     Raining: no
 ```
+
 <br />
 
 ### JSON
@@ -373,3 +392,95 @@ allows JSON data to be extracted from a message payload.
 ```json
     [ "Nigel Rees", "Evelyn Waugh", "Herman Melville", "J. R. R. Tolkien" ]
 ```
+
+### JsonPath as a Data Input Parameter- Weather Forecast Report Example
+
+<br />
+
+Before we start it's important to note that *__`exctracting Json in such a manner is best avoided unless working with small files and making small queries as doing so will be to the detriment of performance`__* this is because the payload is parsed again for each and every time we reference it.
+`A more appropriate solution for bigger files and queries can be found here:` [Xpath Service Example](#json-path-service-example)
+
+<br />
+
+The example will demonstrate the use of jsonpath expression resolution as a data input parameter.
+Below is a simple adapter that checks parts of a weather forecast based on a polling interval consumer it then outputs the calls made into a simple text file in your adapter's subdirectory.
+For this run you will need to go to [openweathermap](https://openweathermap.org) and [sign-up](https://home.openweathermap.org/users/sign_up) for a free account to recieve an API key that will allow you to succesfully make calls to their API.
+The next step is to configure a fresh adapter. Below is part of the XML config you will need. Start by replacing the XML from the fresh adapter.xml with the config found in the [xpath example](#adapter-config-xml) then replace the 'HTTP Request Service' and the 'Add Payload Service' with the XML exerpt from below:
+
+#### The JsonPath Adapter
+
+```xml
+   <http-request-service>
+                <unique-id>HTTPS-REQUEST</unique-id>
+                <url>http://api.openweathermap.org/data/2.5/weather?q=London,uk&_APPID{API KEY HERE}_</url>
+                <content-type>json</content-type>
+                <method>GET</method>
+                <response-header-handler class="http-discard-response-headers"/>
+                <request-header-provider class="http-no-request-headers"/>
+                <authenticator class="http-no-authentication"/>
+              </http-request-service>
+              <add-payload-service>
+                <unique-id>Forecast</unique-id>
+                <new-payload-id>WeatherForecast</new-payload-id>
+                <new-payload class="constant-data-input-parameter">
+                  <value>
+     City: %payload{jsonpath:$.name}
+     Country: %payload{jsonpath:$.sys.country}
+     Weather Conditions: %payload{jsonpath:$.weather[0].description}</value>
+                </new-payload>
+              </add-payload-service>
+```
+
+Once the adapter is started if you navigate to the config page it should look like the example found in the link below:
+
+The adapter should look like [this](#the-xpath-adapter).
+
+#### The polling consumer
+
+The consumer should look like [this](#the-polling-consumer).
+
+#### The Json adapter's HTTP GET request
+
+- *(Remember to update the API Key to your own)*
+
+- In the below draw attention to the content type. In this case as we are expecting to receive json from the GET request, that is what we set the content type to.
+
+![HTTP-Request](./images/advanced/weather-forecast-jsonpath-example/httpRequestService.png)
+
+```
+http://api.openweathermap.org/data/2.5/weather?q=London,uk&_APPID{INSERT API KEY HERE}_
+```
+
+#### The Json adapter's 'Add Payload Service'
+*The JsonPath expressions inputting the information we want extracted from the API*
+
+![Add-Payload-Service](./images/advanced/weather-forecast-jsonpath-example/addPayloadService.png)
+
+##### The jsonpath queries
+
+```xml
+City: %payload{jsonpath:$.name}
+Country: %payload{jsonpath:$.sys.country}
+Weather Conditions: %payload{jsonpath:$.weather[0].description}
+```
+
+#### The Producer
+
+<br />
+
+The producer should look like [this](#the-producer).
+
+All this should culminate in a text file being created every 2 hours in the `weatherForecastOutput` directory with the file name containing the message ID, date, time and title and looking similar to this: `Date-2020-09-08-weatherForecast-Hour-09-Minute-34_MsgID-00000000-0000-0000-0000-000000000000` and containing this:
+
+```text
+     City: London
+     Country: GB
+     Weather Conditions: scattered clouds
+```
+
+<br />
+
+### The JsonPath and Xpath Service- Weather Forecast Report Example
+
+<br />
+
