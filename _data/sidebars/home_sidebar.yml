@@ -248,6 +248,7 @@ entries:
       url: /cookbook-jms.html
       output: web
 
+
       subfolders:
       - title: Messaging
         output: web
@@ -408,6 +409,10 @@ entries:
 
         - title: Automagically adding logging context
           url: /advanced-profiler-logging-context.html
+          output: web
+          
+        - title: JMS Performance
+          url: /advanced-jms-performance.html
           output: web
 
     - title: Resolvable Expressions
