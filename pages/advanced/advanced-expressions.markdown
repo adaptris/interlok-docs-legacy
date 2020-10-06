@@ -1,6 +1,6 @@
 ---
 title:     "Resolvable Expressions"
-keywords:  "interlok, expressions, messages, metadata"
+keywords:  "interlok, expressions, messages, metadata, xpath, jsonpath"
 tags:      [advanced]
 sidebar:   home_sidebar
 permalink: advanced-expressions.html
@@ -126,16 +126,16 @@ using an XPath expression.
 
 <br />
 
-Before we start it's important to note that *__`exctracting the XML in such a manner best avoided unless working with small files and small queries as doing so will be to the detriment of performance.`__* This is the result of parsing the payload and recreating the entire Document Object Model (DOM) for each attempt in resolving a query. `A more appropriate solution for bigger files and queries can be found here:` [Xpath Service Example](#json-path-service-example)
+Before we start it's important to note that, *__`exctracting the XML in such a manner best avoided unless working with small files and small queries as doing so will be to the detriment of performance.`__* This is the result of parsing the payload and recreating the entire Document Object Model (DOM) for each attempt in resolving a query. `A more appropriate solution for bigger files and queries can be found here:` [Xpath Service Example](#the-jsonpath-and-xpath-service--weather-forecast-report-example)
 
 <br />
 
-This example will demonstrate the use of xpath expression resolution as a data input parameter.
+This example will demonstrate the use of Xpath expression resolution as a data input parameter.
 Below is a simple adapter that checks parts of a weather forecast based on a polling interval consumer.
 It then outputs the calls made into a simple text file in your adapter's subdirectory.
-For this to run you will need to go to [openweathermap](https://openweathermap.org) and [sign-up](https://home.openweathermap.org/users/sign_up) for a free account to recieve an API key that, will allow you to succesfully make calls to their API.
+For this to run you will need to go to [openweathermap](https://openweathermap.org) and [sign-up](https://home.openweathermap.org/users/sign_up) for a free account to recieve an API key that will allow you to succesfully make calls to their API.
 The next step is to configure a fresh adapter and in the interest of making it easier, below is the XML config you will need.
-Copy it and replace whats currently in your adapter.xml file:
+Copy it and replace what's currently in your adapter.xml file:
 
 #### Adapter Config XML
 
@@ -277,7 +277,7 @@ Once the adapter is started navigate to the config page it should look like the 
 Pointing to the correct address
 
 - *(dont forget to update the API Key to your own)*
-- In the below draw attention to the content type. In this case as we are expecting to receive xml from the GET request, that is what we set the content type to.
+- In the below draw attention to the content type. In this case as we are expecting to receive xml from the GET request, therefore we that is what we set the content type to.
 
 ![HTTP-Request](./images/advanced/weather-forecast-xpath-example/httpRequestService.png)
 
@@ -286,7 +286,7 @@ http://api.openweathermap.org/data/2.5/weather?q=London,uk&_APPID{INSERT API KEY
 ```
 
 #### The 'Add Payload Service'
-*The Xpath expressions inputting the information we want extracted from the API*
+*The Xpath expressions inputing the information we want extracted from the API*
 
 ![Add-Payload-Service](./images/advanced/weather-forecast-xpath-example/addPayloadService.png)
 
@@ -398,16 +398,16 @@ allows JSON data to be extracted from a message payload.
 <br />
 
 Before we start it's important to note that *__`exctracting Json in such a manner is best avoided unless working with small files and making small queries as doing so will be to the detriment of performance`__* this is because the payload is parsed again for each and every time we reference it.
-`A more appropriate solution for bigger files and queries can be found here:` [Xpath Service Example](#json-path-service-example)
+`A more appropriate solution for bigger files and queries can be found here:` [Jsonpath Service Example](#the-jsonpath-and-xpath-service--weather-forecast-report-example)
 
 <br />
 
 The example will demonstrate the use of jsonpath expression resolution as a data input parameter.
-Below is a simple adapter that checks parts of a weather forecast based on a polling interval consumer it then outputs the calls made into a simple text file in your adapter's subdirectory.
+We will create a simple adapter that checks parts of a weather forecast based on a polling interval consumer it then outputs the calls made into a simple text file in your adapter's subdirectory.
 For this run you will need to go to [openweathermap](https://openweathermap.org) and [sign-up](https://home.openweathermap.org/users/sign_up) for a free account to recieve an API key that will allow you to succesfully make calls to their API.
 The next step is to configure a fresh adapter. Below is part of the XML config you will need. Start by replacing the XML from the fresh adapter.xml with the config found in the [xpath example](#adapter-config-xml) then replace the 'HTTP Request Service' and the 'Add Payload Service' with the XML exerpt from below:
 
-#### The JsonPath Adapter
+#### The Jsonpath Adapter
 
 ```xml
    <http-request-service>
@@ -452,7 +452,7 @@ http://api.openweathermap.org/data/2.5/weather?q=London,uk&_APPID{INSERT API KEY
 ```
 
 #### The Json adapter's 'Add Payload Service'
-*The JsonPath expressions inputting the information we want extracted from the API*
+*The Jsonpath expressions inputing the information we want extracted from the API*
 
 ![Add-Payload-Service](./images/advanced/weather-forecast-jsonpath-example/addPayloadService.png)
 
@@ -484,3 +484,291 @@ All this should culminate in a text file being created every 2 hours in the `wea
 
 <br />
 
+The example below illustrates a better approach to extracting either Json or XML from either large files or where you will be making multiple or complex queries using the respective Jsonpath or Xpath service.
+It demonstrates a simple adapter that checks parts of a weather forecast based on a polling interval consumer, set to run every 2 hours.
+It then executes our queries assigning them to a metadata key.
+The values are then subsequently added to a simple text file 'Add Payload Service'.
+Again like the former examples for this to run you will need to go to [openweathermap](https://openweathermap.org) and [sign-up](https://home.openweathermap.org/users/sign_up) for a free account to recieve an API key that will allow you to succesfully make calls to their API.
+The next step is to configure an adapter. Start by replacing the XML from adapter.xml  file in your config directory with the config found in the [xpath example](#adapter-config-xml). For both the **['Json Path Service'](#the-jsonpath-service-config)** and **['Xpath Service'](#the-xpath-service-config)** you will need to update the services with XML config exerpts from below:
+
+#### The Jsonpath Service config
+
+```xml
+ <http-request-service>
+                <unique-id>HTTPS-REQUEST</unique-id>
+                <url>http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&APPID={INSERT API KEY HERE}</url>
+                <content-type>json</content-type>
+                <method>GET</method>
+                <response-header-handler class="http-discard-response-headers"/>
+                <request-header-provider class="http-no-request-headers"/>
+                <authenticator class="http-no-authentication"/>
+              </http-request-service>
+              <json-path-service>
+                <unique-id>JsonPathService</unique-id>
+                <source class="string-payload-data-input-parameter"/>
+                <json-path-execution>
+                  <source class="constant-data-input-parameter">
+                    <value>$.sys.country</value>
+                  </source>
+                  <target class="metadata-data-output-parameter">
+                    <metadata-key>country</metadata-key>
+                  </target>
+                </json-path-execution>
+                <json-path-execution>
+                  <source class="constant-data-input-parameter">
+                    <value>$.name</value>
+                  </source>
+                  <target class="metadata-data-output-parameter">
+                    <metadata-key>city</metadata-key>
+                  </target>
+                </json-path-execution>
+                <json-path-execution>
+                  <source class="constant-data-input-parameter">
+                    <value>$.wind.speed</value>
+                  </source>
+                  <target class="metadata-data-output-parameter">
+                    <metadata-key>windspeed</metadata-key>
+                  </target>
+                </json-path-execution>
+                <json-path-execution>
+                  <source class="constant-data-input-parameter">
+                    <value>$.wind.deg</value>
+                  </source>
+                  <target class="metadata-data-output-parameter">
+                    <metadata-key>winddirection</metadata-key>
+                  </target>
+                </json-path-execution>
+                <json-path-execution>
+                  <source class="constant-data-input-parameter">
+                    <value>$.main.temp</value>
+                  </source>
+                  <target class="metadata-data-output-parameter">
+                    <metadata-key>temp</metadata-key>
+                  </target>
+                </json-path-execution>
+                <json-path-execution>
+                  <source class="constant-data-input-parameter">
+                    <value>$.main.feels_like</value>
+                  </source>
+                  <target class="metadata-data-output-parameter">
+                    <metadata-key>feelslike</metadata-key>
+                  </target>
+                </json-path-execution>
+                <json-path-execution>
+                  <source class="constant-data-input-parameter">
+                    <value>$.main.humidity</value>
+                  </source>
+                  <target class="metadata-data-output-parameter">
+                    <metadata-key>humidity</metadata-key>
+                  </target>
+                </json-path-execution>
+                <json-path-execution>
+                  <source class="constant-data-input-parameter">
+                    <value>$.weather[0].description</value>
+                  </source>
+                  <target class="metadata-data-output-parameter">
+                    <metadata-key>conditions</metadata-key>
+                  </target>
+                </json-path-execution>
+              </json-path-service>
+              <add-payload-service>
+                <unique-id>Forecast</unique-id>
+                <new-payload-id>WeatherForecast</new-payload-id>
+                <new-payload class="constant-data-input-parameter">
+                  <value>
+      Location: %message{city}, %message{country}
+
+      Weather condition: %message{conditions}
+
+      Temperature: %message{temp}°C
+      Feels like:  %message{feelslike}°C
+
+      Wind Speed: %message{windspeed} metres/sec
+      Wind Direction: %message{winddirection}°
+
+      Humidity: %message{humidity}%    </value>
+                </new-payload>
+              </add-payload-service>
+```
+
+#### The Xpath service config
+
+ ```xml
+  <http-request-service>
+          <unique-id>HTTPS-REQUEST</unique-id>
+          <url>http://api.openweathermap.org/data/2.5/weather?q=London,uk&units=metric&APPID={INSERT API KEY HERE}&mode=xml</url>
+          <content-type>xml</content-type>
+          <method>GET</method>
+          <response-header-handler class="http-discard-response-headers"/>
+          <request-header-provider class="http-no-request-headers"/>
+          <authenticator class="http-no-authentication"/>
+        </http-request-service>
+        <xpath-service>
+          <unique-id>Xpath Service</unique-id>
+          <xml-source class="string-payload-data-input-parameter"/>
+          <xpath-execution>
+            <source class="constant-data-input-parameter">
+              <value>current/city/@name</value>
+            </source>
+            <target class="metadata-data-output-parameter">
+              <metadata-key>city</metadata-key>
+            </target>
+          </xpath-execution>
+          <xpath-execution>
+            <source class="constant-data-input-parameter">
+              <value>/current/city/country/text()</value>
+            </source>
+            <target class="metadata-data-output-parameter">
+              <metadata-key>country</metadata-key>
+            </target>
+          </xpath-execution>
+          <xpath-execution>
+            <source class="constant-data-input-parameter">
+              <value>/current/wind/speed/@value</value>
+            </source>
+            <target class="metadata-data-output-parameter">
+              <metadata-key>windspeed</metadata-key>
+            </target>
+          </xpath-execution>
+          <xpath-execution>
+            <source class="constant-data-input-parameter">
+              <value>/current/wind/direction/@value</value>
+            </source>
+            <target class="metadata-data-output-parameter">
+              <metadata-key>winddirection</metadata-key>
+            </target>
+          </xpath-execution>
+          <xpath-execution>
+            <source class="constant-data-input-parameter">
+              <value>/current/weather/@value</value>
+            </source>
+            <target class="metadata-data-output-parameter">
+              <metadata-key>conditions</metadata-key>
+            </target>
+          </xpath-execution>
+          <xpath-execution>
+            <source class="constant-data-input-parameter">
+              <value>/current/temperature/@value</value>
+            </source>
+            <target class="metadata-data-output-parameter">
+              <metadata-key>temp</metadata-key>
+            </target>
+          </xpath-execution>
+          <xpath-execution>
+            <source class="constant-data-input-parameter">
+              <value>/current/feels_like/@value</value>
+            </source>
+            <target class="metadata-data-output-parameter">
+              <metadata-key>feelslike</metadata-key>
+            </target>
+          </xpath-execution>
+          <xpath-execution>
+            <source class="constant-data-input-parameter">
+              <value>/current/humidity/@value</value>
+            </source>
+            <target class="metadata-data-output-parameter">
+              <metadata-key>humidity</metadata-key>
+            </target>
+          </xpath-execution>
+        </xpath-service>
+        <add-payload-service>
+          <unique-id>Forecast</unique-id>
+          <new-payload-id>WeatherForecast</new-payload-id>
+          <new-payload class="constant-data-input-parameter">
+            <value>
+        Location: %message{city}, %message{country}
+
+        Weather condition: %message{conditions}
+
+        Temperature: %message{temp}°C
+        Feels like:  %message{feelslike}°C
+
+        Wind Speed: %message{windspeed} metres/sec
+        Wind Direction: %message{winddirection}°
+
+        Humidity: %message{humidity}%    </value>
+          </new-payload>
+        </add-payload-service>
+ ```
+
+<br />
+
+Start the adapter and navigate to the config page. It should look like the image below for the Jsonpath example. If you are following the Xpath example it should have an Xpath service in lieu of the Json Path Service circled in the image.
+
+![JsonPathServiceAdapter](./images/advanced/weather-forecast-jsonpathservice-example/weatherForecastAdapter.png)
+
+#### The Consumer and Producer
+
+Both the consumer and producer should look like those of the previous examples on this page, with the consumer looking like [this](#the-polling-consumer) and the producer looking like [this](#the-producer).
+
+All this should culminate in a text file being created every 2 hours in the `weatherForecastOutput` directory with the file name containing the message ID, date, time and title and looking similar to this: `Date-2020-09-08-weatherForecast-Hour-09-Minute-34_MsgID-00000000-0000-0000-0000-000000000000`
+
+#### Xpath and Jsonpath services HTTP GET request
+
+Again these should look like those from the examples provided in the [Xpath's HTTP GET request](#the-http-get-request) or the [Json's HTTP GET request](#the-json-adapters-http-get-request).
+
+- Remember to change the content type based on the data you are working with
+
+- *(Remember to update the API Key to your own)*
+
+```
+http://api.openweathermap.org/data/2.5/weather?q=London,uk&_APPID{INSERT API KEY HERE}_
+```
+
+#### The Jsonpath and Xpath Services
+
+<br />
+
+In the Xpath and Json Path service settings modal you will see that the values have been left default other than a unique ID change to make it easier to identify the services.
+
+##### The 'Source' tab
+
+In the Json source tab we have set the source to 'String Payload Data Input Parameter' as shown below.
+
+![JsonPathService-Source](./images/advanced/weather-forecast-jsonpathservice-example/jsonPathServiceSource.png)
+
+##### The 'Executions' tab
+
+This is where you'll find the point at which we make all of our queries. You should see a list of executions and they in turn can be expanded to show each query we make. In the 'Json Path Service' those executions should be set to 'Json Path Execution', their **Source** should be set to _'Constant Data Input Parameter'_ and the **Target** should be set to _'Metadata Data Output Parameter'_
+
+![JsonPathService-Exections](./images/advanced/weather-forecast-jsonpathservice-example/jsonPathServiceExecutions.png)
+
+![JsonPath-Execution](./images/advanced/weather-forecast-jsonpathservice-example/jsonPathExecution.png)
+
+#### The JsonPath 'Add Payload Service'
+
+![JsonPath-Add-Payload](./images/advanced/weather-forecast-jsonpathservice-example/addPayloadService.png)
+
+##### The Metadata queries
+
+In the executions what we do is pair the value we want with a corresponding metadata key. For example the **value** `$.sys.country` now has the **key** `country` so when we call `%message{country}` in the 'Add Payload Service' we expect in this instance for the value 'GB' to be returned.
+
+```text
+  Location: %message{city}, %message{country}
+
+  Weather condition: %message{conditions}
+
+  Temperature: %message{temp}°C
+  Feels like:  %message{feelslike}°C
+
+  Wind Speed: %message{windspeed} metres/sec
+  Wind Direction: %message{winddirection}°
+
+  Humidity: %message{humidity}%
+```
+
+The result is a weather forecast output to a text file which should look like this:
+
+```text
+  Location: London, GB
+  
+  Weather condition: light rain
+  
+  Temperature: 12.51°C
+  Feels like:  5.74°C
+  
+  Wind Speed: 10.3 metres/sec
+  Wind Direction: 100°
+  
+  Humidity: 93%
+```
