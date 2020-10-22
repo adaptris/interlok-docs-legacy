@@ -7,11 +7,19 @@ permalink: cookbook-outlook365.html
 summary: Interlok-Mail now provides a way to use Outlook with Office365
 ---
 
+Both the Office365 consumer and producer are new additions to
+Interlok-Mail, that allow for the receiving and sending of email using
+Microsoft Outlook accounts via Azure and their Graph API. One major
+benefit of this is the increased security and use of [OAuth2 tokens][1].
+It also removes the need to understand the IMAP/SMTP protocols. That
+said, it's not without its own set of headaches, particularly revolving
+around the setup and configuration of the Azure application.
+
 ## Prerequisites
 
 * Active Office365 subscription
 * An Azure Active Directory application with application the following
-  permissions, and with Admin Consent granted:
+  permissions, and with [Admin Consent][2] granted:
   - Mail.Read
   - Mail.ReadBasic
   - Mail.ReadBasic.All
@@ -26,9 +34,7 @@ The Office365 consumer and producer require the above because:
 * As users cannot interact with daemon applications, incremental
   consent isn't possible
 * Users require an Exchange mailbox to send/receive email, and this
-  requires an Office365 subscription
-
-*[See here](https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-daemon-overview) for an explanation.*
+  requires an [Office365 subscription][3]
 
 ## Azure Application Setup
 
@@ -102,7 +108,7 @@ the option to save the sent mail.
       <tenant-id>cbf4a38d-3117-48cd-b54b-861480ee93cd</tenant-id>
       <client-secret>NGMyYjY0MTEtOTU0Ny00NTg0LWE3MzQtODg2ZDAzZGVmZmY1Cg==</client-secret>
       <username>user@example.com</username>
-      <subject>InterlokMail Office365 Test Message</subject>
+      <subject>Interlok-Mail Office365 Test Message</subject>
       <to-recipients>user@example.com</to-recipients>
       <save>true</save>
      </producer>
@@ -111,6 +117,10 @@ the option to save the sent mail.
 
 ## Miscellaneous Notes/URLs
 
-https://developer.microsoft.com/en-us/graph/graph-explorer
-https://docs.microsoft.com/en-us/microsoft-365/enterprise/azure-integration?view=o365-worldwide
-https://github.com/Azure-Samples/active-directory-java-native-headless-v2
+
+[1]: https://docs.microsoft.com/en-us/azure/active-directory/develop/msal-overview
+[2]: https://docs.microsoft.com/en-us/azure/active-directory/develop/scenario-daemon-overview
+[3]: https://docs.microsoft.com/en-us/microsoft-365/enterprise/azure-integration?view=o365-worldwide
+
+[8]: https://developer.microsoft.com/en-us/graph/graph-explorer
+[9]: https://github.com/Azure-Samples/active-directory-java-native-headless-v2
