@@ -1,3 +1,7 @@
+# IMPORTANT
+
+- This project will be archived since we have moved to [docsify](https://docsify.js.org/#/)
+
 # Interlok Documentation
 
 - The documentation once generated is FLAT.
